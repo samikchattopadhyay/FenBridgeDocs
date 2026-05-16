@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge Scout - Today Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "on-primary-container": "#00422b",
+                        "surface-container-highest": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#003824",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "primary": "#4edea3",
+                        "on-tertiary": "#650911",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container": "#201f1f",
+                        "on-tertiary-container": "#711419",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-variant": "#353534",
+                        "secondary-fixed": "#e9ddff",
+                        "error-container": "#93000a",
+                        "surface": "#131313",
+                        "surface-tint": "#4edea3",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary-container": "#571bc1",
+                        "on-primary-fixed": "#002113",
+                        "inverse-surface": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-tertiary-fixed": "#410005",
+                        "background": "#131313",
+                        "outline-variant": "#3c4a42",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "outline": "#86948a",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "tertiary": "#ffb3af",
+                        "surface-bright": "#393939",
+                        "on-secondary": "#3c0091",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "margin": "20px",
+                        "gutter": "12px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+        .glass-card {
+            background: rgba(25, 25, 25, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .card-accent {
+            background: linear-gradient(180deg, var(--accent-color) 0%, rgba(var(--accent-rgb), 0.3) 100%);
+            box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased min-h-screen pb-32">
+<!-- TopAppBar from JSON Commands -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin py-xs max-w-full bg-background/80 backdrop-blur-md dark:bg-background/80 border-b border-outline-variant/30">
+<div class="flex items-center gap-xs">
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed-dim">FenBridge</span>
+</div>
+<div class="flex items-center gap-md">
+<!-- Connectivity Indicator -->
+<div class="flex items-center gap-xs px-xs py-base bg-surface-container-high rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(78,222,163,0.5)]"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Online</span>
+</div>
+<div class="relative scale-95 active:scale-90 transition-transform cursor-pointer hover:bg-surface-variant/50 p-xs rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-tertiary rounded-full border-2 border-background"></span>
+</div>
+<div class="scale-95 active:scale-90 transition-transform cursor-pointer hover:bg-surface-variant/50 p-xs rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-[72px] px-margin space-y-md">
+<!-- Date Header -->
+<header class="py-sm">
+<h1 class="text-headline-lg font-headline-lg text-on-surface truncate whitespace-nowrap">Today</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Tuesday 13 May • 5 tasks</p>
+</header>
+<!-- Overdue Banner -->
+<div onclick="window.location.href='../overdue_tasks_screen/code.html'" class="flex items-center justify-between p-md bg-error-container/20 border border-error/30 rounded-xl text-error cursor-pointer active:scale-98 transition-transform">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-label-lg font-label-lg uppercase tracking-wider">2 overdue tasks — tap to view</span>
+</div>
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+<!-- Task List Section -->
+<section class="space-y-sm">
+        <!-- Task Card: Lot Verification (Emerald/Accent) -->
+        <div onclick="window.location.href='../../lot_verification_inspection/confirm_lot_quantity/code.html'" class="glass-card group relative overflow-hidden rounded-2xl p-4 transition-all hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-primary/10 active:scale-[0.98] cursor-pointer" style="--accent-color: #4edea3; --accent-rgb: 78, 222, 163;">
+            <div class="card-accent absolute left-0 top-0 h-full w-1"></div>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-bold tracking-widest text-primary/60">#001</span>
+                        <h3 class="text-[15px] font-bold tracking-tight text-on-surface">Kumar Makhana Pvt Ltd</h3>
+                    </div>
+                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 text-[11px] text-on-surface-variant">
+                        <div class="flex items-center gap-1 whitespace-nowrap min-w-0">
+                            <span class="material-symbols-outlined text-[14px]">warehouse</span>
+                            <span class="truncate">WH-204 • Darbhanga</span>
+                        </div>
+                        <div class="flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>09:30 AM</span>
+                        </div>
+                    </div>
+                    <div class="mt-1 flex items-center gap-2">
+                        <span class="rounded-full bg-primary/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary border border-primary/20">Lot Verification</span>
+                        <span class="flex items-center gap-1 text-[9px] font-medium text-primary">
+                            <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_5px_#4edea3]"></span>
+                            In Progress
+                        </span>
+                    </div>
+                </div>
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-all group-hover:bg-primary/20 group-hover:text-primary">
+                    <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">chevron_right</span>
+                </div>
+            </div>
+        </div>
+        <!-- Task Card: Seal Application (Blue/Secondary) -->
+        <div onclick="window.location.href='../../seal_application/confirm_verified_lot/code.html'" class="glass-card group relative overflow-hidden rounded-2xl p-4 transition-all hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-secondary/10 active:scale-[0.98] cursor-pointer" style="--accent-color: #d0bcff; --accent-rgb: 208, 188, 255;">
+            <div class="card-accent absolute left-0 top-0 h-full w-1"></div>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-bold tracking-widest text-secondary/60">#002</span>
+                        <h3 class="text-[15px] font-bold tracking-tight text-on-surface">Mithila Organics</h3>
+                    </div>
+                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 text-[11px] text-on-surface-variant">
+                        <div class="flex items-center gap-1 whitespace-nowrap min-w-0">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                            <span class="truncate">WH-112 • Madhubani</span>
+                        </div>
+                        <div class="flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>11:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="mt-1 flex items-center gap-2">
+                        <span class="rounded-full bg-secondary/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-secondary border border-secondary/20">Seal Application</span>
+                        <span class="flex items-center gap-1 text-[9px] font-medium text-on-surface-variant">
+                            <span class="h-1.5 w-1.5 rounded-full bg-outline"></span>
+                            Pending
+                        </span>
+                    </div>
+                </div>
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-all group-hover:bg-secondary/20 group-hover:text-secondary">
+                    <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">chevron_right</span>
+                </div>
+            </div>
+        </div>
+        <!-- Task Card: Warehouse Fitness (Amber/Tertiary-ish) -->
+        <div onclick="window.location.href='../../warehouse_fitness_check/confirm_warehouse_arrival/code.html'" class="glass-card group relative overflow-hidden rounded-2xl p-4 transition-all hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-[#f59e0b]/10 active:scale-[0.98] cursor-pointer" style="--accent-color: #f59e0b; --accent-rgb: 245, 158, 11;">
+            <div class="card-accent absolute left-0 top-0 h-full w-1"></div>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-bold tracking-widest text-[#f59e0b]/60">#003</span>
+                        <h3 class="text-[15px] font-bold tracking-tight text-on-surface">AgroNext Storage</h3>
+                    </div>
+                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 text-[11px] text-on-surface-variant">
+                        <div class="flex items-center gap-1 whitespace-nowrap min-w-0">
+                            <span class="material-symbols-outlined text-[14px]">verified</span>
+                            <span class="truncate">WH-509 • Saharsa</span>
+                        </div>
+                        <div class="flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>01:45 PM</span>
+                        </div>
+                    </div>
+                    <div class="mt-1 flex items-center gap-2">
+                        <span class="rounded-full bg-[#f59e0b]/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#f59e0b] border border-[#f59e0b]/20">Fitness Check</span>
+                        <span class="flex items-center gap-1 text-[9px] font-medium text-on-surface-variant">
+                            <span class="h-1.5 w-1.5 rounded-full bg-outline"></span>
+                            Pending
+                        </span>
+                    </div>
+                </div>
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-all group-hover:bg-[#f59e0b]/20 group-hover:text-[#f59e0b]">
+                    <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">chevron_right</span>
+                </div>
+            </div>
+        </div>
+        <!-- Task Card: Storage Re-check (Teal) -->
+        <div onclick="window.location.href='../../storage_re_check/confirm_sealed_lot/code.html'" class="glass-card group relative overflow-hidden rounded-2xl p-4 transition-all hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-[#14b8a6]/10 active:scale-[0.98] cursor-pointer" style="--accent-color: #14b8a6; --accent-rgb: 20, 184, 166;">
+            <div class="card-accent absolute left-0 top-0 h-full w-1"></div>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-bold tracking-widest text-[#14b8a6]/60">#004</span>
+                        <h3 class="text-[15px] font-bold tracking-tight text-on-surface">Purnea Processing Hub</h3>
+                    </div>
+                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 text-[11px] text-on-surface-variant">
+                        <div class="flex items-center gap-1 whitespace-nowrap min-w-0">
+                            <span class="material-symbols-outlined text-[14px]">inventory</span>
+                            <span class="truncate">WH-881 • Purnea</span>
+                        </div>
+                        <div class="flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>03:30 PM</span>
+                        </div>
+                    </div>
+                    <div class="mt-1 flex items-center gap-2">
+                        <span class="rounded-full bg-[#14b8a6]/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#14b8a6] border border-[#14b8a6]/20">Storage Re-check</span>
+                        <span class="flex items-center gap-1 text-[9px] font-medium text-on-surface-variant">
+                            <span class="h-1.5 w-1.5 rounded-full bg-outline"></span>
+                            Pending
+                        </span>
+                    </div>
+                </div>
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-all group-hover:bg-[#14b8a6]/20 group-hover:text-[#14b8a6]">
+                    <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">chevron_right</span>
+                </div>
+            </div>
+        </div>
+        <!-- Task Card: Re-inspection (Purple) -->
+        <div onclick="window.location.href='../../re_inspection_post_reconditioning/prior_rejection_context/code.html'" class="glass-card group relative overflow-hidden rounded-2xl p-4 transition-all hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-[#d0bcff]/10 active:scale-[0.98] cursor-pointer" style="--accent-color: #d0bcff; --accent-rgb: 208, 188, 255;">
+            <div class="card-accent absolute left-0 top-0 h-full w-1"></div>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-bold tracking-widest text-[#d0bcff]/60">#005</span>
+                        <h3 class="text-[15px] font-bold tracking-tight text-on-surface">Bihar Gold Makhana</h3>
+                    </div>
+                    <div class="flex items-center flex-wrap gap-x-3 gap-y-1 text-[11px] text-on-surface-variant">
+                        <div class="flex items-center gap-1 whitespace-nowrap min-w-0">
+                            <span class="material-symbols-outlined text-[14px]">assignment_turned_in</span>
+                            <span class="truncate">WH-012 • Katihar</span>
+                        </div>
+                        <div class="flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            <span>05:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="mt-1 flex items-center gap-2">
+                        <span class="rounded-full bg-[#d0bcff]/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#d0bcff] border border-[#d0bcff]/20">Re-inspection</span>
+                        <span class="flex items-center gap-1 text-[9px] font-medium text-on-surface-variant">
+                            <span class="h-1.5 w-1.5 rounded-full bg-outline"></span>
+                            Pending
+                        </span>
+                    </div>
+                </div>
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-all group-hover:bg-[#d0bcff]/20 group-hover:text-[#d0bcff]">
+                    <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">chevron_right</span>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Sync Footer -->
+<footer class="flex items-center justify-center py-xl opacity-60">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span class="text-label-sm font-label-sm uppercase tracking-widest">Sync queue: 0 pending</span>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar from JSON Commands -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-md bg-surface-dim/90 backdrop-blur-lg dark:bg-surface-dim/90 border-t border-outline-variant/20 shadow-lg rounded-t-xl">
+<!-- Scout (Intent: Today) - Active -->
+<div class="flex flex-col items-center justify-center bg-primary-container/20 text-primary dark:text-primary-fixed-dim rounded-xl px-4 py-1 Active: scale-95 transition-all duration-300 ease-out cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="text-label-sm font-label-sm">Scout</span>
+</div>
+<!-- Inventory (Intent: Warehouses) -->
+<div onclick="window.location.href='../../warehouses/warehouse_list/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</div>
+<!-- History (Intent: Sync) -->
+<div onclick="window.location.href='../../sync_queue/sync_queue_list/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-sm font-label-sm">History</span>
+</div>
+<!-- Profile -->
+<div onclick="window.location.href='../../profile_settings/profile_settings/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</div>
+</nav>
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+

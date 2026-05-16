@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quality Inspection - Step 2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface-tint": "#4edea3",
+                    "surface-bright": "#393939",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "secondary-container": "#571bc1",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed-dim": "#4edea3",
+                    "outline": "#86948a",
+                    "tertiary-container": "#fc7c78",
+                    "on-tertiary": "#650911",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-surface-variant": "#bbcabf",
+                    "inverse-primary": "#006c49",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-fixed": "#e9ddff",
+                    "primary": "#4edea3",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-variant": "#353534",
+                    "primary-container": "#10b981",
+                    "tertiary": "#ffb3af",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-secondary-fixed": "#23005c",
+                    "on-error": "#690005",
+                    "background": "#131313",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-container": "#711419",
+                    "outline-variant": "#3c4a42",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#3c0091",
+                    "secondary": "#d0bcff",
+                    "surface": "#131313",
+                    "surface-container-low": "#1c1b1b",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-container": "#c4abff",
+                    "surface-container-highest": "#353534",
+                    "on-primary": "#003824",
+                    "surface-dim": "#131313",
+                    "on-primary-container": "#00422b",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "md": "16px",
+                    "margin": "20px",
+                    "xl": "32px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #131313; color: #e5e2e1; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .progress-bar-fill { width: 40%; transition: width 0.5s ease; }
+        .custom-checkbox:checked { background-color: #10B981; border-color: #10B981; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md antialiased pb-24">
+<!-- Top AppBar (from JSON guidance) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button onclick="window.location.href='../confirm_verified_lot/code.html'" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-on-surface truncate whitespace-nowrap">Apply Seal &amp; Net</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="text-label-lg font-label-lg text-on-surface-variant">2 of 5</span>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Progress Indicator -->
+<div class="mt-16 w-full h-1 bg-surface-container">
+<div class="h-full bg-primary progress-bar-fill"></div>
+</div>
+<main class="px-margin pt-xl space-y-xl max-w-2xl mx-auto">
+<!-- Heading -->
+<section>
+<h2 class="text-headline-lg font-headline-lg text-on-surface truncate whitespace-nowrap">Apply the seal and net</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">Secure the inventory lot and capture the physical identifiers.</p>
+</section>
+<!-- Seal ID Block (Bento Style Card) -->
+<section class="bg-[#1E1E1E] border border-[#2D2D2D] rounded-xl p-md shadow-sm space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="text-label-lg font-label-lg text-primary uppercase tracking-wider">Seal Verification</h3>
+<span class="material-symbols-outlined text-on-surface-variant">qr_code_scanner</span>
+</div>
+<div class="flex flex-col gap-md">
+<button class="flex items-center justify-center gap-sm bg-primary text-on-primary py-md px-lg rounded-lg font-label-lg hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+                    Scan seal
+                </button>
+<div class="relative">
+<input class="w-full bg-[#181818] border border-outline-variant text-on-surface-variant font-body-md rounded-lg px-md py-md cursor-not-allowed" placeholder="Seal ID will appear here" readonly="" type="text"/>
+<div class="absolute right-md top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+</div>
+<div class="flex justify-center">
+<button class="text-primary font-label-lg hover:underline active:opacity-70 transition-all">
+                        Enter manually
+                    </button>
+</div>
+</div>
+</section>
+<!-- Net Confirmation -->
+<section class="bg-[#1E1E1E] border border-[#2D2D2D] rounded-xl p-md">
+<label class="flex items-start gap-md cursor-pointer group">
+<div class="mt-1">
+<input class="custom-checkbox w-6 h-6 rounded bg-[#181818] border-outline-variant focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer" required="" type="checkbox"/>
+</div>
+<div class="flex-1">
+<span class="text-body-lg font-body-lg text-on-surface group-hover:text-primary transition-colors">Reusable net applied over the lot</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1 italic uppercase">Required for transport</p>
+</div>
+</label>
+</section>
+<!-- GPS Block -->
+<section class="bg-[#1E1E1E] border border-[#2D2D2D] rounded-xl overflow-hidden">
+<div class="h-32 bg-surface-container relative">
+<img alt="Satellite location context" class="w-full h-full object-cover opacity-40" data-alt="A cinematic, high-resolution satellite-style view of agricultural fields at dusk, rendered in a dark-mode noir aesthetic. The terrain shows complex geometric patterns of crops in deep emerald and charcoal tones, with soft technical overlays suggesting GPS coordinates and data points. The lighting is low-key, emphasizing the precision and technological sophistication of modern agri-tech surveying." data-location="Makhana Farm Region" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDreayNShQ31AbTyPMxq6tEDFN9eJ3jUr38fTUBoF8BvPMsvcBALFoZhz1nOAsYKYXkRgQJbfyqxnMWM4sNM6OpgF_HVV0JPUzajdsMVFqmhHL1Aniy4OpR3ZJjfnTdzwyCxQ97IIPUyUURmHoTFhSJWEBCKmdgp6T810CFMuxWg6eF62W6CqQUU41Yh79p2LZmfw8I0zZ2pC-AEiZxb72O0Aa8Ea41YMdclP3H4nhaVdEIokl0-li-ZRMEUb0HzTuaWD5eZObSnvSb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1E1E1E] to-transparent"></div>
+<div class="absolute bottom-md left-md flex items-center gap-xs bg-surface-container-lowest/80 backdrop-blur-md px-sm py-xs rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="text-label-sm font-label-sm text-on-surface">📍 24.71°N, 88.04°E · ±8 m · 14:22</span>
+</div>
+</div>
+<div class="p-md">
+<button class="w-full flex items-center justify-center gap-sm border border-primary text-primary py-md px-lg rounded-lg font-label-lg hover:bg-primary/10 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">my_location</span>
+                    Update location
+                </button>
+</div>
+</section>
+<!-- Informational Card -->
+<section class="flex gap-md bg-tertiary-container/10 border border-tertiary/20 rounded-xl p-md">
+<span class="material-symbols-outlined text-tertiary">info</span>
+<p class="text-label-lg font-label-lg text-on-surface-variant">
+                Ensure the seal is clearly visible and the net is fastened at all four corners before continuing.
+            </p>
+</section>
+</main>
+<!-- Bottom Action Bar (Fixed) -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant p-margin z-50">
+<div class="max-w-2xl mx-auto">
+<button onclick="window.location.href='../seal_evidence_photos/code.html'" class="w-full bg-primary text-on-primary py-md rounded-full font-headline-md active:scale-[0.98] transition-all shadow-lg flex items-center justify-center gap-xs">
+                Continue
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Bottom Navigation (Hidden as per Transactional Screen Rule) -->
+<!-- The page is a focused journey "Step 2 of 5", so the global nav is suppressed. -->
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

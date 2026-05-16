@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4edea3",
+                        "on-primary": "#003824",
+                        "background": "#131313",
+                        "surface": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "outline-variant": "#3c4a42",
+                        "on-surface-variant": "#bbcabf"
+                    },
+                    "fontFamily": {
+                        "headline": ["Hanken Grotesk"],
+                        "body": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+    <style>
+        body {
+            min-height: 100vh;
+        }
+    </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-14 bg-surface dark:bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-2">
+            <button onclick="window.history.back()" class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded-full">arrow_back</button>
+            <h1 class="text-headline-sm font-headline-sm text-on-surface">Mobile Verification</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+        </div>
+    </header>
+
+    <!-- Stepper Panel -->
+    <div class="fixed top-14 w-full z-40 bg-surface-container/80 backdrop-blur-md border-b border-outline-variant/30 px-4 py-3">
+        <div class="flex items-center justify-between mb-2">
+            <span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Registration Progress</span>
+            <span class="text-label-md font-label-md text-primary font-bold">Step 10 of 15</span>
+        </div>
+        <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 66.6%"></div>
+        </div>
+    </div>
+
+<main class="flex-grow pt-32 px-5 max-w-lg mx-auto w-full">
+<!-- Hero/Instruction Card (Bento Style) -->
+<div class="mb-8 p-6 bg-surface-container-low border border-outline-variant rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-xl font-headline font-bold text-primary mb-2">Secure Access</h2>
+<p class="text-sm text-on-surface-variant opacity-80 leading-relaxed">
+        Verification ensures your digital identity is protected and harvest proceeds are routed to the correct beneficiary.
+      </p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">vibration</span>
+</div>
+</div>
+
+<!-- Verification Card -->
+<div class="bg-surface-container-high border border-outline-variant p-6 rounded-2xl shadow-xl space-y-6">
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-primary uppercase tracking-widest">Mobile Number</label>
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden h-14 focus-within:border-primary transition-colors">
+<div class="flex items-center px-4 bg-surface-container-low text-on-surface border-r border-outline-variant/40 font-bold">
+<span>+91</span>
+</div>
+<input id="mobile_input" class="w-full bg-transparent px-4 py-2 text-on-surface outline-none font-headline font-bold text-lg tracking-[0.1em] placeholder:text-outline/30 border-none focus:ring-0" placeholder="98765 43210" type="tel"/>
+</div>
+</div>
+
+<div class="p-4 bg-primary/5 rounded-xl border border-primary/10 flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<p class="text-xs text-on-surface-variant leading-relaxed italic">
+                    One-Time Password (OTP) will be sent for secure identity validation.
+                </p>
+</div>
+</div>
+
+<!-- Support Link -->
+<div class="mt-8 text-center">
+<p class="text-xs text-on-surface-variant">
+                Having trouble? <a class="text-primary font-bold hover:underline" href="#">Contact Support</a>
+</p>
+</div>
+    <!-- CTA Area -->
+    <div class="mt-12 pb-12 flex gap-4">
+        <button onclick="window.location.href='../verify_mobile_entry/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-lg flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+            Send OTP
+            <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+        <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+            Save Draft
+        </button>
+    </div>
+</main>
+
+<!-- Background Texture -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+</div>
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>

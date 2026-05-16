@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login | FenBridge</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Hanken+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #4edea3;
+            --primary-rgb: 78, 222, 163;
+            --surface: #131313;
+            --surface-container: #1c1b1b;
+            --outline: #3c4a42;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--surface);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(var(--primary-rgb), 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(var(--primary-rgb), 0.02) 0%, transparent 50%);
+            min-height: 100dvh;
+        }
+
+        .font-headline { font-family: 'Hanken Grotesk', sans-serif; }
+        .font-display { font-family: 'DM Sans', sans-serif; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .premium-input-focus:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary);
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .no-break {
+            white-space: nowrap;
+        }
+
+        /* Prevent text overflow in small containers */
+        .text-balanced {
+            text-wrap: balance;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4edea3",
+                        "on-primary": "#003824",
+                        surface: "#131313",
+                        "surface-container": "#1c1b1b",
+                        "surface-container-low": "#161616",
+                        "surface-container-high": "#2a2a2a",
+                        outline: "#3c4a42",
+                        "on-surface": "#e5e2e1",
+                        "on-surface-variant": "#bbcabf"
+                    },
+                    borderRadius: {
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-on-surface antialiased flex flex-col overflow-x-hidden">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 flex justify-between items-center px-6 py-4 bg-surface/80 backdrop-blur-md border-b border-white/5">
+        <div class="flex items-center gap-3">
+            <button onclick="window.history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors cursor-pointer active:scale-90">
+                <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </button>
+            <span class="font-headline text-2xl font-extrabold tracking-tight text-primary">FenBridge</span>
+        </div>
+        <button onclick="window.location.href='../choose_role/code.html'" class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors cursor-pointer px-4 py-2">
+            Skip
+        </button>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center px-6 py-12 max-w-md mx-auto w-full">
+        
+        <!-- Welcome Header -->
+        <div class="w-full mb-10 text-center sm:text-left">
+            <h1 class="font-headline text-4xl font-bold text-on-surface mb-3 tracking-tight no-break truncate whitespace-nowrap">Welcome Back</h1>
+            <p class="text-on-surface-variant text-balanced leading-relaxed">
+                Access your <span class="text-primary font-medium">FenBridge</span> account using your registered mobile number.
+            </p>
+        </div>
+
+        <!-- Login Container -->
+        <div class="w-full space-y-6">
+            <div class="glass-card rounded-3xl p-8 space-y-8 relative overflow-hidden">
+                <!-- Subtle background glow -->
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+                
+                <!-- Input Group -->
+                <div class="space-y-3">
+                    <label for="mobile_input" class="block text-sm font-bold text-primary tracking-wide uppercase no-break">
+                        Mobile Number
+                    </label>
+                    <div class="flex items-center bg-black/20 border border-white/10 rounded-2xl premium-input-focus transition-all duration-300 group overflow-hidden h-14">
+                        <div class="flex items-center gap-1.5 px-4 h-full bg-white/5 border-r border-white/10 text-on-surface font-bold no-break">
+                            <span class="text-primary text-xs font-medium">IN</span>
+                            <span class="text-base">+91</span>
+                        </div>
+                        <input id="mobile_input" 
+                               type="tel" 
+                               class="flex-grow bg-transparent px-4 py-2 text-lg font-display text-on-surface placeholder:text-on-surface/20 outline-none border-none focus:ring-0" 
+                               placeholder="98765 43210" />
+                    </div>
+                    <p class="text-[11px] text-on-surface-variant/60 flex items-center gap-1.5 px-1">
+                        <span class="material-symbols-outlined text-[14px]">info</span>
+                        We'll send a one-time verification code
+                    </p>
+                </div>
+
+                <!-- Trust Signal -->
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                    <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined">verified_user</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-on-surface no-break">Secure Verification</h4>
+                        <p class="text-[11px] text-on-surface-variant leading-tight">Identity verified via FenBridge Secure Registry</p>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button onclick="triggerVerificationOverlay()" 
+                        class="w-full h-14 bg-primary text-on-primary font-bold text-base rounded-2xl shadow-xl shadow-primary/10 hover:shadow-primary/20 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer group">
+                    <span>Send Verification Code</span>
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Footer Help -->
+        <div class="mt-12 text-center">
+            <p class="text-xs text-on-surface-variant">
+                Need help? <a href="#" class="text-primary font-bold hover:underline underline-offset-4 decoration-primary/30">Contact Support</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- OTP Overlay -->
+    <div id="otp_overlay" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500 flex items-end sm:items-center justify-center p-0 sm:p-6">
+        <div id="otp_sheet" class="w-full max-w-md bg-surface border-t sm:border border-white/10 rounded-t-[2.5rem] sm:rounded-3xl p-8 space-y-8 transform translate-y-full transition-transform duration-500 ease-out shadow-2xl relative">
+            
+            <!-- Close Indicator for Mobile -->
+            <div class="w-12 h-1.5 bg-white/10 rounded-full mx-auto mb-2 sm:hidden"></div>
+
+            <div class="flex justify-between items-start">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold text-primary uppercase tracking-wider">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                        OTP Verification
+                    </div>
+                    <h2 class="text-2xl font-bold text-on-surface pt-2 truncate whitespace-nowrap">Enter 5-digit code</h2>
+                    <p class="text-sm text-on-surface-variant">Sent to <span id="target_phone_display" class="text-on-surface font-bold text-primary"></span></p>
+                </div>
+                <button onclick="closeVerificationOverlay(event)" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-on-surface-variant hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- OTP Input Boxes -->
+            <div class="flex justify-between gap-2 py-4">
+                <input type="text" maxlength="1" class="otp-box w-[18%] aspect-square bg-white/5 border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all" />
+                <input type="text" maxlength="1" class="otp-box w-[18%] aspect-square bg-white/5 border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all" />
+                <input type="text" maxlength="1" class="otp-box w-[18%] aspect-square bg-white/5 border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all" />
+                <input type="text" maxlength="1" class="otp-box w-[18%] aspect-square bg-white/5 border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all" />
+                <input type="text" maxlength="1" class="otp-box w-[18%] aspect-square bg-white/5 border border-white/10 rounded-2xl text-center text-2xl font-bold text-primary focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all" />
+            </div>
+
+            <!-- Resend & Submit -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs font-bold px-1">
+                    <span id="timer_text" class="text-on-surface-variant uppercase tracking-widest">Resend in <span id="countdown_sec" class="text-primary">30s</span></span>
+                    <button id="resend_cta" disabled onclick="resetCountdown()" class="text-on-surface-variant disabled:opacity-30 enabled:hover:text-primary transition-colors cursor-pointer uppercase tracking-widest">Resend Code</button>
+                </div>
+
+                <div class="space-y-3">
+                    <button id="verify_otp_btn" onclick="processMobileOTP()" class="w-full h-14 bg-primary text-on-primary font-bold text-base rounded-2xl shadow-xl shadow-primary/10 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <span>Verify & Proceed</span>
+                        <span class="material-symbols-outlined">check_circle</span>
+                    </button>
+                    <button onclick="autoFillDemoOTP()" class="w-full py-3 text-[10px] font-bold text-on-surface-variant/40 hover:text-on-surface-variant uppercase tracking-[0.2em] transition-colors border border-dashed border-white/10 rounded-xl">
+                        Auto-fill Demo (48215)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        let timerInterval;
+
+        function triggerVerificationOverlay() {
+            const input = document.getElementById('mobile_input');
+            const numVal = input ? input.value.trim() : "";
+            document.getElementById('target_phone_display').textContent = "+91 " + (numVal || "98765 43210");
+            
+            const overlay = document.getElementById('otp_overlay');
+            const sheet = document.getElementById('otp_sheet');
+            
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            sheet.classList.remove('translate-y-full');
+            sheet.classList.add('translate-y-0');
+
+            const boxes = document.querySelectorAll('.otp-box');
+            boxes.forEach(b => b.value = '');
+            setTimeout(() => boxes[0].focus(), 500);
+
+            startCountdown(30);
+        }
+
+        function closeVerificationOverlay(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const overlay = document.getElementById('otp_overlay');
+            const sheet = document.getElementById('otp_sheet');
+            sheet.classList.remove('translate-y-0');
+            sheet.classList.add('translate-y-full');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            if (typeof timerInterval !== 'undefined') clearInterval(timerInterval);
+        }
+
+        function startCountdown(seconds) {
+            if (typeof timerInterval !== 'undefined') clearInterval(timerInterval);
+            let left = seconds;
+            const secDisplay = document.getElementById('countdown_sec');
+            const timerText = document.getElementById('timer_text');
+            const resendBtn = document.getElementById('resend_cta');
+            
+            resendBtn.disabled = true;
+            timerText.classList.remove('opacity-0');
+
+            timerInterval = setInterval(() => {
+                left--;
+                if(secDisplay) secDisplay.textContent = left + "s";
+                if (left <= 0) {
+                    clearInterval(timerInterval);
+                    timerText.classList.add('opacity-0');
+                    resendBtn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function resetCountdown() {
+            startCountdown(30);
+            const boxes = document.querySelectorAll('.otp-box');
+            boxes.forEach(b => b.value = '');
+            boxes[0].focus();
+        }
+
+        function autoFillDemoOTP() {
+            const digits = ['4', '8', '2', '1', '5'];
+            const boxes = document.querySelectorAll('.otp-box');
+            boxes.forEach((b, idx) => {
+                b.value = digits[idx] || '';
+            });
+            setTimeout(() => processMobileOTP(), 300);
+        }
+
+        function processMobileOTP() {
+            const btn = document.getElementById('verify_otp_btn');
+            btn.innerHTML = '<span class="animate-spin w-5 h-5 border-2 border-on-primary border-t-transparent rounded-full"></span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                localStorage.setItem("fenbridge_onboarding_complete", "true");
+                localStorage.setItem("fenbridge_active_role", "scout");
+                
+                btn.classList.replace('bg-primary', 'bg-green-500');
+                btn.innerHTML = '<span>Success ✓</span>';
+                
+                setTimeout(() => {
+                    if (typeof window.resolveNextTarget === "function") {
+                        const next = window.resolveNextTarget();
+                        window.location.href = next || "../../common/choose_role/code.html";
+                    } else {
+                        window.location.href = "../../common/choose_role/code.html";
+                    }
+                }, 800);
+            }, 1200);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const boxes = document.querySelectorAll('.otp-box');
+            boxes.forEach((box, idx) => {
+                box.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1 && idx < boxes.length - 1) {
+                        boxes[idx + 1].focus();
+                    }
+                });
+                box.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !e.target.value && idx > 0) {
+                        boxes[idx - 1].focus();
+                    } else if (e.key === 'Enter' && idx === boxes.length - 1) {
+                        processMobileOTP();
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <script>
+        // Close overlay when clicking backdrop
+        document.getElementById('otp_overlay').addEventListener('click', (e) => {
+            if (e.target.id === 'otp_overlay') {
+                closeVerificationOverlay(e);
+            }
+        });
+    </script>
+
+    <script src="../../../app_logic.js"></script>
+</body>
+</html>
+
+
+
+
+
+

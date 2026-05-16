@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embedded Live Prototype Demonstration</title>
+  
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* DESIGN TOKENS */
+    :root {
+      --bg-canvas: #0b0b0d;
+      --bg-surface: #141417;
+      --bg-elevated: #1e1e24;
+      --accent-primary: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: #26262b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* HIDE VERTICAL SCROLLBARS GLOBALLY BUT RETAIN SCROLL FUNCTIONALITY */
+    ::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      background: transparent !important;
+    }
+    * {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+
+    /* TOP BAR WITH SUCCINCT SWITCHERS */
+    .embedded-topbar {
+      height: 64px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .demo-tag {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .demo-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .flow-shortcuts {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .shortcut-select {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .shortcut-select:focus {
+      border-color: var(--accent-primary);
+    }
+
+    .action-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: #282830;
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    /* CENTER SIMULATOR CANVAS */
+    .canvas-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: radial-gradient(circle at center, #16161b 0%, var(--bg-canvas) 100%);
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    /* PREMIUM SMARTPHONE CONTAINER */
+    .smartphone-frame {
+      width: 375px;
+      height: 760px;
+      background: #000;
+      border-radius: 46px;
+      padding: 11px;
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.85),
+                  0 0 0 1px #2a2a30,
+                  inset 0 4px 10px rgba(255, 255, 255, 0.15);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .smartphone-frame:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Inner Screen container */
+    .smartphone-screen {
+      flex: 1;
+      background: var(--bg-surface);
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #1a1a1e;
+    }
+
+    /* Speaker notch & camera element */
+    .smartphone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 22px;
+      background: #000;
+      border-radius: 12px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .smartphone-notch::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #111;
+      border: 2px solid #222;
+      border-radius: 50%;
+      position: absolute;
+      right: 14px;
+    }
+
+    /* Embedded content iframe */
+    .app-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: var(--bg-canvas);
+      display: block;
+    }
+
+    /* Smartphone bottom home indicator line */
+    .smartphone-homebar {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    /* LIVE TRACE LOG BANNER AT BOTTOM */
+    .live-status-banner {
+      min-height: 44px;
+      background: #0d0d10;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 240px;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      box-shadow: 0 0 10px var(--accent-primary);
+      flex-shrink: 0;
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .status-label {
+      font-weight: 600;
+      color: #d1d5db;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .path-display {
+      color: var(--accent-primary);
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 11px;
+      background: rgba(16, 185, 129, 0.08);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .status-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    
+    .status-right span {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 768px) {
+      .live-status-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 16px;
+        gap: 8px;
+      }
+      .status-left {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP CONTEXT CONTROLLER -->
+  <header class="embedded-topbar">
+    <div class="topbar-left">
+      <span class="demo-tag">Live Shell</span>
+      <span class="demo-title" id="screen-title-label">FenBridge Prototype</span>
+    </div>
+
+    <div class="flow-shortcuts">
+      <select class="shortcut-select" onchange="selectRoleFlow(this.value)">
+        <option value="scout">🧭 Scout Role Only</option>
+      </select>
+
+      <button class="action-btn" onclick="triggerEmbeddedBack()" title="Trigger step backwards">
+        <span>◀ Back</span>
+      </button>
+      <button class="action-btn" style="border-color:var(--accent-primary); color:var(--accent-primary);" onclick="triggerEmbeddedSkip()" title="Fast forward sequence override">
+        <span>⏩ Fast Forward</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- CENTER STAGE HOUSING SMARTPHONE FRAME -->
+  <section class="canvas-stage">
+    <div class="smartphone-frame">
+      <div class="smartphone-notch"></div>
+      <div class="smartphone-screen">
+        <iframe class="app-iframe" id="embedded-viewport" src="screens_v2/common/splash/code.html" title="Interactive Application Shell"></iframe>
+      </div>
+      <div class="smartphone-homebar"></div>
+    </div>
+  </section>
+
+  <!-- BOTTOM STATUS BANNER -->
+  <footer class="live-status-banner">
+    <div class="status-left">
+      <div class="pulse-dot"></div>
+      <span class="status-label">Active Viewport Context:</span>
+      <span class="path-display" id="status-path-label" title="screens_v2/common/splash/code.html">screens_v2/common/splash/code.html</span>
+    </div>
+    <div class="status-right">
+      <span>💡 Click buttons inside phone screen to progress through logic essence</span>
+    </div>
+  </footer>
+
+  <script>
+    function selectRoleFlow(role) {
+      localStorage.setItem("fenbridge_active_role", role);
+      const iframe = document.getElementById("embedded-viewport");
+      if (iframe) {
+        iframe.src = "screens_v2/common/splash/code.html";
+      }
+    }
+
+    function jumpToFlow(relPath) {
+      const iframe = document.getElementById("embedded-viewport");
+      if (iframe) {
+        iframe.src = "screens_v2/" + relPath;
+      }
+    }
+
+    function triggerEmbeddedBack() {
+      const iframe = document.getElementById("embedded-viewport");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: "GO_BACK" }, "*");
+      }
+    }
+
+    function triggerEmbeddedSkip() {
+      const iframe = document.getElementById("embedded-viewport");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: "FAST_FORWARD" }, "*");
+      }
+    }
+
+    // LISTENER LISTENING TO INJECTED SCREENS
+    window.addEventListener("message", function(e) {
+      const data = e.data;
+      if (!data || typeof data !== "object") return;
+
+      if (data.type === "SCREEN_LOADED") {
+        const titleEl = document.getElementById("screen-title-label");
+        const pathEl = document.getElementById("status-path-label");
+        
+        // Priority: Use document title, then folder name
+        let rawName = data.title || data.folder || "Layout";
+        
+        // Clean up title strings for premium display
+        let cleanName = rawName
+          .replace("FenBridge Scout - ", "")
+          .replace("FenBridge - ", "")
+          .replace("FenBridge | ", "")
+          .replace(" | FenBridge", "")
+          .replace("AgriScout Pro - ", "")
+          .replace("AgriScout Pro | ", "")
+          .replace(" - AgriScout Pro", "")
+          .replace(/_/g, " ");
+          
+        // Capitalize first letter of each word for folder-based names
+        cleanName = cleanName.split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+        
+        if (titleEl) titleEl.textContent = cleanName;
+        if (pathEl) {
+          const idx = data.path.indexOf("screens_v2/");
+          const relPath = idx !== -1 ? data.path.substring(idx) : data.path;
+          pathEl.textContent = relPath;
+          pathEl.setAttribute("title", relPath);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

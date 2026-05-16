@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#dde4dd",
+                    "on-tertiary-fixed": "#370d0d",
+                    "surface-variant": "#2f3632",
+                    "primary-container": "#4edea3",
+                    "on-tertiary-container": "#7b4240",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary": "#512120",
+                    "surface-dim": "#0e1511",
+                    "on-primary-container": "#005f40",
+                    "on-primary": "#003824",
+                    "inverse-primary": "#006c4a",
+                    "outline": "#86948a",
+                    "background": "#0e1511",
+                    "surface": "#0e1511",
+                    "on-tertiary-fixed-variant": "#6d3735",
+                    "on-secondary": "#003829",
+                    "on-secondary-fixed-variant": "#0d503e",
+                    "surface-bright": "#393939",
+                    "on-secondary-fixed": "#002117",
+                    "on-secondary-container": "#87c5ac",
+                    "on-primary-fixed": "#002114",
+                    "secondary-fixed": "#b1f0d6",
+                    "on-error-container": "#ffdad6",
+                    "surface-lowest": "#0e0e0e",
+                    "surface-container-high": "#242c27",
+                    "primary": "#6ffbbe",
+                    "surface-container-low": "#161d19",
+                    "tertiary-container": "#ffb3af",
+                    "outline-variant": "#3c4a42",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-tint": "#4edea3",
+                    "surface-container": "#1a211d",
+                    "tertiary-fixed": "#ffdad7",
+                    "secondary": "#95d3ba",
+                    "on-surface": "#dde4dd",
+                    "primary-fixed": "#6ffbbe",
+                    "on-background": "#dde4dd",
+                    "secondary-container": "#115340",
+                    "on-surface-variant": "#bbcabf",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#2b322d",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#005236",
+                    "tertiary": "#ffb3af",
+                    "surface-container-lowest": "#09100c",
+                    "surface-container-highest": "#2f3632"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "base-unit": "4px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-on-background selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tighter text-primary">POPPER_CORE.SYS</h1>
+</div>
+<div class="flex items-center">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined text-primary">settings_input_component</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header Section -->
+<section class="mb-8">
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary mb-2 block">Step 4 of 4</span>
+<h2 class="font-display-lg text-display-lg mb-4">Review &amp; Submit</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">Verify the warehouse technical specifications and jurisdictional documentation before final core synchronization.</p>
+</section>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Warehouse Details Card -->
+<div class="md:col-span-8 bg-surface-container-low border border-outline-variant rounded p-6 flex flex-col gap-6">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<h3 class="font-headline-sm text-headline-sm">Warehouse Details</h3>
+</div>
+<button class="font-label-md text-label-md text-primary hover:underline uppercase tracking-wider">Edit</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1 uppercase">Registry Name</label>
+<p class="font-mono-data text-headline-sm text-on-surface">WH-NORTH-DELTA-042</p>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1 uppercase">Operating Capacity</label>
+<p class="font-mono-data text-headline-sm text-on-surface">85,000 m³ <span class="text-on-surface-variant text-sm">(Cryogenic Grade)</span></p>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1 uppercase">Facility Type</label>
+<p class="font-mono-data text-on-surface">Automated Distribution Hub</p>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1 uppercase">Zone Designation</label>
+<p class="font-mono-data text-on-surface">Industrial-Grade Agriculture (A1)</p>
+</div>
+</div>
+</div>
+<!-- GPS / Map Snippet -->
+<div class="md:col-span-4 bg-surface-container-low border border-outline-variant rounded overflow-hidden flex flex-col">
+<div class="p-6 flex justify-between items-center border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<h3 class="font-headline-sm text-headline-sm">GPS Data</h3>
+</div>
+<button class="font-label-md text-label-md text-primary hover:underline uppercase tracking-wider">Edit</button>
+</div>
+<div class="relative h-48 w-full bg-surface-container-highest">
+<img class="w-full h-full object-cover opacity-60 grayscale brightness-50" data-alt="A high-contrast, dark-mode satellite map of an industrial port area featuring precise technical overlays, neon green GPS coordinates, and grid lines. The aesthetic is tactical and nocturnal, emphasizing a noir cinematic atmosphere for logistics tracking. Subtle data pulses emanate from a central warehouse icon situated near a geometric shoreline." data-location="Reykjavik, Iceland" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWZU40qkCFAJts15ATQpo2I0pnSiNo9_7oP2WhqaEeu4P7YYKejJy3jOOp2Vv5ZKw_-S4uen2T4aMrvzeLXeNd5zfo7fmb0yGuOYgIxEMdNKjFIgej6TSogGk9nrn6TDv4poJZGwO7685w-h0zoDjGLVaQCRCawBxLJoU5IufGwh7bsXi7IqazoVWkuMkvHHeZjjs3iGHFbJyVPAsBIEh8ntZAlMEG9-V0S4Q-r5DCEmMjDsS8eLnAQOcChcRs4ut-fO_qUZ_AdBTJ"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary animate-pulse">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container">
+<p class="font-mono-data text-xs text-primary mb-1">64.1265° N, 21.8174° W</p>
+<p class="font-body-md text-on-surface-variant">Reykjavik Industrial Sector 4</p>
+</div>
+</div>
+<!-- Address Details -->
+<div class="md:col-span-6 bg-surface-container-low border border-outline-variant rounded p-6">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">home_pin</span>
+<h3 class="font-headline-sm text-headline-sm">Logistics Address</h3>
+</div>
+<button class="font-label-md text-label-md text-primary hover:underline uppercase tracking-wider">Edit</button>
+</div>
+<div class="space-y-2">
+<p class="font-body-lg">Harbour Road 101, Complex B</p>
+<p class="font-body-lg">Reykjavik, 101</p>
+<p class="font-body-lg text-on-surface-variant uppercase tracking-widest text-sm">Icelandic Economic Zone</p>
+</div>
+</div>
+<!-- Legal Documents -->
+<div class="md:col-span-6 bg-surface-container-low border border-outline-variant rounded p-6">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">description</span>
+<h3 class="font-headline-sm text-headline-sm">Legal Documents</h3>
+</div>
+<button class="font-label-md text-label-md text-primary hover:underline uppercase tracking-wider">Edit</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container rounded border border-outline-variant/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">task_alt</span>
+<span class="font-mono-data text-sm">OPERATING_PERMIT_042.PDF</span>
+</div>
+<span class="font-label-md text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded uppercase">Verified</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container rounded border border-outline-variant/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">task_alt</span>
+<span class="font-mono-data text-sm">ENVIRONMENTAL_ISO_S9.PDF</span>
+</div>
+<span class="font-label-md text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded uppercase">Verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Consent & Action -->
+<section class="mt-12 p-8 border border-primary/20 bg-primary/5 rounded-lg flex flex-col items-center text-center">
+<div class="flex items-center gap-4 mb-6 text-left max-w-xl">
+<div class="flex-shrink-0">
+<input class="w-6 h-6 rounded bg-surface-container-highest border-outline-variant text-primary focus:ring-primary focus:ring-offset-background" id="consent" type="checkbox"/>
+</div>
+<label class="font-body-md text-on-surface-variant" for="consent">
+                    I confirm that the above specifications are accurate and meet the <span class="text-primary underline">Popper Core Protocol</span> requirements. I authorize the immediate synchronization of this facility into the global grid.
+                </label>
+</div>
+<button class="bg-primary text-on-primary font-headline-sm px-12 py-4 rounded-full flex items-center gap-3 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+                Submit Warehouse
+            </button>
+<p class="mt-4 font-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Registry ID: GENERATING_ON_SUBMIT...</p>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 bg-surface-container-low border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">fingerprint</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">IDENTITY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">Prescription</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">DOCS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-secondary-container rounded-lg px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">STORAGE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">CONFIG</span>
+</a>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

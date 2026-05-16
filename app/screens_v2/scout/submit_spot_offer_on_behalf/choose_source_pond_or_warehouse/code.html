@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-fixed": "#ffdad7",
+                  "surface-variant": "#2f3632",
+                  "on-tertiary": "#512120",
+                  "primary-fixed": "#6ffbbe",
+                  "on-primary-fixed-variant": "#005236",
+                  "on-background": "#dde4dd",
+                  "on-error-container": "#ffdad6",
+                  "secondary-container": "#115340",
+                  "on-primary": "#003824",
+                  "surface-container-lowest": "#09100c",
+                  "primary": "#6ffbbe",
+                  "on-primary-fixed": "#002114",
+                  "surface-container-highest": "#2f3632",
+                  "error-container": "#93000a",
+                  "on-tertiary-container": "#7b4240",
+                  "on-surface-variant": "#bbcabf",
+                  "on-error": "#690005",
+                  "secondary-fixed-dim": "#95d3ba",
+                  "primary-fixed-dim": "#4edea3",
+                  "on-tertiary-fixed-variant": "#6d3735",
+                  "on-primary-container": "#005f40",
+                  "outline": "#86948a",
+                  "on-secondary-fixed-variant": "#0d503e",
+                  "inverse-primary": "#006c4a",
+                  "surface-bright": "#393939",
+                  "secondary-fixed": "#b1f0d6",
+                  "tertiary-container": "#ffb3af",
+                  "on-surface": "#dde4dd",
+                  "background": "#0e1511",
+                  "outline-variant": "#3c4a42",
+                  "error": "#ffb4ab",
+                  "surface-container-low": "#161d19",
+                  "secondary": "#95d3ba",
+                  "surface-container": "#1a211d",
+                  "inverse-on-surface": "#2b322d",
+                  "surface-tint": "#4edea3",
+                  "inverse-surface": "#dde4dd",
+                  "on-tertiary-fixed": "#370d0d",
+                  "surface-dim": "#0e1511",
+                  "on-secondary-fixed": "#002117",
+                  "on-secondary-container": "#87c5ac",
+                  "surface-lowest": "#0e0e0e",
+                  "tertiary": "#ffb3af",
+                  "on-secondary": "#003829",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "surface": "#0e1511",
+                  "surface-container-high": "#242c27",
+                  "primary-container": "#4edea3"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "gutter": "16px",
+                  "container-max": "1440px",
+                  "unit": "4px",
+                  "margin-mobile": "16px",
+                  "margin-desktop": "32px",
+                  "base-unit": "4px"
+          },
+          "fontFamily": {
+                  "headline-sm": ["Hanken Grotesk"],
+                  "mono-data": ["JetBrains Mono"],
+                  "body-lg": ["Hanken Grotesk"],
+                  "label-md": ["Hanken Grotesk"],
+                  "headline-md": ["Hanken Grotesk"],
+                  "display-lg": ["Hanken Grotesk"],
+                  "body-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+                  "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-highest transition-colors active:scale-95 transition-transform duration-150 p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">AgriScout Pro</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-primary hover:bg-surface-container-highest transition-colors active:scale-95 transition-transform duration-150 p-2">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+</button>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto w-full">
+<!-- Progress & Header -->
+<div class="mb-8">
+<div class="flex justify-between items-end mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Step 2 of 6</span>
+<span class="text-primary font-mono-data text-label-md">33% Complete</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-1/3"></div>
+</div>
+<h2 class="text-headline-md font-headline-md mt-6 text-on-surface">Choose a Warehouse</h2>
+<p class="text-body-md text-on-surface-variant mt-1">Select the facility to initiate this stock offer.</p>
+</div>
+<!-- Source Selection Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1: Warehouse / Pond -->
+<button class="group text-left flex flex-col bg-surface-container-low border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 rounded-lg overflow-hidden active:scale-[0.98]">
+<div class="h-32 w-full relative">
+<img alt="Warehouse Alpha" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="A vast, high-tech industrial warehouse at dusk, featuring rows of organized storage racks and automated systems. The lighting is low and moody with teal and emerald neon accents reflecting off polished concrete floors, maintaining a Noir Agri-Tech aesthetic. The atmosphere is quiet, professional, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT4jHHVZbrMgqWDI0Tqn5JWq0iOOavBEKrp-1t4rCpI16H0JlRmf8-GMcM1y55Pgyns9tNsCmhy9nZCOD4fVsvdPYb5gWwgnGnuolA-sHqUqegP5EurdPtzI8XOnSXUeep-jt6S8uE7WxPP9erRJUk45G9bxGDYTHEZTZ_ZSFntV7wTh-X73v7mW_HzvrZh377R9NaNdG9rUMULy1yKcKFCNEdiYifpwl3awivU1kWuD7KGtmKO_CJBkqURg3sPbkZRB2Jzk1F0uea"/>
+<div class="absolute top-3 left-3 bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-label-md font-mono-data">
+            WH-402
+          </div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">North Sector Storage</h3>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Northern Delta, Plot B-12</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-md">Capacity: 12,500 MT</span>
+</div>
+</div>
+<div class="mt-auto">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              Last Sync: 2h ago
+            </span>
+</div>
+</div>
+</button>
+<!-- Card 2 -->
+<button class="group text-left flex flex-col bg-surface-container-low border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 rounded-lg overflow-hidden active:scale-[0.98]">
+<div class="h-32 w-full relative">
+<img alt="Warehouse Beta" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="A specialized agricultural processing facility interior with high ceilings and industrial ventilation systems. Deep shadows dominate the corners, while sharp, technical teal lighting highlights the metallic structures. The scene feels nocturnal and cinematic, capturing a sense of high-performance engineering in a modern farming context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfK-km5oprz7ZIQgH7xJR6utQg9zH0TrUhedV9niBioLvsf0nkQawz3x3U4bi5i88Gw5e158jKH4lagGnln3-ryJyIMLKZgJDauQwF8YPwOIAtC9qyrWA_t6TZuYWaKkI4xYxN6wELeVgY5C7h1k83czqZ7W6S-fuQiw2N2M_aN4ZwvimrI4RR5w6isdan_x-L1Ux5OOa5Gri-ed1g-5T7_U1ynQPBUnJ7m39yovOiqHt6Q-nbZXelgRcGvUsDNZtFR72h_puK3hV5"/>
+<div class="absolute top-3 left-3 bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-label-md font-mono-data">
+            WH-991
+          </div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Coastal Transit Hub</h3>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Port Zone 4, Terminal C</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-md">Capacity: 45,000 MT</span>
+</div>
+</div>
+<div class="mt-auto">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              Last Sync: 15m ago
+            </span>
+</div>
+</div>
+</button>
+<!-- Card 3 -->
+<button class="group text-left flex flex-col bg-surface-container-low border border-outline-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 rounded-lg overflow-hidden active:scale-[0.98]">
+<div class="h-32 w-full relative">
+<img alt="Warehouse Gamma" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="An aerial view of industrial storage silos at night, illuminated by cold blue perimeter lights and sharp spotlights. The surrounding landscape is dark, creating a stark contrast with the gleaming metal structures. The image has a technical, lean look with high-density details and a cinematic noir atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR7BFtbe7zyHezhuo82fO9TWNL1Fr6L2MNJEDCZUXdhC58JLZL8FnBYzgfB7q7nh4goQVpJ1wJXK0-0Xc0QBNAfDiCNN3UDEkSHHqxWYTxpt-XpAu7fy3ynq8p4AdnyCmXS_ovDsDIhmWlGleFAeLahqMVFVQfIzvBoJTS_cUkYMer9096MdNpvqwqzVKEAs6JZO4drwOiqIKGq1hnLM75zILTxZdq5jQiRttor8oM0yz-QTbFet-DLU5_WekQDKzBkbQjvPbBTe77"/>
+<div class="absolute top-3 left-3 bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-label-md font-mono-data">
+            WH-218
+          </div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Central Grain Depot</h3>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Highlands District, Km 42</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-md">Capacity: 8,200 MT</span>
+</div>
+</div>
+<div class="mt-auto">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+              Sync Pending
+            </span>
+</div>
+</div>
+</button>
+</div>
+<!-- Empty State / Add New (Tactical Style) -->
+<div class="mt-8 pt-8 border-t border-outline-variant flex flex-col items-center">
+<p class="text-on-surface-variant text-body-md mb-4">Don't see your warehouse?</p>
+<button class="inline-flex items-center gap-2 px-6 py-2 border border-primary text-primary hover:bg-primary/10 transition-colors rounded-full text-label-md font-label-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+        REGISTER NEW SOURCE
+      </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-low border-t border-outline-variant flex justify-around items-center px-2 py-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="text-label-md font-label-md">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="store" style="font-variation-settings: 'FILL' 1;">store</span>
+<span class="text-label-md font-label-md">Warehouses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="text-label-md font-label-md">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+<!-- Side Navigation Drawer (Hidden on mobile) -->
+<aside class="fixed left-0 top-0 h-full z-[60] flex flex-col p-4 bg-surface-container border-r border-outline-variant w-80 hidden lg:flex shadow-md">
+<div class="flex items-center gap-4 mb-8 px-2">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden">
+<img alt="Scout Profile" class="w-full h-full object-cover" data-alt="A portrait of a professional technical scout in their 30s wearing modern outdoor technical gear. The background is a dimly lit control room with data screens. The lighting is low-key with subtle emerald highlights on the face, creating a serious and capable atmosphere consistent with the Agri-Tech Noir brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZnDWFK9OplD1ewp-59ubXWXDQV8Y-xFdBAsra78sKnfkvNtXC-0knx5MWBfvScxPPIlJVKf9A9dia0uxynfmHJLTFOqSx-ah80_Jgw2KXG3uQX8C2H1sMxWVGa7Bf18xucCp_6CC7oIstUSCGTilMi0mhreWeYXhg_ZGDBK-m6BrROTASfSwQP5AjMRnOfd3SsQ9fYWx87hEAztb6BjWVeL5tK4omYPV3cfKNubif5QUl3v-LCQEqlL6wjD-FnJlnQsCVMUD7GyJz"/>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary">Technical Scout</h4>
+<p class="text-label-md font-label-md text-on-surface-variant">ID: SC-9942</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-r-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="text-label-md font-label-md">Inspection Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Field Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-r-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+<span class="text-label-md font-label-md">Technical Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-r-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="text-label-md font-label-md">Offline Data</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-low rounded-lg border border-outline-variant">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">System Status</span>
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#4edea3]"></span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-tight">Region: Northern Delta Cluster. Satellite link stable.</p>
+</div>
+</aside>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

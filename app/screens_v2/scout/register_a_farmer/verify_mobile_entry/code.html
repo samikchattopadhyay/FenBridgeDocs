@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+                              "colors": {
+                        "primary": "#4edea3",
+                        "primary-container": "#10b981",
+                        "on-primary": "#003824",
+                        "on-primary-container": "#00422b",
+                        "surface": "#131313",
+                        "surface-container": "#201f1f",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-surface": "#e5e2e1",
+                        "on-surface-variant": "#bbcabf",
+                        "background": "#131313",
+                        "outline": "#86948a",
+                        "outline-variant": "#3c4a42",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "secondary": "#95d3ba",
+                        "tertiary": "#ffb3af",
+                    },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "unit": "4px",
+            "gutter": "16px",
+            "margin-mobile": "16px",
+            "base-unit": "4px",
+            "container-max": "1440px"
+          },
+          "fontFamily": {
+            "body-lg": ["Hanken Grotesk"],
+            "mono-data": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "headline-sm": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+    <style>
+        body {
+            min-height: 100vh;
+        }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-14 bg-surface dark:bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-2">
+            <button onclick="window.history.back()" class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded-full">arrow_back</button>
+            <h1 class="text-headline-sm font-headline-sm text-on-surface">Enter OTP</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+        </div>
+    </header>
+
+    <!-- Stepper Panel -->
+    <div class="fixed top-14 w-full z-40 bg-surface-container/80 backdrop-blur-md border-b border-outline-variant/30 px-4 py-3">
+        <div class="flex items-center justify-between mb-2">
+            <span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Registration Progress</span>
+            <span class="text-label-md font-label-md text-primary font-bold">Step 11 of 15</span>
+        </div>
+        <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 73.3%"></div>
+        </div>
+    </div>
+
+<main class="flex-grow pt-32 px-margin-mobile max-w-lg mx-auto w-full">
+<!-- Hero/Instruction Card (Bento Style) -->
+<div class="mb-8 p-6 bg-surface-container-low border border-outline-variant rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-2">Code Entry</h2>
+<p class="text-body-md text-on-surface-variant opacity-80 leading-relaxed">Enter the 5-digit verification code sent to your registered mobile number to finalize your identity sync.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">dialpad</span>
+</div>
+</div>
+
+<!-- OTP Input Section -->
+<div class="bg-surface-container-high border border-outline-variant p-6 rounded-2xl shadow-xl">
+<div class="grid grid-cols-5 gap-3 mb-8">
+<input class="w-full h-16 bg-surface-container-lowest border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all text-xl font-bold" maxlength="1" type="text" value="4"/>
+<input class="w-full h-16 bg-surface-container-lowest border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all text-xl font-bold" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-surface-container-lowest border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all text-xl font-bold" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-surface-container-lowest border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all text-xl font-bold" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-surface-container-lowest border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all text-xl font-bold" maxlength="1" placeholder="·" type="text"/>
+</div>
+
+<!-- Resend Action -->
+<div class="flex justify-center">
+<button id="resend-btn" class="flex items-center gap-2 font-label-md text-outline cursor-not-allowed transition-all uppercase tracking-widest text-[10px]" disabled>
+<span id="resend-text">Resend Code in 30s</span>
+</button>
+</div>
+</div>
+
+<!-- Support Accent -->
+<div class="mt-8 text-center">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">
+                Having trouble? <a class="text-primary font-bold hover:underline" href="#">Contact Support</a>
+</p>
+</div>
+    <!-- CTA Area -->
+    <div class="mt-12 pb-12 flex gap-4">
+        <button onclick="window.location.href='../bank_account_details/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+            Verify & Continue
+            <span class="material-symbols-outlined">verified</span>
+        </button>
+        <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+            Save Draft
+        </button>
+    </div>
+</main>
+
+<!-- Background Texture -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+</div>
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>

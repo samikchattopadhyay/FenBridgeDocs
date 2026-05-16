@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Operations - Farmer Cohort Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --bg-active: #27272a;
+      --accent-primary: #10b981; --accent-primary-hover: #34d399; --accent-primary-glow: rgba(16, 185, 129, 0.15);
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --text-dim: #6b7280;
+      --border-color: #27272a; --border-light: #3f3f46;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 48px 96px; }
+    ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg-base); } ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #02291d 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(16, 185, 129, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.25); text-transform: uppercase; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+    .workflow-group-block { max-width: 1280px; margin: 0 auto 48px; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; }
+    .workflow-group-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light); padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 32px; }
+    .flow-step-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; }
+    .flow-step-card:hover { border-color: var(--border-light); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.25); }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .step-folder-ref { font-family: monospace; font-size: 11px; color: var(--text-dim); }
+    .step-body { display: flex; flex-wrap: wrap; min-height: 380px; }
+    .step-left-pane { flex: 1; min-width: 300px; max-width: 360px; background: #050d0a; padding: 20px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color); }
+    .card-image-viewport { width: 270px; height: 440px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; border-radius: 8px; border: 1px solid var(--border-color); background: #000; }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    .step-right-pane { flex: 2; min-width: 320px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 4px; }
+    .spec-value { font-size: 13px; color: var(--text-main); line-height: 1.5; }
+    .db-schema-box { background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 6px 10px; font-family: monospace; font-size: 11px; color: var(--accent-primary-hover); margin-top: 4px; white-space: pre-wrap; }
+    .step-actions { display: flex; gap: 10px; padding-top: 12px; border-top: 1px solid var(--border-color); margin-top: auto; }
+    .action-btn { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--accent-primary); padding: 6px 14px; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s ease; }
+    .action-btn:hover { background: var(--accent-primary); color: #000; }
+    html { scroll-behavior: smooth; }
+    .stepper-panel-container { max-width: 1280px; margin: 0 auto 48px; background: rgba(24,24,27,0.95); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px 36px; position: sticky; top: 20px; z-index: 100; box-shadow: 0 20px 50px rgba(0,0,0,0.7); overflow-x: auto; }
+    .stepper-nodes { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+    .stepper-node { display: flex; flex-direction: column; align-items: center; flex: 1; text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease; position: relative; }
+    .stepper-node:not(:last-child)::after { content: ""; position: absolute; top: 18px; left: 50%; width: 100%; height: 2px; background: var(--border-light); z-index: -1; }
+    .node-num { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--border-light); color: var(--text-muted); font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+    .stepper-node:hover .node-num { border-color: var(--accent-primary); color: var(--accent-primary); background: var(--accent-primary-glow); box-shadow: 0 0 12px rgba(16,185,129,0.4); }
+    .node-label { font-size: 11px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+    .stepper-node:hover .node-label { color: var(--text-main); }
+    .stepper-node.active .node-num { border-color: var(--accent-primary); color: var(--accent-primary); background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary); transform: scale(1.15); }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+    .modal-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .modal-win { width: 380px; height: 720px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+    .modal-header { padding: 12px 18px; background: #141416; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    .modal-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent-primary); }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
+    .modal-body { flex: 1; width: 100%; height: 100%; }
+    .modal-body iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <div class="tag">Admin Operations — Screen 32</div>
+    <h1 class="title">Farmer Cohort Analytics Dashboard</h1>
+    <p class="desc">Strategic farmer segmentation and trend analysis — capability score tracking, high-risk cohort identification, supply forecasting, and LTV:CAC ROI measurement by farmer segment.</p>
+  </div>
+
+  <div class="stepper-panel-container">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node" title="Screen 1: Farmer Cohort Analytics">
+        <span class="node-num">01</span>
+        <span class="node-label">Analytics</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="workflow-group-block">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">Strategic Analytics — Farmer Segmentation & Trends</div>
+      <span class="step-count-pill">1 Screen</span>
+    </div>
+    <div class="workflow-group-body">
+
+      <div class="flow-step-card" id="step-01">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 32</span>Farmer Cohort Analytics Dashboard</div>
+          <span class="step-folder-ref">farmer_cohort_analytics</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/farmer_cohort_analytics/screen.png" alt="Farmer Cohort Analytics" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Enable Admin/Finance/Leadership to analyze farmer segments by land size, location, experience, and capability score. Track improvement trends, identify high-risk cohorts, and forecast next-season supply capacity for data-driven decisions on training, marketing, and incentive allocation.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirements</div>
+                <div class="spec-value">
+                  • BR-129: Segment farmers by land size, location, experience, capability score.<br/>
+                  • BR-130: Track capability score month-on-month (target: +5 pts/quarter for new farmers).<br/>
+                  • BR-131: Identify high-risk cohorts — &gt;20% quality downgrade, &gt;2 payment disputes, late delivery &gt;30% POs.<br/>
+                  • BR-132: Forecast next harvest supply from farmer capacity + historical yield.<br/>
+                  • BR-133: ROI tracking — CAC vs LTV by cohort (target: 10:1 LTV:CAC).<br/>
+                  • BR-134: Export cohort data for CFO/Board dashboards.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Entry Point</div>
+                <div class="spec-value">Admin Dashboard → "Analytics" tab → "Farmer Cohorts" · Or: Finance Dashboard → "Supply Forecasting" → "Cohort Analysis".</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">UX & User Actions</div>
+                <div class="spec-value">
+                  • Select preset cohort (New Farmers, Power Users, At-Risk, High Value) or build custom filter.<br/>
+                  • View cohort profile card: size, avg land, avg capability score, geographic distribution.<br/>
+                  • Drill into performance metrics: delivery rate, quality acceptance, payout disputes, churn rate.<br/>
+                  • Risk segment analysis: High / Medium / Low risk with recommended actions.<br/>
+                  • Export CSV/JSON for CA or board review.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">farmer_cohort_metrics (
+  cohort_id TEXT,
+  cohort_name TEXT,
+  farmer_count INT,
+  avg_land_acres DECIMAL(6,2),
+  avg_capability_score DECIMAL(5,2),
+  avg_pos_completed DECIMAL(5,2),
+  on_time_delivery_pct DECIMAL(5,2),
+  quality_acceptance_pct DECIMAL(5,2),
+  payout_dispute_pct DECIMAL(5,2),
+  churn_rate_pct DECIMAL(5,2),
+  ltv_cac_ratio DECIMAL(6,2),
+  period DATE,
+  generated_at TIMESTAMP
+);
+
+GET /api/v1/analytics/farmer-cohorts?cohort=new_farmers&period=2026-05</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/farmer_cohort_analytics/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
+    <div class="modal-win" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <span class="modal-title">Source Preview</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body"><iframe id="modal-iframe" src=""></iframe></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
+    function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            if (!id) return;
+            stepperNodes.forEach(n => n.classList.remove("active"));
+            const active = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (active) active.classList.add("active");
+          }
+        });
+      }, { root: null, rootMargin: "-20% 0px -60% 0px", threshold: 0 });
+      stepCards.forEach(c => observer.observe(c));
+    });
+  </script>
+</body>
+</html>

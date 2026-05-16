@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#4edea3",
+                        "primary": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "outline": "#86948a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-bright": "#393939",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#fc7c78",
+                        "tertiary": "#ffb3af",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-highest": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary": "#d0bcff",
+                        "secondary-container": "#571bc1",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-secondary": "#3c0091",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#711419",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-container": "#10b981",
+                        "on-surface-variant": "#bbcabf",
+                        "background": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "error-container": "#93000a",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "on-primary": "#003824",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary-container": "#c4abff",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed": "#23005c",
+                        "on-primary-fixed": "#002113",
+                        "on-tertiary-fixed": "#410005",
+                        "on-primary-container": "#00422b",
+                        "primary-fixed": "#6ffbbe",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary": "#650911",
+                        "inverse-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "margin": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+</head>
+<body class="font-body-md antialiased min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="close">close</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-on-surface truncate whitespace-nowrap">Lot Verification</h1>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-lg font-label-lg text-primary">Step 2 of 6</span>
+<div class="w-24 h-1 bg-surface-container-highest rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[14%]" style="width: 33.33%;"></div>
+</div>
+</div>
+</header><div class="fixed top-16 left-0 w-full z-40 bg-secondary-container h-8 flex items-center justify-center">
+<span class="text-label-sm font-label-sm text-on-secondary-container uppercase tracking-widest flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="history_edu">history_edu</span>
+Re-inspection
+</span>
+</div>
+<!-- Main Canvas -->
+<main class="flex-grow pt-24 pb-32 px-margin mt-8">
+<!-- Lot Identity Card -->
+<section class="bg-surface-container-high rounded-xl border border-outline-variant p-md mb-md shadow-lg">
+<div class="flex justify-between items-start mb-xs">
+<div>
+<h2 class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-base truncate whitespace-nowrap">Lot Identifier</h2>
+<p class="text-headline-md font-headline-md text-primary truncate whitespace-nowrap">LOT #MK-2042</p>
+</div>
+<div class="bg-primary-container/10 border border-primary/20 px-3 py-1 rounded-full">
+<span class="text-label-lg font-label-lg text-primary">For PO-9821</span>
+</div>
+</div>
+<div class="flex flex-col gap-base">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="factory">factory</span>
+<p class="text-body-md font-body-md text-on-surface">Kumar Makhana Pvt Ltd</p>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="location_on">location_on</span>
+<p class="text-body-md font-body-md text-on-surface-variant">WH-204 · Processing Zone A</p>
+</div>
+</div>
+</section>
+<!-- Declaration & Input Section -->
+<div class="space-y-md">
+<!-- Declared Block -->
+<div class="bg-surface-dim border border-outline-variant/50 rounded-lg p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline">Declared (Reconditioning Request)</p>
+<p class="text-body-lg font-body-lg text-on-surface font-semibold">480 kg · 10 bags</p>
+</div>
+</div>
+<!-- Status Chip -->
+<div class="flex items-center gap-xs bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-sm font-label-sm text-primary uppercase">Matches declared</span>
+</div>
+</div>
+<!-- Input Controls -->
+<div class="grid grid-cols-1 gap-md">
+<div class="space-y-base">
+<label class="text-label-lg font-label-lg text-on-surface-variant ml-1">Verified bag count</label>
+<div class="relative group">
+<input class="w-full h-14 bg-surface-container-lowest border border-outline-variant rounded-lg px-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline/50" placeholder="Enter number of bags" type="number"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 text-outline text-label-lg uppercase">Bags</span>
+</div>
+</div>
+<div class="space-y-base">
+<label class="text-label-lg font-label-lg text-on-surface-variant ml-1">Verified net weight (kg)</label>
+<div class="relative group">
+<input class="w-full h-14 bg-surface-container-lowest border border-outline-variant rounded-lg px-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline/50" placeholder="Enter total weight" type="number"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 text-outline text-label-lg uppercase">KG</span>
+</div>
+</div>
+</div>
+<!-- Contextual Actions -->
+<div class="flex gap-md pt-base">
+<button class="flex-1 flex items-center justify-center gap-xs h-10 text-primary border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="near_me">near_me</span>
+<span class="text-label-lg font-label-lg">Navigate</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-xs h-10 text-primary border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="call">call</span>
+<span class="text-label-lg font-label-lg">Call popper</span>
+</button>
+</div>
+</div>
+<!-- Visual Context Card (Asymmetric Layout) -->
+<div class="mt-xl grid grid-cols-2 gap-md h-40">
+<div class="relative rounded-xl overflow-hidden border border-outline-variant group">
+<img class="w-full h-full object-cover grayscale-[0.3] group-hover:scale-105 transition-transform duration-700" data-alt="A high-contrast, moody close-up photograph of premium quality makhana fox nuts stored in a burlap sack. The lighting is low-key and dramatic, highlighting the organic texture and pure white color of the nuts against a dark, industrial warehouse background. Emerald green accent lighting subtly grazes the edge of the sack, creating a sense of high-tech agricultural precision and value." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBchFjQg5tduiKlq8-XIuMo58bGFStFZueBCdj5MG0ywwEzWoh6JNytVNc2aUsmfNnHzKtL9ONsg_2nzM890smwze6blprODsgxlrugZGCNp7KyPC6rXwuqIe3U97ZYvKXKeEgqo_uw8Sg_UEMmAj1Ov8TZg-RKdlmtGKJKS6wiwffTVxnbFvDik797dVGiLbuogIyayEknSt1NmnVChkkvhiYw77AeUjIYhh0CioG5WVNzw8ozEoaN6CyqGkCvH0JUHfBQ6qk6zMRj"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-xs left-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-surface/80 px-2 py-0.5 rounded backdrop-blur-sm">Batch Sample</span>
+</div>
+</div>
+<div class="flex flex-col gap-md">
+<div class="flex-1 bg-surface-container-high rounded-xl border border-outline-variant p-sm flex flex-col justify-center">
+<span class="material-symbols-outlined text-primary mb-base" data-icon="history">history</span>
+<p class="text-label-sm font-label-sm text-outline">Last Scouted</p>
+<p class="text-label-lg font-label-lg text-on-surface">2 days ago</p>
+</div>
+<div class="flex-1 bg-surface-container-high rounded-xl border border-outline-variant p-sm flex flex-col justify-center">
+<span class="material-symbols-outlined text-primary mb-base" data-icon="verified">verified</span>
+<p class="text-label-sm font-label-sm text-outline">Lot Status</p>
+<p class="text-label-lg font-label-lg text-on-surface">Awaiting Verification</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface-container border-t border-outline-variant px-margin py-6 pb-safe shadow-lg">
+<div class="max-w-screen-md mx-auto">
+<!-- Disabled State UI -->
+<button class="w-full h-14 bg-surface-container-highest text-outline font-bold rounded-full flex items-center justify-center cursor-not-allowed opacity-60" disabled="">
+<span class="text-label-lg font-label-lg uppercase tracking-widest">Continue</span>
+</button>
+<p class="text-center text-label-sm font-label-sm text-outline mt-3">Enter verified counts to proceed to Grade Analysis</p>
+</div>
+</footer>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

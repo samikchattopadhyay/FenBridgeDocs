@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge | Scout Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#1c1b1b",
+                      "secondary-fixed": "#e9ddff",
+                      "outline-variant": "#3c4a42",
+                      "surface-container-highest": "#353534",
+                      "inverse-primary": "#006c49",
+                      "on-background": "#e5e2e1",
+                      "background": "#131313",
+                      "on-surface": "#e5e2e1",
+                      "surface-container-high": "#2a2a2a",
+                      "on-tertiary-fixed": "#410005",
+                      "on-tertiary-container": "#711419",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "inverse-on-surface": "#313030",
+                      "error-container": "#93000a",
+                      "primary-container": "#10b981",
+                      "surface-bright": "#393939",
+                      "outline": "#86948a",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#00422b",
+                      "surface-variant": "#353534",
+                      "on-primary": "#003824",
+                      "surface-dim": "#131313",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "on-secondary-fixed": "#23005c",
+                      "tertiary": "#ffb3af",
+                      "tertiary-container": "#fc7c78",
+                      "surface": "#131313",
+                      "on-primary-fixed-variant": "#005236",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-container": "#201f1f",
+                      "primary": "#4edea3",
+                      "on-surface-variant": "#bbcabf",
+                      "on-secondary": "#3c0091",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary": "#650911",
+                      "tertiary-fixed": "#ffdad7",
+                      "primary-fixed": "#6ffbbe",
+                      "on-error": "#690005",
+                      "on-secondary-container": "#c4abff",
+                      "secondary": "#d0bcff",
+                      "secondary-container": "#571bc1",
+                      "on-tertiary-fixed-variant": "#842225",
+                      "on-primary-fixed": "#002113",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface-tint": "#4edea3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "lg": "24px",
+                      "margin": "20px",
+                      "sm": "12px",
+                      "xl": "32px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin py-md bg-surface border-b border-outline-variant/10">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-150" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity active:scale-95 duration-150">Skip</button>
+</header>
+<main class="mt-20 px-margin max-w-2xl mx-auto">
+<!-- Hero Title Section -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Settings</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Configure your scout profile and operational preferences.</p>
+</div>
+<!-- Bento Grid Settings Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Section: Display -->
+<section class="p-md bg-surface-container rounded-xl border border-outline-variant/30 md:col-span-2">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="palette">palette</span>
+<h3 class="font-label-lg text-label-lg uppercase tracking-wider text-primary">Display</h3>
+</div>
+<div class="space-y-lg">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-body-md">Appearance</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Switch between Agri-Noir and High Contrast</p>
+</div>
+<div class="flex bg-surface-container-lowest p-base rounded-full">
+<button class="px-md py-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm">Dark</button>
+<button class="px-md py-xs rounded-full text-on-surface-variant font-label-sm text-label-sm">Solar</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-body-md">Primary Language</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Region-specific agricultural terminology</p>
+</div>
+<select class="bg-surface-container-high border-none text-on-surface font-label-sm text-label-sm rounded-lg focus:ring-1 focus:ring-primary">
+<option>English (IN)</option>
+<option>Hindi</option>
+<option>Maithili</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section: Notifications (Scout-specific) -->
+<section class="p-md bg-surface-container rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="notifications_active">notifications_active</span>
+<h3 class="font-label-lg text-label-lg uppercase tracking-wider text-primary">Scout Alerts</h3>
+</div>
+<div class="space-y-md">
+<label class="flex items-center justify-between cursor-pointer">
+<span class="font-body-md text-body-md">Market Fluctuations</span>
+<input checked="" class="rounded bg-surface-container-high border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="font-body-md text-body-md">Field Data Updates</span>
+<input checked="" class="rounded bg-surface-container-high border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<span class="font-body-md text-body-md">Logistics Pings</span>
+<input class="rounded bg-surface-container-high border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Section: Permissions -->
+<section class="p-md bg-surface-container rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="shield_person">shield_person</span>
+<h3 class="font-label-lg text-label-lg uppercase tracking-wider text-primary">Hardware</h3>
+</div>
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Location</span>
+</div>
+<span class="px-xs py-[2px] bg-primary-container/10 text-primary-container text-[10px] font-bold rounded">ALWAYS ON</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="photo_camera">photo_camera</span>
+<span class="font-body-md text-body-md">Camera</span>
+</div>
+<span class="px-xs py-[2px] bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded">WHILE USING</span>
+</div>
+</div>
+</section>
+<!-- Section: Privacy & Security -->
+<section class="p-md bg-surface-container-high rounded-xl border border-primary/20 md:col-span-2 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" data-icon="verified_user">verified_user</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<h3 class="font-label-lg text-label-lg uppercase tracking-wider text-primary">Privacy Vault</h3>
+</div>
+<p class="font-body-md text-body-md mb-lg max-w-md">Your operational data is encrypted using high-grade protocols to ensure scout anonymity in the marketplace.</p>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-xs bg-primary text-on-primary font-label-lg text-label-lg rounded-lg hover:opacity-90 active:scale-95 transition-all">Audit Data Access</button>
+<button class="px-md py-xs border border-primary text-primary font-label-lg text-label-lg rounded-lg hover:bg-primary/5 active:scale-95 transition-all">Clear Metadata</button>
+</div>
+</div>
+</section>
+<!-- Profile Overview Image Card -->
+<div class="md:col-span-2 relative h-48 rounded-xl overflow-hidden group">
+<img alt="Agricultural field at night" class="w-full h-full object-cover grayscale brightness-50 contrast-125 group-hover:scale-105 transition-transform duration-700" data-alt="A vast makhana farming landscape captured under a moody, deep night sky with moonlight reflecting off the water surfaces of the ponds. The overall aesthetic is dark and sophisticated, emphasizing the 'Agri-Tech Noir' theme with deep blacks, emerald green shadows, and a sense of technological precision. The lighting is low-key, creating a professional and mysterious atmosphere suitable for a high-end financial marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6jYTEfQ32eAaNDix7sVL6YOSHE1lcQOcMXmufv2lklkFZSXDQB0J63-mptz2-WpMd3mue-TNGr70Y0h4Ajw5tMj-esHwZ52VYlkyIwqE9lWpFNeRdM2r3NuzsYzQSY5pJJtMW4r_jX5sqBLybTXq4YObBl3VdulXjl3jmgejJ8I4wmg1rmI4QZrG9QYcgxap6pYpgv78DZQSSv4S33ZD4lLh-4ITwcUnc8xbIZBqhA9sDWgAXTaenpzU88oQfzXAOwNGHzO2jqUd5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+<div class="absolute bottom-md left-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-full border-2 border-primary bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface leading-none">Scout ID: #7724</p>
+<p class="font-label-sm text-label-sm text-primary">Verified Marketplace Agent</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface rounded-t-xl shadow-md border-t border-outline-variant/5">
+<button class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all p-xs rounded-lg">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all p-xs rounded-lg">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary scale-110 p-xs rounded-lg bg-primary/5">
+<span class="material-symbols-outlined font-bold" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all p-xs rounded-lg">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+</body></html>

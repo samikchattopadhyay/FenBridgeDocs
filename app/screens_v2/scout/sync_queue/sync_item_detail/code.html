@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .zebra-striping div:nth-child(odd) {
+            background-color: #131313;
+        }
+        .zebra-striping div:nth-child(even) {
+            background-color: #171717;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#002113",
+                      "surface-container-highest": "#353534",
+                      "primary-container": "#10b981",
+                      "inverse-on-surface": "#313030",
+                      "secondary": "#95d3ba",
+                      "secondary-fixed": "#b0f0d6",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-secondary-container": "#83c2a9",
+                      "on-secondary-fixed-variant": "#0b513d",
+                      "on-primary": "#003824",
+                      "on-surface-variant": "#bbcabf",
+                      "background": "#131313",
+                      "inverse-primary": "#006c49",
+                      "tertiary-fixed": "#ffdad7",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "surface": "#131313",
+                      "surface-bright": "#393939",
+                      "on-surface": "#e5e2e1",
+                      "on-error": "#690005",
+                      "on-primary-container": "#00422b",
+                      "on-tertiary-container": "#711419",
+                      "on-background": "#e5e2e1",
+                      "on-tertiary": "#650911",
+                      "error": "#ffb4ab",
+                      "surface-tint": "#4edea3",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-container": "#0b513d",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#002117",
+                      "primary": "#4edea3",
+                      "on-secondary": "#003829",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-container": "#201f1f",
+                      "outline": "#86948a",
+                      "tertiary": "#ffb3af",
+                      "surface-variant": "#353534",
+                      "outline-variant": "#3c4a42",
+                      "on-tertiary-fixed": "#410005",
+                      "on-tertiary-fixed-variant": "#842225",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#1c1b1b",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-container-high": "#2a2a2a",
+                      "tertiary-container": "#fc7c78",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "surface-dim": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "container-max": "1440px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "mono-data": ["JetBrains Mono"],
+                      "body-md": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface text-primary border-b border-outline-variant flex items-center justify-between px-margin-mobile h-14">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-high transition-colors p-1 rounded" data-icon="close">close</span>
+<h1 class="font-headline-sm text-headline-sm font-bold truncate whitespace-nowrap">Sync Engine</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-high transition-colors p-1 rounded" data-icon="sync">sync</span>
+</div>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile max-w-lg mx-auto space-y-gutter">
+<!-- Header Card: Inspection Detail -->
+<section class="bg-surface-container-low border border-outline-variant rounded-lg p-4 relative overflow-hidden">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Inspection</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-md text-label-md font-bold uppercase">Failed</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface truncate whitespace-nowrap">LOT-2627-0042</h2>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<p class="font-body-md text-body-md">Captured 09:14 today · 2.1 MB</p>
+</div>
+</div>
+<!-- Status Accent Bar -->
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-tertiary-container"></div>
+</section>
+<!-- Info Explanation Card -->
+<section class="bg-surface-container border border-outline-variant rounded-lg p-4 flex gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Server returned an error. Tap Retry to try again; if it keeps failing, notify Admin.
+            </p>
+</section>
+<!-- Attempts History Card -->
+<section class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden">
+<div class="px-4 py-3 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm">Attempts</h3>
+<span class="font-mono-data text-mono-data text-primary px-2 py-0.5 bg-secondary-container rounded">3 ATTEMPTS</span>
+</div>
+<div class="relative px-4 py-6">
+<!-- Chronological History Spine -->
+<div class="absolute left-7 top-0 bottom-0 w-[2px] bg-outline-variant"></div>
+<div class="space-y-8 relative">
+<!-- 1st Attempt -->
+<div class="flex items-start gap-6">
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-low border-2 border-outline-variant flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline">
+<p class="font-headline-sm text-headline-sm text-on-surface">1st</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant">09:15</p>
+</div>
+<div class="flex items-center gap-1 text-tertiary mt-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+<p class="font-body-md text-body-md">No connection</p>
+</div>
+</div>
+</div>
+<!-- 2nd Attempt -->
+<div class="flex items-start gap-6">
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-low border-2 border-outline-variant flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline">
+<p class="font-headline-sm text-headline-sm text-on-surface">2nd</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant">10:30</p>
+</div>
+<div class="flex items-center gap-1 text-tertiary mt-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+<p class="font-body-md text-body-md">Timeout</p>
+</div>
+</div>
+</div>
+<!-- 3rd Attempt -->
+<div class="flex items-start gap-6">
+<!-- Red Spine segment for final failure -->
+<div class="absolute -left-1.5 -top-2 w-[2px] h-full bg-tertiary-container opacity-20"></div>
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-low border-2 border-tertiary-container flex items-center justify-center shadow-[0_0_8px_rgba(252,124,120,0.4)]">
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline">
+<p class="font-headline-sm text-headline-sm text-tertiary">3rd</p>
+<p class="font-mono-data text-mono-data text-on-surface-variant">11:05</p>
+</div>
+<div class="flex items-center gap-1 text-tertiary mt-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="error">error</span>
+<p class="font-body-md text-body-md font-bold">Server error 500</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Metadata Card -->
+<section class="bg-surface-container-low border border-outline-variant rounded-lg p-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-4">Transmission Payload</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-on-surface-variant">NODE ID</p>
+<p class="font-mono-data text-mono-data">WH-S7-04</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-on-surface-variant">RETRY POLICY</p>
+<p class="font-mono-data text-mono-data">EXP_BACKOFF</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-on-surface-variant">PRIORITY</p>
+<p class="font-mono-data text-mono-data text-primary">URGENT</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-on-surface-variant">ENCRYPTION</p>
+<p class="font-mono-data text-mono-data">AES-256-GCM</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Row -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-low border-t border-outline-variant px-margin-mobile py-4 flex flex-col gap-3">
+<button class="w-full h-12 bg-primary text-on-primary font-bold rounded flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+            Retry now
+        </button>
+<button class="w-full h-12 border border-outline-variant text-on-surface font-bold rounded flex items-center justify-center gap-2 active:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+            View record
+        </button>
+</nav>
+<!-- Navigation Drawer (Hidden initially for detail view focus) -->
+<aside class="fixed left-0 top-0 h-full w-80 bg-surface-container border-r border-outline-variant shadow-lg -translate-x-full transition-all duration-300 z-[60]">
+<div class="flex flex-col h-full py-8">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[32px]" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary">Field Op Scout</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Sector 7G - Warehouse</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-bold rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span class="font-body-md text-body-md">Sync Status</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-body-md">Offline Maps</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-body-md text-body-md">Resource Library</span>
+</a>
+</nav>
+<div class="px-6 pt-6 border-t border-outline-variant mt-auto">
+<p class="font-mono-data text-mono-data text-on-surface-variant">V2.4.1-Stable</p>
+<button class="flex items-center gap-3 mt-4 text-error font-bold">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    Logout
+                </button>
+</div>
+</div>
+</aside>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

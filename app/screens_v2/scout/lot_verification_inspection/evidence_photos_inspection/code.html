@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#4edea3",
+            "primary": "#4edea3",
+            "outline-variant": "#3c4a42",
+            "surface": "#131313",
+            "on-error": "#690005",
+            "outline": "#86948a",
+            "surface-container-low": "#1c1b1b",
+            "surface-bright": "#393939",
+            "on-error-container": "#ffdad6",
+            "tertiary-container": "#fc7c78",
+            "tertiary": "#ffb3af",
+            "surface-container-lowest": "#0e0e0e",
+            "surface-container-highest": "#353534",
+            "surface-container-high": "#2a2a2a",
+            "error": "#ffb4ab",
+            "secondary-fixed-dim": "#d0bcff",
+            "secondary": "#d0bcff",
+            "secondary-container": "#571bc1",
+            "on-primary-fixed-variant": "#005236",
+            "on-secondary": "#3c0091",
+            "inverse-on-surface": "#313030",
+            "on-tertiary-container": "#711419",
+            "secondary-fixed": "#e9ddff",
+            "primary-container": "#10b981",
+            "on-surface-variant": "#bbcabf",
+            "background": "#131313",
+            "on-surface": "#e5e2e1",
+            "on-tertiary-fixed-variant": "#842225",
+            "error-container": "#93000a",
+            "surface-container": "#201f1f",
+            "surface-variant": "#353534",
+            "surface-dim": "#131313",
+            "on-primary": "#003824",
+            "tertiary-fixed": "#ffdad7",
+            "on-secondary-fixed-variant": "#5516be",
+            "on-secondary-container": "#c4abff",
+            "tertiary-fixed-dim": "#ffb3af",
+            "primary-fixed-dim": "#4edea3",
+            "on-background": "#e5e2e1",
+            "on-secondary-fixed": "#23005c",
+            "on-primary-fixed": "#002113",
+            "on-tertiary-fixed": "#410005",
+            "on-primary-container": "#00422b",
+            "primary-fixed": "#6ffbbe",
+            "inverse-primary": "#006c49",
+            "on-tertiary": "#650911",
+            "inverse-surface": "#e5e2e1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "12px",
+            "sm": "12px",
+            "lg": "24px",
+            "xs": "8px",
+            "xl": "32px",
+            "md": "16px",
+            "margin": "20px",
+            "base": "4px"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .custom-dashed-border {
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%233c4a42' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+      border-radius: 12px;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button onclick="window.location.href='../defect_capture/code.html'" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+<span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-primary font-bold truncate whitespace-nowrap">Evidence Photos</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</header>
+<!-- Stepper Panel -->
+<div class="w-full bg-surface-container border-b border-outline-variant mt-16 px-margin py-3">
+    <div class="max-w-2xl mx-auto">
+        <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 57%;"></div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span class="text-[11px] font-bold text-white mix-blend-difference">4 of 7</span>
+            </div>
+        </div>
+    </div>
+</div>
+<main class="flex-grow pt-6 pb-lg px-margin max-w-2xl mx-auto w-full">
+<!-- Required Evidence Section -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h2 class="text-label-lg font-label-lg text-on-surface uppercase tracking-wider truncate whitespace-nowrap">Required Evidence</h2>
+<span class="text-label-sm font-label-sm text-error bg-error/10 px-2 py-1 rounded">4 Pending</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-gutter">
+<!-- Bagged lot (wide) -->
+<button class="group flex flex-col items-center justify-center gap-sm aspect-square bg-surface-container custom-dashed-border hover:bg-surface-container-high transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant px-2 text-center">Bagged lot (wide)</span>
+</button>
+<!-- Seed close-up -->
+<button class="group flex flex-col items-center justify-center gap-sm aspect-square bg-surface-container custom-dashed-border hover:bg-surface-container-high transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">macro_off</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant px-2 text-center">Seed close-up</span>
+</button>
+<!-- Reading evidence -->
+<button class="group flex flex-col items-center justify-center gap-sm aspect-square bg-surface-container custom-dashed-border hover:bg-surface-container-high transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant px-2 text-center">Reading evidence</span>
+</button>
+<!-- Pest signs -->
+<button class="group flex flex-col items-center justify-center gap-sm aspect-square bg-surface-container custom-dashed-border hover:bg-surface-container-high transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant px-2 text-center">Pest signs</span>
+</button>
+</div>
+</section>
+<!-- Visual Context Card -->
+<div class="mb-xl bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden relative group">
+<img alt="Makhana Quality Inspection" class="w-full h-48 object-cover opacity-60 mix-blend-luminosity group-hover:opacity-80 transition-opacity" data-alt="A professional warehouse environment where high-quality Makhana seeds are stored in large white industrial bags. The scene is lit by cinematic cool-toned overhead industrial lights that create a sense of scale and precision. In the foreground, a metallic digital weighing scale and a clipboard hint at a meticulous quality inspection process. The overall mood is dark-mode premium, with subtle emerald green highlights reflecting off the metallic surfaces of the warehouse equipment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH-c3aQB0yxRJspfuW4fn3U_FPAKHF6-0SzeM56BhyjtByPMHx3ZUaP0rK9PvVvTSFeFBs0IhqsYyp1LGfOHtDngJqU_j3rrSudITe_ODHnrua2zAikL-7ZiEL8bH7NSP7QSz36VoC9oVybc_XThfptNHJUGrhVeEN5ByQJADXoqjk2OlOGV2vrJ0-XSpQhTZADY2CfReCEJ-SvUZ9XPg3ynajwDoWwlQRuqXTsZ9mIt31fg5t4Gn0FlJHj_6rYe3ZfYS5Qt1Bykcg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-label-sm font-label-sm text-primary mb-1">PRO TIP</p>
+<p class="text-body-md font-body-md text-on-surface">Ensure bright lighting for clear seed texture verification.</p>
+</div>
+</div>
+<!-- Optional Evidence Section -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h2 class="text-label-lg font-label-lg text-on-surface uppercase tracking-wider truncate whitespace-nowrap">Optional</h2>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-gutter">
+<!-- Add more tile -->
+<button class="group flex flex-col items-center justify-center gap-sm aspect-square bg-surface-container-high border border-outline-variant rounded-xl hover:border-primary transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface px-2 text-center">Add more (optional)</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer CTA -->
+<footer class="w-full bg-surface-container border-t border-outline-variant px-margin py-6 mt-auto">
+<div class="max-w-md mx-auto space-y-4">
+<p class="text-center text-label-sm font-label-sm text-on-surface-variant">Please upload all 4 required photos to proceed</p>
+<button onclick="window.location.href='../reference_sample/code.html'" class="w-full h-14 bg-primary text-on-primary font-bold rounded-xl flex items-center justify-center gap-md active:scale-95 transition-all shadow-lg">
+        Continue
+        <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</footer>
+<!-- Floating Help Button (Contextual Suppression Avoided here as it's a workflow step) -->
+<button class="fixed bottom-28 right-margin w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">help</span>
+</button>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

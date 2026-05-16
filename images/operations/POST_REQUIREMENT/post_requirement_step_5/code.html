@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review and Submit | FenBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#353534",
+                    "surface": "#131313",
+                    "on-tertiary-fixed": "#410005",
+                    "tertiary-container": "#fc7c78",
+                    "on-error": "#690005",
+                    "surface-dim": "#131313",
+                    "outline": "#86948a",
+                    "secondary": "#d0bcff",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "tertiary": "#ffb3af",
+                    "inverse-primary": "#006c49",
+                    "secondary-fixed": "#e9ddff",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-secondary": "#3c0091",
+                    "secondary-container": "#571bc1",
+                    "on-tertiary-container": "#711419",
+                    "background": "#131313",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-bright": "#393939",
+                    "surface-container-low": "#1c1b1b",
+                    "on-tertiary": "#650911",
+                    "primary": "#4edea3",
+                    "outline-variant": "#3c4a42",
+                    "on-error-container": "#ffdad6",
+                    "on-primary": "#003824",
+                    "inverse-surface": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-primary-fixed-variant": "#005236",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "on-surface-variant": "#bbcabf",
+                    "on-primary-container": "#00422b",
+                    "inverse-on-surface": "#313030",
+                    "on-secondary-fixed": "#23005c",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-container": "#201f1f",
+                    "on-primary-fixed": "#002113",
+                    "primary-container": "#10b981",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-background": "#e5e2e1",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface-tint": "#4edea3",
+                    "surface-variant": "#353534",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2a",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-container": "#c4abff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "20px",
+                    "xs": "8px",
+                    "xl": "32px",
+                    "gutter": "12px",
+                    "md": "16px",
+                    "base": "4px",
+                    "sm": "12px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+        .tonal-layer-1 {
+            background-color: #1E1E1E;
+            border: 1px solid #2D2D2D;
+        }
+        .tonal-layer-2 {
+            background-color: #252525;
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.4);
+        }
+        .emerald-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md sticky top-0 z-50">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">FenBridge</span>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity">Skip</button>
+</header>
+<main class="flex-grow px-margin pt-md pb-xl overflow-y-auto">
+<!-- Progress Indicator -->
+<div class="mb-lg">
+<div class="flex justify-between items-end mb-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Review and submit</h1>
+<span class="font-label-sm text-label-sm text-primary">STEP 5 OF 5</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full transition-all duration-500"></div>
+</div>
+</div>
+<!-- Summary Cards (Scrollable List Pattern) -->
+<div class="space-y-md">
+<!-- Grade & Quantity -->
+<div class="tonal-layer-1 rounded-xl p-md flex justify-between items-start">
+<div class="flex-grow">
+<div class="flex items-center gap-xs mb-base">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="inventory_2">inventory_2</span>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Grade &amp; Quantity</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Premium Grade A Makhana, 500 Quintals</p>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Price -->
+<div class="tonal-layer-1 rounded-xl p-md flex justify-between items-start">
+<div class="flex-grow">
+<div class="flex items-center gap-xs mb-base">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="payments">payments</span>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Target Price</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface">₹14,500 / Quintal (Firm)</p>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Location -->
+<div class="tonal-layer-1 rounded-xl p-md">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex-grow">
+<div class="flex items-center gap-xs mb-base">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="location_on">location_on</span>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Delivery Location</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Warehouse Hub B, Purnia, Bihar</p>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="rounded-lg overflow-hidden h-24 w-full relative">
+<img alt="Location Map" class="w-full h-full object-cover grayscale opacity-50" data-alt="A stylized, high-contrast satellite map view showing an industrial warehouse hub in Purnia, Bihar. The map features a dark mode aesthetic with deep grays and blacks, highlighted by neon emerald green lines representing main transit routes. The overall mood is precise, technological, and premium, fitting a corporate financial logistics application." data-location="Purnia, Bihar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUCdoaJhqsIu1NEmDO2dMjD610NI8DgJK4jhMHuQhRTqAOoyk0hn_sS1oxiMXk88jfYxzm-dDP_VcXy-NWfXIgKfbMkGCXi7O4kjJ8O6LJnXVq7hMkyuU3FVi88qXeDorAY-xVjOtc8vNclKEttWApkXhOFIUgbwXDFNir3WQZCEP0slKxY1NNVjkAPkdBroCZueQe7ijs_K7k73GfrzCAE1tK69o_aTfrYSihph-vaFvd6TybYrU5-KiKMjt6pSQ2JMA22wfJdlnS"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary/20 p-xs rounded-full border border-primary">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insurance -->
+<div class="tonal-layer-1 rounded-xl p-md flex justify-between items-start">
+<div class="flex-grow">
+<div class="flex items-center gap-xs mb-base">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="verified_user">verified_user</span>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Insurance &amp; Escrow</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Premium Transit Shield (Full Coverage)</p>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Grand Total Bento Section -->
+<div class="tonal-layer-2 rounded-xl p-lg border border-primary/30 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="request_quote">request_quote</span>
+</div>
+<h2 class="font-label-lg text-label-lg text-primary mb-xs">ESTIMATED TRANSACTION VALUE</h2>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-lg text-[40px] leading-none font-extrabold text-on-surface">₹72,50,000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">INR</span>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Includes taxes &amp; service fees</span>
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+</div>
+</div>
+<!-- Confirmation -->
+<label class="flex items-start gap-md p-md cursor-pointer">
+<div class="relative flex items-center h-6">
+<input class="w-6 h-6 rounded border-outline-variant bg-surface-container-low text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">I confirm that all requirement details are accurate and I agree to the <span class="text-primary underline">Marketplace Trading Terms</span>.</span>
+</div>
+</label>
+<!-- Submit Action -->
+<div class="pt-md pb-lg">
+<button class="w-full bg-primary text-on-primary py-md rounded-xl font-label-lg text-label-lg font-bold emerald-glow active:scale-95 transition-all duration-150">
+                    Submit Requirement
+                </button>
+</div>
+<!-- Info Card -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-md flex gap-md">
+<div class="bg-primary/10 p-sm rounded-lg h-fit">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface mb-xs">What happens next?</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Your requirement will be broadcasted to verified sellers within 50km. You will receive competitive bids within 24 hours. Once a bid is accepted, escrow funding will be initiated automatically.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell Placeholder (Suppressed for transactional focus) -->
+<footer class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface dark:bg-surface shadow-md rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+</div>
+</footer>
+</body></html>

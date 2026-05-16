@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #0e1511;
+      color: #dde4dd;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-secondary-fixed-variant": "#0d503e",
+                  "on-primary-fixed-variant": "#005236",
+                  "surface-variant": "#2f3632",
+                  "on-surface": "#dde4dd",
+                  "on-secondary-container": "#87c5ac",
+                  "on-secondary": "#003829",
+                  "surface-dim": "#0e1511",
+                  "secondary": "#95d3ba",
+                  "on-surface-variant": "#bbcabf",
+                  "surface-container-high": "#242c27",
+                  "outline-variant": "#3c4a42",
+                  "on-error": "#690005",
+                  "on-error-container": "#ffdad6",
+                  "secondary-container": "#115340",
+                  "surface-tint": "#4edea3",
+                  "primary-fixed": "#6ffbbe",
+                  "tertiary": "#ffb3af",
+                  "on-primary-fixed": "#002114",
+                  "surface": "#0e1511",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "secondary-fixed-dim": "#95d3ba",
+                  "on-tertiary-container": "#7b4240",
+                  "on-primary": "#003824",
+                  "error-container": "#93000a",
+                  "inverse-primary": "#006c4a",
+                  "surface-lowest": "#0e0e0e",
+                  "surface-container-lowest": "#09100c",
+                  "on-primary-container": "#005f40",
+                  "primary-fixed-dim": "#4edea3",
+                  "surface-bright": "#343b36",
+                  "primary-container": "#4edea3",
+                  "on-background": "#dde4dd",
+                  "surface-container-low": "#161d19",
+                  "tertiary-fixed": "#ffdad7",
+                  "error": "#ffb4ab",
+                  "inverse-surface": "#dde4dd",
+                  "tertiary-container": "#ffb3af",
+                  "outline": "#86948a",
+                  "on-tertiary": "#512120",
+                  "on-tertiary-fixed": "#370d0d",
+                  "primary": "#6ffbbe",
+                  "secondary-fixed": "#b1f0d6",
+                  "surface-container-highest": "#2f3632",
+                  "on-tertiary-fixed-variant": "#6d3735",
+                  "background": "#0e1511",
+                  "surface-container": "#1a211d",
+                  "on-secondary-fixed": "#002117",
+                  "inverse-on-surface": "#2b322d"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "base-unit": "4px",
+                  "unit": "4px",
+                  "gutter": "16px",
+                  "margin-mobile": "16px",
+                  "margin-desktop": "32px",
+                  "container-max": "1440px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Hanken Grotesk"],
+                  "label-md": ["Hanken Grotesk"],
+                  "display-lg": ["Hanken Grotesk"],
+                  "headline-sm": ["Hanken Grotesk"],
+                  "body-lg": ["Hanken Grotesk"],
+                  "mono-data": ["JetBrains Mono"],
+                  "body-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+                  "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="bg-surface-container-high border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0">
+<div class="flex items-center gap-4">
+<button class="text-primary active:scale-95 transition-transform duration-150 p-2 rounded-full hover:bg-surface-container-highest">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">AgriScout Pro</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-primary active:scale-95 transition-transform duration-150 p-2 rounded-full hover:bg-surface-container-highest">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+</button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6">
+<!-- Search and Filter Section -->
+<section class="space-y-4 mb-8">
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container border border-outline-variant rounded-lg py-3 pl-12 pr-4 font-body-md text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary transition-colors" placeholder="Search by name, mobile, district…" type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-col gap-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mr-2">Role:</span>
+<button class="px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md border border-primary/20">All</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Farmer</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Popper</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Buyer</button>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mr-2">Status:</span>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Pending Approval</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Active</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-colors">Suspended</button>
+</div>
+</div>
+</section>
+<!-- Users List / Table Content -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant">
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">User Name &amp; ID</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Role</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Mobile / District</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Last Activity</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant text-primary overflow-hidden bg-secondary-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior agricultural field worker in dark technical gear. The lighting is moody and cinematic, consistent with a high-tech industrial noir aesthetic. The background is a dimly lit control room with soft green digital interfaces glowing faintly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQwLoINC7bCU1hyCM_RVlj7R1anpV7yZem3X8fTSF03X9G6jUyRibZkD-NmJvjqEvYK0ICRTIUhCFdERcQdoP0ny1fgeoTF8S3mKwkegtfp8AIC_BQ8BpaWpKzCtoGCrh_OupLzDU-GKo1w_DFAH_EtEmUVgM6zUzwV3h4okyQDWXktCdNtY3iupP53q46LyNzInJkeIKyvhIk1C7pASHrlQtPjNIgCqA6sJyoym9ObF6t9SxhI3MVp34VaniQZWCqdLszwOYrcLck"/>
+</div>
+<div>
+<div class="font-body-md text-on-surface font-bold">Haruna K. Ibrahim</div>
+<div class="font-mono-data text-label-md text-on-surface-variant">USR-8821-ND</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-secondary-container text-on-secondary-container border border-secondary/30">Farmer</span>
+</td>
+<td class="px-6 py-4">
+<div class="font-mono-data text-body-md text-on-surface">+234 810 555 0192</div>
+<div class="font-body-md text-label-md text-on-surface-variant">Northern Delta / Sector 4</div>
+</td>
+<td class="px-6 py-4">
+<div class="font-body-md text-on-surface">2 hours ago</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Crop Yield Logged</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container/10 text-primary border border-primary/20"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-md text-label-md uppercase">Active</span></span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant text-primary overflow-hidden bg-tertiary-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of a young technical operative wearing a sleek, dark utility vest. The lighting is low-key, emphasizing structural depth and a high-performance industrial vibe. Deep shadows and subtle teal highlights create a cinematic, technical atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOzxj0gWlgiCOeEJ24F737cZ6SfBeB0b4ferxsb1pGXBaDLDtVj1LqFAuCQynrwtmwdHhzmdRjXLLKJnkNj6m2lt8Q1-BQ9osP1cxFcQImU0k19t82-o3-pSrrteD_oAuTob4I1ZXKR8_GQVgIBC5fii-oYigxgQJAWLuy2csDKIbzkWFs7XGYZb2O7C8Y-U0Do7EffvnFyWYzpvcVoeyQe7A45OnNxE2cMX8wPk7gs0OYlUYceJSed1bRUIfOR6ahSBBw3B4lcria"/>
+</div>
+<div>
+<div class="font-body-md text-on-surface font-bold">Amara Okafor</div>
+<div class="font-mono-data text-label-md text-on-surface-variant">USR-9104-ND</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-tertiary-container text-on-tertiary-container border border-tertiary/30">Popper</span>
+</td>
+<td class="px-6 py-4">
+<div class="font-mono-data text-body-md text-on-surface">+234 902 441 8832</div>
+<div class="font-body-md text-label-md text-on-surface-variant">Riverside Basin / Sector 1</div>
+</td>
+<td class="px-6 py-4">
+<div class="font-body-md text-on-surface">5 mins ago</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Syncing Data</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container/10 text-primary border border-primary/20"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-md text-label-md uppercase">Active</span></span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant text-primary overflow-hidden bg-secondary-container">
+<img class="w-full h-full object-cover" data-alt="A focused digital specialist in a dark tech-industrial setting. The subject is backlit by cool-toned terminal screens, creating a noir effect with sharp, clean lines. The overall mood is sophisticated and authoritative, reflecting deep-tech reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTKPS4FnJg96NpO0mgUT5GmQCIimUn_dO0kVU4Zc5_G2FF4BtAJCBXnKIToOIv612ZgXlEd_4pCzRpaqcjaHWg2Qj6bF-wpyyyDNjITvc0-x39ej_y4AILkB9MwqQs8llcYcCecgdQVjMnUjrm5U0xjrDmnwJMjjPJWwR4cmqNQToSK-XFGUCp4MrLl1tNsGeAN2qKw7FPmVrH8SHvUezhUGfAENkhg6L6DxQ6tJnuHo2L_QKzyy5iAG6saI-vYAa2s2FK7F0wns8d"/>
+</div>
+<div>
+<div class="font-body-md text-on-surface font-bold">David S. Chen</div>
+<div class="font-mono-data text-label-md text-on-surface-variant">USR-7229-ND</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-secondary-container text-on-secondary-container border border-secondary/30">Farmer</span>
+</td>
+<td class="px-6 py-4">
+<div class="font-mono-data text-body-md text-on-surface">+234 811 003 4492</div>
+<div class="font-body-md text-label-md text-on-surface-variant">Western Delta / Zone B</div>
+</td>
+<td class="px-6 py-4">
+<div class="font-body-md text-on-surface">Yesterday, 18:45</div>
+<div class="font-label-md text-label-md text-on-surface-variant">System Login</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/10 text-tertiary border border-tertiary/20"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span class="font-label-md text-label-md uppercase">Pending</span></span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full flex items-center justify-center border border-outline-variant text-primary overflow-hidden bg-tertiary-container">
+<img class="w-full h-full object-cover" data-alt="A cinematic portrait of a technician in a nocturnal urban-agricultural environment. Soft blue and teal light reflects off metal surfaces. The aesthetic is modern and technical, prioritizing functional clarity and a sense of quiet power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqBMwEkLunSCXY7GBC581ZDnoMqBgGgwp17j_Nt-IO5CbludNihS66jo8RDXXqB2bnLUWjw_WT6JbGoLhcBWVB7hDtuvCqN8IoOLfHohxHCnnX4-kLrFnzFD7oI3Ycm8up0miJBr4_SpIdhBniD385crG3UoAuC2vN_BAkkl9XY9YARyoF4Nl3rpNJc9zLozMTLVnJu6GtynklnraRd6UczgLkshb27UogHCMUu_t2ki1fzMYvSFxc8wG61_UPfONx0FZXflrZWIGx"/>
+</div>
+<div>
+<div class="font-body-md text-on-surface font-bold">Kemi Adeyemi</div>
+<div class="font-mono-data text-label-md text-on-surface-variant">USR-6552-ND</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-tertiary-container text-on-tertiary-container border border-tertiary/30">Popper</span>
+</td>
+<td class="px-6 py-4">
+<div class="font-mono-data text-body-md text-on-surface">+234 809 332 1100</div>
+<div class="font-body-md text-label-md text-on-surface-variant">Northern Delta / Sector 9</div>
+</td>
+<td class="px-6 py-4">
+<div class="font-body-md text-on-surface">3 days ago</div>
+<div class="font-label-md text-label-md text-on-surface-variant">No Activity</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container/10 text-error border border-error/20"><span class="w-1.5 h-1.5 rounded-full bg-error"></span><span class="font-label-md text-label-md uppercase">Suspended</span></span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform duration-150 group z-40">
+<span class="material-symbols-outlined text-[24px]" data-icon="add">add</span>
+<span class="absolute right-full mr-3 bg-surface-container-high text-on-surface border border-outline-variant px-3 py-1.5 rounded font-label-md text-label-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Register New User</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container-low border-t border-outline-variant">
+<!-- Today -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="text-label-md font-label-md mt-1">Today</span>
+</a>
+<!-- Warehouses -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span class="text-label-md font-label-md mt-1">Warehouses</span>
+</a>
+<!-- Users (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1.5 Active: scale-90 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-label-md font-label-md mt-0.5">Users</span>
+</a>
+<!-- Sync -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="text-label-md font-label-md mt-1">Sync</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md mt-1">Profile</span>
+</a>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

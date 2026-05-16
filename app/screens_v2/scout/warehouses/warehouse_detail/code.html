@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warehouse Detail - Operational Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#0b513d",
+                    "on-surface": "#e5e2e1",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "surface-bright": "#393939",
+                    "inverse-primary": "#006c49",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary": "#003824",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-variant": "#353534",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-container-highest": "#353534",
+                    "on-primary-fixed": "#002113",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#650911",
+                    "on-tertiary-fixed": "#410005",
+                    "tertiary": "#ffb3af",
+                    "secondary": "#95d3ba",
+                    "on-secondary-container": "#83c2a9",
+                    "error-container": "#93000a",
+                    "surface-container": "#201f1f",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-fixed": "#6ffbbe",
+                    "outline-variant": "#3c4a42",
+                    "on-error": "#690005",
+                    "on-secondary": "#003829",
+                    "background": "#131313",
+                    "tertiary-container": "#fc7c78",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-tertiary-container": "#711419",
+                    "on-primary-container": "#00422b",
+                    "outline": "#86948a",
+                    "on-secondary-fixed": "#002117",
+                    "inverse-surface": "#e5e2e1",
+                    "primary-container": "#10b981",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "on-surface-variant": "#bbcabf",
+                    "on-secondary-fixed-variant": "#0b513d",
+                    "primary": "#4edea3",
+                    "surface": "#131313",
+                    "secondary-fixed": "#b0f0d6",
+                    "inverse-on-surface": "#313030",
+                    "surface-dim": "#131313",
+                    "surface-tint": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "container-max": "1440px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full bg-surface z-50 flex justify-between items-center px-margin-mobile h-16 border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../warehouse_list/code.html'" class="p-2 transition-colors duration-200 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary truncate whitespace-nowrap">Operational Directory</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 transition-colors duration-200 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<button class="p-2 transition-colors duration-200 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-20 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Detail Section -->
+<section class="py-6 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<span class="font-label-md text-label-md bg-surface-container-highest px-2 py-0.5 rounded text-on-surface-variant uppercase tracking-widest">WH-4092-ALPHA</span>
+<div class="flex items-center gap-1 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md">Fit · checked 2 Feb</span>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md md:text-display-lg md:font-display-lg text-on-surface truncate whitespace-nowrap">Evergreen Cold Storage</h2>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">package_2</span>
+<span>5 active lots</span>
+</div>
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">report</span>
+<span>2 open issues</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap gap-2 items-center">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 bg-primary-container text-on-primary-container px-6 py-3 rounded-lg font-headline-sm text-headline-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined">health_metrics</span>
+<span>Start Fitness Check</span>
+</button>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 bg-surface-container-high border border-outline-variant text-on-surface px-4 py-3 rounded-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">near_me</span>
+<span>Navigate</span>
+</button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 bg-surface-container-high border border-outline-variant text-on-surface px-4 py-3 rounded-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">call</span>
+<span>Call popper</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Tab Navigation -->
+<div class="sticky top-16 bg-background z-40 border-b border-outline-variant -mx-margin-mobile px-margin-mobile md:-mx-margin-desktop md:px-margin-desktop">
+<nav class="flex gap-8 overflow-x-auto hide-scrollbar">
+<button class="py-4 font-label-md text-label-md text-on-surface-variant hover:text-on-surface border-b-2 border-transparent transition-all">PROFILE</button>
+<button class="py-4 font-label-md text-label-md text-on-surface-variant hover:text-on-surface border-b-2 border-transparent transition-all">FITNESS</button>
+<button class="py-4 font-label-md text-label-md text-primary border-b-2 border-primary transition-all whitespace-nowrap">LOTS (14)</button>
+<button class="py-4 font-label-md text-label-md text-on-surface-variant hover:text-on-surface border-b-2 border-transparent transition-all">FAILURES</button>
+</nav>
+</div>
+<!-- Content Area: Lots Tab -->
+<div class="mt-6 space-y-10">
+<!-- Group: Active Sealed -->
+<section>
+<div class="flex items-center gap-3 mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Active Sealed</h3>
+<span class="h-[1px] flex-1 bg-outline-variant"></span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">2 ITEMS</span>
+</div>
+<div class="grid gap-[1px] bg-outline-variant border border-outline-variant rounded-lg overflow-hidden">
+<!-- Row -->
+<div class="flex items-center justify-between bg-surface p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+</div>
+<div>
+<p class="font-mono-data text-mono-data text-primary">LOT-A9-4402</p>
+<p class="font-body-md text-body-md text-on-surface">Grade AA Premium Hops</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md border border-primary/40 text-primary px-2 py-0.5 rounded">GRADE AA</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Row -->
+<div class="flex items-center justify-between bg-surface p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+</div>
+<div>
+<p class="font-mono-data text-mono-data text-primary">LOT-A9-4405</p>
+<p class="font-body-md text-body-md text-on-surface">Grade A Cascade Hops</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md border border-secondary/40 text-secondary px-2 py-0.5 rounded">GRADE A</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Group: Listed -->
+<section>
+<div class="flex items-center gap-3 mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Listed</h3>
+<span class="h-[1px] flex-1 bg-outline-variant"></span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">3 ITEMS</span>
+</div>
+<div class="grid gap-[1px] bg-outline-variant border border-outline-variant rounded-lg overflow-hidden">
+<!-- Row -->
+<div class="flex items-center justify-between bg-surface p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">sell</span>
+</div>
+<div>
+<p class="font-mono-data text-mono-data text-on-surface-variant">LOT-B2-1190</p>
+<p class="font-body-md text-body-md text-on-surface">Industrial Hemp Fiber</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md border border-outline text-on-surface-variant px-2 py-0.5 rounded">GRADE B</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric / Bento Grid Feature for Stats -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-2 bg-surface-container border border-outline-variant rounded-xl p-6 relative overflow-hidden">
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-primary mb-2">QUICK OVERVIEW</p>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-4">Historical Performance</h4>
+<div class="flex items-end gap-2 h-32">
+<div class="flex-1 bg-primary/20 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/60 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary-container h-[100%] rounded-t-sm shadow-[0_0_15px_rgba(16,185,129,0.3)]"></div>
+<div class="flex-1 bg-primary/30 h-[70%] rounded-t-sm"></div>
+</div>
+</div>
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">analytics</span>
+</div>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container rounded-xl p-6 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-on-tertiary-container">emergency_home</span>
+<h4 class="font-headline-md text-headline-md mt-2">Critical Alerts</h4>
+</div>
+<div>
+<p class="font-display-lg text-display-lg font-bold">02</p>
+<p class="font-label-md text-label-md uppercase tracking-wider">Requires Immediate Action</p>
+</div>
+</div>
+</section>
+<!-- Group: Expired -->
+<section>
+<div class="flex items-center gap-3 mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Expired</h3>
+<span class="h-[1px] flex-1 bg-outline-variant"></span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">1 ITEM</span>
+</div>
+<div class="grid gap-[1px] bg-outline-variant border border-outline-variant rounded-lg overflow-hidden">
+<div class="flex items-center justify-between bg-surface p-4 opacity-60">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-error">timer_off</span>
+</div>
+<div>
+<p class="font-mono-data text-mono-data">LOT-Z0-9912</p>
+<p class="font-body-md text-body-md">Winter Rye Seeds</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md border border-error/40 text-error px-2 py-0.5 rounded">EXPIRED</span>
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Map View Preview (Industrial/Technical Style) -->
+<aside class="hidden lg:block fixed right-8 top-24 w-80 bg-surface-container-high border border-outline-variant rounded-xl overflow-hidden shadow-2xl">
+<div class="h-48 bg-surface-container-lowest relative">
+<img class="w-full h-full object-cover opacity-50 grayscale contrast-125" data-alt="A dark, high-contrast industrial satellite map view of an agricultural warehouse facility. The map features a minimalist UI overlay with emerald green lot highlights and technical data points. The aesthetic is clean and modern, using a palette of deep blacks, charcoal grays, and vibrant green accents to signify precision and operational health." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_vkZ8C6LLna9SH2oAc8Njj-O4kRFdHLvsORmlEVsuYCeO7EU7CA7dA08gPTMx0qSgjlkLFJKEBkc-pWIafUEBaMOha-BpmWCKev2yrTveEgdzAIRr_GVtwBEMxektoZxkUx50ELvMgHSZq-vzo_gzlzDx_4GhJmQ303WJw9EY3KchLIsr0-ImvXqUFlTGgaqIVKfPNWqTCfnsO0xLMjlewbOlq_Bkrom3F2OEi_-zcGtX7IUQaGddHyzfMGZ96ihAb1nhIDxd30xr"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-4 h-4 bg-primary rounded-full animate-pulse shadow-[0_0_10px_#4edea3]"></div>
+</div>
+<div class="absolute bottom-2 left-2 bg-background/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-mono-data text-on-surface border border-outline-variant">
+                45.523°N, 122.676°W
+            </div>
+</div>
+<div class="p-4 space-y-3">
+<p class="font-label-md text-label-md text-primary uppercase">Fulfillment Node</p>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Capacity</span>
+<span class="text-on-surface font-mono-data">84% FULL</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[84%]"></div>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 bg-surface-container text-primary font-label-md text-label-md py-2 rounded border border-primary/20 hover:bg-primary/10">EXPAND MAP</button>
+</div>
+</div>
+</aside>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#4edea3",
+                        "primary": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "outline": "#86948a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-bright": "#393939",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#fc7c78",
+                        "tertiary": "#ffb3af",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-highest": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary": "#d0bcff",
+                        "secondary-container": "#571bc1",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-secondary": "#3c0091",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#711419",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-container": "#10b981",
+                        "on-surface-variant": "#bbcabf",
+                        "background": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "error-container": "#93000a",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "on-primary": "#003824",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary-container": "#c4abff",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed": "#23005c",
+                        "on-primary-fixed": "#002113",
+                        "on-tertiary-fixed": "#410005",
+                        "on-primary-container": "#00422b",
+                        "primary-fixed": "#6ffbbe",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary": "#650911",
+                        "inverse-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "margin": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button onclick="window.location.href='../evidence_photos_inspection/code.html'" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined cursor-pointer" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-primary font-bold truncate whitespace-nowrap">Reference Sample</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</header>
+<!-- Stepper Panel -->
+<div class="w-full bg-surface-container border-b border-outline-variant mt-16 px-margin py-3">
+    <div class="max-w-2xl mx-auto">
+        <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 71%;"></div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span class="text-[11px] font-bold text-white mix-blend-difference">5 of 7</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-6 pb-lg px-margin max-w-2xl mx-auto w-full">
+<!-- Instructional Header -->
+<section class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs truncate whitespace-nowrap">Retain a reference sample</h1>
+<p class="font-body-md text-on-surface-variant">Ensure sample integrity by following established QC protocols for seasonal harvesting.</p>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Sample ID Card -->
+<div class="bg-surface-container border border-outline-variant p-md rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-base">System Generated ID</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">SMP-2026-0091</span>
+</div>
+<button class="p-xs bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<div class="mt-lg flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-lg text-label-lg text-on-surface">Awaiting submission</span>
+</div>
+</div>
+<!-- Input Section -->
+<div class="bg-surface-container border border-outline-variant p-md rounded-xl space-y-md">
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface mb-xs">Bags sampled from</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline rounded-lg px-md py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none" placeholder="Enter quantity" type="number"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">inventory_2</span>
+</div>
+<p class="mt-base font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
+                        Draw from at least 3 bags
+                    </p>
+</div>
+</div>
+<!-- Photo Slot -->
+<div class="bg-surface-container border border-outline-variant p-md rounded-xl md:row-span-2">
+<label class="block font-label-lg text-label-lg text-on-surface mb-md">Sample photo</label>
+<div class="relative group cursor-pointer aspect-[4/3] rounded-xl overflow-hidden border-2 border-dashed border-outline-variant flex flex-col items-center justify-center hover:border-primary transition-colors bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity" data-alt="A macro close-up of high-quality Makhana seeds arranged in a professional laboratory sample dish. The lighting is clinical and bright, creating a high-end agricultural quality control atmosphere. The setting is a modern, dark-themed testing facility with hints of emerald green light reflecting off the metallic surfaces. The seeds are pristine white, contrasting sharply against the dark architectural background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8n6Q1w34q9peuF_X5SpEBzeEspTsIXjzbuS-dpgg1i548eguCerWtPJSXsgLJzxUnORiZepIQyYk5bORooTkfv3b7srFSrnvxX6whTUZjn9ZW6uT-ILN2PR5neb8gqWyczGSXTFl7eZO0b_bqDbEkPNu_ws1lNrhh-w05Tk8u_ufVKJ6T1OLpZ9dHSGQXOawTnMTOIXkUhWs1y7nsU1arVPAR-L8iNzTynUBaIw6pUBig2o3O8qgltVsuoUHN9QodNsddeeSngE9P"/>
+<div class="relative flex flex-col items-center gap-xs">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<span class="font-label-lg text-label-lg text-primary">Capture Reference</span>
+</div>
+</div>
+</div>
+<!-- Snapshot Echo -->
+<div class="bg-surface-container-low border border-outline-variant p-md rounded-xl">
+<div class="flex items-center justify-between mb-md">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Step 2 Readings (Read-only)</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">history</span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div class="flex flex-col border-b border-outline-variant/30 pb-xs">
+<span class="font-label-sm text-label-sm text-outline">Moisture</span>
+<span class="font-body-md text-on-surface font-semibold">12.4%</span>
+</div>
+<div class="flex flex-col border-b border-outline-variant/30 pb-xs">
+<span class="font-label-sm text-label-sm text-outline">Nut Diameter</span>
+<span class="font-body-md text-on-surface font-semibold">18.5 mm</span>
+</div>
+<div class="flex flex-col border-b border-outline-variant/30 pb-xs">
+<span class="font-label-sm text-label-sm text-outline">Damaged</span>
+<span class="font-body-md text-on-surface font-semibold">1.2%</span>
+</div>
+<div class="flex flex-col border-b border-outline-variant/30 pb-xs">
+<span class="font-label-sm text-label-sm text-outline">Impurities</span>
+<span class="font-body-md text-on-surface font-semibold">0.4%</span>
+</div>
+<div class="flex flex-col col-span-2">
+<span class="font-label-sm text-label-sm text-outline">Weight Check</span>
+<span class="font-body-md text-on-surface font-semibold">Verified (80.2kg Avg)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Info -->
+<div class="mt-lg p-md bg-primary/5 rounded-xl border border-primary/20 flex items-start gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="policy">policy</span>
+<p class="font-label-lg text-label-lg text-on-surface-variant leading-relaxed">
+                Sample is retained 6 months for dispute reference. All physical samples must be stored in airtight containers at the local QC station.
+            </p>
+</div>
+</main>
+<!-- Bottom Navigation Component -->
+<!-- Footer Section -->
+<footer class="w-full bg-surface-container border-t border-outline-variant px-margin py-6 mt-auto relative z-10">
+    <div class="max-w-2xl mx-auto">
+        <div class="max-w-md mx-auto space-y-4">
+            <button onclick="window.location.href='../disposition/code.html'" class="w-full h-14 bg-primary text-on-primary font-bold rounded-xl flex items-center justify-center active:scale-95 transition-all shadow-lg">
+                Continue
+                <span class="material-symbols-outlined ml-2">chevron_right</span>
+            </button>
+            <p class="text-center text-label-sm font-label-sm text-on-surface-variant">Retain physical sample for seasonal audit trails</p>
+        </div>
+    </div>
+</footer>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

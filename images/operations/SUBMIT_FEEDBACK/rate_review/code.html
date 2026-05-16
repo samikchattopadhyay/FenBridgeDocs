@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .star-active {
+      font-variation-settings: 'FILL' 1;
+      color: #4edea3;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #131313;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #353534;
+      border-radius: 10px;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-surface-variant": "#bbcabf",
+                  "on-tertiary-fixed": "#410005",
+                  "on-surface": "#e5e2e1",
+                  "outline": "#86948a",
+                  "surface-container-low": "#1c1b1b",
+                  "surface": "#131313",
+                  "secondary": "#d0bcff",
+                  "error": "#ffb4ab",
+                  "surface-container": "#201f1f",
+                  "on-tertiary": "#650911",
+                  "on-secondary-container": "#c4abff",
+                  "on-tertiary-container": "#711419",
+                  "surface-tint": "#4edea3",
+                  "secondary-fixed": "#e9ddff",
+                  "primary-container": "#10b981",
+                  "surface-container-high": "#2a2a2a",
+                  "on-background": "#e5e2e1",
+                  "on-secondary": "#3c0091",
+                  "inverse-primary": "#006c49",
+                  "secondary-fixed-dim": "#d0bcff",
+                  "surface-variant": "#353534",
+                  "on-primary": "#003824",
+                  "background": "#131313",
+                  "on-secondary-fixed": "#23005c",
+                  "tertiary": "#ffb3af",
+                  "primary": "#4edea3",
+                  "on-primary-container": "#00422b",
+                  "primary-fixed": "#6ffbbe",
+                  "primary-fixed-dim": "#4edea3",
+                  "tertiary-container": "#fc7c78",
+                  "outline-variant": "#3c4a42",
+                  "surface-dim": "#131313",
+                  "on-error": "#690005",
+                  "surface-container-highest": "#353534",
+                  "on-error-container": "#ffdad6",
+                  "secondary-container": "#571bc1",
+                  "on-primary-fixed-variant": "#005236",
+                  "on-primary-fixed": "#002113",
+                  "inverse-surface": "#e5e2e1",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "on-tertiary-fixed-variant": "#842225",
+                  "inverse-on-surface": "#313030",
+                  "surface-container-lowest": "#0e0e0e",
+                  "on-secondary-fixed-variant": "#5516be",
+                  "error-container": "#93000a",
+                  "tertiary-fixed": "#ffdad7",
+                  "surface-bright": "#393939"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "xl": "32px",
+                  "md": "16px",
+                  "margin": "20px",
+                  "lg": "24px",
+                  "xs": "8px",
+                  "base": "4px",
+                  "sm": "12px",
+                  "gutter": "12px"
+          },
+          "fontFamily": {
+                  "body-lg": ["Inter"],
+                  "headline-lg": ["Hanken Grotesk"],
+                  "headline-md": ["Hanken Grotesk"],
+                  "label-sm": ["Inter"],
+                  "label-lg": ["Inter"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                  "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Main Container (Mobile Screen Simulation) -->
+<div class="relative flex flex-col h-screen max-w-md mx-auto bg-background overflow-hidden border-x border-outline-variant/30">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-surface flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-xs">
+<button class="w-12 h-12 flex items-center justify-start hover:opacity-80 transition-opacity Active: scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="close">close</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">Rate Your Experience</span>
+</div>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 overflow-y-auto custom-scrollbar px-margin pb-xl">
+<!-- Header Section -->
+<section class="mt-lg mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">How was your experience?</h2>
+<p class="font-body-md text-on-surface-variant">Your feedback helps us improve. Takes 30 seconds.</p>
+</section>
+<!-- Order Summary Card -->
+<section class="mb-xl">
+<div class="bg-surface-container border border-outline-variant p-md rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center border border-outline-variant/50">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-lg text-on-surface">PO-2026-0042</h3>
+<span class="font-label-sm text-primary uppercase tracking-wider bg-primary/10 px-xs py-0.5 rounded">Grade A</span>
+</div>
+<p class="font-label-sm text-on-surface-variant">500 kg • Completed on 22 May 2026</p>
+</div>
+</div>
+</section>
+<!-- Section 1: Overall Rating -->
+<section class="mb-xl text-center">
+<h3 class="font-label-lg text-on-surface-variant mb-md uppercase tracking-widest text-[11px]">Overall Rating</h3>
+<div class="flex justify-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[48px] star-active cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[48px] star-active cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[48px] star-active cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[48px] star-active cursor-pointer" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-outline-variant text-[48px] cursor-pointer" data-icon="star">star</span>
+</div>
+</section>
+<!-- Section 2: Dimension Ratings (Simulated Reveal) -->
+<section class="mb-xl space-y-md p-md bg-surface-container-low rounded-xl border border-outline-variant/30">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="font-label-lg text-on-surface">Quality</span>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-help" data-icon="info">info</span>
+</div>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="star">star</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="font-label-lg text-on-surface">Delivery</span>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-help" data-icon="info">info</span>
+</div>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="font-label-lg text-on-surface">Communication</span>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-help" data-icon="info">info</span>
+</div>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="star">star</span>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="star">star</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="font-label-lg text-on-surface">Value</span>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-help" data-icon="info">info</span>
+</div>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary text-[20px] star-active" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="star">star</span>
+</div>
+</div>
+</section>
+<!-- Section 3: What went well? -->
+<section class="mb-xl">
+<h3 class="font-label-lg text-on-surface mb-sm">What went well?</h3>
+<div class="flex flex-wrap gap-xs">
+<button class="px-md py-xs rounded-full border border-primary bg-primary/10 text-primary font-label-sm transition-all">On-time delivery</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary transition-all">Good quality</button>
+<button class="px-md py-xs rounded-full border border-primary bg-primary/10 text-primary font-label-sm transition-all">Accurate weight</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary transition-all">Fair price</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary transition-all">Responsive support</button>
+</div>
+</section>
+<!-- Section 4: What could be better? -->
+<section class="mb-xl">
+<h3 class="font-label-lg text-on-surface mb-sm">What could be better?</h3>
+<div class="flex flex-wrap gap-xs">
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-error transition-all">Delivery delays</button>
+<button class="px-md py-xs rounded-full border border-error bg-error/10 text-error font-label-sm transition-all">Quality below spec</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-error transition-all">Packaging issues</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-error transition-all">Paperwork missing</button>
+</div>
+</section>
+<!-- Section 5: Add a comment -->
+<section class="mb-xl">
+<details class="group bg-surface-container border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex items-center justify-between p-md cursor-pointer list-none">
+<span class="font-label-lg text-on-surface">Add a comment (optional)</span>
+<span class="material-symbols-outlined text-outline transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary rounded-lg p-md text-on-surface placeholder:text-outline-variant outline-none min-h-[120px] resize-none" placeholder="Share more details about your experience..."></textarea>
+<div class="absolute bottom-3 right-3 text-on-surface-variant font-label-sm">
+                0/500
+              </div>
+</div>
+</div>
+</details>
+</section>
+<!-- Section 6: Sharing Permission -->
+<section class="mb-md">
+<label class="flex items-center gap-md p-md bg-surface-container/30 rounded-xl cursor-pointer">
+<div class="relative flex items-center">
+<input class="peer h-6 w-6 appearance-none rounded border-2 border-outline-variant bg-transparent checked:border-primary checked:bg-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-[18px] opacity-0 peer-checked:opacity-100 left-1/2 -translate-x-1/2" data-icon="check">check</span>
+</div>
+<span class="font-label-lg text-on-surface-variant">Allow my anonymized feedback to be used in marketing materials.</span>
+</label>
+</section>
+</main>
+<!-- Bottom Sticky -->
+<footer class="sticky bottom-0 bg-surface px-margin py-lg flex flex-col items-center gap-md border-t border-outline-variant/20 shadow-[-10px_0_30px_rgba(0,0,0,0.5)]">
+<button class="w-full h-[52px] bg-primary text-on-primary font-label-lg rounded-xl flex items-center justify-center gap-xs hover:opacity-90 active:scale-[0.98] transition-all">
+        Submit Feedback
+      </button>
+<button class="text-primary font-label-lg hover:underline transition-all">
+        Skip for now
+      </button>
+</footer>
+</div>
+</body></html>

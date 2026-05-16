@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Revise Requirement - FenBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#d0bcff",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary": "#650911",
+                    "on-secondary": "#3c0091",
+                    "on-primary-container": "#00422b",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-secondary-fixed": "#23005c",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-primary": "#006c49",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "secondary-fixed": "#e9ddff",
+                    "on-error": "#690005",
+                    "background": "#131313",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-fixed": "#6ffbbe",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-tint": "#4edea3",
+                    "surface": "#131313",
+                    "on-error-container": "#ffdad6",
+                    "secondary-container": "#571bc1",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-fixed-variant": "#005236",
+                    "primary-container": "#10b981",
+                    "surface-variant": "#353534",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-highest": "#353534",
+                    "surface-bright": "#393939",
+                    "on-secondary-container": "#c4abff",
+                    "on-tertiary-container": "#711419",
+                    "surface-dim": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "tertiary-container": "#fc7c78",
+                    "outline": "#86948a",
+                    "on-surface-variant": "#bbcabf",
+                    "on-background": "#e5e2e1",
+                    "error": "#ffb4ab",
+                    "tertiary": "#ffb3af",
+                    "on-primary-fixed": "#002113",
+                    "primary": "#4edea3",
+                    "on-primary": "#003824"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "md": "16px",
+                    "margin": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-32">
+<!-- Top AppBar (JSON Derived) -->
+<header class="sticky top-0 z-50 bg-surface flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80 transition-opacity" data-icon="close">close</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary truncate whitespace-nowrap">Revise Requirement</h1>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Step 1/3</span>
+</div>
+</header>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-low h-1">
+<div class="bg-primary h-full w-[33%]"></div>
+</div>
+<main class="px-margin pt-lg space-y-xl">
+<!-- Header Info -->
+<section class="space-y-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate whitespace-nowrap">Edit your requirement</h2>
+<p class="font-body-md text-on-surface-variant">Updates are permitted as no bids have been awarded for this request yet.</p>
+</section>
+<!-- Status Banner -->
+<div class="bg-surface-container-high border border-outline-variant p-md rounded-xl flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider">REQ-2026-0142</span>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-lg text-label-lg text-on-surface">Status: Open</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-lg text-label-lg text-primary">2 bids received</span>
+</div>
+</div>
+<!-- Form Sections -->
+<form class="space-y-xl">
+<!-- Grade Selection -->
+<div class="space-y-md">
+<label class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Makhana Grade</label>
+<div class="grid grid-cols-3 gap-gutter">
+<button class="border-2 border-primary bg-primary-container/10 p-lg rounded-xl flex flex-col items-center gap-xs text-primary transition-all" type="button">
+<span class="font-headline-md text-headline-md">A</span>
+<span class="font-label-sm text-label-sm">Premium</span>
+</button>
+<button class="border border-outline-variant bg-surface-container-low p-lg rounded-xl flex flex-col items-center gap-xs text-on-surface-variant hover:border-outline transition-all" type="button">
+<span class="font-headline-md text-headline-md">B</span>
+<span class="font-label-sm text-label-sm">Standard</span>
+</button>
+<button class="border border-outline-variant bg-surface-container-low p-lg rounded-xl flex flex-col items-center gap-xs text-on-surface-variant hover:border-outline transition-all" type="button">
+<span class="font-headline-md text-headline-md">C</span>
+<span class="font-label-sm text-label-sm">Bulk</span>
+</button>
+</div>
+</div>
+<!-- Quantity -->
+<div class="space-y-md">
+<label class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Quantity (Quintals)</label>
+<div class="flex flex-wrap gap-xs mb-md">
+<button class="px-md py-xs rounded-full border border-outline-variant text-label-lg text-on-surface-variant hover:border-primary" type="button">50 Qtl</button>
+<button class="px-md py-xs rounded-full border border-primary bg-primary/10 text-label-lg text-primary" type="button">100 Qtl</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-label-lg text-on-surface-variant hover:border-primary" type="button">250 Qtl</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-label-lg text-on-surface-variant hover:border-primary" type="button">500 Qtl</button>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Enter custom quantity" type="number" value="100"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant font-label-lg">Qtl</span>
+</div>
+</div>
+<!-- Ceiling Price -->
+<div class="space-y-md">
+<label class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Ceiling Price (per Quintal)</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-label-lg">₹</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-md pl-xl text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="text" value="14,500"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 text-primary font-label-sm">Market Avg: ₹13.8k</span>
+</div>
+</div>
+<!-- Delivery Window -->
+<div class="space-y-md">
+<label class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Delivery Window</label>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-xs">
+<span class="text-label-sm text-outline">Earliest</span>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex items-center justify-between text-on-surface">
+<span>15 Oct 2026</span>
+<span class="material-symbols-outlined text-outline" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<div class="space-y-xs">
+<span class="text-label-sm text-outline">Latest</span>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex items-center justify-between text-on-surface">
+<span>22 Oct 2026</span>
+<span class="material-symbols-outlined text-outline" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Delivery Location -->
+<div class="space-y-md">
+<div class="flex justify-between items-end">
+<label class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Delivery Location</label>
+<button class="text-primary text-label-lg" type="button">Change</button>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex gap-md items-start">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface">Warehouse Unit #4</h4>
+<p class="text-label-sm text-on-surface-variant mt-1 leading-relaxed">Industrial Area Phase 2, Purnia, Bihar - 854301</p>
+</div>
+</div>
+</div>
+<!-- Insurance Selection -->
+<div class="space-y-md">
+<label class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Insurance Cover</label>
+<div class="space-y-gutter">
+<label class="flex items-center justify-between p-md border border-primary bg-primary/5 rounded-xl cursor-pointer">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">FenBridge Transit Protect</span>
+<span class="text-label-sm text-on-surface-variant">Recommended for high volume</span>
+</div>
+<input checked="" class="w-5 h-5 text-primary bg-surface-container-lowest border-outline focus:ring-primary" name="insurance" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-md border border-outline-variant bg-surface-container-low rounded-xl cursor-pointer hover:border-outline">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">No Insurance</span>
+<span class="text-label-sm text-on-surface-variant">Merchant assumes all transit risks</span>
+</div>
+<input class="w-5 h-5 text-primary bg-surface-container-lowest border-outline focus:ring-primary" name="insurance" type="radio"/>
+</label>
+</div>
+</div>
+</form>
+</main>
+<!-- Modified Summary Banner (Sticky Bottom) -->
+<div class="fixed bottom-[88px] left-0 w-full px-margin z-40">
+<div class="bg-surface-container-highest border border-outline-variant rounded-full px-lg py-md flex items-center justify-between shadow-2xl backdrop-blur-md bg-opacity-95">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="info">info</span>
+<span class="text-label-lg text-on-surface">1 field modified</span>
+</div>
+<button class="text-primary font-label-lg hover:underline transition-all">Review Changes</button>
+</div>
+</div>
+<!-- Bottom Actions (Sticky) -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container-high px-margin py-md flex gap-gutter z-50">
+<button class="flex-1 bg-surface-container-low border border-outline-variant py-md rounded-xl font-label-lg text-on-surface hover:bg-surface-container-highest active:scale-95 transition-all">
+            Cancel
+        </button>
+<button class="flex-[2] bg-primary text-on-primary py-md rounded-xl font-label-lg shadow-lg active:scale-95 transition-all">
+            Continue to Review
+        </button>
+</footer>
+<!-- Decorative Image Layer (Agricultural Context) -->
+<div class="fixed top-0 right-0 -z-10 opacity-10 pointer-events-none">
+<img class="w-[400px] h-screen object-cover" data-alt="A cinematic, low-angle shot of a lush makhana plantation in Bihar, India, with large green lily pads floating on dark water. The lighting is moody and dramatic, reflecting a premium dark-mode aesthetic with deep blacks and vibrant emerald greens. The atmosphere is serene and technological, suggesting precision in agriculture and trade." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCESnHGzDZrAGl67QXJS3Vufn-TcZD7t5ZJXh9Zw6Owe8QoqSd6XpwYBJCFMOB7UpC3Fhg2pRhxRWEZpsLV3PHosKZHnvKN7Hb8JB1ulB_GOoiz-VY_srKfFyCwmUB07DNcwezUUuWGzYTcjZfCkwVXkCx_I2JieZ2QUTxydHF3snQ3E2ZdbIFdwdsVbd9PVV4afGTLnLeffY_7jrt0_Dt_Oh95HdbqSiBHKFEhaF1O4CHktcXII_Mh6qCSed2-uYn0Qsa0wAulnDXl"/>
+</div>
+
+
+    <script src="../../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

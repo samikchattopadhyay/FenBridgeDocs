@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spot Listing Detail | FenBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#006c49",
+                        "surface": "#131313",
+                        "outline-variant": "#3c4a42",
+                        "on-error": "#690005",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary-fixed": "#e9ddff",
+                        "outline": "#86948a",
+                        "error-container": "#93000a",
+                        "secondary": "#d0bcff",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#131313",
+                        "primary": "#4edea3",
+                        "surface-bright": "#393939",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-container": "#c4abff",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed": "#410005",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary": "#ffb3af",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-tertiary": "#650911",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary": "#003824",
+                        "background": "#131313",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary": "#3c0091",
+                        "on-primary-container": "#00422b",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-tertiary-container": "#711419",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container": "#201f1f",
+                        "primary-container": "#10b981",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-tint": "#4edea3",
+                        "secondary-container": "#571bc1",
+                        "surface-container-highest": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "gutter": "12px",
+                        "md": "16px",
+                        "base": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-layer {
+            background-color: #1E1E1E;
+            border: 1px solid #2D2D2D;
+        }
+        .inner-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .glass-blur {
+            backdrop-filter: blur(8px);
+            background: rgba(30, 30, 30, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80 transition-opacity" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity">Skip</button>
+</header>
+<main class="px-margin pt-md">
+<!-- Status Banner -->
+<div class="mb-xl bg-primary-container/10 border border-primary/20 rounded-xl p-md flex items-center gap-md">
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="timer">timer</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-primary">Listed on spot market · 22 days left</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active listing visible to verified buyers</p>
+</div>
+</div>
+<!-- Lot Specification (Bento Style) -->
+<div class="bento-grid mb-xl">
+<div class="col-span-2 tonal-layer rounded-xl p-lg flex flex-col gap-xs inner-glow">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Expected Payout</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-lg text-headline-lg text-primary">₹1,84,000</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">by BM</span>
+</div>
+</div>
+<div class="tonal-layer rounded-xl p-md flex flex-col gap-xs inner-glow">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Grade</span>
+<span class="font-headline-md text-headline-md text-on-surface">Grade A</span>
+</div>
+<div class="tonal-layer rounded-xl p-md flex flex-col gap-xs inner-glow">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Weight</span>
+<span class="font-headline-md text-headline-md text-on-surface">200kg</span>
+</div>
+</div>
+<!-- Verification Report -->
+<section class="mb-xl">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant mb-md px-1">VERIFICATION REPORT</h2>
+<div class="tonal-layer rounded-xl overflow-hidden inner-glow">
+<div class="p-md flex justify-between items-center border-b border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="water_drop">water_drop</span>
+<span class="font-body-md text-on-surface">Moisture Content</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">10.4%</span>
+</div>
+<div class="p-md flex justify-between items-center bg-primary/5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="verified" data-weight="fill">verified</span>
+<span class="font-body-md text-on-surface">Final Verdict</span>
+</div>
+<span class="font-label-lg text-label-lg text-primary">Grade A confirmed</span>
+</div>
+</div>
+</section>
+<!-- Seal Evidence Card -->
+<section class="mb-xl">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant mb-md px-1 uppercase">Seal Evidence</h2>
+<div class="tonal-layer rounded-xl p-md inner-glow">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<div class="flex items-center gap-xs mb-base">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="pin">pin</span>
+<span class="font-label-lg text-label-lg text-on-surface">SEAL-2026-0118</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="location_on">location_on</span>
+<span class="font-label-sm text-label-sm text-primary">GPS LOCKED</span>
+</div>
+</div>
+<div class="h-12 w-12 rounded-lg bg-surface-container overflow-hidden">
+<img alt="Security Seal" class="w-full h-full object-cover" data-alt="A macro close-up shot of a high-security tamper-evident plastic seal in vibrant emerald green, attached to a dark industrial storage bag. The seal features a sharp laser-engraved serial code. The background is a moody, dark-mode agricultural warehouse with low-key lighting that emphasizes the metallic and plastic textures. The atmosphere is professional, secure, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkC0ADaEFobK62Z5p3xQ95kRWqu3mOk6_Kweb9fcniHI9GhJX7rLW6caBycQQSbbVwaMxmJnmWaIC1BjRkcf51YcE5casASLgtoAd-FMxBy_jPPVNLg64DW-T-Enh8u6WRNslMbhYRc5y46tonocYf3dILTgaM6KPsnamRd-mvpCgjyn6DIN7b6VWLyttyvlzT6bITqKQuDAgcI1Ri_ZO2Gjw2cE3VsFGIYZBElZzwDgQmrdntuyE_tleBXzUzO9LZ_1a7SQY8i6et"/>
+</div>
+</div>
+<!-- Photo Thumbnails -->
+<div class="grid grid-cols-3 gap-sm mb-lg">
+<div class="aspect-square rounded-lg bg-surface-container overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover opacity-80" data-alt="A professional wide-angle photograph of several stacked agricultural sacks in a state-of-the-art dark warehouse. Subtle emerald green ambient lighting highlights the contours of the woven bags. The scene is captured in a cinematic noir style with deep shadows and sharp highlights, conveying a sense of premium quality and high-tech inventory management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVGkpl1v9o1HDmClw3lwVkx99QqEq6i6RsomT00G9sR0Zgkaz1WABW1wRNarP2aE-mVacq2tzbpVrCe2BHsoPdV_Leucsxv_Z9QGETrT5LurTmghwidYGkbqHpUCQjudXMu6VgRPMAAX4gCj5un11fDO6vSH5M66CNZbvo0Ni5aoEJJqHw3RgZbYo0pEIxZVbzyWgYNLRbgO8kue1HloG-r-yF73WVH6X6c6TUKeWpJK5MvjmXR3a6yRvps0mGpbGh9W-ECiATs2hs"/>
+</div>
+<div class="aspect-square rounded-lg bg-surface-container overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover opacity-80" data-alt="A detailed macro shot of premium Grade A Makhana, or fox nuts, showing their distinctive white porous texture and spherical shape. The focus is razor-sharp on a single nut, while others blur into a deep black background. The lighting is soft but directed, highlighting the purity of the product in a high-end corporate agricultural style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFkvSqrI1I56WGDtT0QAheCyHPgRWfCMA5G9jyKpgQ9guN8vS1rkZv1AJMtZx7jDTR3brWYu8fkc3G0odArm7HBpXhg7X3IW-BAUD0P7xfHY4Ufj1d3JGEeVTmdSK9rQGkAjZvSqxGa2ss-4grjPEX7ao5DIhLJ0Xly-46kWzo7EcMb6Ynb-9mqT78zojSewuslXONVum3coMkuA1xG766EjMPzXzkJB6dOkL1XqjTocXaJkyjP3X5ZqEyisMFZuYn_UyLDWbzQsmL"/>
+</div>
+<div class="aspect-square rounded-lg bg-surface-container-high flex flex-col items-center justify-center border border-dashed border-outline-variant/50">
+<span class="material-symbols-outlined text-outline" data-icon="add_a_photo">add_a_photo</span>
+<span class="font-label-sm text-label-sm text-outline mt-xs">Add</span>
+</div>
+</div>
+<!-- Helper Text -->
+<div class="flex gap-xs items-start bg-tertiary-container/5 p-sm rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5" data-icon="info">info</span>
+<p class="font-label-sm text-label-sm text-tertiary">Seal is tamper-evident. Breaking it voids listing and insurance cover.</p>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<div class="flex flex-col gap-md">
+<button class="w-full h-14 bg-primary text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-sm inner-glow active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+                VIEW LIVE LISTING
+            </button>
+<button class="w-full h-14 bg-transparent border border-outline-variant text-on-surface font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-sm hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+                SHARE DETAILS
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface shadow-md rounded-t-xl border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center text-primary scale-110">
+<span class="material-symbols-outlined" data-icon="inventory_2" data-weight="fill">inventory_2</span>
+<span class="font-label-sm text-label-sm mt-1">Inventory</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="show_chart">show_chart</span>
+<span class="font-label-sm text-label-sm mt-1">Markets</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-1">Wallet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

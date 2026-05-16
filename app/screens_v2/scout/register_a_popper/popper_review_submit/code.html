@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#dde4dd",
+            "surface-variant": "#2f3632",
+            "on-secondary-container": "#87c5ac",
+            "primary-container": "#4edea3",
+            "on-tertiary-fixed": "#370d0d",
+            "outline": "#86948a",
+            "surface-container-high": "#242c27",
+            "on-primary-fixed": "#002114",
+            "tertiary": "#ffb3af",
+            "inverse-primary": "#006c4a",
+            "on-tertiary": "#512120",
+            "surface-container": "#1a211d",
+            "on-background": "#dde4dd",
+            "surface-container-low": "#161d19",
+            "tertiary-fixed": "#ffdad7",
+            "on-secondary": "#003829",
+            "on-surface-variant": "#bbcabf",
+            "tertiary-fixed-dim": "#ffb3af",
+            "on-primary": "#003824",
+            "tertiary-container": "#ffb3af",
+            "surface-lowest": "#0e0e0e",
+            "inverse-surface": "#dde4dd",
+            "secondary": "#95d3ba",
+            "background": "#0e1511",
+            "surface-bright": "#393939",
+            "primary": "#6ffbbe",
+            "on-error-container": "#ffdad6",
+            "surface-container-highest": "#2f3632",
+            "error": "#ffb4ab",
+            "surface-tint": "#4edea3",
+            "on-tertiary-container": "#7b4240",
+            "secondary-fixed-dim": "#95d3ba",
+            "outline-variant": "#3c4a42",
+            "primary-fixed": "#6ffbbe",
+            "surface": "#0e1511",
+            "secondary-fixed": "#b1f0d6",
+            "inverse-on-surface": "#2b322d",
+            "primary-fixed-dim": "#4edea3",
+            "on-secondary-fixed-variant": "#0d503e",
+            "on-primary-fixed-variant": "#005236",
+            "error-container": "#93000a",
+            "secondary-container": "#115340",
+            "on-tertiary-fixed-variant": "#6d3735",
+            "surface-dim": "#0e1511",
+            "on-primary-container": "#005f40",
+            "surface-container-lowest": "#09100c",
+            "on-secondary-fixed": "#002117",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "unit": "4px",
+            "gutter": "16px",
+            "margin-mobile": "16px",
+            "base-unit": "4px",
+            "container-max": "1440px"
+          },
+          "fontFamily": {
+            "body-lg": ["Hanken Grotesk"],
+            "mono-data": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "headline-sm": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant shadow-sm shadow-black/20">
+    <div class="flex items-center gap-4">
+        <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+            <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
+        </button>
+        <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Review &amp; Submit</h1>
+    </div>
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+    </div>
+</header>
+
+<!-- Stepper Panel -->
+<div class="w-full bg-surface-container border-b border-outline-variant mt-16 px-margin-mobile py-3">
+    <div class="max-w-2xl mx-auto">
+        <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 94.1%;"></div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 16 of 17</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="flex-grow pt-8 px-margin-mobile max-w-lg mx-auto w-full">
+<!-- Hero/Instruction Card -->
+<div class="mb-8 p-6 bg-surface-container-low border border-outline-variant rounded-xl relative overflow-hidden shadow-2xl">
+<div class="relative z-10">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-2">Final Review</h2>
+<p class="text-body-md text-on-surface-variant opacity-80 leading-relaxed">Please perform a terminal check of all registration parameters. Once submitted, the digital certificate will be generated and committed to the ledger.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+</div>
+</div>
+
+<!-- Summary Sections -->
+<div class="space-y-6">
+<!-- Identity Section -->
+<section class="bg-surface-container border border-outline-variant rounded-2xl overflow-hidden shadow-lg">
+<div class="p-4 bg-surface-container-high flex justify-between items-center border-b border-outline-variant/30">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-sm">fingerprint</span>
+<h3 class="text-[10px] font-bold uppercase tracking-widest">Identity</h3>
+</div>
+<button onclick="window.location.href='../contact_person_identity/code.html'" class="text-[10px] font-bold text-primary hover:underline uppercase tracking-widest">Edit</button>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1 font-bold opacity-60">Full Legal Name</p>
+<p class="text-body-lg font-bold text-on-surface">DR. ELIAS STRICKLAND</p>
+</div>
+<div class="flex justify-between gap-4">
+<div class="flex-grow">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1 font-bold opacity-60">Mobile</p>
+<p class="text-mono-data text-primary font-bold">+91 98765 43210</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1 font-bold opacity-60">Language</p>
+<p class="text-body-md font-bold text-on-surface">English</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Business Section -->
+<section class="bg-surface-container border border-outline-variant rounded-2xl overflow-hidden shadow-lg">
+<div class="p-4 bg-surface-container-high flex justify-between items-center border-b border-outline-variant/30">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-sm">business</span>
+<h3 class="text-[10px] font-bold uppercase tracking-widest">Business</h3>
+</div>
+<button onclick="window.location.href='../business_basic_details/code.html'" class="text-[10px] font-bold text-primary hover:underline uppercase tracking-widest">Edit</button>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1 font-bold opacity-60">Entity Name</p>
+<p class="text-body-lg font-bold text-on-surface">VANCE LOGISTICS LLC</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1 font-bold opacity-60">GST/Registration</p>
+<p class="text-mono-data text-primary font-bold tracking-widest">10AAACV1234F1Z1</p>
+</div>
+</div>
+</section>
+
+<!-- Financial Section -->
+<section class="bg-surface-container border border-outline-variant rounded-2xl overflow-hidden shadow-lg">
+<div class="p-4 bg-surface-container-high flex justify-between items-center border-b border-outline-variant/30">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-sm">account_balance</span>
+<h3 class="text-[10px] font-bold uppercase tracking-widest">Financials</h3>
+</div>
+<button onclick="window.location.href='../popper_bank_account_details/code.html'" class="text-[10px] font-bold text-primary hover:underline uppercase tracking-widest">Edit</button>
+</div>
+<div class="p-6 flex items-center gap-5">
+<div class="w-14 h-14 rounded-xl bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-3xl">credit_card</span>
+</div>
+<div class="flex-grow">
+<p class="text-body-lg font-bold text-on-surface">HDFC Bank</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold opacity-60">Current •••• 9901</p>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+</section>
+</div>
+
+<!-- Declaration -->
+<div class="mt-12 p-6 bg-secondary-container/10 border-l-4 border-secondary-container rounded-r-2xl space-y-6 shadow-sm shadow-black/20">
+<p class="text-body-md text-on-secondary-container leading-relaxed italic opacity-80 font-medium">
+        I certify that all provided parameters are verified. I authorize FenBridge to conduct necessary business validation protocols and commit these records to the secure logistics ledger.
+      </p>
+<label class="flex items-start gap-4 cursor-pointer group">
+<div class="relative flex items-center mt-1">
+<input class="peer h-6 w-6 rounded-lg bg-surface-container border-outline-variant text-primary focus:ring-offset-background focus:ring-primary transition-all cursor-pointer shadow-inner" id="confirm-check" type="checkbox"/>
+<span class="absolute material-symbols-outlined text-on-primary-container opacity-0 peer-checked:opacity-100 pointer-events-none text-[20px] left-[2px] transition-opacity" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-body-md font-bold text-on-surface select-none group-hover:text-primary transition-colors">I confirm all enterprise data is accurate.</span>
+</label>
+</div>
+    <!-- CTA Area -->
+    <div class="mt-12 pb-12 flex gap-4">
+        <button onclick="if(document.getElementById('confirm-check').checked) window.location.href='../popper_registration_confirmation/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+            Submit Registration
+            <span class="material-symbols-outlined">send</span>
+        </button>
+        <button onclick="window.location.href='../../scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+            Save Draft
+        </button>
+    </div>
+</main>
+
+<!-- Background Texture -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+</div>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>

@@ -1,0 +1,242 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .premium-card-border {
+            border: 1px solid #2D2D2D;
+        }
+        .inner-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed": "#410005",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary": "#3c0091",
+                        "outline": "#86948a",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-primary": "#006c49",
+                        "secondary": "#d0bcff",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary": "#650911",
+                        "on-secondary-fixed": "#23005c",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-tint": "#4edea3",
+                        "on-tertiary-container": "#711419",
+                        "background": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#571bc1",
+                        "tertiary": "#ffb3af",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#fc7c78",
+                        "error-container": "#93000a",
+                        "surface-container": "#201f1f",
+                        "on-primary-container": "#00422b",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-bright": "#393939",
+                        "on-background": "#e5e2e1",
+                        "outline-variant": "#3c4a42",
+                        "on-secondary-container": "#c4abff",
+                        "primary-container": "#10b981",
+                        "primary": "#4edea3",
+                        "on-error": "#690005",
+                        "on-primary": "#003824",
+                        "tertiary-fixed-dim": "#ffb3af"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-surface flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">Skip</button>
+</header>
+<main class="px-margin pt-xl">
+<!-- Hero Search Section -->
+<section class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-md">How can we help?</h2>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl py-md pl-12 pr-md text-body-md focus:ring-1 focus:ring-primary focus:border-primary outline-none placeholder:text-on-surface-variant" placeholder="Search for FAQs, guides..." type="text"/>
+</div>
+</section>
+<!-- Featured Support Illustration / Image -->
+<div class="mb-xl rounded-xl overflow-hidden premium-card-border relative h-48 bg-surface-container">
+<img alt="Data visualization of logistics" class="w-full h-full object-cover opacity-60" data-alt="A wide panoramic digital illustration showcasing a network of glowing emerald green data nodes and flowing golden light trails against a deep charcoal background. The visual style is professional and high-tech, representing agricultural supply chain efficiency. Soft ambient light from the glowing elements illuminates the scene, creating a sense of growth, connectivity, and technological sophistication within a dark-mode UI environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMpQluLucrekXyc_8IZSj7z-S44lsSV3tdVeomQhybqOAX6cluuPEuDCNSCO9tC9J2dJQG0d8P-hzrUS3G-No4mivh5BzU5HJkyGG6BsPbdSmbwYbGlhHQJSSMujuDRKRgjIM0AjwlCKcIWvAIqAcFr29Jy3AxGXKdPHioa_zcf49XhELcwoNPj58TnDobKRfJ-elDXKijkwCgqf4T5F-rB2QBc-qRWUOfl9glQpEV5ic5w9pdJP44o2mOADyEO0wRCYmXXYMmlaWZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent flex items-end p-md">
+<p class="text-label-lg text-primary-fixed">Need quick answers? Browse our categories below.</p>
+</div>
+</div>
+<!-- Categorized FAQ Sections (Bento-style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md mb-xl">
+<!-- Orders Category -->
+<div class="bg-surface-container rounded-xl p-md premium-card-border hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm mb-sm">
+<div class="p-xs bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Orders</h3>
+</div>
+<ul class="space-y-xs">
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between">
+<span>Tracking your makhana shipment</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between">
+<span>Changing delivery address</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between">
+<span>Cancellation policy</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+</ul>
+</div>
+<!-- Payments Category -->
+<div class="bg-surface-container rounded-xl p-md premium-card-border hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm mb-sm">
+<div class="p-xs bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Payments</h3>
+</div>
+<ul class="space-y-xs">
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between">
+<span>Settlement timelines</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between">
+<span>Market fee breakdown</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between">
+<span>GST invoicing help</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+</ul>
+</div>
+<!-- Account Category (Spans full width on mobile) -->
+<div class="bg-surface-container rounded-xl p-md premium-card-border hover:bg-surface-container-high transition-colors cursor-pointer group md:col-span-2">
+<div class="flex items-center gap-sm mb-sm">
+<div class="p-xs bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">manage_accounts</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Account</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-xl gap-y-xs">
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between list-none">
+<span>Farmer verification process</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between list-none">
+<span>Securing your wallet</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between list-none">
+<span>Updating bank details</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+<li class="text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center justify-between list-none">
+<span>Password recovery</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</li>
+</div>
+</div>
+</section>
+<!-- Quick Help Chips -->
+<section class="mb-xl overflow-x-auto whitespace-nowrap scrollbar-hide flex gap-xs pb-xs">
+<span class="inline-flex items-center px-md py-xs rounded-full bg-primary-container/10 text-primary border border-primary/20 font-label-lg">Returns</span>
+<span class="inline-flex items-center px-md py-xs rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant font-label-lg">Bulk Pricing</span>
+<span class="inline-flex items-center px-md py-xs rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant font-label-lg">Quality Standards</span>
+<span class="inline-flex items-center px-md py-xs rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant font-label-lg">Shipping Zones</span>
+</section>
+</main>
+<!-- Fixed Bottom Actions -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface p-margin flex flex-col gap-sm shadow-[0_-10px_20px_rgba(0,0,0,0.3)]">
+<button class="w-full bg-primary text-on-primary font-label-lg text-label-lg py-md rounded-xl flex items-center justify-center gap-sm inner-glow active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+            Chat with Support
+        </button>
+<button class="w-full border border-primary text-primary font-label-lg text-label-lg py-md rounded-xl flex items-center justify-center gap-sm hover:bg-primary/5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">report_problem</span>
+            Report an Issue
+        </button>
+</footer>
+<!-- Bottom Nav Bar (Mobile Simulation) -->
+<!-- Hidden here as this is a task-focused sub-page (Help), as per "Shell Visibility & Relevance" rule. -->
+</body></html>

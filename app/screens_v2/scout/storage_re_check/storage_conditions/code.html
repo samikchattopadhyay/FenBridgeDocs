@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#fc7c78",
+                        "tertiary": "#ffb3af",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-highest": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary": "#d0bcff",
+                        "secondary-container": "#571bc1",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-secondary": "#3c0091",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#711419",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-container": "#10b981",
+                        "on-surface-variant": "#bbcabf",
+                        "background": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "surface-tint": "#4edea3",
+                        "primary": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "surface": "#131313",
+                        "on-error": "#690005",
+                        "outline": "#86948a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-bright": "#393939",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed": "#23005c",
+                        "on-primary-fixed": "#002113",
+                        "on-tertiary-fixed": "#410005",
+                        "on-primary-container": "#00422b",
+                        "primary-fixed": "#6ffbbe",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary": "#650911",
+                        "inverse-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "error-container": "#93000a",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "on-primary": "#003824",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary-container": "#c4abff",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "primary-fixed-dim": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "32px",
+                        "margin": "20px",
+                        "base": "4px",
+                        "md": "16px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        .glass-card {
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #2D2D2D;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button onclick="window.location.href='../seal_net_integrity/code.html'" class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high transition-colors rounded-full active:opacity-80 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary truncate whitespace-nowrap">Quality Inspection</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high transition-colors rounded-full active:opacity-80 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">more_vert</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-margin max-w-2xl mx-auto">
+<!-- Progress Indicator -->
+<div class="mb-xl">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-label-lg font-label-lg text-on-surface-variant">Step 3 of 4</span>
+<span class="text-label-lg font-label-lg text-primary">75% Complete</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+</div>
+<!-- Section: Conditions Checklist -->
+<section class="mb-xl">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary">inventory</span>
+<h2 class="text-headline-md font-headline-md truncate whitespace-nowrap">Storage Conditions</h2>
+</div>
+<div class="space-y-md">
+<!-- Checklist Items -->
+<div class="glass-card p-md rounded-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<label class="text-body-md font-medium text-on-surface">Stored off the floor</label>
+<div class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant">
+<button class="px-4 py-1.5 text-label-lg rounded-md bg-primary text-on-primary font-bold transition-all">Pass</button>
+<button class="px-4 py-1.5 text-label-lg rounded-md text-on-surface-variant hover:text-on-surface transition-colors">Fail</button>
+</div>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<label class="text-body-md font-medium text-on-surface">Dry — no damp</label>
+<div class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant">
+<button class="px-4 py-1.5 text-label-lg rounded-md bg-primary text-on-primary font-bold transition-all">Pass</button>
+<button class="px-4 py-1.5 text-label-lg rounded-md text-on-surface-variant hover:text-on-surface transition-colors">Fail</button>
+</div>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<label class="text-body-md font-medium text-on-surface">No pest activity</label>
+<div class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant">
+<button class="px-4 py-1.5 text-label-lg rounded-md bg-primary text-on-primary font-bold transition-all">Pass</button>
+<button class="px-4 py-1.5 text-label-lg rounded-md text-on-surface-variant hover:text-on-surface transition-colors">Fail</button>
+</div>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<label class="text-body-md font-medium text-on-surface">No visible spoilage</label>
+<div class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant">
+<button class="px-4 py-1.5 text-label-lg rounded-md bg-primary text-on-primary font-bold transition-all">Pass</button>
+<button class="px-4 py-1.5 text-label-lg rounded-md text-on-surface-variant hover:text-on-surface transition-colors">Fail</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Evidence Photos -->
+<section class="mb-xl">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary">photo_camera</span>
+<h2 class="text-headline-md font-headline-md truncate whitespace-nowrap">Evidence Photos</h2>
+</div>
+<div class="flex gap-md overflow-x-auto pb-4 snap-x">
+<!-- Photo Slot 1 -->
+<div class="flex-none w-48 snap-start">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high border-2 border-dashed border-outline-variant flex flex-col items-center justify-center group cursor-pointer hover:border-primary transition-colors">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A detailed, macro close-up of a high-security metallic tamper-evident seal on a storage container. The scene is shot in a dark, atmospheric warehouse with moody green lighting accents reflecting off the metallic surface. The image emphasizes industrial precision and security, maintaining a professional dark-mode agri-tech aesthetic with sharp focus on the seal serial number." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2RtEVAeJcKJCuHoqJVoGN12cdABTl3NsaWAqIP8RPxT9H0M5Q3ipzicCaRLgDwlYlcoazUx0E6RpUZVIyPfR_r3fSGdvZucG2rKwHFf8-2Iz8AiYHXrptPvES3tgTYkY0acE1E2Tl6R77AK3B624lMhPHlEWwjebX96QYOg6ni13z1BbnEO3-_kbbb9u5QcDu06bLBqJ-xTT4VjlS3a9S7E_t8XhWrlAVZ72wae3Rdl6J7tvc68mp9mmu4xUWafkxAZz9DR4jxF89"/>
+<div class="absolute bottom-0 left-0 right-0 p-md bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-label-sm font-label-sm text-on-primary">Current seal</p>
+</div>
+<span class="material-symbols-outlined text-primary relative z-10 text-4xl">check_circle</span>
+</div>
+</div>
+<!-- Photo Slot 2 -->
+<div class="flex-none w-48 snap-start">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high border-2 border-dashed border-outline-variant flex flex-col items-center justify-center group cursor-pointer hover:border-primary transition-colors">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A wide-angle professional shot of organized agricultural storage sacks stacked neatly on wooden pallets in a clean, modern warehouse. The lighting is low-key with emerald green highlights illuminating the edges of the sacks. The atmosphere is industrial and high-tech, showcasing efficient inventory management with a gritty yet premium agricultural noir visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPj8pQEDX-kiDgExsacn-pzHHGooqokkfplwbumIEU-uhpd6E3nWn8Eh8DQ1N15VBn6GUxCo05GbQ31OhJFkV9CkGNLsYS3APSfSABiLW2cEOb8bCzRjdJ0N7PpKPboIw1_ukx2rwo1GgIu_lVxIviZ-1nYHfJnla19YBO4x6trjhxWTeOH1A2MwoUYSol7onlLl8tkdpwg80e4IqnDc75st37e46QoKUBSsHUrP5NxdqeMT8hy4QBX4BZNrLkUe3IGCFD1hm-yInC"/>
+<div class="absolute bottom-0 left-0 right-0 p-md bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-label-sm font-label-sm text-on-primary">Current lot (wide)</p>
+</div>
+<span class="material-symbols-outlined text-primary relative z-10 text-4xl">check_circle</span>
+</div>
+</div>
+<!-- Add More Slot -->
+<div class="flex-none w-48 snap-start">
+<div class="aspect-[3/4] rounded-xl bg-surface-container-low border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-xs group cursor-pointer hover:border-primary hover:bg-surface-container transition-all">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-primary">add</span>
+</div>
+<p class="text-label-lg font-label-lg text-on-surface-variant group-hover:text-primary">Add More</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Primary CTA -->
+<div class="mt-lg">
+<button onclick="window.location.href='../outcome_submit/code.html'" class="w-full h-14 bg-primary text-on-primary rounded-xl text-headline-md font-bold flex items-center justify-center gap-md active:scale-[0.98] transition-all hover:bg-surface-tint shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                Continue
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container border-t border-outline-variant rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-sm font-label-sm">Scout</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="text-label-sm font-label-sm">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

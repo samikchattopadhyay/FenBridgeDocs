@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#fc7c78",
+            "outline-variant": "#3c4a42",
+            "on-secondary-container": "#c4abff",
+            "surface-container-highest": "#353534",
+            "on-primary": "#003824",
+            "surface-variant": "#353534",
+            "secondary-fixed-dim": "#d0bcff",
+            "on-secondary": "#3c0091",
+            "surface": "#131313",
+            "on-error": "#690005",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#4edea3",
+            "primary-container": "#10b981",
+            "inverse-primary": "#006c49",
+            "on-primary-fixed-variant": "#005236",
+            "tertiary": "#ffb3af",
+            "on-tertiary": "#650911",
+            "background": "#131313",
+            "on-tertiary-fixed": "#410005",
+            "inverse-surface": "#e5e2e1",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#bbcabf",
+            "on-surface": "#e5e2e1",
+            "on-background": "#e5e2e1",
+            "tertiary-fixed": "#ffdad7",
+            "surface-container": "#201f1f",
+            "surface-container-high": "#2a2a2a",
+            "secondary-container": "#571bc1",
+            "tertiary-fixed-dim": "#ffb3af",
+            "surface-bright": "#393939",
+            "on-primary-container": "#00422b",
+            "secondary-fixed": "#e9ddff",
+            "surface-container-lowest": "#0e0e0e",
+            "inverse-on-surface": "#313030",
+            "primary-fixed": "#6ffbbe",
+            "on-tertiary-fixed-variant": "#842225",
+            "surface-dim": "#131313",
+            "surface-container-low": "#1c1b1b",
+            "on-tertiary-container": "#711419",
+            "surface-tint": "#4edea3",
+            "on-error-container": "#ffdad6",
+            "secondary": "#d0bcff",
+            "on-secondary-fixed": "#23005c",
+            "outline": "#86948a",
+            "primary": "#4edea3",
+            "on-secondary-fixed-variant": "#5516be",
+            "on-primary-fixed": "#002113"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "20px",
+            "gutter": "12px",
+            "lg": "24px",
+            "base": "4px",
+            "xl": "32px",
+            "md": "16px",
+            "xs": "8px",
+            "sm": "12px"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased scrollbar-hide">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md px-margin py-xs flex flex-col gap-xs border-b border-outline-variant/30">
+<div class="flex justify-between items-center w-full">
+<div class="flex items-center gap-sm">
+<span onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="material-symbols-outlined text-on-surface cursor-pointer p-1 hover:bg-surface-variant rounded-full transition-colors" data-icon="close">close</span>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight truncate whitespace-nowrap">Warehouse Fitness Check</h1>
+</div>
+<span class="font-label-lg text-label-lg text-outline">1 of 4</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[25%]" style="background-color: #f59e0b;"></div>
+</div>
+</header>
+<main class="pt-[100px] pb-[100px] px-margin flex flex-col gap-lg">
+<!-- Warehouse Card (Surface High) -->
+<section class="bg-surface-container-high rounded-xl p-md border border-outline-variant/30 flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Active Popper</span>
+<h2 class="font-headline-md text-headline-md text-on-surface truncate whitespace-nowrap">Kumar Makhana Pvt Ltd</h2>
+<div class="flex items-center gap-xs text-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="warehouse">warehouse</span>
+<span class="font-body-md text-body-md">ID: WH-204</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-lg overflow-hidden border border-outline-variant/50">
+<img class="w-full h-full object-cover" data-alt="A professional, high-end macro photograph of premium makhana seeds stored in clean, industrial-grade sacks within a modern, well-lit agricultural warehouse. The lighting is crisp and cool, highlighting the texture of the white popped lily seeds. The aesthetic is corporate and efficient, using a dark-mode-first color palette with subtle deep green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3geC_ttnCft3I03Mrreo2dpI2uhYUmMU2eNhRDSKdlk0Gy0dR0LK6icqEeUGp4gJ448Ts7x0xUuM5DgYPc_BoytUku24u0Th0c5RYyar-mNs5Lu6RFeaAA74eaLAk-WufwkEsPE8Y7oc2FeTvv9vmWCKUCjE1GgQwp3RWHQumrRG9QzbsBecwu5zNOl1PPT3_DWFdwS60CJ46PsqOu2x6lYk_4RZbnzTZP8J_VjtvdD6hgJeIzhuls8ioUkj7h9uExt0iBkeVdcwI"/>
+</div>
+</div>
+<div class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined mt-1" data-icon="location_on">location_on</span>
+<p class="font-body-md text-body-md">Darbhanga, Bihar, Pin 846004, near Industrial Area Phase II</p>
+</div>
+<!-- History Strip (Surface Low) -->
+<div class="bg-surface-container-low rounded-lg px-md py-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Last check: Passed · 2 Feb 2026</span>
+</div>
+</section>
+<!-- GPS Block -->
+<section class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<h3 class="font-label-lg text-label-lg text-outline uppercase tracking-wider">Arrival Validation</h3>
+<div class="bg-surface-container rounded-xl p-md border border-outline-variant/20 flex flex-col gap-md">
+<!-- Mock Capture UI -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="bg-primary-container/10 p-xs rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="gps_fixed" style="font-variation-settings: 'FILL' 1;">gps_fixed</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">📍 24.71°N, 88.04°E</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">±8 m · captured 09:12</span>
+</div>
+</div>
+<button class="bg-surface-variant text-on-surface px-md py-xs rounded-lg font-label-lg text-label-lg border border-outline-variant hover:bg-surface-bright transition-colors">
+                Recapture
+              </button>
+</div>
+</div>
+<!-- Amber Warning Note -->
+<div class="bg-tertiary-container/10 border border-tertiary-container/30 rounded-lg p-sm flex gap-sm">
+<span class="material-symbols-outlined text-tertiary-container" data-icon="warning">warning</span>
+<p class="font-body-md text-body-md text-tertiary-container leading-tight">
+              ~240 m from registered location — verify you're at the right warehouse.
+            </p>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex gap-md justify-end">
+<button class="flex items-center gap-xs text-primary font-label-lg text-label-lg py-xs px-sm rounded-lg hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="near_me">near_me</span>
+          Navigate
+        </button>
+<button class="flex items-center gap-xs text-primary font-label-lg text-label-lg py-xs px-sm rounded-lg hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="call">call</span>
+          Call popper
+        </button>
+</div>
+</section>
+<!-- Contextual Map View -->
+<div class="w-full h-40 rounded-xl overflow-hidden border border-outline-variant/30 grayscale contrast-125 opacity-60">
+<img class="w-full h-full object-cover" data-alt="A dark, stylized satellite map view of an industrial area in Darbhanga, Bihar. The map is presented in a high-contrast, grayscale aesthetic with Emerald Green markers indicating coordinates. The overall mood is precise, technological, and data-driven, fitting a high-end logistics and agricultural marketplace application." data-location="Darbhanga" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB49O7ShsvQzk7pOy4gBl_TZPDmRD3JKnHKZ3Df9HOapU4qxpJO-3JOGB_I65d2T0eQzXzwsZJaSA64iQz0FyWp4WQNL9Yw36rP5a4YlwBwl_vy4JeGohsKoGGlo8faF1s8nORjoVHdOcvvPSSqsXZo9k9YwuNtNVwk6Nq-uBEF5J_XqnvMhIXg31zIu1pKzt3t-SJjNj7VRFsFPQJVlLzoS-qa1HMsu7_40dAiKMpK649trP8Eke6Gk9TSUHQgnlO_JnOPvVO5t-52"/>
+</div>
+</main>
+<!-- Pinned Bottom CTA -->
+<footer class="fixed bottom-0 w-full bg-surface-dim/90 backdrop-blur-lg border-t border-outline-variant/20 px-margin py-md z-50">
+<button onclick="window.location.href='../fitness_checklist/code.html'" class="w-full bg-primary text-on-primary font-headline-md text-headline-md py-md rounded-xl flex items-center justify-center gap-sm active:scale-95 transition-transform">
+      Begin Check
+      <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

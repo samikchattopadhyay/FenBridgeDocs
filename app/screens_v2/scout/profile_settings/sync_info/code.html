@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sync Info Dashboard - FenBridge Scout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#86948a",
+                        "surface": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error-container": "#93000a",
+                        "outline-variant": "#3c4a42",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-container": "#0b513d",
+                        "on-primary": "#003824",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#002117",
+                        "on-surface-variant": "#bbcabf",
+                        "on-tertiary-fixed": "#410005",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-tertiary-container": "#711419",
+                        "surface-dim": "#131313",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed-variant": "#005236",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-highest": "#353534",
+                        "background": "#131313",
+                        "surface-bright": "#393939",
+                        "on-secondary-container": "#83c2a9",
+                        "primary": "#4edea3",
+                        "on-secondary-fixed-variant": "#0b513d",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-tertiary": "#650911",
+                        "primary-fixed": "#6ffbbe",
+                        "primary-container": "#10b981",
+                        "on-secondary": "#003829",
+                        "surface-tint": "#4edea3",
+                        "surface-container-high": "#2a2a2a",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-container": "#fc7c78",
+                        "tertiary": "#ffb3af",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-container": "#201f1f",
+                        "secondary": "#95d3ba",
+                        "on-background": "#e5e2e1",
+                        "on-primary-container": "#00422b",
+                        "secondary-fixed": "#b0f0d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-margin-mobile h-14 w-full z-50 bg-surface border-b border-outline-variant fixed top-0">
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../profile_settings/code.html'" class="hover:bg-surface-variant transition-colors duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm text-primary truncate whitespace-nowrap">Sync info</h1>
+</div>
+<button class="hover:bg-surface-variant transition-colors duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="flex-1 mt-14 mb-20 px-margin-mobile py-gutter max-w-container-max mx-auto w-full">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Summary Card (Bento Large) -->
+<section class="md:col-span-12 lg:col-span-8 bg-[#131313] border border-[#262626] p-6 rounded-lg relative overflow-hidden">
+<div class="flex flex-col gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant">OPERATIONAL STATUS</span>
+<h2 class="text-headline-md font-headline-md text-on-surface truncate whitespace-nowrap">Last synced: 2 minutes ago</h2>
+<div class="mt-4 flex items-center">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-md font-label-md flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#4edea3]"></span>
+                            Up to date
+                        </span>
+</div>
+</div>
+<!-- Visual Decoration for Agri-Tech Noir vibe -->
+<div class="absolute right-[-20px] top-[-20px] opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px] text-primary" data-icon="sync">sync</span>
+</div>
+</section>
+<!-- Metrics Grid -->
+<section class="md:col-span-12 lg:col-span-4 grid grid-cols-2 gap-4">
+<div class="bg-[#131313] border border-[#262626] p-4 flex flex-col justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant">PENDING</span>
+<span class="text-headline-md font-mono-data text-on-surface">0</span>
+</div>
+<div class="bg-[#131313] border border-[#262626] p-4 flex flex-col justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant">FAILED</span>
+<span class="text-headline-md font-mono-data text-on-surface">0</span>
+</div>
+<div class="bg-[#131313] border border-[#262626] p-4 flex flex-col justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant">CONFLICTS</span>
+<span class="text-headline-md font-mono-data text-on-surface">0</span>
+</div>
+<div class="bg-[#131313] border border-[#262626] p-4 flex flex-col justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant">STUCK</span>
+<span class="text-headline-md font-mono-data text-on-surface">0</span>
+</div>
+</section>
+<!-- Storage Card -->
+<section class="md:col-span-12 lg:col-span-6 bg-[#131313] border border-[#262626] p-6 rounded-lg">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-6">Storage Outbox</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-[#262626] pb-2">
+<span class="text-body-md font-body-md text-on-surface-variant">Records waiting</span>
+<span class="text-body-lg font-mono-data text-on-surface">0 KB</span>
+</div>
+<div class="flex justify-between items-center border-b border-[#262626] pb-2">
+<span class="text-body-md font-body-md text-on-surface-variant">Photos waiting</span>
+<span class="text-body-lg font-mono-data text-on-surface">0 KB</span>
+</div>
+</div>
+<div class="mt-6 flex items-start gap-3 bg-surface-container-low p-4 rounded border-l-2 border-primary">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="cloud_off">cloud_off</span>
+<p class="text-label-md font-label-md text-on-surface-variant">Will sync when online. Data is stored locally on this device until a stable uplink is established.</p>
+</div>
+</section>
+<!-- Action Panel -->
+<section class="md:col-span-12 lg:col-span-6 flex flex-col gap-4">
+<button class="w-full bg-primary-container text-on-primary-container h-14 flex items-center justify-center gap-2 rounded font-headline-sm hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-icon="view_list">view_list</span>
+                    Open Sync Queue
+                </button>
+<button class="w-full border border-outline-variant text-primary h-14 flex items-center justify-center gap-2 rounded font-headline-sm hover:bg-surface-variant active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+                    Force full re-sync
+                </button>
+<div class="mt-2 text-center">
+<button class="text-error font-label-md hover:underline decoration-error underline-offset-4">
+                        Clear synced history
+                    </button>
+</div>
+</section>
+<!-- Connectivity Map / Context Visual -->
+<section class="md:col-span-12 lg:col-span-12 bg-[#131313] border border-[#262626] rounded-lg overflow-hidden h-[240px] relative">
+<img alt="Satellite view of agricultural landscape" class="w-full h-full object-cover grayscale brightness-50" data-alt="A dark and moody satellite view of a vast agricultural terrain with geometric field patterns, rendered in high-contrast emerald and charcoal tones to match an agri-tech noir aesthetic. The lighting is low-key, emphasizing the industrial scale of the landscape. Overlaid are subtle, semi-transparent data nodes and grid lines, suggesting a high-precision digital scanning system monitoring the area from orbit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQyc1Y5xgvQyCZzkw_iuyDDfg3Q6tHDa6W50HbJky6DDAx7LI1GkjeruNwJEFDZPyUpyMmOUmiwt4RwoZ6uCUhFAGujVG4PfBqlemMIc7GQC-93wCWb6Eq1Nwb-mo2I9Yr-M4ARGU7OK_vFF9X8p3OVpQCFMj55-64aPxzvU6Rpj64U75bmRlk4dvzL213CL1jhk-dZcxv3hI8smmH-75gj-GfJ3QwrBwYe0WD-iyatwt78Tsz94EIMEH1d_cOlyiUTqGaj0-xXuUu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex flex-col">
+<span class="text-label-md font-label-md text-primary">FIELD LOCATION</span>
+<span class="text-headline-sm font-headline-sm">Central Basin Area</span>
+</div>
+<div class="absolute top-4 right-4 flex items-center gap-2 bg-surface p-2 border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="signal_cellular_4_bar">signal_cellular_4_bar</span>
+<span class="text-label-md font-mono-data">LTE-A ENABLED</span>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface-container border-t border-outline-variant">
+<button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-95 duration-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-md font-label-md">Today</span>
+</button>
+<button onclick="window.location.href='../../warehouses/warehouse_list/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-95 duration-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="warehouse">warehouse</span>
+<span class="text-label-md font-label-md">Warehouses</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="text-label-md font-label-md">Sync</span>
+</button>
+<button onclick="window.location.href='../profile_settings/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-95 duration-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">Profile</span>
+</button>
+</nav>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

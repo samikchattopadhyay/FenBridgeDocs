@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Price Offer &amp; Ready-by Date - Step 3 of 5</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#dde4dd",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#6d3735",
+                        "primary-fixed": "#6ffbbe",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#7b4240",
+                        "primary": "#6ffbbe",
+                        "surface-container-lowest": "#09100c",
+                        "on-primary-container": "#005f40",
+                        "on-background": "#dde4dd",
+                        "tertiary": "#ffb3af",
+                        "inverse-on-surface": "#2b322d",
+                        "on-surface-variant": "#bbcabf",
+                        "on-surface": "#dde4dd",
+                        "secondary-container": "#115340",
+                        "on-secondary": "#003829",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "secondary-fixed": "#b1f0d6",
+                        "outline-variant": "#3c4a42",
+                        "surface-dim": "#0e1511",
+                        "tertiary-container": "#ffb3af",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "on-secondary-fixed-variant": "#0d503e",
+                        "surface-variant": "#2f3632",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-container": "#4edea3",
+                        "surface-container": "#1a211d",
+                        "secondary": "#95d3ba",
+                        "on-secondary-container": "#87c5ac",
+                        "on-primary-fixed-variant": "#005236",
+                        "background": "#0e1511",
+                        "outline": "#86948a",
+                        "on-tertiary": "#512120",
+                        "surface-tint": "#4edea3",
+                        "on-primary-fixed": "#002114",
+                        "on-secondary-fixed": "#002117",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-bright": "#343b36",
+                        "surface-container-highest": "#2f3632",
+                        "surface-lowest": "#0e0e0e",
+                        "on-primary": "#003824",
+                        "inverse-primary": "#006c4a",
+                        "surface": "#0e1511",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#161d19",
+                        "on-tertiary-fixed": "#370d0d",
+                        "surface-container-high": "#242c27"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "base-unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar (JSON Component Mapping) -->
+<header class="bg-surface-container-high border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">Price Offer</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Step 3 of 5</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+</button>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<div class="max-w-2xl mx-auto space-y-8">
+<!-- Heading -->
+<section>
+<h1 class="font-headline-md text-headline-md text-on-surface">Bid Price &amp; Ready-by Date</h1>
+<p class="text-on-surface-variant font-body-md mt-1">Configure your competitive proposal based on buyer requirements.</p>
+</section>
+<!-- Summary Card (surface-hi, read-only) -->
+<section class="bg-surface-container-high border border-outline-variant p-5 rounded-lg space-y-4">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<span class="text-label-md font-label-md text-primary-container uppercase tracking-wider">Requirement Ref</span>
+<p class="font-mono-data text-mono-data text-on-surface">REQ-2026-001</p>
+</div>
+<div class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-label-md font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="inventory_2">inventory_2</span>
+                        Bidding Open
+                    </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<span class="text-label-md font-label-md text-on-surface-variant block mb-1">Product</span>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold">Raw Makhana Seed, 5000 kg</p>
+</div>
+<div>
+<span class="text-label-md font-label-md text-on-surface-variant block mb-1">Price Band</span>
+<p class="font-mono-data text-body-lg text-primary">₹25–₹30/kg</p>
+</div>
+<div class="md:col-span-2 flex items-center gap-3 pt-2 border-t border-outline-variant/50">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+<div>
+<span class="text-label-md font-label-md text-on-surface-variant block">Delivery Window</span>
+<p class="font-body-md text-on-surface">15 Apr – 30 Apr</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Form Section -->
+<form class="space-y-6">
+<!-- Bid Price -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant uppercase" for="bid-price">Bid Price</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-mono-data">₹</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded-lg py-4 pl-8 pr-16 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all font-mono-data text-body-lg text-on-surface" id="bid-price" placeholder="0.00" step="0.01" type="number" value="27.50"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">/kg</span>
+</div>
+<div class="flex items-center gap-2 text-secondary font-label-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Within price band ✓</span>
+</div>
+</div>
+<!-- Ready-by Date -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant uppercase" for="ready-date">Ready-by Date</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant rounded-lg py-4 px-4 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all font-mono-data text-body-lg text-on-surface appearance-none" id="ready-date" type="date" value="2026-04-20"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+</span>
+</div>
+<div class="flex items-center gap-2 text-secondary font-label-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Within delivery window ✓</span>
+</div>
+</div>
+<!-- Bid Summary Section (surface-mid) -->
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-lg space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Total Value</span>
+<div class="text-right">
+<p class="font-mono-data text-headline-sm text-primary">₹137,500</p>
+<p class="font-mono-data text-label-md text-on-surface-variant">(5000 kg × ₹27.50)</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-error-container/10 border border-error-container/20 rounded-lg">
+<span class="material-symbols-outlined text-error" data-icon="timer">timer</span>
+<div class="flex-1">
+<p class="text-body-md font-semibold text-on-surface">Buyer Deadline</p>
+<p class="text-label-md text-error">Closes in 3 days</p>
+</div>
+</div>
+</div>
+<!-- Primary CTA -->
+<div class="pt-4">
+<button class="w-full bg-primary text-on-primary font-headline-sm py-5 rounded-lg shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex justify-center items-center gap-2" type="submit">
+                        Continue
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+<!-- Bottom Navigation Shell (JSON Component Mapping - Suppressed for task-focused page as per rules, but showing placeholder logic if it were top-level) -->
+<!-- The "Destination" Rule applies: This is a sub-page/task-focused journey Step 3 of 5. Shell is suppressed. -->
+<div class="fixed bottom-0 left-0 w-full p-4 flex justify-center pointer-events-none md:hidden">
+<div class="bg-surface-container-highest/80 backdrop-blur-md px-6 py-2 rounded-full border border-outline-variant shadow-xl pointer-events-auto">
+<p class="text-label-md font-label-md text-on-surface-variant">Industrial Scout Terminal | <span class="text-primary">SECURE-SESSION</span></p>
+</div>
+</div>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

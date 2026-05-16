@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Buy Spot Lot - FenBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#00422b",
+                        "on-error": "#690005",
+                        "surface-bright": "#393939",
+                        "outline-variant": "#3c4a42",
+                        "on-tertiary-container": "#711419",
+                        "background": "#131313",
+                        "surface-dim": "#131313",
+                        "primary-fixed": "#6ffbbe",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#650911",
+                        "surface-container": "#201f1f",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "outline": "#86948a",
+                        "on-primary-fixed-variant": "#005236",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "tertiary": "#ffb3af",
+                        "surface-variant": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "primary": "#4edea3",
+                        "on-tertiary-fixed": "#410005",
+                        "on-surface": "#e5e2e1",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-primary-fixed": "#002113",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#e9ddff",
+                        "on-secondary-container": "#c4abff",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-fixed-dim": "#4edea3",
+                        "inverse-primary": "#006c49",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#10b981",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-tint": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary-container": "#571bc1",
+                        "on-primary": "#003824"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "gutter": "12px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-card {
+            background-color: #1E1E1E;
+            border: 1px solid #2D2D2D;
+        }
+        .inner-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="min-h-screen flex flex-col pb-32">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-surface flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-150">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary truncate whitespace-nowrap">Buy Spot Lot</h1>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-150">more_vert</button>
+</header>
+<!-- Progress & Alerts -->
+<div class="px-margin pt-sm space-y-sm">
+<!-- Shelf-life Banner -->
+<div class="bg-tertiary-container/10 border border-tertiary-container/30 rounded-lg p-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-container">schedule</span>
+<span class="text-tertiary-container font-label-lg">⏰ Shelf-life: 10 days remaining. Buy soon.</span>
+</div>
+<!-- Progress Bar -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-outline">Step 1 of 5</span>
+<span class="font-label-sm text-primary">Review Details</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/5 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin py-xl space-y-xl">
+<!-- Section 1: Lot Header Card -->
+<section class="tonal-card rounded-xl p-md space-y-sm">
+<div class="flex justify-between items-start">
+<div class="space-y-base">
+<span class="text-outline font-label-sm tracking-wider">LISTING ID</span>
+<h2 class="font-headline-md text-headline-md text-on-surface truncate whitespace-nowrap">SL-2026-0014</h2>
+</div>
+<div class="bg-primary/10 border border-primary/20 px-sm py-xs rounded-full">
+<span class="text-primary font-label-sm">Listed · Ready to ship</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="font-body-md">Lot from Malda region</span>
+</div>
+</section>
+<!-- Section 2: Lot Specification -->
+<section class="space-y-md">
+<h3 class="font-label-lg text-outline uppercase tracking-widest">Lot Specification</h3>
+<div class="tonal-card rounded-xl overflow-hidden">
+<div class="p-md flex items-center justify-between border-b border-outline-variant">
+<div class="flex gap-md">
+<div class="bg-primary px-lg py-xs rounded-lg flex flex-col items-center justify-center">
+<span class="font-label-sm text-on-primary">GRADE</span>
+<span class="font-headline-md text-on-primary">A</span>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-outline font-label-sm">QUANTITY</span>
+<span class="text-on-surface font-headline-md">200 kg</span>
+</div>
+</div>
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-center border-b border-outline-variant pb-xs">
+<span class="text-on-surface-variant font-body-md">Moisture</span>
+<span class="text-on-surface font-label-lg">9.2%</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-xs">
+<span class="text-on-surface-variant font-body-md">Foreign matter</span>
+<span class="text-on-surface font-label-lg">0.4%</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-xs">
+<span class="text-on-surface-variant font-body-md">Broken seeds</span>
+<span class="text-on-surface font-label-lg">4.8%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-body-md">Size</span>
+<span class="text-on-surface font-label-lg">5.5mm - 6.0mm</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Verified by BM Scout -->
+<section class="tonal-card rounded-xl p-md border-primary/20 bg-primary-container/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-md opacity-10">
+<span class="material-symbols-outlined text-[80px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-sm mb-md">
+<div class="bg-primary/20 p-xs rounded-full">
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<h3 class="font-label-lg text-on-surface">Verified by BM Scout</h3>
+<p class="text-outline font-label-sm">Scout ID: MS-**49 • Feb 14, 2026</p>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center p-sm bg-surface-container rounded-lg">
+<span class="text-on-surface-variant font-body-md">Measured Broken Seeds</span>
+<span class="text-tertiary-fixed-dim font-label-lg px-sm py-base bg-tertiary-fixed-dim/10 rounded-full border border-tertiary-fixed-dim/20">4.8% (Near Limit)</span>
+</div>
+</div>
+</section>
+<!-- Section 4: Tamper-Evident Seal -->
+<section class="tonal-card rounded-xl p-md space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">lock</span>
+<h3 class="font-label-lg text-on-surface">Tamper-Evident Seal</h3>
+</div>
+<div class="flex justify-between items-center">
+<div class="space-y-base">
+<p class="text-outline font-label-sm">Seal ID</p>
+<p class="text-on-surface font-body-md">SEAL-2026-0118</p>
+</div>
+<div class="text-right space-y-base">
+<p class="text-outline font-label-sm">GPS Origin</p>
+<p class="text-on-surface font-body-md">25.04°N, 88.13°E</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-sm">
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Seal verification" class="w-full h-full object-cover" data-alt="A macro close-up photograph of a metallic green tamper-evident security seal on a large jute sack. The lighting is dramatic, highlighting the texture of the fabric and the reflective surface of the high-tech barcode on the seal. The scene is professional and industrial, set in a dark warehouse environment that emphasizes security and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANMXKQLyZmkYQ2vgIGzpDxUf2gPdmIozPrrR2ugkorEUxN7zYBI4HjxwPhjmxghOnJGNJtRHgZzv2nnLa2eJ2-CEdCEHKwC7YJyVbH7HEzfS-0y9KmqRsL9du2n-u5Q_TIYss5WvOcwv-0RkUzvtw-EfASq688PV-U0SFUM_B_Ux2Stv_gohk_412ZuOKhKLRUZkrEhoMBhtgc53kFKLhZFI_V-Nj8ePJgbNy1aDu_00esjC2pNbS6kKQLkfudQhAIVLDTWH0yTMmb"/>
+</div>
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Storage center" class="w-full h-full object-cover" data-alt="An expansive view of a modern agricultural storage facility with rows of neatly stacked bags of makhana. The lighting is cool and clinical, utilizing emerald green accents to highlight safety pathways. The atmosphere is high-end and technologically advanced, suggesting a corporate-grade supply chain operation in a professional agri-tech setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8I9Vvrckfb89MzkGZqfmZyHjruCTJAtVLePADnNLXPZXflSwIcY9r19djdayu85VHsVCxUPBdJbpw1ZU1EfVe2_hfzZs8I1c82QX3B86y7tzle5os0T_x2Ec9QHUPocGXQFs8SaejoxjaTgSXYKE4uv4is8DFoaM0UuFKE16DHiruqoMZjx-B1tnCKNm2XjCyyT2OAM0fTVjePiBYWrzkvyf4ge7vUE024TXi_CPg2loH8qGvGH9_ogwbDhaQ6-X-dc_CyweMX_o0"/>
+</div>
+<div class="aspect-square bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Quality check" class="w-full h-full object-cover" data-alt="A detailed professional shot of a digital device displaying supply chain data overlays against a blurred background of a modern makhana processing unit. The focus is on the interface showing GPS coordinates and seal validation status in vibrant emerald green text. The aesthetic is sleek, corporate, and minimalist, emphasizing digital transparency and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5liWKL39tazm7w8RQAiTEarUNQARMGU4JS0pdxVzupZzyOYcNy2UDDA2hnVY3qDYn3VJro8jUHOSSeI1h1kAZsoKpaIc2FjCEtcfXMTshVdDwMiyaqGM0DcXdYEjjtEr0AqRNrWF2dfJo4scUwicx-wyAlvUKYt-b_J2T0oNOvi8KG_DGW24WjOc_z68gxVY54vdk4jNKMv5SiNM-KHolsjY1y28S-djpRYP5xtukY6wCgxF-1lHcdQe9iHurW1g76ari-XJWqIYL"/>
+</div>
+</div>
+</section>
+<!-- Section 5: Pricing breakdown -->
+<section class="tonal-card rounded-xl p-md space-y-md">
+<h3 class="font-label-lg text-outline uppercase tracking-widest">Payment Summary</h3>
+<div class="space-y-sm">
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>Unit price</span>
+<span>₹480.00 / kg</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>Quantity</span>
+<span>200 kg</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>Sub-total</span>
+<span>₹96,000.00</span>
+</div>
+<div class="h-px bg-outline-variant my-sm"></div>
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-on-surface">Grand Total</span>
+<span class="font-headline-md text-primary">₹96,000.00</span>
+</div>
+</div>
+</section>
+<!-- Section 6: Delivery info -->
+<section class="tonal-card rounded-xl p-md flex items-center gap-md">
+<div class="p-sm bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+</div>
+<div>
+<h3 class="font-label-lg text-on-surface">FOR-Destination</h3>
+<p class="text-on-surface-variant font-body-md">Dispatch within 24h after insurance confirmation.</p>
+</div>
+</section>
+</main>
+<!-- Bottom Sticky Footer -->
+<footer class="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-md p-margin space-y-md border-t border-outline-variant/30">
+<div class="flex gap-sm">
+<button class="flex-1 py-md bg-surface-container rounded-xl font-label-lg text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 duration-150 border border-outline-variant">
+                Reserve Instead
+            </button>
+<button class="flex-1 py-md bg-surface-container rounded-xl font-label-lg text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 duration-150 border border-outline-variant flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+                Contact BM
+            </button>
+</div>
+<button class="w-full py-md bg-primary text-on-primary font-headline-md rounded-xl inner-glow shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-[0.98] duration-200">
+            Continue to Insurance
+        </button>
+</footer>
+
+
+    <script src="../../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

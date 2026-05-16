@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Dashboard & Tasks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 48px 96px;
+    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .stepper-panel-container {
+      max-width: 1280px; margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 20px; z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 11px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-group-block {
+      max-width: 1280px; margin: 0 auto 48px; background: #141416;
+      border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;
+    }
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill {
+      background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light);
+      padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+    }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 48px; }
+
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+    .step-folder-ref { font-family: monospace; font-size: 11px; color: var(--text-dim); }
+    
+    .step-body { display: flex; flex-wrap: wrap; min-height: 480px; }
+    .step-left-pane {
+      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
+      display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
+    }
+    .card-image-viewport {
+      width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+      border-radius: 12px; border: 2px solid var(--border-color); background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    
+    .step-right-pane { flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; padding-left: 0; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
+
+    .db-schema-box {
+      background: #000; border: 1px solid var(--border-color); border-radius: 6px;
+      padding: 12px; font-family: monospace; font-size: 12px; color: #22d3ee;
+      overflow-x: auto; white-space: pre-wrap; margin-top: 8px;
+    }
+
+    .step-actions { display: flex; gap: 12px; padding-top: 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
+    .action-btn {
+      background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.25); color: var(--accent-primary);
+      padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s ease;
+    }
+    .action-btn:hover { background: var(--accent-primary); color: #000; }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .modal-win { width: 380px; height: 720px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+    .modal-header { padding: 12px 18px; background: #141416; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    .modal-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent-primary); }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
+    .modal-body { flex: 1; width: 100%; height: 100%; }
+    .modal-body iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <div class="tag">Workflow Module 2</div>
+    <h1 class="title">Scout Dashboard & Tasks</h1>
+    <p class="desc">Mobile-first assignment hub for field agents, surfacing real-time lot inspections and warehouse audits with geofencing and priority logic.</p>
+  </div>
+
+  <div class="stepper-panel-container">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node">
+        <span class="node-num">01</span>
+        <span class="node-label">Today's Tasks</span>
+      </a>
+      <a href="#step-02" class="stepper-node">
+        <span class="node-num">02</span>
+        <span class="node-label">Task Context</span>
+      </a>
+      <a href="#step-03" class="stepper-node">
+        <span class="node-num">03</span>
+        <span class="node-label">Overdue Alerts</span>
+      </a>
+      <a href="#step-04" class="stepper-node">
+        <span class="node-num">04</span>
+        <span class="node-label">Notifications</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="workflow-group-block">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">Screens Inventory</div>
+      <span class="step-count-pill">4 Screens</span>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Screen 1 -->
+      <div class="flow-step-card" id="step-01">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 1</span>Today's Task List</div>
+          <span class="step-folder-ref">scout_today_dashboard</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../app/screens_v2/scout/scout_dashboard/scout_today_dashboard/screen.png" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Primary field hub for the scout's daily workflow. Surfaces all active assignments (Inspections, Fitness Checks, Re-checks) based on proximity and priority.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">
+                  <ul class="spec-list">
+                    <li>Dynamic task list scoped to the logged-in scout.</li>
+                    <li>Status grouping: New, In-Progress, Completed.</li>
+                    <li>Priority markers for lots linked to active Buyer POs.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Experience (UX)</div>
+                <div class="spec-value">Scrollable list of task cards. Each card shows Warehouse/Lot Name, Task Type, Distance (km), and Priority Pill. Pull-to-refresh for latest sync.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Actions</div>
+                <ul class="spec-list">
+                  <li><strong>Tap Task Card</strong>: Opens Task Detail Bottom Sheet.</li>
+                  <li><strong>Search</strong>: Filter tasks by warehouse name or lot ID.</li>
+                  <li><strong>Map Toggle</strong>: View tasks in a geofenced map view.</li>
+                </ul>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Polls `scout_tasks` table. Uses device GPS to calculate `distance_km` client-side via Haversine. Offline-first caching enabled.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Design Details</div>
+                <ul class="spec-list">
+                  <li>Dark-themed list with surface-hi card separation.</li>
+                  <li>Accent color (Cyan) for active icons.</li>
+                  <li>Skeletal loaders for data transitions.</li>
+                </ul>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">SELECT * FROM scout_tasks 
+WHERE scout_id = auth.uid() 
+AND status != 'completed' 
+ORDER BY priority DESC, scheduled_date ASC;</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../app/screens_v2/scout/scout_dashboard/scout_today_dashboard/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="flow-step-card" id="step-02">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 2</span>Task Detail Bottom Sheet</div>
+          <span class="step-folder-ref">task_detail_sheet</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../app/screens_v2/scout/scout_dashboard/task_detail_sheet/screen.png" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Secondary context layer providing specific details (Who, Where, What) before a scout commits to a multi-step inspection workflow.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Must display warehouse contact details, previous fitness status, and PO constraints (for verification tasks). Prevents accidental entry into wrong lots.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Experience (UX)</div>
+                <div class="spec-value">Standard Bottom Sheet (~65% height). Header with Task Title. Details sections: Location (with map link), Contact (click-to-call), and Historical Notes.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Actions</div>
+                <ul class="spec-list">
+                  <li><strong>Start Task</strong>: Redirects to specific workflow (Fitness/Verification/etc).</li>
+                  <li><strong>Call Contact</strong>: Opens native dialer.</li>
+                  <li><strong>Directions</strong>: Opens Google Maps/Apple Maps to warehouse GPS.</li>
+                </ul>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Hydrates from `scout_tasks` joined with `warehouses`, `poppers`, and `lot_seals`. Checks `sync_status` before allowing "Start".</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Design Details</div>
+                <ul class="spec-list">
+                  <li>Rounded top corners (20dp radius).</li>
+                  <li>Cyan primary CTA at bottom.</li>
+                  <li>Iconography for contact and navigation.</li>
+                </ul>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">SELECT t.*, w.address, w.contact_no, l.seal_no 
+FROM scout_tasks t 
+JOIN warehouses w ON t.warehouse_id = w.id 
+LEFT JOIN lots l ON t.lot_id = l.id 
+WHERE t.id = $1;</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../app/screens_v2/scout/scout_dashboard/task_detail_bottom_sheet/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3 -->
+      <div class="flow-step-card" id="step-03">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 3</span>Overdue Tasks Screen</div>
+          <span class="step-folder-ref">overdue_assignments</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../app/screens_v2/scout/scout_dashboard/overdue_assignments/screen.png" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Escalation view surfacing tasks that have missed their 24-48 hour service level agreement (SLA) window.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Business Requirement</div>
+                <ul class="spec-list">
+                  <li>Automatic flag for tasks > 24h past `scheduled_date`.</li>
+                  <li>Visual warning: Red indicator for overdue status.</li>
+                  <li>Prevents cherry-picking of newer tasks while old ones linger.</li>
+                </ul>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Experience (UX)</div>
+                <div class="spec-value">Separate tab or filtered list with "Overdue" header. Time-elapsed counter shown on each card (e.g., "Overdue by 14 hrs").</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Actions</div>
+                <ul class="spec-list">
+                  <li><strong>Acknowledge</strong>: Adds a note why the task is delayed.</li>
+                  <li><strong>Tap Task</strong>: Standard Task Detail Sheet opens.</li>
+                </ul>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Calculates `now() - scheduled_date`. Filter: `status = 'pending' AND scheduled_date < now()`.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Design Details</div>
+                <ul class="spec-list">
+                  <li>Danger Red (#ef4444) highlights for overdue counts.</li>
+                  <li>Warning icon on list items.</li>
+                </ul>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">CREATE INDEX idx_overdue_tasks ON scout_tasks (scheduled_date, status) WHERE status = 'pending';</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../app/screens_v2/scout/scout_dashboard/overdue_assignments/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 4 -->
+      <div class="flow-step-card" id="step-04">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 4</span>Notifications Center</div>
+          <span class="step-folder-ref">scout_notifications</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../app/screens_v2/scout/scout_dashboard/scout_notifications/screen.png" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Audit trail of critical alerts, task re-assignments, and system-level messages for the scout.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Business Requirement</div>
+                <ul class="spec-list">
+                  <li>Real-time alerts for new high-priority tasks.</li>
+                  <li>Feedback on Admin-reviewed inspections (e.g., Re-inspection requested).</li>
+                  <li>Sync conflict warnings.</li>
+                </ul>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Experience (UX)</div>
+                <div class="spec-value">Chronological list of notification cards. Grouped by Today/Yesterday/Older. Badge count on the bell icon in Top Bar.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">User Actions</div>
+                <ul class="spec-list">
+                  <li><strong>Tap Notification</strong>: Deep-link to the relevant task or sync item.</li>
+                  <li><strong>Clear All</strong>: Mark all as read.</li>
+                </ul>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Uses Supabase real-time subscriptions for the `notifications` table. FCM (Firebase Cloud Messaging) for background pushes.</div>
+              </div>
+              <div class="spec-block">
+                <div class="spec-label">Design Details</div>
+                <ul class="spec-list">
+                  <li>Distinct icons for Task, Warning, and Message.</li>
+                  <li>Unread state indicated by a subtle blue dot.</li>
+                </ul>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">CREATE TABLE notifications (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  title TEXT,
+  body TEXT,
+  metadata JSONB, -- { "task_id": "...", "type": "task_assigned" }
+  read_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT now()
+);</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../app/screens_v2/scout/scout_dashboard/scout_notifications/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
+    <div class="modal-win" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <span class="modal-title">Source Preview</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body"><iframe id="modal-iframe" src=""></iframe></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
+    function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => {
+              node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pond Inspection - Step 1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "outline-variant": "#3c4a42",
+                        "tertiary-container": "#ffb3af",
+                        "on-tertiary-fixed": "#370d0d",
+                        "surface-container": "#1a211d",
+                        "on-tertiary": "#512120",
+                        "surface-bright": "#343b36",
+                        "surface": "#0e1511",
+                        "tertiary": "#ffb3af",
+                        "primary": "#6ffbbe",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container-low": "#161d19",
+                        "secondary": "#95d3ba",
+                        "on-primary": "#003824",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-container": "#115340",
+                        "on-background": "#dde4dd",
+                        "background": "#0e1511",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "error": "#ffb4ab",
+                        "on-surface": "#dde4dd",
+                        "inverse-on-surface": "#2b322d",
+                        "on-surface-variant": "#bbcabf",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#09100c",
+                        "surface-container-high": "#242c27",
+                        "surface-variant": "#2f3632",
+                        "inverse-surface": "#dde4dd",
+                        "inverse-primary": "#006c4a",
+                        "secondary-fixed": "#b1f0d6",
+                        "on-secondary-fixed-variant": "#0d503e",
+                        "on-primary-fixed": "#002114",
+                        "on-primary-container": "#005f40",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "primary-container": "#4edea3",
+                        "outline": "#86948a",
+                        "on-tertiary-container": "#7b4240",
+                        "on-secondary-fixed": "#002117",
+                        "surface-container-highest": "#2f3632",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#6d3735",
+                        "on-secondary": "#003829",
+                        "surface-lowest": "#0e0e0e",
+                        "surface-tint": "#4edea3",
+                        "on-secondary-container": "#87c5ac",
+                        "surface-dim": "#0e1511"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base-unit": "4px",
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "container-max": "1440px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar from JSON Authority -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile h-14">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary active:scale-95 duration-100 ease-in-out">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant">Step 1 of 5</span>
+<span class="font-headline-sm text-headline-sm text-on-surface dark:text-on-surface">Pond Inspection</span>
+</div>
+</div>
+<button class="text-on-surface-variant dark:text-on-surface-variant active:scale-95 duration-100 ease-in-out">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-container-max mx-auto px-margin-mobile py-6 flex flex-col gap-6">
+<!-- Header Section -->
+<section>
+<h1 class="font-headline-md text-headline-md text-on-surface">Confirm Pond &amp; Arrival</h1>
+<p class="text-on-surface-variant mt-1">Verify location data and farmer identity before proceeding.</p>
+</section>
+<!-- Pond Identity Card (Industrial High-Density Card) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden">
+<div class="relative h-32 w-full overflow-hidden">
+<img class="w-full h-full object-cover opacity-60" data-alt="A professional aerial view of a large commercial aquaculture pond in rural India during the blue hour. The water surface reflects the deep twilight sky, surrounded by precise earthen embankments and technical monitoring equipment. The lighting is low-key and industrial, emphasizing a high-tech agricultural setting with deep emerald and obsidian tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm-SXvFaWR-IVnvL8CB__IvbFzx2hCHv6sdI5HtPojJP-v6TYCJxfaMk4qjRdors6SoeDzlL5lys7CW12pP7yUnW8-HYDovUkpAVa0QioSvkk21OCg10GDpSoNkScLGOshZtBlPfXXT0qfEO-N__V3IWcRmdzxA78w0YENtuvgbFOI_qdZQN16tslp2e4GHf3a82WiX7lL6oFXOvtfJJ0yuTry4qSkVPrKkZ3NYnM8UTyAT7Ns7OBJtF9WAv-tDi29YPRQB3LkkpNo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute top-4 right-4">
+<span class="bg-primary-container text-on-primary-container px-2 py-1 rounded font-mono-data text-[11px] uppercase tracking-wider">POND-1024</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Farmer</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Ramesh Kumar Sharma</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-1">Area</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">2.5 acres</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="font-body-md text-body-md">Bamnganj, Malda, West Bengal</span>
+</div>
+<!-- Last Inspection Strip -->
+<div class="bg-surface-container-high border-y border-outline-variant px-3 py-2 -mx-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">history</span>
+<div class="flex flex-wrap items-center gap-x-2 gap-y-0 text-on-surface font-mono-data text-[12px]">
+<span class="font-bold">12 Feb 2026</span>
+<span class="text-outline">•</span>
+<span>Water level: <span class="text-primary">Normal</span></span>
+<span class="text-outline">•</span>
+<span>Readiness: <span class="text-primary">6/10</span></span>
+<span class="text-outline">•</span>
+<span>Algae: <span class="text-primary">Light</span></span>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex gap-4 pt-2">
+<button class="flex-1 flex items-center justify-center gap-2 py-2 border border-outline-variant rounded hover:bg-surface-container-high transition-colors text-primary active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[18px]">directions</span>
+<span class="font-label-md text-label-md uppercase">Navigate</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 py-2 border border-outline-variant rounded hover:bg-surface-container-high transition-colors text-primary active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="font-label-md text-label-md uppercase">Call Farmer</span>
+</button>
+</div>
+</div>
+</div>
+<!-- GPS Capture Block -->
+<section class="bg-surface-container border border-outline-variant p-4 rounded-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Your Location</span>
+</div>
+<div class="mt-2 flex flex-col">
+<span class="font-mono-data text-headline-sm text-primary">25.1234°N, 88.5678°E</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Accuracy: ±45 meters</span>
+</div>
+</div>
+<button class="border border-outline-variant px-3 py-1.5 rounded flex items-center gap-2 text-on-surface hover:bg-surface-container-highest transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span class="font-label-md text-label-md">RE-CAPTURE</span>
+</button>
+</div>
+<!-- Map Placeholder -->
+<div class="h-40 bg-surface-container-highest rounded border border-outline-variant overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale opacity-50 contrast-125" data-alt="A dark-mode tactical map visualization showing agricultural field boundaries in West Bengal. The map uses a noir aesthetic with deep charcoal backgrounds, neon emerald outlines for water bodies, and technical data overlays. A single bright pulsar dot represents the current GPS position with a soft cyan radius indicating accuracy range." data-location="Malda" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXH5VjXxVUvfIHAWLlwGY2EnCP2tdy0tL0zqxWSfwZrrLkrUrds1ZnpPXHg68mzpArwiNk3laNjKAaOs9NsKuy4QSnq8BvVP8Xv39HwSd567_oLDS_tHC6tgMF9Dl_tseBrQTX-ZiIpeqAN3lQzNJYXFsGwtoHnCveS_B1T6jpdMTU08n3oWe7OUhOY56yKHoeiEGyYiOIrgpiPDoatPF6UUoK2islruxbQcglYK32r-hAmNTUIYq7WvaGi_kTGhBuYoi1rJL4BQuC"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_#6ffbbe]"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action CTA -->
+<footer class="p-margin-mobile bg-surface-container-lowest border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg uppercase tracking-widest font-bold shadow-lg shadow-primary/10 hover:brightness-110 active:scale-95 transition-all">
+            Begin Inspection
+        </button>
+</footer>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

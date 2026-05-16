@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#6ffbbe",
+                    "outline-variant": "#3c4a42",
+                    "tertiary-container": "#ffb3af",
+                    "on-tertiary-fixed": "#370d0d",
+                    "surface-container": "#1a211d",
+                    "on-tertiary": "#512120",
+                    "surface-bright": "#343b36",
+                    "surface": "#0e1511",
+                    "tertiary": "#ffb3af",
+                    "primary": "#6ffbbe",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container-low": "#161d19",
+                    "secondary": "#95d3ba",
+                    "on-primary": "#003824",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#ffdad7",
+                    "secondary-container": "#115340",
+                    "on-background": "#dde4dd",
+                    "background": "#0e1511",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "error": "#ffb4ab",
+                    "on-surface": "#dde4dd",
+                    "inverse-on-surface": "#2b322d",
+                    "on-surface-variant": "#bbcabf",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#09100c",
+                    "surface-container-high": "#242c27",
+                    "surface-variant": "#2f3632",
+                    "inverse-surface": "#dde4dd",
+                    "inverse-primary": "#006c4a",
+                    "secondary-fixed": "#b1f0d6",
+                    "on-secondary-fixed-variant": "#0d503e",
+                    "on-primary-fixed": "#002114",
+                    "on-primary-container": "#005f40",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "primary-container": "#4edea3",
+                    "outline": "#86948a",
+                    "on-tertiary-container": "#7b4240",
+                    "on-secondary-fixed": "#002117",
+                    "surface-container-highest": "#2f3632",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#6d3735",
+                    "on-secondary": "#003829",
+                    "surface-lowest": "#0e0e0e",
+                    "surface-tint": "#4edea3",
+                    "on-secondary-container": "#87c5ac",
+                    "surface-dim": "#0e1511"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base-unit": "4px",
+                    "unit": "4px",
+                    "margin-desktop": "32px",
+                    "container-max": "1440px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile h-14">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-100 ease-in-out">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Step 3 of 5</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface dark:text-on-surface">Bund-Edge Readings</h1>
+</div>
+</div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-100 ease-in-out">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col p-margin-mobile md:px-margin-desktop md:max-w-4xl md:mx-auto w-full">
+<!-- Helper Text -->
+<div class="mb-6">
+<p class="font-body-md text-body-md text-on-surface-variant">Take 3–5 readings around the pond bund.</p>
+</div>
+<!-- Live Averages Chip -->
+<div class="mb-8 self-start">
+<div class="inline-flex items-center px-3 py-1.5 rounded-full bg-secondary-container/30 border border-secondary/20">
+<span class="material-symbols-outlined text-[16px] text-primary mr-2" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-mono-data text-mono-data text-primary uppercase tracking-wider">Avg density 14.2/sqm · Avg maturity 62%</span>
+</div>
+</div>
+<!-- Readings Rows -->
+<div class="space-y-3">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Reading 1</span>
+<div class="flex items-baseline gap-4">
+<div class="flex flex-col">
+<span class="font-label-md text-[10px] text-outline uppercase">Density</span>
+<span class="font-mono-data text-headline-sm text-on-surface">14.2<span class="text-label-md text-on-surface-variant ml-1">/sqm</span></span>
+</div>
+<div class="w-px h-8 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-[10px] text-outline uppercase">Maturity</span>
+<span class="font-mono-data text-headline-sm text-on-surface">65%</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors active:scale-95">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Reading 2</span>
+<div class="flex items-baseline gap-4">
+<div class="flex flex-col">
+<span class="font-label-md text-[10px] text-outline uppercase">Density</span>
+<span class="font-mono-data text-headline-sm text-on-surface">13.8<span class="text-label-md text-on-surface-variant ml-1">/sqm</span></span>
+</div>
+<div class="w-px h-8 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-[10px] text-outline uppercase">Maturity</span>
+<span class="font-mono-data text-headline-sm text-on-surface">60%</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors active:scale-95">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Reading 3</span>
+<div class="flex items-baseline gap-4">
+<div class="flex flex-col">
+<span class="font-label-md text-[10px] text-outline uppercase">Density</span>
+<span class="font-mono-data text-headline-sm text-on-surface">14.5<span class="text-label-md text-on-surface-variant ml-1">/sqm</span></span>
+</div>
+<div class="w-px h-8 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-[10px] text-outline uppercase">Maturity</span>
+<span class="font-mono-data text-headline-sm text-on-surface">62%</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors active:scale-95">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Add Reading Button -->
+<button class="mt-4 w-full py-4 border border-dashed border-outline rounded-lg flex items-center justify-center gap-2 text-on-surface-variant hover:border-primary hover:text-primary transition-all active:scale-[0.99]">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Add reading</span>
+</button>
+<!-- Visualization Bento Card (Supplementary) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 relative overflow-hidden h-48">
+<div class="relative z-10">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-4">Current Distribution</h3>
+<div class="flex items-end gap-2 h-20">
+<div class="bg-primary/20 w-8 h-12 rounded-t-sm border-t-2 border-primary"></div>
+<div class="bg-primary/40 w-8 h-16 rounded-t-sm border-t-2 border-primary"></div>
+<div class="bg-primary/60 w-8 h-10 rounded-t-sm border-t-2 border-primary"></div>
+<div class="bg-primary/30 w-8 h-14 rounded-t-sm border-t-2 border-primary"></div>
+</div>
+</div>
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="h-full w-full bg-[radial-gradient(#3c4a42_1px,transparent_1px)] [background-size:16px_16px]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10"></div>
+<img alt="Agricultural monitoring" class="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="A moody, high-contrast aerial photograph of a dark green agricultural field at dusk, showing precise irrigation patterns and technical contours. The atmosphere is nocturnal and industrial, with deep noir shadows and cool artificial highlights reflecting off water surfaces. The image captures the essence of advanced automated farming and environmental monitoring in a sleek dark-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnMfcVpmKY5gle6FMSSpoFWcf--Tzd1AeYH-xSt5RlDZOoEkYHp_Z4FuWsWgKJI5ZRnJuzVKtbsya86RBxz8l3y_Mf_X-tZ4rTMeJE2Hpq6ZQMYyLHsdMMKSGVw0ZiGwYpgScgRx50kXR_aoXndjDJW4QrjOzQv1hGnfnROzSTZI7yl-0yNyUwQmrWxQK0Tof7XByx5NoQLteqd0gl5ywDQDaFsSmIw1CjGk0uvInTA6skRCHjhpuM6syt-CG_EdFr2sXWelSbLPf2"/>
+<div class="absolute bottom-4 left-4 z-20">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Sector B-04</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer CTA -->
+<footer class="p-margin-mobile bg-surface-container-lowest border-t border-outline-variant mt-auto">
+<div class="md:max-w-4xl md:mx-auto w-full">
+<button class="w-full h-14 bg-primary text-on-primary rounded-lg font-label-md text-label-md uppercase tracking-[0.2em] font-bold shadow-lg shadow-primary/10 active:scale-95 transition-all">
+                Continue
+            </button>
+</div>
+</footer>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

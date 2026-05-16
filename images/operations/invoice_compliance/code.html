@@ -1,0 +1,345 @@
+<!--
+  SCREEN 33: Invoice Download & GST Report
+  Screen Reference: screen.png
+  Role: Buyer/Admin/Finance
+  Priority: 🟠 High
+  Purpose: Digital GST invoice generation, compliance reporting for statutory filing
+-->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge | Invoice Download &amp; GST Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#650911",
+            "on-secondary": "#3c0091",
+            "tertiary-fixed-dim": "#ffb3af",
+            "on-surface-variant": "#bbcabf",
+            "secondary": "#d0bcff",
+            "on-tertiary-fixed": "#410005",
+            "tertiary": "#ffb3af",
+            "on-secondary-container": "#c4abff",
+            "on-error-container": "#ffdad6",
+            "primary-container": "#10b981",
+            "primary-fixed-dim": "#4edea3",
+            "surface-tint": "#4edea3",
+            "surface-container-highest": "#353534",
+            "primary": "#4edea3",
+            "surface-container-lowest": "#0e0e0e",
+            "on-primary-fixed-variant": "#005236",
+            "primary-fixed": "#6ffbbe",
+            "tertiary-container": "#fc7c78",
+            "surface": "#131313",
+            "on-primary-container": "#00422b",
+            "error-container": "#93000a",
+            "secondary-fixed-dim": "#d0bcff",
+            "surface-dim": "#131313",
+            "surface-container-high": "#2a2a2a",
+            "on-primary-fixed": "#002113",
+            "secondary-fixed": "#e9ddff",
+            "inverse-surface": "#e5e2e1",
+            "background": "#131313",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#5516be",
+            "surface-container": "#201f1f",
+            "on-background": "#e5e2e1",
+            "surface-variant": "#353534",
+            "on-surface": "#e5e2e1",
+            "on-tertiary-container": "#711419",
+            "error": "#ffb4ab",
+            "surface-bright": "#393939",
+            "tertiary-fixed": "#ffdad7",
+            "secondary-container": "#571bc1",
+            "inverse-on-surface": "#313030",
+            "surface-container-low": "#1c1b1b",
+            "inverse-primary": "#006c49",
+            "outline-variant": "#3c4a42",
+            "on-primary": "#003824",
+            "outline": "#86948a",
+            "on-secondary-fixed": "#23005c",
+            "on-tertiary-fixed-variant": "#842225"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "sm": "12px",
+            "lg": "24px",
+            "gutter": "12px",
+            "margin": "20px",
+            "xs": "8px",
+            "xl": "32px",
+            "md": "16px",
+            "base": "4px"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .invoice-shadow {
+      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4);
+    }
+    .inner-glow {
+      box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-surface flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 duration-150">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">FenBridge</h1>
+</div>
+<div class="flex gap-md items-center">
+<span class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity cursor-pointer">Skip</span>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-margin py-xl pb-32">
+<!-- Header Actions Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-xl">
+<div>
+<span class="text-primary font-label-lg uppercase tracking-wider">Transaction Ready</span>
+<h2 class="font-headline-lg text-headline-lg mt-base">Tax Invoice PO-1847</h2>
+<p class="text-on-surface-variant font-body-md">Status: Verified &amp; Signed via OTP</p>
+</div>
+<div class="flex flex-wrap gap-md">
+<button class="flex items-center gap-xs bg-surface-container-high border border-outline-variant px-lg py-md rounded-lg hover:bg-surface-bright transition-colors inner-glow">
+<span class="material-symbols-outlined text-primary">email</span>
+<span class="font-label-lg text-label-lg">Email Invoice</span>
+</button>
+<button class="flex items-center gap-xs bg-primary text-on-primary px-xl py-md rounded-lg hover:opacity-90 transition-opacity inner-glow">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
+<span class="font-label-lg text-label-lg">Download PDF</span>
+</button>
+</div>
+</div>
+<!-- Main Content Layout (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Left Column: Invoice Preview Container -->
+<div class="lg:col-span-2 space-y-lg">
+<div class="bg-white text-black p-xl rounded-lg invoice-shadow min-h-[800px] flex flex-col">
+<!-- GST Invoice Header -->
+<div class="flex justify-between items-start border-b border-gray-200 pb-lg mb-lg">
+<div>
+<h3 class="text-2xl font-bold uppercase tracking-tighter">Tax Invoice</h3>
+<p class="text-sm text-gray-500">Original for Recipient</p>
+</div>
+<div class="text-right">
+<p class="font-bold">FenBridge Logistics Pvt Ltd</p>
+<p class="text-xs text-gray-600">GSTIN: 10AAACF1234A1Z5</p>
+<p class="text-xs text-gray-600">Patna, Bihar - 800001</p>
+</div>
+</div>
+<!-- Billing Details -->
+<div class="grid grid-cols-2 gap-xl mb-xl">
+<div>
+<p class="text-[10px] uppercase font-bold text-gray-400 mb-xs">Billed To (Buyer)</p>
+<p class="font-bold text-sm">Global Agri-Exporters Inc.</p>
+<p class="text-xs text-gray-600">GSTIN: 27AABCG9876R1ZV</p>
+<p class="text-xs text-gray-600">BKC, Mumbai, MH - 400051</p>
+<p class="text-xs text-gray-600">State Code: 27 (Maharashtra)</p>
+</div>
+<div class="text-right">
+<div class="space-y-1">
+<p class="text-xs"><span class="font-bold">Invoice No:</span> FB/24-25/1847</p>
+<p class="text-xs"><span class="font-bold">Date:</span> 14 Oct 2023</p>
+<p class="text-xs"><span class="font-bold">PO Ref:</span> PO-1847</p>
+<p class="text-xs"><span class="font-bold">Place of Supply:</span> Bihar (10)</p>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="flex-grow">
+<table class="w-full text-left text-sm border-collapse">
+<thead>
+<tr class="border-y border-gray-800">
+<th class="py-md px-xs font-bold">#</th>
+<th class="py-md px-xs font-bold">Description of Goods</th>
+<th class="py-md px-xs font-bold">HSN</th>
+<th class="py-md px-xs font-bold">Qty</th>
+<th class="py-md px-xs font-bold">Rate</th>
+<th class="py-md px-xs text-right font-bold">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr>
+<td class="py-md px-xs">1</td>
+<td class="py-md px-xs">
+<p class="font-bold">Premium Makhana (Fox Nuts)</p>
+<p class="text-[10px] text-gray-500">Grade A - Export Quality</p>
+</td>
+<td class="py-md px-xs">1905</td>
+<td class="py-md px-xs">2,500 kg</td>
+<td class="py-md px-xs">₹620.00</td>
+<td class="py-md px-xs text-right font-bold">₹15,50,000.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Financial Breakdown & Notes -->
+<div class="mt-xl border-t-2 border-gray-800 pt-lg">
+<div class="flex justify-between">
+<div class="w-2/3">
+<p class="text-[10px] font-bold text-gray-400 uppercase mb-xs">Taxation Summary</p>
+<div class="bg-gray-50 p-md rounded border border-gray-100">
+<p class="text-xs text-gray-700 italic">** Note: Tax is payable under Reverse Charge: NO</p>
+<p class="text-xs text-gray-700 mt-xs">IGST calculated at 5% for Inter-state supply (Bihar to Maharashtra).</p>
+</div>
+<div class="mt-lg">
+<p class="text-[10px] font-bold text-gray-400 uppercase">Amount in Words</p>
+<p class="text-xs font-bold">Sixteen Lakh Twenty Five Thousand Rupees Only</p>
+</div>
+</div>
+<div class="w-1/3 space-y-md">
+<div class="flex justify-between text-xs">
+<span>Sub Total</span>
+<span class="font-bold">₹15,50,000.00</span>
+</div>
+<div class="flex justify-between text-xs text-primary-container font-bold">
+<span>IGST (5%)</span>
+<span>₹75,000.00</span>
+</div>
+<div class="flex justify-between text-base border-t border-gray-200 pt-md">
+<span class="font-bold">Total</span>
+<span class="font-bold">₹16,25,000.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Stamp -->
+<div class="mt-xl flex justify-between items-end">
+<div class="flex items-center gap-md border-2 border-primary-container/30 p-md rounded-lg bg-primary-container/5">
+<span class="material-symbols-outlined text-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="text-[10px] uppercase font-bold text-primary-container">Digitally Signed</p>
+<p class="text-xs font-bold text-black">FenBridge Verification Node</p>
+<p class="text-[9px] text-gray-500">Auth ID: FB-OTP-9928-1847-X</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-gray-400">Computer Generated Invoice</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Contextual Info & Details -->
+<div class="space-y-lg">
+<!-- Order Summary Card -->
+<div class="bg-surface-container border border-outline-variant p-lg rounded-xl">
+<h3 class="font-label-lg text-label-lg text-primary uppercase mb-md">Order Summary</h3>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-body-md">Items Total</span>
+<span class="font-bold">₹15,50,000</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-body-md">GST (IGST 5%)</span>
+<span class="text-primary font-bold">+ ₹75,000</span>
+</div>
+<div class="h-px bg-outline-variant my-sm"></div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-bold">Payable Amount</span>
+<span class="text-headline-md font-bold text-primary">₹16,25,000</span>
+</div>
+</div>
+</div>
+<!-- Compliance Check Card -->
+<div class="bg-surface-container border border-outline-variant p-lg rounded-xl">
+<h3 class="font-label-lg text-label-lg text-primary uppercase mb-md">Compliance Status</h3>
+<ul class="space-y-md">
+<li class="flex gap-md">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-label-lg">HSN Code Validated</p>
+<p class="text-xs text-on-surface-variant">1905 matches product category</p>
+</div>
+</li>
+<li class="flex gap-md">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-label-lg">GSTIN Verified</p>
+<p class="text-xs text-on-surface-variant">Recipient: 27AABCG9876R1ZV</p>
+</div>
+</li>
+<li class="flex gap-md">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-label-lg">OTP Signed</p>
+<p class="text-xs text-on-surface-variant">Auth at 2023-10-14 10:45 AM</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Action Card -->
+<div class="bg-primary-container/10 border border-primary-container/20 p-lg rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-label-lg text-label-lg text-primary uppercase mb-xs">Need Assistance?</h3>
+<p class="text-sm text-on-surface-variant mb-md">Contact our finance desk for billing corrections or credit note requests.</p>
+<button class="w-full bg-surface text-primary border border-primary px-md py-sm rounded font-label-lg hover:bg-primary/5 transition-colors">Raise Query</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl text-primary/5 select-none">support_agent</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Shared Component Logic) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface shadow-md rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-sm text-label-sm">Invoices</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Payments</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<!-- Desktop Floating Action Button (FAB) Hidden on details screen per rules, but showing contextually for primary action if needed -->
+<!-- Here we suppress as per: "suppress the FAB on Settings, Profile, Details, and Transactional screens" -->
+</body></html>

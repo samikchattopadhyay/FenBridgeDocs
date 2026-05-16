@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FenBridge - Farmer Operational Workflows</title>
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #10b981; /* Emerald Green for Farmer */
+      --accent-primary-hover: #34d399;
+      --accent-primary-glow: rgba(16, 185, 129, 0.15);
+      --accent-secondary: #06b6d4; /* Cyan accent */
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 48px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    /* ROLE WORKFLOW HEADER */
+    .role-header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #02291d 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: 16px;
+      padding: 36px 42px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .role-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .role-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    .meta-metrics {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .metric-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metric-pill strong {
+      color: var(--accent-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+    }
+
+    /* STEPPER NAVIGATION PANEL */
+    html { scroll-behavior: smooth; }
+
+    .stepper-panel-container {
+      max-width: 1280px;
+      margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 36px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      overflow-x: auto;
+    }
+
+    .stepper-nodes {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      min-width: 1000px;
+      z-index: 2;
+    }
+
+    .stepper-nodes::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: var(--border-light);
+      z-index: -1;
+    }
+
+    .stepper-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .stepper-node:hover { transform: translateY(-2px); }
+
+    .node-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border-light);
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .stepper-node:hover .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    }
+
+    .node-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .stepper-node:hover .node-label { color: var(--text-main); }
+
+    /* Active Highlight States */
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+
+    .stepper-node.active .node-label {
+      color: var(--accent-primary);
+      font-weight: 800;
+    }
+
+    /* WORKFLOW GROUP ARCHITECTURE */
+    .workflow-group-block {
+      max-width: 1280px;
+      margin: 0 auto 64px;
+      background: #141416;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color);
+      border-left: 5px solid var(--accent-primary);
+      padding: 24px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .workflow-group-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .step-count-pill {
+      background: var(--bg-base);
+      color: var(--text-muted);
+      border: 1px solid var(--border-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .workflow-group-body {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* INDIVIDUAL FLOW STEP CARDS */
+    .flow-step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .flow-step-card:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    /* STEP CARD HEADER */
+    .step-header {
+      background: #19191d;
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .step-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-folder-ref {
+      font-family: 'Inter', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      background: var(--bg-base);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* STEP CARD BODY - SPLIT PANE */
+    .step-body {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 400px;
+    }
+
+    .step-left-pane {
+      flex: 1;
+      min-width: 320px;
+      max-width: 380px;
+      background: #050d0a;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .card-image-viewport {
+      width: 280px;
+      height: 460px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: #000;
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+
+    .preview-screen-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .step-right-pane {
+      flex: 2;
+      min-width: 340px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .spec-block {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      padding: 12px 16px;
+      border-radius: 6px;
+    }
+    .spec-block.full-width { grid-column: 1 / -1; }
+
+    .spec-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .spec-value {
+      font-size: 13px;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .db-schema-box {
+      background: #000;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--accent-primary-hover);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin-top: 4px;
+    }
+
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto;
+    }
+
+    .action-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-active);
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .action-btn.primary {
+      background: rgba(16, 185, 129, 0.08);
+      color: var(--accent-primary);
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .action-btn.primary:hover {
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
+    }
+
+    /* EXECUTABLE CODE OVERLAY MODAL */
+    .code-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .code-modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .code-modal-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+    }
+    .code-modal-backdrop.active .code-modal-window { transform: scale(1); }
+    .code-modal-window.mobile-view { width: 380px; height: 720px; max-height: 90vh; }
+    .code-modal-window.desktop-view { width: 90%; max-width: 1200px; height: 85vh; }
+    .code-modal-header {
+      padding: 14px 20px;
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .code-modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+    .code-modal-close {
+      background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; line-height: 1;
+    }
+    .code-modal-close:hover { color: #fff; }
+    .code-modal-body {
+      flex: 1; width: 100%; height: 100%; background: #121212; overflow-y: auto;
+    }
+    .code-modal-body iframe { width: 100%; height: 100%; display: block; border: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ROLE HEADER BANNER -->
+  <div class="role-header-banner">
+    <div class="role-tag">Role Operations: Farmer Operational Lifecycle</div>
+    <h1 class="role-title">Farmer Workflows — Structured Modules</h1>
+    <p class="role-desc">
+      High-fidelity operational layout itemizing all 19 functional lifecycle screens for agricultural producers. Organized strictly into 7 logical grouped modules maintaining Zero-Leak identity isolation (masking buyer entities), robust local caching for disconnected pondside coverage, and secure ledger mappings tracking custom bids, direct spots, multi-step production validations, and clear downstream payouts.
+    </p>
+
+    <div class="meta-metrics">
+      <div class="metric-pill">
+        <span>Total Grouped Modules:</span> <strong>7 Core Workflows</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Total Lifecycle Screens:</span> <strong style="color:var(--text-main);">19 Discrete Steps</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Target Asset Root:</span> <strong style="color:var(--accent-primary);font-family:monospace;">images/operations/</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- DYNAMIC STEPPER PANEL -->
+  <div class="stepper-panel-container custom-scrollbar">
+    <div class="stepper-nodes">
+      <a href="#wf-dash-notif" class="stepper-node" title="Dashboard & Notifications (2 Screens)">
+        <span class="node-num">01</span><span class="node-label">Dash & Inbox</span>
+      </a>
+      <a href="#wf-browse-bid" class="stepper-node" title="Browse & Bid Workflow (2 Screens)">
+        <span class="node-num">02</span><span class="node-label">Browse & Bid</span>
+      </a>
+      <a href="#wf-prod-fulfill" class="stepper-node" title="Production & Fulfillment (2 Screens)">
+        <span class="node-num">03</span><span class="node-label">Active POs</span>
+      </a>
+      <a href="#wf-mark-ready" class="stepper-node" title="Mark Lot Ready Wizard (4 Steps)">
+        <span class="node-num">04</span><span class="node-label">Mark Ready</span>
+      </a>
+      <a href="#wf-spot-channel" class="stepper-node" title="Spot Channel Workflow (2 Screens)">
+        <span class="node-num">05</span><span class="node-label">Spot Channel</span>
+      </a>
+      <a href="#wf-req-spot" class="stepper-node" title="Request Spot Listing Wizard (4 Steps)">
+        <span class="node-num">06</span><span class="node-label">Req Spot List</span>
+      </a>
+      <a href="#wf-financials" class="stepper-node" title="Financials & Earnings (3 Screens)">
+        <span class="node-num">07</span><span class="node-label">Financials</span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 1: DASHBOARD & NOTIFICATIONS -->
+  <div class="workflow-group-block" id="wf-dash-notif">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 1: Dashboard & Notifications</span>
+        <span class="step-count-pill">2 Screens</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Screen 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 1</span>Farmer Primary Dashboard</div>
+          <span class="step-folder-ref">farmer_dashboard</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/farmer_dashboard/screen.png" alt="Farmer Dashboard" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Primary landing view immediately surfacing attention triggers: unread custom invitations, active PO states, pending receipt transfers, and quick-action spots in a seamless glanceable timeline.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Data Aggregation Schema</div>
+                <div class="db-schema-box">-- Single aggregate RPC call supporting offline local state persistence:
+SELECT * FROM farmer_dashboard_summary(auth.uid());</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/farmer_dashboard/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 2</span>Notifications Inbox</div>
+          <span class="step-folder-ref">notifications_inbox</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/notifications_inbox/screen.png" alt="Notifications Inbox" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Centralized log itemizing real-time platform updates (e.g., bid awards, scheduled scout dispatch visits, escrow checkouts) with one-tap deep-links loading target resource sheets directly.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/notifications_inbox/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 2: BROWSE & BID WORKFLOW -->
+  <div class="workflow-group-block" id="wf-browse-bid">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 2: Browse & Bid</span>
+        <span class="step-count-pill">2 Screens</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Screen 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 1</span>Bid Invitations List</div>
+          <span class="step-folder-ref">bid_invitations</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/bid_invitations/screen.png" alt="Bid Invitations List" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Tabbed repository presenting active custom tier invitations filtered server-side based on capability tags. Enforces Zero-Leak masking by concealing buyer entities to protect wholesale margins.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/bid_invitations/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 2</span>Bid Invitation Detail</div>
+          <span class="step-folder-ref">bid_invitation_detail</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/bid_invitation_detail/screen.png" alt="Bid Invitation Detail" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Deep review interface containing explicit sorting parameters and delivery windows. Houses binding action handlers allowing immediate offer submission or baseline offer retraction prior to awards.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/bid_invitation_detail/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 3: PRODUCTION & FULFILLMENT -->
+  <div class="workflow-group-block" id="wf-prod-fulfill">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 3: Production & Fulfillment</span>
+        <span class="step-count-pill">2 Screens</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Screen 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 1</span>My Active POs Hub</div>
+          <span class="step-folder-ref">my_active_pos</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/my_active_pos/screen.png" alt="My Active POs" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Filterable ledger monitoring binding production obligations resulting from awarded contracts. Exposes clear state progression badges guiding next-step fulfillment targets.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/my_active_pos/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 2</span>PO Detail — Farmer View</div>
+          <span class="step-folder-ref">po_detail_farmer</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/po_detail_farmer/screen.png" alt="PO Detail Farmer" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Detailed tabbed overview detailing delivery deadlines, expected payouts, and verified field metrics. Exposes context-aware action triggers routing straight to harvest completion flows.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Row Level View Mapping</div>
+                <div class="db-schema-box">SELECT * FROM v_po_farmer WHERE id = target_id;
+-- Exposes purely producer-relevant columns while stripping central margin ledgers cleanly.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/po_detail_farmer/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 4: MARK LOT READY WIZARD -->
+  <div class="workflow-group-block" id="wf-mark-ready">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 4: Mark Lot Ready Wizard</span>
+        <span class="step-count-pill">4 Discrete Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 1</span>Select Target Order</div>
+          <span class="step-folder-ref">mark_lot_ready_step_1</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/mark_lot_ready_step_1/screen.png" alt="Mark Lot Ready Step 1" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Explicit contract mapping step listing open orders in active production states. Prevents accidental status mismatching across multiple concurrent farm commitments.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/mark_lot_ready_step_1/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 2</span>Quantity & Bag Declaration</div>
+          <span class="step-folder-ref">mark_lot_ready_step_2</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/mark_lot_ready_step_2/screen.png" alt="Mark Lot Ready Step 2" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Capture precise bagged net weights and pack distribution totals. Calculates real-time average pack ratios to prepare logistics pick-up and balance validation parameters.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/mark_lot_ready_step_2/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 3</span>Evidentiary Imagery Upload</div>
+          <span class="step-folder-ref">mark_lot_ready_step_3</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/mark_lot_ready_step_3/screen.png" alt="Mark Lot Ready Step 3" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Multi-photo upload form ensuring visible proof of clean drying and packing states. Protects producers from transit damage vectors prior to physical gate transfers.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/mark_lot_ready_step_3/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 4</span>Notify Scout & Commit</div>
+          <span class="step-folder-ref">mark_lot_ready_step_4</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/mark_lot_ready_step_4/screen.png" alt="Mark Lot Ready Step 4" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Final confirmation committing payload updates directly to database storage tables. Schedules immediate push notifications routing local area field scouts for physical assessment.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/mark_lot_ready_step_4/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 5: SPOT CHANNEL WORKFLOW -->
+  <div class="workflow-group-block" id="wf-spot-channel">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 5: Spot Channel</span>
+        <span class="step-count-pill">2 Screens</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Screen 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 1</span>My Spot Listings Repository</div>
+          <span class="step-folder-ref">my_spot_listings</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/my_spot_listings/screen.png" alt="My Spot Listings" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Overview tracking direct spot allocations from initial requests to sealed active trading states. Features integrated action controls for generating rapid listings.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/my_spot_listings/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 2</span>Spot Listing Detail Sheet</div>
+          <span class="step-folder-ref">spot_listing_detail</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/spot_listing_detail/screen.png" alt="Spot Listing Detail" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Granular view exposing physical verification seals, GPS coordinate verification anchors, and independent laboratory test metrics. Displays strict countdown shelf-life timers for active spot pool assets.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/spot_listing_detail/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 6: REQUEST SPOT LISTING WIZARD -->
+  <div class="workflow-group-block" id="wf-req-spot">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 6: Request Spot Listing Wizard</span>
+        <span class="step-count-pill">4 Discrete Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 1</span>Lot Origin Selection</div>
+          <span class="step-folder-ref">request_spot_listing_step_1</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/request_spot_listing_step_1/screen.png" alt="Request Spot Listing Step 1" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Choose between active pond inventory pools or excess unallocated stock remaining from past completed orders to generate fresh custom spot trading tokens.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/request_spot_listing_step_1/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 2</span>Quantity & Spec Inputs</div>
+          <span class="step-folder-ref">request_spot_listing_step_2</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/request_spot_listing_step_2/screen.png" alt="Request Spot Listing Step 2" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Input definitive supply totals and set optional expected quality targets (e.g., preliminary size metrics) to accelerate field scouting triage validation logic.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/request_spot_listing_step_2/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 3</span>Scout Visit Scheduling</div>
+          <span class="step-folder-ref">request_spot_listing_step_3</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/request_spot_listing_step_3/screen.png" alt="Request Spot Listing Step 3" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Interactive local slot booker checking nearby field inspector availability calendars to lock down verified inspection appointments instantly.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/request_spot_listing_step_3/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Wizard Step 4</span>Review Request Commit</div>
+          <span class="step-folder-ref">request_spot_listing_step_4</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/request_spot_listing_step_4/screen.png" alt="Request Spot Listing Step 4" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Purpose</div>
+                <div class="spec-value">Final configuration check dispatching verified rows directly to storage ledgers. Instantly sets spot stock states to Pending Verification while dispatching field teams.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/request_spot_listing_step_4/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 7: FINANCIALS & EARNINGS -->
+  <div class="workflow-group-block" id="wf-financials">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 7: Financials & Earnings</span>
+        <span class="step-count-pill">3 Screens</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Screen 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 1</span>Aggregated Earnings Summary</div>
+          <span class="step-folder-ref">earnings_summary</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/earnings_summary/screen.png" alt="Earnings Summary" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">High-level financial view breaking down cumulative receipts by trading channels (Bids vs Spots) and sorting grades. Enhances transparency while strictly preserving learning-only boundaries.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/earnings_summary/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 2</span>Chronological Payment History</div>
+          <span class="step-folder-ref">payment_history</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/payment_history/screen.png" alt="Payment History" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Definitive transaction record list mapping completed direct payouts and outstanding balances directly to corresponding order identifiers and absolute banking transfer numbers.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/payment_history/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 3</span>Payment Receipt Detail</div>
+          <span class="step-folder-ref">payment_receipt_detail</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/payment_receipt_detail/screen.png" alt="Payment Receipt Detail" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Screen Purpose</div>
+                <div class="spec-value">Printable and shareable single source of truth detailing clearing dates, encrypted receiving bank numbers, and absolute UTR proof strings. Fully matches standard bank statement feeds.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/payment_receipt_detail/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXECUTABLE CODE OVERLAY MODAL -->
+  <div id="code-iframe-modal" class="code-modal-backdrop" onclick="closeCodeModal(event)">
+    <div id="code-modal-window" class="code-modal-window mobile-view" onclick="event.stopPropagation()">
+      <div class="code-modal-header">
+        <span class="code-modal-title">Executable Source Preview</span>
+        <button class="code-modal-close" onclick="closeCodeModal(event)">&times;</button>
+      </div>
+      <div class="code-modal-body">
+        <iframe id="executable-code-iframe" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCodeModal(event, url, viewType) {
+      event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const modalWin = document.getElementById("code-modal-window");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal && modalWin && iframe) {
+        if (viewType === 'desktop') {
+          modalWin.className = "code-modal-window desktop-view";
+        } else {
+          modalWin.className = "code-modal-window mobile-view";
+        }
+        iframe.src = url;
+        modal.classList.add("active");
+      }
+    }
+
+    function closeCodeModal(event) {
+      if (event) event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal) {
+        modal.classList.remove("active");
+        if (iframe) iframe.src = "";
+      }
+    }
+
+    // Dynamic IntersectionObserver highlighting active stepper menu context
+    document.addEventListener("DOMContentLoaded", () => {
+      const groupBlocks = document.querySelectorAll(".workflow-group-block");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const container = document.querySelector(".stepper-panel-container");
+
+      const options = {
+        root: null,
+        rootMargin: "-10% 0px -80% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => node.classList.remove("active"));
+            const activeNode = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (activeNode) {
+              activeNode.classList.add("active");
+              if (container) {
+                const nodeLeft = activeNode.offsetLeft;
+                const nodeWidth = activeNode.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = container.scrollLeft;
+                
+                if (nodeLeft < scrollLeft || nodeLeft + nodeWidth > scrollLeft + containerWidth) {
+                  container.scrollTo({
+                    left: nodeLeft - containerWidth / 2 + nodeWidth / 2,
+                    behavior: "smooth"
+                  });
+                }
+              }
+            }
+          }
+        });
+      }, options);
+
+      groupBlocks.forEach(block => observer.observe(block));
+    });
+  </script>
+</body>
+</html>

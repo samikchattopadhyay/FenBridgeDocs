@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#006c49",
+                        "surface": "#131313",
+                        "outline-variant": "#3c4a42",
+                        "on-error": "#690005",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary-fixed": "#e9ddff",
+                        "outline": "#86948a",
+                        "error-container": "#93000a",
+                        "secondary": "#d0bcff",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#131313",
+                        "primary": "#4edea3",
+                        "surface-bright": "#393939",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-container": "#c4abff",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed": "#410005",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary": "#ffb3af",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-tertiary": "#650911",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary": "#003824",
+                        "background": "#131313",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary": "#3c0091",
+                        "on-primary-container": "#00422b",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-tertiary-container": "#711419",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container": "#201f1f",
+                        "primary-container": "#10b981",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-tint": "#4edea3",
+                        "secondary-container": "#571bc1",
+                        "surface-container-highest": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "gutter": "12px",
+                        "md": "16px",
+                        "base": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md docked full-width top-0 z-50">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary cursor-pointer hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">Skip</button>
+</header>
+<main class="min-h-screen pb-32">
+<!-- Hero Receipt Section -->
+<section class="px-margin pt-xl pb-lg flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-md border border-primary/30">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="verified_user">verified_user</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mb-xs">Payment Received</p>
+<h2 class="font-headline-lg text-[48px] text-on-surface leading-tight mb-xs">₹4,25,000</h2>
+<div class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-primary/10 border border-primary/20 text-primary font-label-lg">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                Confirmed on 12 May
+            </div>
+</section>
+<!-- Receipt Content -->
+<div class="px-margin space-y-lg">
+<!-- Transaction Info Grid (Bento Style) -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="col-span-2 p-md bg-surface-container rounded-xl border border-outline-variant/30 flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">UTR NUMBER</span>
+<span class="font-body-md text-on-surface font-mono tracking-wider">SBIN20260512123456</span>
+</div>
+<div class="p-md bg-surface-container rounded-xl border border-outline-variant/30">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">MODE</span>
+<span class="font-body-md text-on-surface block">RTGS</span>
+</div>
+<div class="p-md bg-surface-container rounded-xl border border-outline-variant/30 flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">SOURCE</span>
+<span class="font-body-md text-primary block cursor-pointer underline decoration-primary/30">PO-2026-0039</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="open_in_new">open_in_new</span>
+</div>
+</div>
+<!-- Audit Trail (Tactile Depth) -->
+<div class="p-lg bg-surface-container rounded-xl border border-outline-variant/30">
+<h3 class="font-label-lg text-label-lg text-on-surface mb-lg">Audit Trail</h3>
+<div class="relative space-y-xl">
+<!-- Progress Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-outline-variant/50"></div>
+<!-- Step 1 -->
+<div class="relative flex items-center gap-md">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-primary font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Initiated</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">12 May, 09:15 AM</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-center gap-md">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-primary font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Approved</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">12 May, 11:30 AM</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex items-center gap-md">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-[14px] text-on-primary font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Confirmed</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">12 May, 02:45 PM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Asset - Receipt Backdrop -->
+<div class="relative rounded-xl overflow-hidden h-40 border border-outline-variant/30">
+<img alt="Agricultural Processing" class="w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="A high-contrast macro photograph of raw makhana seeds being processed in a modern agricultural facility. The lighting is dramatic and moody with deep shadows and sharp emerald green highlights reflecting off polished metallic equipment. The aesthetic is industrial yet premium, reinforcing the Agri-Tech Noir theme with technical precision and tactile depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaXp8poLTGnGPWbezhRTeWZmulcSRHx4Is5c7P1RNXFZu_66krXR1wZV156RMTsjElec1rOdRN2R6ehTlMAndmMFL9ME7ILP3e7mBc1HOPpKOSxcZ5onLYbNGNQ3-7ozq9Yp-H4t_RNV-Kfu_92VHurx5gp74tLHkW0f3rfeh_Fd4__7KwQGlkx50uh5bEVxxei4qLNoObJPtl-30IBgRtLeUnqZq5akdKANsXU-7uZjRiV8WOS19M8KSMfCX9mpe_zOLHr9M1ba0G"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em]">Verified Transaction</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Action -->
+<div class="fixed bottom-0 left-0 right-0 p-margin bg-background/80 backdrop-blur-md border-t border-outline-variant/20 z-50">
+<button class="w-full h-[56px] bg-primary-container text-on-primary-container font-label-lg text-lg rounded-xl flex items-center justify-center gap-sm active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+            Share Receipt
+        </button>
+</div>
+<!-- Bottom Nav Placeholder (Visual Balance Only) -->
+<div class="md:hidden fixed bottom-0 w-full z-40 flex justify-around items-center px-lg py-md mb-safe bg-surface/0 opacity-0 pointer-events-none">
+<div class="flex flex-col items-center justify-center text-primary scale-110">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+</div>
+</div>
+</body></html>

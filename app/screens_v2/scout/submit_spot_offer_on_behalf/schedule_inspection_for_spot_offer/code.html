@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-variant": "#2f3632",
+                        "on-tertiary": "#512120",
+                        "primary-fixed": "#6ffbbe",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-background": "#dde4dd",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#115340",
+                        "on-primary": "#003824",
+                        "surface-container-lowest": "#09100c",
+                        "primary": "#6ffbbe",
+                        "on-primary-fixed": "#002114",
+                        "surface-container-highest": "#2f3632",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#7b4240",
+                        "on-surface-variant": "#bbcabf",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#6d3735",
+                        "on-primary-container": "#005f40",
+                        "outline": "#86948a",
+                        "on-secondary-fixed-variant": "#0d503e",
+                        "inverse-primary": "#006c4a",
+                        "surface-bright": "#393939",
+                        "secondary-fixed": "#b1f0d6",
+                        "tertiary-container": "#ffb3af",
+                        "on-surface": "#dde4dd",
+                        "background": "#0e1511",
+                        "outline-variant": "#3c4a42",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#161d19",
+                        "secondary": "#95d3ba",
+                        "surface-container": "#1a211d",
+                        "inverse-on-surface": "#2b322d",
+                        "surface-tint": "#4edea3",
+                        "inverse-surface": "#dde4dd",
+                        "on-tertiary-fixed": "#370d0d",
+                        "surface-dim": "#0e1511",
+                        "on-secondary-fixed": "#002117",
+                        "on-secondary-container": "#87c5ac",
+                        "surface-lowest": "#0e0e0e",
+                        "tertiary": "#ffb3af",
+                        "on-secondary": "#003829",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "surface": "#0e1511",
+                        "surface-container-high": "#242c27",
+                        "primary-container": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "base-unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md overflow-x-hidden">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full bg-background dark:bg-background border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full z-50">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-150 hover:bg-surface-container-high transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Schedule Inspection</h1>
+</div>
+<button class="active:scale-95 duration-150 hover:bg-surface-container-high transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">close</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-20 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Progress Indicator -->
+<div class="mb-8">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Step 5 of 6</span>
+<span class="font-mono-data text-label-md text-primary">83% Complete</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-5/6"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Map & Location Context (Bento Style) -->
+<div class="md:col-span-7 space-y-gutter">
+<div class="relative h-[300px] md:h-[400px] w-full rounded-xl overflow-hidden border border-outline-variant bg-surface-container-low group">
+<img class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-alt="A high-altitude satellite map view of an agricultural site featuring geometric shrimp ponds and lush tropical vegetation. The scene is rendered in a dark, tech-focused noir aesthetic with neon teal highlights indicating sensor nodes and pathing. The lighting is cinematic and low-key, emphasizing structural patterns and professional industrial monitoring." data-location="Puntarenas, Costa Rica" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOGj2jG6jViF0x_FAVpfLUT8XikcnhR-Zf1IYAqIlGRCVvAyintNNWTRC8bi3JFHGUlsQaG6W78sJubWyQdHYBwu-Vy3sJMELe73v9U3iff1eLmMZqad67iuXFo-B4FChSnSxbYoBtrrvs---sq-7xK5W7UujZ-kqqBKO9YaVOd2k-A2UOFDRTYStZrZaGfw2alJpHqrBpg1hi0xDTyvqcFORDp1YUDHRRgzBzR3jamznAM-U3mflNLisvxZb_k75OkOK2LKB1Wcmj"/>
+<!-- GPS Overlay -->
+<div class="absolute bottom-4 left-4 bg-surface-container-highest/90 backdrop-blur-md p-4 rounded-lg border border-outline-variant">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-mono-data text-label-md text-on-surface">Live GPS Stream</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Coordinates</p>
+<p class="font-mono-data text-body-md">9.9281° N, 84.0907° W</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Accuracy</p>
+<p class="font-mono-data text-body-md text-primary">± 4.2m</p>
+</div>
+</div>
+</div>
+<!-- Proximity Badge -->
+<div class="absolute top-4 right-4 bg-primary/20 text-primary px-3 py-1 rounded-full border border-primary/30 backdrop-blur-sm flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md uppercase">Within Range (142m)</span>
+</div>
+</div>
+</div>
+<!-- Action Column -->
+<div class="md:col-span-5 space-y-gutter">
+<!-- Target Source Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-label-md text-label-md text-primary-container bg-on-primary-container/20 px-2 py-0.5 rounded border border-primary-container/30 mb-2 inline-block">WH-0492-B</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Blue Pacific Warehouse</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-6">
+                        Sector 4, Lot 12. Main logistics hub for processed shrimp exports.
+                    </p>
+<div class="pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">place</span>
+<span class="font-body-md">Quepos District, Costa Rica</span>
+</div>
+</div>
+</div>
+<!-- Scheduling / Execution Logic -->
+<div class="bg-surface-container-high border border-outline-variant rounded-xl p-6 relative overflow-hidden">
+<!-- Subtle background texture -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #6ffbbe 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Inspection Protocol</h3>
+<!-- Scenario A: At Location (Inspect Now) -->
+<div class="space-y-4 mb-8">
+<p class="text-on-surface-variant font-body-md">
+                                You are currently within the required verification radius. You can proceed with a live site inspection immediately.
+                            </p>
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-lg font-headline-sm text-headline-sm flex justify-center items-center gap-3 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+                                Inspect Now
+                            </button>
+</div>
+<div class="flex items-center gap-4 my-6">
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Or Schedule</span>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<!-- Scenario B: Date Picker (Future Visit) -->
+<div class="space-y-4">
+<label class="block font-label-md text-label-md text-on-surface-variant uppercase mb-1">When will you verify this lot?</label>
+<div class="relative">
+<input class="w-full bg-surface-container text-on-surface border border-outline-variant rounded-lg p-3 font-mono-data focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none" type="date"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">calendar_month</span>
+</div>
+<button class="w-full border border-primary text-primary py-3 px-6 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-primary/5 active:scale-[0.98] transition-all">
+                                Confirm Schedule
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Hidden on Desktop if needed, but requested in JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md mt-1">Today</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md mt-1">Warehouses</span>
+</div>
+<!-- Active Tab: Sync/Execution Logic (Closest match for current context) -->
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">sync</span>
+<span class="font-label-md text-label-md">Sync</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md mt-1">Users</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md mt-1">Profile</span>
+</div>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

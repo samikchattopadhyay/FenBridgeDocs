@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FenBridge - Documentation Portal Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- LOAD MERMAID.JS MODULE FOR LIVE BIRD'S-EYE VIEW RENDERING -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+  </script>
+
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-hover: #27272a;
+      
+      --accent-primary: #10b981;
+      --accent-primary-hover: #34d399;
+      --accent-secondary: #f59e0b;
+      --accent-scout: #06b6d4;
+      --accent-admin: #a855f7;
+      
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.65;
+      padding: 40px 50px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    /* HERO SECTION */
+    .hero-container {
+      position: relative;
+      background: linear-gradient(145deg, var(--bg-surface) 0%, #131316 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 48px 56px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .hero-container::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-admin) 100%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-primary);
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.1);
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.8px;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .hero-subtitle {
+      font-size: 16.5px;
+      color: var(--text-muted);
+      max-width: 840px;
+      margin-bottom: 36px;
+    }
+
+    /* STATS GRID */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 2px;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-light);
+      background: var(--bg-hover);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .stat-card:hover::after {
+      background: var(--accent-primary);
+    }
+    
+    .stat-card:nth-child(2):hover::after { background: var(--accent-secondary); }
+    .stat-card:nth-child(3):hover::after { background: var(--accent-scout); }
+    .stat-card:nth-child(4):hover::after { background: var(--accent-admin); }
+
+    .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .stat-card:nth-child(2) .stat-value { color: var(--accent-secondary); }
+    .stat-card:nth-child(3) .stat-value { color: var(--accent-scout); }
+    .stat-card:nth-child(4) .stat-value { color: var(--accent-admin); }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* SECTION LAYOUTS */
+    .section-block {
+      margin-bottom: 44px;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-primary);
+      border-radius: 3px;
+      box-shadow: 0 0 10px var(--accent-primary);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 24px;
+    }
+
+    .info-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px 36px;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: var(--border-light);
+    }
+
+    .info-card h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-card ul li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 13.5px;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .info-card ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-primary);
+      font-weight: bold;
+    }
+
+    /* DIAGRAM CONTAINER */
+    .diagram-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px 24px;
+      overflow-x: auto;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .diagram-container .mermaid {
+      display: flex;
+      justify-content: center;
+      min-width: 680px;
+    }
+
+    /* ROLE SUITE PILLS */
+    .roles-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .role-pill {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .role-pill span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+    }
+    .role-pill:nth-child(2) span { background: var(--accent-secondary); }
+    .role-pill:nth-child(3) span { background: var(--accent-scout); }
+    .role-pill:nth-child(4) span { background: var(--accent-admin); }
+    .role-pill:nth-child(5) span { background: #eab308; }
+
+    .banner-footer {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .banner-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .banner-text {
+      font-size: 13.5px;
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO BANNER -->
+  <div class="hero-container">
+    <div class="hero-badge">Development Ready Source of Truth</div>
+    <h1 class="hero-title">FenBridge Documentation Portal</h1>
+    <p class="hero-subtitle">
+      A centralized digital intelligence hub aggregating full fidelity operational workflows, multi-role partition views, immutable data schemas, and stateful verification logic driving the Bharat Makhana Principal Trading engine.
+    </p>
+
+    <!-- QUICK STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">20</div>
+        <div class="stat-label">Core Workflows</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">120+</div>
+        <div class="stat-label">Application Screens</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Role Domains</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4-Stage</div>
+        <div class="stat-label">Arbitration Engine</div>
+      </div>
+    </div>
+    
+    <div class="roles-container">
+      <div class="role-pill"><span></span>Common Onboarding</div>
+      <div class="role-pill"><span></span>Buyer Workspace</div>
+      <div class="role-pill"><span></span>Farmer Portals</div>
+      <div class="role-pill"><span></span>Scout Verification</div>
+      <div class="role-pill"><span></span>BM Administration</div>
+    </div>
+  </div>
+
+  <!-- BIRD'S-EYE VIEW APPLICATION ARCHITECTURE -->
+  <div class="section-block">
+    <h2 class="section-title">Bird's-Eye View Application Architecture</h2>
+    <div class="diagram-container">
+      <div class="mermaid">
+flowchart TD
+    %% Viewports
+    subgraph Portals ["Client Role Viewports"]
+        direction LR
+        F["Farmer Production Portal"]
+        B["Buyer Operational Engine"]
+        S["Scout Mobile Verification"]
+        A["BM Administration Desk"]
+    end
+
+    %% Foundation layer
+    subgraph Foundation ["Common Foundation & Security Engines"]
+        direction LR
+        Auth["Passwordless SMS & Device Binding"]
+        KYC["OCR Document Verification"]
+        Bank["Penny-Drop Account Setup"]
+        GIS["Spatial GIS Pond Bounding"]
+    end
+
+    %% Operational trading mechanics
+    subgraph Operations ["Bharat Makhana Principal Trading Core Workflow"]
+        direction TB
+        Req["1. Broadcaster (Post Requirement)"]
+        Bid["2. Match Engine (Submit Pricing Bid)"]
+        Award["3. Settlement Router (Award Bid)"]
+        Escrow["4. Lock Advance (PO Accept & 15% Escrow)"]
+        Ready["5. Harvest Signal (Mark Lot Ready)"]
+        Inspect["6. On-Site Audit (Pond Inspect & Lot Verify)"]
+        Seal["7. Non-Repudiation Lock (Thread Barcode Seal)"]
+        Clear["8. Arrival Clearance (Gate Scan & QA Arb)"]
+        Payout["9. Secured Payout (Automated 65% & 20% Release)"]
+    end
+
+    %% Connections
+    F --> Auth
+    B --> Auth
+    S --> Auth
+    
+    Auth --> KYC
+    KYC --> Bank
+    Bank --> GIS
+    GIS --> Operations
+
+    Req --> Bid
+    Bid --> Award
+    Award --> Escrow
+    Escrow --> Ready
+    Ready --> Inspect
+    Inspect --> Seal
+    Seal --> Clear
+    Clear --> Payout
+
+    A --> Award
+    A --> Clear
+    A --> Payout
+
+    %% Custom color highlights matching Luxe Dark aesthetic
+    classDef default fill:#202024,stroke:#3f3f46,stroke-width:1px,color:#f3f4f6;
+    classDef portal fill:#131316,stroke:#10b981,stroke-width:2px,color:#10b981;
+    classDef admin fill:#131316,stroke:#a855f7,stroke-width:2px,color:#a855f7;
+    classDef buyer fill:#131316,stroke:#f59e0b,stroke-width:2px,color:#f59e0b;
+    classDef scout fill:#131316,stroke:#06b6d4,stroke-width:2px,color:#06b6d4;
+    classDef milestone fill:#10b981,stroke:#059669,stroke-width:1px,color:#000;
+    
+    class F portal;
+    class B buyer;
+    class S scout;
+    class A admin;
+    class Payout milestone;
+      </div>
+    </div>
+    <p style="font-size: 12.5px; color: var(--text-dim); text-align: center; margin-top: 10px; font-style: italic;">
+      Note: Renders natively via embedded Mermaid.js live vectors. Requires an active connection to fetch clear CDN scripts.
+    </p>
+  </div>
+
+  <!-- PURPOSE AND SCOPE -->
+  <div class="section-block">
+    <h2 class="section-title">Portal Architecture & Strategy</h2>
+    <div class="grid-2">
+      
+      <div class="info-card">
+        <h4>Operational Parity Assurance</h4>
+        <p>
+          This portal guarantees absolute synchronization between functional business roadmaps and live component representations. By standardizing design viewports alongside robust system schemas, developers and audit reviewers work off absolute ground truth.
+        </p>
+        <ul>
+          <li>Interactive dual-pane specification modals per single screen</li>
+          <li>Comprehensive listing of exact database state mutations & validation triggers</li>
+          <li>Seamless navigation spanning <strong>20 modular workflow sets</strong></li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4 style="color: var(--accent-secondary)">Business Model & Safeguard Integration</h4>
+        <p>
+          FenBridge enforces a reliable <strong>Principal Trader</strong> architecture (Farmer → Bharat Makhana → Buyer) clearing physical inventory assets natively while retaining structured spread advantages and legal title assignments until clearance.
+        </p>
+        <ul>
+          <li><strong>GST-Exempt Produce Protocols</strong> leveraged under Section 23(1)(a)</li>
+          <li><strong>Presumptive Fiscal Safeguards</strong> operating under Section 44AD</li>
+          <li><strong>Balanced Escrow Dispatches</strong> automating 15/65/20 capital release milestones</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NAVIGATION GUIDELINES -->
+  <div class="section-block">
+    <h2 class="section-title">Workspace Navigation & Layouts</h2>
+    <div class="info-card" style="padding: 26px 36px;">
+      <p style="margin-bottom: 12px; color: #fff; font-weight: 500;">
+        Access comprehensive architecture models dynamically via the left side navigation drawer loading optimized client bundles directly into this responsive viewport:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 18px;">
+        <div style="background: var(--bg-base); padding: 18px; border-radius: 8px; border: 1px solid var(--border-color);">
+          <strong style="color: var(--accent-primary); display: block; margin-bottom: 6px;">Business Strategy (BRD)</strong>
+          <span style="font-size: 13px; color: var(--text-muted);">Audit corporate structures, legal tax mandates, balanced tranche triggers, and robust hardware arbitration frameworks.</span>
+        </div>
+        <div style="background: var(--bg-base); padding: 18px; border-radius: 8px; border: 1px solid var(--border-color);">
+          <strong style="color: var(--accent-secondary); display: block; margin-bottom: 6px;">Role-Wise Isolation</strong>
+          <span style="font-size: 13px; color: var(--text-muted);">Explore highly customized documentation models dedicated to <strong>Common</strong>, <strong>Buyer</strong>, <strong>Farmer</strong>, <strong>Scout</strong>, and <strong>Admin</strong> scopes.</span>
+        </div>
+        <div style="background: var(--bg-base); padding: 18px; border-radius: 8px; border: 1px solid var(--border-color);">
+          <strong style="color: var(--accent-scout); display: block; margin-bottom: 6px;">Operational Workflows</strong>
+          <span style="font-size: 13px; color: var(--text-muted);">Traverse all 20 unified process tracks populated with UI layouts, logic gates, metadata diffs, and preview actions.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-footer">
+      <div class="banner-icon">💡</div>
+      <div class="banner-text">
+        <strong>Pro-tip for Technical Reviewers:</strong> Navigating target documentation indices modifies direct anchor hash locations immediately, enabling permanent window state bookmarks and highly accurate sub-screen pointer dissemination.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

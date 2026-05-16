@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#0d503e",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-variant": "#2f3632",
+                    "on-surface": "#dde4dd",
+                    "on-secondary-container": "#87c5ac",
+                    "on-secondary": "#003829",
+                    "surface-dim": "#0e1511",
+                    "secondary": "#95d3ba",
+                    "on-surface-variant": "#bbcabf",
+                    "surface-container-high": "#242c27",
+                    "outline-variant": "#3c4a42",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "secondary-container": "#115340",
+                    "surface-tint": "#4edea3",
+                    "primary-fixed": "#6ffbbe",
+                    "tertiary": "#ffb3af",
+                    "on-primary-fixed": "#002114",
+                    "surface": "#0e1511",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "on-tertiary-container": "#7b4240",
+                    "on-primary": "#003824",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#006c4a",
+                    "surface-lowest": "#0e0e0e",
+                    "surface-container-lowest": "#09100c",
+                    "on-primary-container": "#005f40",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-bright": "#343b36",
+                    "primary-container": "#4edea3",
+                    "on-background": "#dde4dd",
+                    "surface-container-low": "#161d19",
+                    "tertiary-fixed": "#ffdad7",
+                    "error": "#ffb4ab",
+                    "inverse-surface": "#dde4dd",
+                    "tertiary-container": "#ffb3af",
+                    "outline": "#86948a",
+                    "on-tertiary": "#512120",
+                    "on-tertiary-fixed": "#370d0d",
+                    "primary": "#6ffbbe",
+                    "secondary-fixed": "#b1f0d6",
+                    "surface-container-highest": "#2f3632",
+                    "on-tertiary-fixed-variant": "#6d3735",
+                    "background": "#0e1511",
+                    "surface-container": "#1a211d",
+                    "on-secondary-fixed": "#002117",
+                    "inverse-on-surface": "#2b322d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base-unit": "4px",
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform duration-150 p-2 hover:bg-surface-container-highest rounded-full" data-icon="menu">menu</button>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">AgriScout Pro</h1>
+</div>
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform duration-150 p-2 hover:bg-surface-container-highest rounded-full" data-icon="cloud_sync">cloud_sync</button>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop py-gutter space-y-gutter">
+<!-- Pending Approval Banner -->
+<section class="bg-tertiary-container text-on-tertiary-container p-4 rounded-lg flex items-start gap-4 border border-tertiary shadow-sm"><span class="material-symbols-outlined" data-icon="info">info</span><div class="space-y-1"><p class="font-headline-sm text-headline-sm">Pending Approval</p><p class="font-body-md text-body-md opacity-90">Awaiting Admin approval — farmer cannot transact until approved. (Est. 48 hours)</p></div></section>
+<!-- Header: Profile Card -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-6">
+<div class="flex flex-col md:flex-row md:items-center gap-6">
+<div class="w-20 h-20 bg-primary text-on-primary flex items-center justify-center rounded-full text-display-lg font-display-lg">
+                    RA
+                </div>
+<div class="flex-1 space-y-2">
+<div class="flex flex-wrap items-center gap-3">
+<h2 class="text-headline-md font-headline-md text-on-surface">Rajesh Agnihotri</h2>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-label-md font-label-md border border-tertiary">Pending Approval</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-8">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="smartphone">smartphone</span>
+<span class="font-mono-data text-mono-data tracking-wider">+91 98450 12345</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Nellore District, Andhra Pradesh</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-2 border border-outline-variant px-4 py-2 rounded-lg text-label-md font-label-md hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+                        Edit Record
+                    </button>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<nav class="flex border-b border-outline-variant overflow-x-auto hide-scrollbar"><button class="px-6 py-4 border-b-2 border-primary text-primary font-label-md text-label-md whitespace-nowrap flex items-center gap-2">Profile <span class="bg-surface-container-highest px-1.5 py-0.5 rounded text-[10px]">1</span></button><button class="px-6 py-4 border-b-2 border-transparent text-on-surface-variant font-label-md text-label-md hover:text-on-surface whitespace-nowrap flex items-center gap-2">Ponds <span class="bg-surface-container-highest px-1.5 py-0.5 rounded text-[10px]">2</span></button><button class="px-6 py-4 border-b-2 border-transparent text-on-surface-variant font-label-md text-label-md hover:text-on-surface whitespace-nowrap flex items-center gap-2">Bank <span class="bg-surface-container-highest px-1.5 py-0.5 rounded text-[10px]">1</span></button><button class="px-6 py-4 border-b-2 border-transparent text-on-surface-variant font-label-md text-label-md hover:text-on-surface whitespace-nowrap flex items-center gap-2">Documents <span class="bg-surface-container-highest px-1.5 py-0.5 rounded text-[10px]">3</span></button><button class="px-6 py-4 border-b-2 border-transparent text-on-surface-variant font-label-md text-label-md hover:text-on-surface whitespace-nowrap flex items-center gap-2">Activity <span class="bg-surface-container-highest px-1.5 py-0.5 rounded text-[10px]">5</span></button></nav>
+<!-- Content Area: Profile Tab -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 space-y-6">
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container-high flex items-center justify-between flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm">Farmer Identity</h3>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="verified_user">verified_user</span>
+<button class="text-primary text-label-md font-label-md flex items-center gap-1 hover:underline"><span class="material-symbols-outlined text-[16px]">edit</span>Edit Identity</button></div>
+<div class="p-0">
+<!-- Identity Fields List -->
+<div class="divide-y divide-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 p-4 gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Full Name</span>
+<span class="md:col-span-2 text-body-lg font-body-lg">Rajesh Kumar Agnihotri</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 p-4 gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Date of Birth</span>
+<span class="md:col-span-2 font-mono-data text-mono-data">14 May 1978</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 p-4 gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Permanent Address</span>
+<span class="md:col-span-2 text-body-lg font-body-lg">H.No 4-12/B, Industrial Corridor, East Delta Zone, Nellore, 524001</span>
+</div><div class="grid grid-cols-1 md:grid-cols-3 p-4 gap-2"><span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Alt Phone</span><span class="md:col-span-2 font-mono-data text-mono-data text-on-surface-variant italic">Not provided</span></div>
+<div class="grid grid-cols-1 md:grid-cols-3 p-4 gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Preferred Language</span>
+<span class="md:col-span-2 text-body-lg font-body-lg">Telugu, English</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 p-4 gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Farmer Category</span>
+<span class="md:col-span-2 text-body-lg font-body-lg">Small-Scale Aquaculture</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Data Visualization / Map Placeholder -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden h-64 relative group">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500" data-alt="A detailed satellite view mapping of a rural agricultural district in India with precise plot outlines and geometric boundaries. The image uses a technical, dark-mode aesthetic with neon green and cyan data overlays showing terrain topography and moisture levels. High-contrast labels in a technical sans-serif font pinpoint specific pond locations within a dark, cinematic noir atmosphere of industrial efficiency." data-location="Nellore" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdZmOiCdkSqYYcZDkuYcQ478IZ_3npU8JvUQcvDh_GDlFCcABVqYMBsNMmWzug5aTmOHgSs9yDj-OgHMYlH6sHbwMbaKsSSEBwtAfbeSGWwVEVl0Kin2_juT4nZXepqoY1G9CCJQeXSHtsAUzqXZVe3-A7s7JZOsDtWrXcBKtLg505wdhJbzgOg9UchwI3vntTKlw6l2BbqbC8lKyG5q_P9LqE3Pf7PJ4iOTZo7Iz3-Dv3pZZmzECY_hlJvK8wXEjDecIsJVyPbkqK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent p-6 flex flex-col justify-end">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="satellite_alt">satellite_alt</span>
+<span class="text-label-md font-label-md uppercase tracking-widest text-primary">GPS Geolocation Verified</span>
+</div>
+<p class="text-headline-sm font-headline-sm">Plot ID: NE-7729-X</p>
+</div>
+</div>
+</div>
+<!-- Sidebar / Metadata -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-6 space-y-6">
+<h4 class="font-headline-sm text-headline-sm">System Metadata</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-start border-b border-outline-variant pb-3">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Profile ID</p>
+<p class="font-mono-data text-mono-data text-primary">AGRI-F-99402</p>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="content_copy">content_copy</button>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Registration Date</p>
+<p class="font-mono-data text-mono-data">Oct 24, 2023 | 09:14 AM</p>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Assigned Officer</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-6 h-6 bg-secondary-container rounded-full flex items-center justify-center text-[10px] text-on-secondary-container">SM</div>
+<span class="text-body-md font-body-md">Suresh Mukherji</span>
+</div>
+</div>
+<div class="pt-4">
+<div class="flex items-center justify-between mb-2">
+<p class="text-label-md font-label-md text-on-surface-variant uppercase">Profile Completeness</p>
+<span class="text-label-md font-label-md text-primary">85%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%] rounded-full shadow-[0_0_8px_rgba(111,251,190,0.5)]"></div>
+</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-high border border-outline-variant py-3 rounded-lg text-label-md font-label-md flex items-center justify-center gap-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                        View Change Logs
+                    </button>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-6">
+<h4 class="font-headline-sm text-headline-sm mb-4">Verification Status</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="text-body-md font-body-md">Mobile Verified</p>
+<p class="text-[11px] text-on-surface-variant">Verified via OTP on Oct 24</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="text-body-md font-body-md">Identity Docs Uploaded</p>
+<p class="text-[11px] text-on-surface-variant">Aadhaar Card, Land Record</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="pending" style="font-variation-settings: 'FILL' 1;">pending</span>
+<div>
+<p class="text-body-md font-body-md">Admin Final Review</p>
+<p class="text-[11px] text-on-surface-variant">In queue (Est. 48 hours)</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container-low border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="text-label-md font-label-md">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span class="text-label-md font-label-md">Warehouses</span>
+</a>
+<!-- ACTIVE TAB: Users -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="text-label-md font-label-md">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

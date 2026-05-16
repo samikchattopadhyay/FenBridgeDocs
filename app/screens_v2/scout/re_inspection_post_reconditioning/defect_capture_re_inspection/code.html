@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-tint": "#4edea3",
+                  "primary": "#4edea3",
+                  "outline-variant": "#3c4a42",
+                  "surface": "#131313",
+                  "on-error": "#690005",
+                  "outline": "#86948a",
+                  "surface-container-low": "#1c1b1b",
+                  "surface-bright": "#393939",
+                  "on-error-container": "#ffdad6",
+                  "tertiary-container": "#fc7c78",
+                  "tertiary": "#ffb3af",
+                  "surface-container-lowest": "#0e0e0e",
+                  "surface-container-highest": "#353534",
+                  "surface-container-high": "#2a2a2a",
+                  "error": "#ffb4ab",
+                  "secondary-fixed-dim": "#d0bcff",
+                  "secondary": "#d0bcff",
+                  "secondary-container": "#571bc1",
+                  "on-primary-fixed-variant": "#005236",
+                  "on-secondary": "#3c0091",
+                  "inverse-on-surface": "#313030",
+                  "on-tertiary-container": "#711419",
+                  "secondary-fixed": "#e9ddff",
+                  "primary-container": "#10b981",
+                  "on-surface-variant": "#bbcabf",
+                  "background": "#131313",
+                  "on-surface": "#e5e2e1",
+                  "on-tertiary-fixed-variant": "#842225",
+                  "error-container": "#93000a",
+                  "surface-container": "#201f1f",
+                  "surface-variant": "#353534",
+                  "surface-dim": "#131313",
+                  "on-primary": "#003824",
+                  "tertiary-fixed": "#ffdad7",
+                  "on-secondary-fixed-variant": "#5516be",
+                  "on-secondary-container": "#c4abff",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "primary-fixed-dim": "#4edea3",
+                  "on-background": "#e5e2e1",
+                  "on-secondary-fixed": "#23005c",
+                  "on-primary-fixed": "#002113",
+                  "on-tertiary-fixed": "#410005",
+                  "on-primary-container": "#00422b",
+                  "primary-fixed": "#6ffbbe",
+                  "inverse-primary": "#006c49",
+                  "on-tertiary": "#650911",
+                  "inverse-surface": "#e5e2e1"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "gutter": "12px",
+                  "sm": "12px",
+                  "lg": "24px",
+                  "xs": "8px",
+                  "xl": "32px",
+                  "md": "16px",
+                  "margin": "20px",
+                  "base": "4px"
+          },
+          "fontFamily": {
+                  "body-lg": ["Inter"],
+                  "headline-md": ["Hanken Grotesk"],
+                  "headline-lg": ["Hanken Grotesk"],
+                  "body-md": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "label-lg": ["Inter"]
+          },
+          "fontSize": {
+                  "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                  "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                  "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 active:scale-95 transition-all" data-icon="arrow_back">arrow_back</span>
+<h1 class="text-headline-md font-headline-md text-primary font-bold truncate whitespace-nowrap">Defect Capture</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="text-label-lg font-label-lg text-on-surface-variant">Step 4 of 6</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</header>
+<!-- Progress Bar (Sub-header) -->
+<div class="fixed top-16 left-0 w-full z-40 h-1 bg-surface-container-highest">
+<div class="h-full bg-primary-container" style="width: 42%;"></div>
+</div><div class="fixed top-[68px] left-0 w-full z-40 bg-secondary-container/20 border-b border-secondary-container/30 h-8 flex items-center px-margin">
+<span class="text-secondary-fixed-dim font-label-sm uppercase tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">restart_alt</span>
+Re-inspection
+</span>
+</div>
+<main class="flex-1 mb-32 px-margin mt-28">
+<section class="py-xl">
+<h2 class="text-headline-lg font-headline-lg mb-lg truncate whitespace-nowrap">Any defects in this lot?</h2>
+<!-- Global Toggle Card -->
+<div class="bg-surface-container-high border border-outline-variant rounded-xl p-md flex items-center justify-between mb-lg shadow-sm">
+<div>
+<p class="text-body-lg font-body-lg font-semibold">No defects found</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Quick mark lot as premium quality</p>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-on-primary-container rounded-full ml-auto"></div>
+</div>
+</div>
+<!-- Add Action -->
+<button class="w-full h-14 border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-center gap-md text-primary hover:bg-surface-container-low transition-colors mb-xl">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-label-lg font-label-lg">Add defect</span>
+</button>
+<!-- Active Defect List -->
+<div class="space-y-md">
+<div class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-md flex items-start gap-md">
+<!-- Icon/Indicator -->
+<div class="w-12 h-12 rounded-lg bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[28px]" data-icon="bug_report">bug_report</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-xs">
+<span class="text-body-lg font-body-lg font-bold">Infestation</span>
+<span class="px-xs py-0.5 bg-error-container text-on-error-container rounded text-label-sm font-bold uppercase tracking-wider">Critical</span>
+</div>
+<!-- Input Field Row -->
+<div class="flex items-end gap-md mt-md">
+<div class="flex-1">
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-base">Measured Defect %</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg h-12 px-md text-on-surface focus:border-primary focus:ring-0" placeholder="0.00" type="number"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant">%</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary group-active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<span class="text-[10px] font-bold text-primary">REQUIRED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Defect Footer Actions -->
+<div class="bg-surface-container-low px-md py-sm flex justify-between items-center border-t border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant italic">ID: DEF-4492-B</span>
+<button class="text-label-lg font-label-lg text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+              Remove
+            </button>
+</div>
+</div>
+<!-- Secondary Sample Row (Visual Context) -->
+<div class="bg-surface-container/50 border border-outline-variant border-dashed rounded-xl p-md flex items-center justify-between opacity-60">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="texture">texture</span>
+<span class="text-body-md font-body-md">Dust and Foreign Matter</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="add">add</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Footer Section -->
+<footer class="fixed bottom-0 left-0 w-full z-50">
+<!-- Severity Summary Banner -->
+<div class="bg-surface-container-highest/95 backdrop-blur-md px-margin py-md border-t border-outline-variant flex justify-between items-center shadow-lg">
+<div class="flex items-center gap-xs">
+<span class="text-label-lg font-label-lg text-on-surface">Worst defect:</span>
+<div class="flex items-center gap-1 bg-error-container/20 px-sm py-1 rounded-full border border-error/30">
+<span class="text-error font-bold text-label-lg">Critical</span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="info">info</span>
+</div>
+<!-- Primary CTA Area -->
+<div class="bg-surface px-margin py-lg pb-safe-offset-4">
+<button class="w-full h-14 bg-primary text-on-primary font-bold rounded-xl flex items-center justify-center gap-md active:scale-95 transition-transform shadow-md">
+<span class="text-label-lg font-label-lg uppercase tracking-widest">Continue</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Bottom Nav Anchor (Suppressed based on Transactional Rule but placeholder for layout integrity if needed) -->
+<!-- <nav class="hidden">BottomNavBar</nav> -->
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#410005",
+                    "tertiary": "#ffb3af",
+                    "surface-tint": "#4edea3",
+                    "on-primary": "#003824",
+                    "inverse-primary": "#006c49",
+                    "error": "#ffb4ab",
+                    "background": "#131313",
+                    "tertiary-container": "#fc7c78",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "secondary-fixed": "#e9ddff",
+                    "inverse-on-surface": "#313030",
+                    "on-primary-container": "#00422b",
+                    "surface-variant": "#353534",
+                    "on-tertiary-container": "#711419",
+                    "on-tertiary": "#650911",
+                    "outline": "#86948a",
+                    "on-background": "#e5e2e1",
+                    "primary-fixed-dim": "#4edea3",
+                    "primary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-secondary-container": "#c4abff",
+                    "primary-container": "#10b981",
+                    "on-secondary": "#3c0091",
+                    "error-container": "#93000a",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-container-highest": "#353534",
+                    "primary": "#4edea3",
+                    "surface-container": "#201f1f",
+                    "on-surface-variant": "#bbcabf",
+                    "on-secondary-fixed": "#23005c",
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "secondary-container": "#571bc1",
+                    "surface": "#131313",
+                    "outline-variant": "#3c4a42",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-primary-fixed": "#002113",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-bright": "#393939",
+                    "on-error": "#690005",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary": "#d0bcff",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "surface-dim": "#131313"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "sm": "12px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "margin": "20px",
+                    "gutter": "12px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md fixed top-0 z-50">
+<div class="flex items-center gap-md">
+<button class="hover:opacity-80 transition-opacity flex items-center justify-center w-[48px] h-[48px]">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary truncate whitespace-nowrap">Settings</h1>
+</div>
+<button class="font-label-lg text-label-lg text-primary dark:text-primary hover:opacity-80 transition-opacity">
+            Skip
+        </button>
+</header>
+<main class="mt-xl pt-xl px-margin flex-grow pb-xl">
+<!-- Display & Appearance -->
+<section class="mb-xl">
+<h2 class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-md truncate whitespace-nowrap">Display</h2>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+<span class="font-body-md text-on-surface">Dark Theme</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+</section>
+<!-- Language Selection -->
+<section class="mb-xl">
+<h2 class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-md truncate whitespace-nowrap">Language</h2>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-md flex items-center gap-md border-b border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant">language</span>
+<div class="flex-grow">
+<label class="sr-only" for="lang-select">Choose Language</label>
+<select class="w-full bg-transparent border-none text-on-surface font-body-md focus:ring-0 appearance-none" id="lang-select">
+<option value="en">English</option>
+<option value="hi">Hindi (हिन्दी)</option>
+<option value="bn">Bengali (বাংলা)</option>
+</select>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</section>
+<!-- Notifications -->
+<section class="mb-xl">
+<h2 class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-md truncate whitespace-nowrap">Notifications</h2>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl shadow-sm divide-y divide-outline-variant">
+<div class="p-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">In-app Notifications</span>
+<span class="text-label-sm text-on-surface-variant">Alerts within the application</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+<div class="p-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Push Notifications</span>
+<span class="text-label-sm text-on-surface-variant">Alerts on your device lock screen</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+<div class="p-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">SMS Alerts</span>
+<span class="text-label-sm text-on-surface-variant">Crucial market and payment alerts</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Permissions -->
+<section class="mb-xl">
+<h2 class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-md truncate whitespace-nowrap">App Permissions</h2>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl shadow-sm divide-y divide-outline-variant">
+<div class="p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<span class="font-body-md text-on-surface">Location Access</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+<div class="p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">photo_camera</span>
+<span class="font-body-md text-on-surface">Camera Access</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy & Legal -->
+<section>
+<h2 class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-md truncate whitespace-nowrap">Legal &amp; Privacy</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<a class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex items-center justify-between hover:bg-surface-container-high transition-colors group" href="#">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<span class="font-body-md text-on-surface">Terms of Service</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+<a class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex items-center justify-between hover:bg-surface-container-high transition-colors group" href="#">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">policy</span>
+<span class="font-body-md text-on-surface">Privacy Policy</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Visual Anchor / Brand Card -->
+<div class="mt-xl relative overflow-hidden rounded-xl h-32 flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover brightness-50" data-alt="A sweeping, cinematic landscape of a lush makhana pond at dusk, with the emerald green plants floating on dark water under a moody, violet and indigo sky. The lighting is low and atmospheric, emphasizing the premium agricultural heritage of the FenBridge brand. Soft mist hangs over the water, creating a sense of growth and technological sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOwIotJJi6RARQTjhZWifwetDpSwaPtj9BTUsz_IEnx2r24PTSdXYCnGxSJ42_KimCpqrpy5rWs02gIWC9GaEQTtn5q7DGkLR_ikpcGNji2bOWPSeHCBbLAJ1zQV3ZPvq7jdV_0GqyGfG4yRVFbNAYFWdkAgXnaNRVj9uNNzj2EwCjz8ukzL3_xLky9MIf3YWmrJ44Fh1F1JEM06MGaQIcpIkEfOrDn5VK8p8hKUwSGGw7CnwRo7ahlSeZx6kdgXLR4QypoiqrXGvT"/>
+<div class="relative z-10 text-center">
+<span class="font-headline-md text-primary font-bold">FenBridge</span>
+<p class="text-label-sm text-on-primary-fixed-variant">Version 2.4.0 • Secured by Blockchain</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on Settings as per Shell Visibility Rule) -->
+<!-- The user is in a focused Task-Focused sub-page featuring a Back action, so navigation is suppressed. -->
+
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

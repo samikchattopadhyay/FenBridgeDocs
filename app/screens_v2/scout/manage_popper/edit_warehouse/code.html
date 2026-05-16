@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Warehouse - WARE-1024</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#dde4dd",
+                    "on-tertiary-fixed": "#370d0d",
+                    "surface-variant": "#2f3632",
+                    "primary-container": "#4edea3",
+                    "on-tertiary-container": "#7b4240",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary": "#512120",
+                    "surface-dim": "#0e1511",
+                    "on-primary-container": "#005f40",
+                    "on-primary": "#003824",
+                    "inverse-primary": "#006c4a",
+                    "outline": "#86948a",
+                    "background": "#0e1511",
+                    "surface": "#0e1511",
+                    "on-tertiary-fixed-variant": "#6d3735",
+                    "on-secondary": "#003829",
+                    "on-secondary-fixed-variant": "#0d503e",
+                    "surface-bright": "#393939",
+                    "on-secondary-fixed": "#002117",
+                    "on-secondary-container": "#87c5ac",
+                    "on-primary-fixed": "#002114",
+                    "secondary-fixed": "#b1f0d6",
+                    "on-error-container": "#ffdad6",
+                    "surface-lowest": "#0e0e0e",
+                    "surface-container-high": "#242c27",
+                    "primary": "#6ffbbe",
+                    "surface-container-low": "#161d19",
+                    "tertiary-container": "#ffb3af",
+                    "outline-variant": "#3c4a42",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-tint": "#4edea3",
+                    "surface-container": "#1a211d",
+                    "tertiary-fixed": "#ffdad7",
+                    "secondary": "#95d3ba",
+                    "on-surface": "#dde4dd",
+                    "primary-fixed": "#6ffbbe",
+                    "on-background": "#dde4dd",
+                    "secondary-container": "#115340",
+                    "on-surface-variant": "#bbcabf",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#2b322d",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#005236",
+                    "tertiary": "#ffb3af",
+                    "surface-container-lowest": "#09100c",
+                    "surface-container-highest": "#2f3632"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "base-unit": "4px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+        /* Custom scrollbar for high-density look */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0e1511; }
+        ::-webkit-scrollbar-thumb { background: #3c4a42; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-lg active:scale-95 duration-75">arrow_back</button>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tighter text-primary">POPPER_CORE.SYS</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest hidden md:block">System Status: Nominal</span>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-lg active:scale-95 duration-75">settings_input_component</button>
+</div>
+</header>
+<main class="mt-16 mb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-8">
+<!-- Breadcrumb / Context -->
+<div class="mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md uppercase tracking-wider mb-2">
+<span>Infrastructure</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Warehouses</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-primary">Edit Record</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Edit Warehouse: <span class="font-mono-data text-primary">WARE-1024</span></h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Form Section -->
+<form class="md:col-span-8 space-y-gutter">
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Warehouse Code (Locked) -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Warehouse Code</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface-variant font-mono-data px-4 py-3 rounded cursor-not-allowed outline-none opacity-60" readonly="" type="text" value="WARE-1024"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline">lock</span>
+</div>
+</div>
+<!-- Warehouse Name -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Warehouse Name</label>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-md px-4 py-3 rounded focus:border-primary transition-colors outline-none" type="text" value="North Rift Aggregation Hub"/>
+</div>
+<!-- Capacity Built -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Built Capacity (kg)</label>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data px-4 py-3 rounded focus:border-primary transition-colors outline-none" type="number" value="500000"/>
+</div>
+<!-- Bag Capacity -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Bag Capacity (Unit)</label>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data px-4 py-3 rounded focus:border-primary transition-colors outline-none" type="number" value="10000"/>
+</div>
+</div>
+</div>
+<!-- Location Details -->
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-lg space-y-gutter">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-outline-variant pb-2">Geospatial &amp; Address Data</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">District</label>
+<select class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-md px-4 py-3 rounded focus:border-primary transition-colors outline-none appearance-none">
+<option>Uasin Gishu</option>
+<option>Trans Nzoia</option>
+<option>Nandi</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Village</label>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-md px-4 py-3 rounded focus:border-primary transition-colors outline-none" type="text" value="Kipkaren"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Full Address</label>
+<textarea class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-md px-4 py-3 rounded focus:border-primary transition-colors outline-none resize-none" rows="2">Industrial Area Phase 2, Off Eldoret-Malaba Highway, Block 14/B</textarea>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Landmark</label>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-md px-4 py-3 rounded focus:border-primary transition-colors outline-none" type="text" value="Opposite Grain Bulk Handlers Silo"/>
+</div>
+</div>
+<!-- Action Bar Mobile/Layout -->
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="flex-1 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest py-4 px-8 rounded-lg font-bold hover:bg-primary-container transition-colors active:scale-95 duration-75" type="submit">
+                        Save Changes
+                    </button>
+<button class="flex-1 bg-transparent border border-outline text-on-surface font-label-md text-label-md uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-surface-container-high transition-colors active:scale-95 duration-75" type="button">
+                        Cancel
+                    </button>
+</div>
+</form>
+<!-- Map Snippet Section -->
+<aside class="md:col-span-4 space-y-gutter">
+<div class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">GPS Pin Location</h3>
+<span class="font-mono-data text-[10px] text-primary">0.5143° N, 35.2697° E</span>
+</div>
+<div class="aspect-square relative bg-surface-container-highest group cursor-crosshair">
+<img class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="A top-down satellite view of a modern industrial warehouse complex in a semi-arid agricultural landscape. The map interface is styled with a dark, high-contrast UI overlay including technical grid lines and neon green coordinate markers. The lighting is cinematic, evoking a nocturnal surveillance atmosphere with sharp details and deep shadows. The aesthetic is industrial agri-tech noir with a focus on precision and data-driven infrastructure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDjYlYm6Mm0tLNSaphvBuubITRdOeGeQG6oNXOe22VmA-WrrNtExPdapSdqDfl4S35gRWQxy8ORQx8tBuI7a1S9kkUiJ0SRQgDFJilQ1dmJJlUNHAMzTjMxYGw1c2rj8ZXoUqJLdFz-8xL1maPZQSBlECxV3i1qUZsX7-bYsUocHq5RhPJmVubALB__NWAB9B58PEoTmjGyNY7Gt6OAsOgg7HfXwJzPwZklcwgqSbZaN31A5_zQPFvTerFfrFK9fgvLn3Uk3NMFWLZ"/>
+<!-- Overlay Pin -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative flex flex-col items-center">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center animate-pulse shadow-[0_0_20px_rgba(111,251,190,0.6)]">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">warehouse</span>
+</div>
+<div class="w-1 h-4 bg-primary"></div>
+</div>
+</div>
+<!-- Interaction Prompt -->
+<div class="absolute bottom-4 left-4 right-4 bg-surface-dim/80 backdrop-blur-md p-3 border border-outline-variant rounded">
+<p class="font-label-md text-[11px] text-on-surface-variant text-center">Tap map to recalibrate sensor coordinates</p>
+</div>
+</div>
+<div class="p-4 bg-tertiary-container/10 border-t border-outline-variant">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]">warning</span>
+<p class="text-on-surface-variant font-label-md text-[11px] leading-tight">
+<span class="text-tertiary font-bold">SYSTEM ALERT:</span> Changing the GPS location will be flagged for Admin review. Coordinate shifts &gt; 10m require manual site re-verification.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Audit Snippet -->
+<div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-3">Record Integrity</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<span class="text-outline font-label-md text-[11px]">LAST MODIFIED</span>
+<span class="font-mono-data text-[11px]">2023-11-24 14:02</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<span class="text-outline font-label-md text-[11px]">BY USER</span>
+<span class="font-mono-data text-[11px]">OP_ADMIN_09</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline font-label-md text-[11px]">RELIABILITY SCORE</span>
+<span class="text-primary font-mono-data text-[11px]">98.2%</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant md:hidden">
+<div class="flex justify-around items-center w-full py-2 px-4 h-20">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors">
+<span class="material-symbols-outlined">fingerprint</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">IDENTITY</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary bg-secondary-container rounded-lg px-4 py-1 cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">STORAGE</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors">
+<span class="material-symbols-outlined">Prescription</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">DOCS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors">
+<span class="material-symbols-outlined">tune</span>
+<span class="font-label-md text-label-md uppercase tracking-widest mt-1">CONFIG</span>
+</div>
+</div>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

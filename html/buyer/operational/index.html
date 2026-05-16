@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FenBridge - Buyer Operational Workflows</title>
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #f59e0b; /* Amber Orange for Buyer */
+      --accent-primary-hover: #fbbf24;
+      --accent-primary-glow: rgba(245, 158, 11, 0.15);
+      --accent-secondary: #10b981;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 48px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    /* ROLE WORKFLOW HEADER */
+    .role-header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #291502 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: 16px;
+      padding: 36px 42px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--accent-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .role-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .role-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    .meta-metrics {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .metric-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metric-pill strong {
+      color: var(--accent-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+    }
+
+    /* STEPPER NAVIGATION PANEL */
+    html { scroll-behavior: smooth; }
+
+    .stepper-panel-container {
+      max-width: 1280px;
+      margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 36px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      overflow-x: auto;
+    }
+
+    .stepper-nodes {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      min-width: 1350px;
+      z-index: 2;
+    }
+
+    .stepper-nodes::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: var(--border-light);
+      z-index: -1;
+    }
+
+    .stepper-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .stepper-node:hover { transform: translateY(-2px); }
+
+    .node-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border-light);
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .stepper-node:hover .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+
+    .node-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .stepper-node:hover .node-label { color: var(--text-main); }
+
+    /* Active Highlight States */
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+
+    .stepper-node.active .node-label {
+      color: var(--accent-primary);
+      font-weight: 800;
+    }
+
+    /* WORKFLOW GROUP ARCHITECTURE */
+    .workflow-group-block {
+      max-width: 1280px;
+      margin: 0 auto 64px;
+      background: #141416;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color);
+      border-left: 5px solid var(--accent-primary);
+      padding: 24px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .sub-workflow-header {
+      background: linear-gradient(90deg, #18181b 0%, #121214 100%);
+      border-bottom: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-secondary);
+      padding: 16px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .workflow-group-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sub-workflow-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-count-pill {
+      background: var(--bg-base);
+      color: var(--text-muted);
+      border: 1px solid var(--border-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .workflow-group-body {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* SUB-WORKFLOW INDENT CONTAINER */
+    .sub-workflow-container {
+      margin: 16px 0 0 24px;
+      border-left: 2px dashed var(--border-light);
+      border-radius: 0 0 16px 16px;
+      overflow: hidden;
+      background: var(--bg-base);
+    }
+
+    .sub-workflow-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* INDIVIDUAL FLOW STEP CARDS */
+    .flow-step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .flow-step-card:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    /* STEP CARD HEADER */
+    .step-header {
+      background: #19191d;
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .step-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      letter-spacing: 0.5px;
+    }
+
+    .sub-step-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-secondary);
+      background: rgba(16, 185, 129, 0.12);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-folder-ref {
+      font-family: 'Inter', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      background: var(--bg-base);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* STEP CARD BODY - SPLIT PANE */
+    .step-body {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 400px;
+    }
+
+    .step-left-pane {
+      flex: 1;
+      min-width: 320px;
+      max-width: 380px;
+      background: #09090a;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .card-image-viewport {
+      width: 280px;
+      height: 460px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: #000;
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+
+    .preview-screen-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .step-right-pane {
+      flex: 2;
+      min-width: 340px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .spec-block {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      padding: 12px 16px;
+      border-radius: 6px;
+    }
+    .spec-block.full-width { grid-column: 1 / -1; }
+
+    .spec-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .sub-spec-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .spec-value {
+      font-size: 13px;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .db-schema-box {
+      background: #000;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--accent-primary-hover);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin-top: 4px;
+    }
+
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto;
+    }
+
+    .action-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-active);
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .action-btn.primary {
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--accent-primary);
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .action-btn.primary:hover {
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
+    }
+
+    /* EXECUTABLE CODE OVERLAY MODAL */
+    .code-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .code-modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .code-modal-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+    }
+    .code-modal-backdrop.active .code-modal-window { transform: scale(1); }
+    .code-modal-window.mobile-view { width: 380px; height: 720px; max-height: 90vh; }
+    .code-modal-window.desktop-view { width: 90%; max-width: 1200px; height: 85vh; }
+    .code-modal-header {
+      padding: 14px 20px;
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .code-modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+    .code-modal-close {
+      background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; line-height: 1;
+    }
+    .code-modal-close:hover { color: #fff; }
+    .code-modal-body {
+      flex: 1; width: 100%; height: 100%; background: #121212; overflow-y: auto;
+    }
+    .code-modal-body iframe { width: 100%; height: 100%; display: block; border: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ROLE HEADER BANNER -->
+  <div class="role-header-banner">
+    <div class="role-tag">Role Operations: Buyer Operational Lifecycle</div>
+    <h1 class="role-title">Buyer Workflows — Structured Modules</h1>
+    <p class="role-desc">
+      Complete high-fidelity architectural mapping of all discrete wholesale buyer workflows. Organized strictly into multi-step execution modules maintaining absolute zero-leak anonymity boundaries and robust margin protection logic across primary custom requirements, direct purchase acceptances, field spot clearing, physical delivery validation, and downstream quality arbitration sub-workflows.
+    </p>
+
+    <div class="meta-metrics">
+      <div class="metric-pill">
+        <span>Total Primary Workflows:</span> <strong>9 Active Groups</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Total Operational Steps:</span> <strong style="color:var(--text-main);">33 Concrete Screens</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Target Sourcing Path:</span> <strong style="color:var(--accent-primary);font-family:monospace;">images/operations/</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- DYNAMIC STEPPER PANEL -->
+  <div class="stepper-panel-container custom-scrollbar">
+    <div class="stepper-nodes">
+      <a href="#wf-post-req" class="stepper-node" title="Post Requirement (5 Steps)">
+        <span class="node-num">01</span><span class="node-label">Post Req</span>
+      </a>
+      <a href="#wf-revise-req" class="stepper-node" title="Revise Requirement (3 Steps)">
+        <span class="node-num">02</span><span class="node-label">Revise Req</span>
+      </a>
+      <a href="#wf-po-accept" class="stepper-node" title="PO Acceptance (5 Steps)">
+        <span class="node-num">03</span><span class="node-label">PO Accept</span>
+      </a>
+      <a href="#wf-cancel-po" class="stepper-node" title="Cancel PO (2 Steps)">
+        <span class="node-num">04</span><span class="node-label">Cancel PO</span>
+      </a>
+      <a href="#wf-pay-sent" class="stepper-node" title="Mark Payment Sent (2 Steps)">
+        <span class="node-num">05</span><span class="node-label">Pay Sent</span>
+      </a>
+      <a href="#wf-spot-buy" class="stepper-node" title="Spot Purchase (5 Steps)">
+        <span class="node-num">06</span><span class="node-label">Spot Buy</span>
+      </a>
+      <a href="#wf-reserve-lot" class="stepper-node" title="Reserve Lot (1 Step)">
+        <span class="node-num">07</span><span class="node-label">Reserve Lot</span>
+      </a>
+      <a href="#wf-delivery-accept" class="stepper-node" title="Delivery Acceptance (5 Steps)">
+        <span class="node-num">08</span><span class="node-label">Delivery Acc</span>
+      </a>
+      <a href="#wf-dispute-file" class="stepper-node" title="Dispute Filing (4 Sub-steps)">
+        <span class="node-num">8A</span><span class="node-label">Disputes</span>
+      </a>
+      <a href="#wf-submit-feedback" class="stepper-node" title="Submit Feedback (1 Step)">
+        <span class="node-num">09</span><span class="node-label">Feedback</span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 1: POST REQUIREMENT -->
+  <div class="workflow-group-block" id="wf-post-req">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 1: Post Requirement</span>
+        <span class="step-count-pill">5 Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Basic Parameters</div>
+          <span class="step-folder-ref">POST_REQUIREMENT/post_requirement_step_1</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/POST_REQUIREMENT/post_requirement_step_1/screen.png" alt="Post Requirement Step 1" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Capture root wholesale purchasing intent. Buyer selects high-level makhana categorizations (raw vs specialty toasted) establishing target filtering context.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/POST_REQUIREMENT/post_requirement_step_1/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Grade & Specifications</div>
+          <span class="step-folder-ref">POST_REQUIREMENT/post_requirement_step_2</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/POST_REQUIREMENT/post_requirement_step_2/screen.png" alt="Post Requirement Step 2" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Input definitive sorting grade criteria (Grade A+, A, B) along with precise sizing millimeter diameters. Forms core inputs matching against pre-assessed farmer stock levels.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/POST_REQUIREMENT/post_requirement_step_2/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 3</span>Quantity & Pricing Caps</div>
+          <span class="step-folder-ref">POST_REQUIREMENT/post_requirement_step_3</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/POST_REQUIREMENT/post_requirement_step_3/screen.png" alt="Post Requirement Step 3" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Record total minimum bulk weight commitments (kg) alongside maximum intended buyer acquisition offer prices per kilogram. Triggers backend platform margin mapping logic.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/POST_REQUIREMENT/post_requirement_step_3/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 4</span>Delivery Deadlines & Location</div>
+          <span class="step-folder-ref">POST_REQUIREMENT/post_requirement_step_4</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/POST_REQUIREMENT/post_requirement_step_4/screen.png" alt="Post Requirement Step 4" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Establish hard delivery completion targets using calendar controls and specify intended end-destination corporate dispatch addresses.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/POST_REQUIREMENT/post_requirement_step_4/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 5</span>Final Summary & Submission</div>
+          <span class="step-folder-ref">POST_REQUIREMENT/post_requirement_step_5</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/POST_REQUIREMENT/post_requirement_step_5/screen.png" alt="Post Requirement Step 5" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Final aggregated configuration check review block. Committing writes to real-time arrays dispatches pre-filtered custom invitation rows to capable tier sellers instantly.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Contextual Sheet Hooks Available</div>
+                <div class="spec-value">Provides inline hooks to view secondary detail sheets: <code style="color:var(--accent-primary);">add_delivery_address_sheet</code> and <code style="color:var(--accent-primary);">insurance_terms_sheet</code>.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/POST_REQUIREMENT/post_requirement_step_5/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 2: REVISE REQUIREMENT -->
+  <div class="workflow-group-block" id="wf-revise-req">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 2: Revise Requirement</span>
+        <span class="step-count-pill">3 Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Edit Core Fields</div>
+          <span class="step-folder-ref">REVISE_REQUIREMENT/revise_requirement_edit_fields</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/REVISE_REQUIREMENT/revise_requirement_edit_fields/screen.png" alt="Revise Requirement Edit Fields" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Allow active requirement variable adjustments (e.g. expanding price ceilings or relaxing grade specs) to secure wider farmer matching distributions if early engagement metrics lag.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/REVISE_REQUIREMENT/revise_requirement_edit_fields/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Review Parameter Changes</div>
+          <span class="step-folder-ref">REVISE_REQUIREMENT/revise_requirement_review_changes</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/REVISE_REQUIREMENT/revise_requirement_review_changes/screen.png" alt="Revise Requirement Review Changes" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Explicit diff comparison mode itemizing baseline variables balanced directly against pending adjustment parameters to guarantee transparent internal reviews prior to table writes.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/REVISE_REQUIREMENT/revise_requirement_review_changes/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 3</span>Resubmit Trigger Commit</div>
+          <span class="step-folder-ref">REVISE_REQUIREMENT/revise_requirement_resubmit</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/REVISE_REQUIREMENT/revise_requirement_resubmit/screen.png" alt="Revise Requirement Resubmit" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Execution target updating live storage tables. Triggers soft re-broadcast engine immediately updating targeted pool views on farmer dashboards.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/REVISE_REQUIREMENT/revise_requirement_resubmit/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 3: PO ACCEPTANCE -->
+  <div class="workflow-group-block" id="wf-po-accept">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 3: PO Acceptance</span>
+        <span class="step-count-pill">5 Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Review PO Draft</div>
+          <span class="step-folder-ref">PO_ACCEPTANCE/review_po_draft</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/PO_ACCEPTANCE/review_po_draft/screen.png" alt="Review PO Draft" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Review automatically compiled formal contract draft itemizing verified quantities and delivery milestone windows resulting from primary farmer bid selections.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Security Masking</div>
+                <div class="db-schema-box">SELECT * FROM v_po_buyer WHERE id = target_id;
+-- Strips farmer names completely per Zero-Leak identity isolation rule.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/PO_ACCEPTANCE/review_po_draft/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Insurance Options</div>
+          <span class="step-folder-ref">PO_ACCEPTANCE/insurance_options</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/PO_ACCEPTANCE/insurance_options/screen.png" alt="Insurance Options" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Configure dynamic liability insurance riders covering raw seed transit degradation or unforeseen moisture absorption events prior to arrival.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/PO_ACCEPTANCE/insurance_options/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 3</span>Terms & Conditions</div>
+          <span class="step-folder-ref">PO_ACCEPTANCE/terms_conditions</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/PO_ACCEPTANCE/terms_conditions/screen.png" alt="Terms Conditions" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Mandatory legal verification canvas detailing definitive supply arbitration parameters, clearing dispute resolution paths, and standard payment transfer windows.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/PO_ACCEPTANCE/terms_conditions/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 4</span>Digital Signature Acceptance</div>
+          <span class="step-folder-ref">PO_ACCEPTANCE/digital_signature</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/PO_ACCEPTANCE/digital_signature/screen.png" alt="Digital Signature" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Provide legally compliant client-side hand drawing or corporate stamp inputs binding signing executive keys straight to finalized order ledgers.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/PO_ACCEPTANCE/digital_signature/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 5</span>Advance Escrow Allocation</div>
+          <span class="step-folder-ref">PO_ACCEPTANCE/advance_payment</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/PO_ACCEPTANCE/advance_payment/screen.png" alt="Advance Payment" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Present explicit escrow routing account parameters itemizing required initial down payments required to lock active farmer production commitments.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/PO_ACCEPTANCE/advance_payment/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 4: CANCEL PO -->
+  <div class="workflow-group-block" id="wf-cancel-po">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 4: Cancel PO</span>
+        <span class="step-count-pill">2 Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Reason Selection</div>
+          <span class="step-folder-ref">CANCEL_PO/cancel_po_reason_selection</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/CANCEL_PO/cancel_po_reason_selection/screen.png" alt="Cancel PO Reason Selection" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Capture standardized cancellation feedback parameters prior to formal escrow fund locks. Keeps operational databases clean.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/CANCEL_PO/cancel_po_reason_selection/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Cancellation Confirmation</div>
+          <span class="step-folder-ref">CANCEL_PO/cancel_po_confirmation</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/CANCEL_PO/cancel_po_confirmation/screen.png" alt="Cancel PO Confirmation" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Commit order dissolution to persistent storage, instantly releasing reserved matching farmer inventory back toward spot trading pools.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/CANCEL_PO/cancel_po_confirmation/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 5: MARK PAYMENT SENT -->
+  <div class="workflow-group-block" id="wf-pay-sent">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 5: Mark Payment Sent</span>
+        <span class="step-count-pill">2 Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Enter UTR Reference Proof</div>
+          <span class="step-folder-ref">MARK_PAYMENT_SENT/enter_utr_proof</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/MARK_PAYMENT_SENT/enter_utr_proof/screen.png" alt="Enter UTR Proof" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Direct alphanumeric string capture form allowing buyer finance desks to report banking transfer identifiers immediately post clearing.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/MARK_PAYMENT_SENT/enter_utr_proof/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Upload Bank Screenshot</div>
+          <span class="step-folder-ref">MARK_PAYMENT_SENT/upload_payment_screenshot</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/MARK_PAYMENT_SENT/upload_payment_screenshot/screen.png" alt="Upload Payment Screenshot" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Attach actual successful payment statement imagery to accelerate central clearing triage validation processes without waiting for automated bank settlements.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/MARK_PAYMENT_SENT/upload_payment_screenshot/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 6: SPOT PURCHASE -->
+  <div class="workflow-group-block" id="wf-spot-buy">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 6: Spot Purchase</span>
+        <span class="step-count-pill">5 Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Review Lot Seals & Quality</div>
+          <span class="step-folder-ref">SPOT_PURCHASE/review_lot_seal</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/SPOT_PURCHASE/review_lot_seal/screen.png" alt="Review Lot Seal" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Display fully pre-inspected immediate spot lots. Surfaces empirical lab tests (Moisture, foreign matter) alongside photographic field seal gallery verification data.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/SPOT_PURCHASE/review_lot_seal/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Confirm Cargo Insurance</div>
+          <span class="step-folder-ref">SPOT_PURCHASE/confirm_cargo_insurance</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/SPOT_PURCHASE/confirm_cargo_insurance/screen.png" alt="Confirm Cargo Insurance" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Toggle insurance structures adjusting total spot acquisition budgets instantly prior to active fund checkouts.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/SPOT_PURCHASE/confirm_cargo_insurance/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 3</span>Review & Accept Terms</div>
+          <span class="step-folder-ref">SPOT_PURCHASE/review_accept_terms</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/SPOT_PURCHASE/review_accept_terms/screen.png" alt="Review Accept Terms" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Confirm binding spot trading regulations, validating immediate physical lifting obligations from registered field warehouse locations.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/SPOT_PURCHASE/review_accept_terms/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 4</span>Sign Your Purchase</div>
+          <span class="step-folder-ref">SPOT_PURCHASE/sign_your_purchase</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/SPOT_PURCHASE/sign_your_purchase/screen.png" alt="Sign Purchase" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Capture formal signature authorizing full commitment to pre-inspected lot parameters. Initiates real-time checkout locks across stock pools.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/SPOT_PURCHASE/sign_your_purchase/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 5</span>Pay to Confirm Purchase</div>
+          <span class="step-folder-ref">SPOT_PURCHASE/pay_to_confirm_purchase</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/SPOT_PURCHASE/pay_to_confirm_purchase/screen.png" alt="Pay to Confirm Purchase" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Definitive payment entry completing spot acquisition tasks. Immediately transitions stock status to Sold and schedules logistics dispatching.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/SPOT_PURCHASE/pay_to_confirm_purchase/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 7: RESERVE LOT -->
+  <div class="workflow-group-block" id="wf-reserve-lot">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 7: Reserve Lot</span>
+        <span class="step-count-pill">1 Step</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Active Reservation Hold</div>
+          <span class="step-folder-ref">RESERVE_LOT/active_reservation_hold</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/RESERVE_LOT/active_reservation_hold/screen.png" alt="Active Reservation Hold" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Display strict client-side real-time countdown tickers temporarily securing exclusive acquisition holds over specified spot allocation lots while offline wire tasks clear.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/RESERVE_LOT/active_reservation_hold/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 8: DELIVERY ACCEPTANCE -->
+  <div class="workflow-group-block" id="wf-delivery-accept">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 8: Delivery Acceptance</span>
+        <span class="step-count-pill">5 Steps</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Verify Seal Integrity</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/verify_seal_integrity</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/verify_seal_integrity/screen.png" alt="Verify Seal Integrity" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Mandatory inbound gate check. Requires physical receiving supervisor to cross-check arrival container serial tags against original database commitments signed by verification scouts.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/verify_seal_integrity/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Upload Delivery Photos</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/upload_delivery_photos</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/upload_delivery_photos/screen.png" alt="Upload Delivery Photos" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Evidentiary upload sequence storing initial arriving cargo truck conditions to protect logistics chains from external dispute vectors prior to physical offloading.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/upload_delivery_photos/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 3</span>Verify Quantity Delivered</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/verify_quantity</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/verify_quantity/screen.png" alt="Verify Quantity Delivered" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Input exact arrival net weight metrics balanced against source declarations. Calculates required minor balance clearing payouts automatically.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/verify_quantity/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 4</span>Accept or Dispute Decision</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/accept_or_dispute</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/accept_or_dispute/screen.png" alt="Accept or Dispute" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Primary operational branch controller allowing procurement managers to instantly clear escrow settlements toward farmers OR route into sub-workflow dispute procedures.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/accept_or_dispute/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 5</span>Pay Balance Complete</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/pay_balance_complete</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/pay_balance_complete/screen.png" alt="Pay Balance Complete" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Final ledger settling interface finalizing contract transactions cleanly upon flawless physical delivery verifications.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/pay_balance_complete/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-WORKFLOW: DISPUTE FILING -->
+      <div class="sub-workflow-container" id="wf-dispute-file">
+        <div class="sub-workflow-header">
+          <div class="sub-workflow-title">
+            <span>Sub-workflow: Dispute Filing</span>
+            <span class="step-count-pill" style="background:rgba(16,185,129,0.1);color:var(--accent-secondary);border-color:rgba(16,185,129,0.25);">4 Sub-steps</span>
+          </div>
+        </div>
+        <div class="sub-workflow-body">
+
+          <!-- Sub-step 1 -->
+          <div class="flow-step-card">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 1</span>Submit Initial Dispute</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/submit_dispute</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/submit_dispute/screen.png" alt="Submit Dispute" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Sub-step Description</div>
+                    <div class="spec-value">Formally suspend automated escrow un-locks. Capture attached string proof files documenting severe quality or weight non-compliance upon container arrival.</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/submit_dispute/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary" style="color:var(--accent-secondary);border-color:var(--accent-secondary);">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-step 2 -->
+          <div class="flow-step-card">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 2</span>Dispute Rationale Selection</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/dispute_reasons</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_reasons/screen.png" alt="Dispute Reasons" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Sub-step Description</div>
+                    <div class="spec-value">Categorize exact violation dimensions (e.g. Broken seal, moisture percentage mismatch, pest infestations) feeding clearing triage desk automation.</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_reasons/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary" style="color:var(--accent-secondary);border-color:var(--accent-secondary);">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-step 3 -->
+          <div class="flow-step-card">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 3</span>Request Independent Lab Test</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/request_lab_test</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/request_lab_test/screen.png" alt="Request Lab Test" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Sub-step Description</div>
+                    <div class="spec-value">Trigger third-party independent diagnostic validation flows binding non-partisan empirical findings to final platform liability verdicts.</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/request_lab_test/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary" style="color:var(--accent-secondary);border-color:var(--accent-secondary);">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-step 4 -->
+          <div class="flow-step-card">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 4</span>Dispute Filed Success State</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/dispute_filed_success</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_filed_success/screen.png" alt="Dispute Filed Success" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Sub-step Description</div>
+                    <div class="spec-value">Render positive confirmation verifying successful transmission of attached evidence payloads toward primary arbitration desks.</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_filed_success/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary" style="color:var(--accent-secondary);border-color:var(--accent-secondary);">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- END SUB-WORKFLOW -->
+
+    </div>
+  </div>
+
+
+  <!-- WORKFLOW 9: SUBMIT FEEDBACK -->
+  <div class="workflow-group-block" id="wf-submit-feedback">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">
+        <span>Workflow 9: Submit Feedback</span>
+        <span class="step-count-pill">1 Step</span>
+      </div>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Rate & Review Operations</div>
+          <span class="step-folder-ref">SUBMIT_FEEDBACK/rate_review</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/SUBMIT_FEEDBACK/rate_review/screen.png" alt="Rate Review" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Step Description</div>
+                <div class="spec-value">Capture empirical rating indicators measuring total transaction satisfaction. Directs downstream ranking algorithms cleanly.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/SUBMIT_FEEDBACK/rate_review/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXECUTABLE CODE OVERLAY MODAL -->
+  <div id="code-iframe-modal" class="code-modal-backdrop" onclick="closeCodeModal(event)">
+    <div id="code-modal-window" class="code-modal-window mobile-view" onclick="event.stopPropagation()">
+      <div class="code-modal-header">
+        <span class="code-modal-title">Executable Source Preview</span>
+        <button class="code-modal-close" onclick="closeCodeModal(event)">&times;</button>
+      </div>
+      <div class="code-modal-body">
+        <iframe id="executable-code-iframe" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCodeModal(event, url, viewType) {
+      event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const modalWin = document.getElementById("code-modal-window");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal && modalWin && iframe) {
+        if (viewType === 'desktop') {
+          modalWin.className = "code-modal-window desktop-view";
+        } else {
+          modalWin.className = "code-modal-window mobile-view";
+        }
+        iframe.src = url;
+        modal.classList.add("active");
+      }
+    }
+
+    function closeCodeModal(event) {
+      if (event) event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal) {
+        modal.classList.remove("active");
+        if (iframe) iframe.src = "";
+      }
+    }
+
+    // Dynamic IntersectionObserver highlighting active stepper menu context
+    document.addEventListener("DOMContentLoaded", () => {
+      const groupBlocks = document.querySelectorAll(".workflow-group-block, .sub-workflow-container");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const container = document.querySelector(".stepper-panel-container");
+
+      const options = {
+        root: null,
+        rootMargin: "-10% 0px -80% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => node.classList.remove("active"));
+            const activeNode = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (activeNode) {
+              activeNode.classList.add("active");
+              if (container) {
+                const nodeLeft = activeNode.offsetLeft;
+                const nodeWidth = activeNode.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = container.scrollLeft;
+                
+                if (nodeLeft < scrollLeft || nodeLeft + nodeWidth > scrollLeft + containerWidth) {
+                  container.scrollTo({
+                    left: nodeLeft - containerWidth / 2 + nodeWidth / 2,
+                    behavior: "smooth"
+                  });
+                }
+              }
+            }
+          }
+        });
+      }, options);
+
+      groupBlocks.forEach(block => observer.observe(block));
+    });
+  </script>
+</body>
+</html>

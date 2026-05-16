@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#e9ddff",
+                    "on-secondary-fixed": "#23005c",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-fixed-variant": "#005236",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary": "#650911",
+                    "on-surface-variant": "#bbcabf",
+                    "secondary": "#d0bcff",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "surface-dim": "#131313",
+                    "outline-variant": "#3c4a42",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-bright": "#393939",
+                    "surface-container": "#201f1f",
+                    "on-surface": "#e5e2e1",
+                    "tertiary-fixed": "#ffdad7",
+                    "tertiary-container": "#fc7c78",
+                    "on-secondary-container": "#c4abff",
+                    "surface-tint": "#4edea3",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary": "#003824",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "secondary-container": "#571bc1",
+                    "on-primary-container": "#00422b",
+                    "surface-container-highest": "#353534",
+                    "on-tertiary-container": "#711419",
+                    "on-secondary": "#3c0091",
+                    "inverse-primary": "#006c49",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#86948a",
+                    "error": "#ffb4ab",
+                    "primary": "#4edea3",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#2a2a2a",
+                    "on-background": "#e5e2e1",
+                    "surface": "#131313",
+                    "primary-fixed": "#6ffbbe",
+                    "on-primary-fixed": "#002113",
+                    "primary-container": "#10b981",
+                    "on-error": "#690005",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-on-surface": "#313030",
+                    "tertiary": "#ffb3af",
+                    "background": "#131313",
+                    "surface-variant": "#353534"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "12px",
+                    "md": "16px",
+                    "gutter": "12px",
+                    "xs": "8px",
+                    "margin": "20px",
+                    "base": "4px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .timeline-connector::before {
+            content: '';
+            position: absolute;
+            left: 23px;
+            top: 40px;
+            bottom: -24px;
+            width: 2px;
+            background: repeating-linear-gradient(to bottom, #3c4a42 0, #3c4a42 4px, transparent 4px, transparent 8px);
+        }
+        .timeline-connector-last::before {
+            display: none;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md selection:bg-primary-container/30">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin py-xs max-w-full bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">FenBridge</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-margin max-w-2xl mx-auto">
+<!-- Lot Identity Header -->
+<div class="mb-xl">
+<div class="flex justify-between items-start mb-xs">
+<h1 class="text-headline-lg font-headline-lg text-on-surface truncate whitespace-nowrap">Lot #MK-8821</h1>
+<span class="bg-error-container/20 text-error px-md py-1 rounded-full text-label-sm font-label-sm border border-error/20">REJECTED</span>
+</div>
+<p class="text-on-surface-variant text-body-md">Makhana Premium Grade • 450 Units</p>
+</div>
+<!-- Section Title -->
+<div class="flex items-center gap-xs mb-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">history</span>
+<h2 class="text-label-lg font-label-lg text-primary uppercase tracking-widest truncate whitespace-nowrap">Rejection History</h2>
+</div>
+<!-- Chronological Timeline -->
+<div class="space-y-lg relative">
+<!-- Row 1: Oldest Rejection -->
+<div class="relative timeline-connector">
+<div class="flex gap-md group cursor-pointer">
+<div class="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center shadow-lg transition-transform group-active:scale-90">
+<span class="material-symbols-outlined text-error" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dangerous</span>
+</div>
+<div class="flex-grow bg-surface-container border border-outline-variant/30 p-md rounded-xl hover:bg-surface-variant/50 transition-all duration-200 shadow-sm flex items-center justify-between">
+<div class="space-y-base">
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">12 May</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">#SCT003</span>
+</div>
+<h3 class="text-body-md font-bold text-on-surface">First inspection — Rejected (high moisture)</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Moisture levels recorded at 14.2% (Max 12%)</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Re-inspection -->
+<div class="relative timeline-connector">
+<div class="flex gap-md group cursor-pointer">
+<div class="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center shadow-lg transition-transform group-active:scale-90">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-grow bg-surface-container border border-outline-variant/30 p-md rounded-xl hover:bg-surface-variant/50 transition-all duration-200 shadow-sm flex items-center justify-between">
+<div class="space-y-base">
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">15 May</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">#SCT004</span>
+</div>
+<h3 class="text-body-md font-bold text-on-surface">Re-inspection 1 — Accepted Grade B</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Conditions improved. Quality within Grade B range.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Final Status -->
+<div class="relative timeline-connector timeline-connector-last">
+<div class="flex gap-md group cursor-pointer">
+<div class="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center shadow-lg transition-transform group-active:scale-90">
+<span class="material-symbols-outlined text-error" data-weight="fill" style="font-variation-settings: 'FILL' 1;">block</span>
+</div>
+<div class="flex-grow bg-surface-container border border-outline-variant/30 p-md rounded-xl hover:bg-surface-variant/50 transition-all duration-200 shadow-sm flex items-center justify-between">
+<div class="space-y-base">
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">16 May</span>
+</div>
+<h3 class="text-body-md font-bold text-on-surface">Lot closed terminal</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Manual override: Transactional non-compliance.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Detail Image for Context -->
+<div class="mt-xl rounded-xl overflow-hidden border border-outline-variant/30 shadow-xl">
+<img alt="Makhana inspection" class="w-full h-48 object-cover" data-alt="A highly detailed close-up shot of dried Makhana fox nuts being inspected by a professional in a modern agricultural laboratory. The lighting is bright and clinical, emphasizing the textures and organic shapes of the nuts against a dark basalt surface. Subtle green neon accents from digital weighing scales illuminate the edges of the scene. The mood is precise, technological, and premium, reflecting a high-end food quality control environment with a dark, sophisticated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTb-wlmGJ3C-OLFT_ZDkzncMR99UPbIv32epx2yR2xlwFAbl-qyztPBiLSzTjzX8SG3HyE6qX_MqUORtLjiBMo4aacMjvVaRhp0qf1NjiHIXm8R2ROfDYXjvg0H8UGI78FGpRIeMip96GlBFZdyUVesSAi5XNY1ulQ2O_Ho3GqrFSKh9-hpPujgpsLhXpwd9Ldkfg4lVYe_40o5z8a52NkjbLAsII02U6BammRnQ79-Bsyz2-eH5fzah_XOcu_BljJqlQGZP7wt09h"/>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-md bg-surface-dim/90 backdrop-blur-lg border-t border-outline-variant/20 shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span class="text-label-sm font-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-xl px-4 py-1 Active: scale-95 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">potted_plant</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined mb-1">handshake</span>
+<span class="text-label-sm font-label-sm">Trade</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

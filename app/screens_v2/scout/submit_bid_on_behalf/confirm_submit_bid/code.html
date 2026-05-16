@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirm &amp; Submit Bid | AgriScout Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#dde4dd",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#6d3735",
+                      "primary-fixed": "#6ffbbe",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#7b4240",
+                      "primary": "#6ffbbe",
+                      "surface-container-lowest": "#09100c",
+                      "on-primary-container": "#005f40",
+                      "on-background": "#dde4dd",
+                      "tertiary": "#ffb3af",
+                      "inverse-on-surface": "#2b322d",
+                      "on-surface-variant": "#bbcabf",
+                      "on-surface": "#dde4dd",
+                      "secondary-container": "#115340",
+                      "on-secondary": "#003829",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "secondary-fixed": "#b1f0d6",
+                      "outline-variant": "#3c4a42",
+                      "surface-dim": "#0e1511",
+                      "tertiary-container": "#ffb3af",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "on-secondary-fixed-variant": "#0d503e",
+                      "surface-variant": "#2f3632",
+                      "primary-fixed-dim": "#4edea3",
+                      "primary-container": "#4edea3",
+                      "surface-container": "#1a211d",
+                      "secondary": "#95d3ba",
+                      "on-secondary-container": "#87c5ac",
+                      "on-primary-fixed-variant": "#005236",
+                      "background": "#0e1511",
+                      "outline": "#86948a",
+                      "on-tertiary": "#512120",
+                      "surface-tint": "#4edea3",
+                      "on-primary-fixed": "#002114",
+                      "on-secondary-fixed": "#002117",
+                      "tertiary-fixed": "#ffdad7",
+                      "surface-bright": "#343b36",
+                      "surface-container-highest": "#2f3632",
+                      "surface-lowest": "#0e0e0e",
+                      "on-primary": "#003824",
+                      "inverse-primary": "#006c4a",
+                      "surface": "#0e1511",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#161d19",
+                      "on-tertiary-fixed": "#370d0d",
+                      "surface-container-high": "#242c27"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "base-unit": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "container-max": "1440px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "mono-data": ["JetBrains Mono"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="flex flex-col min-h-screen bg-background">
+<!-- Top AppBar -->
+<header class="bg-surface-container-high border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform duration-150 p-1 hover:bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">Confirm Bid</h1>
+<span class="text-label-md font-label-md text-on-surface-variant">Step 5 of 5</span>
+</div>
+</div>
+<div class="flex items-center">
+<button class="active:scale-95 transition-transform duration-150 p-2 hover:bg-surface-container-highest rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_sync">cloud_sync</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-container-max mx-auto px-margin-mobile py-8 md:px-margin-desktop">
+<div class="max-w-2xl mx-auto">
+<!-- Heading -->
+<div class="mb-8">
+<h2 class="text-display-lg font-display-lg text-on-surface mb-2">Review Your Bid</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Verify the details before finalizing your submission to the marketplace.</p>
+</div>
+<!-- Recap Sections (Stacked Cards) -->
+<div class="space-y-4">
+<!-- Requirement -->
+<div class="bg-surface-container-high border border-outline-variant p-5 rounded-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="description">description</span>
+<span class="text-label-md font-label-md uppercase tracking-widest text-on-surface-variant">Requirement</span>
+</div>
+<button class="text-primary hover:underline text-label-md font-label-md flex items-center gap-1 active:scale-95 transition-transform">
+                            Edit
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Reference ID</p>
+<p class="text-mono-data font-mono-data text-on-surface">REQ-2026-001</p>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Issuer</p>
+<p class="text-body-md font-body-md text-on-surface">FenBridge Logistics</p>
+</div>
+<div class="md:col-span-2">
+<p class="text-label-md font-label-md text-on-surface-variant">Commodity &amp; Volume</p>
+<p class="text-body-md font-body-md text-on-surface font-semibold">Raw Makhana Seed, 5000 kg</p>
+</div>
+</div>
+</div>
+<!-- Bidder Info -->
+<div class="bg-surface-container-high border border-outline-variant p-5 rounded-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="person">person</span>
+<span class="text-label-md font-label-md uppercase tracking-widest text-on-surface-variant">Bidder Identity</span>
+</div>
+<button class="text-primary hover:underline text-label-md font-label-md flex items-center gap-1 active:scale-95 transition-transform">
+                            Edit
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Name</p>
+<p class="text-body-md font-body-md text-on-surface">Ramesh Kumar Sharma</p>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Category</p>
+<div class="inline-flex items-center px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold uppercase mt-1">Farmer</div>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Region</p>
+<p class="text-body-md font-body-md text-on-surface">Malda, West Bengal</p>
+</div>
+</div>
+</div>
+<!-- Bid Details -->
+<div class="bg-surface-container-high border border-outline-variant p-5 rounded-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="payments">payments</span>
+<span class="text-label-md font-label-md uppercase tracking-widest text-on-surface-variant">Bid Financials</span>
+</div>
+<button class="text-primary hover:underline text-label-md font-label-md flex items-center gap-1 active:scale-95 transition-transform">
+                            Edit
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Unit Price</p>
+<p class="text-mono-data font-mono-data text-primary text-lg">₹27.50/kg</p>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Total Value</p>
+<p class="text-mono-data font-mono-data text-on-surface text-lg">₹137,500</p>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Availability</p>
+<p class="text-body-md font-body-md text-on-surface">25 Apr 2026</p>
+</div>
+</div>
+</div>
+<!-- Fulfillment Source -->
+<div class="bg-surface-container-high border border-outline-variant p-5 rounded-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="water_drop">water_drop</span>
+<span class="text-label-md font-label-md uppercase tracking-widest text-on-surface-variant">Fulfillment Source</span>
+</div>
+<button class="text-primary hover:underline text-label-md font-label-md flex items-center gap-1 active:scale-95 transition-transform">
+                            Edit
+                        </button>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="Fulfillment source preview" class="w-full h-full object-cover opacity-60" data-alt="A high-angle architectural photograph of a professional agricultural wetland or pond facility during twilight. The water is calm and dark, reflecting a deep emerald sky. The scene is framed with minimalist industrial structures and technical monitoring equipment, embodying a noir, deep-tech agricultural atmosphere with precise nocturnal lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVWs59v7xmZRZHLGINdKq4J7MQl0oHYc1JdIhhRuJyrAQbX-fVmQH4lEz47dD9iuN86quG8GcR1g_oce97gc4860NvdOfzABUmo9rI2YdRwYN3_2D_ApybqiPXGQ05T9wDIXKr3bmFEubA_pUYbbTOVrCL2cofYiIMWSkWCE7rEkVNW1KgyhbZnAvh79_xe7yZAGo1FX1ss0MqbUht3Uo52vN2rUNPeTJ4VcNeXhffnE2bvBwxXh6wh8PSsDPIh23ZDn_wgGMprf26"/>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant">Inventory Reference</p>
+<p class="text-mono-data font-mono-data text-on-surface">Pond POND-1024</p>
+<p class="text-body-md font-body-md text-on-surface-variant">North Pond Sector</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Consent & Submit -->
+<div class="mt-12 space-y-6">
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="mt-1">
+<input class="w-5 h-5 rounded border-outline-variant bg-surface-container text-primary focus:ring-primary focus:ring-offset-background cursor-pointer" type="checkbox"/>
+</div>
+<span class="text-body-md font-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">
+                        I confirm the above bid details are correct and accurate. I understand that submitting this bid enters me into a binding technical agreement with the issuer.
+                    </span>
+</label>
+<button class="w-full h-14 bg-primary text-on-primary font-headline-sm rounded-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+                    Submit Bid
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on Desktop, Visible on Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container-low border-t border-outline-variant md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="text-label-md font-label-md">Today</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span class="text-label-md font-label-md">Warehouses</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-3 py-1 scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="sync" style="font-variation-settings: 'FILL' 1;">sync</span>
+<span class="text-label-md font-label-md">Sync</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</button>
+</nav>
+<!-- Spacer for fixed bottom nav on mobile -->
+<div class="h-20 md:hidden"></div>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

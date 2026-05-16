@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#161d19",
+                    "surface-bright": "#393939",
+                    "secondary-container": "#115340",
+                    "outline-variant": "#3c4a42",
+                    "surface-container-highest": "#2f3632",
+                    "secondary-fixed": "#b1f0d6",
+                    "tertiary-container": "#ffb3af",
+                    "surface-tint": "#4edea3",
+                    "on-secondary-fixed-variant": "#0d503e",
+                    "error": "#ffb4ab",
+                    "surface": "#0e1511",
+                    "tertiary-fixed": "#ffdad7",
+                    "primary": "#6ffbbe",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "on-primary-fixed": "#002114",
+                    "secondary": "#95d3ba",
+                    "on-tertiary": "#512120",
+                    "on-secondary": "#003829",
+                    "surface-container-lowest": "#09100c",
+                    "outline": "#86948a",
+                    "inverse-on-surface": "#2b322d",
+                    "surface-dim": "#0e1511",
+                    "on-primary": "#003824",
+                    "tertiary": "#ffb3af",
+                    "inverse-surface": "#dde4dd",
+                    "surface-lowest": "#0e0e0e",
+                    "on-secondary-fixed": "#002117",
+                    "surface-container": "#1a211d",
+                    "inverse-primary": "#006c4a",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "on-tertiary-fixed-variant": "#6d3735",
+                    "error-container": "#93000a",
+                    "surface-variant": "#2f3632",
+                    "surface-container-high": "#242c27",
+                    "on-secondary-container": "#87c5ac",
+                    "on-primary-fixed-variant": "#005236",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-primary-container": "#005f40",
+                    "on-background": "#dde4dd",
+                    "primary-fixed": "#6ffbbe",
+                    "background": "#0e1511",
+                    "on-surface-variant": "#bbcac0",
+                    "primary-container": "#4edea3",
+                    "on-tertiary-fixed": "#370d0d",
+                    "on-surface": "#dde4dd",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#7b4240"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "base-unit": "4px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile h-14 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">arrow_back</span>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm text-primary">Inspection Record</h1>
+<span class="font-label-md text-label-md text-on-surface-variant">12 Feb 2026</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 mt-14 mb-20 p-4 space-y-4 max-w-container-max mx-auto w-full">
+<!-- Header Card -->
+<section class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">POND-1024</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Rajesh Kumar • Inspector</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">VERIFIED</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-mono-data text-mono-data">12 Feb 2026, 2:30 PM</span>
+</div>
+</section>
+<!-- Bento Grid for Conditions & Readiness -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- 1. Conditions -->
+<section class="bg-surface-container border border-outline-variant p-4 rounded-lg space-y-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">water_ph</span> 1. CONDITIONS
+                </h3>
+<div class="grid grid-cols-2 gap-y-4">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">WATER LEVEL</p>
+<p class="font-body-md text-body-md">Normal</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">ALGAE</p>
+<p class="font-body-md text-body-md">Light</p>
+</div>
+<div class="col-span-2">
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">PEST / DISEASE</p>
+<p class="font-body-md text-body-md text-tertiary">Leaf Spot, Stem Rot</p>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant">
+<div class="flex justify-between items-end mb-2">
+<p class="font-label-md text-label-md text-on-surface-variant">READINESS SCORE</p>
+<p class="font-headline-sm text-headline-sm text-primary">6/10</p>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 60%;"></div>
+</div>
+</div>
+</section>
+<!-- 2. Bund Readings -->
+<section class="bg-surface-container border border-outline-variant p-4 rounded-lg space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">analytics</span> 2. BUND READINGS
+                    </h3>
+<span class="font-mono-data text-mono-data text-on-surface-variant">4 readings</span>
+</div>
+<div class="bg-surface-container-high p-3 rounded border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">AVERAGES</p>
+<p class="font-headline-sm text-headline-sm text-primary">14.2/sqm · 62%</p>
+</div>
+<!-- Expandable List Simulation -->
+<div class="space-y-2">
+<div class="flex justify-between font-mono-data text-mono-data py-1 border-b border-outline-variant opacity-80">
+<span>Reading #1 (North)</span>
+<span>14.5 / 60%</span>
+</div>
+<div class="flex justify-between font-mono-data text-mono-data py-1 border-b border-outline-variant opacity-80">
+<span>Reading #2 (East)</span>
+<span>13.8 / 65%</span>
+</div>
+<div class="flex justify-between font-mono-data text-mono-data py-1 border-b border-outline-variant opacity-80">
+<span>Reading #3 (South)</span>
+<span>14.1 / 61%</span>
+</div>
+<div class="flex justify-between font-mono-data text-mono-data py-1 opacity-80">
+<span>Reading #4 (West)</span>
+<span>14.4 / 62%</span>
+</div>
+</div>
+</section>
+</div>
+<!-- 3. Notes -->
+<section class="bg-surface-container border border-outline-variant p-4 rounded-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[18px]">sticky_note_2</span> 3. NOTES
+            </h3>
+<p class="font-body-md text-body-md italic text-on-surface">"Heavy algae on north edge, unusual water colour"</p>
+</section>
+<!-- 4. Photos -->
+<section class="space-y-2">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">photo_library</span> 4. PHOTOS
+            </h3>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square bg-surface-container-highest rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A cinematic, low-angle wide shot of a professional aquaculture pond at dusk. The water surface reflects the dark, moody sky with hints of deep teal and cool greens. The scene is lit with clinical precision, highlighting the industrial concrete bunds and automated monitoring equipment in the foreground. The atmosphere is nocturnal, high-tech, and calm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdUCOlyBlBu1NHxNc5p40_WDK-bn7Hdyp03LBuXrLiMcR--6zHunBaN4kL4XzLXUa4c6GSqPcESJDZkOnoZXPV5J-YAX8Jx4O8dM4mvX_7d54eU-kDekfmAYF0QLY72L3J0rBbRJilRmKsZJHAAce-ahVy3ThawJ5mU6hBveOroseCb3ytjvO_X1q8DZEr64DRrVEc0LIuTv0ZnHWBIyB_mfIPXsWPw29Me7CugZZuuNlOYD-VUgkNv7F1R_ralMWRep0KhDP5L8dW"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A detailed macro photograph of agricultural seeds resting on a dark, technical surface. The lighting is sharp and directional, casting subtle shadows that emphasize texture. The color palette is restricted to earthy tones and deep blacks, evoking a scientific laboratory environment. The image is captured with a shallow depth of field to focus on the intricate details of the seed variety." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzKpo_glYLu8P5d4ByFdGQMq139bMI6M65Gk1rqeVRottht2LIONxqWITcYAMJ-dPwU93KvIaMpLyUWqDLGOHAudcbVMjSbeGN-GZrxlQdp1AUMi6ZGxJzLUFOCOQXPWPVkrb_O2OW55e5AdKJ_dM5s381WKOmWt63EZvEpLZkFQ8sUHLYGtvxfWDqi5r1CcoVuyLOPj-JepvTgk83rY1FgCzvAa9G3QOOQw4p7Cbs3Y8xeILIBtPNhj_OESo700HM1S6uFTeiyGRP"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A high-contrast, technical close-up of a biological anomaly on a plant leaf, showing signs of disease under intense artificial light. The background is a deep, noir-style dark green, almost black. The lighting highlights the crystalline or fungal patterns on the leaf surface, appearing sharp and diagnostic. The overall aesthetic is clean, modern, and focused on agricultural data monitoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwk23jmtwcGHL9uOSd68FZPu175iGmvHAPpgPsxh7TlJbpHrDZa_KD_tORR54Uvha53Ard5yeWtnUxCLA9Qa093PdryitxxWy-xRMzdcvAtbOFLKWMyClYgxXBuh6pP5Q1rFhGFv0Ez4wZsaWJLP5CdWnazfTvhYn7XiT1njmhDSXkOq5CLfPQx6OwYE11W5WFJmnVli3NEzytlaMlNzM-sdp3x54CNferzoqRi1G2ArSEdlE7lYF84Dsw_6B-KGyEO8nnV2qKbWH4"/>
+</div>
+</div>
+</section>
+<!-- 5. Metadata -->
+<section class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg space-y-3">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">info</span> 5. METADATA
+            </h3>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Captured at</span>
+<span class="font-mono-data text-mono-data">14:32:05 GMT+5:30</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">GPS Coordinates</span>
+<span class="font-mono-data text-mono-data text-surface-tint">12.9716° N, 77.5946° E</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Accuracy</span>
+<span class="font-mono-data text-mono-data">±2.4 meters</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-low border-t border-outline-variant flex justify-around items-center h-16 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-transform duration-100 active:scale-95">
+<span class="material-symbols-outlined">water_drop</span>
+<span class="font-label-md text-label-md">Browse</span>
+</div>
+<!-- Active Tab: Inspections -->
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-transform duration-100 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Inspections</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-transform duration-100 active:scale-95">
+<span class="material-symbols-outlined">local_offer</span>
+<span class="font-label-md text-label-md">Offers</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-transform duration-100 active:scale-95">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</div>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

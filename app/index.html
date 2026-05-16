@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FenBridge Hub — Interactive Live Working App Demonstration</title>
+  <meta name="description" content="Experience the connected essence and dynamic interaction workflows of the FenBridge agricultural supply chain platform." />
+  
+  <!-- Premium Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* DESIGN SYSTEM: Luxe Dark Curated HSL Tokens */
+    :root {
+      --bg-base: #0a0a0c;
+      --bg-surface: #121215;
+      --bg-surface-elevated: #1a1a1e;
+      --bg-surface-hover: #222227;
+      --bg-surface-active: #2a2a30;
+      
+      --accent-primary: #10b981;
+      --accent-primary-hover: #34d399;
+      --accent-primary-dim: rgba(16, 185, 129, 0.15);
+      --accent-primary-glow: rgba(16, 185, 129, 0.3);
+      
+      --accent-secondary: #f59e0b;
+      --accent-secondary-dim: rgba(245, 158, 11, 0.15);
+      
+      --accent-info: #06b6d4;
+      --accent-purple: #8b5cf6;
+      
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      
+      --border-color: #222226;
+      --border-color-light: #323238;
+      
+      --sidebar-width: 320px;
+      --panel-width: 340px;
+      --header-height: 72px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* HIDE VERTICAL SCROLLBARS GLOBALLY BUT RETAIN SCROLL FUNCTIONALITY */
+    ::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      background: transparent !important;
+    }
+    * {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+
+
+    /* APP HEADER */
+    .app-header {
+      height: var(--header-height);
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 50;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent-primary) 0%, #059669 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #000;
+      box-shadow: 0 0 20px var(--accent-primary-glow);
+      position: relative;
+    }
+    
+    .brand-logo::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-badge {
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--accent-primary-dim);
+      color: var(--accent-primary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 4px rgba(16, 185, 129, 0.1); }
+      to { box-shadow: 0 0 12px var(--accent-primary-glow); }
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color-light);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #000;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-primary-hover);
+      color: #000;
+      box-shadow: 0 4px 12px var(--accent-primary-glow);
+    }
+
+    /* MAIN CONTAINER */
+    .main-canvas {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - var(--header-height));
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* LEFT SIDEBAR: Dynamic Accordion Workflows */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 40;
+    }
+
+    .sidebar-header {
+      padding: 16px 20px;
+      background: #101012;
+      border-bottom: 1px solid var(--border-color);
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-content {
+      overflow-y: auto;
+      padding: 16px 12px;
+      flex: 1;
+    }
+
+    .flow-group {
+      margin-bottom: 16px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .flow-group-title {
+      padding: 12px 14px;
+      background: var(--bg-surface-elevated);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.2s;
+      user-select: none;
+    }
+
+    .flow-group-title:hover {
+      background: var(--bg-surface-hover);
+      color: var(--accent-primary);
+    }
+
+    .flow-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      display: inline-block;
+      margin-right: 8px;
+    }
+    
+    .group-buyer .flow-indicator { background: var(--accent-secondary); }
+    .group-ops .flow-indicator { background: var(--accent-info); }
+    .group-scout .flow-indicator { background: var(--accent-purple); }
+
+    .screen-list {
+      list-style: none;
+      padding: 6px 0;
+    }
+
+    .screen-item {
+      padding: 8px 14px 8px 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s;
+      border-left: 2px solid transparent;
+    }
+
+    .screen-item:hover {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-main);
+    }
+
+    .screen-item.active {
+      color: var(--accent-primary);
+      font-weight: 600;
+      background: var(--accent-primary-dim);
+      border-left-color: var(--accent-primary);
+    }
+
+    /* CENTER SIMULATOR STAGE */
+    .simulator-stage {
+      flex: 1;
+      background: radial-gradient(circle at center, #15151a 0%, var(--bg-base) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    /* HIGH-FIDELITY SMARTPHONE FRAME */
+    .device-wrapper {
+      position: relative;
+      width: 380px;
+      height: 780px;
+      background: #000;
+      border-radius: 48px;
+      padding: 12px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8),
+                  inset 0 4px 12px rgba(255, 255, 255, 0.1),
+                  0 0 0 2px var(--border-color-light);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Subtle RGB Glow effect on device boundary */
+    .device-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-info), var(--accent-secondary));
+      z-index: -1;
+      opacity: 0.25;
+      filter: blur(12px);
+      animation: rotateGradient 10s linear infinite;
+    }
+
+    @keyframes rotateGradient {
+      0% { filter: hue-rotate(0deg) blur(12px); }
+      100% { filter: hue-rotate(360deg) blur(12px); }
+    }
+
+    /* Speaker notch & top camera layout */
+    .device-notch {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 24px;
+      background: #000;
+      border-radius: 12px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .device-notch::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #111;
+      border: 2px solid #222;
+      border-radius: 50%;
+      position: absolute;
+      right: 18px;
+    }
+
+    /* Inner Screen container */
+    .device-screen {
+      flex: 1;
+      background: var(--bg-surface);
+      border-radius: 38px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #1c1c1f;
+    }
+
+    .app-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: var(--bg-base);
+      display: block;
+    }
+
+    /* Bottom simulator home bar */
+    .device-home-bar {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    /* RIGHT DETAIL & SESSION MONITOR PANEL */
+    .detail-panel {
+      width: var(--panel-width);
+      background: var(--bg-surface);
+      border-left: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 40;
+    }
+
+    .panel-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .panel-section-header {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .info-card {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color-light);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .screen-title-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .screen-path-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--accent-primary);
+      word-break: break-all;
+      margin-bottom: 12px;
+      background: rgba(16, 185, 129, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    /* SESSION LOGGING MONITOR */
+    .session-console {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #09090b;
+    }
+
+    .console-header {
+      padding: 10px 16px;
+      background: #111113;
+      border-bottom: 1px solid var(--border-color);
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .console-logs {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 11.5px;
+      line-height: 1.6;
+    }
+
+    .log-entry {
+      margin-bottom: 6px;
+      color: var(--text-dim);
+      display: flex;
+      gap: 8px;
+    }
+
+    .log-timestamp {
+      color: var(--text-muted);
+      user-select: none;
+    }
+
+    .log-message {
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    .log-message.route {
+      color: var(--accent-primary);
+    }
+
+    .log-message.action {
+      color: var(--accent-secondary);
+    }
+
+    /* QUICK NAVIGATION ACTIONS */
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="app-header">
+    <div class="brand-group">
+      <div class="brand-logo">F</div>
+      <h1 class="brand-title">
+        <span>FenBridge</span>
+        <span style="font-weight:300; opacity:0.4;">|</span>
+        <span style="font-size:15px; font-weight:500; color:var(--text-muted);">Interactive Live Flow Demo</span>
+      </h1>
+      <span class="status-badge">● Standalone Essence Mode</span>
+    </div>
+
+    <div class="header-controls">
+      <button class="btn" onclick="toggleDeviceFrame()" title="Toggle physical smartphone frame display">
+        <span id="frame-toggle-icon">📱 Plain Viewport</span>
+      </button>
+      <button class="btn" onclick="reloadSimulator()" title="Reload current mockup layout">
+        <span>🔄 Reset Page</span>
+      </button>
+      <button class="btn btn-primary" onclick="loadInitialDashboard()" title="Return session straight to primary initial flows">
+        <span>🚀 Start Afresh</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN APP WORKSPACE CONTAINER -->
+  <main class="main-canvas">
+
+    <!-- LEFT MENU: ACCORDION WORKFLOW MODULES -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>Core Mockup Workflows</span>
+        <span style="color:var(--accent-primary)">60 Screens</span>
+      </div>
+
+      <div class="sidebar-content">
+        
+        <!-- GROUP 1: Farmer Onboarding -->
+        <div class="flow-group group-farmer">
+          <div class="flow-group-title" onclick="toggleGroup(this)">
+            <div>
+              <span class="flow-indicator"></span>
+              <span>Farmer Onboarding</span>
+            </div>
+            <span>▼</span>
+          </div>
+          <ul class="screen-list">
+            <li class="screen-item" onclick="loadMockup('splash/code.html', this)">
+              <span>Cinematic Welcome Splash</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/welcome_to_fenbridge/code.html', this)">
+              <span>Welcome Layout</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/choose_your_language/code.html', this)">
+              <span>Language Switcher</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/choose_your_role/code.html', this)">
+              <span>Role Selection Setup</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/streamlined_theme_selection/code.html', this)">
+              <span>Theme Configuration</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/verify_mobile_step_1/code.html', this)">
+              <span>Mobile Entry (OTP 1)</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/verify_mobile_step_2/code.html', this)">
+              <span>Code Verification (OTP 2)</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/business_information_high_visibility_uploads/code.html', this)">
+              <span>Business Document OCR</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/business_address/code.html', this)">
+              <span>Operating Address</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/address_details/code.html', this)">
+              <span>GIS Pinning Setup</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('farmer_onboarding/you_re_all_set/code.html', this)">
+              <span>Ready Launch Check</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- GROUP 2: Buyer Onboarding -->
+        <div class="flow-group group-buyer">
+          <div class="flow-group-title" onclick="toggleGroup(this)">
+            <div>
+              <span class="flow-indicator"></span>
+              <span>Buyer Onboarding</span>
+            </div>
+            <span>▼</span>
+          </div>
+          <ul class="screen-list" style="display:none;">
+            <li class="screen-item" onclick="loadMockup('buyer_onboarding/pond_address/code.html', this)">
+              <span>Pond Address Register</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('buyer_onboarding/farm_pond_details/code.html', this)">
+              <span>Farm Pond Attributes</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('buyer_onboarding/pond_geo_fencing/code.html', this)">
+              <span>Geofencing Polygon Map</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('buyer_onboarding/farm_pond_legal_details_high_visibility_uploads/code.html', this)">
+              <span>Legal Corporate Mandates</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('buyer_onboarding/you_re_all_set/code.html', this)">
+              <span>Completion Tracker</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- GROUP 3: Marketplace Operations -->
+        <div class="flow-group group-ops">
+          <div class="flow-group-title" onclick="toggleGroup(this)">
+            <div>
+              <span class="flow-indicator"></span>
+              <span>Market Operations</span>
+            </div>
+            <span>▼</span>
+          </div>
+          <ul class="screen-list" style="display:none;">
+            <li class="screen-item" onclick="loadMockup('operations/farmer_dashboard/code.html', this)">
+              <span>Farmer Main Dashboard</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/my_spot_listings/code.html', this)">
+              <span>Spot Listings Summary</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/request_spot_listing_step_1/code.html', this)">
+              <span>Create Listing Step 1</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/spot_listing_detail/code.html', this)">
+              <span>Spot Listing Inspection</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/bid_invitations/code.html', this)">
+              <span>Active Bidding Queues</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/bid_invitation_detail/code.html', this)">
+              <span>Bid Parameter Detail</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/my_active_pos/code.html', this)">
+              <span>Active Purchase Orders</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/po_detail_farmer/code.html', this)">
+              <span>PO Target Deliverables</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/mark_lot_ready_step_1/code.html', this)">
+              <span>Mark Lot Ready Step 1</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/earnings_summary/code.html', this)">
+              <span>Inward Earnings Hub</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/payment_history/code.html', this)">
+              <span>Escrow Settlement Logs</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/POST_REQUIREMENT/post_requirement_step_1/code.html', this)">
+              <span>Post Requirement (S1)</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/POST_REQUIREMENT/requirement_posted_success/code.html', this)">
+              <span>Requirement Success</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/REVISE_REQUIREMENT/revise_requirement_review_changes/code.html', this)">
+              <span>Revise Requirement Review</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/PO_ACCEPTANCE/review_po_draft/code.html', this)">
+              <span>Review PO Legal Draft</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/SPOT_PURCHASE/pay_to_confirm_purchase/code.html', this)">
+              <span>Pay Escrow Smart Collect</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/RESERVE_LOT/reserve_lot_confirmation/code.html', this)">
+              <span>Reserve Lot Gate Access</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/DELIVERY_ACCEPTANCE/verify_seal_integrity/code.html', this)">
+              <span>Delivery Check (QC Hub)</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('operations/SUBMIT_FEEDBACK/rate_review/code.html', this)">
+              <span>Post Settlement Rating</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- GROUP 4: Profiles & Scout Tracking -->
+        <div class="flow-group group-scout">
+          <div class="flow-group-title" onclick="toggleGroup(this)">
+            <div>
+              <span class="flow-indicator"></span>
+              <span>Profiles & Field Scouts</span>
+            </div>
+            <span>▼</span>
+          </div>
+          <ul class="screen-list" style="display:none;">
+            <li class="screen-item" onclick="loadMockup('profile/farmer_profile/code.html', this)">
+              <span>Farmer Identity Book</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/buyer_profile/code.html', this)">
+              <span>Corporate Buyer Identity</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/edit_business_details/code.html', this)">
+              <span>Edit KYC Parameters</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/bank_account_details/code.html', this)">
+              <span>Penny-Drop Clearing Path</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/capability_tags/code.html', this)">
+              <span>Verified Supply Tags</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/scout/scout_login/code.html', this)">
+              <span>Scout Agent Login Hub</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/scout/scout_profile/code.html', this)">
+              <span>Scout Agent Profile</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/scout/today_s_tasks/code.html', this)">
+              <span>Field Tasks Schedule</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/scout/performance_dashboard/code.html', this)">
+              <span>Field Performance KPIs</span>
+            </li>
+            <li class="screen-item" onclick="loadMockup('profile/scout/sync_queue/code.html', this)">
+              <span>Offline Database Queue</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- CENTER LIVE SIMULATION STAGE -->
+    <section class="simulator-stage">
+      <div class="device-wrapper" id="device-frame">
+        <div class="device-notch"></div>
+        <div class="device-screen">
+          <iframe class="app-iframe" id="app-viewport" src="screens_v2/splash/code.html" title="Interactive Simulator Display Viewport"></iframe>
+        </div>
+        <div class="device-home-bar"></div>
+      </div>
+    </section>
+
+    <!-- RIGHT SESSION MONITORING PANEL -->
+    <aside class="detail-panel">
+      
+      <div class="panel-section">
+        <div class="panel-section-header">
+          <span>Active Context Monitor</span>
+        </div>
+        <div class="info-card">
+          <div class="screen-title-text" id="live-screen-title">Welcome Layout</div>
+          <div class="screen-path-text" id="live-screen-path">screens_v2/farmer_onboarding/welcome_to_fenbridge/code.html</div>
+          <p style="font-size:12px; color:var(--text-muted); line-height:1.5;">
+            Click simulated action buttons inside the viewport shell above. Client scripts intercept triggers to intelligently advance through flow essence sequences automatically.
+          </p>
+          
+          <div class="action-grid">
+            <button class="btn" style="justify-content:center; padding:6px;" onclick="triggerSimulatorFastForward()">
+              <span>⏩ Skip Step</span>
+            </button>
+            <button class="btn" style="justify-content:center; padding:6px;" onclick="triggerSimulatorBack()">
+              <span>◀ Go Back</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SESSION TRACE CONSOLE -->
+      <div class="session-console">
+        <div class="console-header">
+          <span>Real-Time Interaction Trace</span>
+          <span style="color:var(--text-dim); cursor:pointer;" onclick="clearConsole()">Clear Logs</span>
+        </div>
+        <div class="console-logs" id="console-logs-container">
+          <div class="log-entry">
+            <span class="log-timestamp">[System]</span>
+            <span class="log-message" style="color:var(--accent-primary)">Simulator ready. Listening for injected layout click events...</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- MASTER SCRIPTS INTERFACING PATTERN -->
+  <script>
+    let isPlainViewport = false;
+    let initialSetupDone = false;
+
+    // Toggle Sidebar Group visibility gracefully
+    function toggleGroup(el) {
+      const parent = el.closest(".flow-group");
+      const list = parent.querySelector(".screen-list");
+      const chevron = el.querySelector("span:last-child");
+      
+      if (list.style.display === "none") {
+        list.style.display = "block";
+        chevron.textContent = "▼";
+      } else {
+        list.style.display = "none";
+        chevron.textContent = "▶";
+      }
+    }
+
+    // Toggle device bounding physical smartphone styles
+    function toggleDeviceFrame() {
+      const wrapper = document.getElementById("device-frame");
+      const toggleIcon = document.getElementById("frame-toggle-icon");
+      
+      isPlainViewport = !isPlainViewport;
+      if (isPlainViewport) {
+        wrapper.style.width = "100%";
+        wrapper.style.height = "100%";
+        wrapper.style.borderRadius = "12px";
+        wrapper.style.padding = "0";
+        wrapper.querySelector(".device-notch").style.display = "none";
+        wrapper.querySelector(".device-home-bar").style.display = "none";
+        wrapper.querySelector(".device-screen").style.borderRadius = "12px";
+        toggleIcon.textContent = "📱 Frame Mode";
+        appendSessionLog("Switched display layout to full unbounded responsive viewport.");
+      } else {
+        wrapper.style.width = "380px";
+        wrapper.style.height = "780px";
+        wrapper.style.borderRadius = "48px";
+        wrapper.style.padding = "12px";
+        wrapper.querySelector(".device-notch").style.display = "flex";
+        wrapper.querySelector(".device-home-bar").style.display = "block";
+        wrapper.querySelector(".device-screen").style.borderRadius = "38px";
+        toggleIcon.textContent = "📱 Plain Viewport";
+        appendSessionLog("Restored premium high-fidelity physical smartphone frame layout.");
+      }
+    }
+
+    function reloadSimulator() {
+      const iframe = document.getElementById("app-viewport");
+      if (iframe) {
+        iframe.src = iframe.src;
+        appendSessionLog("Manually triggered internal simulator reload loop.");
+      }
+    }
+
+    function loadInitialDashboard() {
+      loadMockup('splash/code.html');
+      appendSessionLog("Reset application state context starting from foundational loading splash screen.");
+    }
+
+    function triggerSimulatorFastForward() {
+      const iframe = document.getElementById("app-viewport");
+      if (iframe && iframe.contentWindow) {
+        // Send postMessage straight to embedded iframe window
+        iframe.contentWindow.postMessage({ type: "FAST_FORWARD" }, "*");
+      }
+    }
+
+    function triggerSimulatorBack() {
+      const iframe = document.getElementById("app-viewport");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: "GO_BACK" }, "*");
+      }
+    }
+
+    function loadMockup(relativePath, itemEl) {
+      const iframe = document.getElementById("app-viewport");
+      if (!iframe) return;
+
+      // Update source
+      iframe.src = "screens_v2/" + relativePath;
+
+      // Synchronize visual active class states
+      document.querySelectorAll(".screen-item").forEach(item => item.classList.remove("active"));
+      if (itemEl) {
+        itemEl.classList.add("active");
+      } else {
+        // Find matching text item to keep menu beautifully consistent
+        const items = document.querySelectorAll(".screen-item");
+        items.forEach(it => {
+          if (it.getAttribute("onclick") && it.getAttribute("onclick").includes(relativePath)) {
+            it.classList.add("active");
+            // Ensure parent group list remains visible
+            const list = it.closest(".screen-list");
+            if (list && list.style.display === "none") {
+              list.style.display = "block";
+              it.closest(".flow-group").querySelector(".flow-group-title span:last-child").textContent = "▼";
+            }
+          }
+        });
+      }
+    }
+
+    // SESSION LOGGING CONSOLE LOGIC
+    function appendSessionLog(msg, typeClass = "") {
+      const container = document.getElementById("console-logs-container");
+      if (!container) return;
+
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      
+      const entry = document.createElement("div");
+      entry.className = "log-entry";
+      entry.innerHTML = `
+        <span class="log-timestamp">[${timeStr}]</span>
+        <span class="log-message ${typeClass}">${msg}</span>
+      `;
+
+      container.appendChild(entry);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function clearConsole() {
+      const container = document.getElementById("console-logs-container");
+      if (container) {
+        container.innerHTML = `
+          <div class="log-entry">
+            <span class="log-timestamp">[System]</span>
+            <span class="log-message" style="color:var(--text-muted)">Session history trace buffers cleared.</span>
+          </div>
+        `;
+      }
+    }
+
+    // CROSS-ORIGIN SECURE MESSAGE LISTENER RECEIVING EVENTS FROM INJECTED CLIENT SCRIPTS
+    window.addEventListener("message", function(e) {
+      const data = e.data;
+      if (!data || typeof data !== "object") return;
+
+      if (data.type === "SCREEN_LOADED") {
+        const titleEl = document.getElementById("live-screen-title");
+        const pathEl = document.getElementById("live-screen-path");
+        
+        // Extract human readable layout name dynamically
+        let cleanName = (data.folder || "Layout View").replace(/_/g, " ");
+        cleanName = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
+        
+        if (titleEl) titleEl.textContent = cleanName + " Screen";
+        if (pathEl) {
+          // Keep display concise relative path mapping
+          const pIdx = data.path.indexOf("screens_v2/");
+          pathEl.textContent = pIdx !== -1 ? data.path.substring(pIdx) : data.path;
+        }
+
+        // Highlight corresponding active menu node automatically
+        let matchPath = data.path;
+        const sIdx = matchPath.indexOf("screens_v2/");
+        if (sIdx !== -1) matchPath = matchPath.substring(sIdx + 11);
+        
+        document.querySelectorAll(".screen-item").forEach(item => item.classList.remove("active"));
+        document.querySelectorAll(".screen-item").forEach(it => {
+          const clickStr = it.getAttribute("onclick") || "";
+          if (clickStr.includes(matchPath)) {
+            it.classList.add("active");
+            const list = it.closest(".screen-list");
+            if (list && list.style.display === "none") {
+              list.style.display = "block";
+              it.closest(".flow-group").querySelector(".flow-group-title span:last-child").textContent = "▼";
+            }
+          }
+        });
+
+        appendSessionLog(`Loaded -> ${cleanName}`, "route");
+
+      } else if (data.type === "GO_BACK") {
+        appendSessionLog("Action intercepted: Navigating back to previous context.", "action");
+      } else if (data.type === "FAST_FORWARD") {
+        appendSessionLog("Action intercepted: Fast Forward flow override triggered.", "action");
+      } else if (data.type === "REQUEST_NEXT_ROUTE") {
+        appendSessionLog(`Warning: End of sub-flow linear sequence mapped for context '${data.current}'.`, "action");
+      }
+    });
+
+    // Auto load first layout on initial display initialization
+    window.addEventListener("DOMContentLoaded", () => {
+      loadInitialDashboard();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>FenBridge - Mark Pond Boundary</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4edea3",
+              "primary-container": "#10b981",
+              "on-primary": "#003824",
+              "on-primary-container": "#00422b",
+              surface: "#131313",
+              "surface-dim": "#131313",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-container-low": "#1c1b1b",
+              "surface-container": "#201f1f",
+              "surface-container-high": "#2a2a2a",
+              "surface-container-highest": "#353534",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#bbcabf",
+              outline: "#86948a",
+              "outline-variant": "#3c4a42",
+              background: "#131313",
+              secondary: "#d0bcff",
+              "secondary-container": "#571bc1"
+            },
+            fontFamily: {
+              "headline-lg": ["Hanken Grotesk"],
+              "headline-md": ["Hanken Grotesk"],
+              "body-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "label-lg": ["Inter"],
+              "label-sm": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .inner-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md select-none overflow-hidden h-screen flex flex-col antialiased">
+    <!-- Top App Bar (Docked over map) -->
+    <header class="absolute top-0 left-0 right-0 z-50 flex justify-between items-center px-5 py-4 bg-gradient-to-b from-background via-background/80 to-transparent pointer-events-auto">
+        <div class="flex items-center gap-3">
+            <button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-1 cursor-pointer" data-icon="arrow_back">arrow_back</button>
+            <h1 class="font-headline-md text-xl font-bold text-primary">FenBridge</h1>
+        </div>
+        <button class="font-label-lg text-sm text-on-surface-variant hover:text-primary transition-colors">Skip</button>
+    </header>
+
+    <!-- Edge-to-Edge Fullscreen Map Canvas -->
+    <main class="relative flex-grow w-full h-full overflow-hidden cursor-crosshair" id="map-container">
+        <!-- Satellite Base Layer -->
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaXOnitg61dLh_XJvAoFyfTtXKstAo314UWYYIw95eisRI9KATY8Hi1IB4Dp9VkSeu1QAtewLVGwYiFhUbuJARNPunLNh7w6NwvQVyPj2RBlO6y50rjWCsGmLV7UJZBPiADW1qJZRcSc5lnTpTEDv2Gcm4AKg40ntf5rgoEfVP5vdkEdEwyC-oyi9C6TtjA1Y62X70yvTeBWWIQyFYZdwC7Va5YJBvNlZfjOwmT1E5Zjb6qzAacE76wCKntfHhQBqiF6cK_3b_xp3-" 
+             alt="Satellite view of agricultural pond" 
+             class="absolute inset-0 w-full h-full object-cover brightness-75 contrast-125"
+             draggable="false" />
+
+        <!-- Gradient top overlay for app bar readability -->
+        <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/90 via-background/40 to-transparent pointer-events-none"></div>
+
+        <!-- Dynamic SVG Drawing Layer -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" id="drawing-layer">
+            <polygon id="drawn-polygon" points="" fill="rgba(16, 185, 129, 0.25)" stroke="#4edea3" stroke-width="2.5" stroke-dasharray="6 4" class="transition-all duration-300 opacity-0"></polygon>
+        </svg>
+
+        <!-- Dynamic Pins Container -->
+        <div id="pins-container" class="absolute inset-0 pointer-events-none">
+            <!-- Initial prompt instruction ripple animation overlaying center of map -->
+            <div id="initial-instruction" class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none transition-opacity duration-300 max-w-[280px]">
+                <div class="w-12 h-12 rounded-full bg-primary/20 border border-primary flex items-center justify-center mx-auto mb-3 animate-pulse">
+                    <span class="material-symbols-outlined text-primary">touch_app</span>
+                </div>
+                <div class="glass-panel px-4 py-2.5 rounded-xl shadow-lg">
+                    <p class="font-label-lg text-sm text-primary font-semibold">Tap on the map corners</p>
+                    <p class="font-label-sm text-xs text-on-surface-variant mt-0.5">Drop at least 3 pins to form boundary</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Overlaying Map (Top Center below App Bar) -->
+        <div class="absolute top-20 inset-x-0 flex justify-center pointer-events-none px-4">
+            <div class="glass-panel px-5 py-3 rounded-2xl shadow-xl text-center border-primary/20 max-w-sm w-full transition-all">
+                <h2 class="font-headline-md text-lg font-bold text-on-surface">Pond Boundary Mapping</h2>
+                <p class="font-label-sm text-xs text-primary/90 mt-0.5 flex items-center justify-center gap-1">
+                    <span class="inline-block w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                    Interactive GPS Geo-Fencing
+                </p>
+            </div>
+        </div>
+
+        <!-- Map Controls Floating Stack (Right side overlay) -->
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2.5 pointer-events-auto z-20">
+            <button id="btn-zoomin" class="w-11 h-11 glass-panel rounded-xl flex items-center justify-center text-on-surface hover:text-primary active:scale-95 transition-all shadow-lg border-outline-variant/40">
+                <span class="material-symbols-outlined text-lg">add</span>
+            </button>
+            <button id="btn-zoomout" class="w-11 h-11 glass-panel rounded-xl flex items-center justify-center text-on-surface hover:text-primary active:scale-95 transition-all shadow-lg border-outline-variant/40">
+                <span class="material-symbols-outlined text-lg">remove</span>
+            </button>
+            <button id="btn-center" class="w-11 h-11 bg-primary/20 border border-primary/40 backdrop-blur-md rounded-xl flex items-center justify-center text-primary hover:bg-primary/30 active:scale-95 transition-all shadow-lg mt-2">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">my_location</span>
+            </button>
+        </div>
+
+        <!-- Floating Edit & Status Overlays (Bottom area above footer) -->
+        <div class="absolute bottom-36 inset-x-4 flex justify-between items-end pointer-events-none z-20">
+            <!-- Redo / Clear Pins Floating Button -->
+            <button id="btn-edit-overlay" class="pointer-events-auto glass-panel px-4 py-2.5 rounded-xl border border-outline-variant flex items-center gap-2 text-on-surface-variant hover:text-primary hover:border-primary/40 active:scale-95 transition-all shadow-lg group">
+                <span class="material-symbols-outlined text-base group-hover:-rotate-45 transition-transform">restart_alt</span>
+                <span class="font-label-lg text-xs font-semibold">Redo Pins</span>
+            </button>
+
+            <!-- Complete Area Tag Indicator -->
+            <div id="area-indicator" class="glass-panel px-4 py-2 rounded-xl border-primary/30 flex items-center gap-2 shadow-lg opacity-0 transition-all duration-300 translate-y-2">
+                <span class="material-symbols-outlined text-primary text-base">architecture</span>
+                <div>
+                    <p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider leading-none">Total Area</p>
+                    <p class="font-label-lg text-xs text-primary font-bold mt-0.5 leading-none">1.42 Hectares</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom transparent gradient shadow to perfectly nest the continue bar -->
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none"></div>
+    </main>
+
+    <!-- Absolute Bottom Sticky Continue Footer -->
+    <footer class="absolute bottom-0 inset-x-0 z-30 bg-background/90 backdrop-blur-xl border-t border-outline-variant/20 px-5 py-4 pb-6">
+        <div class="max-w-lg mx-auto flex flex-col gap-2">
+            <button id="btn-continue" class="w-full h-14 rounded-full font-label-lg text-base font-semibold flex items-center justify-center gap-2 transition-all duration-300 inner-glow bg-surface-container-highest text-on-surface-variant/40 cursor-not-allowed shadow-none" disabled>
+                <span>Continue</span>
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </button>
+            <p id="footer-status-text" class="text-center font-label-sm text-xs text-outline/80 transition-colors">
+                Drop at least 3 pins on the map to unlock next steps
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Geo-Fencing Script Implementation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const mapContainer = document.getElementById("map-container");
+            const pinsContainer = document.getElementById("pins-container");
+            const drawnPolygon = document.getElementById("drawn-polygon");
+            const btnContinue = document.getElementById("btn-continue");
+            const btnEditOverlay = document.getElementById("btn-edit-overlay");
+            const areaIndicator = document.getElementById("area-indicator");
+            const initialInstruction = document.getElementById("initial-instruction");
+            const footerStatusText = document.getElementById("footer-status-text");
+
+            let pins = [];
+
+            // Helper to update visual layout states
+            function updateMapState() {
+                // Clear existing drawn nodes in DOM
+                pinsContainer.innerHTML = "";
+
+                if (pins.length > 0) {
+                    if (initialInstruction) initialInstruction.style.opacity = "0";
+                } else {
+                    if (initialInstruction) {
+                        pinsContainer.appendChild(initialInstruction);
+                        // trigger reflow
+                        void initialInstruction.offsetWidth;
+                        initialInstruction.style.opacity = "1";
+                    }
+                }
+
+                // Render pins
+                pins.forEach((pt, idx) => {
+                    const pin = document.createElement("div");
+                    pin.className = "absolute w-7 h-7 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-auto cursor-pointer group transition-transform duration-150 hover:scale-125";
+                    pin.style.left = pt.x + "px";
+                    pin.style.top = pt.y + "px";
+
+                    pin.innerHTML = `
+                        <div class="absolute inset-0 bg-primary/20 rounded-full animate-ping opacity-75"></div>
+                        <div class="relative w-5 h-5 bg-primary rounded-full border-2 border-background shadow-md flex items-center justify-center text-[10px] font-bold text-on-primary">
+                            ${idx + 1}
+                        </div>
+                    `;
+                    
+                    // Allow clicking a pin to remove it
+                    pin.addEventListener("click", function(e) {
+                        e.stopPropagation();
+                        pins.splice(idx, 1);
+                        updateMapState();
+                    });
+
+                    pinsContainer.appendChild(pin);
+                });
+
+                // Render polygon lines
+                if (pins.length > 1) {
+                    const pointsStr = pins.map(pt => `${pt.x},${pt.y}`).join(" ");
+                    drawnPolygon.setAttribute("points", pointsStr);
+                    drawnPolygon.style.opacity = "1";
+                } else {
+                    drawnPolygon.style.opacity = "0";
+                }
+
+                // Complete status logic (>= 3 points forms valid geometry area)
+                if (pins.length >= 3) {
+                    btnContinue.removeAttribute("disabled");
+                    btnContinue.className = "w-full h-14 rounded-full font-label-lg text-base font-bold flex items-center justify-center gap-2 transition-all duration-300 inner-glow bg-primary text-on-primary shadow-lg shadow-primary/25 cursor-pointer active:scale-[0.98] hover:brightness-105";
+                    
+                    areaIndicator.style.opacity = "1";
+                    areaIndicator.style.transform = "translateY(0)";
+                    areaIndicator.classList.add("border", "border-primary");
+
+                    footerStatusText.textContent = "Boundary fully validated ✓ Click Continue to advance";
+                    footerStatusText.classList.remove("text-outline/80");
+                    footerStatusText.classList.add("text-primary");
+                } else {
+                    btnContinue.setAttribute("disabled", "true");
+                    btnContinue.className = "w-full h-14 rounded-full font-label-lg text-base font-semibold flex items-center justify-center gap-2 transition-all duration-300 inner-glow bg-surface-container-highest text-on-surface-variant/40 cursor-not-allowed shadow-none";
+                    
+                    areaIndicator.style.opacity = "0";
+                    areaIndicator.style.transform = "translateY(8px)";
+                    areaIndicator.classList.remove("border", "border-primary");
+
+                    footerStatusText.textContent = "Drop at least 3 pins on the map to unlock next steps";
+                    footerStatusText.classList.remove("text-primary");
+                    footerStatusText.classList.add("text-outline/80");
+                }
+            }
+
+            // Map canvas interactive target listener
+            mapContainer.addEventListener("click", function(e) {
+                // Ignore clicks on inner floating buttons
+                if (e.target.closest("button") || e.target.closest(".glass-panel")) return;
+
+                const rect = mapContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Restrict maximum points to keep polygon visually elegant
+                if (pins.length < 8) {
+                    pins.push({ x, y });
+                    updateMapState();
+                }
+            });
+
+            // Redo Action handling
+            btnEditOverlay.addEventListener("click", function(e) {
+                e.stopPropagation();
+                pins = [];
+                updateMapState();
+            });
+
+            // Simulated control mock feedback
+            document.getElementById("btn-zoomin").addEventListener("click", () => {
+                const img = mapContainer.querySelector("img");
+                img.style.transform = "scale(1.15)";
+                img.style.transition = "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+                setTimeout(() => img.style.transform = "none", 400);
+            });
+            document.getElementById("btn-zoomout").addEventListener("click", () => {
+                const img = mapContainer.querySelector("img");
+                img.style.transform = "scale(0.9)";
+                img.style.transition = "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+                setTimeout(() => img.style.transform = "none", 400);
+            });
+        });
+    </script>
+</body>
+</html>

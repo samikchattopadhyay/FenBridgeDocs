@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FenBridge - Buyer Role Onboarding Workflow</title>
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #f59e0b;
+      --accent-primary-hover: #fbbf24;
+      --accent-primary-glow: rgba(245, 158, 11, 0.15);
+      --accent-secondary: #10b981;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 48px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    /* ROLE WORKFLOW HEADER */
+    .role-header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #1c150c 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: 16px;
+      padding: 36px 42px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--accent-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .role-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .role-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    .meta-metrics {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .metric-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metric-pill strong {
+      color: var(--accent-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+    }
+
+    /* WORKFLOW SEQUENTIAL TIMELINE */
+    .workflow-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .flow-step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .flow-step-card:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      transform: translateY(-2px);
+    }
+
+    /* STEP CARD HEADER */
+    .step-header {
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .step-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-folder-ref {
+      font-family: 'Inter', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+      background: var(--bg-base);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* STEP CARD BODY - SPLIT PANE */
+    .step-body {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 480px;
+    }
+
+    .step-left-pane {
+      flex: 1;
+      min-width: 340px;
+      max-width: 420px;
+      background: #0b0b0c;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-right: 1px solid var(--border-color);
+    }
+
+    /* Scrollable Consistent Viewport Wrapper for Preview Images */
+    .card-image-viewport {
+      width: 300px;
+      height: 500px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-radius: 12px;
+      border: 2px solid var(--border-color);
+      background: #000;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+    .card-image-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .preview-screen-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-placeholder {
+      color: var(--text-dim);
+      font-size: 13px;
+      text-align: center;
+      padding: 40px;
+      font-style: italic;
+    }
+
+    .step-right-pane {
+      flex: 2;
+      min-width: 380px;
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* Specs Grid Configuration */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding-right: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-light) transparent;
+    }
+    .specs-grid::-webkit-scrollbar {
+      width: 4px;
+    }
+    .specs-grid::-webkit-scrollbar-thumb {
+      background: var(--border-light);
+      border-radius: 2px;
+    }
+
+    .spec-block {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      padding: 14px 18px;
+      border-radius: 8px;
+    }
+    .spec-block.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .spec-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .spec-value {
+      font-size: 13.5px;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .spec-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .spec-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .spec-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--border-light);
+      font-weight: bold;
+    }
+
+    .spec-list li strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .db-schema-box {
+      background: #000;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-size: 11.5px;
+      color: var(--accent-primary-hover);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin-top: 4px;
+    }
+
+    /* ACTION BAR */
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto;
+    }
+
+    .action-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-active);
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .action-btn.primary {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent-primary);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .action-btn.primary:hover {
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
+    }
+
+    /* STEPPER NAVIGATION PANEL */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .stepper-panel-container {
+      max-width: 1280px;
+      margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 36px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      overflow-x: auto;
+    }
+
+    .stepper-nodes {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      min-width: 960px;
+      z-index: 2;
+    }
+
+    .stepper-nodes::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: var(--border-light);
+      z-index: -1;
+    }
+
+    .stepper-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .stepper-node:hover {
+      transform: translateY(-2px);
+    }
+
+    .node-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border-light);
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .stepper-node:hover .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+
+    .node-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .stepper-node:hover .node-label {
+      color: var(--text-main);
+    }
+
+    /* Active Highlight States */
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+
+    .stepper-node.active .node-label {
+      color: var(--accent-primary);
+      font-weight: 800;
+    }
+
+    /* EXECUTABLE CODE OVERLAY MODAL */
+    .code-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .code-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .code-modal-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+      transform: scale(0.95);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .code-modal-backdrop.active .code-modal-window {
+      transform: scale(1);
+    }
+    .code-modal-window.mobile-view {
+      width: 380px;
+      height: 720px;
+      max-height: 90vh;
+    }
+    .code-modal-window.desktop-view {
+      width: 90%;
+      max-width: 1200px;
+      height: 85vh;
+    }
+    .code-modal-header {
+      padding: 14px 20px;
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .code-modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      letter-spacing: 0.5px;
+    }
+    .code-modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    .code-modal-close:hover {
+      color: #fff;
+    }
+    .code-modal-body {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      background: #121212;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .code-modal-body::-webkit-scrollbar {
+      display: none;
+    }
+    .code-modal-body iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ROLE HEADER BANNER -->
+  <div class="role-header-banner">
+    <div class="role-tag">Role Profile: Buyer (Processor / Principal Trader)</div>
+    <h1 class="role-title">Buyer Onboarding Sequence</h1>
+    <p class="role-desc">
+      Comprehensive sequential workflow tracking mapped to incoming purchasing entities. Establishes corporate compliance verification, records physical processing capability indicators, and implements targeted geographic cluster coverage matrices.
+    </p>
+
+    <div class="meta-metrics">
+      <div class="metric-pill">
+        <span>Total Steps:</span> <strong>12 Screens</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Target Source Folder:</span> <strong style="color:var(--text-main);font-family:monospace;">images/buyer_onboarding</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Core Parity Status:</span> <strong style="color:var(--accent-primary);">100% Synced</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- DYNAMIC STEPPER PANEL -->
+  <div class="stepper-panel-container custom-scrollbar">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node" title="Welcome to FenBridge">
+        <span class="node-num">01</span>
+        <span class="node-label">Welcome</span>
+      </a>
+      <a href="#step-02" class="stepper-node" title="Choose Your Language">
+        <span class="node-num">02</span>
+        <span class="node-label">Language</span>
+      </a>
+      <a href="#step-03" class="stepper-node" title="Choose Your Role">
+        <span class="node-num">03</span>
+        <span class="node-label">Role</span>
+      </a>
+      <a href="#step-04" class="stepper-node" title="Address Details">
+        <span class="node-num">04</span>
+        <span class="node-label">Address</span>
+      </a>
+      <a href="#step-05" class="stepper-node" title="User Details">
+        <span class="node-num">05</span>
+        <span class="node-label">User</span>
+      </a>
+      <a href="#step-06" class="stepper-node" title="Business Basic Details">
+        <span class="node-num">06</span>
+        <span class="node-label">Biz Basic</span>
+      </a>
+      <a href="#step-07" class="stepper-node" title="Business Information">
+        <span class="node-num">07</span>
+        <span class="node-label">Biz Info</span>
+      </a>
+      <a href="#step-08" class="stepper-node" title="Business Address">
+        <span class="node-num">08</span>
+        <span class="node-label">Biz Addr</span>
+      </a>
+      <a href="#step-09" class="stepper-node" title="Verify Mobile Step 1">
+        <span class="node-num">09</span>
+        <span class="node-label">Mobile 1</span>
+      </a>
+      <a href="#step-10" class="stepper-node" title="Verify Mobile Step 2">
+        <span class="node-num">10</span>
+        <span class="node-label">Mobile 2</span>
+      </a>
+      <a href="#step-11" class="stepper-node" title="Streamlined Theme Selection">
+        <span class="node-num">11</span>
+        <span class="node-label">Theme</span>
+      </a>
+      <a href="#step-12" class="stepper-node" title="You're All Set!">
+        <span class="node-num">12</span>
+        <span class="node-label">Done</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- WORKFLOW TIMELINE CONTAINER -->
+  <div class="workflow-timeline">
+
+    <!-- STEP 1 -->
+    <div class="flow-step-card" id="step-01">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 01</span>
+          Welcome to FenBridge
+        </div>
+        <span class="step-folder-ref">welcome_to_fenbridge</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/welcome_to_fenbridge/screen.png" alt="Welcome Screen" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Introduce the app and set the foundational tone for corporate buyer onboarding.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Build commercial trust, communicate B2B procurement value propositions transparently in the first 2 seconds.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Static splash-like canvas layout, optimized flow avoiding unneeded structural friction.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Tap primary <strong>"Get Started"</strong> action button exactly.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Centered top-middle <strong>FenBridge logo</strong> integration.</li>
+                <li>Subtitle layout setting raw commodity marketplace anchors.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Routing & API</div>
+              <div class="spec-value">Evaluates cached single sign-on tokens natively. If valid Google JWT structures are present, bypasses directly to workspace dashboard flows. Path: Splash → Welcome → Language Selection.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">// Tracks base initial view state context internally. No persistent raw database inserts executed here.</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/welcome_to_fenbridge/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="flow-step-card" id="step-02">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 02</span>
+          Choose Your Language
+        </div>
+        <span class="step-folder-ref">choose_your_language</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/choose_your_language/screen.png" alt="Language Choice" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Establish clear operational language configurations native to enterprise desk operators.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Support deep B2B localization strings (English, Hindi, Bengali) to prevent misunderstandings across standard wholesale delivery agreements.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Three large intuitive selectable tiles. Radio option layers auto-highlight dynamically upon state selection.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Tap targeted <strong>Language selection radio</strong> block.</li>
+                <li>Tap primary <strong>"Continue"</strong> progression button.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Step indicator tracking setup flow phases safely.</li>
+                <li>Clean bordered block padding supporting fast readability.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Routing & Data Engine</div>
+              <div class="spec-value">Cached immediately into application SharedPreferences layers. Dynamic localization substitution populates interface copy safely from compiled i18n JSON properties.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  preferred_language VARCHAR(10) -- [en, hi, bn]
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/choose_your_language/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="flow-step-card" id="step-03">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 03</span>
+          Choose Your Role
+        </div>
+        <span class="step-folder-ref">choose_your_role</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/choose_your_role/screen.png" alt="Role Selection Screen" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Explicitly split operational path routing to direct downstream client interfaces specifically toward high-volume buyer tracking matrices.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">User formally establishes purchasing persona parameters. Target selection sets database records to lock core enterprise permissions safely.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Two highly legible interactive panels rendering custom graphical identifiers and explanatory copy. Single choice limits enforced.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Tap <strong>"I'm a Buyer"</strong> persona selection tile.</li>
+                <li>Tap unlocked <strong>"Continue"</strong> progression control.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Vector representation styling distinguishing trading desk roles beautifully.</li>
+                <li>Amber accent highlighting bounds matching active choice states.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Routing & Lock</div>
+              <div class="spec-value">Role committed as non-nullable ENUM object string. Routes remaining context flow cleanly along the dedicated wholesale buyer configuration paths.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  role ENUM ['farmer', 'buyer', 'scout'] NOT NULL,
+  role_locked_at TIMESTAMP NOT NULL
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/choose_your_role/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="flow-step-card" id="step-04">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 04</span>
+          Address Details
+        </div>
+        <span class="step-folder-ref">address_details</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/address_details/screen.png" alt="Address Configuration" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Capture primary billing and target market coverage boundaries to calculate delivery feasibility clusters reliably.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Determines immediate spatial broadcasting limits ensuring raw agricultural procurement requirements reach matched regional suppliers safely.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Optimized input rows featuring drop-down city selector filtering paired with multi-line street details text fields.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Select core processing destination inside <strong>Delivery City dropdown</strong>.</li>
+                <li>Enter full registered structural details inside <strong>Full Address</strong> row.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Clear layout placeholder hinting to minimize entry exceptions.</li>
+                <li>Responsive input wrappers scaling seamlessly on mobile environments.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details & Data Engine</div>
+              <div class="spec-value">Populates cached static lookup registries mapped to regional PIN networks. Prevents dirty client-side address commits prior to backend database processing.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  district VARCHAR(100) NOT NULL,
+  panchayat_village_city VARCHAR(200)
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/address_details/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="flow-step-card" id="step-05">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 05</span>
+          User Details
+        </div>
+        <span class="step-folder-ref">user_details</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/user_details/screen.png" alt="User Data Form" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Capture primary corporate representative identities strings verifying target sign-off authority across digital contract boundaries.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Authorized full names print securely across official generated bulk purchase orders. Sourced primary email handles execute essential system reset pipes.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Pre-populated read-only field styling showcasing Google verified JWT claims alongside crisp editable user input elements.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Verify auto-resolved <strong>Email string</strong> parameter.</li>
+                <li>Enter full title inside <strong>Full Name field</strong> matching official statutory records exactly.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Visual vector padlocks highlighting clean authenticated token parsers.</li>
+                <li>Clear field layout bounds validating minimum character array entry safely.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Claims Integration</div>
+              <div class="spec-value">Extracts standardized identity claims instantly from authentication provider responses. Implements robust client filtering regex directly.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  full_name VARCHAR(200) NOT NULL,
+  email_verified_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/user_details/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="flow-step-card" id="step-06">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 06</span>
+          Business Basic Details
+        </div>
+        <span class="step-folder-ref">buyer_basic_details</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/farmer_onboarding/buyer_basic_details/screen.png" alt="Business Base Spec" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Capture verified corporate business identifiers mapping mandatory background checks and future statutory tax tracking loops.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">GSTIN and PAN fields allow downstream tax reporting maps and empower operational team approval reviews safely prior to public vendor listings.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Three clear structured text rows. Optional descriptors feature inline vector helpers parsing accurate alphanumeric array lengths client-side.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Input verified official corporate title inside <strong>Business Name</strong> box.</li>
+                <li>Enter optional 15-character statutory <strong>GSTIN string</strong> exactly.</li>
+                <li>Type optional 10-character corporate <strong>PAN identifier</strong> array.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Interactive info badge helpers triggering helpful compliance notes cleanly.</li>
+                <li>Clear segmented input form layout styling optimized for B2B input density.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Validation Engine</div>
+              <div class="spec-value">Implements deep pattern matching regex verifying standard 15-character alphanumeric GST frameworks alongside pristine 10-char PAN sequences safely. Stores NULL gracefully if unpopulated.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  business_name VARCHAR(255) NOT NULL,
+  gstin VARCHAR(15),
+  pan VARCHAR(10)
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/farmer_onboarding/buyer_basic_details/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="flow-step-card" id="step-07">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 07</span>
+          Business Information - High Visibility Uploads
+        </div>
+        <span class="step-folder-ref">business_information_high_visibility_uploads</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/farmer_onboarding/business_information_high_visibility_uploads/screen.png" alt="Business Registration Documents" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Collect high-fidelity visual documentation mapping statutory enterprise registration certificates and operational processing location verifications directly.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Feeds corporate buyer trust rating matrices. Verified records significantly expedite internal operational team audit approvals.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Three bold intuitive upload modules rendering custom dynamic thumbnail preview snapshots immediately inside target container frames.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Tap primary <strong>Vault Upload targets</strong> directly.</li>
+                <li>Select targeted device image items or trigger camera captures.</li>
+                <li>Review auto-parsed thumbnail maps featuring simple deletion tools.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Iconography setting clear expectation rules across document categories.</li>
+                <li>Dashed frame boundaries hinting active clickable drop boundaries.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Cloud Integration</div>
+              <div class="spec-value">Applies fast on-device compression downscaling raw media files to 1–2 MB prior to committing via high-speed upload connections straight to Supabase object store buckets.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">buyer_documents (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  document_type ENUM ['registration', 'invoice', 'location_photo'],
+  file_url VARCHAR(500),
+  uploaded_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/farmer_onboarding/business_information_high_visibility_uploads/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="flow-step-card" id="step-08">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 08</span>
+          Business Address
+        </div>
+        <span class="step-folder-ref">business_address</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/farmer_onboarding/business_address/screen.png" alt="Warehouse Routing Address" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Capture primary enterprise warehouse and physical delivery operations hubs to compute shipping lead times and schedule direct dispatch transit networks flawlessly.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Directs raw logistics operations paths securely. Secondary fulfillment locations can be appended post-signup from primary profile setting consoles.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Clean responsive input fields supporting easy multi-line entries paired alongside instant reverse-geocoding assistive controls.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Type full physical destination string inside <strong>Street Address</strong> multi-line field.</li>
+                <li>Select target operations administrative center inside <strong>City / District dropdown</strong>.</li>
+                <li>Input verified numeric identifier inside <strong>Postal Code</strong> box.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Tactile location vector control elements parsing live hardware coordinates.</li>
+                <li>Optimized input bounds scaling securely on corporate view screens.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details & Integrity</div>
+              <div class="spec-value">Validates minimum character length limits directly prior to committing state updates to prevent missing location data errors downstream. Stores latitude/longitude pairs securely.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">user_addresses (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  address_line VARCHAR(500) NOT NULL,
+  city_district VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(10),
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+  is_primary BOOLEAN DEFAULT true
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/farmer_onboarding/business_address/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 9 -->
+    <div class="flow-step-card" id="step-09">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 09</span>
+          Verify Mobile - Step 1
+        </div>
+        <span class="step-folder-ref">verify_mobile_step_1</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/verify_mobile_step_1/screen.png" alt="Verify Mobile Request" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Confirm active target enterprise desk mobile contacts mapping automated notification bridges securely over robust outbound communication paths.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Mobile handles critical logistics tracking dispatches, payment confirmation alerts, and automated SMS invoice links smoothly.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Prominent clear read-only presentation blocks featuring immediate numeric formatting paired with helpful inline correction tools.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Verify auto-loaded target <strong>Mobile Number</strong> string accurately.</li>
+                <li>Tap primary <strong>"Send OTP"</strong> action validation button directly.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Bold monospace typography setting extreme review readability parameters.</li>
+                <li>Success prompt rendering visual string dispatches confirmation securely.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical SMS Engine</div>
+              <div class="spec-value">Enforces strict rate-limiting validation layers (max 3 daily OTP dispatch attempts) to shield underlying gateway providers from external API flood automated loops safely.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">otp_requests (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  mobile_number VARCHAR(20),
+  otp_code VARCHAR(6),
+  sent_at TIMESTAMP,
+  attempt_count INT DEFAULT 0,
+  status ENUM ['pending', 'verified', 'expired']
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/verify_mobile_step_1/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 10 -->
+    <div class="flow-step-card" id="step-10">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 10</span>
+          Verify Mobile - Step 2
+        </div>
+        <span class="step-folder-ref">verify_mobile_step_2</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/verify_mobile_step_2/screen.png" alt="Verify Mobile Token" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Validate numeric OTP token verification objects entered by the client to confirm device access keys cryptographically before unlocking complete commercial trading tools.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Unlocks direct communication pipelines safely. Unverified accounts remain securely inside draft stage administrative holding patterns.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Four split auto-advancing segmented row components delivering instant optimized client entry evaluation layers seamlessly.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Input individual numeric code digits sequentially inside target <strong>OTP fields</strong>.</li>
+                <li>System auto-launches background API authorization calls upon final token digit input.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Dynamic CSS loading rings rendering cleanly inside active validation rows.</li>
+                <li>Automated secondary resend action link appearing gracefully after 30 seconds.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Validation Engine</div>
+              <div class="spec-value">Executes low-latency backend verification calls against cached token tables directly. Evaluates strict expiry time arrays to block outdated login token validation attempts.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">otp_requests (
+  ...
+  verified_at TIMESTAMP,
+  status ENUM ['pending', 'verified', 'expired']
+)
+// Safely updates parent buyer user record validation status:
+users.mobile_verified_at = NOW()</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/verify_mobile_step_2/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 11 -->
+    <div class="flow-step-card" id="step-11">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 11</span>
+          Streamlined Theme Selection
+        </div>
+        <span class="step-folder-ref">streamlined_theme_selection</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/streamlined_theme_selection/screen.png" alt="Dashboard Layout Themes" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Configure personalized high-fidelity UI aesthetic preferences designed for extensive long-duration enterprise trading desk monitoring screens.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Luxe Dark aesthetic pre-selected as ergonomic dashboard standard. Highly readable crisp Light profiles supplied on-demand natively.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Two highly distinct visual preview cards rendering clean mock operational layout snapshots inside distinct interface container styles.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Toggle target visual profile blocks (Dark / Light) securely.</li>
+                <li>Tap primary <strong>"Continue"</strong> confirmation button to finish interface setup.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Striking amber accent halo glow triggering over selected profile cards.</li>
+                <li>Balanced grid mapping preserving high visual harmony across screen viewports.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Routing & Sync</div>
+              <div class="spec-value">Saves target presentation class dynamically into application local storage layers while persisting choice metadata back to database rows to map returning desk logins correctly.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  theme_preference ENUM ['dark', 'light'] DEFAULT 'dark'
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/streamlined_theme_selection/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 12 -->
+    <div class="flow-step-card" id="step-12">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Step 12</span>
+          You're All Set!
+        </div>
+        <span class="step-folder-ref">you_re_all_set</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/buyer_onboarding/you_re_all_set/copy.png" alt="Success Hub Target" onerror="this.onerror=null; this.src='../../../images/buyer_onboarding/you_re_all_set/screen.png';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Operational Purpose</div>
+              <div class="spec-value">Deliver highly polished confirmation feedback validating complete database persistence readiness while directing users straight toward live marketplace bidding tools.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Confirms operational workspace creation. Explains subsequent manual account validation parameters transparently before public wholesale order execution unlocks.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Immersive celebratory heading block paired alongside crisp next steps guides and highly visible primary action controllers.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Read finalized enterprise status verification guidance copy.</li>
+                <li>Tap primary <strong>"Go to Dashboard"</strong> routing button exactly.</li>
+              </ul>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Design Details</div>
+              <ul class="spec-list">
+                <li>Striking vector validation checkmark graphic rendered in premium amber tones.</li>
+                <li>Crisp bordered container structures emphasizing core operational compliance reviews securely.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Dispatch Context</div>
+              <div class="spec-value">Sets primary corporate identity database status to pending approval flags safely. Streams complete onboarding metric outcomes directly to central analytics backends.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  status ENUM ['onboarding', 'pending_approval', 'active', 'suspended'] DEFAULT 'pending_approval',
+  onboarded_at TIMESTAMP,
+  approved_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/buyer_onboarding/you_re_all_set/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXECUTABLE CODE VIEW OVERLAY MODAL -->
+  <div id="code-iframe-modal" class="code-modal-backdrop" onclick="closeCodeModal(event)">
+    <div id="code-modal-window" class="code-modal-window mobile-view" onclick="event.stopPropagation()">
+      <div class="code-modal-header">
+        <div class="code-modal-title">Live Executable Context Preview</div>
+        <button class="code-modal-close" onclick="closeCodeModal(event)">×</button>
+      </div>
+      <div class="code-modal-body">
+        <iframe id="executable-code-iframe" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCodeModal(event, url, viewType) {
+      event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const modalWin = document.getElementById("code-modal-window");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal && modalWin && iframe) {
+        if (viewType === 'desktop') {
+          modalWin.className = "code-modal-window desktop-view";
+        } else {
+          modalWin.className = "code-modal-window mobile-view";
+        }
+        iframe.src = url;
+        modal.classList.add("active");
+      }
+    }
+
+    function closeCodeModal(event) {
+      if (event) event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal) {
+        modal.classList.remove("active");
+        if (iframe) iframe.src = "";
+      }
+    }
+
+    // Dynamic IntersectionObserver highlighting active stepper menu context
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const container = document.querySelector(".stepper-panel-container");
+
+      const options = {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => node.classList.remove("active"));
+            const activeNode = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (activeNode) {
+              activeNode.classList.add("active");
+              if (container) {
+                const nodeLeft = activeNode.offsetLeft;
+                const nodeWidth = activeNode.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = container.scrollLeft;
+                
+                if (nodeLeft < scrollLeft || nodeLeft + nodeWidth > scrollLeft + containerWidth) {
+                  container.scrollTo({
+                    left: nodeLeft - containerWidth / 2 + nodeWidth / 2,
+                    behavior: "smooth"
+                  });
+                }
+              }
+            }
+          }
+        });
+      }, options);
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+  </script>
+</body>
+</html>

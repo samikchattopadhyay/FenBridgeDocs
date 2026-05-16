@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface-tint": "#4edea3",
+                    "surface-bright": "#393939",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "secondary-container": "#571bc1",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed-dim": "#4edea3",
+                    "outline": "#86948a",
+                    "tertiary-container": "#fc7c78",
+                    "on-tertiary": "#650911",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-surface-variant": "#bbcabf",
+                    "inverse-primary": "#006c49",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-fixed": "#e9ddff",
+                    "primary": "#4edea3",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-variant": "#353534",
+                    "primary-container": "#10b981",
+                    "tertiary": "#ffb3af",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-secondary-fixed": "#23005c",
+                    "on-error": "#690005",
+                    "background": "#131313",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-container": "#711419",
+                    "outline-variant": "#3c4a42",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#3c0091",
+                    "secondary": "#d0bcff",
+                    "surface": "#131313",
+                    "surface-container-low": "#1c1b1b",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-container": "#c4abff",
+                    "surface-container-highest": "#353534",
+                    "on-primary": "#003824",
+                    "surface-dim": "#131313",
+                    "on-primary-container": "#00422b",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "md": "16px",
+                    "margin": "20px",
+                    "xl": "32px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(45, 45, 45, 1);
+        }
+        .inner-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant px-margin h-16 flex justify-between items-center">
+<div class="flex items-center gap-md">
+<button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="close">close</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary truncate whitespace-nowrap">Seal Application</h1>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Step</span>
+<span class="font-label-lg text-label-lg text-primary">1 of 5</span>
+</div>
+</header>
+<!-- Progress Bar (Fixed Below Header) -->
+<div class="fixed top-16 left-0 w-full h-1 bg-surface-container-highest z-50">
+<div class="h-full bg-secondary-container" style="width: 20%"></div>
+</div>
+<main class="mt-20 px-margin flex flex-col gap-lg">
+<!-- Hero Section Header -->
+<section class="mt-xs">
+<h2 class="font-headline-lg text-headline-lg text-on-background truncate whitespace-nowrap">Confirm Verified Lot</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Verify the lot details and inspection status before proceeding to seal the makhana bags.</p>
+</section>
+<!-- Lot Ref Card (High Surface) -->
+<section class="glass-card rounded-xl p-md flex flex-col gap-md relative overflow-hidden">
+<div class="absolute top-0 right-0 p-md opacity-20">
+<span class="material-symbols-outlined text-[64px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="flex flex-col gap-base">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Lot Reference</span>
+<span class="font-headline-md text-headline-md text-on-surface">LOT-#MK-2042</span>
+</div>
+<div class="flex flex-col gap-base">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-body-md" data-icon="business">business</span>
+<span class="font-body-md">Kumar Makhana Pvt Ltd</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-body-md" data-icon="warehouse">warehouse</span>
+<span class="font-body-md">WH-204</span>
+</div>
+</div>
+</section>
+<!-- Verification Summary Card -->
+<section class="bg-surface-container-high rounded-xl p-md border border-outline-variant">
+<div class="flex justify-between items-start mb-md">
+<div class="flex flex-col gap-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Inspection Summary</span>
+<div class="flex items-center gap-xs">
+<span class="bg-primary-container text-on-primary-container px-xs py-[2px] rounded-full text-label-sm font-bold">Grade A</span>
+<span class="text-on-surface font-label-lg">500 kg verified</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-full p-xs">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant border-t border-outline-variant pt-md">
+<span class="material-symbols-outlined text-body-md" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-lg">Inspected 13 May by</span>
+<span class="text-primary font-bold">Scout #SCT003</span>
+</div>
+</section>
+<!-- Certificate Strip (Low Surface) -->
+<section class="bg-surface-container-low rounded-xl px-md py-sm border border-outline-variant flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="description">description</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-on-surface-variant">Certificate Document</span>
+<span class="font-body-md text-on-surface">Grade Certificate GC-2026-0091</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</section>
+<!-- Eligibility Block (Accent) -->
+<section class="bg-primary-container/10 border border-primary-container/30 rounded-xl p-md flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-primary-container font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-label-lg text-primary text-body-lg">Lot eligible for sealing</h4>
+<p class="font-label-sm text-on-surface-variant">All quality parameters meet the export standard requirements.</p>
+</div>
+</section>
+<!-- Action Row -->
+<div class="flex gap-md mt-md">
+<button class="flex-1 flex items-center justify-center gap-xs py-sm rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="near_me">near_me</span>
+<span class="font-label-lg text-primary">Navigate</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-xs py-sm rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="call">call</span>
+<span class="font-label-lg text-primary">Call popper</span>
+</button>
+</div>
+</main>
+<!-- Fixed Primary CTA -->
+<footer class="fixed bottom-0 left-0 w-full p-margin bg-gradient-to-t from-background via-background to-transparent pt-xl">
+<button onclick="window.location.href='../apply_seal_net/code.html'" class="w-full bg-primary-container text-on-primary-container h-14 rounded-xl font-label-lg text-body-lg inner-glow active:scale-[0.98] transition-all flex items-center justify-center gap-md">
+<span class="font-bold">Begin Sealing</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

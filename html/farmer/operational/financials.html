@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmer Operations - Financials & Earnings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #10b981;
+      --accent-primary-hover: #34d399;
+      --accent-primary-glow: rgba(16, 185, 129, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 48px 96px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #02291d 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(16, 185, 129, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.25); text-transform: uppercase; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .workflow-group-block { max-width: 1280px; margin: 0 auto 48px; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; }
+    .workflow-group-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light); padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 32px; }
+
+    .flow-step-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; }
+    .flow-step-card:hover { border-color: var(--border-light); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.25); }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .step-folder-ref { font-family: monospace; font-size: 11px; color: var(--text-dim); }
+    
+    .step-body { display: flex; flex-wrap: wrap; min-height: 380px; }
+    .step-left-pane { flex: 1; min-width: 300px; max-width: 360px; background: #050d0a; padding: 20px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color); }
+    .card-image-viewport { width: 270px; height: 440px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; border-radius: 8px; border: 1px solid var(--border-color); background: #000; }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    
+    .step-right-pane { flex: 2; min-width: 320px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 4px; }
+    .spec-value { font-size: 13px; color: var(--text-main); line-height: 1.5; }
+    
+    .step-actions { display: flex; gap: 10px; padding-top: 12px; border-top: 1px solid var(--border-color); margin-top: auto; }
+    .action-btn { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--accent-primary); padding: 6px 14px; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s ease; }
+    .action-btn:hover { background: var(--accent-primary); color: #000; }
+
+    /* STEPPER NAVIGATION PANEL */
+    html { scroll-behavior: smooth; }
+    .stepper-panel-container {
+      max-width: 1280px; margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 20px; z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); overflow-x: auto;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .stepper-node:hover { transform: translateY(-2px); }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node:hover .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    }
+    .node-label {
+      font-size: 11px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node:hover .node-label { color: var(--text-main); }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    /* MODAL */
+    .modal-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .modal-win { width: 380px; height: 720px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+    .modal-header { padding: 12px 18px; background: #141416; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    .modal-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent-primary); }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
+    .modal-body { flex: 1; width: 100%; height: 100%; }
+    .modal-body iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <div class="tag">Sub-Workflow Module 7</div>
+    <h1 class="title">Financials & Earnings</h1>
+    <p class="desc">Definitive ledger tracking cumulative performance metrics, chronological clearing archives, and printable, shareable banking transaction strings.</p>
+  </div>
+
+  <!-- DYNAMIC STEPPER PANEL -->
+  <div class="stepper-panel-container custom-scrollbar">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node" title="Aggregated Earnings Summary">
+        <span class="node-num">01</span>
+        <span class="node-label">Earnings</span>
+      </a>
+      <a href="#step-02" class="stepper-node" title="Chronological Payment History">
+        <span class="node-num">02</span>
+        <span class="node-label">History</span>
+      </a>
+      <a href="#step-03" class="stepper-node" title="Payment Receipt Detail">
+        <span class="node-num">03</span>
+        <span class="node-label">Receipt</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="workflow-group-block">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">Screens Inventory</div>
+      <span class="step-count-pill">3 Screens</span>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Screen 1 -->
+      <div class="flow-step-card" id="step-01">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 1</span>Aggregated Earnings Summary</div>
+          <span class="step-folder-ref">earnings_summary</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/earnings_summary/screen.png" alt="Earnings Summary" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Aggregated earnings view across all channels and time periods. Help the farmer understand performance, compare months, and make planning decisions.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Transparent visibility into cumulative financial outcomes incentivizes consistent volume throughput. Adheres strictly to learning-only metrics without scoring manipulation.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">UX & User Actions</div>
+                <div class="spec-value">
+                  <strong>UX:</strong> High-level statistical cards coupled with simple graphical readouts.<br/><br/>
+                  <strong>Actions:</strong><br/>
+                  • Toggle view interval: This Month / Last 3 Months / This Year / All Time / Custom.<br/>
+                  • Tap individual channel or grade summary segments to open pre-filtered Payment History matrices.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Queries materialized reporting views or triggers server-side aggregation via Supabase RPC farmer_earnings_summary(user_id, from_date, to_date).</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">-- Materialized view utilized for rapid timeline analytical aggregations:
+farmer_earnings_mv (farmer_id UUID, period_month DATE, channel ENUM, grade ENUM, total_received NUMERIC);</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/earnings_summary/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2 -->
+      <div class="flow-step-card" id="step-02">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 2</span>Chronological Payment History</div>
+          <span class="step-folder-ref">payment_history</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/payment_history/screen.png" alt="Payment History" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Chronological record of all payments BM has made to this farmer, with full traceability (UTR, date, amount, linked PO/spot listing).</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Guarantee absolute auditing transparency for downstream fund reconciliations. Disputes resolved entirely by persistent UTR logging.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">UX & User Actions</div>
+                <div class="spec-value">
+                  <strong>UX:</strong> Reverse-chronological ledger categorized by distinct processing months.<br/><br/>
+                  <strong>Actions:</strong><br/>
+                  • Search ledger entries by absolute UTR string.<br/>
+                  • Filter records by channel leg origin (PO / Spot / Advance).<br/>
+                  • Load granular clearing proof details.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Queries confirmed payments where payer party is bm_to_farmer joined with linked order references. Exposes ledger status purely as an authoritative auditing record.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">-- Fetch sequence retrieving cleared counterparty disbursements:
+SELECT * FROM payments WHERE payer_party = 'bm_to_farmer' 
+AND farmer_id = current_user AND status = 'confirmed' ORDER BY confirmed_at DESC;</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/payment_history/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3 -->
+      <div class="flow-step-card" id="step-03">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Screen 3</span>Payment Receipt Detail</div>
+          <span class="step-folder-ref">payment_receipt_detail</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/payment_receipt_detail/screen.png" alt="Payment Receipt Detail" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Printable and shareable single source of truth detailing clearing dates, encrypted receiving bank numbers, and absolute UTR proof strings. Fully matches standard bank statement feeds.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Serves as a standalone bank-level transfer ledger receipt. Facilitates off-platform stakeholder reference and auditing confirmation.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">UX & User Actions</div>
+                <div class="spec-value">
+                  <strong>UX:</strong> High-contrast receipt card highlighting cleared transfer variables.<br/><br/>
+                  <strong>Actions:</strong><br/>
+                  • Copy full length bank clearing UTR string directly to native device clipboards.<br/>
+                  • Trigger standard OS share menu actions for receipt export.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Fetches target row details from payments enforcing strictly producer access scope boundaries.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">payments (id UUID PK, po_id UUID, spot_listing_id UUID, expected_amount NUMERIC, utr TEXT, status ENUM, confirmed_at TIMESTAMP);</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/payment_receipt_detail/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
+    <div class="modal-win" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <span class="modal-title">Source Preview</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body"><iframe id="modal-iframe" src=""></iframe></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
+    function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const container = document.querySelector(".stepper-panel-container");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            if (!id) return;
+            stepperNodes.forEach(node => node.classList.remove("active"));
+            const activeNode = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (activeNode) {
+              activeNode.classList.add("active");
+              if (container) {
+                const nodeLeft = activeNode.offsetLeft;
+                const nodeWidth = activeNode.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = container.scrollLeft;
+                if (nodeLeft < scrollLeft || nodeLeft + nodeWidth > scrollLeft + containerWidth) {
+                  container.scrollTo({ left: nodeLeft - containerWidth / 2 + nodeWidth / 2, behavior: "smooth" });
+                }
+              }
+            }
+          }
+        });
+      }, { root: null, rootMargin: "-20% 0px -60% 0px", threshold: 0 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+  </script>
+</body>
+</html>

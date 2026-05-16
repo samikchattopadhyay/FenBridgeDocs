@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grade Certificate Viewer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #0a0a0a;
+      -webkit-font-smoothing: antialiased;
+    }
+    .pdf-canvas {
+      background-image: linear-gradient(to bottom, #ffffff 0%, #fcfcfc 100%);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#0b513d",
+            "on-surface": "#e5e2e1",
+            "on-background": "#e5e2e1",
+            "on-tertiary-fixed-variant": "#842225",
+            "surface-bright": "#393939",
+            "inverse-primary": "#006c49",
+            "error": "#ffb4ab",
+            "secondary-fixed-dim": "#95d3ba",
+            "surface-container-high": "#2a2a2a",
+            "on-primary": "#003824",
+            "tertiary-fixed": "#ffdad7",
+            "surface-variant": "#353534",
+            "primary-fixed-dim": "#4edea3",
+            "surface-container-highest": "#353534",
+            "on-primary-fixed": "#002113",
+            "surface-container-lowest": "#0e0e0e",
+            "on-error-container": "#ffdad6",
+            "on-tertiary": "#650911",
+            "on-tertiary-fixed": "#410005",
+            "tertiary": "#ffb3af",
+            "secondary": "#95d3ba",
+            "on-secondary-container": "#83c2a9",
+            "error-container": "#93000a",
+            "surface-container": "#201f1f",
+            "surface-container-low": "#1c1b1b",
+            "primary-fixed": "#6ffbbe",
+            "outline-variant": "#3c4a42",
+            "on-error": "#690005",
+            "on-secondary": "#003829",
+            "background": "#131313",
+            "tertiary-container": "#fc7c78",
+            "on-primary-fixed-variant": "#005236",
+            "on-tertiary-container": "#711419",
+            "on-primary-container": "#00422b",
+            "outline": "#86948a",
+            "on-secondary-fixed": "#002117",
+            "inverse-surface": "#e5e2e1",
+            "primary-container": "#10b981",
+            "tertiary-fixed-dim": "#ffb3af",
+            "on-surface-variant": "#bbcabf",
+            "on-secondary-fixed-variant": "#0b513d",
+            "primary": "#4edea3",
+            "surface": "#131313",
+            "secondary-fixed": "#b0f0d6",
+            "inverse-on-surface": "#313030",
+            "surface-dim": "#131313",
+            "surface-tint": "#4edea3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "gutter": "16px",
+            "container-max": "1440px",
+            "unit": "4px",
+            "margin-mobile": "16px"
+          },
+          "fontFamily": {
+            "body-lg": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-sm": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "mono-data": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Custom implementation based on shared anchors logic) -->
+<nav class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant h-16 flex items-center px-margin-mobile md:px-margin-desktop justify-between">
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../warehouse_detail/code.html'" class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface truncate whitespace-nowrap">Grade Certificate</h1>
+</div>
+<div class="flex items-center gap-1 md:gap-4">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">print</span>
+</button>
+</div>
+</nav>
+<!-- Meta Strip -->
+<div class="mt-16 bg-surface-container-low border-b border-outline-variant px-margin-mobile md:px-margin-desktop py-3 overflow-x-auto whitespace-nowrap">
+<div class="flex items-center gap-4 font-mono-data text-mono-data text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="text-primary font-bold">GC-2026-0091</span>
+</span>
+<span class="text-outline">·</span>
+<span>LOT-MK-2042</span>
+<span class="text-outline">·</span>
+<span>Issued 13 May</span>
+<span class="text-outline">·</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+        SEAL-2026-0118
+      </span>
+</div>
+</div>
+<!-- Document Viewer Workspace -->
+<main class="flex-grow flex justify-center p-4 md:p-12 overflow-y-auto">
+<div class="w-full max-w-4xl pdf-canvas rounded-lg p-8 md:p-16 text-[#1a1a1a] flex flex-col relative">
+<!-- FenBridge Watermark (Subtle background element) -->
+<div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
+<span class="font-display-lg text-display-lg scale-[3] -rotate-45">FENBRIDGE</span>
+</div>
+<!-- Certificate Header -->
+<header class="flex justify-between items-start border-b-2 border-[#1a1a1a] pb-8 mb-8 relative z-10">
+<div class="flex flex-col gap-2">
+<div class="bg-[#1a1a1a] text-white px-3 py-1 font-headline-sm text-headline-sm tracking-widest">FENBRIDGE</div>
+<p class="font-label-md text-[10px] text-gray-600 uppercase tracking-tighter">Agricultural Quality Assurance Division</p>
+</div>
+<div class="text-right">
+<h2 class="font-headline-md text-headline-md font-bold uppercase truncate whitespace-nowrap">Certificate of Grade</h2>
+<p class="font-mono-data text-mono-data text-gray-500">Document No: 2026-0091-AFG</p>
+</div>
+</header>
+<!-- Lot Identity Section -->
+<section class="grid grid-cols-2 gap-12 mb-12 relative z-10">
+<div>
+<h3 class="font-label-md text-label-md uppercase text-gray-500 mb-2 border-b border-gray-200">Consignment Details</h3>
+<div class="space-y-1">
+<div class="flex justify-between py-1">
+<span class="font-body-md text-body-md text-gray-600">Commodity</span>
+<span class="font-body-md text-body-md font-bold">Makhana (Fox Nuts)</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="font-body-md text-body-md text-gray-600">Lot ID</span>
+<span class="font-body-md text-body-md font-bold">LOT-MK-2042</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="font-body-md text-body-md text-gray-600">Origin</span>
+<span class="font-body-md text-body-md font-bold">Bihar, India</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="font-body-md text-body-md text-gray-600">Quantity</span>
+<span class="font-body-md text-body-md font-bold">450 Units / 5.2 MT</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-center border-l border-gray-100 pl-12">
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md uppercase text-gray-500 mb-1">Final Verified Grade</span>
+<div class="w-24 h-24 border-4 border-primary-container rounded-full flex items-center justify-center text-primary-container font-display-lg text-[64px] font-bold">
+              A
+            </div>
+<span class="mt-2 font-mono-data text-mono-data font-bold text-gray-800">PREMIUM EXPORT</span>
+</div>
+</div>
+</section>
+<!-- Parameter Analysis Table -->
+<section class="mb-12 relative z-10">
+<h3 class="font-label-md text-label-md uppercase text-gray-500 mb-4 border-b border-gray-200">Laboratory Analysis Report</h3>
+<table class="w-full font-body-md text-body-md">
+<thead class="bg-gray-50">
+<tr>
+<th class="text-left py-2 px-4 border-b border-gray-200">Parameter</th>
+<th class="text-left py-2 px-4 border-b border-gray-200">Standard (A)</th>
+<th class="text-right py-2 px-4 border-b border-gray-200">Actual Result</th>
+<th class="text-right py-2 px-4 border-b border-gray-200">Compliance</th>
+</tr>
+</thead>
+<tbody class="font-mono-data">
+<tr class="border-b border-gray-100">
+<td class="py-3 px-4">Moisture Content</td>
+<td class="py-3 px-4">&lt; 10%</td>
+<td class="py-3 px-4 text-right">8.2%</td>
+<td class="py-3 px-4 text-right text-emerald-600">PASS</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="py-3 px-4">Foreign Matter</td>
+<td class="py-3 px-4">&lt; 0.5%</td>
+<td class="py-3 px-4 text-right">0.12%</td>
+<td class="py-3 px-4 text-right text-emerald-600">PASS</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="py-3 px-4">Broken/Cracked</td>
+<td class="py-3 px-4">&lt; 5%</td>
+<td class="py-3 px-4 text-right">2.4%</td>
+<td class="py-3 px-4 text-right text-emerald-600">PASS</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="py-3 px-4">Bulk Density</td>
+<td class="py-3 px-4">80-120g/L</td>
+<td class="py-3 px-4 text-right">94g/L</td>
+<td class="py-3 px-4 text-right text-emerald-600">PASS</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="py-3 px-4">Aflatoxin B1</td>
+<td class="py-3 px-4">ND</td>
+<td class="py-3 px-4 text-right">Not Detected</td>
+<td class="py-3 px-4 text-right text-emerald-600">PASS</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- Signature Area -->
+<footer class="mt-auto pt-12 border-t border-gray-200 flex justify-between items-end relative z-10">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-12 bg-gray-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400">qr_code_2</span>
+</div>
+<div class="text-[10px] text-gray-400 font-mono-data leading-tight">
+              SCAN TO VERIFY<br/>CRYPTO-SIGNATURE:<br/>0x7F2A...B901
+            </div>
+</div>
+</div>
+<div class="text-center flex flex-col items-center">
+<div class="mb-2 italic font-serif text-gray-800 text-lg opacity-80">R. Mukherji</div>
+<div class="w-48 border-t border-gray-800"></div>
+<div class="font-label-md text-[10px] text-gray-500 uppercase mt-1">Chief Inspector: R. Mukherji</div>
+<div class="font-label-md text-[10px] text-gray-400">Accreditation No: ISO-9001-QA-442</div>
+</div>
+</footer>
+</div>
+</main>
+<!-- Sticky Footer Navigation -->
+<footer class="fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant h-16 flex items-center justify-center px-4 z-50">
+<button class="flex items-center gap-2 text-primary hover:bg-secondary-container/10 px-6 py-2 rounded-full transition-all group">
+<span class="font-label-md text-label-md uppercase tracking-wider">View linked seal</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</footer>
+<!-- Padding for sticky footer -->
+<div class="h-16"></div>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

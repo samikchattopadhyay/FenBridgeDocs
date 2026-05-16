@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Hanken+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+            min-height: max(884px, 100dvh);
+        }
+        .premium-shadow { box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4); }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#410005",
+                        "tertiary": "#ffb3af",
+                        "surface-tint": "#4edea3",
+                        "on-primary": "#003824",
+                        "inverse-primary": "#006c49",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "tertiary-container": "#fc7c78",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#00422b",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#711419",
+                        "on-tertiary": "#650911",
+                        "outline": "#86948a",
+                        "on-background": "#e5e2e1",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#6ffbbe",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-secondary-container": "#c4abff",
+                        "primary-container": "#10b981",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "surface-container-highest": "#353534",
+                        "primary": "#4edea3",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed": "#23005c",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "secondary-container": "#571bc1",
+                        "surface": "#131313",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#002113",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#393939",
+                        "on-error": "#690005",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#d0bcff",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-dim": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "margin": "20px",
+                        "gutter": "12px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md flex flex-col min-h-screen">
+    <!-- Top Navigation Bar -->
+    <header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-margin py-md">
+        <div class="flex items-center gap-md">
+            <button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-base active:scale-95 transition-transform duration-150 cursor-pointer">arrow_back</button>
+            <h1 class="font-headline-md text-headline-md font-bold text-primary">FenBridge</h1>
+        </div>
+        <button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-base active:scale-95 transition-transform duration-150 cursor-pointer" data-icon="dashboard" title="Dashboard">dashboard</button>
+    </header>
+
+    <main class="pb-xl">
+        <!-- Hero Header -->
+        <section class="flex flex-col items-center py-xl bg-gradient-to-b from-surface-container-lowest to-background px-margin">
+            <div class="relative mb-md">
+                <div class="w-[120px] h-[120px] rounded-full border-2 border-primary overflow-hidden shadow-lg bg-surface-container">
+                    <img alt="Farmer Portrait" class="w-full h-full object-cover" data-alt="A dignified close-up portrait of an experienced Indian farmer in his late 40s with weathered skin and a warm, steady gaze. He is wearing traditional cream-colored cotton attire. The background consists of a lush, emerald green makhana pond under the soft, golden light of late afternoon. The overall mood is professional, high-contrast, and celebrates agricultural heritage with a cinematic, modern noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcAKJZ6HhlznaQLiI2c5HvafDIrOvkD2RPmEqxtCfhmKtbaM5ofjzxifGFySduIvH667otKtBcuuYKSFmJwua5vHs04dRrvpBB8S0vymLCFusE1gnVP4FdNyqg6kwzm7WNZOexYMYxNowpJEfO07sset_-fzPV-yuo3X5cW0dfKQlxIdGS5kd01ieRnwlFVmkn8qjZTwGEC137SJDn_zJAqEM2YqCRTXS6OqjMwFZrPrdozVHv056cGfIA_IM_QYa5cUN8EQX0gS2Y"/>
+                </div>
+                <input type="file" accept="image/*" class="hidden" id="avatar_upload_input" onchange="
+                  if(this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                      const img = document.querySelector('img[alt=\'Farmer Portrait\']');
+                      if(img) img.src = e.target.result;
+                      const btn = document.getElementById('upload_photo_action_btn');
+                      if(btn) {
+                        btn.textContent = 'Uploaded Successfully ✓';
+                        btn.style.borderColor = '#10b981';
+                        btn.style.backgroundColor = 'rgba(16, 185, 129, 0.08)';
+                        btn.style.color = '#10b981';
+                        btn.setAttribute('data-uploaded', 'true');
+                      }
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                  }
+                " />
+                <button id="avatar_pick_btn" onclick="document.getElementById('avatar_upload_input').click()" class="absolute bottom-1 right-1 bg-primary text-on-primary p-xs rounded-full shadow-md flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                </button>
+            </div>
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Rajesh Kumar</h2>
+            <span class="px-md py-base bg-secondary-container text-on-secondary-container rounded-full text-label-sm font-label-sm">Farmer</span>
+
+            <!-- Linked Google Account (Displayed just below image + name + role) -->
+            <div class="mt-4 flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-full border border-outline-variant/40 shadow-sm">
+                <span class="material-symbols-outlined text-[16px] text-on-surface-variant">link</span>
+                <span class="text-xs text-on-surface font-medium">samik@fenbridge.com</span>
+                <span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+
+            <!-- Account Status (Displayed below Linked Google Account) -->
+            <div class="mt-2 flex items-center gap-1.5 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">
+                <span class="material-symbols-outlined text-[14px] text-primary">account_circle</span>
+                <span class="text-xs text-primary font-semibold tracking-wide">Account Status: Active</span>
+            </div>
+        </section>
+
+        <div class="px-margin space-y-md">
+            <!-- Section: Action Required (Displayed below Account Status) -->
+            <section class="bg-surface-container rounded-xl p-md border border-amber-500/20 shadow-sm bg-gradient-to-b from-amber-500/[0.02] to-transparent">
+                <div class="flex items-center justify-between mb-md pb-xs border-b border-outline-variant/30">
+                    <h3 class="font-label-lg text-label-lg text-amber-400 uppercase tracking-widest flex items-center gap-xs font-semibold">
+                        <span class="material-symbols-outlined text-[18px] animate-pulse">notification_important</span>
+                        Action Required
+                    </h3>
+                    <span class="font-label-sm text-xs px-2.5 py-0.5 bg-amber-400/10 text-amber-400 rounded-full border border-amber-400/20 font-medium tracking-wide">Priority</span>
+                </div>
+                <div class="divide-y divide-outline-variant/30">
+                    <!-- Task 1: Upload Profile Photo -->
+                    <div class="py-sm flex flex-col gap-1.5 group hover:bg-surface-container-high/40 transition-all duration-200 rounded-lg px-2">
+                        <div class="flex items-start gap-md pointer-events-none">
+                            <div class="w-9 h-9 rounded-lg bg-surface-container-high border border-outline-variant/50 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors text-[20px]">account_circle</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-body-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate text-sm">Upload Profile Photo</p>
+                                <p class="font-label-sm text-on-surface-variant text-xs mt-0.5 line-clamp-2 leading-relaxed">Help buyers identify your farm lot</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-start pl-[48px]">
+                            <button id="upload_photo_action_btn" onclick="document.getElementById('avatar_upload_input').click()" type="button" class="px-3 py-1 border border-outline-variant hover:border-primary/50 text-on-surface-variant hover:text-primary rounded font-label-sm text-xs hover:bg-primary/5 active:scale-95 transition-all whitespace-nowrap cursor-pointer pointer-events-auto">Upload</button>
+                        </div>
+                    </div>
+                    <!-- Task: Add Farm/Pond Location -->
+                    <div class="py-sm flex flex-col gap-1.5 group hover:bg-surface-container-high/40 transition-all duration-200 rounded-lg px-2">
+                        <div class="flex items-start gap-md">
+                            <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                                <span class="material-symbols-outlined text-amber-400 text-[20px]">water</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-body-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate text-sm">Add Farm/Pond Location</p>
+                                <p class="font-label-sm text-on-surface-variant text-xs mt-0.5 line-clamp-2 leading-relaxed">Map your makhana lot boundary to activate buyer visibility</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-start pl-[48px]">
+                            <button onclick="localStorage.setItem('fenbridge_add_pond_flow', 'true'); window.location.href='../../buyer_onboarding/pond_address/code.html'" class="px-3 py-1 bg-primary text-on-primary rounded font-label-sm text-xs font-semibold hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all shadow-sm whitespace-nowrap cursor-pointer">Add Pond</button>
+                        </div>
+                    </div>
+
+                    <!-- Task 2: Link Payment Bank Account -->
+                    <div class="py-sm flex flex-col gap-1.5 group hover:bg-surface-container-high/40 transition-all duration-200 rounded-lg px-2">
+                        <div class="flex items-start gap-md">
+                            <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                                <span class="material-symbols-outlined text-amber-400 text-[20px]">account_balance</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-body-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate text-sm">Link Payment Bank Account</p>
+                                <p class="font-label-sm text-on-surface-variant text-xs mt-0.5 line-clamp-2 leading-relaxed">Mandatory to unlock bidding &amp; receiving settlements</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-start pl-[48px]">
+                            <button class="px-3 py-1 bg-primary text-on-primary rounded font-label-sm text-xs font-semibold hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all shadow-sm whitespace-nowrap">Add Account</button>
+                        </div>
+                    </div>
+
+                    <!-- Task 3: Verify Mobile & Link WhatsApp -->
+                    <div class="py-sm flex flex-col gap-1.5 group hover:bg-surface-container-high/40 transition-all duration-200 rounded-lg px-2">
+                        <div class="flex items-start gap-md">
+                            <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                                <span class="material-symbols-outlined text-amber-400 text-[20px]">phone_iphone</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-body-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate text-sm">Verify Mobile &amp; Link WhatsApp</p>
+                                <p class="font-label-sm text-on-surface-variant text-xs mt-0.5 line-clamp-2 leading-relaxed">Secure your marketplace account, authenticate spot trades, and coordinate dispatch</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 pl-[48px]">
+                            <button onclick="window.location.href='../../buyer_onboarding/verify_mobile_step_1/code.html'" class="px-3 py-1 bg-primary text-on-primary rounded font-label-sm text-xs font-semibold hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all shadow-sm whitespace-nowrap cursor-pointer pointer-events-auto">Verify Mobile</button>
+                            <button onclick="window.location.href='../link_whatsapp/code.html'" class="px-3 py-1 border border-outline-variant hover:border-primary/50 text-on-surface-variant hover:text-primary rounded font-label-sm text-xs hover:bg-primary/5 active:scale-95 transition-all whitespace-nowrap cursor-pointer pointer-events-auto">Verify WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Verified Capabilities (Displayed just below Action Required section) -->
+            <section class="bg-surface-container rounded-xl p-3 border border-primary/10 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                <div class="flex items-center justify-between pl-2 mb-2.5">
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <h3 class="font-label-lg text-xs font-bold text-on-surface uppercase tracking-wider">Verified Capabilities</h3>
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                        </div>
+                        <p class="text-[10px] text-on-surface-variant leading-none mt-0.5">Tier bonuses active</p>
+                    </div>
+                    <button onclick="window.location.href='../capability_tags/code.html'" class="text-[11px] text-primary font-medium hover:opacity-80 flex items-center gap-0.5 bg-primary/5 px-2 py-1 rounded-md transition-all">
+                        <span>Manage</span>
+                        <span class="material-symbols-outlined text-[13px]">chevron_right</span>
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pl-2">
+                    <span class="px-2.5 py-1 bg-surface-container-high border border-primary/20 rounded-md text-[11px] font-medium text-primary flex items-center gap-1 shadow-2xs">
+                        <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Grade A Producer
+                    </span>
+                    <span class="px-2.5 py-1 bg-surface-container-high border border-outline-variant/60 rounded-md text-[11px] font-medium text-on-surface flex items-center gap-1 shadow-2xs">
+                        <span class="material-symbols-outlined text-[12px] text-on-surface-variant">speed</span>
+                        10k+ kg Volume
+                    </span>
+                    <span class="px-2.5 py-1 bg-surface-container-high border border-outline-variant/60 rounded-md text-[11px] font-medium text-on-surface flex items-center gap-1 shadow-2xs">
+                        <span class="material-symbols-outlined text-[12px] text-on-surface-variant">eco</span>
+                        Monsoon Harvest
+                    </span>
+                </div>
+            </section>
+
+            <!-- Section: Contact & Location -->
+            <section class="bg-surface-container rounded-xl p-md border border-outline-variant shadow-sm">
+                <h3 class="font-label-lg text-label-lg text-on-surface-variant mb-md tracking-wider uppercase">Contact &amp; Location</h3>
+                <div class="space-y-md">
+                    <!-- Row 1 -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-on-surface-variant">smartphone</span>
+                            <div>
+                                <p class="text-on-surface font-medium">+91 98765 43210</p>
+                                <span class="text-[10px] bg-primary/10 text-primary px-xs py-[1px] rounded uppercase font-bold">Verified</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='../../buyer_onboarding/verify_mobile_step_1/code.html'" title="Edit Mobile Number" class="material-symbols-outlined text-outline hover:text-primary transition-colors cursor-pointer">edit</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <!-- Row 2 -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-on-surface-variant">chat_bubble</span>
+                            <span class="text-outline italic">Not linked</span>
+                        </div>
+                        <button onclick="window.location.href='../link_whatsapp/code.html'" title="Link WhatsApp" class="text-primary font-label-lg text-label-lg hover:opacity-80 transition-opacity cursor-pointer">+ Link</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <!-- Row 3: Farmer Address -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-on-surface-variant">home</span>
+                            <div>
+                                <p class="text-on-surface text-sm font-medium">Plot 12, Ward 4, Forbesganj</p>
+                                <span class="text-[10px] text-outline uppercase block font-semibold">Farmer Address</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='../farmer_addresses/code.html'" title="View all addresses" class="material-symbols-outlined text-outline hover:text-primary transition-colors cursor-pointer">chevron_right</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Farm Information -->
+            <section class="bg-surface-container rounded-xl p-md border border-outline-variant shadow-sm">
+                <h3 class="font-label-lg text-label-lg text-on-surface-variant mb-md tracking-wider uppercase">Farm Information</h3>
+                <div class="space-y-md">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-body-lg text-body-lg text-primary font-bold">Emerald Pond</h4>
+                            <div class="flex gap-md mt-1">
+                                <span class="font-label-sm text-xs text-on-surface-variant">5 Acres</span>
+                                <span class="font-label-sm text-xs text-on-surface-variant">10,000 kg/yr</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='../manage_ponds/code.html'" title="Edit Pond Details" class="material-symbols-outlined text-outline hover:text-primary transition-colors cursor-pointer">edit</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <div class="flex items-center justify-between pt-xs">
+                        <button onclick="window.location.href='../uploaded_documents/code.html'" class="flex items-center gap-xs text-primary-container font-label-sm text-xs hover:opacity-80 transition-opacity cursor-pointer">
+                            <span class="material-symbols-outlined text-sm">description</span>
+                            <span>Uploaded Documents</span>
+                        </button>
+                        <button onclick="window.location.href='../manage_ponds/code.html'" class="flex items-center gap-xs text-secondary font-label-sm text-xs hover:opacity-80 transition-opacity cursor-pointer">
+                            <span class="material-symbols-outlined text-sm">grid_view</span>
+                            <span>View all ponds</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Account -->
+            <section class="bg-surface-container rounded-xl p-md border border-outline-variant shadow-sm">
+                <h3 class="font-label-lg text-label-lg text-on-surface-variant mb-md tracking-wider uppercase">Payment Account</h3>
+                <div class="space-y-md">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-md">
+                            <div class="w-12 h-8 bg-on-background/5 border border-outline-variant rounded flex items-center justify-center">
+                                <span class="text-[10px] font-bold text-on-surface-variant tracking-tighter">BANK</span>
+                            </div>
+                            <div>
+                                <p class="font-body-md text-on-surface font-semibold text-sm">Rajesh Kumar</p>
+                                <p class="font-label-sm text-xs text-on-surface-variant">XXXX XXXX 0567</p>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='../edit_bank_account/code.html'" title="Edit Bank Account" class="material-symbols-outlined text-outline hover:text-primary transition-colors cursor-pointer">edit</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-label-sm text-[11px] text-on-surface-variant">IFSC</p>
+                            <p class="font-body-md text-on-surface text-sm font-mono">SBIN0001234</p>
+                        </div>
+                        <div class="flex items-center gap-xs px-2.5 py-1 bg-primary/10 rounded-full border border-primary/20">
+                            <span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                            <span class="font-label-sm text-xs text-primary font-medium">Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu Buttons -->
+            <div class="flex flex-col gap-xs pt-md">
+                <!-- Manage Ponds (Replaces Edit Farm/Pond Details) -->
+                <button onclick="window.location.href='../manage_ponds/code.html'" class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group cursor-pointer">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">water</span>
+                        <span class="text-on-surface font-medium">Manage Ponds</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+
+                <!-- Manage Bank Accounts (Renamed from Bank Account Details) -->
+                <button onclick="window.location.href='../bank_account_details/code.html'" class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group cursor-pointer">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+                        <span class="text-on-surface font-medium">Manage Bank Accounts</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+
+                <!-- Settings -->
+                <button onclick="window.location.href='../settings/code.html'" class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group cursor-pointer">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">settings</span>
+                        <span class="text-on-surface font-medium">Settings</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+
+                <!-- Notification Preferences -->
+                <button onclick="window.location.href='../notification_preferences/code.html'" class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group cursor-pointer">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+                        <span class="text-on-surface font-medium">Notification Preferences</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+
+                <!-- Help & Support -->
+                <button onclick="window.location.href='../help_support/code.html'" class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group cursor-pointer">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">help_center</span>
+                        <span class="text-on-surface font-medium">Help &amp; Support</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+
+                <!-- Logout -->
+                <button class="flex items-center justify-between w-full p-md bg-on-tertiary-fixed/10 border border-on-tertiary-fixed-variant/20 rounded-lg hover:bg-on-tertiary-fixed/20 transition-colors group mt-md">
+                    <div class="flex items-center gap-md text-error">
+                        <span class="material-symbols-outlined">logout</span>
+                        <span class="font-bold">Logout</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

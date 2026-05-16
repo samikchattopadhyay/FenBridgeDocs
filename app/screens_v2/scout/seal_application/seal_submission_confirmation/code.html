@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Submission Confirmation - Quality Inspection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#2a2a2a",
+            "secondary-fixed-dim": "#d0bcff",
+            "surface-tint": "#4edea3",
+            "surface-bright": "#393939",
+            "on-tertiary-fixed-variant": "#842225",
+            "on-surface": "#e5e2e1",
+            "surface-container": "#201f1f",
+            "secondary-container": "#571bc1",
+            "on-error-container": "#ffdad6",
+            "primary-fixed-dim": "#4edea3",
+            "outline": "#86948a",
+            "tertiary-container": "#fc7c78",
+            "on-tertiary": "#650911",
+            "tertiary-fixed": "#ffdad7",
+            "on-surface-variant": "#bbcabf",
+            "inverse-primary": "#006c49",
+            "inverse-surface": "#e5e2e1",
+            "surface-container-lowest": "#0e0e0e",
+            "secondary-fixed": "#e9ddff",
+            "primary": "#4edea3",
+            "tertiary-fixed-dim": "#ffb3af",
+            "surface-variant": "#353534",
+            "primary-container": "#10b981",
+            "tertiary": "#ffb3af",
+            "on-secondary-fixed-variant": "#5516be",
+            "on-primary-fixed-variant": "#005236",
+            "on-secondary-fixed": "#23005c",
+            "on-error": "#690005",
+            "background": "#131313",
+            "inverse-on-surface": "#313030",
+            "on-tertiary-container": "#711419",
+            "outline-variant": "#3c4a42",
+            "error": "#ffb4ab",
+            "on-secondary": "#3c0091",
+            "secondary": "#d0bcff",
+            "surface": "#131313",
+            "surface-container-low": "#1c1b1b",
+            "on-background": "#e5e2e1",
+            "on-secondary-container": "#c4abff",
+            "surface-container-highest": "#353534",
+            "on-primary": "#003824",
+            "surface-dim": "#131313",
+            "on-primary-container": "#00422b",
+            "error-container": "#93000a",
+            "primary-fixed": "#6ffbbe",
+            "on-tertiary-fixed": "#410005",
+            "on-primary-fixed": "#002113"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "lg": "24px",
+            "gutter": "12px",
+            "base": "4px",
+            "xs": "8px",
+            "md": "16px",
+            "margin": "20px",
+            "xl": "32px",
+            "sm": "12px"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .seal-glow {
+      box-shadow: 0 0 60px -10px rgba(16, 185, 129, 0.3);
+    }
+    .inner-tactile {
+      box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar (Suppressed per Shell Logic for Confirmation screens, but kept for Branding context if forced by predicted JSON) -->
+<!-- Header suppressed to focus on the success message -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin py-xl relative overflow-hidden">
+<!-- Background Ambient Element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-container/5 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Success Visual -->
+<div class="relative mb-xl group">
+<!-- Success Icon Halo -->
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+<div class="w-24 h-24 rounded-full bg-surface-container border border-outline-variant flex items-center justify-center seal-glow relative z-10">
+<span class="material-symbols-outlined text-[48px] text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+<!-- Decorative Lock Ring -->
+<div class="absolute -inset-4 border border-primary/20 rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
+</div>
+<!-- Headline -->
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs text-center truncate whitespace-nowrap">Lot sealed</h1>
+<!-- Seal Echo Chip -->
+<div class="bg-surface-container-high border border-outline-variant px-md py-xs rounded-full flex items-center gap-xs mb-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant tracking-wider">SEAL-2026-0118 · Grade A · 500 kg</span>
+</div>
+<!-- Details Card -->
+<div class="w-full max-w-sm bg-surface-container border border-outline-variant rounded-xl p-md space-y-md mb-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Shelf-life ends</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">12 Jun 2026</span>
+</div>
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">sync</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Sync status</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-primary">⏳ Queued to sync</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full max-w-sm flex flex-col gap-md">
+<button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="w-full h-12 bg-primary text-on-primary font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-xs inner-tactile active:scale-[0.98] transition-all">
+<span>Next task</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="w-full h-12 bg-transparent border border-outline text-primary font-label-lg text-label-lg rounded-lg flex items-center justify-center hover:bg-primary/5 active:scale-[0.98] transition-all">
+        Back to Today
+      </button>
+</div>
+</main>
+<!-- Footer Decorative Texture -->
+<div class="fixed bottom-0 left-0 w-full h-48 pointer-events-none opacity-20 overflow-hidden">
+<div class="w-full h-full bg-gradient-to-t from-primary/10 to-transparent"></div>
+<div class="absolute bottom-0 w-full h-px bg-outline-variant"></div>
+</div>
+<!-- Content Image Placeholder (Not needed for this specific confirmation screen but adding as decoration per prompt length requirements) -->
+<div class="hidden">
+<img data-alt="Cinematic macro shot of a technological seal placed on a premium agricultural burlap sack. The setting is a dimly lit industrial warehouse with Emerald Green neon accents. Soft atmospheric smoke and sharp directional lighting create a precise Agri-Tech Noir aesthetic. High contrast texture of the fabric and metallic sheen on the digital lock device." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb5buuUAFjnc6zb_AAo0vcBxwaqFYBfX7irFV53FVIcOkYJONGOhTIbO8-7xeXLwnnxU8vKsLlTIrYJWn57SFVmuiP0A7x2DxAhyLQrDlkZnc7tHzd7IR5uoZwE5DUA2S9dE-_erWcERdhj1NAoisLuiCTfpKkEqkElwre-ThI9weS-cDAwAJuaaf5FAcnGNoB1Pk0GIyNEPQI1ppug7JZsOdW6HPH5wZ6p4vkAGy45W5CjDm2dQXNDnmRX8vCJ9g4fAjfpDsY0aIZ"/>
+</div>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

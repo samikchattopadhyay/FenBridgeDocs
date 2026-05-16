@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Submit | Agri-Scout Wizard</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary-fixed": "#ffdad7",
+                "surface-variant": "#2f3632",
+                "on-tertiary": "#512120",
+                "primary-fixed": "#6ffbbe",
+                "on-primary-fixed-variant": "#005236",
+                "on-background": "#dde4dd",
+                "on-error-container": "#ffdad6",
+                "secondary-container": "#115340",
+                "on-primary": "#003824",
+                "surface-container-lowest": "#09100c",
+                "primary": "#6ffbbe",
+                "on-primary-fixed": "#002114",
+                "surface-container-highest": "#2f3632",
+                "error-container": "#93000a",
+                "on-tertiary-container": "#7b4240",
+                "on-surface-variant": "#bbcabf",
+                "on-error": "#690005",
+                "secondary-fixed-dim": "#95d3ba",
+                "primary-fixed-dim": "#4edea3",
+                "on-tertiary-fixed-variant": "#6d3735",
+                "on-primary-container": "#005f40",
+                "outline": "#86948a",
+                "on-secondary-fixed-variant": "#0d503e",
+                "inverse-primary": "#006c4a",
+                "surface-bright": "#393939",
+                "secondary-fixed": "#b1f0d6",
+                "tertiary-container": "#ffb3af",
+                "on-surface": "#dde4dd",
+                "background": "#0e1511",
+                "outline-variant": "#3c4a42",
+                "error": "#ffb4ab",
+                "surface-container-low": "#161d19",
+                "secondary": "#95d3ba",
+                "surface-container": "#1a211d",
+                "inverse-on-surface": "#2b322d",
+                "surface-tint": "#4edea3",
+                "inverse-surface": "#dde4dd",
+                "on-tertiary-fixed": "#370d0d",
+                "surface-dim": "#0e1511",
+                "on-secondary-fixed": "#002117",
+                "on-secondary-container": "#87c5ac",
+                "surface-lowest": "#0e0e0e",
+                "tertiary": "#ffb3af",
+                "on-secondary": "#003829",
+                "tertiary-fixed-dim": "#ffb3af",
+                "surface": "#0e1511",
+                "surface-container-high": "#242c27",
+                "primary-container": "#4edea3"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "gutter": "16px",
+                "container-max": "1440px",
+                "unit": "4px",
+                "margin-mobile": "16px",
+                "margin-desktop": "32px",
+                "base-unit": "4px"
+        },
+        "fontFamily": {
+                "headline-sm": ["Hanken Grotesk"],
+                "mono-data": ["JetBrains Mono"],
+                "body-lg": ["Hanken Grotesk"],
+                "label-md": ["Hanken Grotesk"],
+                "headline-md": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"],
+                "body-md": ["Hanken Grotesk"]
+        },
+        "fontSize": {
+                "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+        .noir-glass {
+            background: rgba(26, 33, 29, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-background dark:bg-background flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full z-50 border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">Agri-Scout Wizard</h1>
+</div>
+<button class="text-primary dark:text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Progress Indicator -->
+<div class="mb-8 max-w-3xl mx-auto">
+<div class="flex justify-between items-end mb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Review &amp; Confirm</h2>
+<span class="font-mono-data text-label-md text-primary">Step 6 of 6</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter max-w-3xl mx-auto">
+<!-- Source Summary -->
+<section class="md:col-span-12 bg-surface-container-low border border-outline-variant p-6 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<h3 class="font-headline-sm text-headline-sm">Source</h3>
+</div>
+<a class="font-label-md text-label-md text-primary uppercase tracking-wider hover:underline" href="#">Edit</a>
+</div>
+<div class="space-y-2">
+<p class="font-body-lg text-body-lg text-on-surface">Warehouse Alpha-9</p>
+<p class="font-mono-data text-label-md text-on-surface-variant">45.52306° N, 122.67648° W • Section 4B</p>
+</div>
+</section>
+<!-- Offer Details Summary -->
+<section class="md:col-span-12 bg-surface-container-low border border-outline-variant p-6 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h3 class="font-headline-sm text-headline-sm">Offer Details</h3>
+</div>
+<a class="font-label-md text-label-md text-primary uppercase tracking-wider hover:underline" href="#">Edit</a>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Commodity</p>
+<p class="font-body-lg text-body-lg">Premium Grade Corn</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Quantity</p>
+<p class="font-body-lg text-body-lg">250 Metric Tons</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Spot Price</p>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim">$184.50 / MT</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Total Value</p>
+<p class="font-body-lg text-body-lg">$46,125.00</p>
+</div>
+</div>
+</section>
+<!-- Photos Recap -->
+<section class="md:col-span-12 bg-surface-container-low border border-outline-variant p-6 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">photo_library</span>
+<h3 class="font-headline-sm text-headline-sm">Inspection Photos</h3>
+</div>
+<a class="font-label-md text-label-md text-primary uppercase tracking-wider hover:underline" href="#">Edit</a>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2">
+<img class="w-24 h-24 object-cover rounded-lg border border-outline-variant" data-alt="A high-contrast technical macro photograph of agricultural grain kernels inside a sleek industrial silo. The lighting is dramatic and moody, utilizing deep shadows and crisp highlights to emphasize the texture and quality of the corn. The color palette is dominated by dark greens and earthy yellows, maintaining a professional noir aesthetic suited for an advanced monitoring application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyjiMItU_EzLtoixf8jmE294SZMyGGULSIYGgBewHAl8h_wDS_u1XCQ45K8nO6S6AC0uVW3_ZbhV9P_BN-5ol0a-kFICw7tFKu93bdt9QEOoVEiZw9zoiWPzoEf4Afs0xnb4UBMssWdutdz-iLOkkxglbfTk1TId8NBYwkeNOZ0Zp6MNjuob-XpTO7juLJwRGtvvWfbe3n10DcvWCCAmsMC9KUVZFUZavozagMDXusQLF96W1g6CKRdn1wOIcCdyZMJ3NVRjYZaf7q"/>
+<img class="w-24 h-24 object-cover rounded-lg border border-outline-variant" data-alt="A wide-angle industrial shot of a modern grain storage facility with large metallic silos under a twilight sky. The scene is illuminated by cool-toned artificial work lights creating a cinematic nocturnal atmosphere. The image feels technologically advanced and precise, reflecting a high-performance deep-tech environment for environmental monitoring and asset management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsjF4ZyM1tNObPIQH5J103h3o5IItvC6Q6s5VvQjMrfyBZkjeOFMy-bmP6MMlkhVB10liT2Y_CmKYqc8F1OGX_nynAWpATTvAm2JWP2SSnKnArJJtXV_lOAh81rQ3fCMG_t8rjSVUBGwiBDzav89_LQyupZbn7flBrPSNsmIStJlYDEupH16vmOZvm8Ym8OW16ppFYS_Bq8B7uEZaFf1GGkCsqr01YbJ_ouTh1R_wiUhoFSQa_M6p1_Xnu7qQMS3NJ10kPvRNTZDQj"/>
+<img class="w-24 h-24 object-cover rounded-lg border border-outline-variant" data-alt="A detailed view of a digital agricultural sensor interface mounted on a metallic surface in a dark industrial setting. The sensor's small circular indicator pulses with a subtle green light, indicating connectivity. The overall mood is calm and controlled, with high-density technical details and a minimalist nocturnal aesthetic consistent with a modern corporate brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2anNZ3wQKSGzRjlpK-caMEctmHhtJ6tgWcaHX6FkRu1XTHr05XJ9YK9bkjZNQ72HRjZ1E_4XF9rWwdU9HaZmkoeTfZkEyfYsDUgaF4jw4XASBXYR73eNwVepjQqTV72agTIhm8dre9hj40U4FcvXoYngzdXxsRD5Y9P24XzbJnTdAtFH8Z7lzUt8mXBkd_bgVwn5CxfhtvFiQEHjOjdl5ua1wHAn94HtQleH67K6fy2TzuZcxZ8AiurxBHN12sx2KLU3_fHlDPqig"/>
+<div class="w-24 h-24 flex items-center justify-center bg-surface-container border border-dashed border-outline-variant rounded-lg">
+<span class="font-mono-data text-label-md text-on-surface-variant">+2</span>
+</div>
+</div>
+</section>
+<!-- Inspection Date -->
+<section class="md:col-span-12 bg-surface-container-low border border-outline-variant p-6 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">event</span>
+<h3 class="font-headline-sm text-headline-sm">Inspection Schedule</h3>
+</div>
+<a class="font-label-md text-label-md text-primary uppercase tracking-wider hover:underline" href="#">Edit</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-high p-3 rounded-lg border border-outline-variant">
+<p class="font-mono-data text-label-md text-primary uppercase">Requested</p>
+<p class="font-headline-sm text-headline-sm">Oct 24, 2023</p>
+</div>
+<div class="text-on-surface-variant">
+<p class="font-body-md text-body-md">Morning Session</p>
+<p class="font-body-md text-body-md">08:00 AM - 12:00 PM</p>
+</div>
+</div>
+</section>
+<!-- Confirmation Checkbox -->
+<div class="md:col-span-12 mt-4">
+<label class="flex items-start gap-4 p-4 rounded-lg bg-surface-container border border-outline-variant cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="mt-1 w-5 h-5 rounded bg-surface-container-lowest border-outline text-primary focus:ring-primary focus:ring-offset-background" type="checkbox"/>
+<span class="font-body-md text-on-surface">
+                        I confirm the above information is correct and the offer details are ready for verification. I understand this offer is binding upon acceptance.
+                    </span>
+</label>
+</div>
+<!-- CTA -->
+<div class="md:col-span-12 pt-8">
+<button class="w-full bg-primary text-on-primary font-headline-sm text-headline-sm py-4 rounded-xl shadow-lg active:scale-95 duration-150 transition-all">
+                    Submit Offer
+                </button>
+</div>
+</div>
+</main>
+<!-- Success Overlay (Hidden by default, shown after submission) -->
+<div class="fixed inset-0 z-[100] noir-glass hidden flex items-center justify-center p-gutter" id="success-state">
+<div class="bg-surface-container-lowest border border-outline-variant p-8 md:p-12 rounded-2xl max-w-md w-full text-center shadow-2xl">
+<div class="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-secondary-container text-primary shadow-[0_0_20px_rgba(78,222,163,0.3)]">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'wght' 600;">check_circle</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Success</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">Your spot offer has been securely transmitted to the trading floor.</p>
+<div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg mb-8">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-1">Offer Reference Code</p>
+<p class="font-mono-data text-headline-md text-primary tracking-widest">OFFER-1024</p>
+</div>
+<div class="text-left space-y-4 mb-8">
+<h4 class="font-label-md text-label-md text-on-surface uppercase">Next Steps</h4>
+<ul class="space-y-2">
+<li class="flex gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">circle</span>
+                        Verification of photos and data (Estimated 2h)
+                    </li>
+<li class="flex gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">circle</span>
+                        On-site inspector arrival on Oct 24
+                    </li>
+<li class="flex gap-3 text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">circle</span>
+                        Final settlement and payment processing
+                    </li>
+</ul>
+</div>
+<button class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-headline-sm text-headline-sm py-4 rounded-xl hover:bg-surface-variant transition-colors">
+                Back to Dashboard
+            </button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Warehouses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">sync</span>
+<span class="font-label-md text-label-md">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

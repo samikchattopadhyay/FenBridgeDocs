@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#86948a",
+                        "surface": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error-container": "#93000a",
+                        "outline-variant": "#3c4a42",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-container": "#0b513d",
+                        "on-primary": "#003824",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#002117",
+                        "on-surface-variant": "#bbcabf",
+                        "on-tertiary-fixed": "#410005",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-tertiary-container": "#711419",
+                        "surface-dim": "#131313",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed-variant": "#005236",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-highest": "#353534",
+                        "background": "#131313",
+                        "surface-bright": "#393939",
+                        "on-secondary-container": "#83c2a9",
+                        "primary": "#4edea3",
+                        "on-secondary-fixed-variant": "#0b513d",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-tertiary": "#650911",
+                        "primary-fixed": "#6ffbbe",
+                        "primary-container": "#10b981",
+                        "on-secondary": "#003829",
+                        "surface-tint": "#4edea3",
+                        "surface-container-high": "#2a2a2a",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#fc7c78",
+                        "tertiary": "#ffb3af",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-container": "#201f1f",
+                        "secondary": "#95d3ba",
+                        "on-background": "#e5e2e1",
+                        "on-primary-container": "#00422b",
+                        "secondary-fixed": "#b0f0d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-margin-mobile h-14 w-full z-50 bg-surface border-b border-outline-variant fixed top-0">
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../profile_settings/code.html'" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm text-on-surface truncate whitespace-nowrap">Language</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-14 px-margin-mobile py-8 max-w-lg mx-auto w-full">
+<!-- Section Header -->
+<div class="mb-8">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2 truncate whitespace-nowrap">Choose your language</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">The app changes immediately. You don't need to log in again.</p>
+</div>
+<!-- Language Options Grid -->
+<div class="space-y-4">
+<!-- Option 1: English (Selected) -->
+<label class="relative flex items-center justify-between p-4 bg-surface-container-high border border-primary cursor-pointer group transition-all duration-200 rounded-lg">
+<input checked="" class="hidden" name="language" type="radio" value="english"/>
+<div class="flex flex-col">
+<span class="text-body-lg font-headline-sm text-on-surface">English</span>
+<span class="text-label-md font-label-md text-on-surface-variant">English</span>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full border-2 border-primary bg-secondary-container">
+<div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+</div>
+<!-- Selection Indicator (Sliding Pane Style) -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-lg"></div>
+</label>
+<!-- Option 2: Hindi -->
+<label class="relative flex items-center justify-between p-4 bg-surface-container-high border border-outline-variant hover:border-outline cursor-pointer group transition-all duration-200 rounded-lg">
+<input class="hidden" name="language" type="radio" value="hindi"/>
+<div class="flex flex-col">
+<span class="text-body-lg font-headline-sm text-on-surface">हिन्दी</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Hindi</span>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-outline">
+<div class="w-2.5 h-2.5 bg-transparent rounded-full"></div>
+</div>
+</label>
+<!-- Option 3: Bengali -->
+<label class="relative flex items-center justify-between p-4 bg-surface-container-high border border-outline-variant hover:border-outline cursor-pointer group transition-all duration-200 rounded-lg">
+<input class="hidden" name="language" type="radio" value="bengali"/>
+<div class="flex flex-col">
+<span class="text-body-lg font-headline-sm text-on-surface">বাংলা</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Bengali</span>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-outline">
+<div class="w-2.5 h-2.5 bg-transparent rounded-full"></div>
+</div>
+</label>
+</div>
+<!-- Decorative/Contextual Image for Agri-Tech Noir -->
+<div class="mt-12 rounded-xl overflow-hidden border border-outline-variant bg-surface-container shadow-2xl">
+<img alt="Agricultural Monitoring" class="w-full h-48 object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-alt="A high-precision, technical close-up of a digital tablet screen displaying green topographical agricultural data and supply chain logistics in a dimly lit, dark warehouse environment. The lighting is low-key with sharp emerald green highlights reflecting off carbon fiber surfaces. The aesthetic is utilitarian and modern, emphasizing industrial precision and clinical efficiency within an Agri-Tech Noir atmosphere. Deep shadows contrast with vibrant data visualizations." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwMktkvIWTZBRlQCYX2hs_qsp0uHaeP0_BrvH-VLX-mnS3mkER7ugb_iX5DMfjZJHTPSaFeyz65g9ATgRuY2lHOLJQ4_lO9gCLdWNfi0VkgfbJaafbC_7YHPurFdxI3fkgWXO5PlcsbCfo8m0AgcRGwSI0NeX9-Rk4_JKUllUeJWB0aZAMsCcAYpPB72dbwzGimujJMS2zXHh11vi2OkmKzuUkgJbUwYeXCCXQ1FHoWhRR-K3elMv300rgAjuJLuq54rBswuFjoYF0"/>
+<div class="p-4 bg-surface-container-lowest">
+<p class="text-label-md font-mono-data text-primary uppercase tracking-widest">System Localization Active</p>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Localization ensures precision in data reporting across global warehouse hubs.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed as this is a sub-page/settings task) -->
+<!-- Applying "Shell Visibility & Relevance" rule: suppression on task-focused sub-pages with back actions. -->
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

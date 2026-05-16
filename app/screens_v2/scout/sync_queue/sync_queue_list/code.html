@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#002113",
+                      "surface-container-highest": "#353534",
+                      "primary-container": "#10b981",
+                      "inverse-on-surface": "#313030",
+                      "secondary": "#95d3ba",
+                      "secondary-fixed": "#b0f0d6",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-secondary-container": "#83c2a9",
+                      "on-secondary-fixed-variant": "#0b513d",
+                      "on-primary": "#003824",
+                      "on-surface-variant": "#bbcabf",
+                      "background": "#131313",
+                      "inverse-primary": "#006c49",
+                      "tertiary-fixed": "#ffdad7",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "surface": "#131313",
+                      "surface-bright": "#393939",
+                      "on-surface": "#e5e2e1",
+                      "on-error": "#690005",
+                      "on-primary-container": "#00422b",
+                      "on-tertiary-container": "#711419",
+                      "on-background": "#e5e2e1",
+                      "on-tertiary": "#650911",
+                      "error": "#ffb4ab",
+                      "surface-tint": "#4edea3",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-container": "#0b513d",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#002117",
+                      "primary": "#4edea3",
+                      "on-secondary": "#003829",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-container": "#201f1f",
+                      "outline": "#86948a",
+                      "tertiary": "#ffb3af",
+                      "surface-variant": "#353534",
+                      "outline-variant": "#3c4a42",
+                      "on-tertiary-fixed": "#410005",
+                      "on-tertiary-fixed-variant": "#842225",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#1c1b1b",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-container-high": "#2a2a2a",
+                      "tertiary-container": "#fc7c78",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "surface-dim": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "container-max": "1440px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "mono-data": ["JetBrains Mono"],
+                      "body-md": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-surface-container-lowest min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-mobile h-14 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Sync Engine</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 bg-surface-container-high px-3 py-1 rounded-full border border-outline-variant">
+<span class="text-[10px] text-primary">●</span>
+<span class="font-label-md text-label-md text-on-surface">Online · last synced 14:22</span>
+</div>
+<span class="material-symbols-outlined text-primary active:opacity-80 transition-opacity" data-icon="sync">sync</span>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-container-max mx-auto">
+<!-- Hero Status Card -->
+<div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg mb-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate whitespace-nowrap">3 pending · 1 conflict</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Sync Queue for FenBridge Scout #04</p>
+</div>
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="cloud_sync" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+                Sync now
+            </button>
+</div>
+<!-- Section: Conflicts -->
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-3 px-1">
+<span class="material-symbols-outlined text-error" data-icon="error_outline">error_outline</span>
+<h3 class="font-label-md text-label-md text-error tracking-wider uppercase">Conflicts (1)</h3>
+</div>
+<div class="bg-surface-container border border-error-container/30 rounded-lg overflow-hidden">
+<div class="p-4 flex items-center justify-between border-l-4 border-error">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-error-container/20 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-error" data-icon="assignment">assignment</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Inspection — LOT-2627-0042</h4>
+<p class="font-mono-data text-mono-data text-on-surface-variant">Captured 09:14 · 2.1 MB</p>
+</div>
+</div>
+<div class="flex items-center text-error">
+<span class="material-symbols-outlined text-2xl" data-icon="close">close</span>
+<span class="font-label-md text-label-md ml-1">Conflict</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Failed -->
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-3 px-1">
+<span class="material-symbols-outlined text-tertiary-container" data-icon="warning">warning</span>
+<h3 class="font-label-md text-label-md text-tertiary-container tracking-wider uppercase">Failed (1)</h3>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-lg overflow-hidden">
+<div class="p-4 flex items-center justify-between border-l-4 border-tertiary-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="token">token</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Seal Log — UNIT-A7</h4>
+<p class="font-mono-data text-mono-data text-on-surface-variant">Captured 11:30 · 0.4 MB</p>
+</div>
+</div>
+<div class="flex items-center text-tertiary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="warning">warning</span>
+<span class="font-label-md text-label-md ml-1">Failed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Pending -->
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-3 px-1">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="hourglass_empty">hourglass_empty</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant tracking-wider uppercase">Pending (1)</h3>
+</div>
+<div class="space-y-2">
+<div class="bg-surface-container border border-outline-variant rounded-lg overflow-hidden">
+<div class="p-4 flex items-center justify-between border-l-4 border-outline">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="photo_camera">photo_camera</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Vitals Trace — LOT-2627-0050</h4>
+<p class="font-mono-data text-mono-data text-on-surface-variant">Captured 13:45 · 4.8 MB</p>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-2xl" data-icon="hourglass_top">hourglass_top</span>
+<span class="font-label-md text-label-md ml-1">Pending</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Synced (Collapsible-style header) -->
+<div class="mb-12">
+<div class="flex items-center justify-between mb-3 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<h3 class="font-label-md text-label-md text-primary tracking-wider uppercase">Synced (last hour, 2)</h3>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+<div class="opacity-60 space-y-2">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="done_all">done_all</span>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface">Inspection — LOT-2627-0012</h4>
+<p class="font-mono-data text-mono-data text-on-surface-variant">Synced 14:02 · 1.9 MB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-low border-t border-outline-variant flex justify-around items-center h-16 w-full px-margin-mobile">
+<button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+<span class="font-label-md text-label-md">Scout</span>
+</button>
+<button onclick="window.location.href='../../warehouses/warehouse_list/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span class="font-label-md text-label-md">Sync</span>
+</button>
+<button onclick="window.location.href='../../profile_settings/profile_settings/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+</nav>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

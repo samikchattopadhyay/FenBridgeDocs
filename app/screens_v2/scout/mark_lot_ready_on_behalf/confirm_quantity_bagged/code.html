@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-tertiary": "#512120",
+                  "on-secondary-fixed-variant": "#0d503e",
+                  "on-secondary-container": "#87c5ac",
+                  "inverse-surface": "#dde4dd",
+                  "on-error": "#690005",
+                  "on-tertiary-fixed": "#370d0d",
+                  "secondary-container": "#115340",
+                  "on-primary-container": "#005f40",
+                  "outline-variant": "#3c4a42",
+                  "on-primary-fixed": "#002114",
+                  "surface-bright": "#393939",
+                  "on-surface-variant": "#bbcabf",
+                  "surface-variant": "#2f3632",
+                  "outline": "#86948a",
+                  "surface-container": "#1a211d",
+                  "surface-dim": "#0e1511",
+                  "primary-fixed-dim": "#4edea3",
+                  "on-tertiary-container": "#7b4240",
+                  "error": "#ffb4ab",
+                  "background": "#0e1511",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "surface": "#0e1511",
+                  "inverse-primary": "#006c4a",
+                  "on-surface": "#dde4dd",
+                  "secondary-fixed": "#b1f0d6",
+                  "error-container": "#93000a",
+                  "primary-container": "#4edea3",
+                  "on-secondary": "#003829",
+                  "surface-container-high": "#242c27",
+                  "inverse-on-surface": "#2b322d",
+                  "tertiary": "#ffb3af",
+                  "surface-container-low": "#161d19",
+                  "on-error-container": "#ffdad6",
+                  "tertiary-fixed": "#ffdad7",
+                  "primary": "#6ffbbe",
+                  "secondary-fixed-dim": "#95d3ba",
+                  "on-background": "#dde4dd",
+                  "secondary": "#95d3ba",
+                  "surface-container-highest": "#2f3632",
+                  "surface-container-lowest": "#09100c",
+                  "surface-lowest": "#0e0e0e",
+                  "on-secondary-fixed": "#002117",
+                  "on-primary": "#003824",
+                  "primary-fixed": "#6ffbbe",
+                  "surface-tint": "#4edea3",
+                  "on-primary-fixed-variant": "#005236",
+                  "on-tertiary-fixed-variant": "#6d3735",
+                  "tertiary-container": "#ffb3af"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "margin-desktop": "32px",
+                  "base-unit": "4px",
+                  "gutter": "16px",
+                  "container-max": "1440px",
+                  "unit": "4px",
+                  "margin-mobile": "16px"
+          },
+          "fontFamily": {
+                  "headline-sm": ["Hanken Grotesk"],
+                  "body-md": ["Hanken Grotesk"],
+                  "display-lg": ["Hanken Grotesk"],
+                  "body-lg": ["Hanken Grotesk"],
+                  "headline-md": ["Hanken Grotesk"],
+                  "mono-data": ["JetBrains Mono"],
+                  "label-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+                  "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #0e1511;
+      color: #dde4dd;
+      font-family: 'Hanken Grotesk', sans-serif;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="min-h-screen flex flex-col bg-background text-on-background">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Lot Dispatch Wizard</h1>
+</div>
+<button class="active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 mb-20 px-margin-mobile md:px-margin-desktop py-8 max-w-container-max mx-auto w-full">
+<!-- Progress Indicator -->
+<div class="mb-8 max-w-xl mx-auto">
+<div class="flex justify-between items-end mb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Quantity Bagged</h2>
+<span class="font-mono-data text-label-md text-on-surface-variant">STEP 2 OF 5</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[40%]"></div>
+</div>
+</div>
+<div class="max-w-xl mx-auto space-y-6">
+<!-- PO Summary Card (Asymmetric Technical Layout) -->
+<section class="bg-surface-container-low border border-outline-variant rounded-lg p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[80px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 relative z-10">
+<div class="col-span-2">
+<span class="font-label-md text-label-md text-outline uppercase tracking-widest">Purchase Order Ref</span>
+<div class="font-mono-data text-headline-sm text-primary">PO-2024-8842-AX</div>
+</div>
+<div>
+<span class="font-label-md text-label-md text-outline uppercase tracking-widest">Product</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">Premium Soybeans</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-outline uppercase tracking-widest">Ordered Qty</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">5,000 <span class="text-label-md">kg</span></div>
+</div>
+</div>
+</section>
+<!-- Input Section -->
+<section class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Actual Quantity Bagged (kg)</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container border border-outline-variant rounded-lg px-4 py-4 text-headline-md font-mono-data text-primary focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="0.00" type="number" value="4950"/>
+<div class="absolute right-4 font-mono-data text-on-surface-variant">KG</div>
+</div>
+</div>
+<!-- Live Variance Feedback Strip -->
+<div class="bg-secondary-container/20 border border-secondary-container rounded p-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-secondary">Variance: -50 kg (-1%)</span>
+</div>
+<span class="font-label-md text-label-md text-on-secondary-container bg-secondary-container px-2 py-0.5 rounded">WITHIN LIMITS</span>
+</div>
+<!-- Technical Supporting Text -->
+<div class="flex items-start gap-3 p-4 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="info">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Expected variance: <span class="text-on-surface font-semibold">±5%</span>. Discrepancies may occur due to moisture levels, sorting extraction, or seed breakage during high-speed bagging operations.
+          </p>
+</div>
+</section>
+<!-- CTA Section -->
+<div class="pt-4">
+<button class="w-full bg-primary text-on-primary font-headline-sm text-headline-sm py-4 rounded-xl active:scale-[0.98] transition-transform flex justify-center items-center gap-2">
+          Continue
+          <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Component -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-20 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span class="font-label-md text-label-md">Dispatch</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-label-md text-label-md">Sensors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

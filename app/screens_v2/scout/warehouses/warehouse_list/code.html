@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#0b513d",
+                        "on-surface": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "surface-bright": "#393939",
+                        "inverse-primary": "#006c49",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#003824",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-variant": "#353534",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#650911",
+                        "on-tertiary-fixed": "#410005",
+                        "tertiary": "#ffb3af",
+                        "secondary": "#95d3ba",
+                        "on-secondary-container": "#83c2a9",
+                        "error-container": "#93000a",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed": "#6ffbbe",
+                        "outline-variant": "#3c4a42",
+                        "on-error": "#690005",
+                        "on-secondary": "#003829",
+                        "background": "#131313",
+                        "tertiary-container": "#fc7c78",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#711419",
+                        "on-primary-container": "#00422b",
+                        "outline": "#86948a",
+                        "on-secondary-fixed": "#002117",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-container": "#10b981",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#0b513d",
+                        "primary": "#4edea3",
+                        "surface": "#131313",
+                        "secondary-fixed": "#b0f0d6",
+                        "inverse-on-surface": "#313030",
+                        "surface-dim": "#131313",
+                        "surface-tint": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-body-md antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-margin-mobile h-16 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary truncate whitespace-nowrap">Warehouses</h1>
+</div>
+<button class="hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-colors p-2 rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="filter_list">filter_list</span>
+</button>
+</header>
+<main class="pt-16 pb-24 px-margin-mobile max-w-container-max mx-auto">
+<!-- Search & Filter Area (Sticky) -->
+<section class="sticky top-16 z-40 bg-background pt-4 pb-2 space-y-4">
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-3 pl-11 pr-4 focus:outline-none focus:border-primary-container text-body-md placeholder:text-on-surface-variant transition-all" placeholder="Search popper, code, area..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-none px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">All</button>
+<button class="flex-none px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high">Fit</button>
+<button class="flex-none px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high">Unfit</button>
+<button class="flex-none px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high">Unchecked</button>
+<button class="flex-none px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high">Has active lots</button>
+</div>
+<!-- Sort Control -->
+<div class="flex justify-between items-center border-t border-outline-variant/30 pt-2">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md text-label-md">
+<span>Sort by: Name</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_downward">arrow_downward</span>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant">12 results</span>
+</div>
+</section>
+<!-- Warehouse List -->
+<div class="mt-4 space-y-3">
+<!-- Warehouse Card 1 -->
+<div class="bg-surface-container-high p-4 rounded-lg border border-[#262626] relative group hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">WH-00421</span>
+<span class="material-symbols-outlined text-error text-[14px]" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate whitespace-nowrap">Emerald Valley Popper</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">South District • Sector 4G</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-primary-container/20 text-primary border border-primary/30 px-3 py-0.5 rounded-full font-label-md text-label-md">Fit</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-4">
+<div class="bg-surface-container-highest px-3 py-1 rounded border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="inventory_2">inventory_2</span>
+<span class="font-mono-data text-mono-data">08 active lots</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></div>
+</div>
+<!-- Warehouse Card 2 -->
+<div class="bg-surface-container-high p-4 rounded-lg border border-[#262626] relative group hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">WH-00512</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate whitespace-nowrap">Black Rock Storage</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Western Plains • Village Alpha</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-tertiary-container/10 text-tertiary border border-tertiary/20 px-3 py-0.5 rounded-full font-label-md text-label-md">Unfit</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-4">
+<div class="bg-surface-container-highest px-3 py-1 rounded border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="inventory_2">inventory_2</span>
+<span class="font-mono-data text-mono-data">03 active lots</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-tertiary"></div>
+</div>
+<!-- Warehouse Card 3 -->
+<div class="bg-surface-container-high p-4 rounded-lg border border-[#262626] relative group hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">WH-00609</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate whitespace-nowrap">Northern Rim Depot</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Rim District • High Ridge</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-surface-variant text-on-surface-variant border border-outline-variant px-3 py-0.5 rounded-full font-label-md text-label-md">Unchecked</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-4">
+<div class="bg-surface-container-highest px-3 py-1 rounded border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="inventory_2">inventory_2</span>
+<span class="font-mono-data text-mono-data">00 active lots</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-outline-variant"></div>
+</div>
+<!-- Warehouse Card 4 -->
+<div class="bg-surface-container-high p-4 rounded-lg border border-[#262626] relative group hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">WH-00722</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate whitespace-nowrap">Canyon Crest Silos</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Central Valley • Deep Gulch</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-primary-container/20 text-primary border border-primary/30 px-3 py-0.5 rounded-full font-label-md text-label-md">Fit</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-4">
+<div class="bg-surface-container-highest px-3 py-1 rounded border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="inventory_2">inventory_2</span>
+<span class="font-mono-data text-mono-data">14 active lots</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></div>
+</div>
+<!-- Warehouse Card 5 -->
+<div class="bg-surface-container-high p-4 rounded-lg border border-[#262626] relative group hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">WH-00811</span>
+<span class="material-symbols-outlined text-error text-[14px]" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate whitespace-nowrap">Iron Gate Logistics</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Port Authority • Wharf 9</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-primary-container/20 text-primary border border-primary/30 px-3 py-0.5 rounded-full font-label-md text-label-md">Fit</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-4">
+<div class="bg-surface-container-highest px-3 py-1 rounded border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="inventory_2">inventory_2</span>
+<span class="font-mono-data text-mono-data">05 active lots</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-2 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant z-50">
+<button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-transform scale-95 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Today</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-full px-4 py-1 transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="inventory_2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md">Warehouses</span>
+</button>
+<button onclick="window.location.href='../../sync_queue/sync_queue_list/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-transform scale-95 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="sync">sync</span>
+<span class="font-label-md text-label-md">Sync</span>
+</button>
+<button onclick="window.location.href='../../profile_settings/profile_settings/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-transform scale-95 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</button>
+</nav>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

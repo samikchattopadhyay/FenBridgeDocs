@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdad7",
+                      "surface-variant": "#2f3632",
+                      "on-tertiary": "#512120",
+                      "primary-fixed": "#6ffbbe",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-background": "#dde4dd",
+                      "on-error-container": "#ffdad6",
+                      "secondary-container": "#115340",
+                      "on-primary": "#003824",
+                      "surface-container-lowest": "#09100c",
+                      "primary": "#6ffbbe",
+                      "on-primary-fixed": "#002114",
+                      "surface-container-highest": "#2f3632",
+                      "error-container": "#93000a",
+                      "on-tertiary-container": "#7b4240",
+                      "on-surface-variant": "#bbcabf",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-tertiary-fixed-variant": "#6d3735",
+                      "on-primary-container": "#005f40",
+                      "outline": "#86948a",
+                      "on-secondary-fixed-variant": "#0d503e",
+                      "inverse-primary": "#006c4a",
+                      "surface-bright": "#393939",
+                      "secondary-fixed": "#b1f0d6",
+                      "tertiary-container": "#ffb3af",
+                      "on-surface": "#dde4dd",
+                      "background": "#0e1511",
+                      "outline-variant": "#3c4a42",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#161d19",
+                      "secondary": "#95d3ba",
+                      "surface-container": "#1a211d",
+                      "inverse-on-surface": "#2b322d",
+                      "surface-tint": "#4edea3",
+                      "inverse-surface": "#dde4dd",
+                      "on-tertiary-fixed": "#370d0d",
+                      "surface-dim": "#0e1511",
+                      "on-secondary-fixed": "#002117",
+                      "on-secondary-container": "#87c5ac",
+                      "surface-lowest": "#0e0e0e",
+                      "tertiary": "#ffb3af",
+                      "on-secondary": "#003829",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "surface": "#0e1511",
+                      "surface-container-high": "#242c27",
+                      "primary-container": "#4edea3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "container-max": "1440px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "base-unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Hanken Grotesk"],
+                      "mono-data": ["JetBrains Mono"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Top Navigation Header -->
+<header class="flex justify-between items-center w-full px-margin-mobile h-14 z-50 bg-surface-container-high border-b border-outline-variant fixed top-0">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform duration-150" data-icon="menu">menu</button>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">AgriScout Pro</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_sync">cloud_sync</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-14 pb-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Progress Header Section -->
+<div class="py-6 flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<h2 class="text-headline-md font-headline-md text-on-surface">Submit Spot Offer</h2>
+<span class="text-label-md font-label-md text-primary font-mono-data">STEP 1 OF 6</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-1/6"></div>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="sticky top-14 z-40 bg-background py-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary" data-icon="search">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded-lg pl-12 pr-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary transition-colors placeholder:text-on-surface-variant/50" placeholder="Search name, mobile, or district..." type="text"/>
+</div>
+</div>
+<!-- User List Selection -->
+<section class="flex flex-col gap-3 mt-2">
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider px-2">Active Users</h3>
+<!-- User Row 1: Farmer -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-outline-variant rounded-lg hover:bg-surface-container-high active:scale-[0.98] transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container bg-surface-container-highest flex items-center justify-center">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A portrait of a weathered but proud farmer in his late 50s, wearing a worn denim shirt and a wide-brimmed hat, set against a dark, cinematic agricultural background. The lighting is low-key with a sharp teal highlight on his profile, emphasizing textures of skin and fabric. The overall mood is serious and professional, reflecting a deep-tech Noir aesthetic with high-contrast shadows and clean industrial clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX7_Ctkh7t7KpdlitgEYTFozuVr_10rLFPrJTUlJ-ZQA5RY8_JXzY5FmaR5AZBVmhQHc2ZV2yrqs0CY10MuZK47RwxxBt0JCRbujN8XigIECHDWD5sUg0BwZtqQn4BRS1V7EqdXaQfUsJaaY7GS-inDkXfYL7945yW1DD9BT1RsQ_GNtefRE5tIk_QgILCtUB7TSQK9sBrim9jd60rRylWcqzv3FOK5NBTI7MZffOq77fG-XwAZsAdB05eKJaAeTNp9Is078rl7Ecq"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-headline-sm font-headline-sm text-on-surface truncate">Rajesh Kumar</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-tighter">Farmer</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-mono-data font-mono-data text-on-surface-variant">+91 98765-43210</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-body-md text-on-surface-variant">Nagpur North</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="flex items-center gap-1.5 text-primary text-label-md font-label-md">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Active now
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- User Row 2: Popper -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-outline-variant rounded-lg hover:bg-surface-container-high active:scale-[0.98] transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-tertiary-container bg-surface-container-highest flex items-center justify-center">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a young male warehouse operator in a sleek, dark technical vest, illuminated by cool purple and blue ambient light from industrial machinery in the background. The aesthetic is futuristic and nocturnal, highlighting sharp facial features and the metallic textures of his environment. The color palette is dominated by deep blacks and vibrant purple accents, creating a calm, technologically advanced atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc8TOdQczql-xBEixn0Empfy8v8Iv83FwNwnrEnTMbyJra8OHCSOcjynwAPlucyPz8nKgKth2XuQORpvae1EV3t39Rp5VkmWJysvePrnDbRg_RpwM91x4hnHy3XlTDhy9arLGnK3uLg-QDTzXw6UO6XxnGCulJCATIcIPjKkx5iibkUCjzji5N6s1t3FlUTgeD_HynmdDja1LXF6D0qYRWoFqI4eS6egh__n755QpLBHivVFCRgxPU06wDlxY2HhPX3Wj4Dr3T3vsb"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-headline-sm font-headline-sm text-on-surface truncate">Arjun Mehta</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-tighter">Popper</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-mono-data font-mono-data text-on-surface-variant">+91 88234-56789</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-body-md text-on-surface-variant">Nashik District</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-label-md font-label-md text-on-surface-variant">Active 12m ago</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- User Row 3: Farmer -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-outline-variant rounded-lg hover:bg-surface-container-high active:scale-[0.98] transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container bg-surface-container-highest flex items-center justify-center">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A portrait of a female agronomist standing in a field at dusk, her face partially lit by the glow of a tablet screen. The setting is dark and atmospheric, with the deep greens of the crops blending into the black night sky. The lighting focuses on her professional, focused expression, using high-contrast noir techniques to emphasize technical precision and environmental monitoring. Teal and dark grey tones dominate the scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY243LpQrerhF6hJqdnfB85b8hU8DRWlWoj8xjGtFMzXHu9cbPNJCxvoGhIfZAhw6NLp_IZnmodyuRZxU1qY70a_t426AYvXNbUu4yaVMBnCMoxpGOh1T2CZZJVXRAuTSH0FoxqMk_NpFMC8QxUj1PeX5g_fr_t1J2exylINUThcbphuI8tCp8hVkXDxI92jQ7oYukwTTBtQ-WpsaSW1O872W9BVQLy4WO5WLfTebbfPiD7rv9hwngj2Skfc-SyMKDajECy4yuA58t"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-headline-sm font-headline-sm text-on-surface truncate">Sita Devi</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-tighter">Farmer</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-mono-data font-mono-data text-on-surface-variant">+91 70123-99887</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-body-md text-on-surface-variant">Wardha South</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-label-md font-label-md text-on-surface-variant">Active 2h ago</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- User Row 4: Popper -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border border-outline-variant rounded-lg hover:bg-surface-container-high active:scale-[0.98] transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-tertiary-container bg-surface-container-highest flex items-center justify-center">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A portrait of a male technical manager in a dark, minimalist office environment, backlit by subtle purple LED strips. He has a clean, professional appearance with a sharp gaze, embodying modern industrial leadership. The lighting is dramatic and controlled, typical of a high-tech noir style, focusing on clarity and sophisticated engineering environments. The color scheme features deep charcoal and vibrant purple highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1yx5ISGm6-zu2T8xlZHuC2OdCPlusXLJyaV8cDgLe8uDcvdfEx5f1PKpa7ADvggC-Qt2D476ssSIBuay1J5lDCIYLY16FdnJVFAOmjCf0WvTlGcKTe_PGfMWd7I9iIIuJmb2wrBjMIzyQMYteeV-XiJ09YJEdHteWAN085SuWFCM73ty0vu4rWAHaHsTGLy-PJgVVvNG6EHtgajdUyMscHU2ly8UYJAVCbHtNuffnoY0DALPQZOlX-bublT1V5gpLrJDPdpBIFgBr"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-headline-sm font-headline-sm text-on-surface truncate">Vikram Singh</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-tighter">Popper</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-mono-data font-mono-data text-on-surface-variant">+91 99001-12233</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-body-md text-on-surface-variant">Amravati East</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-label-md font-label-md text-on-surface-variant">Active yesterday</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container-low border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="text-label-md font-label-md">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span class="text-label-md font-label-md">Warehouses</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="group" data-weight="fill" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="text-label-md font-label-md">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

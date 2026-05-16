@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed": "#410005",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary": "#3c0091",
+                        "outline": "#86948a",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-primary": "#006c49",
+                        "secondary": "#d0bcff",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary": "#650911",
+                        "on-secondary-fixed": "#23005c",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-variant": "#353534",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-tint": "#4edea3",
+                        "on-tertiary-container": "#711419",
+                        "background": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#571bc1",
+                        "tertiary": "#ffb3af",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#fc7c78",
+                        "error-container": "#93000a",
+                        "surface-container": "#201f1f",
+                        "on-primary-container": "#00422b",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-bright": "#393939",
+                        "on-background": "#e5e2e1",
+                        "outline-variant": "#3c4a42",
+                        "on-secondary-container": "#c4abff",
+                        "primary-container": "#10b981",
+                        "primary": "#4edea3",
+                        "on-error": "#690005",
+                        "on-primary": "#003824",
+                        "tertiary-fixed-dim": "#ffb3af"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr
+    }
+.map-bg {
+    background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAWyjx2ULFXufljuBoheGVx1FuiI69qsu7-gIeLDJNouUldFMyI4npdLPaW-omc3e9Srm8Fp2dKWzYLJm_aVKCDWNqQgDmeSVL1ymrU9ivANpWPbM_TDULU3xNUS5ql1d48difiFHxIUyeQoc6bGbsPsBMbtgi5tRbOv-fw3Edro_sJk596lbS6GkDCg9cpoAhwRou--8EpDeRDXUbNDKvFDeuCf1Um3gOP3nyf6ytxzPlUO393iu2m7L8MfYG22-WxVGoiYD4SDSuR);
+    background-size: cover;
+    background-position: center
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary dark:text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+            Skip
+        </button>
+</header>
+<main class="flex-grow map-bg flex items-center justify-center px-margin py-xl" data-location="Bihar, India">
+<!-- Content Container -->
+<div class="w-full max-w-lg bg-surface-container-low/90 backdrop-blur-md border border-outline-variant rounded-xl p-lg shadow-xl">
+<div class="mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Add New Address</h2>
+<p class="font-label-lg text-on-surface-variant">Enter the shipping details for your makhana consignments.</p>
+</div>
+<form class="space-y-md">
+<!-- Address Title -->
+<div class="group">
+<label class="block font-label-sm text-on-surface-variant mb-xs ml-base">Address Title (e.g., Warehouse A)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-md py-md text-on-surface placeholder:text-outline transition-all duration-200" placeholder="e.g. North Storage Hub" type="text"/>
+</div>
+<!-- Full Address -->
+<div class="group">
+<label class="block font-label-sm text-on-surface-variant mb-xs ml-base">Full Address</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-md py-md text-on-surface placeholder:text-outline transition-all duration-200" placeholder="Street name, landmark, building number..." rows="3"></textarea>
+</div>
+<!-- City & State Grid -->
+<div class="grid grid-cols-2 gap-md">
+<div class="group">
+<label class="block font-label-sm text-on-surface-variant mb-xs ml-base">City</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-md py-md text-on-surface placeholder:text-outline transition-all duration-200" placeholder="Darbhanga" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label-sm text-on-surface-variant mb-xs ml-base">State</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-md py-md text-on-surface placeholder:text-outline transition-all duration-200" placeholder="Bihar" type="text"/>
+</div>
+</div>
+<!-- Postal Code -->
+<div class="group">
+<label class="block font-label-sm text-on-surface-variant mb-xs ml-base">Postal Code</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-md py-md text-on-surface placeholder:text-outline transition-all duration-200" placeholder="846001" type="text"/>
+</div>
+<!-- Primary Address Toggle -->
+<div class="flex items-center justify-between bg-surface-container/50 p-md rounded-lg border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">Set as Primary Address</span>
+<span class="text-[11px] text-on-surface-variant uppercase tracking-wider">Use for future invoices</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Primary Button -->
+<div class="pt-md">
+<button class="w-full bg-primary-container text-on-primary-container font-label-lg text-label-lg py-md rounded-xl hover:opacity-90 active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary-container/20 flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_location_alt">add_location_alt</span>
+                        Add Address
+                    </button>
+</div>
+</form>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on desktop as per responsive pivot) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface dark:bg-surface shadow-md rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary scale-110 active:scale-98 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Address</span>
+</button>
+</nav>
+<!-- Decorative Illustration Segment -->
+<div class="hidden lg:block fixed right-xl top-1/2 -translate-y-1/2 w-64 space-y-md pointer-events-none opacity-40">
+<div class="h-32 bg-surface-container border border-outline-variant rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="A cinematic, high-angle shot of a sprawling warehouse facility at twilight. The scene is bathed in a professional, moody atmosphere with emerald green security lighting highlights. Deep blacks and charcoal greys dominate the metallic textures of the storage containers, creating a sense of industrial scale and secure global logistics. The lighting is crisp and modern, emphasizing structural precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKZkCmlPjI1omIRlTTOgj3idn0YMxk8CsVL56wA11niZEiEToLE_wWbvSscFijjqJGkeC3kveSNmIJ07hzYEZZBEja0-EAcamLXvq337hXiYYX5AKI_ER6-UB91HyrItPdxz-GCSMQ8uNsaIdcED3AsOXpRAd_jsKkFATeM0LdkHBe661q7-ym5afX6nHCGAaAAIINBx9dYd88nCYO0kqHN8lHeVp5iMkXtkCKSr38BBSVfRJCtpuws8HM_2z_tTEASMG_2jefFQdZ"/>
+</div>
+<div class="h-2 bg-primary rounded-full w-1/2"></div>
+<div class="h-2 bg-outline-variant rounded-full w-3/4"></div>
+</div>
+</body></html>

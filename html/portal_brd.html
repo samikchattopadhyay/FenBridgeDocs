@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FenBridge - Business Requirements Document (BRD)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-hover: #27272a;
+      
+      --accent-primary: #10b981;
+      --accent-primary-hover: #34d399;
+      --accent-secondary: #f59e0b;
+      --accent-scout: #06b6d4;
+      --accent-admin: #a855f7;
+      
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.65;
+      padding: 40px 50px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .page-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .title-area h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .title-area p {
+      font-size: 15.5px;
+      color: var(--accent-primary);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .meta-tag {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      background: var(--bg-surface);
+      color: var(--accent-primary-hover);
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* CARDS & BLOCKS */
+    .brd-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 32px 40px;
+      margin-bottom: 32px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .brd-section:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    .brd-section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 4px; bottom: 0;
+      background: var(--accent-primary);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    .brd-section.accent::before {
+      background: var(--accent-secondary);
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.2px;
+    }
+
+    .section-title span {
+      color: var(--accent-primary);
+      font-weight: 800;
+    }
+
+    .brd-section.accent .section-title span {
+      color: var(--accent-secondary);
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      margin-bottom: 16px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    strong { color: var(--text-main); font-weight: 600; }
+
+    /* TABLES */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13.5px;
+      text-align: left;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .styled-table thead tr {
+      background-color: var(--bg-card);
+      color: var(--accent-primary);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .styled-table th, .styled-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .styled-table tbody tr {
+      background-color: var(--bg-surface);
+      transition: background-color 0.2s ease;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: var(--bg-base);
+    }
+
+    .styled-table tbody tr:hover {
+      background-color: rgba(16, 185, 129, 0.05);
+    }
+
+    /* GRID LISTS */
+    .grid-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .grid-list-item {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      padding: 22px;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grid-list-item:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-light);
+      background: var(--bg-card);
+    }
+
+    .grid-list-item.role-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent-primary);
+    }
+    .grid-list-item.role-card.buyer::before { background: var(--accent-secondary); }
+    .grid-list-item.role-card.scout::before { background: var(--accent-scout); }
+    .grid-list-item.role-card.admin::before { background: var(--accent-admin); }
+
+    .grid-list-item h5 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-list-item.role-card.buyer h5 { color: var(--accent-secondary); }
+    .grid-list-item.role-card.scout h5 { color: var(--accent-scout); }
+    .grid-list-item.role-card.admin h5 { color: var(--accent-admin); }
+
+    .grid-list-item p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="title-area">
+      <h1>Business Requirements Document</h1>
+      <p>Operational Blueprint & Regulatory Compliance Guidelines</p>
+    </div>
+    <div class="meta-tag">Document Status: Finalized v2.1 (20 Workflows Mapped)</div>
+  </div>
+
+  <!-- SECTION 1: Executive Summary -->
+  <div class="brd-section">
+    <div class="section-title"><span>01.</span> Executive Summary & Core Objective</div>
+    <p>
+      The <strong>FenBridge platform</strong> (operating as a digital nexus for Bharat Makhana) is engineered to formalize and capture value within fragmented rural agricultural supply chains—specifically focusing on pond-based raw Popped Makhana procurement across target production nodes in West Bengal and Bihar.
+    </p>
+    <p>
+      By transitioning away from conventional unregulated commission models, FenBridge institutes an aggressive digital infrastructure combining high-fidelity physical testing frameworks with secure algorithmic financial settlements. The system ensures robust end-to-end pricing traceability, transparent localized supply assessments, and zero-liability fulfillment structures.
+    </p>
+  </div>
+
+  <!-- SECTION 2: Business Strategy -->
+  <div class="brd-section accent">
+    <div class="section-title"><span>02.</span> Principal Trader Business Model</div>
+    <p>
+      To minimize complex regulatory overheads during initial scale cycles, FenBridge firmly operates under a <strong>Principal Trader</strong> entity model rather than an open marketplace framework. Title of physical goods transfers directly from primary producers to Bharat Makhana, and subsequently clears straight to terminal processors upon destination acceptance.
+    </p>
+    
+    <div class="grid-list">
+      <div class="grid-list-item">
+        <h5>Zero Marketplace Liability</h5>
+        <p>Eliminates the requirement for complex Payment Aggregator (PA) or Payment Gateway (PG) regulatory escrow licenses by processing all disbursements natively via dedicated commercial clearing accounts.</p>
+      </div>
+      <div class="grid-list-item">
+        <h5>Spread-Based Revenue Anchoring</h5>
+        <p>Monetizes procurement velocity directly through optimized regional spread margins rather than platform subscription fees or transaction fee commissions.</p>
+      </div>
+      <div class="grid-list-item">
+        <h5>Conditional Title Assignment</h5>
+        <p>Retains formal <strong>Reservation of Right of Disposal</strong> clauses operational until ultimate settlement milestones clear post-gate verification.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Financial Framework -->
+  <div class="brd-section">
+    <div class="section-title"><span>03.</span> Balanced Payment Strategy (15 / 65 / 20)</div>
+    <p>
+      Capital workflows are strictly mapped to balance supply default risks against corporate acceptance latency. Tranche dispatch automates cleanly based on verifiable physical system logic gates:
+    </p>
+
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Tranche Phase</th>
+          <th>Capital Ratio</th>
+          <th>Trigger Event Gate</th>
+          <th>System Protection Metric</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Advance Payout</strong></td>
+          <td>15%</td>
+          <td>Purchase Order PDF e-Signed by Buyer</td>
+          <td>Held temporarily within protected Smart Collect virtual account pathways.</td>
+        </tr>
+        <tr>
+          <td><strong>Interim Release</strong></td>
+          <td>65%</td>
+          <td>Just-in-Time (JIT) Quality Check Pass</td>
+          <td>Fired dynamically upon verified physical grader upload of moisture & size specs.</td>
+        </tr>
+        <tr>
+          <td><strong>Settlement Final</strong></td>
+          <td>20%</td>
+          <td>Destination Gate Physical Seal Scan</td>
+          <td>Validates intact tamper-evident delivery vectors alongside digital signature capture.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4: Compliance Strategy -->
+  <div class="brd-section accent">
+    <div class="section-title"><span>04.</span> Regulatory & Tax Optimization Pillars</div>
+    <p>
+      The corporate entity structure and transaction documents are fundamentally designed to anchor long-term fiscal efficiency and audit defensibility:
+    </p>
+
+    <div class="grid-list" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+      <div class="grid-list-item">
+        <h5 style="color: var(--accent-secondary)">Section 44AD Presumptive Taxation</h5>
+        <p>Incorporated formally as a registered Partnership Firm entity. Secures maximum compliance benefits by reporting predictable deemed margins on gross turnovers up to threshold ceilings, deferring complex balance-sheet overheads to later enterprise expansions.</p>
+      </div>
+      <div class="grid-list-item">
+        <h5 style="color: var(--accent-secondary)">GST Exemption Preservation</h5>
+        <p>Operates strictly within raw, unbranded agricultural produce mandates mapped cleanly under <strong>Section 23(1)(a)</strong>. Procurement logs dispatch using structured non-taxable <em>Bills of Supply</em> accompanied by Unregistered Person (URP) E-Way bill keys.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: Quality & Arbitration -->
+  <div class="brd-section">
+    <div class="section-title"><span>05.</span> Inventory Seal & Dispute Safeguards</div>
+    <p>
+      To eliminate subjective destination rejections, the platform enforces strict physical hardware-to-software inventory tracking loops alongside automated four-stage arbitration triggers:
+    </p>
+    <p>
+      Every approved lot receives a custom reusable physical net secured with sequential tamper-evident barcodes linked directly to source purchase orders. In case of destination gate quality disputes raised within the mandatory 48-hour resolution horizon, the system activates an automated protocol:
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 14px; margin-bottom: 16px;">
+      <li style="position: relative; padding-left: 24px; font-size: 13.5px; color: var(--text-main); margin-bottom: 10px;">
+        <span style="position: absolute; left: 0; color: var(--accent-primary); font-weight: bold;">1.</span>
+        <strong>Hardware Integrity Verification:</strong> Instantly cross-checks unboxing logs against source barcode seals.
+      </li>
+      <li style="position: relative; padding-left: 24px; font-size: 13.5px; color: var(--text-main); margin-bottom: 10px;">
+        <span style="position: absolute; left: 0; color: var(--accent-primary); font-weight: bold;">2.</span>
+        <strong>Primary Locker Sample Extraction:</strong> Compares delivery properties against immutable regional field samples.
+      </li>
+      <li style="position: relative; padding-left: 24px; font-size: 13.5px; color: var(--text-main); margin-bottom: 10px;">
+        <span style="position: absolute; left: 0; color: var(--accent-primary); font-weight: bold;">3.</span>
+        <strong>NABL Laboratory Routing:</strong> Mandates objective scientific analysis of moisture, expansion ratios, and sizing via certified facilities.
+      </li>
+      <li style="position: relative; padding-left: 24px; font-size: 13.5px; color: var(--text-main); margin-bottom: 10px;">
+        <span style="position: absolute; left: 0; color: var(--accent-primary); font-weight: bold;">4.</span>
+        <strong>Ledger/Escrow Freeze Automation:</strong> Suspends pending settlement dispatches to protect underlying capital during assessment.
+      </li>
+    </ul>
+  </div>
+
+  <!-- SECTION 6: Role-Based Partitioning (UPDATED FOR 20 WORKFLOWS) -->
+  <div class="brd-section accent">
+    <div class="section-title"><span>06.</span> Role-Based Architecture & Workflows (20 Core Flows)</div>
+    <p>
+      To enforce security parameters, uphold absolute operational accountability, and support specialized field execution, the platform decouples business activities into five targeted functional domains covering exactly 20 end-to-end workflows:
+    </p>
+
+    <div class="grid-list" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      
+      <div class="grid-list-item role-card">
+        <h5>Common Foundation</h5>
+        <p>Standardizes modular onboarding flows across profiles (Welcome, Vernacular Toggles, Address Details, OTP Binding) alongside persistent app-wide views for Settings, Channel Alerts, and WhatsApp linking.</p>
+      </div>
+
+      <div class="grid-list-item role-card buyer">
+        <h5>Buyer Operations</h5>
+        <p>Orchestrates enterprise pipelines covering requirement broadcasting, spot purchasing gateways, smart-collect escrow locks, digital PO e-signing, and multi-screen gate delivery acceptance protocols.</p>
+      </div>
+
+      <div class="grid-list-item role-card">
+        <h5>Farmer Production</h5>
+        <p>Empowers local cultivators via real-time demand alerts, localized GIS pond registration, interactive bid submission wizards, spot inventory declarations, and secure bank penny-drop validation loops.</p>
+      </div>
+
+      <div class="grid-list-item role-card scout">
+        <h5>Scout Field Tasks</h5>
+        <p>Equips mobile agents with offline-tolerant queues to conduct scheduled pond inspections, scientific lot moisture verifications, thread sequential physical barcode seals, and submit proxy bids securely.</p>
+      </div>
+
+      <div class="grid-list-item role-card admin">
+        <h5>BM Administration</h5>
+        <p>Executes universal dual-control Maker-Checker checks, manages automated escrow tranche releases, monitors inward smart-collect webhooks, awards verified spot bids, and sets platform-wide rating parameters.</p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

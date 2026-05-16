@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-fixed": "#ffdad7",
+                  "surface-variant": "#2f3632",
+                  "on-tertiary": "#512120",
+                  "primary-fixed": "#6ffbbe",
+                  "on-primary-fixed-variant": "#005236",
+                  "on-background": "#dde4dd",
+                  "on-error-container": "#ffdad6",
+                  "secondary-container": "#115340",
+                  "on-primary": "#003824",
+                  "surface-container-lowest": "#09100c",
+                  "primary": "#6ffbbe",
+                  "on-primary-fixed": "#002114",
+                  "surface-container-highest": "#2f3632",
+                  "error-container": "#93000a",
+                  "on-tertiary-container": "#7b4240",
+                  "on-surface-variant": "#bbcabf",
+                  "on-error": "#690005",
+                  "secondary-fixed-dim": "#95d3ba",
+                  "primary-fixed-dim": "#4edea3",
+                  "on-tertiary-fixed-variant": "#6d3735",
+                  "on-primary-container": "#005f40",
+                  "outline": "#86948a",
+                  "on-secondary-fixed-variant": "#0d503e",
+                  "inverse-primary": "#006c4a",
+                  "surface-bright": "#393939",
+                  "secondary-fixed": "#b1f0d6",
+                  "tertiary-container": "#ffb3af",
+                  "on-surface": "#dde4dd",
+                  "background": "#0e1511",
+                  "outline-variant": "#3c4a42",
+                  "error": "#ffb4ab",
+                  "surface-container-low": "#161d19",
+                  "secondary": "#95d3ba",
+                  "surface-container": "#1a211d",
+                  "inverse-on-surface": "#2b322d",
+                  "surface-tint": "#4edea3",
+                  "inverse-surface": "#dde4dd",
+                  "on-tertiary-fixed": "#370d0d",
+                  "surface-dim": "#0e1511",
+                  "on-secondary-fixed": "#002117",
+                  "on-secondary-container": "#87c5ac",
+                  "surface-lowest": "#0e0e0e",
+                  "tertiary": "#ffb3af",
+                  "on-secondary": "#003829",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "surface": "#0e1511",
+                  "surface-container-high": "#242c27",
+                  "primary-container": "#4edea3"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "gutter": "16px",
+                  "container-max": "1440px",
+                  "unit": "4px",
+                  "margin-mobile": "16px",
+                  "margin-desktop": "32px",
+                  "base-unit": "4px"
+          },
+          "fontFamily": {
+                  "headline-sm": ["Hanken Grotesk"],
+                  "mono-data": ["JetBrains Mono"],
+                  "body-lg": ["Hanken Grotesk"],
+                  "label-md": ["Hanken Grotesk"],
+                  "headline-md": ["Hanken Grotesk"],
+                  "display-lg": ["Hanken Grotesk"],
+                  "body-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+                  "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.8) sepia(100%) saturate(200%) hue-rotate(100deg);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Top Navigation Shell -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-14 z-50 sticky top-0">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">AgriScout Pro</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant hidden md:block">SYSTEM SYNCED</span>
+<button class="text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">cloud_sync</span>
+</button>
+</div>
+</header>
+<main class="max-w-[800px] mx-auto px-margin-mobile md:px-margin-desktop py-8 mb-24">
+<!-- Header & Progress -->
+<div class="mb-8">
+<div class="flex justify-between items-end mb-2">
+<h2 class="text-headline-md font-headline-md text-on-surface">Offer Details</h2>
+<span class="text-label-md font-label-md text-primary bg-secondary-container px-3 py-1 rounded-full">Progress 3 of 6</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-1/2 h-full"></div>
+</div>
+</div>
+<!-- Product Context Card -->
+<div class="bg-surface-container-low border border-outline-variant p-4 mb-8 rounded-lg flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container-highest rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="Lot Item Preview" class="w-full h-full object-cover opacity-80" data-alt="Close up high-density photography of raw organic seeds spread across a tactical industrial surface. The lighting is cinematic noir with deep greens and cyans, highlighting the technical texture of the seeds. The scene is clean, minimal, and professional, reflecting an advanced agricultural monitoring system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSe8khMvYA459QPNFnkSFYqmB20kGqPKiAK2T80KRjccbEiELjz-Ab3D0OU0FIXNXum50NTRiAwkooJoWEmkCHT7wXJAWMdDNoyXScZUVGMBjUieuw7ZuEuGusbmNrFA_Fb96b3ztbRaenwtgIJ3NDx48wyw5jgNT_qHxKq07s0X-5HVrOUpjYVkgupc28UE9V9pWu8nju8HVFVwREGEclexrsz2xWRIHY6_SH9s7Mgi5E4PqKS7W-9ebY5gFsIRKTx-HUWrQqMIY4"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-on-surface">Lot #9942-RS</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Raw Seed Selection • Northern Delta Region</p>
+</div>
+</div>
+<form class="space-y-8">
+<!-- Section: Raw Seed Metrics -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 border-l-2 border-primary pl-4">
+<span class="text-label-md font-label-md text-primary tracking-widest uppercase">Commercial Parameters</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Claimed Quantity -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant flex justify-between">
+              CLAIMED QUANTITY
+              <span class="text-primary">KG (DECIMAL)</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all rounded" placeholder="0.00" step="0.01" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-sm">weight</span>
+</div>
+</div>
+<!-- Size -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant flex justify-between">
+              SIZE 
+              <span class="text-primary">MM</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all rounded" placeholder="0.0" step="0.1" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-sm">straighten</span>
+</div>
+</div>
+<!-- Maturity -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant flex justify-between">
+              MATURITY
+              <span class="text-primary">%</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all rounded" placeholder="0" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-sm">energy_savings_leaf</span>
+</div>
+</div>
+<!-- Moisture -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant flex justify-between">
+              MOISTURE
+              <span class="text-primary">%</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all rounded" placeholder="0.0" step="0.1" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-sm">water_drop</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Availability & Logistics -->
+<div class="space-y-6 pt-4">
+<div class="flex items-center gap-2 border-l-2 border-secondary pl-4">
+<span class="text-label-md font-label-md text-secondary tracking-widest uppercase">Logistics &amp; Grading</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Grade Selection (Segmented Control) -->
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-label-md font-label-md text-on-surface-variant">LOT GRADE</label>
+<div class="flex bg-surface-container-low border border-outline-variant p-1 rounded-lg">
+<button class="flex-1 py-3 text-label-md font-label-md rounded transition-colors bg-secondary-container text-on-secondary-container" type="button">GRADE A</button>
+<button class="flex-1 py-3 text-label-md font-label-md rounded transition-colors text-on-surface-variant hover:bg-surface-variant" type="button">GRADE B</button>
+<button class="flex-1 py-3 text-label-md font-label-md rounded transition-colors text-on-surface-variant hover:bg-surface-variant" type="button">GRADE C</button>
+</div>
+</div>
+<!-- Date Picker -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">AVAILABLE FROM</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all rounded" type="date"/>
+</div>
+</div>
+<!-- Bag Count -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">UNIT/BAG COUNT</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all rounded" placeholder="0" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-sm">inventory_2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="pt-8 border-t border-outline-variant flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-label-md font-label-md">All data is encrypted and synced to the decentralized ledger.</p>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-12 py-4 font-headline-sm rounded hover:brightness-110 active:scale-95 transition-all shadow-lg" type="submit">
+          Continue
+        </button>
+</div>
+</form>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined">event_note</span>
+<span class="text-label-md font-label-md">Today</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-100 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">store</span>
+<span class="text-label-md font-label-md">Warehouses</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined">sync</span>
+<span class="text-label-md font-label-md">Sync</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</div>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-container": "#711419",
+            "on-primary": "#003824",
+            "primary-container": "#10b981",
+            "surface-dim": "#131313",
+            "surface-tint": "#4edea3",
+            "on-tertiary": "#650911",
+            "on-surface-variant": "#bbcabf",
+            "inverse-primary": "#006c49",
+            "surface-variant": "#353534",
+            "secondary-container": "#571bc1",
+            "inverse-on-surface": "#313030",
+            "primary-fixed": "#6ffbbe",
+            "on-secondary-fixed": "#23005c",
+            "secondary-fixed-dim": "#d0bcff",
+            "on-background": "#e5e2e1",
+            "on-secondary-container": "#c4abff",
+            "background": "#131313",
+            "primary-fixed-dim": "#4edea3",
+            "on-tertiary-fixed": "#410005",
+            "on-error": "#690005",
+            "on-primary-container": "#00422b",
+            "surface": "#131313",
+            "surface-container-highest": "#353534",
+            "outline": "#86948a",
+            "on-primary-fixed-variant": "#005236",
+            "surface-container-lowest": "#0e0e0e",
+            "primary": "#4edea3",
+            "surface-container": "#201f1f",
+            "tertiary-container": "#fc7c78",
+            "secondary": "#d0bcff",
+            "surface-container-high": "#2a2a2a",
+            "on-surface": "#e5e2e1",
+            "on-secondary-fixed-variant": "#5516be",
+            "outline-variant": "#3c4a42",
+            "on-tertiary-fixed-variant": "#842225",
+            "surface-container-low": "#1c1b1b",
+            "error-container": "#93000a",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#ffdad7",
+            "tertiary": "#ffb3af",
+            "secondary-fixed": "#e9ddff",
+            "surface-bright": "#393939",
+            "error": "#ffb4ab",
+            "on-secondary": "#3c0091",
+            "on-primary-fixed": "#002113",
+            "tertiary-fixed-dim": "#ffb3af",
+            "inverse-surface": "#e5e2e1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xl": "32px",
+            "md": "16px",
+            "gutter": "12px",
+            "margin": "20px",
+            "base": "4px",
+            "sm": "12px",
+            "xs": "8px",
+            "lg": "24px"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-lg": ["Hanken Grotesk"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .role-tile-shadow {
+      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4);
+    }
+    .inner-glow {
+      box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+    }
+    body {
+      background-color: #121212;
+      color: #e5e2e1;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md docked full-width top-0 z-50">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary hover:opacity-80 transition-opacity p-xs" data-icon="arrow_back">arrow_back</button>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</span>
+<button aria-label="Skip Selection" class="font-label-lg text-label-lg text-primary dark:text-primary hover:opacity-80 transition-opacity px-xs">Skip</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col px-margin pt-md pb-24 max-w-lg mx-auto w-full">
+<div class="mb-md text-center md:text-left">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1 truncate whitespace-nowrap">Choose Your Role</h1>
+<p class="font-body-md text-sm text-on-surface-variant">Identify yourself to access tailored marketplace tools.</p>
+</div>
+<!-- Role Selection Grid -->
+<div class="grid grid-cols-1 gap-sm">
+<!-- Farmer Tile Option -->
+<label class="block relative group cursor-pointer">
+<input class="hidden peer" name="role" type="radio" value="farmer"/>
+<div class="flex items-center p-sm rounded-xl border border-outline-variant bg-surface-container-low text-left transition-all duration-200 active:scale-95 peer-checked:border-primary peer-checked:border-2 peer-checked:bg-surface-container peer-checked:shadow-md group-hover:border-primary/50 overflow-hidden relative inner-glow gap-sm">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary peer-checked:bg-primary-container peer-checked:text-on-primary-container transition-all duration-300 shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="agriculture">agriculture</span>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-headline-md text-lg font-bold text-on-surface peer-checked:text-primary transition-colors leading-tight truncate whitespace-nowrap">Farmer</h2>
+<p class="font-body-md text-xs text-on-surface-variant mt-0.5 truncate">Raw makhana</p>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary transition-all flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[12px] text-on-primary font-bold opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+</label>
+<!-- Seller Tile Option -->
+<label class="block relative group cursor-pointer">
+<input class="hidden peer" name="role" type="radio" value="seller"/>
+<div class="flex items-center p-sm rounded-xl border border-outline-variant bg-surface-container-low text-left transition-all duration-200 active:scale-95 peer-checked:border-primary peer-checked:border-2 peer-checked:bg-surface-container peer-checked:shadow-md group-hover:border-primary/50 overflow-hidden relative inner-glow gap-sm">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary peer-checked:bg-primary-container peer-checked:text-on-primary-container transition-all duration-300 shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="sell">sell</span>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-headline-md text-lg font-bold text-on-surface peer-checked:text-primary transition-colors leading-tight truncate whitespace-nowrap">Seller</h2>
+<p class="font-body-md text-xs text-on-surface-variant mt-0.5 truncate">Sell popped makhana</p>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary transition-all flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[12px] text-on-primary font-bold opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+</label>
+<!-- Buyer Tile Option -->
+<label class="block relative group cursor-pointer">
+<input class="hidden peer" name="role" type="radio" value="buyer"/>
+<div class="flex items-center p-sm rounded-xl border border-outline-variant bg-surface-container-low text-left transition-all duration-200 active:scale-95 peer-checked:border-primary peer-checked:border-2 peer-checked:bg-surface-container peer-checked:shadow-md group-hover:border-primary/50 overflow-hidden relative inner-glow gap-sm">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary peer-checked:bg-primary-container peer-checked:text-on-primary-container transition-all duration-300 shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="storefront">storefront</span>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-headline-md text-lg font-bold text-on-surface peer-checked:text-primary transition-colors leading-tight truncate whitespace-nowrap">Buyer</h2>
+<p class="font-body-md text-xs text-on-surface-variant mt-0.5 truncate">Buy popped makhana</p>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant peer-checked:border-primary peer-checked:bg-primary transition-all flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[12px] text-on-primary font-bold opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+</label>
+</div>
+<!-- Information Card -->
+<div class="mt-md p-sm rounded-lg bg-surface-container-lowest border border-outline-variant/30 flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5" data-icon="info">info</span>
+<p class="font-label-sm text-[11px] text-on-surface-variant leading-relaxed">
+        Your selection helps us personalize your experience with relevant market prices and transaction flows. You can change this later in settings.
+      </p>
+</div>
+</main>
+<!-- Bottom Navigation / Action Shell -->
+<footer class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface px-lg py-md mb-safe shadow-md rounded-t-xl border-t border-outline-variant/10">
+<div class="max-w-lg mx-auto">
+<!-- "Continue" Button (Disabled state visually represented) -->
+<button class="w-full h-12 flex items-center justify-center rounded-full bg-primary-container/20 text-on-surface-variant/40 font-label-lg text-label-lg cursor-not-allowed transition-all duration-200 inner-glow" disabled="">
+        Continue
+      </button>
+</div>
+</footer>
+<!-- Background Decorative Element (Subtle Emerald Glow) -->
+<div class="fixed top-[-10%] right-[-10%] w-[300px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+<div class="fixed bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

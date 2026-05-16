@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Notifications - FenBridge Scout</title>
+    
+    <!-- Scripts & Styles -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6ffbbe",
+                        "primary-container": "#4edea3",
+                        "on-primary": "#003824",
+                        "secondary": "#95d3ba",
+                        "secondary-container": "#115340",
+                        "on-secondary": "#003829",
+                        "surface": "#0e1511",
+                        "surface-variant": "#2f3632",
+                        "on-surface": "#dde4dd",
+                        "on-surface-variant": "#bbcac0",
+                        "background": "#0e1511",
+                        "on-background": "#dde4dd",
+                        "outline": "#86948a",
+                        "outline-variant": "#3c4a42",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#09100c",
+                        "surface-container-low": "#161d19",
+                        "surface-container": "#1a211d",
+                        "surface-container-high": "#242c27",
+                        "surface-container-highest": "#2f3632",
+                    },
+                    fontFamily: {
+                        "sans": ["Hanken Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100dvh;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans text-on-surface bg-background overflow-x-hidden">
+
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-14 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+        <div class="flex items-center gap-3">
+            <button onclick="window.location.href='../scout_today_dashboard/code.html'" class="p-2 hover:bg-surface-variant transition-all rounded-full active:scale-90">
+                <span class="material-symbols-outlined text-primary">arrow_back</span>
+            </button>
+            <h1 class="text-xl font-bold tracking-tight text-primary">Notifications</h1>
+        </div>
+        <button class="text-xs font-bold text-primary hover:bg-primary/10 px-3 py-1.5 rounded-full transition-all active:scale-95">
+            Mark all read
+        </button>
+    </header>
+
+    <main class="pt-20 pb-28 px-4 max-w-2xl mx-auto space-y-8">
+        <!-- Today Section -->
+        <section class="space-y-4">
+            <h2 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Today</h2>
+            <div class="space-y-3">
+                <!-- Notification 1 (Unread) -->
+                <div class="bg-surface-container-high border border-outline-variant rounded-xl p-4 flex gap-4 relative overflow-hidden group hover:bg-surface-container-highest transition-all cursor-pointer">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+                    <div class="bg-primary/10 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-on-surface truncate">New Task Assigned</h3>
+                            <span class="text-[10px] font-bold text-on-surface-variant">2m ago</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant line-clamp-2">Sector 4B requires immediate moisture analysis for Grade A Makhana batch.</p>
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"></div>
+                </div>
+
+                <!-- Notification 2 (Unread) -->
+                <div class="bg-surface-container-high border border-outline-variant rounded-xl p-4 flex gap-4 relative overflow-hidden group hover:bg-surface-container-highest transition-all cursor-pointer">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+                    <div class="bg-error-container/10 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">sync_problem</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-on-surface truncate">Sync Conflict</h3>
+                            <span class="text-[10px] font-bold text-on-surface-variant">1h ago</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant line-clamp-2">Local data for Batch #992 conflicts with server records. Manual resolution required.</p>
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Earlier Section -->
+        <section class="space-y-4">
+            <h2 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-1">Earlier</h2>
+            <div class="space-y-3">
+                <!-- Notification 3 (Read) -->
+                <div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 flex gap-4 opacity-70 group hover:opacity-100 transition-all cursor-pointer">
+                    <div class="bg-secondary-container/10 p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-secondary">fact_check</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-on-surface truncate">Reinspection Requested</h3>
+                            <span class="text-[10px] font-bold text-on-surface-variant">Yesterday</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant line-clamp-2">Quality assurance flagged Plot 12C. Please re-verify nut size distribution.</p>
+                    </div>
+                </div>
+
+                <!-- Notification 4 (Read) -->
+                <div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 flex gap-4 opacity-70 group hover:opacity-100 transition-all cursor-pointer">
+                    <div class="bg-surface-container-highest p-2 rounded-lg h-10 w-10 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-on-surface-variant">campaign</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-on-surface truncate">Platform Maintenance</h3>
+                            <span class="text-[10px] font-bold text-on-surface-variant">2 days ago</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant line-clamp-2">FenBridge Scout will be offline for scheduled updates tonight (02:00 - 04:00 IST).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Quick View -->
+        <section class="grid grid-cols-2 gap-4">
+            <div class="bg-primary/5 border border-primary/20 p-4 rounded-xl">
+                <span class="block text-3xl font-bold text-primary">12</span>
+                <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">New Tasks This Week</span>
+            </div>
+            <div class="bg-surface-container border border-outline-variant p-4 rounded-xl">
+                <span class="block text-3xl font-bold text-on-surface">98%</span>
+                <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Sync Reliability</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- BottomNavBar -->
+    <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface-container/90 backdrop-blur-xl border-t border-outline-variant">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90" href="../scout_today_dashboard/code.html">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="text-[10px] font-bold mt-0.5">Scout</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90" href="../../warehouses/warehouse_list/code.html">
+            <span class="material-symbols-outlined">inventory_2</span>
+            <span class="text-[10px] font-bold mt-0.5">Inventory</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90" href="../../sync_queue/sync_queue_list/code.html">
+            <span class="material-symbols-outlined">history</span>
+            <span class="text-[10px] font-bold mt-0.5">History</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90" href="../../profile_settings/profile_settings/code.html">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-[10px] font-bold mt-0.5">Profile</span>
+        </a>
+    </nav>
+
+    <script src="../../../../app_logic.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

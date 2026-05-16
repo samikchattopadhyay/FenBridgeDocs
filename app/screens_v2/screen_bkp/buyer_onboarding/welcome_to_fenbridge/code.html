@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#711419",
+                    "on-primary": "#003824",
+                    "primary-container": "#10b981",
+                    "surface-dim": "#131313",
+                    "surface-tint": "#4edea3",
+                    "on-tertiary": "#650911",
+                    "on-surface-variant": "#bbcabf",
+                    "inverse-primary": "#006c49",
+                    "surface-variant": "#353534",
+                    "secondary-container": "#571bc1",
+                    "inverse-on-surface": "#313030",
+                    "primary-fixed": "#6ffbbe",
+                    "on-secondary-fixed": "#23005c",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-container": "#c4abff",
+                    "background": "#131313",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed": "#410005",
+                    "on-error": "#690005",
+                    "on-primary-container": "#00422b",
+                    "surface": "#131313",
+                    "surface-container-highest": "#353534",
+                    "outline": "#86948a",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#0e0e0e",
+                    "primary": "#4edea3",
+                    "surface-container": "#201f1f",
+                    "tertiary-container": "#fc7c78",
+                    "secondary": "#d0bcff",
+                    "surface-container-high": "#2a2a2a",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "surface-container-low": "#1c1b1b",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdad7",
+                    "tertiary": "#ffb3af",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-bright": "#393939",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#3c0091",
+                    "on-primary-fixed": "#002113",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "inverse-surface": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "gutter": "12px",
+                    "margin": "20px",
+                    "base": "4px",
+                    "sm": "12px",
+                    "xs": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col items-center justify-between antialiased">
+<!-- Top Header omitted for full-page entrance aesthetic -->
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center w-full max-w-md px-margin pt-xl text-center">
+<!-- Logo Container with Tactile Depth -->
+<div class="mb-xl relative">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+<img alt="FenBridge Logo" class="relative w-28 h-28 object-contain mx-auto transition-transform hover:scale-105 duration-300" src="data:image/png;base64,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" />
+</div>
+<!-- Typography Stack -->
+<section class="space-y-xs mb-xl">
+<p class="text-sm font-medium tracking-widest text-on-surface-variant uppercase">
+                Welcome to
+            </p>
+<h1 class="text-4xl font-extrabold tracking-tight text-primary font-['Hanken_Grotesk'] truncate whitespace-nowrap">
+                FenBridge
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px] mx-auto">
+                In a few steps, set up your account.
+            </p>
+</section>
+
+</main>
+<!-- Call to Action Container -->
+<footer class="w-full max-w-md px-margin pb-xl">
+<button class="w-full bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-lg text-label-lg py-md px-lg rounded-xl border border-outline-variant shadow-sm active:scale-95 transition-all duration-150 flex items-center justify-center gap-sm group">
+    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+    </svg>
+    <span>Continue with Google</span>
+</button>
+<!-- Subtle Trust Indicator -->
+<p class="mt-md text-center font-label-sm text-label-sm text-outline">
+            Trusted by 5,000+ agricultural partners
+        </p>
+</footer>
+<!-- Background Decoration -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/5 blur-[120px] pointer-events-none"></div>
+
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

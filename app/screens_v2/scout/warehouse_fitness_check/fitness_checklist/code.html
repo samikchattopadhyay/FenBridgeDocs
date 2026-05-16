@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#fc7c78",
+            "outline-variant": "#3c4a42",
+            "on-secondary-container": "#c4abff",
+            "surface-container-highest": "#353534",
+            "on-primary": "#003824",
+            "surface-variant": "#353534",
+            "secondary-fixed-dim": "#d0bcff",
+            "on-secondary": "#3c0091",
+            "surface": "#131313",
+            "on-error": "#690005",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#4edea3",
+            "primary-container": "#10b981",
+            "inverse-primary": "#006c49",
+            "on-primary-fixed-variant": "#005236",
+            "tertiary": "#ffb3af",
+            "on-tertiary": "#650911",
+            "background": "#131313",
+            "on-tertiary-fixed": "#410005",
+            "inverse-surface": "#e5e2e1",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#bbcabf",
+            "on-surface": "#e5e2e1",
+            "on-background": "#e5e2e1",
+            "tertiary-fixed": "#ffdad7",
+            "surface-container": "#201f1f",
+            "surface-container-high": "#2a2a2a",
+            "secondary-container": "#571bc1",
+            "tertiary-fixed-dim": "#ffb3af",
+            "surface-bright": "#393939",
+            "on-primary-container": "#00422b",
+            "secondary-fixed": "#e9ddff",
+            "surface-container-lowest": "#0e0e0e",
+            "inverse-on-surface": "#313030",
+            "primary-fixed": "#6ffbbe",
+            "on-tertiary-fixed-variant": "#842225",
+            "surface-dim": "#131313",
+            "surface-container-low": "#1c1b1b",
+            "on-tertiary-container": "#711419",
+            "surface-tint": "#4edea3",
+            "on-error-container": "#ffdad6",
+            "secondary": "#d0bcff",
+            "on-secondary-fixed": "#23005c",
+            "outline": "#86948a",
+            "primary": "#4edea3",
+            "on-secondary-fixed-variant": "#5516be",
+            "on-primary-fixed": "#002113"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "20px",
+            "gutter": "12px",
+            "lg": "24px",
+            "base": "4px",
+            "xl": "32px",
+            "md": "16px",
+            "xs": "8px",
+            "sm": "12px"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- Top AppBar - Injected from Shared Components Hierarchy -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin py-xs max-w-full bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<button onclick="window.location.href='../confirm_warehouse_arrival/code.html'" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary truncate whitespace-nowrap">Fitness Checklist</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="text-label-lg font-label-lg text-on-surface-variant">2 of 4</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Progress Bar (Sub-Header) -->
+<div class="fixed top-[56px] left-0 w-full z-40 bg-background/80 backdrop-blur-md px-margin py-xs">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-1/2 rounded-full"></div>
+</div>
+</div>
+<main class="flex-grow pt-32 pb-40 px-margin">
+<!-- Screen Header -->
+<section class="mb-xl">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-xs truncate whitespace-nowrap">Assess each condition</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Ensure storage facility meets premium quality standards for Makhana preservation.</p>
+</section>
+<!-- Checklist Items -->
+<div class="space-y-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-high border border-outline-variant/30 rounded-xl p-md shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="text-label-lg font-label-lg text-on-surface">1. Dry/cool/shaded</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Check temperature and sunlight exposure</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="px-md py-1 text-label-sm font-label-sm bg-primary-container text-on-primary-container rounded-md">Pass</button>
+<button class="px-md py-1 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/30 rounded-md transition-colors">Fail</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-high border border-outline-variant/30 rounded-xl p-md shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="text-label-lg font-label-lg text-on-surface">2. Stock off-floor</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Using pallets or raised platforms</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="px-md py-1 text-label-sm font-label-sm bg-primary-container text-on-primary-container rounded-md">Pass</button>
+<button class="px-md py-1 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/30 rounded-md transition-colors">Fail</button>
+</div>
+</div>
+</div>
+<!-- Card 3 (Critical / Failed State) -->
+<div class="bg-surface-container-high border border-error/30 rounded-xl p-md shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<div class="flex items-center gap-xs mb-1">
+<h3 class="text-label-lg font-label-lg text-on-surface">3. No pest/rodent signs</h3>
+<span class="bg-error-container/20 text-error text-[10px] px-xs py-0.5 rounded-full flex items-center gap-0.5 font-bold border border-error/20">
+<span class="material-symbols-outlined text-[12px]">warning</span> Critical
+              </span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Inspect corners and bags</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="px-md py-1 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/30 rounded-md transition-colors">Pass</button>
+<button class="px-md py-1 text-label-sm font-label-sm bg-error-container text-on-error-container rounded-md shadow-inner">Fail</button>
+</div>
+</div>
+<!-- Failed Details Context -->
+<div class="mt-md pt-md border-t border-outline-variant/20">
+<div class="flex flex-wrap gap-xs mb-md">
+<span class="bg-surface-variant text-on-surface-variant text-label-sm px-sm py-xs rounded-full border border-outline-variant/50">Droppings</span>
+<span class="bg-error-container/40 text-on-error-container text-label-sm px-sm py-xs rounded-full border border-error/50">Gnaw marks</span>
+<span class="bg-surface-variant text-on-surface-variant text-label-sm px-sm py-xs rounded-full border border-outline-variant/50">Live sightings</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-md py-xs text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="Add a note..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Card 4 (Critical) -->
+<div class="bg-surface-container-high border border-outline-variant/30 rounded-xl p-md shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<div class="flex items-center gap-xs mb-1">
+<h3 class="text-label-lg font-label-lg text-on-surface">4. Chemical &amp; odour separation</h3>
+<span class="bg-error-container/20 text-error text-[10px] px-xs py-0.5 rounded-full flex items-center gap-0.5 font-bold border border-error/20">
+<span class="material-symbols-outlined text-[12px]">warning</span> Critical
+              </span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Store away from fertilizers/oils</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="px-md py-1 text-label-sm font-label-sm bg-primary-container text-on-primary-container rounded-md">Pass</button>
+<button class="px-md py-1 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/30 rounded-md transition-colors">Fail</button>
+</div>
+</div>
+</div>
+<!-- Card 5 (Critical) -->
+<div class="bg-surface-container-high border border-outline-variant/30 rounded-xl p-md shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<div class="flex items-center gap-xs mb-1">
+<h3 class="text-label-lg font-label-lg text-on-surface">5. Roof &amp; walls sound</h3>
+<span class="bg-error-container/20 text-error text-[10px] px-xs py-0.5 rounded-full flex items-center gap-0.5 font-bold border border-error/20">
+<span class="material-symbols-outlined text-[12px]">warning</span> Critical
+              </span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">No visible leaks or cracks</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="px-md py-1 text-label-sm font-label-sm bg-primary-container text-on-primary-container rounded-md">Pass</button>
+<button class="px-md py-1 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/30 rounded-md transition-colors">Fail</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-high border border-outline-variant/30 rounded-xl p-md shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="text-label-lg font-label-lg text-on-surface">6. Adequate ventilation</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Cross-ventilation present</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="px-md py-1 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/30 rounded-md transition-colors">Pass</button>
+<button class="px-md py-1 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-variant/30 rounded-md transition-colors">Fail</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container-low/95 backdrop-blur-xl border-t border-outline-variant/20 px-margin py-md flex flex-col gap-md z-50">
+<div class="flex justify-center">
+<div class="bg-surface-container-highest text-primary text-label-sm font-label-sm px-md py-1 rounded-full border border-primary/20 flex items-center gap-xs">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+        4 of 6 assessed
+      </div>
+</div>
+<button onclick="window.location.href='../evidence_photos/code.html'" class="w-full bg-primary text-on-primary font-label-lg text-label-lg py-md rounded-xl active:scale-95 transition-transform duration-200 flex items-center justify-center gap-xs shadow-lg shadow-primary/20">
+      Continue
+      <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+<!-- Visual Depth Decoration -->
+<div class="fixed top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="fixed bottom-0 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

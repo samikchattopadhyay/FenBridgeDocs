@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buyer Operations - Delivery Acceptance & Disputes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #f59e0b;
+      --accent-primary-hover: #fbbf24;
+      --accent-primary-glow: rgba(245, 158, 11, 0.15);
+      --accent-secondary: #10b981;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 48px 96px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #291502 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(245, 158, 11, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(245, 158, 11, 0.25); text-transform: uppercase; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .workflow-group-block { max-width: 1280px; margin: 0 auto 48px; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; }
+    .workflow-group-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light); padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 32px; }
+
+    .sub-workflow-container { margin: 16px 0 0 24px; border-left: 2px dashed var(--border-light); border-radius: 0 0 16px 16px; overflow: hidden; background: var(--bg-base); }
+    .sub-workflow-header { background: linear-gradient(90deg, #18181b 0%, #121214 100%); border-bottom: 1px solid var(--border-color); border-left: 4px solid var(--accent-secondary); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .sub-workflow-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: var(--accent-secondary); }
+    .sub-workflow-body { padding: 28px; display: flex; flex-direction: column; gap: 28px; }
+
+    .flow-step-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; }
+    .flow-step-card:hover { border-color: var(--border-light); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.25); }
+    .sub-step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-secondary); background: rgba(16, 185, 129, 0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.25); }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .step-folder-ref { font-family: monospace; font-size: 11px; color: var(--text-dim); }
+    
+    .step-body { display: flex; flex-wrap: wrap; min-height: 380px; }
+    .step-left-pane { flex: 1; min-width: 300px; max-width: 360px; background: #09090a; padding: 20px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color); }
+    .card-image-viewport { width: 270px; height: 440px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none; border-radius: 8px; border: 1px solid var(--border-color); background: #000; }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    
+    .step-right-pane { flex: 2; min-width: 320px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 4px; }
+    .sub-spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-secondary); text-transform: uppercase; margin-bottom: 4px; }
+    .spec-value { font-size: 13px; color: var(--text-main); line-height: 1.5; }
+    
+    .step-actions { display: flex; gap: 10px; padding-top: 12px; border-top: 1px solid var(--border-color); margin-top: auto; }
+    .action-btn { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); color: var(--accent-primary); padding: 6px 14px; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s ease; }
+    .action-btn:hover { background: var(--accent-primary); color: #000; }
+    .action-btn.secondary { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); color: var(--accent-secondary); }
+    .action-btn.secondary:hover { background: var(--accent-secondary); color: #000; }
+
+    /* STEPPER NAVIGATION PANEL */
+    html { scroll-behavior: smooth; }
+    .stepper-panel-container {
+      max-width: 1280px; margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 20px; z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); overflow-x: auto;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .stepper-node:hover { transform: translateY(-2px); }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node:hover .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+    .node-label {
+      font-size: 11px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node:hover .node-label { color: var(--text-main); }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    /* MODAL */
+    .modal-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+    .modal-win { width: 380px; height: 720px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+    .modal-header { padding: 12px 18px; background: #141416; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    .modal-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent-primary); }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
+    .modal-body { flex: 1; width: 100%; height: 100%; }
+    .modal-body iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <div class="tag">Buyer Sub-Workflow 8</div>
+    <h1 class="title">Delivery Acceptance & Dispute Routing</h1>
+    <p class="desc">Comprehensive multi-stage receiving matrix checking container seal tags, photographic cargo profiles, arrival Net weights, and structured non-compliance escalation workflows.</p>
+  </div>
+
+  <!-- PRIMARY STEPPER PANEL -->
+  <div class="stepper-panel-container custom-scrollbar">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node" title="Step 1: Verify Seal">
+        <span class="node-num">01</span>
+        <span class="node-label">Seal Check</span>
+      </a>
+      <a href="#step-02" class="stepper-node" title="Step 2: Upload Photos">
+        <span class="node-num">02</span>
+        <span class="node-label">Photos</span>
+      </a>
+      <a href="#step-03" class="stepper-node" title="Step 3: Verify Quantity">
+        <span class="node-num">03</span>
+        <span class="node-label">Weight</span>
+      </a>
+      <a href="#step-04" class="stepper-node" title="Step 4: Accept or Dispute">
+        <span class="node-num">04</span>
+        <span class="node-label">Decision</span>
+      </a>
+      <a href="#step-05" class="stepper-node" title="Step 5: Pay Balance">
+        <span class="node-num">05</span>
+        <span class="node-label">Settle</span>
+      </a>
+      <a href="#step-06" class="stepper-node" title="Step 6: Download Invoice">
+        <span class="node-num">06</span>
+        <span class="node-label">Invoice</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="workflow-group-block">
+    <div class="workflow-group-header">
+      <div class="workflow-group-title">Primary Screens Inventory</div>
+      <span class="step-count-pill">5 Concrete Steps</span>
+    </div>
+    <div class="workflow-group-body">
+      
+      <!-- Step 1 -->
+      <div class="flow-step-card" id="step-01">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 1</span>Verify Seal Integrity</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/verify_seal_integrity</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/verify_seal_integrity/screen.png" alt="Verify Seal Integrity" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Mandatory inbound gate check. Visually inspect and verify that the tamper-evident seal applied by BM scouts remains perfectly intact, matching recorded seal IDs to rule out en-route tampering.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Acts as the primary logistical checkpoint. Directs workflows into mandatory dispute routing if seals appear compromised or exhibit ID mismatches, protecting both platform and buyer liability.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Fetches expected seal tags via linked spot listings or PO grade certificates. Captures verification evidence directly using Flutter image_picker with metadata GPS tags attached.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/verify_seal_integrity/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow-step-card" id="step-02">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 2</span>Upload Delivery Photos</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/upload_delivery_photos</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/upload_delivery_photos/screen.png" alt="Upload Delivery Photos" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Capture evidentiary baselines of arriving consignments (wide-angle bags, close-up tags, vehicle profiles) to anchor canonical condition audits prior to physical warehouse unloading.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Enforces a strict 48-hour post-delivery window for any future quality claims. Mandates a minimum of 3 categorized photo uploads to validate chain of custody objectively.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Compresses multi-select standard imagery client-side before isolated Supabase Storage persistence under delivery_evidence/{po_id}/. Includes custom photo annotation capability.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">-- Delivery evidence archival tracking:
+INSERT INTO delivery_evidence (
+  po_id, buyer_id, evidence_type,
+  storage_path, category, captured_at
+) VALUES (?, ?, 'delivery_photo', ?, ?, now());</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/upload_delivery_photos/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow-step-card" id="step-03">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 3</span>Verify Quantity Delivered</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/verify_quantity</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/verify_quantity/screen.png" alt="Verify Quantity Delivered" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Capture precise arrival net weight metrics and bag counts balanced against source declarations to determine accurate proportional final ledger settlements.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Employs dynamic tiered tolerance bands (e.g. green within ±2%, yellow up to ±5%, red above ±5%). Shortfalls beyond 5% trigger strong recommendations for formal dispute interventions.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Computes percentage deltas client-side against purchase_orders.quantity_kg. Supports live proportional adjustments to final payments if users choose to accept minor shortfalls as-is.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/verify_quantity/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="flow-step-card" id="step-04">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 4</span>Accept or Dispute Decision</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/accept_or_dispute</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/accept_or_dispute/screen.png" alt="Accept or Dispute" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Primary operational branch controller consolidating all prior physical checks to execute formal title transfers OR immediately halt escrow disbursements via formal dispute routing.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Legally executes FOR-Destination risk transfers upon absolute acceptance. Locks down verification snapshots permanently and updates ledger flags to prompt remaining balance collections.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Disables direct acceptance cards if preceding steps logged compromised seals or severe red-band weight deficits. Directs non-compliant branches cleanly into dedicated dispute sub-states.</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/accept_or_dispute/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="flow-step-card" id="step-05">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 5</span>Pay Balance Complete</div>
+          <span class="step-folder-ref">DELIVERY_ACCEPTANCE/pay_balance_complete</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/pay_balance_complete/screen.png" alt="Pay Balance Complete" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Finalize contract lifecycles by capturing evidentiary settlement proofs for the standard 20% post-delivery balance collection, closing active escrow hold structures permanently.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">Triggers canonical final Bill of Supply document issuing upon administrative maker-checker settlement validations. Moves overall order state from delivered straight to completed.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">Embeds standard external UTR submission validations alongside optional visual receipt uploads. Automatically adjusts collection figures based on accepted proportional shortfalls.</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">-- Persist definitive delivery verification record:
+UPDATE purchase_orders
+  SET state = 'delivered',
+      sub_state = 'awaiting_balance_confirmation',
+      delivered_at = now(), delivery_accepted_at = now()
+  WHERE id = ?;
+
+INSERT INTO delivery_acceptances (
+  id, po_id, buyer_id, seal_integrity_verdict,
+  actual_weight_kg, final_decision, decided_at
+) VALUES (gen_random_uuid(), ?, ?, ?, ?, 'accept', now());</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/DELIVERY_ACCEPTANCE/pay_balance_complete/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-WORKFLOW: DISPUTE FILING -->
+      <div class="sub-workflow-container">
+        <div class="sub-workflow-header">
+          <div class="sub-workflow-title">Sub-workflow: Dispute Filing Escalations</div>
+          <span class="step-count-pill" style="background:rgba(16,185,129,0.1);color:var(--accent-secondary);border-color:rgba(16,185,129,0.25);">4 Sub-steps</span>
+        </div>
+        <div class="sub-workflow-body">
+
+          <!-- DISPUTE STEPPER PANEL -->
+          <div class="stepper-panel-container" style="background: rgba(5, 19, 13, 0.95); border-color: rgba(16, 185, 129, 0.25); margin-bottom: 32px;">
+            <div class="stepper-nodes">
+              <a href="#dispute-01" class="stepper-node" title="Sub-step 1: Submit Dispute">
+                <span class="node-num" style="color: var(--accent-secondary); border-color: rgba(16, 185, 129, 0.3);">01</span>
+                <span class="node-label">Init Dispute</span>
+              </a>
+              <a href="#dispute-02" class="stepper-node" title="Sub-step 2: Dispute Reasons">
+                <span class="node-num" style="color: var(--accent-secondary); border-color: rgba(16, 185, 129, 0.3);">02</span>
+                <span class="node-label">Rationale</span>
+              </a>
+              <a href="#dispute-03" class="stepper-node" title="Sub-step 3: Request Lab Test">
+                <span class="node-num" style="color: var(--accent-secondary); border-color: rgba(16, 185, 129, 0.3);">03</span>
+                <span class="node-label">Lab Test</span>
+              </a>
+              <a href="#dispute-04" class="stepper-node" title="Sub-step 4: Success State">
+                <span class="node-num" style="color: var(--accent-secondary); border-color: rgba(16, 185, 129, 0.3);">04</span>
+                <span class="node-label">Success</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Sub-step 1 -->
+          <div class="flow-step-card" id="dispute-01">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 1</span>Submit Initial Dispute</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/submit_dispute</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/submit_dispute/screen.png" alt="Submit Dispute" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Purpose</div>
+                    <div class="spec-value">Formally suspend automated escrow unlocks and halt contract finalization flows upon detecting compromised container seals or non-reconcilable weight deficits.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Business Requirement</div>
+                    <div class="spec-value">Guarantees delivered physical cargo is not accepted or unloaded. Prompts receiving desks to anchor clear dispute parameters binding subsequent maker-checker back-office resolutions.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Technical Details</div>
+                    <div class="spec-value">Transitions internal contract state machines to delivered_disputed automatically. Instantly triggers administrative task queue dispatch via persistent high-priority message payloads.</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/submit_dispute/code.html" onclick="openModal(event, this.href)" class="action-btn secondary">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-step 2 -->
+          <div class="flow-step-card" id="dispute-02">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 2</span>Dispute Rationale Selection</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/dispute_reasons</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_reasons/screen.png" alt="Dispute Reasons" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Purpose</div>
+                    <div class="spec-value">Categorize specific non-compliance dimensions (seal tampering, moisture excess, broken kernels, transit damage) using highly structured multi-select reason classifications.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Business Requirement</div>
+                    <div class="spec-value">Directs internal resolution paths based on root cause. Allows dynamic combination of operational categories while pre-filling tags extracted from automated physical checks.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Technical Details</div>
+                    <div class="spec-value">Validates checkbox matrix inputs ensuring at least one core classification flag is set. Captures open-ended custom string rationale alongside categorical indexing arrays.</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_reasons/code.html" onclick="openModal(event, this.href)" class="action-btn secondary">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-step 3 -->
+          <div class="flow-step-card" id="dispute-03">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 3</span>Request Independent Lab Test</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/request_lab_test</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/request_lab_test/screen.png" alt="Request Lab Test" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Purpose</div>
+                    <div class="spec-value">Allow buyers to initiate impartial NABL-accredited laboratory diagnostic testing sequences to resolve empirical quality metrics objectively.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Business Requirement</div>
+                    <div class="spec-value">Enforces clear financial policy frameworks binding a 50/50 fee splitting model between buyer desks and Bharat Makhana for third-party diagnostics per platform T&C.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Technical Details</div>
+                    <div class="spec-value">Surfaces localized certified lab registries via relational lookup query joins. Integrates diagnostic turn-around timelines (e.g. 5–7 days) directly into dynamic resolution tracking states.</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/request_lab_test/code.html" onclick="openModal(event, this.href)" class="action-btn secondary">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-step 4 -->
+          <div class="flow-step-card" id="dispute-04">
+            <div class="step-header">
+              <div class="step-title"><span class="sub-step-badge">Sub-step 4</span>Dispute Filed Success State</div>
+              <span class="step-folder-ref">DELIVERY_ACCEPTANCE/dispute_filed_success</span>
+            </div>
+            <div class="step-body">
+              <div class="step-left-pane" style="background:#05130d;">
+                <div class="card-image-viewport">
+                  <img class="preview-screen-img" src="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_filed_success/screen.png" alt="Dispute Filed Success" />
+                </div>
+              </div>
+              <div class="step-right-pane">
+                <div class="specs-grid">
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Purpose</div>
+                    <div class="spec-value">Render positive confirmation verifying successful transmission of attached evidence payloads toward primary arbitration desks while outlining immediate next-step response timelines.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Business Requirement</div>
+                    <div class="spec-value">Clearly informs drivers to hold consignments without unloading. Establishes a formal 24–48 hour administrative SLA governing initial maker-checker investigation callbacks.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Technical Details</div>
+                    <div class="spec-value">Commits transient multi-step wizard buffers permanently to persistent schema layers. Generates unique tracking links to monitor live state machine resolutions transparently.</div>
+                  </div>
+                  <div class="spec-block full-width">
+                    <div class="sub-spec-label">Database Schema</div>
+                    <div class="db-schema-box">-- Authoritative dispute lifecycle persistence:
+INSERT INTO delivery_disputes (
+  id, po_id, buyer_id, dispute_reasons,
+  evidence_photos_paths, evidence_notes,
+  lab_test_requested, lab_id, status
+) VALUES (gen_random_uuid(), ?, ?, ?, ?, ?, ?, ?, 'open');</div>
+                  </div>
+                </div>
+                <div class="step-actions">
+                  <a href="../../../images/operations/DELIVERY_ACCEPTANCE/dispute_filed_success/code.html" onclick="openModal(event, this.href)" class="action-btn secondary">View Executable Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- END SUB-WORKFLOW -->
+
+      <!-- Screen 6: Invoice Download -->
+      <div class="flow-step-card" id="step-06">
+        <div class="step-header">
+          <div class="step-title"><span class="step-badge">Step 6</span>Invoice Download & GST Report</div>
+          <span class="step-folder-ref">invoice_compliance</span>
+        </div>
+        <div class="step-body">
+          <div class="step-left-pane">
+            <div class="card-image-viewport">
+              <img class="preview-screen-img" src="../../../images/operations/invoice_compliance/screen.png" alt="Invoice Download & GST Report" />
+            </div>
+          </div>
+          <div class="step-right-pane">
+            <div class="specs-grid">
+              <div class="spec-block full-width">
+                <div class="spec-label">Purpose</div>
+                <div class="spec-value">Enable buyer to download a digitally-signed GST invoice after balance payment completion. Enable Admin/Finance to generate monthly GST compliance reports, TDS/TCS liability calculations, and export data for statutory filing (GSTR-1, GSTR-2, ITC tracking).</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Business Requirement</div>
+                <div class="spec-value">
+                  • BR-135: GST Act Section 31 compliance — digital invoice with GSTIN, HSN code, OTP signature.<br/>
+                  • BR-136: Auto-trigger on PO status = "Balance Received".<br/>
+                  • BR-137: Reverse charge flagging if buyer GSTIN turnover &gt;₹10Cr.<br/>
+                  • BR-139: TCS 206C(1H) @ 0.1% if sales to one buyer &gt;₹50L/year.<br/>
+                  • BR-140: Monthly compliance export ready for CA review and GSTR-1 filing.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">UX & User Actions</div>
+                <div class="spec-value">
+                  <strong>Buyer:</strong> PO Detail → "Download Invoice" button appears after balance payment.<br/>
+                  Preview invoice (GSTIN, amount, tax breakdown, RC flag) → Download PDF / Print / Email / Share.<br/><br/>
+                  <strong>Admin/Finance:</strong> Select month → Review GST summary → Export GSTR-1 CSV / JSON / PDF for CA filing.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Technical Details</div>
+                <div class="spec-value">
+                  • PDF stored on S3, linked to buyer account, re-downloadable anytime.<br/>
+                  • Digital signature: OTP-timestamp watermark by FenBridge Finance.<br/>
+                  • RC applicability computed server-side against buyer GSTIN annual turnover register.<br/>
+                  • TCS/TDS computed via running annual aggregate per buyer_id.
+                </div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Database Schema</div>
+                <div class="db-schema-box">invoices (
+  id UUID PK,
+  po_id UUID FK -> purchase_orders.id,
+  invoice_number TEXT UNIQUE,       -- FBM-2026-XXXX
+  invoice_date DATE,
+  buyer_id UUID FK,
+  taxable_amount NUMERIC(14,2),
+  gst_rate DECIMAL(4,2),
+  igst_amount NUMERIC(14,2),
+  reverse_charge BOOLEAN,
+  tcs_amount NUMERIC(14,2),
+  digital_signature TEXT,
+  pdf_url TEXT,
+  generated_at TIMESTAMP
+);</div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <a href="../../../images/operations/invoice_compliance/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
+    <div class="modal-win" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <span class="modal-title">Source Preview</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body"><iframe id="modal-iframe" src=""></iframe></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
+    function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const container = document.querySelector(".stepper-panel-container");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            if (!id) return;
+            stepperNodes.forEach(node => node.classList.remove("active"));
+            const activeNode = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (activeNode) {
+              activeNode.classList.add("active");
+              if (container) {
+                const nodeLeft = activeNode.offsetLeft;
+                const nodeWidth = activeNode.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = container.scrollLeft;
+                if (nodeLeft < scrollLeft || nodeLeft + nodeWidth > scrollLeft + containerWidth) {
+                  container.scrollTo({ left: nodeLeft - containerWidth / 2 + nodeWidth / 2, behavior: "smooth" });
+                }
+              }
+            }
+          }
+        });
+      }, { root: null, rootMargin: "-20% 0px -60% 0px", threshold: 0 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+  </script>
+</body>
+</html>

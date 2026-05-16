@@ -1,0 +1,314 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-primary-fixed": "#002113",
+                  "surface-container-highest": "#353534",
+                  "primary-container": "#10b981",
+                  "inverse-on-surface": "#313030",
+                  "secondary": "#95d3ba",
+                  "secondary-fixed": "#b0f0d6",
+                  "on-primary-fixed-variant": "#005236",
+                  "on-secondary-container": "#83c2a9",
+                  "on-secondary-fixed-variant": "#0b513d",
+                  "on-primary": "#003824",
+                  "on-surface-variant": "#bbcabf",
+                  "background": "#131313",
+                  "inverse-primary": "#006c49",
+                  "tertiary-fixed": "#ffdad7",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "surface": "#131313",
+                  "surface-bright": "#393939",
+                  "on-surface": "#e5e2e1",
+                  "on-error": "#690005",
+                  "on-primary-container": "#00422b",
+                  "on-tertiary-container": "#711419",
+                  "on-background": "#e5e2e1",
+                  "on-tertiary": "#650911",
+                  "error": "#ffb4ab",
+                  "surface-tint": "#4edea3",
+                  "inverse-surface": "#e5e2e1",
+                  "secondary-container": "#0b513d",
+                  "error-container": "#93000a",
+                  "on-secondary-fixed": "#002117",
+                  "primary": "#4edea3",
+                  "on-secondary": "#003829",
+                  "primary-fixed-dim": "#4edea3",
+                  "surface-container-lowest": "#0e0e0e",
+                  "surface-container": "#201f1f",
+                  "outline": "#86948a",
+                  "tertiary": "#ffb3af",
+                  "surface-variant": "#353534",
+                  "outline-variant": "#3c4a42",
+                  "on-tertiary-fixed": "#410005",
+                  "on-tertiary-fixed-variant": "#842225",
+                  "on-error-container": "#ffdad6",
+                  "surface-container-low": "#1c1b1b",
+                  "primary-fixed": "#6ffbbe",
+                  "surface-container-high": "#2a2a2a",
+                  "tertiary-container": "#fc7c78",
+                  "secondary-fixed-dim": "#95d3ba",
+                  "surface-dim": "#131313"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "unit": "4px",
+                  "margin-mobile": "16px",
+                  "gutter": "16px",
+                  "container-max": "1440px",
+                  "margin-desktop": "32px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Hanken Grotesk"],
+                  "display-lg": ["Hanken Grotesk"],
+                  "mono-data": ["JetBrains Mono"],
+                  "body-md": ["Hanken Grotesk"],
+                  "label-md": ["Hanken Grotesk"],
+                  "headline-sm": ["Hanken Grotesk"],
+                  "body-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+                  "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .spine-line {
+      background: #262626;
+    }
+    .spine-dot {
+      background: #262626;
+    }
+    .spine-dot-error {
+      background: #ffb4ab;
+      box-shadow: 0 0 8px rgba(255, 180, 171, 0.4);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen">
+<!-- TopAppBar - JSON Source Mapping -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface border-b border-outline-variant flex items-center justify-between px-margin-mobile h-14">
+<div class="flex items-center gap-4">
+<button class="text-error active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-error truncate whitespace-nowrap">Conflict</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+</div>
+</header>
+<main class="pt-14 pb-20 max-w-container-max mx-auto">
+<!-- Danger Banner -->
+<section class="w-full bg-error-container text-on-error-container py-4 px-margin-mobile flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5" data-icon="error">error</span>
+<p class="font-label-md text-label-md uppercase tracking-wider">✕ This record conflicts with current data — Admin will reconcile.</p>
+</section>
+<div class="px-margin-mobile mt-6 space-y-6">
+<!-- Explanation Card -->
+<div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<h2 class="font-headline-sm text-headline-sm truncate whitespace-nowrap">Synchronization Logic Failure</h2>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md">
+          When you captured this inspection (<span class="font-mono-data text-mono-data">09:14</span>), the lot was active. Since then, the lot was closed by another action (<span class="font-mono-data text-mono-data">11:05</span>). Admin needs to decide how to handle your inspection.
+        </p>
+</div>
+<!-- Side-by-Side Preview (Bento-style Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Captured Version -->
+<div class="bg-surface-container border border-outline-variant overflow-hidden">
+<div class="p-3 border-b border-outline-variant bg-surface-container-high flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Your captured version</span>
+<span class="font-mono-data text-mono-data px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">LOCAL</span>
+</div>
+<div class="p-4 space-y-4">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">LOT ID</p>
+<p class="font-mono-data text-headline-sm">LOT-7G-2024-001</p>
+</div>
+<div class="p-3 bg-error-container/20 border border-error/30 rounded">
+<p class="font-label-md text-label-md text-error mb-1">GRADE (CONFLICT)</p>
+<p class="font-headline-md text-headline-md text-error">Grade A</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">STATUS</p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<p class="font-body-md text-body-md">Active</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Server Version -->
+<div class="bg-surface-container border border-outline-variant overflow-hidden">
+<div class="p-3 border-b border-outline-variant bg-surface-container-high flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Current server version</span>
+<span class="font-mono-data text-mono-data px-2 py-0.5 bg-outline-variant text-on-surface rounded">SERVER</span>
+</div>
+<div class="p-4 space-y-4">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">LOT ID</p>
+<p class="font-mono-data text-headline-sm">LOT-7G-2024-001</p>
+</div>
+<div class="p-3 bg-surface-container-highest border border-outline rounded">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">GRADE</p>
+<p class="font-headline-md text-headline-md">Grade B</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">STATUS</p>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<p class="font-body-md text-body-md line-through">Closed (11:05)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chronological Trace (Mini Spine) -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 relative">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-4">Conflict Timeline</h3>
+<div class="relative pl-6 border-l-2 border-outline-variant space-y-6 py-2">
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary border-4 border-surface"></span>
+<p class="font-label-md text-label-md text-primary">09:14 — Inspection Captured</p>
+<p class="text-on-surface-variant">Grade A recorded locally on device.</p>
+</div>
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-error border-4 border-surface"></span>
+<p class="font-label-md text-label-md text-error">11:05 — Server State Change</p>
+<p class="text-on-surface-variant">Central DB closed the lot (Lot Manager #44).</p>
+</div>
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-outline border-4 border-surface"></span>
+<p class="font-label-md text-label-md text-on-surface">11:32 — Conflict Flagged</p>
+<p class="text-on-surface-variant">Sync attempt failed. System admin notified.</p>
+</div>
+</div>
+</div>
+<!-- Notification Status Card -->
+<div class="bg-surface-container-high p-4 flex items-center justify-between border-l-4 border-primary">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="pending_actions" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<div>
+<p class="font-headline-sm text-headline-sm">Awaiting reconciliation</p>
+<p class="text-on-surface-variant font-label-md text-label-md">Admin notified at 11:32</p>
+</div>
+</div>
+<div class="animate-pulse flex space-x-1">
+<div class="h-2 w-2 bg-primary rounded-full"></div>
+<div class="h-2 w-2 bg-primary rounded-full opacity-50"></div>
+<div class="h-2 w-2 bg-primary rounded-full opacity-20"></div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="grid grid-cols-2 gap-4 pb-8">
+<button class="bg-surface-container-highest text-on-surface font-label-md text-label-md py-4 rounded hover:bg-outline-variant transition-colors flex items-center justify-center gap-2 uppercase tracking-widest border border-outline-variant">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+          View my record
+        </button>
+<button class="bg-primary text-on-primary font-label-md text-label-md py-4 rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-2 uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="support_agent">support_agent</span>
+          Contact Admin
+        </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar - Hidden on focused detail task screen according to "Task-Focused" rule -->
+<!-- Side Navigation Drawer (Left-aligned as per JSON) -->
+<aside class="fixed top-0 left-0 h-full w-80 bg-surface-container border-r border-outline-variant transform -translate-x-full md:translate-x-0 hidden md:flex flex-col py-8 z-40 transition-all duration-300 ease-in-out shadow-lg">
+<div class="px-margin-mobile mb-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-primary">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-contrast portrait of a male warehouse supervisor in a dark, high-tech industrial setting. He wears a clinical uniform with subtle green accents. The lighting is low-key with dramatic emerald highlights reflecting off nearby metallic surfaces. The mood is one of serious operational authority and focused clinical efficiency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA94LcnGBu9JP82P4zz1rLy1Ivo2HSTlNur02bP3n4CU3bV5uERh5_atDyv6UOllTcl9Xn91C-qbxbFJj_moLDECvUpUeMENCgZOonMtOSFdZimxOziKtZdZsOdhnqhVaWLwD5DqImn9UELn7IIgtfdn-VHAaPp-gKRho-2i2xmKjpbCyRY8m0u5voL7UWQc-pB-gx9ihHAcXkli4LSw5hNcXhFwZxarUy6OKAaeJ7DWPak_Q-rsWO3Rl5s_mPTXAZ_tUPXpKUsXLZB"/>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">Field Op Scout</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Sector 7G - Warehouse</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all rounded">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all rounded">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-body-md">Offline Maps</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all rounded">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-body-md text-body-md">Resource Library</span>
+</div>
+<!-- Sync is the active context for this page -->
+<div class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container font-bold rounded">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span class="font-body-md text-body-md">Sync Status</span>
+</div>
+</nav>
+<div class="px-margin-mobile pt-8 border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-4 px-4 py-3 text-error hover:bg-surface-container-highest transition-all rounded cursor-pointer">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</div>
+<p class="mt-4 px-4 font-mono-data text-[10px] text-on-surface-variant/50">V2.4.1-STABLE</p>
+</div>
+</aside>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

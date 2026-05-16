@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#410005",
+            "tertiary": "#ffb3af",
+            "surface-tint": "#4edea3",
+            "on-primary": "#003824",
+            "inverse-primary": "#006c49",
+            "error": "#ffb4ab",
+            "background": "#131313",
+            "tertiary-container": "#fc7c78",
+            "secondary-fixed-dim": "#d0bcff",
+            "secondary-fixed": "#e9ddff",
+            "inverse-on-surface": "#313030",
+            "on-primary-container": "#00422b",
+            "surface-variant": "#353534",
+            "on-tertiary-container": "#711419",
+            "on-tertiary": "#650911",
+            "outline": "#86948a",
+            "on-background": "#e5e2e1",
+            "primary-fixed-dim": "#4edea3",
+            "primary-fixed": "#6ffbbe",
+            "tertiary-fixed": "#ffdad7",
+            "on-secondary-container": "#c4abff",
+            "primary-container": "#10b981",
+            "on-secondary": "#3c0091",
+            "error-container": "#93000a",
+            "tertiary-fixed-dim": "#ffb3af",
+            "surface-container-highest": "#353534",
+            "primary": "#4edea3",
+            "surface-container": "#201f1f",
+            "on-surface-variant": "#bbcabf",
+            "on-secondary-fixed": "#23005c",
+            "inverse-surface": "#e5e2e1",
+            "on-surface": "#e5e2e1",
+            "on-tertiary-fixed-variant": "#842225",
+            "secondary-container": "#571bc1",
+            "surface": "#131313",
+            "outline-variant": "#3c4a42",
+            "surface-container-low": "#1c1b1b",
+            "on-primary-fixed-variant": "#005236",
+            "on-primary-fixed": "#002113",
+            "on-error-container": "#ffdad6",
+            "surface-container-lowest": "#0e0e0e",
+            "surface-bright": "#393939",
+            "on-error": "#690005",
+            "surface-container-high": "#2a2a2a",
+            "secondary": "#d0bcff",
+            "on-secondary-fixed-variant": "#5516be",
+            "surface-dim": "#131313"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xs": "8px",
+            "sm": "12px",
+            "lg": "24px",
+            "base": "4px",
+            "xl": "32px",
+            "margin": "20px",
+            "gutter": "12px",
+            "md": "16px"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Hanken Grotesk"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #131313;
+      color: #e5e2e1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<button class="text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">My Ponds</h1>
+</div>
+<button onclick="window.location.href='../farmer_profile/code.html'" class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-base active:scale-95 transition-transform duration-150 cursor-pointer" title="Profile">person</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 px-margin py-lg pb-16">
+<!-- Stats Overview / Bento Highlight -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<div class="col-span-2 bg-surface-container border border-outline-variant rounded-xl p-md flex items-center justify-between">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Total Capacity</p>
+<h2 class="font-headline-lg text-headline-lg text-primary">15,000 <span class="text-body-md font-normal text-on-surface-variant">kg/yr</span></h2>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+</div>
+</div>
+<!-- Pond List -->
+<section class="space-y-md">
+<!-- Card 1: Emerald Pond -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:border-primary/50 transition-colors">
+<div class="h-32 w-full relative">
+<img alt="Makhana Pond" class="w-full h-full object-cover grayscale-[0.2]" data-alt="A lush green agricultural pond filled with large floating lily pads in a high-glare outdoor environment. The water reflects a clear blue sky, while the edges of the pond are lined with rich, dark soil and vibrant vegetation. The photograph captures a premium agricultural setting with soft natural morning lighting and a sense of calm productivity. The emerald green of the plants dominates the composition against the deep dark waters." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFd5rizrEka_QNz3Y0w2Hkw1LjJw46KclRA2kmNCQDE207JylgEa3fGIQAKB5sJUGx3b3vGJBMbhLYpZF0dpLV79uP8NTvOutM_fsubc39hHFErzIqR9ihSxMsBi4i86oG_KLsvRVPHzgowh1FTgTIEfVZ0DUibLZxwah6Zon2thEA3yPoe2StLWb80fN7Dd__S0siF1umd_5uRfmOx-aEhfQFnW1p11rrc2n5qm5piznRSd_Ma3d3SAU1_kWO-noxhNINbBrRUJLj"/>
+<div class="absolute top-md right-md">
+<span class="bg-primary text-on-primary font-label-sm text-label-sm px-sm py-xs rounded-full flex items-center gap-xs shadow-lg">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              Primary
+            </span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Emerald Pond</h3>
+<p class="text-on-surface-variant font-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-body-md">location_on</span>
+                North Sector A-12
+              </p>
+</div>
+<div class="flex gap-xs">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-label-sm font-label-sm">Area</span>
+<span class="text-on-surface font-semibold">5 acres</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-label-sm font-label-sm">Yield</span>
+<span class="text-on-surface font-semibold">10,000 kg/year</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Lily Pond -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:border-primary/50 transition-colors">
+<div class="h-32 w-full relative">
+<img alt="Rural Pond" class="w-full h-full object-cover grayscale-[0.2]" data-alt="A tranquil rural landscape featuring a medium-sized agricultural pond under a dramatic sunset sky. The water surface is still, reflecting hues of orange and deep purple, while the surrounding field shows the precision of modern farming. The overall mood is sophisticated and reliable, emphasizing the technological depth of the agricultural ecosystem. Lighting is cinematic and low-key, highlighting the textures of the water and the field edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI4MrT901WqZ1DfWIoPjHFesHj0lH8wlyqHxw3LfSM6wVRQV9ZK1T8GturaQrbsXCeEoc6smUAHtjzAJh89D_3h69bflK9Vcy87VNfBK9cq_91PB1JDNpdnQJXDSuoZiVSH6cHZOQp2L-p0N4hMl-1L8zA26wbuUi592xy7xZgmu50A2HGL4wQfNVC8QtC5Wtz5zru4hF26GYZPr8hGdW2DwT3Q3Tcdf4ScFk9OnVJt8_-HwhGD7Mboe8SqK_stIwf1Hsbm4UZMzKC"/>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Lily Pond</h3>
+<p class="text-on-surface-variant font-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-body-md">location_on</span>
+                East Wing B-04
+              </p>
+</div>
+<div class="flex gap-xs">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm border-t border-outline-variant mb-md">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-label-sm font-label-sm">Area</span>
+<span class="text-on-surface font-semibold">3 bigha</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-label-sm font-label-sm">Yield</span>
+<span class="text-on-surface font-semibold">5,000 kg/year</span>
+</div>
+</div>
+<button class="w-full py-sm border border-primary text-primary font-label-lg text-label-lg rounded-lg hover:bg-primary/10 transition-colors flex items-center justify-center gap-sm active:scale-[0.98]">
+<span class="material-symbols-outlined text-body-md">check_circle</span>
+            Set as Primary
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button onclick="localStorage.setItem('fenbridge_add_pond_flow', 'true'); window.location.href='../../buyer_onboarding/farm_pond_details/code.html'" class="fixed bottom-lg right-margin w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:opacity-90 active:scale-95 transition-all z-[60]" title="Add Pond">
+<span class="material-symbols-outlined text-[32px]">add</span>
+<!-- Hidden label for accessibility/desktop -->
+<span class="sr-only">Add Pond</span>
+</button>
+
+</body></html>

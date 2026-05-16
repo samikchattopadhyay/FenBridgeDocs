@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Hanken+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+            min-height: max(884px, 100dvh);
+        }
+        .premium-shadow { box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4); }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#410005",
+                        "tertiary": "#ffb3af",
+                        "surface-tint": "#4edea3",
+                        "on-primary": "#003824",
+                        "inverse-primary": "#006c49",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "tertiary-container": "#fc7c78",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#00422b",
+                        "surface-variant": "#353534",
+                        "on-tertiary-container": "#711419",
+                        "on-tertiary": "#650911",
+                        "outline": "#86948a",
+                        "on-background": "#e5e2e1",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#6ffbbe",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-secondary-container": "#c4abff",
+                        "primary-container": "#10b981",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "surface-container-highest": "#353534",
+                        "primary": "#4edea3",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed": "#23005c",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "secondary-container": "#571bc1",
+                        "surface": "#131313",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#002113",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#393939",
+                        "on-error": "#690005",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#d0bcff",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-dim": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "margin": "20px",
+                        "gutter": "12px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md flex flex-col min-h-screen">
+    <!-- Top Navigation Bar -->
+    <header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-margin py-md">
+        <div class="flex items-center gap-md">
+            <button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-base active:scale-95 transition-transform duration-150 cursor-pointer">arrow_back</button>
+            <h1 class="font-headline-md text-headline-md font-bold text-primary truncate whitespace-nowrap">FenBridge</h1>
+        </div>
+        <button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-base active:scale-95 transition-transform duration-150 cursor-pointer" data-icon="dashboard" title="Dashboard">dashboard</button>
+    </header>
+
+    <main class="pb-xl">
+        <!-- Hero Header -->
+        <section class="flex flex-col items-center py-xl bg-gradient-to-b from-surface-container-lowest to-background px-margin">
+            <div class="relative mb-md">
+                <div class="w-[120px] h-[120px] rounded-full border-2 border-primary overflow-hidden shadow-lg bg-surface-container ring-4 ring-surface-container-low">
+                    <img alt="John Doe" class="w-full h-full object-cover" data-alt="A professional studio portrait of a middle-aged South Asian businessman with a confident expression. The lighting is cinematic with deep shadows and soft highlights, creating a premium agri-tech noir aesthetic. The background is a blurred high-end office interior with subtle emerald green lighting accents to match the corporate marketplace theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwcXw2S2cQXWIsIni0o6cUr4QgwZKQl8uOdqVAflUAqnVFv3duRXdxUW2TQOzrwdcDjrNF4Ajy4RMHohQ3jUmz1GG_dArmN7BPLUF8c6Vv5dkgKfL-8G7f_iY8KiMFFRgMMTmozqYZcY7dLCBIHbAox5suXOf5n3ay2aUovd3Xkj7mX52lNRvEL91t624Mr6vMkw7BuF4H4uG3Kst4jRrGjDZy3i8He0NRZkabR0AuTME9mXN9PiL5s9hnvSQt3XitudTwE5odu75b"/>
+                </div>
+                <button class="absolute bottom-1 right-1 bg-primary text-on-primary p-xs rounded-full shadow-md flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                </button>
+            </div>
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-xs truncate whitespace-nowrap">John Doe</h2>
+            <span class="px-md py-base bg-secondary-container text-on-secondary-container rounded-full text-label-sm font-label-sm">Buyer</span>
+
+            <!-- Linked Google Account (Displayed just below image + name + role) -->
+            <div class="mt-4 flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-full border border-outline-variant/40 shadow-sm">
+                <span class="material-symbols-outlined text-[16px] text-on-surface-variant">link</span>
+                <span class="text-xs text-on-surface font-medium">buyer@makhana.com</span>
+                <span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+
+            <!-- Account Status (Displayed below Linked Google Account) -->
+            <div class="mt-2 flex items-center gap-1.5 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">
+                <span class="material-symbols-outlined text-[14px] text-primary">account_circle</span>
+                <span class="text-xs text-primary font-semibold tracking-wide">Account Status: Active</span>
+            </div>
+        </section>
+
+        <div class="px-margin space-y-md">
+            <!-- Action Required Section (Displayed below Account Status) -->
+            <section class="bg-surface-container rounded-xl p-md border border-amber-500/20 shadow-sm bg-gradient-to-b from-amber-500/[0.02] to-transparent">
+                <div class="flex items-center justify-between mb-md pb-xs border-b border-outline-variant/30">
+                    <h3 class="font-label-lg text-label-lg text-amber-400 uppercase tracking-widest flex items-center gap-xs font-semibold">
+                        <span class="material-symbols-outlined text-[18px] animate-pulse">notification_important</span>
+                        Action Required
+                    </h3>
+                    <span class="font-label-sm text-xs px-2.5 py-0.5 bg-amber-400/10 text-amber-400 rounded-full border border-amber-400/20 font-medium tracking-wide">Pending</span>
+                </div>
+                <div class="divide-y divide-outline-variant/30">
+                    <!-- Task 1: Complete Trade License Upload -->
+                    <div class="py-sm flex flex-col gap-1.5 group hover:bg-surface-container-high/40 transition-all duration-200 rounded-lg px-2">
+                        <div class="flex items-start gap-md">
+                            <div class="w-9 h-9 rounded-lg bg-surface-container-high border border-outline-variant/50 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                                <span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors text-[20px]">verified_user</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-body-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate text-sm">Upload Trade License</p>
+                                <p class="font-label-sm text-on-surface-variant text-xs mt-0.5 line-clamp-2 leading-relaxed">Mandatory compliance step to unlock lot bidding</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-start pl-[48px]">
+                            <button class="px-3 py-1 border border-outline-variant hover:border-primary/50 text-on-surface-variant hover:text-primary rounded font-label-sm text-xs hover:bg-primary/5 active:scale-95 transition-all whitespace-nowrap">Upload File</button>
+                        </div>
+                    </div>
+
+                    <!-- Task 2: Verify Mobile & Link WhatsApp -->
+                    <div class="py-sm flex flex-col gap-1.5 group hover:bg-surface-container-high/40 transition-all duration-200 rounded-lg px-2">
+                        <div class="flex items-start gap-md">
+                            <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                                <span class="material-symbols-outlined text-amber-400 text-[20px]">phone_iphone</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-body-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate text-sm">Verify Mobile &amp; Link WhatsApp</p>
+                                <p class="font-label-sm text-on-surface-variant text-xs mt-0.5 line-clamp-2 leading-relaxed">Secure your marketplace account, authorize spot trades, and activate real-time logistics receipts</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 pl-[48px]">
+                            <button onclick="window.location.href='../../farmer_onboarding/verify_mobile_step_1/code.html'" class="px-3 py-1 bg-primary text-on-primary rounded font-label-sm text-xs font-semibold hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all shadow-sm whitespace-nowrap cursor-pointer pointer-events-auto">Verify Mobile</button>
+                            <button onclick="window.location.href='../link_whatsapp/code.html'" class="px-3 py-1 border border-outline-variant hover:border-primary/50 text-on-surface-variant hover:text-primary rounded font-label-sm text-xs hover:bg-primary/5 active:scale-95 transition-all whitespace-nowrap cursor-pointer pointer-events-auto">Verify WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 1: Contact & Location -->
+            <section class="bg-surface-container rounded-xl p-md border border-outline-variant shadow-sm">
+                <h3 class="font-label-lg text-label-lg text-on-surface-variant mb-md tracking-wider uppercase">Contact &amp; Location</h3>
+                <div class="space-y-md">
+                    <!-- Row 1 -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-on-surface-variant">smartphone</span>
+                            <div>
+                                <p class="text-on-surface font-medium">+91 98765 43210</p>
+                                <span class="text-[10px] bg-primary/10 text-primary px-xs py-[1px] rounded uppercase font-bold">Verified</span>
+                            </div>
+                        </div>
+                        <button class="material-symbols-outlined text-outline">edit</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <!-- Row 2 -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-on-surface-variant">chat_bubble</span>
+                            <span class="text-outline italic">Not linked</span>
+                        </div>
+                        <button class="text-primary font-label-lg text-label-lg">+ Link</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <!-- Row 3 -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-md">
+                            <span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+                            <p class="text-on-surface flex-1 text-sm">123 Business Hub, MG Road, Patna</p>
+                        </div>
+                        <button class="material-symbols-outlined text-outline">edit</button>
+                    </div>
+                </div>
+                <button onclick="window.location.href='../delivery_addresses/code.html'" class="mt-md text-secondary font-label-sm text-label-sm hover:opacity-80 transition-opacity cursor-pointer">View all addresses</button>
+            </section>
+
+            <!-- Section 2: Business Information -->
+            <section class="bg-surface-container rounded-xl p-md border border-outline-variant shadow-sm">
+                <h3 class="font-label-lg text-label-lg text-on-surface-variant mb-md tracking-wider uppercase">Business Information</h3>
+                <div class="space-y-md">
+                    <div class="flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="text-label-sm text-outline-variant">Business Name</span>
+                            <p class="text-on-surface">Makhana Mart</p>
+                        </div>
+                        <button class="material-symbols-outlined text-outline">edit</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="text-label-sm text-outline-variant">GSTIN</span>
+                            <p class="text-on-surface font-mono">10AAACM1234A1Z1</p>
+                        </div>
+                        <button class="material-symbols-outlined text-outline">edit</button>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="text-label-sm text-outline-variant">PAN</span>
+                            <p class="text-on-surface font-mono">ABCDE1234F</p>
+                        </div>
+                        <button class="material-symbols-outlined text-outline">edit</button>
+                    </div>
+                </div>
+                <button class="mt-md text-primary-container font-label-sm text-label-sm flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-sm">description</span>
+                    Uploaded Documents
+                </button>
+            </section>
+
+            <!-- Section 3: Trust Metrics Section -->
+            <section class="bg-surface-container rounded-xl p-md border border-outline-variant shadow-sm">
+                <h3 class="font-label-lg text-label-lg text-on-surface-variant mb-md tracking-wider uppercase">Procurement Profile</h3>
+                <div class="space-y-md">
+                    <div class="flex items-center justify-between">
+                        <span class="text-on-surface">Trust Score</span>
+                        <p class="text-on-surface font-medium text-sm">⭐ 4.5 / 5.0 — Established Buyer</p>
+                    </div>
+                    <div class="h-[1px] bg-outline-variant/30"></div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-on-surface">Settlement Terms</span>
+                        <span class="text-primary text-xs font-semibold">Immediate / escrow enabled</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Menu Buttons -->
+            <div class="flex flex-col gap-xs pt-md">
+                <button class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">business_center</span>
+                        <span class="text-on-surface font-medium">Edit Business Details</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+                <button class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">home_work</span>
+                        <span class="text-on-surface font-medium">Manage Delivery Addresses</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+                <button class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">payments</span>
+                        <span class="text-on-surface font-medium">Payment Methods</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+                <button class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">settings</span>
+                        <span class="text-on-surface font-medium">Settings</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+                <button class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+                        <span class="text-on-surface font-medium">Notification Preferences</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+                <button class="flex items-center justify-between w-full p-md bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors group">
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined text-on-surface-variant">help_center</span>
+                        <span class="text-on-surface font-medium">Help &amp; Support</span>
+                    </div>
+                    <span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+                </button>
+                <button class="flex items-center justify-between w-full p-md bg-on-tertiary-fixed/10 border border-on-tertiary-fixed-variant/20 rounded-lg hover:bg-on-tertiary-fixed/20 transition-colors group mt-md">
+                    <div class="flex items-center gap-md text-error">
+                        <span class="material-symbols-outlined">logout</span>
+                        <span class="font-bold">Logout</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="../../../../app_logic.js"></script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#0e1511",
+                    "outline-variant": "#3c4a42",
+                    "surface-tint": "#4edea3",
+                    "surface-variant": "#2f3632",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-background": "#dde4dd",
+                    "on-error": "#690005",
+                    "on-secondary-fixed-variant": "#0d503e",
+                    "on-tertiary": "#512120",
+                    "outline": "#86948a",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#6d3735",
+                    "secondary-container": "#115340",
+                    "inverse-on-surface": "#2b322d",
+                    "on-tertiary-fixed": "#370d0d",
+                    "surface-bright": "#393939",
+                    "on-primary-container": "#005f40",
+                    "surface": "#0e1511",
+                    "background": "#0e1511",
+                    "primary": "#6ffbbe",
+                    "secondary-fixed": "#b1f0d6",
+                    "on-surface-variant": "#bbcac0",
+                    "error-container": "#93000a",
+                    "secondary": "#95d3ba",
+                    "surface-container": "#1a211d",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#002114",
+                    "on-secondary-fixed": "#002117",
+                    "surface-lowest": "#0e0e0e",
+                    "on-primary": "#003824",
+                    "inverse-primary": "#006c4a",
+                    "primary-fixed": "#6ffbbe",
+                    "surface-container-high": "#242c27",
+                    "primary-container": "#4edea3",
+                    "on-tertiary-container": "#7b4240",
+                    "on-secondary-container": "#87c5ac",
+                    "on-secondary": "#003829",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "tertiary": "#ffb3af",
+                    "surface-container-lowest": "#09100c",
+                    "surface-container-low": "#161d19",
+                    "surface-container-highest": "#2f3632",
+                    "inverse-surface": "#dde4dd",
+                    "on-surface": "#dde4dd",
+                    "tertiary-container": "#ffb3af"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "base-unit": "4px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface-container-high border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 z-50 fixed top-0">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform duration-150 hover:bg-surface-container-highest p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="close">close</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">Edit Pond</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="active:scale-95 transition-transform duration-150 hover:bg-surface-container-highest p-2 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_sync">cloud_sync</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-20 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Form Details -->
+<section class="lg:col-span-7 flex flex-col gap-6">
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-lg">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-6">Pond Identity &amp; Capacity</h2>
+<div class="space-y-4">
+<!-- Read Only Field -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">Pond Code</label>
+<div class="flex items-center justify-between bg-surface-variant border border-outline-variant px-4 py-3 rounded-lg opacity-80">
+<span class="font-mono-data text-mono-data text-on-surface-variant">POND-1024</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="lock">lock</span>
+</div>
+</div>
+<!-- Pond Name -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">Pond Name</label>
+<input class="bg-surface-container border border-outline-variant text-on-surface px-4 py-3 rounded-lg focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="North Pond"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Area -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">Area (Acres)</label>
+<input class="bg-surface-container border border-outline-variant text-on-surface px-4 py-3 rounded-lg focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="2.5"/>
+</div>
+<!-- Annual Capacity -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">Annual Capacity (kg)</label>
+<input class="bg-surface-container border border-outline-variant text-on-surface px-4 py-3 rounded-lg focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="2500"/>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-lg">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-6">Location Details</h2>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<!-- District -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">District</label>
+<input class="bg-surface-container border border-outline-variant text-on-surface px-4 py-3 rounded-lg focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="Malda"/>
+</div>
+<!-- Panchayat -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">Panchayat / Village</label>
+<input class="bg-surface-container border border-outline-variant text-on-surface px-4 py-3 rounded-lg focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="Bamnganj"/>
+</div>
+</div>
+<!-- Full Address -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">Full Address</label>
+<textarea class="bg-surface-container border border-outline-variant text-on-surface px-4 py-3 rounded-lg focus:ring-1 focus:ring-primary focus:outline-none resize-none" rows="3">Near Bamnganj Rural Market, Block B, Malda District, West Bengal</textarea>
+</div>
+<!-- Landmark -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-outline uppercase tracking-wider">Landmark</label>
+<input class="bg-surface-container border border-outline-variant text-on-surface px-4 py-3 rounded-lg focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="Old school landmark"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Map & GPS -->
+<aside class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden h-full flex flex-col">
+<div class="p-6">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-2">GPS Location</h2>
+<div class="flex items-center gap-2 text-tertiary bg-tertiary-container/10 p-3 rounded-lg border border-tertiary/20 mb-4">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+<p class="text-label-md font-label-md">Changing the GPS location will be flagged for Admin review.</p>
+</div>
+</div>
+<div class="relative flex-grow min-h-[300px] bg-surface-variant">
+<!-- Simulated Map Interface -->
+<img class="w-full h-full object-cover opacity-60" data-alt="A high-resolution satellite view of rural agricultural land in India, showing several rectangular fish ponds surrounded by vibrant green fields and dirt paths. The lighting is bright afternoon sun with sharp technical clarity. Overlaid on the map is a tactical interface aesthetic with a central interactive location pin. The atmosphere is professional and data-oriented for industrial farming management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNCnWt4oIexMMsrdh66SBC7qBDvNvEHfrAXhD45cZRdv08YLlQuvyn9bsjAiOCEITFltmJiG4kQrQkM34vFLsXsbS4lR9S4qM7kqZNmWp-jqaH1CZdBgW2sWXYhR8t90n9vVS5ptGtudhhToUhTZhHWyCa3UbLDHmiVa7IcXAx76fQ92NeAj-ELRoWc0CPTS64Kj_sovuL6t3MlI7v8n7RMo23UwYAgm_FcmNmKcHVfayyoFVpSr094NZ8rSnaJOEjBp4WViimzTxl"/>
+<!-- Map Overlay Controls -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-24 h-24 bg-primary/10 rounded-full border border-primary/30 animate-pulse"></div>
+<span class="material-symbols-outlined text-primary text-4xl drop-shadow-lg pointer-events-auto cursor-grab active:cursor-grabbing" data-icon="location_on" data-weight="fill" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<!-- Coordinates Overlay -->
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div class="bg-surface-dim/90 backdrop-blur-md border border-outline-variant p-3 rounded shadow-xl">
+<div class="flex flex-col gap-1">
+<span class="text-label-md font-label-md text-outline uppercase">Current Coordinates</span>
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-primary/70 font-mono-data uppercase">LAT</span>
+<span class="font-mono-data text-mono-data text-primary">25.0112° N</span>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-primary/70 font-mono-data uppercase">LONG</span>
+<span class="font-mono-data text-mono-data text-primary">88.1389° E</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<button class="bg-surface-container-highest border border-outline-variant p-2 rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="my_location">my_location</span>
+</button>
+<button class="bg-surface-container-highest border border-outline-variant p-2 rounded-lg text-on-surface hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Fixed Footer Actions -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-low border-t border-outline-variant px-margin-mobile py-4 md:px-margin-desktop">
+<div class="max-w-container-max mx-auto flex gap-4 justify-end">
+<button class="px-8 py-3 rounded-full border border-outline text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors active:scale-95 duration-150">
+                Cancel
+            </button>
+<button class="px-10 py-3 rounded-full bg-primary text-on-primary font-label-md text-label-md font-bold shadow-lg shadow-primary/20 hover:bg-surface-tint transition-colors active:scale-95 duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="save">save</span>
+                Save
+            </button>
+</div>
+</footer>
+<!-- BottomNavBar (Hidden on Mobile as this is a transactional sub-page) -->
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

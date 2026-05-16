@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+        .tonal-layer-1 {
+            background-color: #1E1E1E;
+            border: 1px solid #2D2D2D;
+        }
+        .tonal-layer-2 {
+            background-color: #252525;
+        }
+        .glass-effect {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8) 0%, rgba(18,18,18,0.6) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(60, 74, 66, 0.3);
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#fc7c78",
+                    "tertiary": "#ffb3af",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container-highest": "#353534",
+                    "surface-container-high": "#2a2a2a",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "secondary": "#d0bcff",
+                    "secondary-container": "#571bc1",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-secondary": "#3c0091",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-container": "#711419",
+                    "secondary-fixed": "#e9ddff",
+                    "primary-container": "#10b981",
+                    "on-surface-variant": "#bbcabf",
+                    "background": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "surface-tint": "#4edea3",
+                    "primary": "#4edea3",
+                    "outline-variant": "#3c4a42",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "outline": "#86948a",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-bright": "#393939",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-fixed": "#23005c",
+                    "on-primary-fixed": "#002113",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-container": "#00422b",
+                    "primary-fixed": "#6ffbbe",
+                    "inverse-primary": "#006c49",
+                    "on-tertiary": "#650911",
+                    "inverse-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "error-container": "#93000a",
+                    "surface-container": "#201f1f",
+                    "surface-variant": "#353534",
+                    "surface-dim": "#131313",
+                    "on-primary": "#003824",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-secondary-container": "#c4abff",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "primary-fixed-dim": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "xl": "32px",
+                    "margin": "20px",
+                    "base": "4px",
+                    "md": "16px",
+                    "sm": "12px",
+                    "lg": "24px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-sm": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-on-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high transition-colors rounded-full text-primary active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-on-surface truncate whitespace-nowrap">Quality Inspection</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="text-label-lg font-label-lg text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">1 of 4</div>
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high transition-colors rounded-full text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin max-w-2xl mx-auto space-y-lg">
+<!-- Trigger Strip -->
+<div class="bg-primary-container/10 border border-primary/20 p-md rounded-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="priority_high">priority_high</span>
+<p class="text-label-lg font-label-lg text-primary">Triggered: routine half-life check</p>
+</div>
+<!-- Lot Identity Card -->
+<section class="tonal-layer-1 p-lg rounded-xl space-y-md">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-label-sm font-label-sm text-outline uppercase tracking-widest truncate whitespace-nowrap">Sealed Lot ID</h2>
+<p class="text-headline-md font-headline-md text-primary mt-base">Lot #MK-2042</p>
+</div>
+<div class="flex gap-xs">
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="near_me">near_me</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md pt-md border-t border-outline-variant/30">
+<div>
+<h3 class="text-label-sm font-label-sm text-outline">Popper Entity</h3>
+<p class="text-body-md font-body-md font-semibold text-on-surface">Kumar Makhana Pvt Ltd</p>
+</div>
+<div>
+<h3 class="text-label-sm font-label-sm text-outline">Warehouse ID</h3>
+<p class="text-body-md font-body-md font-semibold text-on-surface">WH-204</p>
+</div>
+</div>
+</section>
+<!-- Location Visual Anchor -->
+<div class="relative h-48 rounded-xl overflow-hidden tonal-layer-1 border border-outline-variant">
+<img alt="Warehouse Environment" class="w-full h-full object-cover opacity-60" data-alt="A cinematic, low-angle view of a vast, modern agricultural warehouse with high industrial ceilings and rows of stacked pallets. The lighting is moody and cool-toned, with dramatic emerald green accent lights highlighting the metallic structures. Dust particles dance in soft shafts of artificial light, creating a professional, hi-tech atmosphere in a dark-mode palette. The setting is clean, organized, and technologically sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxGf1QtDQkfGwI49S5U0OrHQrHvWU2t4qNlKQCKgKbdF8Ed1DckVvM8-Pb5sU2sK7LIb_Y_p9hA1TKGfSsRzqwDx0O83yy981Qw3-g1vV6YxirqNsONLgk2YJ2Hh4NzANOOFHUniRdz3z0dIEc25Hmw_VgiwbhlRBZzRhpZmE0BMZAbz4VIA92TSd2_XhH6W64CCFJJR39TPmoE-9OyOXJ-ZZ5AnN-thNG26vHgSXpvJ1MryuVHCUEdp8muJiDwpNIO05YmoKqyk-y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-md left-md flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-primary" data-icon="location_on">location_on</span>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface">Verified Location</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Precision GPS Lock: 0.8m</p>
+</div>
+</div>
+</div>
+<!-- Seal Summary Card -->
+<section class="tonal-layer-1 p-lg rounded-xl">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h2 class="text-body-lg font-headline-md text-on-surface truncate whitespace-nowrap">SEAL-2026-0118</h2>
+<p class="text-label-sm font-label-sm text-outline">Digital Seal Authenticated</p>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/20">
+<span class="text-on-surface-variant">Quality Grade</span>
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-lg">Grade A</span>
+</div>
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/20">
+<span class="text-on-surface-variant">Net Weight</span>
+<span class="text-on-surface font-semibold">500 kg</span>
+</div>
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/20">
+<span class="text-on-surface-variant">Sealing Date</span>
+<span class="text-on-surface font-semibold">13 May 2024</span>
+</div>
+<div class="flex justify-between items-center py-sm">
+<span class="text-on-surface-variant">Shelf-life Countdown</span>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-primary font-bold">&gt;14 days left</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Informational Footer -->
+<p class="text-center text-label-sm text-outline px-lg">
+            By beginning the re-check, you acknowledge that the digital seal is intact and matches the physical identifier.
+        </p>
+</main>
+<!-- Fixed Bottom Action Bar (Non-Nav Shell for Transactional Focus) -->
+<div class="fixed bottom-0 left-0 w-full p-margin bg-background/80 backdrop-blur-md border-t border-outline-variant flex gap-md">
+<button onclick="window.location.href='../seal_net_integrity/code.html'" class="flex-[2] h-14 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-md active:scale-95 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="text-label-lg uppercase tracking-wide">Begin Re-check</span>
+</button>
+</div>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary-container": "#0b513d",
+                  "on-surface": "#e5e2e1",
+                  "on-background": "#e5e2e1",
+                  "on-tertiary-fixed-variant": "#842225",
+                  "surface-bright": "#393939",
+                  "inverse-primary": "#006c49",
+                  "error": "#ffb4ab",
+                  "secondary-fixed-dim": "#95d3ba",
+                  "surface-container-high": "#2a2a2a",
+                  "on-primary": "#003824",
+                  "tertiary-fixed": "#ffdad7",
+                  "surface-variant": "#353534",
+                  "primary-fixed-dim": "#4edea3",
+                  "surface-container-highest": "#353534",
+                  "on-primary-fixed": "#002113",
+                  "surface-container-lowest": "#0e0e0e",
+                  "on-error-container": "#ffdad6",
+                  "on-tertiary": "#650911",
+                  "on-tertiary-fixed": "#410005",
+                  "tertiary": "#ffb3af",
+                  "secondary": "#95d3ba",
+                  "on-secondary-container": "#83c2a9",
+                  "error-container": "#93000a",
+                  "surface-container": "#201f1f",
+                  "surface-container-low": "#1c1b1b",
+                  "primary-fixed": "#6ffbbe",
+                  "outline-variant": "#3c4a42",
+                  "on-error": "#690005",
+                  "on-secondary": "#003829",
+                  "background": "#131313",
+                  "tertiary-container": "#fc7c78",
+                  "on-primary-fixed-variant": "#005236",
+                  "on-tertiary-container": "#711419",
+                  "on-primary-container": "#00422b",
+                  "outline": "#86948a",
+                  "on-secondary-fixed": "#002117",
+                  "inverse-surface": "#e5e2e1",
+                  "primary-container": "#10b981",
+                  "tertiary-fixed-dim": "#ffb3af",
+                  "on-surface-variant": "#bbcabf",
+                  "on-secondary-fixed-variant": "#0b513d",
+                  "primary": "#4edea3",
+                  "surface": "#131313",
+                  "secondary-fixed": "#b0f0d6",
+                  "inverse-on-surface": "#313030",
+                  "surface-dim": "#131313",
+                  "surface-tint": "#4edea3"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "margin-desktop": "32px",
+                  "gutter": "16px",
+                  "container-max": "1440px",
+                  "unit": "4px",
+                  "margin-mobile": "16px"
+          },
+          "fontFamily": {
+                  "body-lg": ["Hanken Grotesk"],
+                  "body-md": ["Hanken Grotesk"],
+                  "headline-md": ["Hanken Grotesk"],
+                  "headline-sm": ["Hanken Grotesk"],
+                  "display-lg": ["Hanken Grotesk"],
+                  "label-md": ["Hanken Grotesk"],
+                  "mono-data": ["JetBrains Mono"]
+          },
+          "fontSize": {
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #1c1b1b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #3c4a42;
+      border-radius: 2px;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased mb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface z-50 border-b border-outline-variant transition-colors duration-200 flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../warehouse_detail/code.html'" class="text-primary hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Seal ID</span>
+<h1 class="font-mono-data text-mono-data text-primary truncate whitespace-nowrap">SL-BR77-X920</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-primary hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="text-primary hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</header>
+<main class="mt-20 px-margin-mobile max-w-2xl mx-auto space-y-4">
+<!-- Status Banner -->
+<div class="bg-secondary-container/20 border border-secondary-container py-3 px-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary rounded-full shadow-[0_0_8px_rgba(78,222,163,0.6)]"></span>
+<span class="font-headline-sm text-headline-sm text-primary">Active</span>
+</div>
+<span class="font-label-md text-label-md text-on-secondary-container">— expires in 12 days</span>
+</div>
+<!-- Card 1: Lot Information -->
+<section class="bg-surface-container-low border border-outline-variant p-4 rounded-lg relative overflow-hidden">
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">LOT IDENTITY</span>
+<h2 class="font-headline-sm text-headline-sm truncate whitespace-nowrap">Premium Durum Batch 04</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Code</p>
+<p class="font-mono-data text-mono-data">DUR-2023-X9</p>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Popper</p>
+<p class="font-body-md text-body-md">Alpha Unit 02</p>
+</div>
+<div class="col-span-2">
+<p class="font-label-md text-label-md text-on-surface-variant">Warehouse</p>
+<p class="font-body-md text-body-md">Bogra Terminal Hub • Zone C</p>
+</div>
+</div>
+</section>
+<!-- Card 2: Application Details -->
+<section class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-sm">history_edu</span>
+<h3 class="font-headline-sm text-headline-sm">Application Metadata</h3>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between border-b border-outline-variant/30 pb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Applied On</span>
+<span class="font-mono-data text-mono-data">2023-11-20 14:32:01</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/30 pb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Coordinates</span>
+<span class="font-mono-data text-mono-data text-primary">24.71°N, 88.04°E</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/30 pb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Scout ID</span>
+<span class="font-body-md text-body-md">S-9942 (Marcus V.)</span>
+</div>
+<div class="flex justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Shelf Life</span>
+<span class="font-body-md text-body-md">30 Days (Standard)</span>
+</div>
+</div>
+</section>
+<!-- Evidence Thumbnails -->
+<section>
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Mandatory Evidence</h3>
+<span class="font-label-md text-label-md text-primary">3 PHOTOS</span>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 custom-scrollbar">
+<div class="flex-none w-40 aspect-square bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Seal Close-up" class="w-full h-full object-cover" data-alt="A detailed, macro close-up of a high-security plastic tamper-evident seal on a commercial grain bag. The lighting is clinical and sharp, highlighting the micro-printed serial numbers and the deep green color of the plastic. The background is a blurred texture of rough burlap sack fabric. This image follows a high-precision, technical agri-tech noir aesthetic with deep shadows and emerald accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH6XBVYx0n9WScZ52Zp1lxuLNueHfIvq6jb3xNrwNG5jH5VTgnbQqBRDK3Q5BidjT2jeIioVIDhhDmaBiOYJH4mNEZpGLtasTRnPL6VTWWJKTtjogHS9-OH0gP-opBU9v09ZdkCDCOCOG5LMr7HJCb3_U8ojHmeTJwCTBRD8cYcUB1LcwTRjQHuQmefXFc4q-HIy6r6G-R6nFaPTmdSV4VDe2ei78dnAexzdPzRVruAsFvcOmkuVyIgVHilggs6E4xRX31vgFqqWtw"/>
+<div class="p-2 bg-surface-container-highest/80 backdrop-blur-sm -mt-8 relative">
+<p class="font-label-md text-label-md text-on-surface text-[10px]">Close-up</p>
+</div>
+</div>
+<div class="flex-none w-40 aspect-square bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Bags and Net" class="w-full h-full object-cover" data-alt="A mid-range shot showing a stack of woven agricultural bags secured under a heavy-duty industrial safety net in a dark warehouse. The scene is illuminated by a single overhead high-intensity light, creating dramatic highlights and deep obsidian shadows. The precision of the stack reflects operational excellence in a modern supply chain setting. The color palette is strictly obsidian and dark grey with slight metallic glints." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD80HqKgozj1KfWYkzwMJE9KE43PT4HI-o20cFmFTksnI_p1Q2VshSfcpNKmMAtu8kbEnhuprBmqflRJyEUWRKcur0-pji9WtdRGI6maCaCxBUzEEh9OSVHu5yqh5bvY4LB3H70zfOqmTr8HdLNzH8ys9BUCoz267Zw0I8HlCRhnVgY5_fpJuYo0wixrsqugd9fR22Nth6XW07-gX-h78DXb5vaMn_ZJgTU9V8wT-otO3f_r4MKLKuzyotExzh7N3dncASCvdqEnhLL"/>
+<div class="p-2 bg-surface-container-highest/80 backdrop-blur-sm -mt-8 relative">
+<p class="font-label-md text-label-md text-on-surface text-[10px]">Bags + Net</p>
+</div>
+</div>
+<div class="flex-none w-40 aspect-square bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<img alt="Warehouse Wide" class="w-full h-full object-cover" data-alt="An expansive, wide-angle interior view of a high-tech agricultural warehouse at night. Long aisles of stacked pallets disappear into a vanishing point under cool, emerald-tinted industrial LED lights. The floor is a polished dark concrete, reflecting the geometric patterns of the structure. The mood is clinical, silent, and authoritative, perfectly representing high-precision logistical infrastructure in a dark noir style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARv1ITSAbhXUBlqgb7Otw8p_qRGFRrCBcqQPMCoXCJKjBNbYM7S384FOmpndfwvNdMa6D1BCQDrZ0vYXn40QXpY0ANELxtO76IWUhqCpf9JvefpnmekTLe1K9qteZGqUEW8OPjEU7HZM1-LwSrSktt6T6FaaxGPChOtoVYamiLk-5Rkz600bEeMRjBSXaL6y16xBIJkIMRlhFV-_SkdZCEMk7jCx2-4Y9nasmXcdjccq5FMwSMtVtDJkYH6yhBuc6sNu08TrmWTlR-"/>
+<div class="p-2 bg-surface-container-highest/80 backdrop-blur-sm -mt-8 relative">
+<p class="font-label-md text-label-md text-on-surface text-[10px]">Warehouse wide</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Storage Check Recap -->
+<section class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-sm text-headline-sm">Storage Standards</h3>
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded font-label-md text-label-md">3/3 PASSED ✓</span>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-body-lg">check_circle</span>
+<span class="font-body-md text-body-md">Off-floor placement</span>
+</div>
+<span class="font-mono-data text-mono-data text-[10px]">VERIFIED</span>
+</li>
+<li class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-body-lg">check_circle</span>
+<span class="font-body-md text-body-md">Moisture barrier intact</span>
+</div>
+<span class="font-mono-data text-mono-data text-[10px]">VERIFIED</span>
+</li>
+<li class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-body-lg">check_circle</span>
+<span class="font-body-md text-body-md">Segregated storage</span>
+</div>
+<span class="font-mono-data text-mono-data text-[10px]">VERIFIED</span>
+</li>
+</ul>
+</section>
+<!-- Footer Action -->
+<footer class="py-6 flex justify-center">
+<button class="flex items-center gap-2 text-primary hover:underline transition-all">
+<span class="font-body-lg text-body-lg">View re-checks</span>
+<span class="material-symbols-outlined text-body-lg">open_in_new</span>
+</button>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-surface-container-lowest flex justify-around items-center px-4 pb-2 border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md">Warehouses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">sync</span>
+<span class="font-label-md text-label-md">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+
+    
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

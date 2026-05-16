@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#dde4dd",
+            "surface-variant": "#2f3632",
+            "on-secondary-container": "#87c5ac",
+            "primary-container": "#4edea3",
+            "on-tertiary-fixed": "#370d0d",
+            "outline": "#86948a",
+            "surface-container-high": "#242c27",
+            "on-primary-fixed": "#002114",
+            "tertiary": "#ffb3af",
+            "inverse-primary": "#006c4a",
+            "on-tertiary": "#512120",
+            "surface-container": "#1a211d",
+            "on-background": "#dde4dd",
+            "surface-container-low": "#161d19",
+            "tertiary-fixed": "#ffdad7",
+            "on-secondary": "#003829",
+            "on-surface-variant": "#bbcabf",
+            "tertiary-fixed-dim": "#ffb3af",
+            "on-primary": "#003824",
+            "tertiary-container": "#ffb3af",
+            "surface-lowest": "#0e0e0e",
+            "inverse-surface": "#dde4dd",
+            "secondary": "#95d3ba",
+            "background": "#0e1511",
+            "surface-bright": "#393939",
+            "primary": "#6ffbbe",
+            "on-error-container": "#ffdad6",
+            "surface-container-highest": "#2f3632",
+            "error": "#ffb4ab",
+            "surface-tint": "#4edea3",
+            "on-tertiary-container": "#7b4240",
+            "secondary-fixed-dim": "#95d3ba",
+            "outline-variant": "#3c4a42",
+            "primary-fixed": "#6ffbbe",
+            "surface": "#0e1511",
+            "secondary-fixed": "#b1f0d6",
+            "inverse-on-surface": "#2b322d",
+            "primary-fixed-dim": "#4edea3",
+            "on-secondary-fixed-variant": "#0d503e",
+            "on-primary-fixed-variant": "#005236",
+            "error-container": "#93000a",
+            "secondary-container": "#115340",
+            "on-tertiary-fixed-variant": "#6d3735",
+            "surface-dim": "#0e1511",
+            "on-primary-container": "#005f40",
+            "surface-container-lowest": "#09100c",
+            "on-secondary-fixed": "#002117",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "unit": "4px",
+            "gutter": "16px",
+            "margin-mobile": "16px",
+            "base-unit": "4px",
+            "container-max": "1440px"
+          },
+          "fontFamily": {
+            "body-lg": ["Hanken Grotesk"],
+            "mono-data": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "headline-sm": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant shadow-sm shadow-black/20">
+    <div class="flex items-center gap-4">
+        <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+            <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
+        </button>
+        <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Enter OTP</h1>
+    </div>
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+    </div>
+</header>
+
+<!-- Stepper Panel -->
+<div class="w-full bg-surface-container border-b border-outline-variant mt-16 px-margin-mobile py-3">
+    <div class="max-w-2xl mx-auto">
+        <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 82.4%;"></div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 14 of 17</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="flex-grow pt-8 px-margin-mobile max-w-lg mx-auto w-full">
+<!-- Hero/Instruction Card -->
+<div class="mb-8 p-6 bg-surface-container-low border border-outline-variant rounded-xl relative overflow-hidden shadow-2xl">
+<div class="relative z-10">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-2">Code Verification</h2>
+<p class="text-body-md text-on-surface-variant opacity-80 leading-relaxed">Enter the 6-digit authorization code sent to your mobile device to complete the secure handshake.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">lock_open</span>
+</div>
+</div>
+
+<!-- OTP Input Section -->
+<div class="space-y-8">
+<div class="grid grid-cols-6 gap-3">
+<input autofocus="" class="w-full h-16 bg-surface-container-high border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all focus:ring-1 focus:ring-primary outline-none shadow-inner" maxlength="1" type="text" value="4"/>
+<input class="w-full h-16 bg-surface-container-high border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all focus:ring-1 focus:ring-primary outline-none shadow-inner" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-surface-container-high border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all focus:ring-1 focus:ring-primary outline-none shadow-inner" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-surface-container-high border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all focus:ring-1 focus:ring-primary outline-none shadow-inner" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-surface-container-high border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all focus:ring-1 focus:ring-primary outline-none shadow-inner" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-surface-container-high border border-outline-variant rounded-xl text-center font-headline-md text-primary focus:border-primary transition-all focus:ring-1 focus:ring-primary outline-none shadow-inner" maxlength="1" placeholder="·" type="text"/>
+</div>
+
+<!-- Resend Logic -->
+<div class="flex justify-center">
+<button class="flex items-center gap-3 text-label-md font-bold text-outline cursor-not-allowed group transition-all" disabled="" id="resend-btn">
+<span class="material-symbols-outlined text-sm group-hover:animate-spin">refresh</span>
+<span id="resend-text">Resend Code in 30s</span>
+</button>
+</div>
+</div>
+
+<!-- Technical Metadata -->
+<div class="mt-12 p-4 bg-secondary-container/10 border-l-4 border-secondary-container rounded-r-xl flex gap-4 shadow-sm shadow-black/20">
+<span class="material-symbols-outlined text-secondary text-sm mt-0.5">security</span>
+<p class="text-[10px] font-mono-data text-on-secondary-container opacity-80 leading-relaxed italic uppercase tracking-tighter">
+        Verification session valid for 5 minutes. Token: FEN_VER_9982_AX. Handshake encryption: SHA-256.
+      </p>
+</div>
+    <!-- CTA Area -->
+    <div class="mt-12 pb-12 flex gap-4">
+        <button onclick="window.location.href='../popper_theme_preference/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+            Verify &amp; Continue
+            <span class="material-symbols-outlined">verified</span>
+        </button>
+        <button onclick="window.location.href='../../scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+            Save Draft
+        </button>
+    </div>
+</main>
+
+<!-- Background Texture -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+</div>
+
+<script>
+    (function() {
+        const btn = document.getElementById('resend-btn');
+        const txt = document.getElementById('resend-text');
+        let timeLeft = 30;
+        
+        const timer = setInterval(() => {
+            timeLeft--;
+            if (timeLeft > 0) {
+                txt.textContent = `Resend Code in ${timeLeft}s`;
+            } else {
+                clearInterval(timer);
+                btn.disabled = false;
+                btn.classList.remove('text-outline', 'cursor-not-allowed');
+                btn.classList.add('text-primary', 'cursor-pointer');
+                txt.textContent = "Resend Code Now";
+            }
+        }, 1000);
+    })();
+</script>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>

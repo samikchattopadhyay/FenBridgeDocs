@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#dde4dd",
+                        "on-tertiary-fixed": "#370d0d",
+                        "surface-variant": "#2f3632",
+                        "primary-container": "#4edea3",
+                        "on-tertiary-container": "#7b4240",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-tertiary": "#512120",
+                        "surface-dim": "#0e1511",
+                        "on-primary-container": "#005f40",
+                        "on-primary": "#003824",
+                        "inverse-primary": "#006c4a",
+                        "outline": "#86948a",
+                        "background": "#0e1511",
+                        "surface": "#0e1511",
+                        "on-tertiary-fixed-variant": "#6d3735",
+                        "on-secondary": "#003829",
+                        "on-secondary-fixed-variant": "#0d503e",
+                        "surface-bright": "#393939",
+                        "on-secondary-fixed": "#002117",
+                        "on-secondary-container": "#87c5ac",
+                        "on-primary-fixed": "#002114",
+                        "secondary-fixed": "#b1f0d6",
+                        "on-error-container": "#ffdad6",
+                        "surface-lowest": "#0e0e0e",
+                        "surface-container-high": "#242c27",
+                        "primary": "#6ffbbe",
+                        "surface-container-low": "#161d19",
+                        "tertiary-container": "#ffb3af",
+                        "outline-variant": "#3c4a42",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "surface-tint": "#4edea3",
+                        "surface-container": "#1a211d",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary": "#95d3ba",
+                        "on-surface": "#dde4dd",
+                        "primary-fixed": "#6ffbbe",
+                        "on-background": "#dde4dd",
+                        "secondary-container": "#115340",
+                        "on-surface-variant": "#bbcabf",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#2b322d",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#005236",
+                        "tertiary": "#ffb3af",
+                        "surface-container-lowest": "#09100c",
+                        "surface-container-highest": "#2f3632"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "base-unit": "4px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-75 p-2 rounded-lg">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tighter text-primary">Edit Identity</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">fingerprint</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 mb-24 px-margin-mobile pt-8 max-w-2xl mx-auto w-full">
+<div class="mb-8 border-l-2 border-primary pl-4 py-1">
+<p class="font-label-md text-label-md uppercase tracking-widest text-primary mb-1">System Profile</p>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Verification Details</h2>
+</div>
+<form class="space-y-6">
+<!-- Contact Person Name -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block" for="contact_name">Contact Person Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-lg text-body-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="contact_name" type="text" value="Rajesh Kumar Gupta"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">person</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Date of Birth -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block" for="dob">Date of Birth</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="dob" type="text" value="15/05/1985"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">calendar_today</span>
+</div>
+</div>
+<!-- Primary Mobile -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block" for="mobile">Mobile Number</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="mobile" type="tel" value="+91 98765 43210"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">phone_iphone</span>
+</div>
+</div>
+</div>
+<!-- OTP Helper Text -->
+<div class="flex items-start gap-3 p-3 bg-surface-container-low border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">info</span>
+<p class="font-label-md text-label-md text-on-surface-variant leading-relaxed">Changes to mobile number require a mandatory OTP verification for security protocols.</p>
+</div>
+<!-- Alternate Phone -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block" for="alt_phone">Alternate Phone (Optional)</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-mono-data text-mono-data px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="alt_phone" placeholder="Enter alternate contact" type="tel"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">call</span>
+</div>
+</div>
+<!-- Business Name -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block" for="business_name">Business Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface font-body-lg text-body-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="business_name" type="text" value="ABC Makhana Processing Pvt. Ltd."/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">factory</span>
+</div>
+</div>
+<!-- Admin Review Helper Text -->
+<div class="flex items-start gap-3 p-3 bg-surface-container-high border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-sm mt-0.5">security</span>
+<p class="font-label-md text-label-md text-on-surface-variant leading-relaxed">Updates to the Business Name will undergo a manual review by Popper Administration before being finalized in the core ledger.</p>
+</div>
+</form>
+<!-- Decorative Tech Graphic -->
+<div class="mt-12 opacity-20 pointer-events-none select-none overflow-hidden h-32 relative border border-outline-variant rounded-xl">
+<img alt="Industrial data grid background" class="w-full h-full object-cover grayscale" data-alt="A dark, industrial close-up of high-precision agricultural processing machinery with glowing green sensor lights. The atmosphere is nocturnal and cinematic, dominated by deep shadows and metallic textures. Technical data overlays and faint grid lines give a sense of advanced monitoring and nocturnal efficiency. The lighting is low-key, emphasizing a modern tech-noir aesthetic with sharp highlights on steel surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjy-9tR3FnRYHumicg-hBhK2Ki94F8q6Y8NOfnCkQ8UnRGXv5HJ5_lC0CRRCMv1ZGbm8CGsSZmMMw5ON616bZrdu0LICIEJ6bM00PsyrlFwU8lSKU8y_NBFXdq3bKKuk25POfILrWhgeD8Y0mrBjH5YTYO2VDesaNUtRMV3gfkIPB4qSdWmoyQans--1MDA2Pnylg7faGpZAWdQRy3Q_4w6MFjPeP4dWa4Gg89F-yvYOUlPyvzw_qvkTlOUdUOC9LOZXP1KVakdhQv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+</main>
+<!-- Bottom Action Bar (Fixed) -->
+<footer class="fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant z-50">
+<div class="flex justify-between items-center w-full py-4 px-margin-mobile h-24 gap-4 max-w-2xl mx-auto">
+<button class="flex-1 h-12 flex items-center justify-center border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-widest hover:bg-surface-container-high transition-colors active:scale-95 duration-75 rounded-lg">
+                Cancel
+            </button>
+<button class="flex-1 h-12 flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest hover:brightness-110 transition-colors active:scale-95 duration-75 rounded-lg">
+                Save Changes
+            </button>
+</div>
+</footer>
+<!-- BottomNavBar (Hidden but mapped from Shared Components JSON for context) -->
+<nav class="hidden">
+<!-- IDENTITY active based on context -->
+<div class="flex flex-col items-center justify-center text-primary bg-secondary-container rounded-lg px-2 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">IDENTITY</span>
+</div>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

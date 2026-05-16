@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#3c0091",
+                    "surface-dim": "#131313",
+                    "secondary-fixed": "#e9ddff",
+                    "inverse-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-container-high": "#2a2a2a",
+                    "on-error-container": "#ffdad6",
+                    "outline-variant": "#3c4a42",
+                    "primary-fixed-dim": "#4edea3",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "primary-fixed": "#6ffbbe",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#353534",
+                    "secondary-container": "#571bc1",
+                    "surface-container-highest": "#353534",
+                    "outline": "#86948a",
+                    "on-secondary-fixed": "#23005c",
+                    "on-tertiary-container": "#711419",
+                    "surface-bright": "#393939",
+                    "surface-container": "#201f1f",
+                    "on-primary-fixed": "#002113",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "primary-container": "#10b981",
+                    "on-tertiary": "#650911",
+                    "primary": "#4edea3",
+                    "on-primary": "#003824",
+                    "secondary": "#d0bcff",
+                    "on-primary-container": "#00422b",
+                    "inverse-primary": "#006c49",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#313030",
+                    "background": "#131313",
+                    "tertiary-container": "#fc7c78",
+                    "on-secondary-container": "#c4abff",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface": "#131313",
+                    "tertiary": "#ffb3af",
+                    "on-background": "#e5e2e1",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-surface": "#e5e2e1",
+                    "surface-tint": "#4edea3",
+                    "on-surface-variant": "#bbcabf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "margin": "20px",
+                    "gutter": "12px",
+                    "xs": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(30, 30, 30, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid #2D2D2D;
+      }
+      .otp-glow:focus {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        outline: none;
+      }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md sticky top-0 z-50">
+<div class="flex items-center gap-sm">
+<button class="text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</span>
+</div>
+<button class="font-label-lg text-label-lg text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">Skip</button>
+</header>
+<main class="flex-grow flex flex-col px-margin pt-xl pb-margin">
+<!-- Visual Anchor: Abstract Agri-Tech Graphic -->
+<div class="mb-xl relative h-48 w-full rounded-xl overflow-hidden glass-card">
+<img alt="Secure Verification" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-alt="A high-tech digital representation of a secure agricultural transaction. Glowing green emerald circuit lines overlap a macro texture of dried makhana seeds and fertile soil. The lighting is low-key with a cinematic dark-mode aesthetic, emphasizing a sense of premium security and technological growth in a farming context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi35kO5yKdwTexOEK-HntK3vm3Kc33NhKRJRtSIXX1Mi783RHEFBcMDAkhlV8DYy2iIKdN06Th4-iPpof5ggV-DtmZJquC2_Do5Q1NljEt7VOB4iwGQhbkg8XovqA93yBCamlhYk0_RdDIz6gERG5VkOYGqfzyVOQlwel5w6T33J8_ILJEaZ7-OU4lQlkKkBFoSQKCniYHOW7m2zutRIhHyWSKQkfv3luTp6i5T0VEoxB-jWOMeIiuuT8Wtflf5ZXtVyth__s5YL7o"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<!-- Heading & Instructions -->
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs truncate whitespace-nowrap">Enter Code</h1>
+<p class="font-body-md text-on-surface-variant max-w-[280px]">Enter the 5-digit code sent to your phone.</p>
+</div>
+<!-- OTP Input Section -->
+<div class="grid grid-cols-5 gap-sm sm:gap-md mb-lg">
+<input class="w-full h-16 bg-[#181818] border border-outline-variant rounded-lg text-center font-headline-md text-primary otp-glow focus:border-primary transition-all duration-200" maxlength="1" type="text" value="4"/>
+<input class="w-full h-16 bg-[#181818] border border-outline-variant rounded-lg text-center font-headline-md text-primary otp-glow focus:border-primary transition-all duration-200" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-[#181818] border border-outline-variant rounded-lg text-center font-headline-md text-primary otp-glow focus:border-primary transition-all duration-200" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-[#181818] border border-outline-variant rounded-lg text-center font-headline-md text-primary otp-glow focus:border-primary transition-all duration-200" maxlength="1" placeholder="·" type="text"/>
+<input class="w-full h-16 bg-[#181818] border border-outline-variant rounded-lg text-center font-headline-md text-primary otp-glow focus:border-primary transition-all duration-200" maxlength="1" placeholder="·" type="text"/>
+</div>
+<!-- Resend Action -->
+<div class="flex justify-center mb-xl" id="resend-container">
+<button id="resend-btn" class="flex items-center gap-xs font-label-lg text-outline cursor-not-allowed transition-all select-none" disabled>
+<span class="material-symbols-outlined text-[18px] animate-spin hidden" id="resend-spinner" data-icon="refresh">refresh</span>
+<span id="resend-text">Resend Code in 30s</span>
+</button>
+<script>
+  (function() {
+    const btn = document.getElementById('resend-btn');
+    const txt = document.getElementById('resend-text');
+    const spinner = document.getElementById('resend-spinner');
+    if (!btn || !txt) return;
+    
+    function startTimer() {
+      let timeLeft = 30;
+      btn.disabled = true;
+      btn.className = "flex items-center gap-xs font-label-lg text-outline cursor-not-allowed transition-all select-none";
+      if (spinner) spinner.classList.add('hidden');
+      txt.textContent = `Resend Code in ${timeLeft}s`;
+      
+      const interval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+          txt.textContent = `Resend Code in ${timeLeft}s`;
+        } else {
+          clearInterval(interval);
+          btn.disabled = false;
+          btn.className = "flex items-center gap-xs font-label-lg text-primary hover:opacity-80 transition-opacity cursor-pointer select-none";
+          if (spinner) spinner.classList.remove('hidden');
+          txt.textContent = "Resend Code";
+        }
+      }, 1000);
+    }
+    
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!btn.disabled) {
+        startTimer();
+      }
+    });
+    
+    startTimer();
+  })();
+</script>
+</div>
+<!-- Spacing Pusher -->
+<div class="flex-grow"></div>
+<!-- Bottom Action -->
+<div class="mt-auto">
+<button onclick="window.location.href='../../profile/farmer_profile/code.html'" class="w-full py-md bg-primary-container text-on-primary-container font-label-lg rounded-xl shadow-lg active:scale-[0.98] transition-all duration-200 border-t border-white/10">
+                Verify &amp; Continue
+            </button>
+<p class="mt-md text-center font-label-sm text-outline">
+                Step 2 of 3 • Security Verification
+            </p>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed as per "Task-Focused" exclusion rule) -->
+<!-- The BottomNavBar is hidden because this is a focused, linear transactional verification task. -->
+
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

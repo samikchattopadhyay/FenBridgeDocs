@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sync Queue | FenBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#1c1b1b",
+                    "secondary-fixed": "#e9ddff",
+                    "outline-variant": "#3c4a42",
+                    "surface-container-highest": "#353534",
+                    "inverse-primary": "#006c49",
+                    "on-background": "#e5e2e1",
+                    "background": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed": "#410005",
+                    "on-tertiary-container": "#711419",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-on-surface": "#313030",
+                    "error-container": "#93000a",
+                    "primary-container": "#10b981",
+                    "surface-bright": "#393939",
+                    "outline": "#86948a",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#00422b",
+                    "surface-variant": "#353534",
+                    "on-primary": "#003824",
+                    "surface-dim": "#131313",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-secondary-fixed": "#23005c",
+                    "tertiary": "#ffb3af",
+                    "tertiary-container": "#fc7c78",
+                    "surface": "#131313",
+                    "on-primary-fixed-variant": "#005236",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "primary": "#4edea3",
+                    "on-surface-variant": "#bbcabf",
+                    "on-secondary": "#3c0091",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary": "#650911",
+                    "tertiary-fixed": "#ffdad7",
+                    "primary-fixed": "#6ffbbe",
+                    "on-error": "#690005",
+                    "on-secondary-container": "#c4abff",
+                    "secondary": "#d0bcff",
+                    "secondary-container": "#571bc1",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-primary-fixed": "#002113",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-tint": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin": "20px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .noir-gradient {
+            background: linear-gradient(180deg, rgba(19, 19, 19, 0) 0%, rgba(30, 30, 30, 1) 100%);
+        }
+        .inner-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+        .emerald-pulse {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<button class="hover:opacity-80 transition-opacity flex items-center justify-center w-12 h-12 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary truncate whitespace-nowrap">FenBridge</h1>
+</div>
+<div class="flex items-center gap-xs">
+<div class="flex items-center gap-xs bg-surface-container px-sm py-xs rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">signal_cellular_4_bar</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">LTE Stable</span>
+</div>
+</div>
+</header>
+<main class="px-margin pt-md pb-xl space-y-xl">
+<!-- Summary Card Section -->
+<section>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md inner-glow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" data-icon="sync">sync</span>
+</div>
+<div class="relative z-10">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">OUTBOX SUMMARY</p>
+<div class="flex items-baseline gap-xs mb-lg">
+<span class="font-headline-lg text-headline-lg text-primary">3</span>
+<span class="font-body-md text-body-md text-on-surface">Items Pending Sync</span>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-lg text-label-lg py-md rounded-lg flex items-center justify-center gap-xs hover:opacity-90 active:scale-95 transition-all inner-glow emerald-pulse">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+                        Sync Now
+                    </button>
+</div>
+</div>
+</section>
+<!-- Queue Section -->
+<section class="space-y-md">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant tracking-widest px-xs truncate whitespace-nowrap">ACTIVE QUEUE</h2>
+<div class="space-y-sm">
+<!-- Waiting to Sync Item -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="pending">pending</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Inspection - Pond DNJ-0042</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Waiting to sync • 4.2 MB</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</div>
+<!-- Syncing Item -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-md">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="sync" style="font-variation-settings: 'FILL' 0;">sync</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Makhana Harvest Data - Block C</p>
+<p class="font-label-sm text-label-sm text-primary">Syncing... 68%</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="pause">pause</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[68%]"></div>
+</div>
+</div>
+<!-- Conflict Item (Highlighted) -->
+<div class="bg-error-container/10 border border-error/30 rounded-lg p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-error">Inventory Update Conflict</p>
+<p class="font-label-sm text-label-sm text-on-error-container">Modified on another device</p>
+</div>
+</div>
+<button class="bg-error-container text-on-error-container px-md py-xs rounded-full font-label-sm text-label-sm hover:opacity-80 transition-opacity">
+                        Resolve
+                    </button>
+</div>
+</div>
+</section>
+<!-- Completed History Section -->
+<section class="space-y-md">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant tracking-widest px-xs truncate whitespace-nowrap">RECENTLY SYNCED</h2>
+<div class="space-y-sm">
+<!-- Synced Item -->
+<div class="bg-surface-container/50 border border-outline-variant/30 rounded-lg p-md flex items-center justify-between opacity-80">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Soil Quality Report - North Wing</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Synced 12 mins ago</p>
+</div>
+</div>
+</div>
+<!-- Synced Item -->
+<div class="bg-surface-container/50 border border-outline-variant/30 rounded-lg p-md flex items-center justify-between opacity-80">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Gate Logs - Warehouse 01</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Synced 1 hour ago</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Aesthetic Bento-ish Grid Element for Status -->
+<section class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md">
+<span class="material-symbols-outlined text-primary-fixed-dim mb-xs" data-icon="database">database</span>
+<p class="font-headline-md text-headline-md text-on-surface">12.8 GB</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Available Storage</p>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md overflow-hidden relative">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-20 grayscale" data-alt="A macro close-up of a high-tech agricultural sensor board with glowing emerald circuits and dark charcoal components. The lighting is moody and noir-inspired, emphasizing the tactile depth of the circuitry. The color palette is strictly limited to deep blacks, dark grays, and the signature emerald green of the agricultural tech brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzea3Cycoo6RuYkgaVM3fzdOnWzNvZhxWM8TeOTMlUjpa0qzB7I_P5k-78_XQhGLfWPI2POxcmF4efShfIVu58N9NqNnPFtI15uhsUYYb3SCKg7rNr7KkgOeWDetHyqGrJf-YbXU08r_JkYO6DZ_D0kHuQeqDpgDAG0MTp3untqwQxsvxO2gGtx4e5BvfnwAhkIzExqre9dgFa3EQoxu7kHCJCT-Zu85QIU60xHzv-saUXUb_UnNuS4EUvI6uOczCzttR_oXKS44-f"/>
+</div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="timer">timer</span>
+<p class="font-headline-md text-headline-md text-on-surface">32ms</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Server Latency</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface dark:bg-surface shadow-md rounded-t-xl border-t border-outline-variant/10">
+<button class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all p-xs rounded-lg">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary scale-110 p-xs rounded-lg">
+<span class="material-symbols-outlined" data-icon="horizontal_rule" style="font-variation-settings: 'FILL' 1;">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Sync</span>
+</button>
+</nav>
+
+
+    <script src="../../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

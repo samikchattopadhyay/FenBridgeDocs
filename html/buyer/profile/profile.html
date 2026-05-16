@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FenBridge - Buyer Profile Management Workflow</title>
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #f59e0b;
+      --accent-primary-hover: #fbbf24;
+      --accent-primary-glow: rgba(245, 158, 11, 0.15);
+      --accent-secondary: #10b981;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 48px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    /* ROLE WORKFLOW HEADER */
+    .role-header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #1c150c 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: 16px;
+      padding: 36px 42px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--accent-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .role-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .role-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    .meta-metrics {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .metric-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metric-pill strong {
+      color: var(--accent-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+    }
+
+    /* WORKFLOW SEQUENTIAL TIMELINE */
+    .workflow-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .flow-step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .flow-step-card:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      transform: translateY(-2px);
+    }
+
+    /* STEP CARD HEADER */
+    .step-header {
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .step-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-folder-ref {
+      font-family: 'Inter', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+      background: var(--bg-base);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* STEP CARD BODY - SPLIT PANE */
+    .step-body {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 480px;
+    }
+
+    .step-left-pane {
+      flex: 1;
+      min-width: 340px;
+      max-width: 420px;
+      background: #0b0b0c;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-right: 1px solid var(--border-color);
+    }
+
+    /* Scrollable Consistent Viewport Wrapper for Preview Images */
+    .card-image-viewport {
+      width: 300px;
+      height: 500px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-radius: 12px;
+      border: 2px solid var(--border-color);
+      background: #000;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+    .card-image-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .preview-screen-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-placeholder {
+      color: var(--text-dim);
+      font-size: 13px;
+      text-align: center;
+      padding: 40px;
+      font-style: italic;
+    }
+
+    .step-right-pane {
+      flex: 2;
+      min-width: 380px;
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* Specs Grid Configuration */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding-right: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-light) transparent;
+    }
+    .specs-grid::-webkit-scrollbar {
+      width: 4px;
+    }
+    .specs-grid::-webkit-scrollbar-thumb {
+      background: var(--border-light);
+      border-radius: 2px;
+    }
+
+    .spec-block {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      padding: 14px 18px;
+      border-radius: 8px;
+    }
+    .spec-block.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .spec-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .spec-value {
+      font-size: 13.5px;
+      color: var(--text-main);
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .spec-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .spec-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .spec-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--border-light);
+      font-weight: bold;
+    }
+
+    .spec-list li strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .db-schema-box {
+      background: #000;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-size: 11.5px;
+      color: var(--accent-primary-hover);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin-top: 4px;
+    }
+
+    /* ACTION BAR */
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto;
+    }
+
+    .action-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-active);
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .action-btn.primary {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent-primary);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .action-btn.primary:hover {
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
+    }
+
+    /* STEPPER NAVIGATION PANEL */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .stepper-panel-container {
+      max-width: 1280px;
+      margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 36px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      overflow-x: auto;
+    }
+
+    .stepper-nodes {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      min-width: 850px;
+      z-index: 2;
+    }
+
+    .stepper-nodes::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: var(--border-light);
+      z-index: -1;
+    }
+
+    .stepper-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .stepper-node:hover {
+      transform: translateY(-2px);
+    }
+
+    .node-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border-light);
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .stepper-node:hover .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+
+    .node-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .stepper-node:hover .node-label {
+      color: var(--text-main);
+    }
+
+    /* Active Highlight States */
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+
+    .stepper-node.active .node-label {
+      color: var(--accent-primary);
+      font-weight: 800;
+    }
+
+    /* EXECUTABLE CODE OVERLAY MODAL */
+    .code-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .code-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .code-modal-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+      transform: scale(0.95);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .code-modal-backdrop.active .code-modal-window {
+      transform: scale(1);
+    }
+    .code-modal-window.mobile-view {
+      width: 380px;
+      height: 720px;
+      max-height: 90vh;
+    }
+    .code-modal-window.desktop-view {
+      width: 90%;
+      max-width: 1200px;
+      height: 85vh;
+    }
+    .code-modal-header {
+      padding: 14px 20px;
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .code-modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      letter-spacing: 0.5px;
+    }
+    .code-modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    .code-modal-close:hover {
+      color: #fff;
+    }
+    .code-modal-body {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      background: #121212;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .code-modal-body::-webkit-scrollbar {
+      display: none;
+    }
+    .code-modal-body iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ROLE HEADER BANNER -->
+  <div class="role-header-banner">
+    <div class="role-tag">Role Profile: Buyer Management Hub</div>
+    <h1 class="role-title">Buyer Profile & Management Flow</h1>
+    <p class="role-desc">
+      Central management architecture governing authenticated enterprise desk accounts post-onboarding. Features instant database auto-saves, dynamic document galleries, reverse-geocoded spatial delivery sites mapping, and platform-wide notification subscriptions.
+    </p>
+
+    <div class="meta-metrics">
+      <div class="metric-pill">
+        <span>Total Hierarchy Screens:</span> <strong>9 Interfaces</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Target Source Directory:</span> <strong style="color:var(--text-main);font-family:monospace;">images/profile/</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Documentation Fidelity:</span> <strong style="color:var(--accent-primary);">Verbatim Output</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- DYNAMIC STEPPER PANEL -->
+  <div class="stepper-panel-container custom-scrollbar">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node" title="Buyer Profile Hub">
+        <span class="node-num">01</span>
+        <span class="node-label">Profile Hub</span>
+      </a>
+      <a href="#step-02" class="stepper-node" title="Edit Business Details">
+        <span class="node-num">02</span>
+        <span class="node-label">Edit Biz</span>
+      </a>
+      <a href="#step-03" class="stepper-node" title="Delivery Addresses">
+        <span class="node-num">03</span>
+        <span class="node-label">Addresses</span>
+      </a>
+      <a href="#step-04" class="stepper-node" title="Add Delivery Address">
+        <span class="node-num">04</span>
+        <span class="node-label">Add Addr</span>
+      </a>
+      <a href="#step-05" class="stepper-node" title="Uploaded Documents">
+        <span class="node-num">05</span>
+        <span class="node-label">Documents</span>
+      </a>
+      <a href="#step-06" class="stepper-node" title="Link WhatsApp">
+        <span class="node-num">06</span>
+        <span class="node-label">WhatsApp</span>
+      </a>
+      <a href="#step-07" class="stepper-node" title="Settings Configuration">
+        <span class="node-num">07</span>
+        <span class="node-label">Settings</span>
+      </a>
+      <a href="#step-08" class="stepper-node" title="Notification Preferences">
+        <span class="node-num">08</span>
+        <span class="node-label">Notifs</span>
+      </a>
+      <a href="#step-09" class="stepper-node" title="Help & Support">
+        <span class="node-num">09</span>
+        <span class="node-label">Support</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- WORKFLOW TIMELINE CONTAINER -->
+  <div class="workflow-timeline">
+
+    <!-- STEP 1 -->
+    <div class="flow-step-card" id="step-01">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 01</span>
+          Buyer Profile Hub
+        </div>
+        <span class="step-folder-ref">buyer_profile</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/buyer_profile/screen.png" alt="Buyer Profile Hub" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Central hub for buyer to view and manage account, business info, delivery addresses, and settings.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Single source of truth for buyer's account data. Allows quick edits and navigation to detailed management screens.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Single scrollable screen with avatar, editable key fields, status/approval info, and menu buttons.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Tap avatar to upload/change profile photo.</li>
+                <li>Tap name, mobile, or address to inline-edit (or open edit sheet).</li>
+                <li>Tap menu buttons to navigate to detailed screens (Edit Business, Delivery Addresses, etc.).</li>
+                <li>Tap Logout to sign out.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Avatar upload: max 5 MB, JPEG/PNG, stored at fenbridge/users/{user_id}/avatar.jpg.</li>
+                <li>Inline edits (name, mobile) auto-save on blur + brief toast.</li>
+                <li>Approval status: fetch users.status (pending_approval / active / suspended).</li>
+                <li>Trust score: computed server-side, cached, updated daily. Fetch from users.trust_score (nullable).</li>
+                <li>Primary address: fetch from user_addresses where is_primary = true.</li>
+                <li>WhatsApp status: check whatsapp_links table for this user.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Header Section (surface-hi background, top padding 16 dp):
+- Avatar: 120 × 120 dp circle, surface-hi border with accent outline. Camera icon corner. Tap to upload.
+- Name: Title 2, text-hi, tap to edit (inline or sheet).
+- Role badge: "Buyer" (pill, info colour).
+- Edit profile link (small secondary button with pen icon).
+
+Section 1 — Contact & Location (surface card, border-hi, 12 dp padding):
+- Label: "Contact & Location" (Title 3, accent).
+- Row 1: Mobile icon, "+91 98765 43210", verified badge (✓ accent), tap to edit, edit icon.
+- Row 2: WhatsApp icon, "Not linked" (text-md) OR "+91 98765 43211" (if linked), "+ Link" button (info) OR edit icon (if linked).
+- Row 3: Location icon, primary address (2-line truncate), edit icon.
+
+Section 2 — Business Information (surface card):
+- Label: "Business Information" (Title 3, accent).
+- Row 1: Business name, edit icon.
+- Row 2: GSTIN (if set) or "Not provided" (text-lo), edit icon.
+- Row 3: PAN (if set) or "Not provided", edit icon.
+- Row 4: Divider.
+- Row 5: "Uploaded Documents" link (info colour). Tap to view gallery.
+
+Section 3 — Account Status (surface card):
+- Label: "Account Status" (Title 3, accent).
+- Row 1: Status pill. If pending_approval: ⏳ "Pending Approval" (warn colour), helper text "Expected within 24 hours". If active: ✓ "Active" (accent colour). If suspended: ✗ "Suspended" (danger colour), helper text "Contact support".
+- Row 2: Trust score (if available): "⭐ 4.5 / 5.0 — Established Buyer" (info colour). If new: "ⓘ Your trust score will appear after your first order."
+- Row 3: Linked account: "Google" (text-md), edit icon (for future multi-account).
+
+Section 4 — Menu Buttons (stacked, gap 8 dp):
+- "Edit Business Details" (secondary button, full-width, icon ✎).
+- "Delivery Addresses" (secondary button, full-width, icon 📍).
+- "Settings" (secondary button, full-width, icon ⚙️).
+- "Notification Preferences" (secondary button, full-width, icon 🔔).
+- "Help & Support" (secondary button, full-width, icon ❓).
+- "Logout" (destructive button, full-width).
+Bottom padding: 24 dp.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  full_name VARCHAR(200) NOT NULL,
+  mobile_number VARCHAR(20),
+  mobile_verified_at TIMESTAMP,
+  avatar_url VARCHAR(500),
+  role ENUM ['buyer', 'farmer', 'scout'] NOT NULL,
+  business_name VARCHAR(255),
+  gstin VARCHAR(15),
+  pan VARCHAR(10),
+  status ENUM ['onboarding', 'pending_approval', 'active', 'suspended'] DEFAULT 'pending_approval',
+  trust_score DECIMAL(3, 1),
+  trust_tier ENUM ['new', 'established', 'trusted'],
+  theme_preference ENUM ['dark', 'light'] DEFAULT 'dark',
+  preferred_language VARCHAR(10) DEFAULT 'en',
+  approval_status_updated_at TIMESTAMP,
+  created_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/buyer_profile/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="flow-step-card" id="step-02">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 02</span>
+          Edit Business Details
+        </div>
+        <span class="step-folder-ref">edit_business_details</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/edit_business_details/screen.png" alt="Edit Business Details" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Update buyer's business information (name, GSTIN, PAN) post-onboarding.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Allow buyer to correct or update business details if they change entity structure or registration.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Simple form with three text inputs and Save button.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Edit business name field.</li>
+                <li>Edit GSTIN field (optional).</li>
+                <li>Edit PAN field (optional).</li>
+                <li>Tap "Save Changes".</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Pre-fill inputs from users table (business_name, gstin, pan).</li>
+                <li>Validation: GSTIN (15 chars, regex), PAN (10 chars, regex), business name (min 3 chars).</li>
+                <li>On save: update users table + log audit event.</li>
+                <li>Toast on success: "✓ Business details updated".</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Edit Business Details" heading (Title 2).
+Form:
+- Input 1: "Business Name" (text field, pre-filled). Inline validation.
+- Input 2: "GSTIN" (text field, pre-filled, optional). Helper: "15-digit Tax ID. Leave blank if not registered."
+- Input 3: "PAN" (text field, pre-filled, optional). Helper: "10-digit Personal/Business Tax ID."
+Action:
+- "Save Changes" primary button (full-width, 56 dp height).
+Feedback:
+- On save: spinner on button → toast "✓ Saved" → auto-back or stay on screen.
+- On validation error: red error text below field, button disabled.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">// Executing direct state correction row triggers:
+UPDATE users SET business_name = $1, gstin = $2, pan = $3 WHERE id = current_user;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/edit_business_details/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="flow-step-card" id="step-03">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 03</span>
+          Delivery Addresses
+        </div>
+        <span class="step-folder-ref">delivery_addresses</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/delivery_addresses/screen.png" alt="Delivery Addresses" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Manage all delivery locations for the buyer. Set primary address (used as default in new POs).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Buyers may have multiple warehouses. Each PO specifies a delivery address. Primary address is the default.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">List of addresses with options to set as primary, edit, or delete. FAB to add new.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View all saved addresses.</li>
+                <li>Tap "Set as Primary" on any address.</li>
+                <li>Tap address row to view/edit details.</li>
+                <li>Tap delete icon to remove address.</li>
+                <li>Tap FAB to add new address.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch all user_addresses where user_id = current_user.</li>
+                <li>Only one address can be is_primary = true at a time.</li>
+                <li>Add/edit/delete operations update user_addresses table.</li>
+                <li>Geolocation optional: reverse-geocode if available during add/edit.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Delivery Addresses" heading (Title 2).
+List of address cards (surface background, border-hi, 12 dp padding, gap 8 dp):
+Each card:
+- Address line 1 + line 2 (Body strong, 2-line truncate).
+- City, postal code (Body, text-md, 8 dp top margin).
+- If primary: "⭐ Primary" badge (accent colour, pill shape, top-right corner).
+- Action row: "Set as Primary" button (if not primary, info colour, secondary) | edit icon (pen, secondary button) | delete icon (trash, danger colour, secondary button).
+FAB: "+ Add Address" (accent colour, 56 dp diameter, bottom-right corner).
+Empty state: "No addresses yet. Add your first delivery location." + centered "Add Address" button.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">user_addresses (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  address_line VARCHAR(500) NOT NULL,
+  city_district VARCHAR(100) NOT NULL,
+  postal_code VARCHAR(10),
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+  is_primary BOOLEAN DEFAULT false,
+  created_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/delivery_addresses/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="flow-step-card" id="step-04">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 04</span>
+          Add Delivery Address (Workflow)
+        </div>
+        <span class="step-folder-ref">add_delivery_address</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/add_delivery_address/screen.png" alt="Add Delivery Address" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Capture a new delivery location for the buyer.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Enable buyer to add multiple warehouses/sites dynamically.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Multi-step form: address details → geolocation → confirm.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Enter street address.</li>
+                <li>Select city/district.</li>
+                <li>Enter postal code.</li>
+                <li>Optional: tap "Use My Location" for GPS.</li>
+                <li>Confirm and save.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Step 1: Address input (text, multiline). City/district dropdown (searchable).</li>
+                <li>Step 2: Postal code input (numeric + space).</li>
+                <li>Step 3: Optional GPS capture (reverse-geocode to address suggestion).</li>
+                <li>On save: insert into user_addresses, set is_primary = true if first address.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Progress indicator: 1 of 3 / 2 of 3 / 3 of 3 (top bar).
+Step 1 — Address Details:
+- Heading: "Delivery Address" (Title 2).
+- Input 1: "Street Address" (multiline, 3 rows). Placeholder: "Building name, street, landmark".
+- Input 2: "City / District" (dropdown, searchable).
+- Input 3: "Postal Code" (numeric + space, 6 chars).
+Helper below postal code: "We'll use this to estimate delivery time."
+Continue button (enabled after all filled).
+
+Step 2 — Location Confirmation:
+- Heading: "Confirm Location" (Title 2).
+- Optional: Show map with pin (or just address preview).
+- Display address summary (address, city, postal code).
+- Optional button: "Use My Location" (taps to capture GPS, reverse-geocode, and pre-fill).
+Continue button.
+
+Step 3 — Save:
+- Confirmation: "✓ Address added". Display full address.
+- "Set as Primary" toggle (if not the only address).
+- "Done" button → routes back to Delivery Addresses list.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">INSERT INTO user_addresses (id, user_id, address_line, city_district, postal_code, is_primary) 
+VALUES ($1, current_user, $2, $3, $4, $5);</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/add_delivery_address/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="flow-step-card" id="step-05">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 05</span>
+          Uploaded Documents (Buyer Variant)
+        </div>
+        <span class="step-folder-ref">uploaded_documents</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/uploaded_documents/screen.png" alt="Uploaded Documents" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">View all uploaded business documents (registration cert, invoices, location photos) with options to re-upload or delete.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Documents help Admin verify buyer legitimacy. Buyer should be able to manage and update them.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Grid/list of document thumbnails with type label, upload date, and delete option. FAB to add new document.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View all uploaded documents in a gallery.</li>
+                <li>Tap document to preview (open in full-screen or PDF viewer).</li>
+                <li>Tap delete icon to remove document.</li>
+                <li>Tap FAB to upload new document.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch buyer_documents where user_id = current_user.</li>
+                <li>Display: document type (label), thumbnail, upload date, delete button.</li>
+                <li>Upload triggers file picker (gallery/camera), compression, and storage to fenbridge/users/{user_id}/business_docs/.</li>
+                <li>Delete removes from buyer_documents table and Supabase Storage.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Uploaded Documents" heading (Title 2).
+Intro: "Documents help us verify your business. You can re-upload anytime." (Body, text-md, 16 dp top margin).
+Document Grid (3 columns, mobile responsive):
+Each document card:
+- Thumbnail (image, 100 × 100 dp, rounded corners, surface-hi background if no image).
+- Document type label below (Caption, text-hi, bold). E.g., "Business Registration".
+- Upload date below (Caption, text-md). E.g., "Uploaded 5 days ago".
+- Hover: translucent overlay with delete icon (X, danger colour, secondary button).
+Tap card to open full-screen preview/viewer.
+FAB: "+ Add Document" (accent colour).
+On FAB tap:
+Sheet appears with title "Upload Document" and three options:
+- "Business Registration Certificate"
+- "Invoice Sample"
+- "Business Location Photo"
+Tap option → file picker (camera + gallery).
+On file select: compress, upload, add to buyer_documents table, refresh UI.
+Empty state: "No documents uploaded yet. Upload documents to build trust." + FAB button.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">buyer_documents (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  document_type ENUM ['registration', 'invoice', 'location_photo'],
+  file_url VARCHAR(500),
+  uploaded_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/uploaded_documents/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="flow-step-card" id="step-06">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 06</span>
+          Link WhatsApp (Common Flow)
+        </div>
+        <span class="step-folder-ref">link_whatsapp</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/link_whatsapp/screen.png" alt="Link WhatsApp" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Link user's WhatsApp number for future SMS/WhatsApp notifications and direct support contact.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">WhatsApp is widely used in India. Linking allows FenBridge to send updates via WhatsApp (v1.1), increasing engagement.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Input field for WhatsApp number. Verification via OTP. Confirmation.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Tap "Link WhatsApp" button (from Profile or Settings).</li>
+                <li>Enter WhatsApp number (pre-filled with registered mobile if same).</li>
+                <li>Send OTP via WhatsApp.</li>
+                <li>Enter OTP to verify.</li>
+                <li>Confirmation: "✓ WhatsApp linked."</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>WhatsApp number input: accepts +91 format or 10-digit format, validates pattern.</li>
+                <li>OTP sent via Twilio WhatsApp API or WhatsApp Business API (v1.1).</li>
+                <li>In v1.0, can skip OTP and just store the number (less critical).</li>
+                <li>Stored in whatsapp_links table, linked to user_id.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Triggered from: Profile > Contact section > WhatsApp row > "+ Link" button.
+Step 1 — Enter Number:
+- Top bar: Back, "Link WhatsApp".
+- Heading: "Add your WhatsApp number" (Title 2).
+- Input: "WhatsApp number" (pre-filled with registered mobile, editable). Placeholder: "+91 98765 43210".
+- Helper: "We'll send you a confirmation code on WhatsApp."
+- Button: "Send OTP".
+
+Step 2 — Verify OTP:
+- Heading: "Verify your WhatsApp number" (Title 2).
+- Display: "We sent a code to +91 98765 43210".
+- OTP input: three boxes (auto-advance), or manual entry.
+- On verification: auto-submit.
+- Resend link after 30 sec.
+
+Step 3 — Confirmation:
+- Heading: "WhatsApp linked!" (Title 2, accent).
+- Text: "✓ You'll now receive updates on WhatsApp."
+- Button: "Go Back" (routes back to Profile).</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">whatsapp_links (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY UNIQUE,
+  whatsapp_number VARCHAR(20) NOT NULL,
+  verified_at TIMESTAMP,
+  linked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/link_whatsapp/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="flow-step-card" id="step-07">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 07</span>
+          Settings (Common Hub)
+        </div>
+        <span class="step-folder-ref">settings</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/settings/screen.png" alt="Settings Configuration" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Centralized control for app-wide preferences (theme, language, permissions, privacy).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Allow users to customize their experience without impacting other users. Settings persist across sessions.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Grouped sections with toggles, dropdowns, and info links. No explicit Save button (auto-save on toggle).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Toggle Dark/Light theme.</li>
+                <li>Select language (English / हिन्दी / বाংলা).</li>
+                <li>Toggle notification channels (in-app, push, SMS).</li>
+                <li>Manage permissions (Location, Camera, Notifications).</li>
+                <li>View privacy policy and terms.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Theme/language stored in SharedPreferences (Flutter) + users.theme_preference, users.preferred_language in DB.</li>
+                <li>Notification preferences stored as JSON in users.notification_preferences.</li>
+                <li>Permission toggles check device-level permissions (Android PermissionHandler package).</li>
+                <li>Each toggle change triggers immediate save + toast confirmation.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Settings" heading (Title 2).
+Progress: No progress bar (not a workflow).
+
+Section 1 — Display:
+- Label: "Display" (Title 3, accent).
+- Row 1: Theme toggle with preview icons (Dark/Light). Label: "Dark theme". Helper: "Easier on eyes, saves battery."
+- Row 2: Language dropdown. Label: "Language". Dropdown options: English / हिन्दी / বांगালা. Current selection highlighted.
+
+Section 2 — Notifications:
+- Label: "Notifications" (Title 3, accent).
+- Row 1: Toggle "In-app notifications". Label: "Show notifications inside the app."
+- Row 2: Toggle "Push notifications". Label: "Send alerts to your device."
+- Row 3: Toggle "SMS notifications". Label: "Critical updates via SMS." Helper: "Standard SMS rates may apply."
+
+Section 3 — Permissions:
+- Label: "Device Permissions" (Title 3, accent).
+- Row 1: Location. Current state (✓ Allowed / ✗ Denied). Tap to manage (opens device settings if denied).
+- Row 2: Camera. Current state. Tap to manage.
+- Row 3: Notifications. Current state. Tap to manage.
+Helper: "Tap to manage permissions in Settings."
+
+Section 4 — Privacy:
+- Label: "Privacy & Legal" (Title 3, accent).
+- Row 1: "Terms of Service" link (secondary, small).
+- Row 2: "Privacy Policy" link (secondary, small).
+- Row 3: "Contact Support" link (secondary, small).
+Bottom padding: 24 dp.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">ALTER TABLE users ADD COLUMN IF NOT EXISTS theme_preference VARCHAR(10) DEFAULT 'dark';
+ALTER TABLE users ADD COLUMN IF NOT EXISTS notification_preferences JSON;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/settings/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="flow-step-card" id="step-08">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 08</span>
+          Notification Preferences
+        </div>
+        <span class="step-folder-ref">notification_preferences</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/notification_preferences/screen.png" alt="Notification Preferences" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Fine-grained control over which events trigger notifications and via which channels.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Users should control notification fatigue. Different events may be important to different users.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">List of event categories, each with toggles for in-app/push/SMS channels. Grouped by type (Order, Payment, System, etc.). Auto-save on toggle.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View all notification event types.</li>
+                <li>Toggle on/off per channel for each event.</li>
+                <li>Implicit save triggers on toggle state commit.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch users.notification_preferences JSON.</li>
+                <li>Structure: { "order_placed": { "in_app": true, "push": true, "sms": false }, "payment_due": {...}, ... }.</li>
+                <li>On toggle, update specific key-value pair and save to DB.</li>
+                <li>Default: all in-app and push enabled, SMS disabled for most events.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Notification Preferences" heading (Title 2).
+Intro text: "Control which updates you receive and how." (Body, text-md, 16 dp top padding).
+
+Event Groups:
+Order Updates (only for Buyer) / Bid Updates (only for Farmer):
+- Event: "New requirement posted" → three toggles (in-app | push | SMS).
+- Event: "Bid awarded" / "Order confirmed".
+- Event: "Dispatched" → three toggles.
+- Event: "Delivered" → three toggles.
+
+Payment Updates:
+- Event: "Payment due" → three toggles.
+- Event: "Payment received" → three toggles.
+
+Account Updates:
+- Event: "Account status changed" → toggles.
+- Event: "Approval completed" → toggles.
+
+System Notifications:
+- Event: "New features" → toggles.
+- Event: "Promotional offers" → toggles.
+
+Each event row: event name (Body), three small toggles (in-app | push | SMS) aligned right.
+Toggle indicators: circular, 40 × 24 dp, accent when on, border when off.
+No Save button (auto-saves).</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">// Updating persistent state map JSONB property atomically:
+UPDATE users SET notification_preferences = jsonb_set(notification_preferences, '{order_placed,push}', 'false') WHERE id = current_user;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/notification_preferences/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 9 -->
+    <div class="flow-step-card" id="step-09">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 09</span>
+          Help & Support (Common Hub)
+        </div>
+        <span class="step-folder-ref">help_support</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/help_support/screen.png" alt="Help & Support" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Provide self-service FAQs, direct support contact, and issue reporting.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Reduce support burden by enabling users to find answers. Track common issues for product improvements.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Collapsible FAQ section, contact cards, and a "Report Issue" button.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Browse FAQ categories (expand/collapse).</li>
+                <li>Tap FAQs to read answers (inline expansion).</li>
+                <li>Tap "Contact Support" to open chat/email.</li>
+                <li>Tap "Report Issue" to open issue form.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>FAQs stored as static content (hardcoded or fetched from a simple FAQ endpoint).</li>
+                <li>"Contact Support" opens a pre-filled email or deeplinks to a support chat (Zendesk, Freshchat, etc. — v1.1 integration).</li>
+                <li>"Report Issue" opens a form to capture issue type, description, and attach screenshot.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Help & Support" heading (Title 2).
+
+Section 1 — FAQs:
+- Label: "Frequently Asked Questions" (Title 3, accent).
+Collapsible categories:
+- Getting Started (5–6 FAQs)
+  - "How do I sign up?" → Answer text (Body).
+  - "How do I verify my account?" → Answer text.
+  - "What is my trust score?" → Answer text.
+- Orders & Transactions (Buyer) / Bidding & Harvest (Farmer)
+- Payments
+- Account & Settings
+Each category: label on top, chevron icon (pointing down = expanded, right = collapsed).
+On tap, category expands to show list of Q&A rows.
+Each Q&A row: question (Body strong), answer (Body, text-md, 12 dp top margin inside).
+Tap Q to expand/collapse answer inline.
+
+Section 2 — Contact Us:
+- Label: "Still need help?" (Title 3, accent).
+Two action cards:
+- Card 1: Icon (💬), "Chat with Support", "Get instant help", secondary button (full-width).
+- Card 2: Icon (✉️), "Email Support", "support@fenbridge.in", secondary button (full-width).
+
+Section 3 — Report Issue:
+- Label: "Report a Problem" (Title 3, accent).
+Primary button (full-width): "Report Issue". On tap, opens a form:
+- Dropdown: Issue type (Bug / Suggestion / Payment Issue / Other).
+- Text area: Description.
+- Optional: Attach screenshot (camera + gallery).
+- Submit button.
+On submit: confirmation toast + auto-email to support.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">support_tickets (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  issue_type ENUM ['bug', 'suggestion', 'payment', 'other'],
+  description TEXT,
+  screenshot_url VARCHAR(500),
+  status ENUM ['open', 'in_progress', 'resolved'],
+  created_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/help_support/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXECUTABLE CODE VIEW OVERLAY MODAL -->
+  <div id="code-iframe-modal" class="code-modal-backdrop" onclick="closeCodeModal(event)">
+    <div id="code-modal-window" class="code-modal-window mobile-view" onclick="event.stopPropagation()">
+      <div class="code-modal-header">
+        <div class="code-modal-title">Live Executable Context Preview</div>
+        <button class="code-modal-close" onclick="closeCodeModal(event)">×</button>
+      </div>
+      <div class="code-modal-body">
+        <iframe id="executable-code-iframe" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCodeModal(event, url, viewType) {
+      event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const modalWin = document.getElementById("code-modal-window");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal && modalWin && iframe) {
+        if (viewType === 'desktop') {
+          modalWin.className = "code-modal-window desktop-view";
+        } else {
+          modalWin.className = "code-modal-window mobile-view";
+        }
+        iframe.src = url;
+        modal.classList.add("active");
+      }
+    }
+
+    function closeCodeModal(event) {
+      if (event) event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal) {
+        modal.classList.remove("active");
+        if (iframe) iframe.src = "";
+      }
+    }
+
+    // Dynamic IntersectionObserver highlighting active stepper menu context
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const container = document.querySelector(".stepper-panel-container");
+
+      const options = {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => node.classList.remove("active"));
+            const activeNode = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (activeNode) {
+              activeNode.classList.add("active");
+              if (container) {
+                const nodeLeft = activeNode.offsetLeft;
+                const nodeWidth = activeNode.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = container.scrollLeft;
+                
+                if (nodeLeft < scrollLeft || nodeLeft + nodeWidth > scrollLeft + containerWidth) {
+                  container.scrollTo({
+                    left: nodeLeft - containerWidth / 2 + nodeWidth / 2,
+                    behavior: "smooth"
+                  });
+                }
+              }
+            }
+          }
+        });
+      }, options);
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+  </script>
+</body>
+</html>

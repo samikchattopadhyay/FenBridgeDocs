@@ -1,0 +1,451 @@
+<!--
+  SCREEN 35: Scout Performance Dashboard
+  Screen Reference: screen.png
+  Role: Admin
+  Priority: 🟡 Medium
+  Purpose: Track scout KPIs for onboarding, verification, seal integrity, NPS
+-->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#650911",
+                        "on-secondary": "#3c0091",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-surface-variant": "#bbcabf",
+                        "secondary": "#d0bcff",
+                        "on-tertiary-fixed": "#410005",
+                        "tertiary": "#ffb3af",
+                        "on-secondary-container": "#c4abff",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#10b981",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-tint": "#4edea3",
+                        "surface-container-highest": "#353534",
+                        "primary": "#4edea3",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed-variant": "#005236",
+                        "primary-fixed": "#6ffbbe",
+                        "tertiary-container": "#fc7c78",
+                        "surface": "#131313",
+                        "on-primary-container": "#00422b",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-dim": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#002113",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-container": "#711419",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#393939",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-container": "#571bc1",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-primary": "#006c49",
+                        "outline-variant": "#3c4a42",
+                        "on-primary": "#003824",
+                        "outline": "#86948a",
+                        "on-secondary-fixed": "#23005c",
+                        "on-tertiary-fixed-variant": "#842225"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "lg": "24px",
+                        "gutter": "12px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .tonal-border {
+            border: 1px solid #2D2D2D;
+        }
+        .scout-card {
+            background: #1E1E1E;
+            transition: all 0.2s ease;
+        }
+        .scout-card:hover {
+            background: #252525;
+            border-color: #4edea3;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-body-md pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-80 transition-opacity">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary tracking-tight truncate whitespace-nowrap">FenBridge</h1>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex gap-lg items-center">
+<span class="text-on-surface-variant dark:text-on-surface-variant font-label-lg text-label-lg cursor-pointer hover:opacity-80 transition-opacity">Analytics</span>
+<span class="text-primary dark:text-primary font-bold font-label-lg text-label-lg cursor-pointer hover:opacity-80 transition-opacity">Scout Performance</span>
+<span class="text-on-surface-variant dark:text-on-surface-variant font-label-lg text-label-lg cursor-pointer hover:opacity-80 transition-opacity">Logistics</span>
+</div>
+<button class="font-label-lg text-label-lg hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">Skip</button>
+</div>
+</div>
+</header>
+<main class="px-margin py-lg max-w-7xl mx-auto space-y-xl">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
+<div>
+<p class="text-primary font-label-lg text-label-lg uppercase tracking-widest">Regional Operations</p>
+<h2 class="font-headline-lg text-headline-lg mt-base truncate whitespace-nowrap">Scout Performance Dashboard</h2>
+</div>
+<div class="flex gap-sm">
+<div class="bg-surface-container-high px-md py-sm rounded-lg tonal-border flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="font-label-lg text-label-lg">Q3 2023 Performance</span>
+</div>
+</div>
+</section>
+<!-- KPI Summary Cards & Team Snapshot -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-md">
+<!-- Team Snapshot Bento Card -->
+<div class="md:col-span-1 scout-card tonal-border p-md rounded-xl flex flex-col justify-between">
+<div class="space-y-sm">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-label-lg text-label-lg">Team Composition</span>
+<span class="material-symbols-outlined text-outline">group</span>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center bg-surface-container-low p-xs rounded">
+<span class="text-on-surface">Tier 1</span>
+<span class="bg-primary/20 text-primary px-sm rounded-full font-bold">3 scouts</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-low p-xs rounded">
+<span class="text-on-surface">Tier 2</span>
+<span class="bg-primary/20 text-primary px-sm rounded-full font-bold">5 scouts</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-low p-xs rounded">
+<span class="text-on-surface">Tier 3</span>
+<span class="bg-primary/20 text-primary px-sm rounded-full font-bold">2 scouts</span>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-sm border-t border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">10 Active Field Personnel</p>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="scout-card tonal-border p-md rounded-xl space-y-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Verification Accuracy</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg">96.8%</h3>
+<p class="text-primary font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span> +1.2% from last month
+                    </p>
+</div>
+</div>
+<div class="scout-card tonal-border p-md rounded-xl space-y-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container">lock_open</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Seal Breach Rate</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg">0.7%</h3>
+<p class="text-tertiary-container font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">trending_down</span> Excellent maintenance
+                    </p>
+</div>
+</div>
+<div class="scout-card tonal-border p-md rounded-xl space-y-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">sentiment_satisfied</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Farmer NPS</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg">7.4/10</h3>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-xs">
+<div class="bg-secondary h-1 rounded-full" style="width: 74%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Performers & Needs Coaching -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Top Performers Podium -->
+<div class="lg:col-span-2 scout-card tonal-border rounded-xl p-lg">
+<h4 class="font-headline-md text-headline-md mb-lg">Top Performers</h4>
+<div class="flex flex-col md:flex-row items-end justify-around gap-lg py-xl">
+<!-- Silver -->
+<div class="flex flex-col items-center group w-full max-w-[120px]">
+<div class="relative mb-md">
+<img class="w-20 h-20 rounded-full object-cover border-4 border-[#C0C0C0]" data-alt="A portrait of a professional man in outdoor field clothing, with a friendly expression. He is wearing a durable khaki shirt and stands against a soft-focus background of a sunlit agricultural field. The lighting is warm and golden, reflecting a high-end corporate agricultural aesthetic with emerald green tones subtly integrated into the bokeh." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHQADEuqhql_1wDNC7QQvO6MvDpuiRM8qcAfJsSZAH-hPv0puzLZq6-ipoEPWn9BjKI7M575QrbAE7JquVSOqczWmJtnI2-z855zW7ZxANSotzjUphR8CqYZvr7CwhQKG2YitOgoBWgGhcQe75oss45MbxC_Wd4xya66wc53YTsx0Fp9kSb2HMrboU4wuU3KnsDrq81uoL6msQZOXOcwTiXDt6SGSty6wcMd_iNQkA29wiwkl1BqH3rU4NTdjMEZ8DCEfXVhq65YqG"/>
+<div class="absolute -bottom-2 -right-2 bg-[#C0C0C0] text-on-surface w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+</div>
+<span class="font-label-lg text-label-lg text-center">Arjun Singh</span>
+<span class="text-on-surface-variant text-label-sm">98.2% Acc.</span>
+</div>
+<!-- Gold -->
+<div class="flex flex-col items-center group w-full max-w-[160px] transform md:-translate-y-8">
+<div class="relative mb-md">
+<img class="w-32 h-32 rounded-full object-cover border-4 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.3)]" data-alt="A professional woman with a confident smile, dressed in a sharp navy field utility vest over a white shirt. She stands in a modern greenhouse environment, with rows of vibrant green plants blurred in the background. High-key natural lighting illuminates her face, conveying a sense of leadership, expertise, and operational success within a premium agricultural context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRJ4Q5OCQEi4ZW6_nt8OqA6WeLfYrN3gjAnjBBhyKNZCkAgFKwKnhk7NDXQVf_HF7dvk964APBe5cX3RJHnopvM8tELRs8yS8h4Ddh1pOXHRaCSCaAKKSaNbDc2o6BvEOwruMynSma0MOLC-UHowg_-Kl4TYnYg2FyI0ahCefVcxuYhYM-4zJG38_adkhQXwl2sV_8rnzfSxI_-79K_DhBdgXMWUOs542A35pCZeewE2hbX7i2orm3mB9M2TaOSsmmN4NvwEcHSIEi"/>
+<div class="absolute -bottom-2 -right-2 bg-[#FFD700] text-on-surface w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">1</div>
+</div>
+<span class="font-label-lg text-lg text-center font-bold">Priya Sharma</span>
+<span class="text-primary text-label-sm font-bold">99.5% Acc.</span>
+</div>
+<!-- Bronze -->
+<div class="flex flex-col items-center group w-full max-w-[120px]">
+<div class="relative mb-md">
+<img class="w-20 h-20 rounded-full object-cover border-4 border-[#CD7F32]" data-alt="A close-up portrait of a determined male agricultural scout wearing a branded tactical cap and a dark polo shirt. The setting is a makhana processing facility with industrial equipment visible in the dim, atmospheric background. The lighting is focused and dramatic, highlighting the grit and precision of the field operations, consistent with a dark-mode-first premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyqW4dKj_bn0s1VMM3nkofSqo2SgDw4MK5HBfDXT3qM-Sj9IRsil8x9ffvE4TZd-7EPltfiZAhr-BahfSb1njaKj_8T9Env8XRlkJgt9_DpMpqLU-VwjQ9K2QppSxnpyFFDjNiEFI3jtFV9rSBLrOy_4-V2uad3zCVPSbewFJ_eHZDiI-ZgyaSf7guY1Bbab0-2MIM-EdpXhTd0sa6QrGqLE1XR6X0Hz7c2BygpeT4TXoAJYZTIufeCTeINHEvNiDTOsG1hb-pdBXE"/>
+<div class="absolute -bottom-2 -right-2 bg-[#CD7F32] text-on-surface w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+</div>
+<span class="font-label-lg text-label-lg text-center">Rohan Das</span>
+<span class="text-on-surface-variant text-label-sm">97.4% Acc.</span>
+</div>
+</div>
+</div>
+<!-- Needs Coaching Section -->
+<div class="scout-card tonal-border rounded-xl p-lg bg-surface-container-low border-l-4 border-l-tertiary-container">
+<div class="flex items-center gap-md mb-lg">
+<span class="material-symbols-outlined text-tertiary-container">warning</span>
+<h4 class="font-headline-md text-headline-md">Needs Coaching</h4>
+</div>
+<p class="text-on-surface-variant text-label-sm mb-md">The following scouts have dropped below the 92% accuracy threshold for the last 14 days.</p>
+<div class="space-y-sm">
+<div class="bg-surface-container p-md rounded-lg flex items-center justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center font-bold text-tertiary-container">AM</div>
+<div>
+<p class="font-label-lg text-label-lg">Amit Mishra</p>
+<p class="text-tertiary-container text-label-sm">89.4% Accuracy</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">arrow_forward</span>
+</div>
+<div class="bg-surface-container p-md rounded-lg flex items-center justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center font-bold text-tertiary-container">SL</div>
+<div>
+<p class="font-label-lg text-label-lg">Sanjay L.</p>
+<p class="text-tertiary-container text-label-sm">91.1% Accuracy</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">arrow_forward</span>
+</div>
+</div>
+<button class="w-full mt-lg py-md rounded-lg bg-tertiary-container text-on-tertiary font-label-lg text-label-lg flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">event_repeat</span>
+                    Schedule Review Session
+                </button>
+</div>
+</section>
+<!-- Main Rankings Table -->
+<section class="scout-card tonal-border rounded-xl overflow-hidden">
+<div class="p-lg flex justify-between items-center border-b border-outline-variant">
+<h4 class="font-headline-md text-headline-md">Regional Scout Rankings</h4>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm rounded bg-surface-container-high tonal-border text-label-lg">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                    </button>
+<button class="flex items-center gap-xs px-md py-sm rounded bg-surface-container-high tonal-border text-label-lg">
+<span class="material-symbols-outlined text-sm">download</span> Export
+                    </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="px-lg py-md">Scout Name</th>
+<th class="px-lg py-md cursor-pointer hover:text-primary transition-colors">Accuracy <span class="material-symbols-outlined text-xs">arrow_drop_down</span></th>
+<th class="px-lg py-md">Field Visits</th>
+<th class="px-lg py-md">Seals Intact</th>
+<th class="px-lg py-md">NPS Score</th>
+<th class="px-lg py-md">Tier Status</th>
+<th class="px-lg py-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">PS</div>
+<span class="font-label-lg text-label-lg">Priya Sharma</span>
+</td>
+<td class="px-lg py-md">99.5%</td>
+<td class="px-lg py-md">142</td>
+<td class="px-lg py-md text-primary">100%</td>
+<td class="px-lg py-md">9.2</td>
+<td class="px-lg py-md">
+<span class="bg-primary-container/20 text-primary-container px-sm py-1 rounded-full text-[10px] font-bold uppercase">Tier 1</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">AS</div>
+<span class="font-label-lg text-label-lg">Arjun Singh</span>
+</td>
+<td class="px-lg py-md">98.2%</td>
+<td class="px-lg py-md">138</td>
+<td class="px-lg py-md">99.2%</td>
+<td class="px-lg py-md">8.8</td>
+<td class="px-lg py-md">
+<span class="bg-primary-container/20 text-primary-container px-sm py-1 rounded-full text-[10px] font-bold uppercase">Tier 1</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-secondary-container/20 text-secondary flex items-center justify-center font-bold text-xs">RD</div>
+<span class="font-label-lg text-label-lg">Rohan Das</span>
+</td>
+<td class="px-lg py-md">97.4%</td>
+<td class="px-lg py-md">126</td>
+<td class="px-lg py-md">98.5%</td>
+<td class="px-lg py-md">7.6</td>
+<td class="px-lg py-md">
+<span class="bg-secondary-container/20 text-secondary px-sm py-1 rounded-full text-[10px] font-bold uppercase">Tier 2</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-tertiary-container/20 text-tertiary-container flex items-center justify-center font-bold text-xs">AM</div>
+<span class="font-label-lg text-label-lg">Amit Mishra</span>
+</td>
+<td class="px-lg py-md text-tertiary-container">89.4%</td>
+<td class="px-lg py-md">94</td>
+<td class="px-lg py-md">92.1%</td>
+<td class="px-lg py-md">5.4</td>
+<td class="px-lg py-md">
+<span class="bg-tertiary-container/20 text-tertiary-container px-sm py-1 rounded-full text-[10px] font-bold uppercase">Tier 3</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-lg py-md bg-surface-container-low flex justify-between items-center text-label-sm text-on-surface-variant">
+<span>Showing 4 of 10 scouts</span>
+<div class="flex gap-md">
+<button class="hover:text-primary">Previous</button>
+<button class="hover:text-primary">Next</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface dark:bg-surface shadow-md rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant hover:bg-surface-container-high transition-all duration-200">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary scale-110 active:scale-98 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm">Teams</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant hover:bg-surface-container-high transition-all duration-200">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Field</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant hover:bg-surface-container-high transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Config</span>
+</div>
+</nav>
+
+
+    <script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+

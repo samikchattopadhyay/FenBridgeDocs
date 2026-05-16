@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PO Cancelled - FenBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#fc7c78",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container-highest": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "on-secondary-container": "#c4abff",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed": "#410005",
+                        "on-background": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "secondary": "#d0bcff",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-container": "#00422b",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "inverse-primary": "#006c49",
+                        "primary-container": "#10b981",
+                        "surface-dim": "#131313",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "surface-bright": "#393939",
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "surface-tint": "#4edea3",
+                        "surface-container": "#201f1f",
+                        "primary": "#4edea3",
+                        "on-primary": "#003824",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#3c4a42",
+                        "on-secondary": "#3c0091",
+                        "secondary-container": "#571bc1",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "outline": "#86948a",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "tertiary": "#ffb3af",
+                        "on-surface-variant": "#bbcabf",
+                        "on-tertiary-container": "#711419",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-tertiary": "#650911"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "gutter": "12px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "margin": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+        .tonal-card {
+            background-color: #1E1E1E;
+            border: 1px solid #2D2D2D;
+        }
+        .success-bg-gradient {
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary flex justify-between items-center w-full px-margin py-md fixed top-0 z-50">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined font-headline-md text-headline-md font-bold text-primary dark:text-primary">arrow_back</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</span>
+</div>
+<button class="font-label-lg text-label-lg hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">Skip</button>
+</header>
+<main class="flex-1 mt-xl px-margin pb-xl flex flex-col items-center success-bg-gradient">
+<!-- Hero Illustration & Header -->
+<div class="mt-lg flex flex-col items-center text-center max-w-md w-full">
+<div class="w-24 h-24 mb-lg rounded-full bg-error-container flex items-center justify-center border border-error/20 shadow-[0_0_40px_rgba(147,0,10,0.3)]">
+<span class="material-symbols-outlined text-[48px] text-error" style="font-variation-settings: 'wght' 300;">cancel</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">PO Cancelled</h1>
+<p class="font-body-md text-on-surface-variant">PO-2026-0042 has been permanently cancelled.</p>
+</div>
+<!-- Refund Tracker Card -->
+<section class="w-full max-w-md mt-xl p-md rounded-xl bg-surface-container-high border border-outline-variant shadow-md">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-label-lg text-label-lg text-primary">Refund Status</h2>
+<span class="font-label-sm text-label-sm px-xs py-[2px] rounded-full bg-tertiary-container/10 text-tertiary">Processing</span>
+</div>
+<div class="space-y-sm relative">
+<!-- Vertical Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-outline-variant"></div>
+<!-- Step 1: Completed -->
+<div class="flex gap-md relative z-10">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Cancellation confirmed</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Today, 10:42 AM</p>
+</div>
+</div>
+<!-- Step 2: Pending -->
+<div class="flex gap-md relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-outline">Admin review</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Estimated 24-48h</p>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="flex gap-md relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-outline">Refund initiated</p>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant space-y-xs">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Refund Amount:</span>
+<span class="font-label-lg text-label-lg text-on-surface">₹64,131</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Status:</span>
+<span class="font-label-lg text-label-lg text-tertiary">Awaiting Admin review</span>
+</div>
+</div>
+</section>
+<!-- Notification Status Card -->
+<section class="w-full max-w-md mt-md p-md rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">BM notified</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-on-surface">Farmer production halted</span>
+</div>
+</section>
+<!-- Aesthetic Bento-ish Card for Marketplace Trust -->
+<div class="w-full max-w-md mt-md overflow-hidden rounded-xl h-24 relative">
+<img class="w-full h-full object-cover brightness-[0.4] grayscale-[0.5]" data-alt="A moody, high-end close up of makhana seeds and premium organic packaging in a low-light agricultural warehouse. Emerald green accent lighting creates a sophisticated, technological atmosphere over the gritty texture of the farm products. The composition is artistic and minimalist, evoking corporate reliability and growth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASxjJa5QZnqSLUid-UHYE4Rj4bS7grQd_Dowi1lS0rJOFWDCGlTzMoLwUC9WcSyiMy1YB7KaS0PYN-rae2q_t1CIbHVD--5tALVy4fSnWmlEYIZ1FM5t3HmDOyZ8XW_2FpWi1XbczJrAxBLn0dbiIjp-uOjzTIAEQFj9SsfzWSPqKKlPYRUbPIvR1tuOVqhYBQ9IYLjlyoIzJFmLvg7W49qdbgfe4IySnmBd-JoVigsC8X9-6Mupfo8XcB4o8fDGU2iF0g-nMt98mn"/>
+<div class="absolute inset-0 p-md flex flex-col justify-end bg-gradient-to-t from-background to-transparent">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Market Integrity</p>
+<p class="font-body-md text-on-surface">Funds are secured by FenBridge Escrow</p>
+</div>
+</div>
+<!-- Action Buttons Footer-ish -->
+<div class="w-full max-w-md mt-xl flex flex-col gap-sm">
+<button class="w-full h-[52px] rounded-lg bg-primary-container text-on-primary-container font-label-lg text-label-lg shadow-lg hover:opacity-90 active:scale-95 transition-all">
+                View Order History
+            </button>
+<button class="w-full h-[52px] rounded-lg border border-primary text-primary font-label-lg text-label-lg hover:bg-primary/5 active:scale-95 transition-all">
+                Post New Requirement
+            </button>
+<button class="w-full h-[48px] text-on-surface-variant font-label-lg text-label-lg hover:text-on-surface transition-colors">
+                Back to Dashboard
+            </button>
+</div>
+</main>
+<!-- Navigation Bar Logic Fallback (Suppressed per task guidelines for Success/Transactional pages) -->
+<!-- However, BottomNavBar is defined in JSON, but rule "Success/Confirmation" splash screens must exclude shell -->
+</body></html>

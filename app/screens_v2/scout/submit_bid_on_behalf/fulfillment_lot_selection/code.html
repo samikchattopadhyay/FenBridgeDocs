@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fulfillment Lot Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#dde4dd",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#6d3735",
+                      "primary-fixed": "#6ffbbe",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#7b4240",
+                      "primary": "#6ffbbe",
+                      "surface-container-lowest": "#09100c",
+                      "on-primary-container": "#005f40",
+                      "on-background": "#dde4dd",
+                      "tertiary": "#ffb3af",
+                      "inverse-on-surface": "#2b322d",
+                      "on-surface-variant": "#bbcabf",
+                      "on-surface": "#dde4dd",
+                      "secondary-container": "#115340",
+                      "on-secondary": "#003829",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "secondary-fixed": "#b1f0d6",
+                      "outline-variant": "#3c4a42",
+                      "surface-dim": "#0e1511",
+                      "tertiary-container": "#ffb3af",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "on-secondary-fixed-variant": "#0d503e",
+                      "surface-variant": "#2f3632",
+                      "primary-fixed-dim": "#4edea3",
+                      "primary-container": "#4edea3",
+                      "surface-container": "#1a211d",
+                      "secondary": "#95d3ba",
+                      "on-secondary-container": "#87c5ac",
+                      "on-primary-fixed-variant": "#005236",
+                      "background": "#0e1511",
+                      "outline": "#86948a",
+                      "on-tertiary": "#512120",
+                      "surface-tint": "#4edea3",
+                      "on-primary-fixed": "#002114",
+                      "on-secondary-fixed": "#002117",
+                      "tertiary-fixed": "#ffdad7",
+                      "surface-bright": "#343b36",
+                      "surface-container-highest": "#2f3632",
+                      "surface-lowest": "#0e0e0e",
+                      "on-primary": "#003824",
+                      "inverse-primary": "#006c4a",
+                      "surface": "#0e1511",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#161d19",
+                      "on-tertiary-fixed": "#370d0d",
+                      "surface-container-high": "#242c27"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "base-unit": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "container-max": "1440px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "mono-data": ["JetBrains Mono"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0 bg-surface-container-high border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="text-primary active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">Fulfillment Source</span>
+<span class="text-label-md font-label-md text-on-surface-variant">STEP 4 OF 5</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+</button>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<!-- Heading Section -->
+<section class="mb-8 max-w-2xl">
+<h1 class="text-headline-md font-headline-md mb-2 text-on-background">Which lot will you use to fulfill this order?</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Select the pond or warehouse where you'll produce/store the inventory for this bid.</p>
+</section>
+<!-- Fulfillment Options Grid (Bento Style Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Source Card 1 -->
+<div class="group relative flex flex-col bg-surface-container-low border border-outline-variant p-5 rounded-lg cursor-pointer hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono-data text-mono-data text-primary px-2 py-1 bg-secondary-container/30 rounded border border-primary/20">POND-1024</span>
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm mb-1">North Pond</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Malda</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="flex flex-col gap-1">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Capacity</span>
+<span class="text-body-md font-body-md text-on-surface">2.5 acres / 2500 kg/year</span>
+</div>
+<div class="pt-3 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-primary">Estimated available</span>
+<span class="text-body-md font-bold text-primary">~1200 kg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Source Card 2 (Active/Selected Simulation) -->
+<div class="group relative flex flex-col bg-surface-container-highest border-2 border-primary p-5 rounded-lg cursor-pointer transition-all shadow-lg shadow-primary/5">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono-data text-mono-data text-primary px-2 py-1 bg-secondary-container rounded border border-primary/40">POND-2048</span>
+<span class="text-primary">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm mb-1">West Reservoir</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Sundarbans West</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="flex flex-col gap-1">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Capacity</span>
+<span class="text-body-md font-body-md text-on-surface">4.0 acres / 4800 kg/year</span>
+</div>
+<div class="pt-3 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-primary">Estimated available</span>
+<span class="text-body-md font-bold text-primary">~3100 kg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Source Card 3 -->
+<div class="group relative flex flex-col bg-surface-container-low border border-outline-variant p-5 rounded-lg cursor-pointer hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono-data text-mono-data text-primary px-2 py-1 bg-secondary-container/30 rounded border border-primary/20">WH-772</span>
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm mb-1">Central Warehouse</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Kolkata Hub</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="flex flex-col gap-1">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Storage Capacity</span>
+<span class="text-body-md font-body-md text-on-surface">15000 kg Cold Storage</span>
+</div>
+<div class="pt-3 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-primary">Estimated available</span>
+<span class="text-body-md font-bold text-primary">~850 kg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Source Card 4 -->
+<div class="group relative flex flex-col bg-surface-container-low border border-outline-variant p-5 rounded-lg cursor-pointer hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono-data text-mono-data text-primary px-2 py-1 bg-secondary-container/30 rounded border border-primary/20">POND-092</span>
+<span class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm mb-1">Delta Reach 4</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Eastern Delta</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="flex flex-col gap-1">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Capacity</span>
+<span class="text-body-md font-body-md text-on-surface">1.2 acres / 1100 kg/year</span>
+</div>
+<div class="pt-3 border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-primary">Estimated available</span>
+<span class="text-body-md font-bold text-primary">~400 kg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Add New Source (Empty State Pattern) -->
+<div class="group flex flex-col items-center justify-center bg-surface-container-lowest border border-dashed border-outline p-8 rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors border-spacing-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="add">add</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Register New Lot</span>
+</div>
+</div>
+<!-- Detail Panel (Asymmetric Sidebar/Bottom UI) -->
+<aside class="mt-12 p-6 bg-surface-container border border-outline-variant rounded-xl flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
+<div class="flex gap-4 items-center">
+<div class="w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="Satellite view of pond" class="w-full h-full object-cover" data-alt="A high-resolution satellite top-down photograph of a geometric aquaculture pond system in a lush, dark green landscape. The water has a deep, glassy appearance with subtle ripples. The scene is framed by precise industrial embankments under soft, ambient twilight, creating a moody, deep-tech agricultural atmosphere with a focus on precision and nocturnal monitoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqDJXCHhQD3Z5zBeva_l-oqKchYb32P6ozRrM_gvAgyCpIbHGJeQY1hfexoJe6ayc9d9jZwSOto__ERkGogApF7xhC5GbHdCLgqaSCSJuqm44fN_E_NvfwCzYcWex_3SfoQiheF3oHxbN-5NaI-FJ20idoeY_-9SWjyhcgKnH21qS5di4ARYFZ4_-8rRCBlqWSrVZ9f-4bk54RZWsOlCjphH0P6AXi38umLFBGH8AQj7InQBzS0l9i4B96Rfc5OWzVw14O09m664Wk"/>
+</div>
+<div>
+<span class="text-label-md font-label-md text-primary uppercase">Current Selection</span>
+<h4 class="text-headline-sm font-headline-sm">West Reservoir (POND-2048)</h4>
+<p class="text-body-md font-body-md text-on-surface-variant italic">Optimization score: 94% match for fulfillment requirements.</p>
+</div>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 border border-outline text-on-surface font-label-md rounded hover:bg-surface-variant transition-colors">
+                    Back to Specs
+                </button>
+<button class="flex-1 md:flex-none px-8 py-3 bg-primary text-on-primary font-label-md font-bold rounded shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95 transition-all">
+                    Confirm Selection
+                </button>
+</div>
+</aside>
+</main>
+<!-- Bottom Navigation Shell (Persistent) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface-container-low border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="text-label-md font-label-md">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="store" style="font-variation-settings: 'FILL' 1;">store</span>
+<span class="text-label-md font-label-md">Warehouses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="text-label-md font-label-md">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

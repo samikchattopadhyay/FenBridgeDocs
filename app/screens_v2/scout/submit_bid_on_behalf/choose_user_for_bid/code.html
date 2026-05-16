@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#dde4dd",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#6d3735",
+                    "primary-fixed": "#6ffbbe",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#7b4240",
+                    "primary": "#6ffbbe",
+                    "surface-container-lowest": "#09100c",
+                    "on-primary-container": "#005f40",
+                    "on-background": "#dde4dd",
+                    "tertiary": "#ffb3af",
+                    "inverse-on-surface": "#2b322d",
+                    "on-surface-variant": "#bbcabf",
+                    "on-surface": "#dde4dd",
+                    "secondary-container": "#115340",
+                    "on-secondary": "#003829",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "secondary-fixed": "#b1f0d6",
+                    "outline-variant": "#3c4a42",
+                    "surface-dim": "#0e1511",
+                    "tertiary-container": "#ffb3af",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "on-secondary-fixed-variant": "#0d503e",
+                    "surface-variant": "#2f3632",
+                    "primary-fixed-dim": "#4edea3",
+                    "primary-container": "#4edea3",
+                    "surface-container": "#1a211d",
+                    "secondary": "#95d3ba",
+                    "on-secondary-container": "#87c5ac",
+                    "on-primary-fixed-variant": "#005236",
+                    "background": "#0e1511",
+                    "outline": "#86948a",
+                    "on-tertiary": "#512120",
+                    "surface-tint": "#4edea3",
+                    "on-primary-fixed": "#002114",
+                    "on-secondary-fixed": "#002117",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-bright": "#343b36",
+                    "surface-container-highest": "#2f3632",
+                    "surface-lowest": "#0e0e0e",
+                    "on-primary": "#003824",
+                    "inverse-primary": "#006c4a",
+                    "surface": "#0e1511",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#161d19",
+                    "on-tertiary-fixed": "#370d0d",
+                    "surface-container-high": "#242c27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "base-unit": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "container-max": "1440px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "mono-data": ["JetBrains Mono"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #0e1511;
+            color: #dde4dd;
+        }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar (Transactional - Close leading) -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile h-14 border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">Submit Bid</h1>
+<span class="text-label-md font-label-md text-on-surface-variant">Step 1 of 5</span>
+</div>
+</div>
+<button class="text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined">cloud_sync</span>
+</button>
+</header>
+<main class="flex-1 max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-8">
+<!-- Header Section -->
+<section class="mb-8">
+<h2 class="text-display-lg font-display-lg mb-4 text-on-surface">Who is this bid for?</h2>
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-surface-container border border-outline-variant rounded-xl py-4 pl-12 pr-4 text-body-lg font-body-lg focus:outline-none focus:border-primary transition-colors placeholder:text-outline" placeholder="Search by name, mobile, or district..." type="text"/>
+</div>
+</section>
+<!-- User Selection Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- User Card 1 (Farmer - Teal) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 hover:bg-surface-container-high transition-colors cursor-pointer group flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<!-- Avatar -->
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container text-headline-sm font-bold">
+                            AS
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Ahmed Sulieman</h3>
+<span class="bg-secondary-container text-on-secondary-container text-label-md font-label-md px-2 py-0.5 rounded-full">Farmer</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-1">+249 912 345 678</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-md font-label-md text-primary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            Active now
+                        </span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Northern Delta</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- User Card 2 (Popper - Purple/Tertiary) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 hover:bg-surface-container-high transition-colors cursor-pointer group flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<!-- Avatar -->
+<div class="w-14 h-14 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container text-headline-sm font-bold">
+                            MK
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Mariam Khalid</h3>
+<span class="bg-tertiary-container text-on-tertiary-container text-label-md font-label-md px-2 py-0.5 rounded-full">Popper</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-1">+249 123 987 654</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-md font-label-md text-on-surface-variant">Last active: 12 Feb</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Gezira Central</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- User Card 3 (Farmer) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 hover:bg-surface-container-high transition-colors cursor-pointer group flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<!-- Avatar -->
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container text-headline-sm font-bold">
+                            OH
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Osman Hassan</h3>
+<span class="bg-secondary-container text-on-secondary-container text-label-md font-label-md px-2 py-0.5 rounded-full">Farmer</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-1">+249 900 111 222</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-md font-label-md text-primary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                            Active now
+                        </span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">White Nile</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- User Card 4 (Farmer) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 hover:bg-surface-container-high transition-colors cursor-pointer group flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<!-- Avatar -->
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container text-headline-sm font-bold">
+                            FA
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Fatimah Abbas</h3>
+<span class="bg-secondary-container text-on-secondary-container text-label-md font-label-md px-2 py-0.5 rounded-full">Farmer</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-1">+249 915 555 444</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-md font-label-md text-on-surface-variant">Last active: 11 Feb</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Kassala South</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- User Card 5 (Popper) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 hover:bg-surface-container-high transition-colors cursor-pointer group flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<!-- Avatar -->
+<div class="w-14 h-14 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container text-headline-sm font-bold">
+                            JY
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Jafar Yousif</h3>
+<span class="bg-tertiary-container text-on-tertiary-container text-label-md font-label-md px-2 py-0.5 rounded-full">Popper</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-1">+249 122 777 888</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-md font-label-md text-primary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            Active now
+                        </span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Blue Nile Belt</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Empty State / Add New User CTA -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-2 text-on-surface-variant hover:border-primary hover:text-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-display-lg group-hover:scale-110 transition-transform">person_add</span>
+<p class="font-headline-sm text-headline-sm">Not on the list?</p>
+<p class="text-label-md font-label-md">Register a new user to continue</p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Wizard Pattern) -->
+<footer class="sticky bottom-0 bg-surface-container-low border-t border-outline-variant p-4 flex justify-between items-center z-50">
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase">Required</span>
+<span class="text-body-md font-body-md text-on-surface">Select a user to proceed</span>
+</div>
+<button class="bg-primary text-on-primary font-bold px-8 py-3 rounded-full flex items-center gap-2 active:scale-95 transition-transform disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+            Next Step
+            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

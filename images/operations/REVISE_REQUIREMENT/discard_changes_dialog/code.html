@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge | Discard Changes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#d0bcff",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary": "#650911",
+                    "on-secondary": "#3c0091",
+                    "on-primary-container": "#00422b",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-secondary-fixed": "#23005c",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "inverse-primary": "#006c49",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "secondary-fixed": "#e9ddff",
+                    "on-error": "#690005",
+                    "background": "#131313",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-fixed": "#6ffbbe",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-tint": "#4edea3",
+                    "surface": "#131313",
+                    "on-error-container": "#ffdad6",
+                    "secondary-container": "#571bc1",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary-fixed-variant": "#005236",
+                    "primary-container": "#10b981",
+                    "surface-variant": "#353534",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-highest": "#353534",
+                    "surface-bright": "#393939",
+                    "on-secondary-container": "#c4abff",
+                    "on-tertiary-container": "#711419",
+                    "surface-dim": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "tertiary-container": "#fc7c78",
+                    "outline": "#86948a",
+                    "on-surface-variant": "#bbcabf",
+                    "on-background": "#e5e2e1",
+                    "error": "#ffb4ab",
+                    "tertiary": "#ffb3af",
+                    "on-primary-fixed": "#002113",
+                    "primary": "#4edea3",
+                    "on-primary": "#003824"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "md": "16px",
+                    "margin": "20px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-hidden">
+<!-- Mock Background Page (The "Canvas" behind the modal) -->
+<header class="bg-surface text-primary font-headline-md text-headline-md font-bold docked full-width top-0 flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">FenBridge</span>
+</div>
+<span class="font-label-lg text-label-lg hover:opacity-80 transition-opacity">Skip</span>
+</header>
+<main class="px-margin pt-xl">
+<section class="space-y-lg opacity-20 pointer-events-none">
+<div class="space-y-xs">
+<label class="text-on-surface-variant font-label-lg text-label-lg">Makhana Batch Quality</label>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+<p class="text-on-surface">Premium Grade A - Bihar Cluster</p>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="text-on-surface-variant font-label-lg text-label-lg">Contract Volume (MT)</label>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+<p class="text-on-surface">25.5</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md h-32 flex flex-col justify-end">
+<span class="text-primary font-label-sm text-label-sm uppercase">Verification</span>
+<span class="font-headline-md text-headline-md">Pending</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md h-32 flex flex-col justify-end">
+<span class="text-primary font-label-sm text-label-sm uppercase">Market Price</span>
+<span class="font-headline-md text-headline-md">₹420/kg</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Centered Modal Overlay -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center px-margin modal-backdrop">
+<!-- Level 2 Surface -->
+<div class="bg-[#252525] w-full max-w-sm rounded-xl overflow-hidden shadow-[0_16px_32px_rgba(0,0,0,0.4)] border border-[#2D2D2D]">
+<!-- Visual Anchor / Icon -->
+<div class="pt-xl pb-md flex justify-center">
+<div class="w-16 h-16 rounded-full bg-error-container/20 flex items-center justify-center border border-error/20">
+<span class="material-symbols-outlined text-error text-[32px]" data-icon="warning">warning</span>
+</div>
+</div>
+<!-- Content Area -->
+<div class="px-xl pb-xl text-center">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Discard changes?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    You have unsaved changes. Are you sure you want to discard them?
+                </p>
+</div>
+<!-- Action Cluster -->
+<div class="px-xl pb-xl flex flex-col gap-sm">
+<!-- Secondary Style: Keep Editing -->
+<button class="w-full py-md px-lg rounded-lg border border-primary text-primary font-label-lg text-label-lg hover:bg-primary/5 active:scale-95 transition-all duration-150">
+                    Keep editing
+                </button>
+<!-- Destructive Style: Discard -->
+<button class="w-full py-md px-lg rounded-lg bg-on-tertiary text-error font-label-lg text-label-lg hover:opacity-90 active:scale-95 transition-all duration-150">
+                    Discard
+                </button>
+</div>
+</div>
+</div>
+<!-- Background Image Mockup for context (Decorative/Subtle) -->
+<div class="fixed inset-0 -z-10 opacity-5 grayscale">
+<img alt="Agriculture background" class="w-full h-full object-cover" data-alt="A cinematic, low-angle photograph of a vast makhana pond in rural Bihar during the early morning golden hour. The water surface is covered with large, circular green leaves, and the rising sun creates a high-contrast, atmospheric scene. The aesthetic is gritty yet premium, featuring deep shadows and emerald green highlights that align with a sophisticated agricultural marketplace UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbcfx-09Cs07_N-aYM4NveSPtuWKZExyzMoAu0xUW-vecZUzDaIuQ80TLm8SKXR2PEQzJg2YhyFTzgdSS2ZI_SxlbS-zwHKkDx_dg023jzUx7Cp9i3vbqrFBg64gbQFMX0hg3gJP6bzQAivzMbXGaWwluvIE1gzTZWyqICofcPGSwlz69dHDTyaynLtI1_MhR16ASkhFFPxdMzXjJekOcLLSqvpjSvU_tRZ4mqoTvltjveY2orhG2wtVoz3qJgt5L37Vj9XPfvli74"/>
+</div>
+<!-- Bottom Nav Shell (Suppressed contextually but included as per platform rules for top-level screens, here dimmed/hidden by modal) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface rounded-t-xl shadow-md opacity-20 pointer-events-none">
+<div class="flex flex-col items-center justify-center text-primary scale-110">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</div>
+</nav>
+</body></html>

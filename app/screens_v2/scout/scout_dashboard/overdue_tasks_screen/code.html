@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Overdue Tasks - FenBridge Scout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#10b981",
+                        "on-error": "#690005",
+                        "on-primary-container": "#00422b",
+                        "surface-container-highest": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#003824",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "primary": "#4edea3",
+                        "on-tertiary": "#650911",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container": "#201f1f",
+                        "on-tertiary-container": "#711419",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-variant": "#353534",
+                        "secondary-fixed": "#e9ddff",
+                        "error-container": "#93000a",
+                        "surface": "#131313",
+                        "surface-tint": "#4edea3",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary-container": "#571bc1",
+                        "on-primary-fixed": "#002113",
+                        "inverse-surface": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-tertiary-fixed": "#410005",
+                        "background": "#131313",
+                        "outline-variant": "#3c4a42",
+                        "primary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "outline": "#86948a",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed-dim": "#4edea3",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "tertiary": "#ffb3af",
+                        "surface-bright": "#393939",
+                        "on-secondary": "#3c0091",
+                        "on-background": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "margin": "20px",
+                        "gutter": "12px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(32, 31, 31, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .card-accent {
+            background: linear-gradient(180deg, var(--accent-color) 0%, rgba(var(--accent-rgb), 0.3) 100%);
+            box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.4);
+        }
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="font-body-md text-on-background">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-14 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+        <div class="flex items-center gap-2">
+            <button onclick="window.location.href='../scout_today_dashboard/code.html'" class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded-full">arrow_back</button>
+            <h1 class="text-headline-sm font-headline-sm text-on-surface">Overdue Tasks</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="bg-error-container text-on-error-container px-2 py-0.5 rounded-full font-label-sm text-label-sm">8</span>
+            <span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer">account_circle</span>
+        </div>
+    </header>
+<main class="pt-[72px] pb-[96px] px-margin max-w-2xl mx-auto min-h-screen">
+<!-- Header Info / Sorting Status -->
+<div class="flex justify-between items-center mb-xl">
+<p class="font-label-lg text-label-lg text-on-surface-variant">Sorted by Oldest First</p>
+<button onclick="openRefineSheet()" class="flex items-center gap-xs text-primary font-label-lg text-label-lg hover:underline transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                Refine
+            </button>
+</div>
+<!-- Task List Section -->
+<div class="flex flex-col gap-md">
+            <!-- Task Card 1 (Oldest) -->
+            <div class="glass-card group relative overflow-hidden rounded-2xl p-4 transition-all hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-error/10 active:scale-[0.98] cursor-pointer" style="--accent-color: #ffb4ab; --accent-rgb: 255, 180, 171;">
+                <div class="card-accent absolute left-0 top-0 h-full w-1"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold tracking-widest text-error/60 uppercase">Lot #MK-2042</span>
+                            <span class="bg-error/10 text-error px-2 py-0.5 rounded-full text-[9px] border border-error/20 flex items-center gap-1 uppercase font-bold tracking-wider">
+                                <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                                7 days overdue
+                            </span>
+                        </div>
+                        <h3 class="text-[15px] font-bold tracking-tight text-on-surface">Quality Audit: Darbhanga Hub</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 mb-4 p-3 bg-white/5 rounded-xl border border-white/5">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden shrink-0">
+                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2gOq_4JjO86uKE-6pw8hEN-Ys1g9eIDj5J9WnQ_3SZGEUdwqF1MJf4F7pzLymJdUFwtfM43x9qxgCtqvoeuF1a-4cbTFmOfdfZ00cmCZ9zsq7Kjjr3HI3hz3CVo4f-T23D8ov7_5JAcydlGzElDmuDZXwTQLJCv4DhmkStgQmlkEAPRftHQveRTZ998iYyjIFgDj7yo0PeD4pdXpCDLoWEzgW0jVJNCshQDlWE4qsv40aPsQHGW4Sn5atokHvrE_QeTDIzntQ0p4z"/>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xs font-bold text-on-surface">Rajesh Kumar</span>
+                        <span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Makhana Processing Unit 4</span>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="window.location.href='../../lot_verification_inspection/confirm_lot_quantity/code.html'" class="flex-1 py-2.5 bg-primary text-on-primary font-bold text-xs rounded-xl shadow-lg shadow-primary/20 active:scale-95 transition-all">Complete Now</button>
+                    <button class="details-btn px-4 py-2.5 border border-outline-variant text-on-surface font-bold text-xs rounded-xl hover:bg-white/5 transition-colors">Details</button>
+                </div>
+            </div>
+<!-- Task Card 2 -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-md shadow-lg transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Logistics #FL-991</span>
+<span class="w-fit bg-error/10 text-error px-2 py-0.5 rounded-full font-label-sm text-[10px] border border-error/20 flex items-center gap-1 uppercase font-bold tracking-wider">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+4 days overdue
+</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Verify Moisture Levels</h3>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Sample ID</span>
+<span class="font-body-md text-body-md text-primary">SID-88210</span>
+</div>
+<div class="p-sm bg-surface-container-low rounded-lg border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Threshold</span>
+<span class="font-body-md text-body-md text-on-surface">&lt; 12.0%</span>
+</div>
+</div>
+<button onclick="window.location.href='../../lot_verification_inspection/parameter_readings/code.html'" class="w-full py-sm bg-primary text-on-primary font-label-lg text-label-lg rounded-lg shadow-inner-glow transition-all active:scale-95">Open Inspection Tool</button>
+</div>
+<!-- Task Card 3 -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-md shadow-lg transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Contract #BC-112</span>
+<span class="w-fit bg-error/10 text-error px-2 py-0.5 rounded-full font-label-sm text-[10px] border border-error/20 flex items-center gap-1 uppercase font-bold tracking-wider">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+3 days overdue
+</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Final Weight Certification</h3>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Consignment for 'Global Nut Exports' requires immediate weight verification at the weighing bridge.</p>
+<div class="flex gap-sm">
+<button onclick="window.location.href='../../lot_verification_inspection/confirm_lot_quantity/code.html'" class="flex-1 py-sm bg-primary text-on-primary font-label-lg text-label-lg rounded-lg shadow-inner-glow transition-all active:scale-95">Certify Now</button>
+<button onclick="window.open('tel:+919876543210', '_blank')" class="px-md py-sm border border-outline text-on-surface font-label-lg text-label-lg rounded-lg hover:bg-surface-variant/50 transition-colors">Call Site</button>
+</div>
+</div>
+<!-- Empty State Illustration (Hidden for this demo but structured for the prompt) -->
+<div class="hidden flex-col items-center justify-center py-xl text-center">
+<div class="w-24 h-24 bg-surface-container-high rounded-full flex items-center justify-center mb-md border border-primary/20">
+<span class="material-symbols-outlined text-headline-lg text-primary" style="font-variation-settings: 'opsz' 48;">task_alt</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs truncate whitespace-nowrap">No overdue tasks</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">You're all caught up. Keep up the high efficiency!</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-xs py-md bg-surface-dim/90 backdrop-blur-lg dark:bg-surface-dim/90 border-t border-outline-variant/20 shadow-lg rounded-t-xl">
+<div onclick="window.location.href='../scout_today_dashboard/code.html'" class="flex flex-col items-center justify-center bg-primary-container/20 text-primary dark:text-primary-fixed-dim rounded-xl px-4 py-1 Active: scale-95 transition-all duration-300 ease-out cursor-pointer">
+<span class="material-symbols-outlined" data-icon="task_alt" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="text-label-sm font-label-sm">Scout</span>
+</div>
+<div onclick="window.location.href='../../warehouses/warehouse_list/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</div>
+<div onclick="window.location.href='../../sync_queue/sync_queue_list/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-label-sm font-label-sm">History</span>
+</div>
+<div onclick="window.location.href='../../profile_settings/profile_settings/code.html'" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</div>
+</nav>
+<!-- Refine Bottom Sheet -->
+<div id="refineSheet" class="fixed inset-0 z-[70] bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500 flex items-end">
+<div class="absolute inset-0" onclick="closeRefineSheet()"></div>
+<div id="refineContent" class="relative w-full bg-surface-container-high rounded-t-[32px] border-t border-outline-variant/30 max-h-[85vh] flex flex-col transform translate-y-full transition-transform duration-500 ease-out">
+<div class="w-full flex justify-center py-sm">
+<div class="w-12 h-1.5 bg-outline-variant/50 rounded-full"></div>
+</div>
+<div class="px-margin pb-xl">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface">Refine Tasks</h2>
+<button onclick="closeRefineSheet()" class="text-primary font-label-lg">Reset</button>
+</div>
+<div class="space-y-xl overflow-y-auto max-h-[60vh] pr-2">
+<!-- Sort Section -->
+<section>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-md">Sort By</h3>
+<div class="space-y-md">
+<label class="flex items-center justify-between group cursor-pointer">
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Oldest First (Default)</span>
+<input type="radio" name="sort" checked class="w-5 h-5 text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-offset-0"/>
+</label>
+<label class="flex items-center justify-between group cursor-pointer">
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Most Overdue</span>
+<input type="radio" name="sort" class="w-5 h-5 text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-offset-0"/>
+</label>
+<label class="flex items-center justify-between group cursor-pointer">
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">By Lot Number</span>
+<input type="radio" name="sort" class="w-5 h-5 text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-offset-0"/>
+</label>
+</div>
+</section>
+<!-- Filter Section -->
+<section>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-md">Priority Level</h3>
+<div class="flex flex-wrap gap-sm">
+<label class="px-lg py-sm rounded-full bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-lg cursor-pointer peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary transition-all has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:text-primary">
+<input type="checkbox" class="hidden" checked/> Critical
+</label>
+<label class="px-lg py-sm rounded-full bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-lg cursor-pointer transition-all has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:text-primary">
+<input type="checkbox" class="hidden"/> High
+</label>
+<label class="px-lg py-sm rounded-full bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-lg cursor-pointer transition-all has-[:checked]:bg-primary/10 has-[:checked]:border-primary has-[:checked]:text-primary">
+<input type="checkbox" class="hidden"/> Normal
+</label>
+</div>
+</section>
+<!-- Region Section -->
+<section>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-md">Processing Hubs</h3>
+<div class="space-y-md">
+<label class="flex items-center gap-md group cursor-pointer">
+<input type="checkbox" checked class="w-5 h-5 rounded text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-offset-0"/>
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Darbhanga Hub</span>
+</label>
+<label class="flex items-center gap-md group cursor-pointer">
+<input type="checkbox" checked class="w-5 h-5 rounded text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-offset-0"/>
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Madhubani Unit</span>
+</label>
+<label class="flex items-center gap-md group cursor-pointer">
+<input type="checkbox" class="w-5 h-5 rounded text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-offset-0"/>
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Purnia Logistics</span>
+</label>
+</div>
+</section>
+</div>
+<div class="mt-xl">
+<button onclick="closeRefineSheet()" class="w-full bg-primary text-on-primary py-md rounded-xl font-label-lg active:scale-[0.98] transition-transform shadow-lg">Apply Changes</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Task Detail Bottom Sheet (Hidden by default) -->
+<div id="taskDetailSheet" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500 flex items-end">
+<div class="absolute inset-0" onclick="closeTaskDetailSheet()"></div>
+<div id="taskDetailContent" class="relative w-full bg-surface-container-high rounded-t-[32px] border-t border-outline-variant/30 max-h-[75vh] flex flex-col transform translate-y-full transition-transform duration-500 ease-out">
+<div class="w-full flex justify-center py-sm">
+<div class="w-12 h-1.5 bg-outline-variant/50 rounded-full"></div>
+</div>
+<div class="flex-1 overflow-y-auto px-margin pb-32">
+<div class="flex flex-col gap-xs mb-lg">
+<div class="flex items-center gap-sm">
+<span class="bg-tertiary-container/20 text-tertiary text-label-sm font-label-sm px-sm py-1 rounded-full border border-tertiary/20">LOT VERIFICATION</span>
+<span class="text-on-surface-variant">•</span>
+<span class="text-label-lg font-label-lg text-on-surface-variant">7 days overdue</span>
+</div>
+<h1 class="text-headline-md font-headline-md text-on-surface mt-base truncate whitespace-nowrap">Quality Audit: Darbhanga Hub</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Assignee: Rajesh Kumar</p>
+</div>
+<div class="grid grid-cols-2 gap-sm mb-xl">
+<button onclick="window.open('geo:26.1445,85.8902?q=Makhana+Processing+Unit+4,+Darbhanga,+Bihar', '_blank')" class="flex items-center justify-center gap-xs bg-surface-container-highest hover:bg-surface-variant transition-colors py-md rounded-xl text-primary font-label-lg">
+<span class="material-symbols-outlined text-[20px]">directions</span>Navigate
+</button>
+<button onclick="window.open('tel:+919876543210', '_blank')" class="flex items-center justify-center gap-xs bg-surface-container-highest hover:bg-surface-variant transition-colors py-md rounded-xl text-primary font-label-lg">
+<span class="material-symbols-outlined text-[20px]">call</span>Call popper
+</button>
+</div>
+<div class="space-y-lg mb-xl">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Warehouse</p>
+<p class="text-body-md font-body-md text-on-surface">Makhana Processing Unit 4</p>
+<p class="text-label-lg font-label-lg text-on-surface-variant">Darbhanga, Bihar</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline">schedule</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Scheduled Date</p>
+<p class="text-body-md font-body-md text-on-surface">9 days ago (Overdue by 7 days)</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-outline">inventory_2</span>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Lot Reference</p>
+<p class="text-body-md font-body-md text-on-surface">LOT #MK-2042</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-md">
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]">history</span>
+<span class="text-label-lg font-label-lg text-on-surface">Inspection History</span>
+</div>
+<div class="flex flex-col gap-xs">
+<p class="text-body-md font-body-md text-on-surface-variant italic">Original rejection: High moisture — 14.2% (12 May)</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 bg-surface-dim/80 backdrop-blur-md p-margin border-t border-outline-variant/30">
+<button onclick="window.location.href='../../lot_verification_inspection/confirm_lot_quantity/code.html'" class="w-full bg-primary text-on-primary py-md rounded-xl font-label-lg flex items-center justify-center gap-sm active:scale-[0.98] transition-transform shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined">verified</span>Start Lot Verification
+</button>
+</div>
+</div>
+</div>
+<script>
+function openTaskDetailSheet() {
+var overlay = document.getElementById('taskDetailSheet');
+var sheet = document.getElementById('taskDetailContent');
+overlay.classList.remove('opacity-0', 'pointer-events-none');
+sheet.classList.remove('translate-y-full');
+}
+function openRefineSheet() {
+var overlay = document.getElementById('refineSheet');
+var sheet = document.getElementById('refineContent');
+overlay.classList.remove('opacity-0', 'pointer-events-none');
+sheet.classList.remove('translate-y-full');
+}
+function closeRefineSheet() {
+var overlay = document.getElementById('refineSheet');
+var sheet = document.getElementById('refineContent');
+sheet.classList.add('translate-y-full');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+function closeTaskDetailSheet() {
+var overlay = document.getElementById('taskDetailSheet');
+var sheet = document.getElementById('taskDetailContent');
+sheet.classList.add('translate-y-full');
+overlay.classList.add('opacity-0', 'pointer-events-none');
+}
+document.addEventListener('DOMContentLoaded', function() {
+var detailsButtons = document.querySelectorAll('.details-btn');
+detailsButtons.forEach(function(btn) {
+btn.addEventListener('click', function() {
+openTaskDetailSheet();
+});
+});
+});
+</script>
+<script src="../../../../app_logic.js"></script>
+</body></html>
+
+
+
+
+
+
+
+

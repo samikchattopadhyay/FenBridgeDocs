@@ -1,0 +1,319 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#512120",
+            "on-secondary-fixed-variant": "#0d503e",
+            "on-secondary-container": "#87c5ac",
+            "inverse-surface": "#dde4dd",
+            "on-error": "#690005",
+            "on-tertiary-fixed": "#370d0d",
+            "secondary-container": "#115340",
+            "on-primary-container": "#005f40",
+            "outline-variant": "#3c4a42",
+            "on-primary-fixed": "#002114",
+            "surface-bright": "#393939",
+            "on-surface-variant": "#bbcabf",
+            "surface-variant": "#2f3632",
+            "outline": "#86948a",
+            "surface-container": "#1a211d",
+            "surface-dim": "#0e1511",
+            "primary-fixed-dim": "#4edea3",
+            "on-tertiary-container": "#7b4240",
+            "error": "#ffb4ab",
+            "background": "#0e1511",
+            "tertiary-fixed-dim": "#ffb3af",
+            "surface": "#0e1511",
+            "inverse-primary": "#006c4a",
+            "on-surface": "#dde4dd",
+            "secondary-fixed": "#b1f0d6",
+            "error-container": "#93000a",
+            "primary-container": "#4edea3",
+            "on-secondary": "#003829",
+            "surface-container-high": "#242c27",
+            "inverse-on-surface": "#2b322d",
+            "tertiary": "#ffb3af",
+            "surface-container-low": "#161d19",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#ffdad7",
+            "primary": "#6ffbbe",
+            "secondary-fixed-dim": "#95d3ba",
+            "on-background": "#dde4dd",
+            "secondary": "#95d3ba",
+            "surface-container-highest": "#2f3632",
+            "surface-container-lowest": "#09100c",
+            "surface-lowest": "#0e0e0e",
+            "on-secondary-fixed": "#002117",
+            "on-primary": "#003824",
+            "primary-fixed": "#6ffbbe",
+            "surface-tint": "#4edea3",
+            "on-primary-fixed-variant": "#005236",
+            "on-tertiary-fixed-variant": "#6d3735",
+            "tertiary-container": "#ffb3af"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "base-unit": "4px",
+            "gutter": "16px",
+            "container-max": "1440px",
+            "unit": "4px",
+            "margin-mobile": "16px"
+          },
+          "fontFamily": {
+            "headline-sm": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "mono-data": ["JetBrains Mono"],
+            "label-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    
+        ::-webkit-scrollbar { display: none !important; }
+        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+    </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-opacity text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Lot Dispatch Wizard</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full border border-outline-variant">Step 1 of 5</span>
+<button class="active:opacity-80 transition-opacity text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Hero/Instruction Section -->
+<section class="mb-8">
+<h2 class="font-display-lg text-display-lg mb-2 text-on-surface">Which PO are you marking ready?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Select an active purchase order you have been awarded to begin the dispatch notification process.</p>
+</section>
+<!-- Grid of Active POs -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- PO Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer flex flex-col group relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="font-mono-data text-mono-data text-primary uppercase tracking-wider">PO-2026-001</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">FenBridge Logistics</h3>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-3 py-0.5 rounded-full border border-on-secondary-fixed-variant">Awarded</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">PRODUCT</p>
+<p class="font-body-md text-body-md text-on-surface">Raw Makhana Seed, 5,000 kg</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">AWARD DATE</p>
+<p class="font-body-md text-body-md text-on-surface">Oct 12, 2025</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">alarm</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">READY-BY DEADLINE</p>
+<p class="font-body-md text-body-md text-primary">Oct 28, 2025</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+            Priority High
+          </span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- PO Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer flex flex-col group relative">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="font-mono-data text-mono-data text-primary uppercase tracking-wider">PO-2026-042</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Global AgriTrade Co.</h3>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant font-label-md text-label-md px-3 py-0.5 rounded-full border border-outline-variant">In Progress</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">PRODUCT</p>
+<p class="font-body-md text-body-md text-on-surface">Grade A Cashews, 2,500 kg</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">AWARD DATE</p>
+<p class="font-body-md text-body-md text-on-surface">Oct 15, 2025</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">alarm</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">READY-BY DEADLINE</p>
+<p class="font-body-md text-body-md text-on-surface">Nov 05, 2025</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+            Standard
+          </span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- PO Card 3 -->
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer flex flex-col group relative">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="font-mono-data text-mono-data text-primary uppercase tracking-wider">PO-2026-089</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Northeast Nut Processing</h3>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-3 py-0.5 rounded-full border border-on-secondary-fixed-variant">Awarded</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">PRODUCT</p>
+<p class="font-body-md text-body-md text-on-surface">Sorted Fox Nuts, 1,200 kg</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">AWARD DATE</p>
+<p class="font-body-md text-body-md text-on-surface">Oct 20, 2025</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">alarm</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">READY-BY DEADLINE</p>
+<p class="font-body-md text-body-md text-on-surface">Oct 25, 2025</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="text-tertiary font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+            Due Soon
+          </span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Empty / Suggestion Card -->
+<div class="border border-dashed border-outline-variant p-gutter rounded-lg flex flex-col items-center justify-center text-center opacity-60 hover:opacity-100 transition-opacity min-h-[250px]">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3">manage_search</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mb-1">Looking for a specific PO?</p>
+<p class="font-body-md text-body-md text-on-surface-variant px-6">If you don't see it here, it may already be dispatched or still in the bidding phase.</p>
+</div>
+</div>
+<!-- Visual Anchor - Atmospheric Image -->
+<section class="mt-16 rounded-xl overflow-hidden relative h-64 border border-outline-variant">
+<img class="w-full h-full object-cover filter grayscale brightness-50" data-alt="A high-contrast cinematic shot of a dark industrial warehouse facility at night. The scene is illuminated by technical cyan and green LED indicators on rows of stacked wooden crates containing agricultural products. Dramatic low-key lighting creates a noir atmosphere with deep shadows and sharp highlights on metallic surfaces. The aesthetic is industrial, modern, and high-tech, reflecting automated precision in a logistics environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrqmKsiXlvTSkm17YvMNB_vxh4BARAHJV-GXcH3u5MXSO2XwYxuWtl9_0pqS2tfAxIsy5mHbT5d_ApKtuoS3_SIza8OMiqrzugmxzzfd61wKDPnXZlSg38heCP6kx5zecwBZx93tfErX6HJ6NNJMUwjstEJtuo1H6JlLwm7ccIpI4TQBq7_hm3RKgI88uvv3zAAG0xozcSKjl6MGMp7io2Ynq4Fy3ZGnblT7AyI716P5NgCvt7x6oyiAzKyf58RG5ZuRfkVp7UxGi9"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+<div class="absolute bottom-8 left-8">
+<p class="font-headline-sm text-headline-sm text-primary mb-1">Secure Digital Chain</p>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Every dispatch notice is verified against verified smart-contracts and sensor telemetry for end-to-end transparency.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant md:hidden">
+<div class="flex justify-around items-center h-20 pb-safe w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-md text-label-md">Dispatch</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md text-label-md">Sensors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Desktop Navigation (Integrated in AppBar Logic or Side) -->
+<div class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-20 flex-col items-center py-8 bg-surface border-r border-outline-variant space-y-8">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-[10px] uppercase">Inv</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span class="font-label-md text-[10px] uppercase font-bold">Dispatch</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md text-[10px] uppercase">Sens</span>
+</button>
+<div class="mt-auto">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-[10px] uppercase">User</span>
+</button>
+</div>
+</div>
+
+    <script src='../../../../app_logic.js'></script>
+</body></html>
+
+
+

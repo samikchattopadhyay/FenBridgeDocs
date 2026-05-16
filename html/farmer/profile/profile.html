@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FenBridge - Farmer Profile Management Workflow</title>
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #10b981;
+      --accent-primary-hover: #34d399;
+      --accent-primary-glow: rgba(16, 185, 129, 0.15);
+      --accent-secondary: #f59e0b;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 40px 48px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    /* ROLE WORKFLOW HEADER */
+    .role-header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #062317 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: 16px;
+      padding: 36px 42px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .role-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .role-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    .meta-metrics {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .metric-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metric-pill strong {
+      color: var(--accent-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+    }
+
+    /* WORKFLOW SEQUENTIAL TIMELINE */
+    .workflow-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .flow-step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .flow-step-card:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      transform: translateY(-2px);
+    }
+
+    /* STEP CARD HEADER */
+    .step-header {
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .step-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-folder-ref {
+      font-family: 'Inter', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+      background: var(--bg-base);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* STEP CARD BODY - SPLIT PANE */
+    .step-body {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 480px;
+    }
+
+    .step-left-pane {
+      flex: 1;
+      min-width: 340px;
+      max-width: 420px;
+      background: #0b0b0c;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-right: 1px solid var(--border-color);
+    }
+
+    /* Scrollable Consistent Viewport Wrapper for Preview Images */
+    .card-image-viewport {
+      width: 300px;
+      height: 500px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-radius: 12px;
+      border: 2px solid var(--border-color);
+      background: #000;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+    .card-image-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .preview-screen-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-placeholder {
+      color: var(--text-dim);
+      font-size: 13px;
+      text-align: center;
+      padding: 40px;
+      font-style: italic;
+    }
+
+    .step-right-pane {
+      flex: 2;
+      min-width: 380px;
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* Specs Grid Configuration */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding-right: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-light) transparent;
+    }
+    .specs-grid::-webkit-scrollbar {
+      width: 4px;
+    }
+    .specs-grid::-webkit-scrollbar-thumb {
+      background: var(--border-light);
+      border-radius: 2px;
+    }
+
+    .spec-block {
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      padding: 14px 18px;
+      border-radius: 8px;
+    }
+    .spec-block.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .spec-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .spec-value {
+      font-size: 13.5px;
+      color: var(--text-main);
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .spec-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .spec-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .spec-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--border-light);
+      font-weight: bold;
+    }
+
+    .spec-list li strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .db-schema-box {
+      background: #000;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-size: 11.5px;
+      color: var(--accent-primary-hover);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin-top: 4px;
+    }
+
+    /* ACTION BAR */
+    .step-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      margin-top: auto;
+    }
+
+    .action-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-active);
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .action-btn.primary {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-primary);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .action-btn.primary:hover {
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
+    }
+
+    /* STEPPER NAVIGATION PANEL */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .stepper-panel-container {
+      max-width: 1280px;
+      margin: 0 auto 48px;
+      background: rgba(24, 24, 27, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 36px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      overflow-x: auto;
+    }
+
+    .stepper-nodes {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      min-width: 1050px;
+      z-index: 2;
+    }
+
+    .stepper-nodes::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: var(--border-light);
+      z-index: -1;
+    }
+
+    .stepper-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .stepper-node:hover {
+      transform: translateY(-2px);
+    }
+
+    .node-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border-light);
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .stepper-node:hover .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    }
+
+    .node-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .stepper-node:hover .node-label {
+      color: var(--text-main);
+    }
+
+    /* Active Highlight States */
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--accent-primary-glow);
+      box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+
+    .stepper-node.active .node-label {
+      color: var(--accent-primary);
+      font-weight: 800;
+    }
+
+    /* EXECUTABLE CODE OVERLAY MODAL */
+    .code-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .code-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .code-modal-window {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+      transform: scale(0.95);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .code-modal-backdrop.active .code-modal-window {
+      transform: scale(1);
+    }
+    .code-modal-window.mobile-view {
+      width: 380px;
+      height: 720px;
+      max-height: 90vh;
+    }
+    .code-modal-window.desktop-view {
+      width: 90%;
+      max-width: 1200px;
+      height: 85vh;
+    }
+    .code-modal-header {
+      padding: 14px 20px;
+      background: #141416;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .code-modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      letter-spacing: 0.5px;
+    }
+    .code-modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    .code-modal-close:hover {
+      color: #fff;
+    }
+    .code-modal-body {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      background: #121212;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .code-modal-body::-webkit-scrollbar {
+      display: none;
+    }
+    .code-modal-body iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ROLE HEADER BANNER -->
+  <div class="role-header-banner">
+    <div class="role-tag">Role Profile: Farmer Management Hub</div>
+    <h1 class="role-title">Farmer Profile & Management Flow</h1>
+    <p class="role-desc">
+      Comprehensive desk workspace governing registered aquaculture farmers post-onboarding. Highlights integrated bank settlement details requiring micro-deposit penny drop verification, real-time spatial pond database records, capability tags tracking, document evidence vaulting, and a prominent dynamic Action Required alerts panel prioritizing incomplete profile setups.
+    </p>
+    <div class="meta-metrics">
+      <div class="metric-pill">
+        <span>Total Hierarchy Screens:</span> <strong>11 Interfaces</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Target Source Directory:</span> <strong style="color:var(--text-main);font-family:monospace;">images/profile/</strong>
+      </div>
+      <div class="metric-pill">
+        <span>Documentation Fidelity:</span> <strong style="color:var(--accent-primary);">Verbatim Output</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- DYNAMIC STEPPER PANEL -->
+  <div class="stepper-panel-container custom-scrollbar">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node" title="Farmer Profile Hub">
+        <span class="node-num">01</span>
+        <span class="node-label">Profile Hub</span>
+      </a>
+      <a href="#step-02" class="stepper-node" title="Edit Pond Details">
+        <span class="node-num">02</span>
+        <span class="node-label">Edit Pond</span>
+      </a>
+      <a href="#step-03" class="stepper-node" title="Manage Ponds">
+        <span class="node-num">03</span>
+        <span class="node-label">Ponds Hub</span>
+      </a>
+      <a href="#step-04" class="stepper-node" title="Bank Account Details">
+        <span class="node-num">04</span>
+        <span class="node-label">Bank Info</span>
+      </a>
+      <a href="#step-05" class="stepper-node" title="Edit Bank Account">
+        <span class="node-num">05</span>
+        <span class="node-label">Edit Bank</span>
+      </a>
+      <a href="#step-06" class="stepper-node" title="Capability Tags">
+        <span class="node-num">06</span>
+        <span class="node-label">Capabilities</span>
+      </a>
+      <a href="#step-07" class="stepper-node" title="Uploaded Documents">
+        <span class="node-num">07</span>
+        <span class="node-label">Documents</span>
+      </a>
+      <a href="#step-08" class="stepper-node" title="Link WhatsApp">
+        <span class="node-num">08</span>
+        <span class="node-label">WhatsApp</span>
+      </a>
+      <a href="#step-09" class="stepper-node" title="Settings Hub">
+        <span class="node-num">09</span>
+        <span class="node-label">Settings</span>
+      </a>
+      <a href="#step-10" class="stepper-node" title="Notification Preferences">
+        <span class="node-num">10</span>
+        <span class="node-label">Notifs</span>
+      </a>
+      <a href="#step-11" class="stepper-node" title="Help & Support">
+        <span class="node-num">11</span>
+        <span class="node-label">Support</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- WORKFLOW TIMELINE CONTAINER -->
+  <div class="workflow-timeline">
+
+    <!-- STEP 1 -->
+    <div class="flow-step-card" id="step-01">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 01</span>
+          Farmer Profile Hub
+        </div>
+        <span class="step-folder-ref">farmer_profile</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/farmer_profile/screen.png" alt="Farmer Profile Hub" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+               <div class="spec-label">Purpose</div>
+               <div class="spec-value">Central hub for farmer to view and manage account, ponds, bank account, and settings. Highlights outstanding action alerts for rapid compliance completion.</div>
+            </div>
+            <div class="spec-block">
+               <div class="spec-label">Business Requirement</div>
+               <div class="spec-value">Single source of truth for farmer's account and assets. Prompts critical missing data (Bank linkages, WhatsApp, Capabilities) to prevent transaction roadblocks.</div>
+            </div>
+            <div class="spec-block">
+               <div class="spec-label">User Experience (UX)</div>
+               <div class="spec-value">Scrollable view with avatar header, dynamic Action Required section highlighting pending profile prerequisites, inline-editable key fields, and modular navigation buttons.</div>
+            </div>
+            <div class="spec-block">
+               <div class="spec-label">User Actions</div>
+               <ul class="spec-list">
+                 <li>Tap avatar to upload profile photo.</li>
+                 <li>Tap Action Required quick links (Add Account, Upload, Link Now, Add Tags).</li>
+                 <li>Tap inline edit buttons for Mobile, WhatsApp, or Address.</li>
+                 <li>Tap menu options to access dedicated sub-screens.</li>
+                 <li>Tap Logout.</li>
+               </ul>
+            </div>
+            <div class="spec-block full-width">
+               <div class="spec-label">Technical Details</div>
+               <ul class="spec-list">
+                 <li>Avatar: stored securely at fenbridge/users/{user_id}/avatar.jpg.</li>
+                 <li>Action Required panel renders conditionally based on null status checks of linked bank records, uploaded avatars, verified chat endpoints, and capability array weights.</li>
+                 <li>Primary pond: query ponds table where user_id = current_user and is_primary = true.</li>
+                 <li>Bank account: query farmer_bank_account table.</li>
+                 <li>Inline changes auto-save silently via serverless sync.</li>
+               </ul>
+            </div>
+            <div class="spec-block full-width">
+               <div class="spec-label">Design Details</div>
+               <div class="spec-value">Header Section (surface-hi background):
+- Avatar: 120 × 120 dp circle with floating camera overlay badge.
+- Name: Title 2 with inline verified tag.
+- Role pill: "Farmer" rendered in semi-transparent primary accent.
+
+Section: Action Required (Prominent Warning Box):
+- Header: "Action Required" heading coupled with warning icon in tertiary highlight.
+- Container: Glass card styled with a left-bordered block accent.
+- Item 1: Link Payment Bank Account (icon: account_balance) + CTA "Add Account".
+- Item 2: Upload Profile Photo (icon: account_circle) + CTA "Upload".
+- Item 3: Link WhatsApp Number (icon: chat) + CTA "Link Now".
+- Item 4: Add Capability Tags (icon: loyalty) + CTA "Add Tags".
+- Item 5: Awaiting Account Approval (icon: verified_user) + badge "Pending".
+
+Section 1 — Contact & Location:
+- Header: "Contact & Location" (Title 3).
+- Row 1: Mobile icon + verified state badge + inline edit.
+- Row 2: WhatsApp linked status indicator + explicit "+ Link" callout.
+- Row 3: Primary Address truncated string preview + inline edit button.
+
+Section 2 — Farm Information:
+- Header: "Farm Information" (Title 3).
+- Row 1: Pond title preview with dual inline pill metrics (Acres, Capacity).
+- Row 2: Quick navigation menu expanding uploaded land deeds.
+- Row 3: Secondary link opening complete multi-pond grid view.
+
+Section 3 — Payment Account:
+- Preview: Bank container previewing payee name, masked card sequence, and IFSC string alongside an active verified badge indicator.
+
+Section 4 — Account Status:
+- Displays operational active flag alongside active single sign-on linkages (Google).
+
+Section 5 — Menu Buttons:
+- Edit Farm/Pond Details (icon: agriculture).
+- Manage Ponds (icon: water).
+- Bank Account Details (icon: account_balance).
+- Capability Tags (icon: loyalty).
+- Settings (icon: settings).
+- Notification Preferences (icon: notifications).
+- Help & Support (icon: help).
+- Logout (destructive filled outline style).
+Bottom padding: 24 dp.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">users (
+  id UUID PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  full_name VARCHAR(200) NOT NULL,
+  mobile_number VARCHAR(20),
+  avatar_url VARCHAR(500),
+  role ENUM ['buyer', 'farmer', 'scout'] NOT NULL,
+  status ENUM ['onboarding', 'pending_approval', 'active', 'suspended'] DEFAULT 'pending_approval',
+  theme_preference ENUM ['dark', 'light'] DEFAULT 'dark'
+);
+
+ponds (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  pond_name VARCHAR(200) NOT NULL,
+  area_value DECIMAL(8, 2),
+  area_unit ENUM ['acres', 'bigha'],
+  estimated_annual_capacity_kg INT,
+  is_primary BOOLEAN DEFAULT false
+);
+
+farmer_bank_account (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY UNIQUE,
+  account_holder_name VARCHAR(200),
+  account_number VARCHAR(20),
+  ifsc_code VARCHAR(11),
+  account_type ENUM ['savings', 'current'],
+  verified_at TIMESTAMP,
+  penny_drop_status ENUM ['pending', 'verified', 'failed']
+);</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/farmer_profile/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="flow-step-card" id="step-02">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 02</span>
+          Edit Pond Details
+        </div>
+        <span class="step-folder-ref">edit_pond_details</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/edit_pond_details/screen.png" alt="Edit Pond Details" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Edit primary pond information (name, area, capacity) or access from Manage Ponds to edit any specific pond.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Allow farmer to correct/update pond details if they change area, capacity estimates, or pond name.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Form with three text inputs (pond name, area value + unit dropdown, capacity). Save button.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Edit pond name.</li>
+                <li>Edit area (value + unit dropdown: acres / bigha).</li>
+                <li>Edit capacity (kg/year).</li>
+                <li>Tap "Save Changes".</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>If accessed from Farmer Profile: pre-fill from primary pond (is_primary = true).</li>
+                <li>If accessed from Manage Ponds: pre-fill from specific pond_id.</li>
+                <li>Validation: pond name (min 3 chars), area (> 0, numeric), capacity (numeric, > 0).</li>
+                <li>On save: update ponds table + log audit event.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Edit Pond Details" heading (Title 2).
+Form:
+- Input 1: "Pond Name" (text). Placeholder: "Your local name, e.g., Beel 1". Pre-filled.
+- Input 2: "Area" (split input). Number field (pre-filled) + dropdown (Acres / Bigha, pre-selected). Helper: "How much land does this pond cover?"
+- Input 3: "Estimated Annual Capacity" (number, pre-filled). Placeholder: "kg per year". Helper: "Help us understand your production capacity."
+Action:
+- "Save Changes" primary button (full-width).
+Feedback:
+- Toast on success: "✓ Pond details updated".
+- Validation errors below each field (danger colour).</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">UPDATE ponds SET pond_name = $1, area_value = $2, area_unit = $3, estimated_annual_capacity_kg = $4 WHERE id = target_pond_id;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/edit_pond_details/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="flow-step-card" id="step-03">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 03</span>
+          Manage Ponds
+        </div>
+        <span class="step-folder-ref">manage_ponds</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/manage_ponds/screen.png" alt="Manage Ponds" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">View all registered ponds, add new, edit, delete, or set as primary.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Farmer may operate multiple ponds. Admin and buyers need visibility into all ponds for capacity matching.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">List of pond cards with name, area, capacity. Primary badge. Buttons to set primary, edit, delete. FAB to add new.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View all ponds.</li>
+                <li>Tap "Set as Primary" on any pond.</li>
+                <li>Tap pond card to view details (optional).</li>
+                <li>Tap edit icon to open Edit Pond Details form.</li>
+                <li>Tap delete icon (with confirmation) to remove pond.</li>
+                <li>Tap FAB to add new pond.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch all ponds where user_id = current_user.</li>
+                <li>Only one pond can have is_primary = true.</li>
+                <li>On set primary: update is_primary to false for all ponds, then set to true for selected pond.</li>
+                <li>Add new pond: opens Pond Registration workflow (from onboarding).</li>
+                <li>Delete: soft-delete (mark as deleted) or hard-delete with confirmation.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "My Ponds" heading (Title 2).
+List of pond cards (surface background, border-hi, 12 dp padding, gap 8 dp):
+Each card:
+- Pond name (Title 3, text-hi).
+- Area: "5 acres" (Body, text-md, 4 dp top margin).
+- Capacity: "10,000 kg/year" (Body, text-md).
+- If primary: "⭐ Primary" badge (accent, pill shape, top-right corner).
+Action row (4 dp top margin):
+- "Set as Primary" button (if not primary, info colour, secondary, 40 dp height).
+- Edit icon (pen, secondary button, 40 × 40 dp).
+- Delete icon (trash, danger colour on hover, secondary button, 40 × 40 dp).
+FAB: "+ Add Pond" (accent, bottom-right).
+Empty state: "No ponds registered yet. Add your first pond." + FAB button.
+
+Delete confirmation sheet:
+- Title: "Delete pond?" (warning tone).
+- Message: "Are you sure? You can't undo this action."
+- Two buttons: "Cancel" (secondary) | "Delete" (destructive, full-width).</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">// Transactional update sequence enforcing database constraints:
+UPDATE ponds SET is_primary = false WHERE user_id = current_user;
+UPDATE ponds SET is_primary = true WHERE id = selected_pond_id;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/manage_ponds/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="flow-step-card" id="step-04">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 04</span>
+          Bank Account Details
+        </div>
+        <span class="step-folder-ref">bank_account_details</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/bank_account_details/screen.png" alt="Bank Account Details" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">View and manage bank account details used for payment settlement.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Bank account is critical for FenBridge to remit payments to farmer. Account must be verified via penny-drop before farmer can transact.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Display account summary (masked) with verification status. Edit button. Helper text about penny-drop process.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View account details (masked).</li>
+                <li>Tap "Edit Account" to open edit form.</li>
+                <li>On save, re-trigger penny-drop verification.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch farmer_bank_account where user_id = current_user.</li>
+                <li>Display account_number (first 4 + last 4, middle masked).</li>
+                <li>Display account_holder_name, ifsc_code, account_type.</li>
+                <li>Display penny_drop_status: pending (⏳), verified (✓), failed (✗).</li>
+                <li>Edit opens a form with fields: account number, IFSC, account holder name.</li>
+                <li>On save, update farmer_bank_account + trigger penny-drop API.</li>
+                <li>Penny-drop: ₹1 test transfer to the account. If successful, set verified_at timestamp and penny_drop_status = 'verified'.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Bank Account Details" heading (Title 2).
+Account Info Card (surface background, border-hi, 12 dp padding):
+- Row 1: "Account Holder" label (Caption, text-md) → name (Body, text-hi).
+- Divider (border, 8 dp margin).
+- Row 2: "Account Number" label → masked (e.g., "4565 XXXX XXXX 0123") (Body, text-hi, mono font).
+- Row 3: "IFSC Code" label → code (Body, text-hi).
+- Row 4: "Account Type" label → savings/current (Body, text-hi).
+- Divider.
+- Row 5: "Verification Status" label → status pill.
+  - If verified: "✓ Verified" (accent colour).
+  - If pending: "⏳ Pending verification" (warn colour). Helper: "We're sending a ₹1 test transfer to your account. Check your bank statement in 1–2 days."
+  - If failed: "✗ Verification failed" (danger colour). Helper: "The test transfer failed. Please check your account details and try again."
+Action:
+- "Edit Account" secondary button (full-width, 56 dp).
+Helper Text (below button, text-md, text-md):
+"We verify your account with a ₹1 test transfer. You'll see it in your bank statement. Once verified, you can receive payments."</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">SELECT account_holder_name, account_number, ifsc_code, account_type, penny_drop_status 
+FROM farmer_bank_account WHERE user_id = current_user;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/bank_account_details/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="flow-step-card" id="step-05">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 05</span>
+          Edit Bank Account (Workflow)
+        </div>
+        <span class="step-folder-ref">edit_bank_account</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/edit_bank_account/screen.png" alt="Edit Bank Account" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Update or change farmer's bank account details.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Farmer may change bank accounts or correct details if initially entered incorrectly.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Form with three inputs (account number, IFSC, account holder name). Submit triggers penny-drop re-verification.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Edit account number.</li>
+                <li>Edit IFSC code.</li>
+                <li>Edit account holder name.</li>
+                <li>Tap "Update Account".</li>
+                <li>System initiates penny-drop verification.</li>
+                <li>Confirmation screen shows updated account + verification status.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Pre-fill inputs from farmer_bank_account.</li>
+                <li>Validation: account number (10–18 digits, alphanumeric), IFSC (11 chars, regex), account holder (min 3 chars).</li>
+                <li>On save: update farmer_bank_account + set penny_drop_status = 'pending' + trigger Razorpay Account Validation API or similar.</li>
+                <li>Async check: after 1–2 days, query penny-drop status and update penny_drop_status = 'verified' or 'failed'.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Progress indicator: 1 of 2 / 2 of 2.
+Step 1 — Edit Account:
+- Heading: "Update Bank Account" (Title 2).
+- Input 1: "Account Holder Name" (text, pre-filled).
+- Input 2: "Account Number" (numeric + space, pre-filled). Helper: "10–18 digits".
+- Input 3: "IFSC Code" (text, 11 chars, pre-filled). Helper: "11-character bank code, e.g., SBIN0001234".
+Update Account button (primary, full-width).
+
+Step 2 — Verification Initiated:
+- Heading: "Account Updated" (Title 2, accent).
+- Text: "✓ We'll verify your account with a ₹1 test transfer. Check your bank statement in 1–2 days."
+- Display: summary of updated account (name, number masked, IFSC).
+- Status: "⏳ Verification in progress" (warn pill).
+"Go Back" button → routes to Bank Account Details.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">UPDATE farmer_bank_account 
+SET account_holder_name = $1, account_number = $2, ifsc_code = $3, penny_drop_status = 'pending' 
+WHERE user_id = current_user;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/edit_bank_account/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="flow-step-card" id="step-06">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 06</span>
+          Capability Tags
+        </div>
+        <span class="step-folder-ref">capability_tags</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/capability_tags/screen.png" alt="Capability Tags" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Display and manage the farmer's production capabilities (grades, varieties, capacity, reliability).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Tags help Admin and buyers understand farmer constraints. Admin assigns tags initially; farmers can request changes (v2).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Read-only display of tags in v1.0. "Contact Admin" link if farmer wants to update.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View all assigned capability tags.</li>
+                <li>Tap "Contact Admin" to request tag update.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch from farmer_capabilities table (rows where user_id = current_user).</li>
+                <li>Capability structure: { user_id, capability_tag, assigned_by_admin, assigned_at }.</li>
+                <li>In v1.0, tags are read-only (Admin-assigned).</li>
+                <li>In v2, add request form: farmer selects tag, writes reason, submits to Admin queue.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Capability Tags" heading (Title 2).
+Intro: "These tags help us match you with the right opportunities." (Body, text-md, 16 dp top margin).
+Tag List:
+Pills displayed in a flex wrap (horizontal scroll or multi-line).
+Each pill: surface background, border-hi, accent text, 12 dp horizontal padding, 8 dp vertical padding.
+Examples: "Grade A producer", "10,000+ kg/year capacity", "Monsoon harvest", "Reliable delivery".
+Action:
+"Contact Admin to update" link (secondary, small, info colour, 16 dp top margin).
+Tap opens email compose (pre-filled subject: "Request: Update capability tags for [Farmer Name]").
+Empty state: "No capability tags assigned yet. Contact Admin to add your capabilities." + "Contact Admin" button.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">farmer_capabilities (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  capability_tag VARCHAR(200),
+  assigned_by_admin BOOLEAN,
+  assigned_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/capability_tags/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="flow-step-card" id="step-07">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 07</span>
+          Uploaded Documents (Farmer Variant)
+        </div>
+        <span class="step-folder-ref">uploaded_documents</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/uploaded_documents/screen.png" alt="Uploaded Documents" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">View and manage farmer's uploaded legal documents (ownership/lease, revenue cert, pond registration).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Documents help Admin verify farmer legitimacy and land ownership. Farmer should manage and update them.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Gallery/list of documents with type label, upload date, delete option. FAB to add new.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View all uploaded documents.</li>
+                <li>Tap document to preview.</li>
+                <li>Tap delete to remove.</li>
+                <li>Tap FAB to upload new document.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch pond_documents where pond_id = primary pond (or all pond_documents if viewing for a specific pond).</li>
+                <li>Document types: ownership_lease, revenue_cert, pond_registration.</li>
+                <li>Upload triggers file picker, compression, storage to fenbridge/ponds/{pond_id}/legal_docs/.</li>
+                <li>Delete removes from pond_documents table and storage.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Uploaded Documents" heading (Title 2).
+Intro: "Upload documents to verify your farm. This builds trust with buyers." (Body, text-md, 16 dp top margin).
+Document Grid (3 columns, mobile responsive):
+Each document card:
+- Thumbnail (100 × 100 dp, rounded, surface-hi bg if no image).
+- Document type label (Caption, text-hi, bold). E.g., "Land Ownership Deed".
+- Upload date (Caption, text-md). E.g., "Uploaded 10 days ago".
+- Hover: delete icon (X, danger, secondary button).
+Tap card to open full-screen preview.
+FAB: "+ Add Document" (accent).
+On FAB tap:
+Sheet: "Upload Document" with three options:
+- "Land Ownership / Lease Document"
+- "Revenue Certificate / Patta"
+- "Pond Registration Document (if any)"
+Tap option → file picker.
+On select: compress, upload, refresh.
+Empty state: "No documents uploaded yet. Upload to build trust." + FAB button.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">pond_documents (
+  id UUID PRIMARY KEY,
+  pond_id UUID FOREIGN KEY,
+  document_type ENUM ['ownership_lease', 'revenue_cert', 'pond_registration'],
+  file_url VARCHAR(500),
+  uploaded_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/uploaded_documents/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="flow-step-card" id="step-08">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 08</span>
+          Link WhatsApp (Common Flow)
+        </div>
+        <span class="step-folder-ref">link_whatsapp</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/link_whatsapp/screen.png" alt="Link WhatsApp" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Link user's WhatsApp number for future SMS/WhatsApp notifications and direct support contact.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">WhatsApp is widely used in India. Linking allows FenBridge to send updates via WhatsApp (v1.1), increasing engagement.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Input field for WhatsApp number. Verification via OTP. Confirmation.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Tap "Link WhatsApp" button (from Profile or Settings).</li>
+                <li>Enter WhatsApp number (pre-filled with registered mobile if same).</li>
+                <li>Send OTP via WhatsApp.</li>
+                <li>Enter OTP to verify.</li>
+                <li>Confirmation: "✓ WhatsApp linked."</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>WhatsApp number input: accepts +91 format or 10-digit format, validates pattern.</li>
+                <li>OTP sent via Twilio WhatsApp API or WhatsApp Business API (v1.1).</li>
+                <li>In v1.0, can skip OTP and just store the number (less critical).</li>
+                <li>Stored in whatsapp_links table, linked to user_id.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Triggered from: Profile > Contact section > WhatsApp row > "+ Link" button.
+Step 1 — Enter Number:
+- Top bar: Back, "Link WhatsApp".
+- Heading: "Add your WhatsApp number" (Title 2).
+- Input: "WhatsApp number" (pre-filled with registered mobile, editable). Placeholder: "+91 98765 43210".
+- Helper: "We'll send you a confirmation code on WhatsApp."
+- Button: "Send OTP".
+
+Step 2 — Verify OTP:
+- Heading: "Verify your WhatsApp number" (Title 2).
+- Display: "We sent a code to +91 98765 43210".
+- OTP input: three boxes (auto-advance), or manual entry.
+- On verification: auto-submit.
+- Resend link after 30 sec.
+
+Step 3 — Confirmation:
+- Heading: "WhatsApp linked!" (Title 2, accent).
+- Text: "✓ You'll now receive updates on WhatsApp."
+- Button: "Go Back" (routes back to Profile).</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">whatsapp_links (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY UNIQUE,
+  whatsapp_number VARCHAR(20) NOT NULL,
+  verified_at TIMESTAMP,
+  linked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/link_whatsapp/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 9 -->
+    <div class="flow-step-card" id="step-09">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 09</span>
+          Settings (Common Hub)
+        </div>
+        <span class="step-folder-ref">settings</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/settings/screen.png" alt="Settings Hub" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Centralized control for app-wide preferences (theme, language, permissions, privacy).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Allow users to customize their experience without impacting other users. Settings persist across sessions.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Grouped sections with toggles, dropdowns, and info links. No explicit Save button (auto-save on toggle).</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Toggle Dark/Light theme.</li>
+                <li>Select language (English / हिन्दी / বाংলা).</li>
+                <li>Toggle notification channels (in-app, push, SMS).</li>
+                <li>Manage permissions (Location, Camera, Notifications).</li>
+                <li>View privacy policy and terms.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Theme/language stored in SharedPreferences (Flutter) + users.theme_preference, users.preferred_language in DB.</li>
+                <li>Notification preferences stored as JSON in users.notification_preferences.</li>
+                <li>Permission toggles check device-level permissions (Android PermissionHandler package).</li>
+                <li>Each toggle change triggers immediate save + toast confirmation.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Settings" heading (Title 2).
+Progress: No progress bar (not a workflow).
+
+Section 1 — Display:
+- Label: "Display" (Title 3, accent).
+- Row 1: Theme toggle with preview icons (Dark/Light). Label: "Dark theme". Helper: "Easier on eyes, saves battery."
+- Row 2: Language dropdown. Label: "Language". Dropdown options: English / हिन्दी / বांगালা. Current selection highlighted.
+
+Section 2 — Notifications:
+- Label: "Notifications" (Title 3, accent).
+- Row 1: Toggle "In-app notifications". Label: "Show notifications inside the app."
+- Row 2: Toggle "Push notifications". Label: "Send alerts to your device."
+- Row 3: Toggle "SMS notifications". Label: "Critical updates via SMS." Helper: "Standard SMS rates may apply."
+
+Section 3 — Permissions:
+- Label: "Device Permissions" (Title 3, accent).
+- Row 1: Location. Current state (✓ Allowed / ✗ Denied). Tap to manage (opens device settings if denied).
+- Row 2: Camera. Current state. Tap to manage.
+- Row 3: Notifications. Current state. Tap to manage.
+Helper: "Tap to manage permissions in Settings."
+
+Section 4 — Privacy:
+- Label: "Privacy & Legal" (Title 3, accent).
+- Row 1: "Terms of Service" link (secondary, small).
+- Row 2: "Privacy Policy" link (secondary, small).
+- Row 3: "Contact Support" link (secondary, small).
+Bottom padding: 24 dp.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">ALTER TABLE users ADD COLUMN IF NOT EXISTS theme_preference VARCHAR(10) DEFAULT 'dark';
+ALTER TABLE users ADD COLUMN IF NOT EXISTS notification_preferences JSON;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/settings/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 10 -->
+    <div class="flow-step-card" id="step-10">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 10</span>
+          Notification Preferences
+        </div>
+        <span class="step-folder-ref">notification_preferences</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/notification_preferences/screen.png" alt="Notification Preferences" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Fine-grained control over which events trigger notifications and via which channels.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Users should control notification fatigue. Different events may be important to different users.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">List of event categories, each with toggles for in-app/push/SMS channels. Grouped by type (Order, Payment, System, etc.). Auto-save on toggle.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>View all notification event types.</li>
+                <li>Toggle on/off per channel for each event.</li>
+                <li>Implicit save triggers on toggle state commit.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>Fetch users.notification_preferences JSON.</li>
+                <li>Structure: { "order_placed": { "in_app": true, "push": true, "sms": false }, "payment_due": {...}, ... }.</li>
+                <li>On toggle, update specific key-value pair and save to DB.</li>
+                <li>Default: all in-app and push enabled, SMS disabled for most events.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Notification Preferences" heading (Title 2).
+Intro text: "Control which updates you receive and how." (Body, text-md, 16 dp top padding).
+
+Event Groups:
+Order Updates (only for Buyer) / Bid Updates (only for Farmer):
+- Event: "New requirement posted" → three toggles (in-app | push | SMS).
+- Event: "Bid awarded" / "Order confirmed".
+- Event: "Dispatched" → three toggles.
+- Event: "Delivered" → three toggles.
+
+Payment Updates:
+- Event: "Payment due" → three toggles.
+- Event: "Payment received" → three toggles.
+
+Account Updates:
+- Event: "Account status changed" → toggles.
+- Event: "Approval completed" → toggles.
+
+System Notifications:
+- Event: "New features" → toggles.
+- Event: "Promotional offers" → toggles.
+
+Each event row: event name (Body), three small toggles (in-app | push | SMS) aligned right.
+Toggle indicators: circular, 40 × 24 dp, accent when on, border when off.
+No Save button (auto-saves).</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">// Updating persistent state map JSONB property atomically:
+UPDATE users SET notification_preferences = jsonb_set(notification_preferences, '{bid_awarded,push}', 'false') WHERE id = current_user;</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/notification_preferences/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 11 -->
+    <div class="flow-step-card" id="step-11">
+      <div class="step-header">
+        <div class="step-title">
+          <span class="step-badge">Screen 11</span>
+          Help & Support (Common Hub)
+        </div>
+        <span class="step-folder-ref">help_support</span>
+      </div>
+      <div class="step-body">
+        <div class="step-left-pane">
+          <div class="card-image-viewport">
+            <img class="preview-screen-img" src="../../../images/profile/help_support/screen.png" alt="Help & Support" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='block';" />
+          </div>
+          <div class="img-placeholder" style="display:none;">High-fidelity screen capture unavailable. Refer to source code directly.</div>
+        </div>
+        <div class="step-right-pane custom-scrollbar">
+          <div class="specs-grid">
+            <div class="spec-block full-width">
+              <div class="spec-label">Purpose</div>
+              <div class="spec-value">Provide self-service FAQs, direct support contact, and issue reporting.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">Business Requirement</div>
+              <div class="spec-value">Reduce support burden by enabling users to find answers. Track common issues for product improvements.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Experience (UX)</div>
+              <div class="spec-value">Collapsible FAQ section, contact cards, and a "Report Issue" button.</div>
+            </div>
+            <div class="spec-block">
+              <div class="spec-label">User Actions</div>
+              <ul class="spec-list">
+                <li>Browse FAQ categories (expand/collapse).</li>
+                <li>Tap FAQs to read answers (inline expansion).</li>
+                <li>Tap "Contact Support" to open chat/email.</li>
+                <li>Tap "Report Issue" to open issue form.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Technical Details</div>
+              <ul class="spec-list">
+                <li>FAQs stored as static content (hardcoded or fetched from a simple FAQ endpoint).</li>
+                <li>"Contact Support" opens a pre-filled email or deeplinks to a support chat (Zendesk, Freshchat, etc. — v1.1 integration).</li>
+                <li>"Report Issue" opens a form to capture issue type, description, and attach screenshot.</li>
+              </ul>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Design Details</div>
+              <div class="spec-value">Top bar: Back button, "Help & Support" heading (Title 2).
+
+Section 1 — FAQs:
+- Label: "Frequently Asked Questions" (Title 3, accent).
+Collapsible categories:
+- Getting Started (5–6 FAQs)
+  - "How do I sign up?" → Answer text (Body).
+  - "How do I verify my account?" → Answer text.
+  - "What is my trust score?" → Answer text.
+- Orders & Transactions (Buyer) / Bidding & Harvest (Farmer)
+- Payments
+- Account & Settings
+Each category: label on top, chevron icon (pointing down = expanded, right = collapsed).
+On tap, category expands to show list of Q&A rows.
+Each Q&A row: question (Body strong), answer (Body, text-md, 12 dp top margin inside).
+Tap Q to expand/collapse answer inline.
+
+Section 2 — Contact Us:
+- Label: "Still need help?" (Title 3, accent).
+Two action cards:
+- Card 1: Icon (💬), "Chat with Support", "Get instant help", secondary button (full-width).
+- Card 2: Icon (✉️), "Email Support", "support@fenbridge.in", secondary button (full-width).
+
+Section 3 — Report Issue:
+- Label: "Report a Problem" (Title 3, accent).
+Primary button (full-width): "Report Issue". On tap, opens a form:
+- Dropdown: Issue type (Bug / Suggestion / Payment Issue / Other).
+- Text area: Description.
+- Optional: Attach screenshot (camera + gallery).
+- Submit button.
+On submit: confirmation toast + auto-email to support.</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Database Schema</div>
+              <div class="db-schema-box">support_tickets (
+  id UUID PRIMARY KEY,
+  user_id UUID FOREIGN KEY,
+  issue_type ENUM ['bug', 'suggestion', 'payment', 'other'],
+  description TEXT,
+  screenshot_url VARCHAR(500),
+  status ENUM ['open', 'in_progress', 'resolved'],
+  created_at TIMESTAMP
+)</div>
+            </div>
+          </div>
+          <div class="step-actions">
+            <a href="../../../images/profile/help_support/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXECUTABLE CODE VIEW OVERLAY MODAL -->
+  <div id="code-iframe-modal" class="code-modal-backdrop" onclick="closeCodeModal(event)">
+    <div id="code-modal-window" class="code-modal-window mobile-view" onclick="event.stopPropagation()">
+      <div class="code-modal-header">
+        <div class="code-modal-title">Live Executable Context Preview</div>
+        <button class="code-modal-close" onclick="closeCodeModal(event)">×</button>
+      </div>
+      <div class="code-modal-body">
+        <iframe id="executable-code-iframe" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCodeModal(event, url, viewType) {
+      event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const modalWin = document.getElementById("code-modal-window");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal && modalWin && iframe) {
+        if (viewType === 'desktop') {
+          modalWin.className = "code-modal-window desktop-view";
+        } else {
+          modalWin.className = "code-modal-window mobile-view";
+        }
+        iframe.src = url;
+        modal.classList.add("active");
+      }
+    }
+
+    function closeCodeModal(event) {
+      if (event) event.preventDefault();
+      const modal = document.getElementById("code-iframe-modal");
+      const iframe = document.getElementById("executable-code-iframe");
+      if (modal) {
+        modal.classList.remove("active");
+        if (iframe) iframe.src = "";
+      }
+    }
+
+    // Dynamic IntersectionObserver highlighting active stepper menu context
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+      const container = document.querySelector(".stepper-panel-container");
+
+      const options = {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => node.classList.remove("active"));
+            const activeNode = document.querySelector(`.stepper-node[href="#${id}"]`);
+            if (activeNode) {
+              activeNode.classList.add("active");
+              if (container) {
+                const nodeLeft = activeNode.offsetLeft;
+                const nodeWidth = activeNode.offsetWidth;
+                const containerWidth = container.clientWidth;
+                const scrollLeft = container.scrollLeft;
+                
+                if (nodeLeft < scrollLeft || nodeLeft + nodeWidth > scrollLeft + containerWidth) {
+                  container.scrollTo({
+                    left: nodeLeft - containerWidth / 2 + nodeWidth / 2,
+                    behavior: "smooth"
+                  });
+                }
+              }
+            }
+          }
+        });
+      }, options);
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e9ddff",
+                        "surface-dim": "#131313",
+                        "surface": "#131313",
+                        "primary": "#4edea3",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary": "#3c0091",
+                        "on-background": "#e5e2e1",
+                        "outline": "#86948a",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-container": "#711419",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-surface-variant": "#bbcabf",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#00422b",
+                        "background": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-container": "#571bc1",
+                        "secondary": "#d0bcff",
+                        "tertiary": "#ffb3af",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "tertiary-container": "#fc7c78",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "surface-bright": "#393939",
+                        "surface-variant": "#353534",
+                        "on-error": "#690005",
+                        "on-surface": "#e5e2e1",
+                        "surface-tint": "#4edea3",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container": "#201f1f",
+                        "on-primary-fixed": "#002113",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-container": "#10b981",
+                        "on-tertiary-fixed": "#410005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#003824",
+                        "inverse-primary": "#006c49",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#c4abff",
+                        "error-container": "#93000a",
+                        "outline-variant": "#3c4a42",
+                        "on-tertiary": "#650911",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "on-secondary-fixed": "#23005c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "20px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col pb-xl">
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">FenBridge</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant hover:opacity-80 transition-opacity">Skip</span>
+</header>
+<main class="flex-grow px-margin pt-md">
+<section class="mb-xl">
+<div class="flex justify-between items-end mb-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Accept or Dispute</h1>
+<span class="font-label-lg text-label-lg text-primary">80%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[80%]"></div>
+</div>
+</section>
+<section class="mb-xl">
+<div class="bg-surface-container rounded-xl border border-outline-variant p-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<h2 class="font-label-lg text-label-lg text-outline uppercase tracking-widest mb-md">Verification Summary</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Digital Seal</p>
+<p class="font-label-lg text-label-lg text-on-surface">Seal ✓ Intact</p>
+</div>
+</div>
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">photo_library</span>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Lot Photos</p>
+<p class="font-label-lg text-label-lg text-on-surface">Photos ✓ Verified</p>
+</div>
+</div>
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">scale</span>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Net Weight</p>
+<p class="font-label-lg text-label-lg text-on-surface">Quantity ✓ 4,500kg</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md mb-xl">
+<div class="bg-surface-container-high rounded-xl border-2 border-primary-container p-lg flex flex-col gap-md relative">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="bg-primary-container text-on-primary-container px-xs py-1 rounded-full font-label-sm text-label-sm">Recommended</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Accept Delivery</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Verify completion and finalize the smart contract transaction for this Makhana lot.</p>
+</div>
+<div class="mt-base space-y-sm pt-md border-t border-outline-variant/30">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-outline">Title Transfer</span>
+<span class="font-label-lg text-label-lg text-primary">Immediate</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-outline">Balance Due</span>
+<span class="font-label-lg text-label-lg text-on-surface">₹4,25,000.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-outline">Warehouse Credit</span>
+<span class="font-label-lg text-label-lg text-on-surface">+12.5% Growth</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-lg text-label-lg py-md rounded-lg active:scale-95 transition-transform">
+                    Confirm Acceptance
+                </button>
+</div>
+<div class="bg-surface-container-low rounded-xl border-2 border-error/30 p-lg flex flex-col gap-md">
+<div class="w-12 h-12 bg-error/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 0;">report_problem</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">File a Dispute</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Report discrepancies in quality, quantity, or seal integrity for arbitration.</p>
+</div>
+<div class="mt-base flex-grow">
+<p class="font-label-sm text-label-sm text-outline italic">Requires photographic evidence and a written statement. Funds will be held in escrow during the 48-hour resolution window.</p>
+</div>
+<button class="w-full bg-surface-container-highest text-error border border-error/50 font-label-lg text-label-lg py-md rounded-lg active:scale-95 transition-transform">
+                    Initiate Dispute
+                </button>
+</div>
+</section>
+<section class="max-w-2xl mx-auto bg-surface-container p-md rounded-lg border border-outline-variant flex gap-md items-start">
+<div class="flex items-center h-6">
+<input class="w-5 h-5 rounded border-outline-variant bg-surface-container-highest text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">I acknowledge that once accepted, the title transfer is immutable and the balance will be automatically debited from my Agri-Wallet.</p>
+</div>
+</section>
+</main>
+<div class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface shadow-md rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary scale-110">
+<span class="material-symbols-outlined" data-icon="horizontal_rule">horizontal_rule</span>
+</div>
+</div>
+</body></html>
