@@ -127,7 +127,10 @@
         <section onclick="window.location.href='../overdue_tasks_screen/code.html'" class="flex items-center justify-between p-4 bg-error-container/20 border border-error/30 rounded-xl text-error cursor-pointer active:scale-95 transition-transform">
             <div class="flex items-center gap-3">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
-                <span class="text-label-lg font-label-lg uppercase tracking-wider">2 overdue tasks — tap to view</span>
+                <div class="flex flex-col">
+                    <span class="text-label-lg font-label-lg uppercase tracking-wider leading-none">2 overdue tasks</span>
+                    <span class="text-[10px] font-medium uppercase tracking-[0.15em] opacity-80 mt-1">tap to view</span>
+                </div>
             </div>
             <span class="material-symbols-outlined">chevron_right</span>
         </section>
