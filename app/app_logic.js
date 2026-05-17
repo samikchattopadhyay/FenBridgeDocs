@@ -637,6 +637,11 @@
         return;
       }
 
+      // Let draft saving and registration recurrence buttons bypass dynamic flow interception
+      if (txt.includes("draft") || txt.includes("register another")) {
+        return;
+      }
+
       // Explicitly allow manual Skip Intro links to route directly to their target
       if (txt.includes("skip intro")) {
         const targetHref = el.getAttribute("href");
@@ -704,7 +709,9 @@
       if (icon === "dashboard" || txt.includes("dashboard")) {
         e.preventDefault();
         e.stopPropagation();
-        if (window.location.pathname.includes("buyer_profile") || (localStorage.getItem("fenbridge_active_role") === "buyer")) {
+        if (window.location.pathname.includes("/scout/")) {
+          window.location.href = baseScreens + "scout/scout_dashboard/scout_today_dashboard/code.html";
+        } else if (window.location.pathname.includes("buyer_profile") || (localStorage.getItem("fenbridge_active_role") === "buyer")) {
           window.location.href = baseScreens + "operations/my_active_pos/code.html";
         } else {
           window.location.href = baseScreens + "operations/farmer_dashboard/code.html";
