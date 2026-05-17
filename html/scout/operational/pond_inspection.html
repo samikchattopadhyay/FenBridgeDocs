@@ -1,49 +1,138 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Pond Inspection</title>
+  <title>Pond Inspection - Scout Operations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --bg-active: #27272a;
-      --accent-primary: #06b6d4; --accent-primary-hover: #22d3ee; --accent-primary-glow: rgba(6, 182, 212, 0.15);
-      --text-main: #f3f4f6; --text-muted: #9ca3af; --text-dim: #6b7280;
-      --border-color: #27272a; --border-light: #3f3f46;
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0; }
-    .content-wrapper { padding: 40px 48px 96px; }
-    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
-    .tag { display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
+    }
+    .content-wrapper { padding: 40px 48px 96px; max-width: 1280px; margin: 0 auto; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .address-bar {
+      background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
+      height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100;
+    }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path {
+      font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
     .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
-    .workflow-grid { max-width: 1280px; margin: 0 auto 48px; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; }
-    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
-    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light); padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; }
-    .workflow-body { padding: 32px; display: flex; flex-direction: column; gap: 48px; }
-    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; }
-    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; display: flex; justify-content: space-between; align-items: center; }
-    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25); }
+
+    .stepper-panel-container {
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2; overflow-x: auto;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 60px;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 10px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-overview {
+      background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px;
+      padding: 28px; margin-bottom: 48px;
+    }
+    .overview-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .overview-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    .workflow-grid {
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; scroll-margin-top: 160px;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px;
+      border: 1px solid rgba(6, 182, 212, 0.25);
+    }
     .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
-    .step-body { display: flex; flex-wrap: wrap; min-height: 300px; }
-    .step-left { flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px; border-right: 1px solid var(--border-color); }
-    .step-right { flex: 2; min-width: 380px; padding: 28px; }
+    .step-body { padding: 28px; }
     .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
     .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-list { list-style: none; padding-left: 0; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
-    .section-title { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-top: 40px; margin-bottom: 20px; color: #fff; }
-    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
-    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
-    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
+
+    .sql-block {
+      background: #050d11; border: 1px solid var(--border-color); border-radius: 8px;
+      padding: 16px; font-family: 'Courier New', monospace; font-size: 12px;
+      color: #06b6d4; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;
+    }
   </style>
 </head>
 <body>
@@ -55,253 +144,301 @@
 
 <div class="content-wrapper">
   <div class="header-banner">
-    <div class="tag">Workflow Module 3</div>
+    <div class="tag">Workflow Module 2</div>
     <h1 class="title">Pond Inspection</h1>
-    <p class="desc">Raw makhana learning intelligence workflow. Scout captures pond conditions, maturity readings, and photographic evidence. Year 1 learning-only, not yet commercialized.</p>
+    <p class="desc">Scout-conducted pond-side workflow for raw-makhana intelligence gathering. Year 1 learning-only; data not yet commercialized. Captures pond conditions, maturity readings, and photographic evidence.</p>
   </div>
 
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Screens Inventory</div>
-    <span class="step-count">5 Screens</span>
+  <div class="stepper-panel-container">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Confirm Pond</div></a>
+      <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Conditions</div></a>
+      <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Readings</div></a>
+      <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Photos</div></a>
+      <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Review</div></a>
+    </div>
   </div>
-  <div class="workflow-body">
 
-    <!-- SCREEN 1 -->
-    <div class="flow-card" id="step-01">
+  <div class="workflow-overview">
+    <div class="overview-title">Workflow Overview</div>
+    <div class="overview-text">
+      Pond Inspection is the scout's on-site fieldwork for raw-makhana supply intelligence. The workflow validates the scout's physical presence via GPS, captures three coded assessments (water level, algae, pest/disease), collects 3–5 spot-sampled maturity and density readings from bund edges, and requires minimum photographic evidence. All data is captured offline and synced when network is available. Submissions are immutable; scout cannot edit after confirm. Year 1 use is learning-only—no commercial commitments, no grades, no seals produced. The workflow integrates with the scout_tasks queue and feeds pond readiness signals for future makhana supply projections.
+    </div>
+  </div>
+
+  <div class="workflow-grid">
+
+    <!-- SCREEN 2.1: Confirm Pond & Arrival -->
+    <div class="flow-step-card" id="step-01">
       <div class="step-header">
         <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">Screen 1</span>
+          <span class="step-badge">2.1</span>
           <span class="step-title">Confirm Pond & Arrival</span>
         </div>
       </div>
       <div class="step-body">
-        <div class="step-left">
-          <div style="color: var(--text-muted); text-align: center; font-size: 13px;">Screen Preview: Pond card with GPS arrival capture</div>
-        </div>
-        <div class="step-right">
-          <div class="specs-grid">
-            <div class="spec-block">
-              <div class="spec-label">Purpose</div>
-              <div class="spec-value">Confirms scout is at correct pond; captures arrival GPS as evidence.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Data Captured</div>
-              <ul class="spec-list">
-                <li>Pond identity (code, farmer name)</li>
-                <li>Prior inspection summary</li>
-                <li>GPS coordinates with accuracy reading</li>
-              </ul>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Business Requirement</div>
-              <div class="spec-value">Offline-capable; warns if GPS mismatch >200m from registered pond location.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">User Actions</div>
-              <div class="spec-value">View pond card â€¢ Capture arrival GPS â€¢ Confirm location</div>
-            </div>
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Confirms the scout is at the right pond and captures arrival GPS as evidence of physical presence.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Like warehouse fitness checks, a pond inspection is only credible if the scout was there. GPS mismatch warns (not blocks) — rural ponds may have weak signal. Prior inspection summary helps the scout calibrate expectations.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Single read-only screen — farmer + pond identity card, prior-inspection summary strip, GPS capture, primary CTA.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Review pond identity (farmer name, pond code, village, pond area)<br>• Review last-inspection summary (date, readings averages)<br>• Tap "Capture location" → GPS + accuracy<br>• (If mismatch) acknowledge or re-capture<br>• Tap "Begin Inspection" → Screen 2.2</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Hydrates ponds + joined users (farmer) + last pond_inspections row. Haversine vs ponds.gps_lat/lng; warn > 200 m at accuracy &lt; 50 m. Wizard context: { pond_id, farmer_user_id, task_id, arrival_gps, check_type }. check_type = 'initial' if no prior, else 'periodic'. Fully offline.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Top bar: Close, "Pond Inspection", progress "1 of 5". Pond card (surface-hi): farmer name (Title 3), pond code, village, area in acres/bigha. History strip: "Last inspection: 12 Feb 2026 — water level Normal, readiness 6/10" or "First inspection". GPS block + mismatch warning (same pattern as fitness check). Action row: Navigate · Call farmer. Primary CTA: "Begin Inspection".</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="spec-value">Reads ponds, users, pond_inspections. References defined in §6 below.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCREEN 2 -->
-    <div class="flow-card" id="step-02">
+    <!-- SCREEN 2.2: Pond Conditions -->
+    <div class="flow-step-card" id="step-02">
       <div class="step-header">
         <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">Screen 2</span>
-          <span class="step-title">Pond Conditions Assessment</span>
+          <span class="step-badge">2.2</span>
+          <span class="step-title">Pond Conditions</span>
         </div>
       </div>
       <div class="step-body">
-        <div class="step-left">
-          <div style="color: var(--text-muted); text-align: center; font-size: 13px;">Screen Preview: Coded field toggles for conditions</div>
-        </div>
-        <div class="step-right">
-          <div class="specs-grid">
-            <div class="spec-block">
-              <div class="spec-label">Purpose</div>
-              <div class="spec-value">Captures high-level pond state driving "is this pond near harvest?" signal.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Data Captured (Coded)</div>
-              <ul class="spec-list">
-                <li>Water level: Low / Normal / High</li>
-                <li>Algae presence: None / Light / Heavy</li>
-                <li>Pest/disease flags: Yes / No</li>
-                <li>Readiness score: 1-10 slider</li>
-              </ul>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Business Requirement</div>
-              <div class="spec-value">All coded fields (no free text). Enables consistent comparison across scouts.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Validation</div>
-              <div class="spec-value">All fields mandatory; readiness score drives sorting in reporting.</div>
-            </div>
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Captures the high-level pond state — water level, algae, pest/disease, harvest readiness.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Three coded categorical fields plus a 1–10 readiness slider. All coded, no free text. These four fields together drive the "is this pond near harvest?" intelligence signal.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Single scrollable form. Each field is a labelled card with a segmented control or slider. Continue enables when all four are set.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Set water level — Low / Normal / High<br>• Set algae presence — None / Light / Heavy<br>• Tap pest/disease flags (multi-select coded chips)<br>• Set readiness score (slider 1–10)<br>• Tap "Continue" → Screen 2.3</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Pest/disease flag set loaded from versioned reference set pond_pest_flags (codes like aphids, leaf_spot, stem_rot, etc.). Held in wizard context; no persistence yet.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Top bar: back, "Pond Conditions", progress "2 of 5". Heading "Assess pond conditions". Four field cards (surface-hi): segmented controls for first two; chip multi-select for pest/disease; slider for readiness with live numeric echo. Primary CTA: "Continue".</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="spec-value">Written at Screen 2.5 — fields on pond_inspections (water_level, algae_presence, pest_disease_flags, readiness_score).</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCREEN 3 -->
-    <div class="flow-card" id="step-03">
+    <!-- SCREEN 2.3: Bund-Edge Readings -->
+    <div class="flow-step-card" id="step-03">
       <div class="step-header">
         <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">Screen 3</span>
+          <span class="step-badge">2.3</span>
           <span class="step-title">Bund-Edge Readings</span>
         </div>
       </div>
       <div class="step-body">
-        <div class="step-left">
-          <div style="color: var(--text-muted); text-align: center; font-size: 13px;">Screen Preview: Readings entry cards with averages</div>
-        </div>
-        <div class="step-right">
-          <div class="specs-grid">
-            <div class="spec-block">
-              <div class="spec-label">Purpose</div>
-              <div class="spec-value">Capture maturity and density for raw makhana supply projections.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Data Captured</div>
-              <ul class="spec-list">
-                <li>3â€“5 spot readings per reading session</li>
-                <li>Per spot: density (count per sq m) + maturity percentage</li>
-                <li>Live average displayed</li>
-              </ul>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Business Requirement</div>
-              <div class="spec-value">Minimum 3, maximum 5 readings enforced. Scouts average across bund edges.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Data Validation</div>
-              <div class="spec-value">Live running average shown; cannot submit with <3 or >5 readings.</div>
-            </div>
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Captures 3–5 spot samples taken at different bund edges, each with seed density and maturity percentage.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Project memory: large pond scouting in Year 1 uses scout-averaged 3–5 bund-edge readings. The screen must enforce the minimum of 3 readings and accept up to 5.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Stacked reading rows, each with two numeric inputs (density per sq m, maturity %). "Add reading" button until 5 rows. Live average shown at bottom.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• For each reading: enter density + maturity %<br>• Tap "Add reading" → new row (max 5)<br>• Delete a row (min 3 retained)<br>• View live averages<br>• Tap "Continue" → Screen 2.4</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Held as array in wizard context: bund_readings: [{ density, maturity_pct }]. Validation: at least 3 rows complete. Average computed client-side.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Top bar: back, "Bund Readings", progress "3 of 5". Helper: "Take 3–5 readings around the pond bund." Numbered reading rows. Live averages chip at bottom: "Avg density 14.2/sqm · Avg maturity 62%". Primary CTA: "Continue".</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="sql-block">CREATE TABLE pond_bund_readings (
+  id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  pond_inspection_id  UUID NOT NULL REFERENCES pond_inspections(id) ON DELETE CASCADE,
+  reading_seq         INT NOT NULL,
+  density_per_sqm     NUMERIC(6,2),
+  maturity_pct        NUMERIC(5,2)
+);
+CREATE INDEX idx_pbr_inspection ON pond_bund_readings (pond_inspection_id);</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCREEN 4 -->
-    <div class="flow-card" id="step-04">
+    <!-- SCREEN 2.4: Photos & Notes -->
+    <div class="flow-step-card" id="step-04">
       <div class="step-header">
         <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">Screen 4</span>
-          <span class="step-title">Pond Photos & Notes</span>
+          <span class="step-badge">2.4</span>
+          <span class="step-title">Photos & Notes</span>
         </div>
       </div>
       <div class="step-body">
-        <div class="step-left">
-          <div style="color: var(--text-muted); text-align: center; font-size: 13px;">Screen Preview: 3-photo layout with notes textarea</div>
-        </div>
-        <div class="step-right">
-          <div class="specs-grid">
-            <div class="spec-block">
-              <div class="spec-label">Purpose</div>
-              <div class="spec-value">Captures mandatory photographic evidence and optional field notes.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Data Captured</div>
-              <ul class="spec-list">
-                <li>1â€“3 pond photos (wide, sample, anomaly)</li>
-                <li>Optional notes (max 500 chars)</li>
-                <li>All photos GPS-stamped from arrival</li>
-              </ul>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Technical Details</div>
-              <div class="spec-value">Photos compressed â‰¤1.5MB each; GPS metadata preserved from arrival capture.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Requirements</div>
-              <div class="spec-value">Minimum 1 photo mandatory; notes optional but encouraged for anomalies.</div>
-            </div>
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Captures 1–3 pond photos and optional notes.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Photos are mandatory for visual verification of the pond and the scout's claimed presence. Notes are optional.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Photo grid (3 fixed slots — wide pond, sample, anomaly-or-extra), camera-first, plus a multiline notes field at the bottom.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Capture pond wide + sample photos (required)<br>• Optionally capture anomaly photo<br>• Add optional notes<br>• Tap "Continue" → Screen 2.5</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Photos slot_type (pond_wide / sample / anomaly_or_extra); compression ≤ 1.5 MB; GPS stamped from arrival.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Photo tile grid; notes multiline (max 500 chars). Primary CTA "Continue".</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="sql-block">CREATE TABLE pond_inspection_photos (
+  id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  pond_inspection_id  UUID NOT NULL REFERENCES pond_inspections(id) ON DELETE CASCADE,
+  slot_type           TEXT NOT NULL,
+  storage_path        TEXT NOT NULL,
+  captured_at         TIMESTAMPTZ NOT NULL
+);</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCREEN 5 -->
-    <div class="flow-card" id="step-05">
+    <!-- SCREEN 2.5: Review & Submit -->
+    <div class="flow-step-card" id="step-05">
       <div class="step-header">
         <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">Screen 5</span>
+          <span class="step-badge">2.5</span>
           <span class="step-title">Review & Submit</span>
         </div>
       </div>
       <div class="step-body">
-        <div class="step-left">
-          <div style="color: var(--text-muted); text-align: center; font-size: 13px;">Screen Preview: Final inspection recap with confirm button</div>
-        </div>
-        <div class="step-right">
-          <div class="specs-grid">
-            <div class="spec-block">
-              <div class="spec-label">Purpose</div>
-              <div class="spec-value">Final review checkpoint before atomic, immutable submission.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">What's Shown</div>
-              <ul class="spec-list">
-                <li>Pond identity summary</li>
-                <li>Conditions overview</li>
-                <li>Bund readings table with average</li>
-                <li>Photo thumbnail strip</li>
-                <li>Notes preview</li>
-              </ul>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Business Requirement</div>
-              <div class="spec-value">Immutable submission (scout cannot edit post-submit). Admin-only corrections via backend.</div>
-            </div>
-            <div class="spec-block">
-              <div class="spec-label">Post-Submit Action</div>
-              <div class="spec-value">Updates scout_tasks.status='completed'; queues entire record to sync_queue for upload.</div>
-            </div>
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Final recap and atomic commit. Submission confirmation echoes the readiness score with sync state.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Like every other scout workflow, immutable on submit; corrections Admin-only.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Recap card + confirmation checkbox + "Submit Inspection". On submit → full-screen confirmation echoing the readiness score with sync state.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Confirm → submit → "Back to Today" / "Next task"</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Atomic local write: 1 pond_inspections + N pond_bund_readings + M pond_inspection_photos. Updates scout_tasks.status='completed'. Queues to sync_queue.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Same pattern as inspection / fitness-check submission confirmations.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="spec-value">Inserts only; all tables defined above.</div>
           </div>
         </div>
       </div>
     </div>
 
   </div>
-</div>
 
-<div style="max-width: 1280px; margin: 0 auto;">
-  <h2 class="section-title">Key Requirements Summary</h2>
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-    <div>
-      <div class="spec-label" style="margin-bottom: 12px;">Offline Capability</div>
-      <div class="spec-value">100% offline-capable. All data cached locally; sync_queue handles upload when network available.</div>
-    </div>
-    <div>
-      <div class="spec-label" style="margin-bottom: 12px;">Photo Handling</div>
-      <div class="spec-value">GPS-stamped from arrival; compressed â‰¤1.5MB; minimum 1 photo mandatory; maximum 3 photos per inspection.</div>
-    </div>
-    <div>
-      <div class="spec-label" style="margin-bottom: 12px;">Data Immutability</div>
-      <div class="spec-value">Once submitted, inspection record is immutable. Scout cannot edit; Admin can correct via backend only.</div>
-    </div>
-    <div>
-      <div class="spec-label" style="margin-bottom: 12px;">Purpose (Year 1)</div>
-      <div class="spec-value">Learning-only: intelligence gathering on raw makhana supply. Not yet commercialized or transactional.</div>
-    </div>
+  <h2 style="font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; margin: 48px 0 24px; color: #fff;">Complete Database Schema</h2>
+  <div class="spec-block" style="background: #050d11; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px;">
+    <div class="sql-block" style="background: transparent; border: none; padding: 0; color: #06b6d4;">CREATE TABLE pond_inspections (
+  id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  pond_id             UUID NOT NULL REFERENCES ponds(id),
+  farmer_user_id      UUID NOT NULL REFERENCES users(id),
+  scout_id            UUID NOT NULL REFERENCES scouts(id),
+  task_id             UUID REFERENCES scout_tasks(id),
+  -- conditions
+  water_level         TEXT CHECK (water_level IN ('low','normal','high')),
+  algae_presence      TEXT CHECK (algae_presence IN ('none','light','heavy')),
+  pest_disease_flags  JSONB,                      -- array of coded flags
+  readiness_score     INT CHECK (readiness_score BETWEEN 1 AND 10),
+  -- meta
+  notes               TEXT,
+  arrival_lat         NUMERIC(9,6) NOT NULL,
+  arrival_lng         NUMERIC(9,6) NOT NULL,
+  arrival_accuracy_m  NUMERIC(6,1),
+  checked_at          TIMESTAMPTZ NOT NULL,
+  created_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+  synced_at           TIMESTAMPTZ
+);
+CREATE INDEX idx_pi_pond ON pond_inspections (pond_id, checked_at DESC);</div>
   </div>
+
 </div>
-</div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const stepCards = document.querySelectorAll(".flow-step-card");
+    const stepperNodes = document.querySelectorAll(".stepper-node");
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const pathElement = document.getElementById('address-path');
-      if (pathElement) {
-        const pathname = window.location.pathname;
-        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
-      }
-    });
-  </script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          stepperNodes.forEach(node => {
+            node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
 
+    stepCards.forEach(card => observer.observe(card));
+  });
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
