@@ -160,11 +160,10 @@
     "login": "common/choose_role/code.html", 
     "choose_role": "scout/scout_dashboard/scout_today_dashboard/code.html",
 
-    // Scout Farmer Onboarding Flow (Step 1 to 15)
-    "register_a_farmer/intro_consent": "../farmer_identity/code.html",
-    "register_a_farmer/farmer_identity": "../verify_mobile_send/code.html",
-    "register_a_farmer/verify_mobile_send": "../verify_mobile_entry/code.html",
-    "register_a_farmer/verify_mobile_entry": "../language_selection/code.html",
+    // Scout Farmer Onboarding Flow (Step 1 to 14)
+    "register_a_farmer/intro_consent": "../verify_mobile_send/code.html",
+    "register_a_farmer/verify_mobile_send": "../farmer_identity/code.html",
+    "register_a_farmer/farmer_identity": "../language_selection/code.html",
     "register_a_farmer/language_selection": "../confirm_role_checkpoint/code.html",
     "register_a_farmer/confirm_role_checkpoint": "../residential_address/code.html",
     "register_a_farmer/residential_address": "../pond_details/code.html",
@@ -177,11 +176,10 @@
     "register_a_farmer/review_submit": "../submission_confirmation/code.html",
     "register_a_farmer/submission_confirmation": "../../scout_dashboard/scout_today_dashboard/code.html",
 
-    // Scout Popper Onboarding Flow (Step 1 to 18)
-    "register_a_popper/popper_intro_consent": "../contact_person_identity/code.html",
-    "register_a_popper/contact_person_identity": "../popper_mobile_verification_send/code.html",
-    "register_a_popper/popper_mobile_verification_send": "../popper_mobile_verification/code.html",
-    "register_a_popper/popper_mobile_verification": "../popper_language_selection/code.html",
+    // Scout Popper Onboarding Flow (Step 1 to 17)
+    "register_a_popper/popper_intro_consent": "../popper_mobile_verification_send/code.html",
+    "register_a_popper/popper_mobile_verification_send": "../contact_person_identity/code.html",
+    "register_a_popper/contact_person_identity": "../popper_language_selection/code.html",
     "register_a_popper/popper_language_selection": "../confirm_popper_role/code.html",
     "register_a_popper/confirm_popper_role": "../popper_address_details/code.html",
     "register_a_popper/popper_address_details": "../business_basic_details/code.html",
