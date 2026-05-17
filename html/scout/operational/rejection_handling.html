@@ -33,6 +33,9 @@
     .spec-list { list-style: none; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
     .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+    .address-bar { background: #141416; border: 1px solid #27272a; border-radius: 8px; padding: 10px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 12px; max-width: 1280px; margin-left: auto; margin-right: auto; }
+    .address-bar-icon { font-size: 14px; color: #06b6d4; }
+    .address-bar-path { font-family: 'Inter', sans-serif; font-size: 13px; color: #9ca3af; word-break: break-all; }
   </style>
 </head>
 <body>
@@ -41,6 +44,11 @@
   <div class="tag">Workflow Module 6</div>
   <h1 class="title">Rejection Handling</h1>
   <p class="desc">Process lot rejections during verification with disposition options. Scout documents rejection reason with coded categories and defect evidence. Determines if lot is reconditionable (path to re-inspection) or terminal (voided from market).</p>
+</div>
+
+<div class="address-bar">
+  <div class="address-bar-icon">📁</div>
+  <div class="address-bar-path" id="address-path">html/scout/operational/rejection_handling.html</div>
 </div>
 
 <div class="workflow-grid">
@@ -105,6 +113,16 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pathElement = document.getElementById('address-path');
+    if (pathElement) {
+      const pathname = window.location.pathname;
+      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    }
+  });
+</script>
 
 </body>
 </html>

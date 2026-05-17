@@ -163,6 +163,9 @@
     .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
     .modal-body { flex: 1; width: 100%; height: 100%; }
     .modal-body iframe { width: 100%; height: 100%; border: none; }
+    .address-bar { background: #141416; border: 1px solid #27272a; border-radius: 8px; padding: 10px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 12px; max-width: 1280px; margin-left: auto; margin-right: auto; }
+    .address-bar-icon { font-size: 14px; color: #06b6d4; }
+    .address-bar-path { font-family: 'Inter', sans-serif; font-size: 13px; color: #9ca3af; word-break: break-all; }
   </style>
 </head>
 <body>
@@ -171,6 +174,11 @@
     <div class="tag">Workflow Module 2</div>
     <h1 class="title">Scout Dashboard & Tasks</h1>
     <p class="desc">Mobile-first assignment hub for field agents, surfacing real-time lot inspections and warehouse audits with geofencing and priority logic.</p>
+  </div>
+
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/dashboard.html</div>
   </div>
 
   <div class="stepper-panel-container">
@@ -491,6 +499,16 @@ WHERE t.id = $1;</div>
       }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
 
       stepCards.forEach(card => observer.observe(card));
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
     });
   </script>
 </body>
