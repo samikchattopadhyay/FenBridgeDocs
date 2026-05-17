@@ -1,39 +1,66 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
-                              "colors": {
-                        "primary": "#4edea3",
-                        "primary-container": "#10b981",
-                        "on-primary": "#003824",
-                        "on-primary-container": "#00422b",
-                        "surface": "#131313",
-                        "surface-container": "#201f1f",
-                        "surface-container-high": "#2a2a2a",
-                        "surface-container-highest": "#353534",
-                        "surface-container-low": "#1c1b1b",
-                        "surface-container-lowest": "#0e0e0e",
-                        "on-surface": "#e5e2e1",
-                        "on-surface-variant": "#bbcabf",
-                        "background": "#131313",
-                        "outline": "#86948a",
-                        "outline-variant": "#3c4a42",
-                        "error": "#ffb4ab",
-                        "error-container": "#93000a",
-                        "on-error": "#690005",
-                        "secondary": "#95d3ba",
-                        "tertiary": "#ffb3af",
-                    },
+          "colors": {
+            "on-surface": "#dde4dd",
+            "surface-variant": "#2f3632",
+            "on-secondary-container": "#87c5ac",
+            "primary-container": "#4edea3",
+            "on-tertiary-fixed": "#370d0d",
+            "outline": "#86948a",
+            "surface-container-high": "#242c27",
+            "on-primary-fixed": "#002114",
+            "tertiary": "#ffb3af",
+            "inverse-primary": "#006c4a",
+            "on-tertiary": "#512120",
+            "surface-container": "#1a211d",
+            "on-background": "#dde4dd",
+            "surface-container-low": "#161d19",
+            "tertiary-fixed": "#ffdad7",
+            "on-secondary": "#003829",
+            "on-surface-variant": "#bbcabf",
+            "tertiary-fixed-dim": "#ffb3af",
+            "on-primary": "#003824",
+            "tertiary-container": "#ffb3af",
+            "surface-lowest": "#0e0e0e",
+            "inverse-surface": "#dde4dd",
+            "secondary": "#95d3ba",
+            "background": "#0e1511",
+            "surface-bright": "#393939",
+            "primary": "#6ffbbe",
+            "on-error-container": "#ffdad6",
+            "surface-container-highest": "#2f3632",
+            "error": "#ffb4ab",
+            "surface-tint": "#4edea3",
+            "on-tertiary-container": "#7b4240",
+            "secondary-fixed-dim": "#95d3ba",
+            "outline-variant": "#3c4a42",
+            "primary-fixed": "#6ffbbe",
+            "surface": "#0e1511",
+            "secondary-fixed": "#b1f0d6",
+            "inverse-on-surface": "#2b322d",
+            "primary-fixed-dim": "#4edea3",
+            "on-secondary-fixed-variant": "#0d503e",
+            "on-primary-fixed-variant": "#005236",
+            "error-container": "#93000a",
+            "secondary-container": "#115340",
+            "on-tertiary-fixed-variant": "#6d3735",
+            "surface-dim": "#0e1511",
+            "on-primary-container": "#005f40",
+            "surface-container-lowest": "#09100c",
+            "on-secondary-fixed": "#002117",
+            "on-error": "#690005"
+          },
           "borderRadius": {
             "DEFAULT": "0.125rem",
             "lg": "0.25rem",
@@ -70,235 +97,241 @@
       },
     }
   </script>
-<style>
+  <style>
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
-  
-        ::-webkit-scrollbar { display: none !important; }
-        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
-    </style>
-    <style>
-        body {
-            min-height: 100vh;
-        }
-    </style>
-  </head>
+    ::-webkit-scrollbar { display: none !important; }
+    * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+  </style>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    ::-webkit-scrollbar { display: none !important; }
+    * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+  </style>
+</head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
-    <!-- TopAppBar -->
-    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-14 bg-surface dark:bg-surface border-b border-outline-variant">
-        <div class="flex items-center gap-2">
-            <button onclick="window.history.back()" class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded-full">arrow_back</button>
-            <h1 class="text-headline-sm font-headline-sm text-on-surface">Review & Submit</h1>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
-        </div>
-    </header>
+  <!-- TopAppBar Component -->
+  <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+    <div class="flex items-center gap-4">
+      <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+        <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
+      </button>
+      <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Review &amp; Submit</h1>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+    </div>
+  </header>
 
-    <!-- Stepper Panel -->
-    <div class="fixed top-14 w-full z-40 bg-surface-container/80 backdrop-blur-md border-b border-outline-variant/30 px-4 py-3">
-        <div class="flex items-center justify-between mb-2">
-            <span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Registration Progress</span>
-            <span class="text-label-md font-label-md text-primary font-bold">Step 14 of 15</span>
+  <!-- Stepper Panel -->
+  <div class="sticky top-16 left-0 w-full z-40 bg-surface-container/90 backdrop-blur-md border-b border-outline-variant mt-16 px-margin-mobile py-3">
+    <div class="max-w-2xl mx-auto">
+      <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+        <div class="h-full bg-primary transition-all duration-500" style="width: 93.3%"></div>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 14 of 15</span>
         </div>
-        <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
-            <div class="h-full bg-primary transition-all duration-500" style="width: 93.3%"></div>
-        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow pt-8 px-margin-mobile max-w-4xl mx-auto w-full">
+    <!-- Hero Section -->
+    <div class="mb-12 p-8 bg-surface-container-low border border-outline-variant rounded-2xl relative overflow-hidden shadow-2xl">
+      <div class="relative z-10 max-w-2xl">
+        <h2 class="text-headline-md font-headline-md text-primary mb-4">Registration Summary</h2>
+        <p class="text-body-md text-on-surface-variant opacity-80 leading-relaxed">Please review all details before final submission. Once submitted, your profile will undergo technical verification for institutional trading.</p>
+      </div>
+      <div class="absolute -right-8 -bottom-8 opacity-10">
+        <span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+      </div>
     </div>
 
-<main class="flex-grow pt-32 px-margin-mobile max-w-4xl mx-auto w-full">
-<!-- Hero Section -->
-<div class="mb-12 p-8 bg-surface-container-low border border-outline-variant rounded-2xl relative overflow-hidden">
-<div class="relative z-10 max-w-2xl">
-<h2 class="text-display-lg font-display-lg text-primary mb-4">Registration Summary</h2>
-<p class="text-body-lg text-on-surface-variant opacity-80 leading-relaxed">Please review all details before final submission. Once submitted, your profile will undergo technical verification for institutional trading.</p>
-</div>
-<div class="absolute -right-8 -bottom-8 opacity-10">
-<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">fact_check</span>
-</div>
-</div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Farmer Identity -->
+      <section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors relative">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+              <span class="material-symbols-outlined text-primary">fingerprint</span>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-on-surface">Farmer Identity</h3>
+          </div>
+          <button onclick="window.location.href='../farmer_identity/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+          <div class="col-span-2">
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Full Legal Name</p>
+            <p class="text-lg font-bold text-on-surface">RAJESH KUMAR</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Citizen ID</p>
+            <p class="font-mono-data text-on-surface">XXXX-XXXX-8942</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Mobile</p>
+            <p class="font-mono-data text-on-surface">+91 98765 43210</p>
+          </div>
+        </div>
+      </section>
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-<!-- Farmer Identity -->
-<section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors relative">
-<div class="flex justify-between items-center mb-8">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-<span class="material-symbols-outlined text-primary">fingerprint</span>
-</div>
-<h3 class="text-headline-sm font-headline-sm text-on-surface">Farmer Identity</h3>
-</div>
-<button onclick="window.location.href='../farmer_identity/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
-</div>
-<div class="grid grid-cols-2 gap-8">
-<div class="col-span-2">
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Full Legal Name</p>
-<p class="text-lg font-bold text-on-surface">RAJESH KUMAR</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Citizen ID</p>
-<p class="font-mono-data text-on-surface">XXXX-XXXX-8942</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Mobile</p>
-<p class="font-mono-data text-on-surface">+91 98765 43210</p>
-</div>
-</div>
-</section>
+      <!-- Residential Address -->
+      <section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+              <span class="material-symbols-outlined text-primary">home_pin</span>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-on-surface">Residential Address</h3>
+          </div>
+          <button onclick="window.location.href='../residential_address/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
+        </div>
+        <div class="space-y-6">
+          <div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Street Address</p>
+            <p class="text-on-surface font-bold">Vill: Madhubani North, Block A</p>
+          </div>
+          <div class="flex gap-12">
+            <div>
+              <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">City</p>
+              <p class="text-on-surface font-bold">Madhubani</p>
+            </div>
+            <div>
+              <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Pincode</p>
+              <p class="font-mono-data text-on-surface font-bold">847211</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-<!-- Residential Address -->
-<section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
-<div class="flex justify-between items-center mb-8">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-<span class="material-symbols-outlined text-primary">home_pin</span>
-</div>
-<h3 class="text-headline-sm font-headline-sm text-on-surface">Residential Address</h3>
-</div>
-<button onclick="window.location.href='../residential_address/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
-</div>
-<div class="space-y-6">
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Street Address</p>
-<p class="text-on-surface font-bold">Vill: Madhubani North, Block A</p>
-</div>
-<div class="flex gap-12">
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">City</p>
-<p class="text-on-surface font-bold">Madhubani</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Pincode</p>
-<p class="font-mono-data text-on-surface">847211</p>
-</div>
-</div>
-</div>
-</section>
+      <!-- Pond Portfolio -->
+      <section class="lg:col-span-2 bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+              <span class="material-symbols-outlined text-primary">water_lux</span>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-on-surface">Pond Portfolio</h3>
+          </div>
+          <button onclick="window.location.href='../pond_details/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Pond Name</p>
+            <p class="text-on-surface font-bold">NORTH WETLAND ALPHA</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Total Area</p>
+            <p class="font-mono-data text-on-surface font-bold">1.42 Hectares</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Annual Yield</p>
+            <p class="font-mono-data text-on-surface font-bold">5,200 kg</p>
+          </div>
+          <div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Documentation</p>
+            <p class="text-primary font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-sm">verified</span>
+              VERIFIED
+            </p>
+          </div>
+        </div>
+      </section>
 
-<!-- Pond Portfolio -->
-<section class="lg:col-span-2 bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
-<div class="flex justify-between items-center mb-8">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-<span class="material-symbols-outlined text-primary">water_lux</span>
-</div>
-<h3 class="text-headline-sm font-headline-sm text-on-surface">Pond Portfolio</h3>
-</div>
-<button onclick="window.location.href='../pond_details/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Pond Name</p>
-<p class="text-on-surface font-bold">NORTH WETLAND ALPHA</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Total Area</p>
-<p class="font-mono-data text-on-surface">1.42 Hectares</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Annual Yield</p>
-<p class="font-mono-data text-on-surface">5,200 kg</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mb-2">Documentation</p>
-<p class="text-primary font-bold flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">verified</span>
-                  VERIFIED
-                </p>
-</div>
-</div>
-</section>
+      <!-- Financials & Preferences -->
+      <section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+              <span class="material-symbols-outlined text-primary">account_balance</span>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-on-surface">Financials</h3>
+          </div>
+          <button onclick="window.location.href='../bank_account_details/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
+        </div>
+        <div class="flex items-center gap-4 p-4 bg-background/50 rounded-xl border border-outline-variant/30">
+          <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined">credit_card</span>
+          </div>
+          <div>
+            <p class="text-on-surface font-bold">State Bank of India</p>
+            <p class="font-mono-data text-[10px] text-on-surface-variant uppercase tracking-widest">Savings •••• 0123</p>
+          </div>
+        </div>
+      </section>
 
-<!-- Financials & Preferences -->
-<section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
-<div class="flex justify-between items-center mb-8">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-<span class="material-symbols-outlined text-primary">account_balance</span>
-</div>
-<h3 class="text-headline-sm font-headline-sm text-on-surface">Financials</h3>
-</div>
-<button onclick="window.location.href='../bank_account_details/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
-</div>
-<div class="flex items-center gap-4 p-4 bg-background/50 rounded-xl border border-outline-variant/30">
-<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">credit_card</span>
-</div>
-<div>
-<p class="text-on-surface font-bold">State Bank of India</p>
-<p class="font-mono-data text-[10px] text-on-surface-variant uppercase tracking-widest">Savings •••• 0123</p>
-</div>
-</div>
-</section>
+      <section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+              <span class="material-symbols-outlined text-primary">palette</span>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-on-surface">System</h3>
+          </div>
+          <button onclick="window.location.href='../theme_preference/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
+        </div>
+        <div class="flex items-center gap-4 p-4 bg-background/50 rounded-xl border border-outline-variant/30">
+          <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined">dark_mode</span>
+          </div>
+          <div>
+            <p class="text-on-surface font-bold">Agri-Tech Noir</p>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">ACTIVE EXPERIENCE</p>
+          </div>
+        </div>
+      </section>
+    </div>
 
-<section class="bg-surface-container border border-outline-variant p-8 rounded-2xl group hover:border-primary/30 transition-colors">
-<div class="flex justify-between items-center mb-8">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-<span class="material-symbols-outlined text-primary">palette</span>
-</div>
-<h3 class="text-headline-sm font-headline-sm text-on-surface">System</h3>
-</div>
-<button onclick="window.location.href='../theme_preference/code.html'" class="text-primary font-label-md hover:underline uppercase tracking-widest text-[10px] font-bold">Edit</button>
-</div>
-<div class="flex items-center gap-4 p-4 bg-background/50 rounded-xl border border-outline-variant/30">
-<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">dark_mode</span>
-</div>
-<div>
-<p class="text-on-surface font-bold">Agri-Tech Noir</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">ACTIVE EXPERIENCE</p>
-</div>
-</div>
-</section>
-</div>
+    <!-- Final Declaration -->
+    <div class="mt-12 bg-surface-container-low border border-primary/20 p-8 rounded-2xl relative overflow-hidden shadow-2xl">
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#4edea3 0.5px, transparent 0.5px); background-size: 16px 16px;"></div>
+      <div class="relative z-10">
+        <h3 class="text-headline-sm font-headline-sm text-primary mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined">gavel</span>
+          Final Declaration
+        </h3>
+        <p class="text-body-md text-on-surface-variant mb-8 leading-relaxed italic opacity-80">
+          By submitting this application, I certify that all information provided regarding my identity and agricultural assets is accurate. I agree to the <a class="text-primary underline font-bold" href="#">Farmer Engagement Terms</a> and authorize FenBridge to conduct necessary asset verification via satellite and field inspection.
+        </p>
+        <label class="flex items-start gap-4 group cursor-pointer bg-surface-container p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-colors">
+          <div class="relative flex items-center pt-1">
+            <input class="peer h-6 w-6 rounded-lg border-outline-variant bg-surface-container text-primary focus:ring-primary transition-all" id="confirm-check" type="checkbox"/>
+          </div>
+          <span class="text-body-lg text-on-surface select-none font-bold">
+            I confirm that all data points are verified and I am ready to submit my registration to the FenBridge Network.
+          </span>
+        </label>
+      </div>
+    </div>
 
-<!-- Final Declaration -->
-<div class="mt-12 bg-surface-container-low border border-primary/20 p-8 rounded-2xl relative overflow-hidden shadow-2xl">
-<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#4edea3 0.5px, transparent 0.5px); background-size: 16px 16px;"></div>
-<div class="relative z-10">
-<h3 class="text-headline-sm font-headline-sm text-primary mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined">gavel</span>
-            Final Declaration
-          </h3>
-<p class="text-body-md text-on-surface-variant mb-8 leading-relaxed italic opacity-80">
-            By submitting this application, I certify that all information provided regarding my identity and agricultural assets is accurate. I agree to the <a class="text-primary underline font-bold" href="#">Farmer Engagement Terms</a> and authorize FenBridge to conduct necessary asset verification via satellite and field inspection.
-          </p>
-<label class="flex items-start gap-4 group cursor-pointer bg-surface-container p-6 rounded-xl border border-outline-variant/30 hover:border-primary transition-colors">
-<div class="relative flex items-center pt-1">
-<input class="peer h-6 w-6 rounded-lg border-outline-variant bg-surface-container text-primary focus:ring-primary transition-all" id="confirm-check" type="checkbox"/>
-</div>
-<span class="text-body-lg text-on-surface select-none font-bold">
-              I confirm that all data points are verified and I am ready to submit my registration to the FenBridge Network.
-            </span>
-</label>
-</div>
-</div>
     <!-- CTA Area -->
     <div class="mt-12 pb-12">
-        <div class="flex flex-col sm:flex-row gap-4 items-center">
-            <div class="flex items-center gap-2 text-on-surface-variant sm:flex-grow">
-                <span class="material-symbols-outlined text-primary">lock</span>
-                <span class="text-[10px] font-bold uppercase tracking-widest">Secure 256-bit Encrypted Submission</span>
-            </div>
-            <div class="flex gap-4 w-full sm:w-auto">
-                <button onclick="if(document.getElementById('confirm-check').checked) window.location.href='../submission_confirmation/code.html'" class="flex-grow sm:w-64 bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
-                    Submit
-                    <span class="material-symbols-outlined">send</span>
-                </button>
-                <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-8 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
-                    Save Draft
-                </button>
-            </div>
+      <div class="flex flex-col sm:flex-row gap-4 items-center">
+        <div class="flex items-center gap-2 text-on-surface-variant sm:flex-grow">
+          <span class="material-symbols-outlined text-primary">lock</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest">Secure 256-bit Encrypted Submission</span>
         </div>
+        <div class="flex gap-4 w-full sm:w-auto">
+          <button onclick="if(document.getElementById('confirm-check').checked) window.location.href='../submission_confirmation/code.html'" class="flex-grow sm:w-64 bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+            Submit
+            <span class="material-symbols-outlined">send</span>
+          </button>
+          <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-8 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+            Save Draft
+          </button>
+        </div>
+      </div>
     </div>
-</main>
+  </main>
 
-<!-- Background Texture -->
-<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
-</div>
+  <!-- Background Texture -->
+  <div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+  </div>
 
-    <script src='../../../../app_logic.js'></script>
-</body></html>
+  <script src='../../../../app_logic.js'></script>
+</body>
+</html>

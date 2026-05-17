@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
@@ -98,99 +97,260 @@
       },
     }
   </script>
-<style>
+  <style>
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
-  
-        ::-webkit-scrollbar { display: none !important; }
-        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
-    </style>
-<style>
+    ::-webkit-scrollbar { display: none !important; }
+    * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+  </style>
+  <style>
     body {
       min-height: max(884px, 100dvh);
     }
-  
-        ::-webkit-scrollbar { display: none !important; }
-        * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
-    </style>
-  </head>
+    ::-webkit-scrollbar { display: none !important; }
+    * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+  </style>
+</head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
-<!-- TopAppBar Component -->
-<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant shadow-sm shadow-black/20">
+  <!-- TopAppBar Component -->
+  <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant shadow-sm shadow-black/20">
     <div class="flex items-center gap-4">
-        <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
-            <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
-        </button>
-        <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Mobile Verification</h1>
+      <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+        <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
+      </button>
+      <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Mobile Verification</h1>
     </div>
     <div class="flex items-center gap-2">
-        <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+      <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
     </div>
-</header>
+  </header>
 
-<!-- Stepper Panel -->
-<div class="w-full bg-surface-container border-b border-outline-variant mt-16 px-margin-mobile py-3">
+  <!-- Stepper Panel -->
+  <div class="sticky top-16 left-0 w-full z-40 bg-surface-container/90 backdrop-blur-md border-b border-outline-variant mt-16 px-margin-mobile py-3">
     <div class="max-w-2xl mx-auto">
-        <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
-            <div class="h-full bg-primary transition-all duration-500" style="width: 16.7%;"></div>
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 3 of 18</span>
-            </div>
+      <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+        <div class="h-full bg-primary transition-all duration-500" style="width: 11.1%"></div>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 2 of 18</span>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<main class="flex-grow pt-8 px-margin-mobile max-w-lg mx-auto w-full">
-<!-- Hero/Instruction Card -->
-<div class="mb-8 p-6 bg-surface-container-low border border-outline-variant rounded-xl relative overflow-hidden shadow-2xl">
-<div class="relative z-10">
-<h2 class="text-headline-sm font-headline-sm text-primary mb-2">Verify Contact</h2>
-<p class="text-body-md text-on-surface-variant opacity-80 leading-relaxed">We will send a secure verification code to this number to authorize your business profile and enable terminal access.</p>
-</div>
-<div class="absolute -right-4 -bottom-4 opacity-10">
-<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">vibration</span>
-</div>
-</div>
+  <main class="flex-grow pt-8 px-margin-mobile max-w-lg mx-auto w-full">
+    <!-- Hero/Instruction Card -->
+    <div class="mb-8 p-6 bg-surface-container-low border border-outline-variant rounded-xl relative overflow-hidden shadow-2xl">
+      <div class="relative z-10">
+        <h2 class="text-headline-sm font-headline-sm text-primary mb-2">Verify Contact</h2>
+        <p class="text-body-md text-on-surface-variant opacity-80 leading-relaxed">
+          We will send a secure verification code to this number to authorize your business profile and enable terminal access.
+        </p>
+      </div>
+      <div class="absolute -right-4 -bottom-4 opacity-10">
+        <span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">vibration</span>
+      </div>
+    </div>
 
-<!-- Mobile Form -->
-<form class="space-y-6">
-<div class="space-y-2">
-<label class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest flex justify-between px-1">
+    <!-- Mobile Form (Aligned form input layout to popper contact_person_identity standard) -->
+    <form class="space-y-6" onsubmit="event.preventDefault(); triggerVerificationOverlay();">
+      <div class="space-y-2">
+        <label class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest flex justify-between">
           Mobile Number <span class="text-primary text-[10px] font-bold">* MANDATORY</span>
-</label>
-<div class="flex gap-3">
-<div class="flex items-center gap-2 bg-surface-container-high border border-outline-variant px-4 py-4 rounded-xl shadow-inner">
-<span class="text-label-md font-mono-data text-primary font-bold">+91</span>
-</div>
-<input class="flex-grow bg-surface-container border border-outline-variant text-on-surface py-4 px-4 rounded-xl focus:outline-none focus:border-primary transition-all font-mono-data tracking-[0.2em] group-hover:border-primary/50 shadow-inner" inputmode="numeric" pattern="[0-9]{10}" placeholder="00000 00000" required="" type="tel" value="98765 43210"/>
-</div>
-</div>
+        </label>
+        <div class="flex gap-2">
+          <div class="flex items-center gap-2 bg-surface-container-high border border-outline-variant px-3 py-3 rounded-lg">
+            <span class="text-label-md font-mono-data text-primary font-bold">+91</span>
+          </div>
+          <input id="mobile_input" class="flex-grow min-w-0 bg-surface-container border border-outline-variant text-on-surface py-3 px-4 rounded-lg focus:outline-none focus:border-primary transition-colors font-mono-data tracking-[0.2em]" inputmode="numeric" pattern="[0-9]{10}" placeholder="98765 43210" value="98765 43210" required="" type="tel"/>
+        </div>
+      </div>
 
-<!-- Security Info -->
-<div class="mt-8 p-4 bg-secondary-container/10 border-l-4 border-secondary-container rounded-r-xl flex gap-4 shadow-sm shadow-black/20">
-<span class="material-symbols-outlined text-secondary text-sm mt-0.5">verified_user</span>
-<p class="text-[10px] font-mono-data text-on-secondary-container opacity-80 leading-relaxed italic uppercase tracking-tighter">
-        Security check: Your number is used to verify market access and secure your processing data across all linked logistics nodes.
-      </p>
-</div>
-</form>
+      <!-- Security Info -->
+      <div class="mt-8 p-4 bg-secondary-container/10 border-l-4 border-secondary-container rounded-r-xl flex gap-4 shadow-sm shadow-black/20">
+        <span class="material-symbols-outlined text-secondary text-sm mt-0.5">verified_user</span>
+        <p class="text-[10px] font-mono-data text-on-secondary-container opacity-80 leading-relaxed italic uppercase tracking-tighter">
+          Security check: Your number is used to verify market access and secure your processing data across all linked logistics nodes.
+        </p>
+      </div>
+    </form>
+
     <!-- CTA Area -->
     <div class="mt-12 pb-12 flex gap-4">
-        <button onclick="window.location.href='../popper_mobile_verification/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
-            Send OTP
-            <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
-        <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
-            Save Draft
-        </button>
+      <button onclick="event.preventDefault(); event.stopPropagation(); triggerVerificationOverlay();" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+        Send OTP
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+      <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+        Save Draft
+      </button>
     </div>
-</main>
+  </main>
 
-<!-- Background Texture -->
-<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
-</div>
+  <!-- Interactive OTP Verification Bottom-Sheet Overlay -->
+  <div id="otp_overlay" class="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-end justify-center sm:items-center">
+    <div id="otp_sheet" class="w-full max-w-md bg-surface-container border-t sm:border border-outline-variant/30 rounded-t-3xl sm:rounded-2xl p-6 space-y-5 premium-shadow transform translate-y-full sm:translate-y-12 transition-transform duration-300 max-h-[90dvh] overflow-y-auto text-left">
+      
+      <!-- Sheet Header -->
+      <div class="flex items-start justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 bg-primary/10 text-primary font-semibold text-[10px] tracking-widest uppercase rounded-full border border-primary/20 mb-2">Secure Gateway</span>
+          <h3 class="text-lg font-bold text-on-surface">Enter Verification Token</h3>
+          <p class="text-xs text-on-surface-variant mt-1">5-digit SMS token sent to <span id="target_phone_display" class="text-primary font-medium tracking-wide">+91 98765 43210</span></p>
+        </div>
+        <button onclick="event.preventDefault(); event.stopPropagation(); closeVerificationOverlay();" class="p-1 text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-[20px] pointer-events-none">close</span>
+        </button>
+      </div>
 
-    <script src='../../../../app_logic.js'></script>
-</body></html>
+      <!-- OTP Input Group -->
+      <div class="space-y-4 pt-1">
+        <div class="flex justify-center gap-2.5 sm:gap-3">
+          <input type="text" maxlength="1" class="otp-box w-11 sm:w-12 h-12 sm:h-14 bg-surface-container-highest border border-outline-variant rounded-xl text-center text-lg font-bold text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+          <input type="text" maxlength="1" class="otp-box w-11 sm:w-12 h-12 sm:h-14 bg-surface-container-highest border border-outline-variant rounded-xl text-center text-lg font-bold text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+          <input type="text" maxlength="1" class="otp-box w-11 sm:w-12 h-12 sm:h-14 bg-surface-container-highest border border-outline-variant rounded-xl text-center text-lg font-bold text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+          <input type="text" maxlength="1" class="otp-box w-11 sm:w-12 h-12 sm:h-14 bg-surface-container-highest border border-outline-variant rounded-xl text-center text-lg font-bold text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+          <input type="text" maxlength="1" class="otp-box w-11 sm:w-12 h-12 sm:h-14 bg-surface-container-highest border border-outline-variant rounded-xl text-center text-lg font-bold text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+        </div>
+
+        <!-- Resend & Countdown Controls -->
+        <div class="flex items-center justify-between px-1 text-xs">
+          <span id="timer_text" class="text-on-surface-variant font-medium">Resend token in <strong id="countdown_sec" class="text-primary font-semibold">30s</strong></span>
+          <button id="resend_cta" disabled onclick="event.preventDefault(); event.stopPropagation(); resetCountdown();" class="text-outline-variant disabled:text-outline-variant/30 disabled:cursor-not-allowed hover:text-primary transition-colors font-semibold">Resend SMS</button>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="pt-2 space-y-2.5">
+        <button id="verify_otp_btn" onclick="event.preventDefault(); event.stopPropagation(); processMobileOTP();" type="button" class="w-full h-12 bg-primary-container text-on-primary-container font-semibold text-sm rounded-xl hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer">
+          <span class="pointer-events-none">Verify &amp; Continue</span>
+          <span class="material-symbols-outlined text-[18px] pointer-events-none">verified</span>
+        </button>
+        <button onclick="event.preventDefault(); event.stopPropagation(); autoFillDemoOTP();" class="w-full py-2 bg-transparent hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface text-xs font-medium rounded-lg transition-colors border border-dashed border-outline-variant/40">
+          ⚡ Auto-fill Demo Verification Token (48215)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Background Texture -->
+  <div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+  </div>
+
+  <script>
+    let timerInterval;
+
+    function triggerVerificationOverlay() {
+      const input = document.getElementById('mobile_input');
+      const numVal = input ? input.value.trim() : "";
+      const displayVal = numVal || "98765 43210";
+
+      document.getElementById('target_phone_display').textContent = "+91 " + displayVal;
+      const overlay = document.getElementById('otp_overlay');
+      const sheet = document.getElementById('otp_sheet');
+      
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      sheet.classList.remove('translate-y-full', 'sm:translate-y-12');
+      sheet.classList.add('translate-y-0');
+
+      // Reset and auto focus OTP fields
+      const boxes = document.querySelectorAll('.otp-box');
+      boxes.forEach(b => b.value = '');
+      if (boxes.length) setTimeout(() => boxes[0].focus(), 250);
+
+      startCountdown(30);
+    }
+
+    function closeVerificationOverlay() {
+      const overlay = document.getElementById('otp_overlay');
+      const sheet = document.getElementById('otp_sheet');
+      
+      sheet.classList.remove('translate-y-0');
+      sheet.classList.add('translate-y-full', 'sm:translate-y-12');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      
+      clearInterval(timerInterval);
+    }
+
+    function startCountdown(seconds) {
+      clearInterval(timerInterval);
+      let left = seconds;
+      const secDisplay = document.getElementById('countdown_sec');
+      const timerText = document.getElementById('timer_text');
+      const resendBtn = document.getElementById('resend_cta');
+      
+      resendBtn.setAttribute('disabled', 'true');
+      timerText.style.display = 'inline';
+
+      timerInterval = setInterval(() => {
+        left--;
+        if (secDisplay) secDisplay.textContent = left + "s";
+        if (left <= 0) {
+          clearInterval(timerInterval);
+          timerText.style.display = 'none';
+          resendBtn.removeAttribute('disabled');
+        }
+      }, 1000);
+    }
+
+    function resetCountdown() {
+      startCountdown(30);
+      const boxes = document.querySelectorAll('.otp-box');
+      boxes.forEach(b => b.value = '');
+      if (boxes[0]) boxes[0].focus();
+    }
+
+    function autoFillDemoOTP() {
+      const digits = ['4', '8', '2', '1', '5'];
+      const boxes = document.querySelectorAll('.otp-box');
+      boxes.forEach((b, idx) => {
+        b.value = digits[idx] || '';
+      });
+      setTimeout(() => processMobileOTP(), 200);
+    }
+
+    function processMobileOTP() {
+      const btn = document.getElementById('verify_otp_btn');
+      if (!btn || btn.disabled) return;
+      
+      btn.innerHTML = '<span class="animate-spin inline-block w-4 h-4 border-2 border-background border-t-transparent rounded-full"></span> <span>Verifying Token...</span>';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.className = "w-full h-12 bg-primary text-on-primary font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-md";
+        btn.innerHTML = '<span>Verified Successfully ✓</span>';
+        
+        setTimeout(() => {
+          window.location.href = "../contact_person_identity/code.html";
+        }, 700);
+      }, 1200);
+    }
+
+    // Interactive typing auto-advance navigation handlers for OTP fields
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('.otp-box');
+      boxes.forEach((box, idx) => {
+        box.addEventListener('input', (e) => {
+          if (e.target.value.length === 1 && idx < boxes.length - 1) {
+            boxes[idx + 1].focus();
+          } else if (e.target.value.length === 1 && idx === boxes.length - 1) {
+            // Trigger automatically when final character is typed
+            setTimeout(() => processMobileOTP(), 150);
+          }
+        });
+        box.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && idx > 0) {
+            boxes[idx - 1].focus();
+          } else if (e.key === 'Enter') {
+            processMobileOTP();
+          }
+        });
+      });
+    });
+  </script>
+
+  <script src='../../../../app_logic.js'></script>
+</body>
+</html>

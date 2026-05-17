@@ -133,12 +133,12 @@
 </header>
 
 <!-- Stepper Panel -->
-<div class="w-full bg-surface-container border-b border-outline-variant mt-16 px-margin-mobile py-3">
+<div class="sticky top-16 left-0 w-full z-40 bg-surface-container/90 backdrop-blur-md border-b border-outline-variant mt-16 px-margin-mobile py-3">
     <div class="max-w-2xl mx-auto">
         <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
-            <div class="h-full bg-primary transition-all duration-500" style="width: 11.1%;"></div>
+            <div class="h-full bg-primary transition-all duration-500" style="width: 22.2%"></div>
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 2 of 18</span>
+                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 4 of 18</span>
             </div>
         </div>
     </div>
@@ -178,19 +178,22 @@
 <!-- Mobile Number (Mandatory) -->
 <div class="space-y-2">
 <label class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest flex justify-between">
-          Mobile Number <span class="text-primary text-[10px]">* MANDATORY</span>
+          Mobile Number <span class="text-primary text-[10px]">* VERIFIED</span>
 </label>
 <div class="flex gap-2">
 <div class="flex items-center gap-2 bg-surface-container-high border border-outline-variant px-3 py-3 rounded-lg">
-<span class="text-label-md font-mono-data text-primary">+91</span>
+<span class="text-label-md font-mono-data text-primary font-bold">+91</span>
 </div>
-<input class="flex-grow bg-surface-container border border-outline-variant text-on-surface py-3 px-4 rounded-lg focus:outline-none focus:border-primary transition-colors font-mono-data tracking-[0.2em]" inputmode="numeric" pattern="[0-9]{10}" placeholder="00000 00000" required="" type="tel"/>
+<input class="flex-grow min-w-0 bg-surface-container/50 border border-outline-variant/30 text-on-surface-variant/80 py-3 px-4 rounded-lg focus:outline-none transition-colors font-mono-data tracking-[0.2em]" inputmode="numeric" pattern="[0-9]{10}" placeholder="98765 43210" value="98765 43210" disabled="" readonly="" type="tel"/>
+<div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-3 rounded-lg">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
 </div>
 <!-- Special Accent Helper -->
 <div class="mt-3 p-3 bg-secondary-container/20 border-l-4 border-secondary-container rounded-r-lg flex gap-3">
 <span class="material-symbols-outlined text-secondary text-sm">info</span>
 <p class="text-body-md text-on-secondary-container leading-relaxed italic">
-            This is the contact person's mobile — they will receive OTP and SMS here.
+            Mobile verified securely in Step 2.
           </p>
 </div>
 </div>
@@ -203,13 +206,13 @@
 <div class="flex items-center gap-2 bg-surface-container-high border border-outline-variant px-3 py-3 rounded-lg">
 <span class="text-label-md font-mono-data text-primary">+91</span>
 </div>
-<input class="flex-grow bg-surface-container border border-outline-variant text-on-surface py-3 px-4 rounded-lg focus:outline-none focus:border-primary transition-colors font-mono-data tracking-[0.2em]" inputmode="numeric" pattern="[0-9]{10}" placeholder="00000 00000" type="tel"/>
+<input class="flex-grow min-w-0 bg-surface-container border border-outline-variant text-on-surface py-3 px-4 rounded-lg focus:outline-none focus:border-primary transition-colors font-mono-data tracking-[0.2em]" inputmode="numeric" pattern="[0-9]{10}" placeholder="00000 00000" type="tel"/>
 </div>
 </div>
 </form>
     <!-- CTA Area -->
     <div class="mt-12 pb-12 flex gap-4">
-        <button onclick="window.location.href='../popper_mobile_verification_send/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+        <button onclick="window.location.href='../popper_language_selection/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
             Continue
             <span class="material-symbols-outlined">arrow_forward</span>
         </button>

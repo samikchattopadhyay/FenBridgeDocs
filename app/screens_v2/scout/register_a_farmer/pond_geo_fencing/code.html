@@ -69,11 +69,13 @@
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md select-none min-h-screen flex flex-col antialiased">
-    <!-- TopAppBar -->
-    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-14 bg-surface dark:bg-surface border-b border-outline-variant">
-        <div class="flex items-center gap-2">
-            <button onclick="window.history.back()" class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded-full">arrow_back</button>
-            <h1 class="text-headline-sm font-headline-sm text-on-surface">Pond Geo-Fencing</h1>
+    <!-- TopAppBar Component -->
+    <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+                <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
+            </button>
+            <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Pond Geo-Fencing</h1>
         </div>
         <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
@@ -81,18 +83,19 @@
     </header>
 
     <!-- Stepper Panel -->
-    <div class="fixed top-14 w-full z-40 bg-surface-container/80 backdrop-blur-md border-b border-outline-variant/30 px-4 py-3">
-        <div class="flex items-center justify-between mb-2">
-            <span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Registration Progress</span>
-            <span class="text-label-md font-label-md text-primary font-bold">Step 11 of 15</span>
-        </div>
-        <div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
-            <div class="h-full bg-primary transition-all duration-500" style="width: 73.3%"></div>
+    <div class="sticky top-16 left-0 w-full z-40 bg-surface-container/90 backdrop-blur-md border-b border-outline-variant mt-16 px-margin-mobile py-3">
+        <div class="max-w-2xl mx-auto">
+            <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+                <div class="h-full bg-primary transition-all duration-500" style="width: 73.3%"></div>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 11 of 15</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Map Canvas -->
-    <main class="relative w-full h-[70vh] min-h-[500px] overflow-hidden cursor-crosshair border-b border-outline-variant/30 mt-32" id="map-container">
+    <main class="relative w-full h-[70vh] min-h-[500px] overflow-hidden cursor-crosshair border-b border-outline-variant/30 mt-0" id="map-container">
         <!-- Satellite Base Layer -->
         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaXOnitg61dLh_XJvAoFyfTtXKstAo314UWYYIw95eisRI9KATY8Hi1IB4Dp9VkSeu1QAtewLVGwYiFhUbuJARNPunLNh7w6NwvQVyPj2RBlO6y50rjWCsGmLV7UJZBPiADW1qJZRcSc5lnTpTEDv2Gcm4AKg40ntf5rgoEfVP5vdkEdEwyC-oyi9C6TtjA1Y62X70yvTeBWWIQyFYZdwC7Va5YJBvNlZfjOwmT1E5Zjb6qzAacE76wCKntfHhQBqiF6cK_3b_xp3-" 
              alt="Satellite view of agricultural pond" 
