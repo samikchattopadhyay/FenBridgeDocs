@@ -1,7 +1,37 @@
-C:\Development\Makhana\app\screens_v2\scout>tree /F
+# Scout App - Workflows & Screens
+
+## Summary
+**20 Workflows | 120+ Screens**
+
+### Workflow Screen Count
+1. lot_verification_inspection — 8 screens
+2. manage_farmer — 5 screens
+3. manage_popper — 5 screens
+4. mark_lot_ready_on_behalf — 5 screens
+5. ponds_directory — 3 screens
+6. pond_inspection — 6 screens
+7. profile_settings — 6 screens
+8. registered_users — 3 screens
+9. **register_a_farmer — 15 screens** ✓ Updated
+10. **register_a_popper — 18 screens** ✓ Updated
+11. rejection_handling — 5 screens
+12. re_inspection_post_reconditioning — 5 screens
+13. scout_dashboard — 3 screens
+14. seal_application — 6 screens
+15. storage_re_check — 5 screens
+16. submit_bid_on_behalf — 6 screens
+17. submit_spot_offer_on_behalf — 6 screens
+18. sync_queue — 3 screens
+19. warehouses — 5 screens
+20. warehouse_fitness_check — 5 screens
+
+---
+
+## Directory Structure
+
 Folder PATH listing
 Volume serial number is 0000002C 6C22:17F0
-C:.
+.
 │   README.md
 │
 ├───lot_verification_inspection
@@ -220,7 +250,47 @@ C:.
 │   │       code.html
 │   │       screen.png
 │   │
-│   └───residential_address
+│   ├───residential_address
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───pond_details
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───pond_address
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───pond_documents
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───pond_geo_fencing
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───bank_account_details
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───verify_mobile_send
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───verify_mobile_entry
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───theme_preference
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───review_submit
+│   │       code.html
+│   │       screen.png
+│   │
+│   └───submission_confirmation
 │           code.html
 │           screen.png
 │
@@ -228,15 +298,11 @@ C:.
 │   ├───agri_tech_noir
 │   │       DESIGN.md
 │   │
-│   ├───business_address_details
+│   ├───popper_intro_consent
 │   │       code.html
 │   │       screen.png
 │   │
-│   ├───business_basic_details
-│   │       code.html
-│   │       screen.png
-│   │
-│   ├───business_legal_documents
+│   ├───popper_language_selection
 │   │       code.html
 │   │       screen.png
 │   │
@@ -248,6 +314,26 @@ C:.
 │   │       code.html
 │   │       screen.png
 │   │
+│   ├───popper_address_details
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───business_basic_details
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───business_address_details
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───business_legal_documents
+│   │       code.html
+│   │       screen.png
+│   │
+│   ├───popper_bank_account_details
+│   │       code.html
+│   │       screen.png
+│   │
 │   ├───first_warehouse_address
 │   │       code.html
 │   │       screen.png
@@ -256,23 +342,15 @@ C:.
 │   │       code.html
 │   │       screen.png
 │   │
+│   ├───first_warehouse_photos
+│   │       code.html
+│   │       screen.png
+│   │
 │   ├───first_warehouse_geofencing
 │   │       code.html
 │   │       screen.png
 │   │
-│   ├───popper_address_details
-│   │       code.html
-│   │       screen.png
-│   │
-│   ├───popper_bank_account_details
-│   │       code.html
-│   │       screen.png
-│   │
-│   ├───popper_intro_consent
-│   │       code.html
-│   │       screen.png
-│   │
-│   ├───popper_language_selection
+│   ├───popper_mobile_verification_send
 │   │       code.html
 │   │       screen.png
 │   │
@@ -280,11 +358,15 @@ C:.
 │   │       code.html
 │   │       screen.png
 │   │
-│   ├───popper_registration_confirmation
+│   ├───popper_theme_preference
 │   │       code.html
 │   │       screen.png
 │   │
-│   └───popper_review_submit
+│   ├───popper_review_submit
+│   │       code.html
+│   │       screen.png
+│   │
+│   └───popper_registration_confirmation
 │           code.html
 │           screen.png
 │
