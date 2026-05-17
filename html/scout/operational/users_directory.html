@@ -1,42 +1,138 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Registered Users Directory</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registered Users Directory - Scout Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
-      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
-    .content-wrapper { padding: 40px 48px 96px; }
-    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
-    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
+    }
+    .content-wrapper { padding: 40px 48px 96px; max-width: 1280px; margin: 0 auto; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .address-bar {
+      background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
+      height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100;
+    }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path {
+      font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
-    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
-    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
-    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .workflow-body { padding: 32px; }
-    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
-    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
-    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
-    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-    .step-body { padding: 24px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .stepper-panel-container {
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2; overflow-x: auto;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 60px;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 10px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-overview {
+      background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px;
+      padding: 28px; margin-bottom: 48px;
+    }
+    .overview-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .overview-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    .workflow-grid {
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; scroll-margin-top: 160px;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px;
+      border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+    .step-body { padding: 28px; }
     .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
-    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
-    .spec-list { list-style: none; }
+    .spec-list { list-style: none; padding-left: 0; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
-    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
-    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
-    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
+
+    .sql-block {
+      background: #050d11; border: 1px solid var(--border-color); border-radius: 8px;
+      padding: 16px; font-family: 'Courier New', monospace; font-size: 12px;
+      color: #06b6d4; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;
+    }
   </style>
 </head>
 <body>
@@ -47,88 +143,249 @@
 </div>
 
 <div class="content-wrapper">
-
-<div class="header-banner">
-  <div class="tag">Workflow Module 7</div>
-  <h1 class="title">Registered Users Directory</h1>
-  <p class="desc">Browse and manage all farmers and poppers scout registered or is assigned to. Supports search/filter by role and status. Detailed profiles with inline edit actions for identity, ponds, bank accounts, and documents.</p>
-</div>
-
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Directory Screens</div>
-    <span class="step-count">3 Screens</span>
+  <div class="header-banner">
+    <div class="tag">Workflow Module 4</div>
+    <h1 class="title">Registered Users Directory</h1>
+    <p class="desc">Unified directory for all registered farmers and poppers. Browse users the scout registered or was assigned. Access detailed profiles with multi-tab organization for ponds, warehouses, bank accounts, and activity history.</p>
   </div>
-  <div class="workflow-body">
 
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 1</span><span class="step-title" style="margin-left: 12px;">Combined Users List</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Browse all farmers and poppers scout registered or is assigned to.</div></div>
-      <div class="spec-block"><div class="spec-label">Features</div><ul class="spec-list"><li>Search bar (by name, mobile, ID)</li><li>Role filter chips: All / Farmer / Popper / Buyer (rare)</li><li>Status filter: Pending Approval / Active / Suspended</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Card Layout</div><ul class="spec-list"><li>Name, role pill (Farmer/Popper badge)</li><li>Mobile number</li><li>District</li><li>Last activity timestamp</li><li>Status indicator (Pending/Active/Suspended)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">FAB Action</div><div class="spec-value">"Register New User" floating button with role chooser (Farmer or Popper registration).</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 2</span><span class="step-title" style="margin-left: 12px;">Farmer Detail</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Tabs</div><ul class="spec-list">
-        <li><strong>Profile:</strong> Identity card, status, last activity</li>
-        <li><strong>Ponds:</strong> List of registered ponds with status</li>
-        <li><strong>Bank:</strong> Active bank account + penny-drop status</li>
-        <li><strong>Documents:</strong> Uploaded identity documents</li>
-        <li><strong>Activity:</strong> Chronological feed (bids, PO awards, lot verifications)</li>
-      </ul></div>
-      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Identity</li><li>Add Pond Â· Edit Pond Â· Deactivate Pond</li><li>Edit Bank Â· Retry Penny-Drop</li><li>Upload Documents</li><li>Update Language / Theme</li></ul></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 3</span><span class="step-title" style="margin-left: 12px;">Popper Detail</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Tabs</div><ul class="spec-list">
-        <li><strong>Profile:</strong> Business name, contact, GSTIN, FSSAI, status</li>
-        <li><strong>Warehouses:</strong> List of registered warehouses with fitness status</li>
-        <li><strong>Bank:</strong> Active bank account + penny-drop status</li>
-        <li><strong>Documents:</strong> Business & warehouse legal documents</li>
-        <li><strong>Activity:</strong> PO awards, spot offers, payment history</li>
-      </ul></div>
-      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Business Details</li><li>Add Warehouse Â· Edit Warehouse Â· Deactivate Warehouse</li><li>Edit Bank Â· Retry Penny-Drop</li><li>Upload / Update Documents</li><li>Update Language / Theme</li></ul></div>
-    </div></div></div>
-
-  </div>
-</div>
-
-</div>
-
-<div style="max-width: 1280px; margin: 0 auto;">
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Directory Features & User Hub Pattern</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Central Hub</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Users Directory is the scout's on-behalf management hub. One-stop for registering, editing, and monitoring farmers/poppers.</div>
-      </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Inline Actions</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Quick actions (edit identity, add pond, update bank) directly from detail tabs. No separate edit screens for most actions.</div>
-      </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Status Visibility</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Pending-approval users clearly marked. Activity feed shows recent transactions (bids, verifications, payments) for accountability.</div>
-      </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">User list and profiles cached locally. Edits captured offline; sync via sync_queue when network available.</div>
-      </div>
+  <div class="stepper-panel-container">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Users List</div></a>
+      <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Farmer Detail</div></a>
+      <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Popper Detail</div></a>
     </div>
   </div>
+
+  <div class="workflow-overview">
+    <div class="overview-title">Workflow Overview</div>
+    <div class="overview-text">
+      Registered Users Directory is the unified interface for browsing all farmers and poppers registered by the scout or explicitly assigned to them. The workflow replaces the previous "My Farmers" pattern with a role-agnostic list that supports search, role filtering (All / Farmer / Popper / Buyer), and status filtering (Pending Approval / Active / Suspended). Each user has a tabbed detail view supporting role-specific management: Farmer Detail shows ponds and pond-related actions (add pond, edit); Popper Detail shows warehouses and warehouse-related actions. A FAB provides quick access to the Register New User workflow. Both farmer and popper profiles support multi-tab organization for associated resources (ponds/warehouses, bank accounts, documents, activity) and Manage actions (edit identity, update bank, upload documents).
+    </div>
+  </div>
+
+  <div class="workflow-grid">
+
+    <!-- SCREEN 4.1: Combined Users List -->
+    <div class="flow-step-card" id="step-01">
+      <div class="step-header">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="step-badge">4.1</span>
+          <span class="step-title">Combined Users List</span>
+        </div>
+      </div>
+      <div class="step-body">
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Single browse surface for all farmers and poppers the scout has registered or been assigned.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Replaces the previous "My Farmers" pattern with a unified directory that handles both roles. Scope-limited to users the scout registered (users.created_via_scout_id = self) plus users explicitly assigned (via scout_user_assignments table for ongoing management).</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Search bar + role filter chips (All / Farmer / Popper / Buyer-rare) + status filter (Pending Approval / Active / Suspended). Each row: name, role pill, mobile, district, last activity, status. FAB → "Register New User" (opens role chooser → Farmer or Popper registration workflow).</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Search by user name or mobile<br>• Filter by role (All / Farmer / Popper / Buyer)<br>• Filter by status (Pending Approval / Active / Suspended)<br>• Tap row → Farmer/Popper Detail<br>• FAB: Register New User</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Reads users joined farmer_profiles / popper_profiles where created_via_scout_id = self OR id IN (scout_user_assignments). Real-time subscription on users for assigned set. Search queries user name, mobile, district. Role and status filters applied client-side or server-side per architecture.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Standard list pattern. Search bar at top, filter chips below (role toggles, status toggles). Each row: avatar/initials, name (Title 3), role pill (Farmer: teal, Popper: purple, Buyer: blue), mobile, district, last activity timestamp, status pill (Pending Approval: amber, Active: accent, Suspended: danger). FAB in bottom-right: "+ Register User".</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="sql-block">CREATE TABLE scout_user_assignments (
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scout_id     UUID NOT NULL REFERENCES scouts(id),
+  user_id      UUID NOT NULL REFERENCES users(id),
+  assigned_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  active       BOOLEAN NOT NULL DEFAULT true,
+  UNIQUE (scout_id, user_id)
+);
+
+CREATE TABLE farmer_profiles (
+  user_id            UUID PRIMARY KEY REFERENCES users(id),
+  full_name          TEXT NOT NULL,
+  dob                DATE,
+  district           TEXT NOT NULL,
+  panchayat_village  TEXT,
+  full_address       TEXT,
+  alt_phone          TEXT,
+  preferred_language TEXT NOT NULL DEFAULT 'en'
+);
+
+CREATE TABLE popper_profiles (
+  user_id            UUID PRIMARY KEY REFERENCES users(id),
+  contact_name       TEXT NOT NULL,
+  business_name      TEXT NOT NULL,
+  pan_number         TEXT,
+  gstin              TEXT,
+  fssai_number       TEXT,
+  district           TEXT NOT NULL,
+  panchayat_village  TEXT,
+  full_address       TEXT,
+  alt_phone          TEXT,
+  preferred_language TEXT NOT NULL DEFAULT 'en'
+);</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 4.2: Farmer Detail -->
+    <div class="flow-step-card" id="step-02">
+      <div class="step-header">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="step-badge">4.2</span>
+          <span class="step-title">Farmer Detail</span>
+        </div>
+      </div>
+      <div class="step-body">
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Full record of a farmer, organised in tabs.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Five tabs — Profile, Ponds, Bank, Documents, Activity. Each tab supports the relevant Manage Farmer sub-action.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Header card (avatar/initials, name, status pill, mobile, district), tab row, scrollable tab content. Edit/action buttons surface in each tab.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Tap tabs (Profile / Ponds / Bank / Documents / Activity)<br>• Profile tab: "Edit Identity" link / phone controls<br>• Ponds tab: Tap pond row → Pond Detail, "+ Add Pond" → Add Pond workflow<br>• Bank tab: "Edit Bank" → Bank workflow<br>• Documents tab: Upload documents<br>• Activity tab: View chronological feed</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Reads users, farmer_profiles, ponds, user_bank_accounts, user_documents, plus activity rolled up from bids, spot_offers, purchase_orders, payments. Each tab queries its subset; tabs are lazy-loaded or all hydrated on entry. Pending Approval state triggers a banner across the screen.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Header card: full name (Title 2), status pill, mobile with copy icon, district. Tab row with counts on each label. Profile: avatar/initials, full name, DoB, district, village, address, alternate phone, language. Ponds: table of ponds (code, area, status) with "+ Add Pond" button. Bank: account holder, masked account, IFSC, pennydrop status, "Edit" button. Documents: grid of document uploads by type. Activity: chronological feed of cards. Pending Approval state shown as banner at top.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="sql-block">CREATE TABLE user_bank_accounts (
+  id                       UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id                  UUID NOT NULL REFERENCES users(id),
+  account_holder_name      TEXT NOT NULL,
+  account_number_masked    TEXT NOT NULL,
+  account_number_encrypted TEXT NOT NULL,
+  ifsc_code                TEXT NOT NULL,
+  bank_name                TEXT,
+  branch_name              TEXT,
+  pennydrop_status         TEXT NOT NULL DEFAULT 'pending' CHECK (pennydrop_status IN
+                             ('pending','passed','failed')),
+  pennydrop_attempted_at   TIMESTAMPTZ,
+  is_active                BOOLEAN NOT NULL DEFAULT true,
+  created_at               TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX idx_uba_user ON user_bank_accounts (user_id, is_active);
+
+CREATE TABLE user_documents (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id       UUID NOT NULL REFERENCES users(id),
+  doc_type      TEXT NOT NULL CHECK (doc_type IN
+                  ('aadhaar','pan','land_record','pond_lease',
+                   'gstin_cert','fssai_cert','business_pan','warehouse_lease','photo')),
+  storage_path  TEXT NOT NULL,
+  uploaded_by_scout_id UUID REFERENCES scouts(id),
+  uploaded_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+  verified_at   TIMESTAMPTZ,
+  is_active     BOOLEAN NOT NULL DEFAULT true
+);
+CREATE INDEX idx_ud_user ON user_documents (user_id, doc_type);</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 4.3: Popper Detail -->
+    <div class="flow-step-card" id="step-03">
+      <div class="step-header">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="step-badge">4.3</span>
+          <span class="step-title">Popper Detail</span>
+        </div>
+      </div>
+      <div class="step-body">
+        <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">Same as Farmer Detail but for poppers.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Five tabs — Profile, Warehouses, Bank, Documents, Activity. Warehouses tab links into the existing Warehouses Directory entries owned by this popper.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Identical pattern to Farmer Detail.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Tap tabs (Profile / Warehouses / Bank / Documents / Activity)<br>• Profile tab: "Edit Identity" link / phone controls<br>• Warehouses tab: Tap warehouse row → Warehouse Detail, "+ Add Warehouse" → opens the Add Warehouse step from Manage Popper workflow<br>• Bank tab: "Edit Bank" → Bank workflow<br>• Documents tab: Upload documents<br>• Activity tab: View chronological feed</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Reads users, popper_profiles, warehouses (via existing schema, poppers.user_id references users.id), user_bank_accounts, user_documents, activity from spot_offers, purchase_orders, payments. Each tab queries its subset; tabs are lazy-loaded. Pending Approval state triggers a banner.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Header card: business name (Title 2), contact person name, status pill, mobile, district. Tab row with counts. Profile: avatar/initials, contact person name, DoB, business name, PAN, GSTIN, FSSAI, district, village, address, alternate phone, language. Warehouses: table of warehouses (code, capacity, status) with "+ Add Warehouse" button. Bank: same as Farmer Detail. Documents: grid organized by type. Activity: chronological feed. Pending Approval banner at top.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="spec-value">Uses popper_profiles (defined in Screen 4.1) + existing poppers/warehouses (existing schema must be updated so poppers.user_id references users.id). Bank accounts and documents schemas identical to Farmer Detail (user_bank_accounts, user_documents).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const stepCards = document.querySelectorAll(".flow-step-card");
+    const stepperNodes = document.querySelectorAll(".stepper-node");
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const pathElement = document.getElementById('address-path');
-      if (pathElement) {
-        const pathname = window.location.pathname;
-        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
-      }
-    });
-  </script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          stepperNodes.forEach(node => {
+            node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+    stepCards.forEach(card => observer.observe(card));
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pathElement = document.getElementById('address-path');
+    if (pathElement) {
+      const pathname = window.location.pathname;
+      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    }
+  });
+</script>
 
 </body>
 </html>
