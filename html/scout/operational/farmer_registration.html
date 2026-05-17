@@ -151,6 +151,51 @@
     .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
+
+    /* Backend Architecture Tabs */
+    .backend-tabs-container {
+      max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
+      overflow: hidden;
+    }
+    .backend-tabs-header {
+      padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .backend-tabs-subtitle {
+      font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .tabs-nav {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border-color);
+      background: #0a0a0b; gap: 0;
+    }
+    .tab-button {
+      flex: 0 0 auto; padding: 16px 20px; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.3s ease; white-space: nowrap; text-transform: uppercase;
+      letter-spacing: 0.5px; font-family: 'Outfit', sans-serif;
+    }
+    .tab-button:hover { color: var(--accent-primary); }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tabs-content { display: flex; flex-direction: column; }
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+    .backend-section-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; margin-top: 24px; }
+    .backend-section-title:first-child { margin-top: 0; }
+    .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+      border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
+      overflow-x: auto; margin: 16px 0; line-height: 1.5; }
+    .backend-list { margin: 16px 0; padding-left: 20px; }
+    .backend-list li { margin-bottom: 8px; font-size: 13px; color: var(--text-main); }
+    .backend-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
+    .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
   </style>
 </head>
 <body>
@@ -164,11 +209,339 @@
       <span class="tag">Scout Operations</span>
       <h1 class="title">Register Farmer (Scout-Assisted)</h1>
       <p class="desc">Complete 15-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 15-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
     </div>
 
-    <div style="max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; border-left: 4px solid var(--accent-primary);">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Workflow Overview</h2>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8;">A 15-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
+    <!-- Backend Architecture Documentation -->
+    <div class="backend-tabs-container">
+      <div class="backend-tabs-header">
+        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+      </div>
+
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-middleware')">Middleware & Auth</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-async')">Async Jobs</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
+      </div>
+
+      <div class="tabs-content">
+        <!-- TAB: API Architecture -->
+        <div id="backend-api" class="tab-panel active">
+          <h3 class="backend-section-title">tRPC Procedure Architecture (15 Procedures)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 15 tRPC procedures organized by authentication level.</p>
+
+          <div class="backend-info-box">
+            <strong>Procedure Breakdown:</strong><br>
+            • 3 Public procedures: Identity, OTP Send, OTP Verify<br>
+            • 12 Protected procedures: Language, Role, Address, Pond Details (3), Bank (2), Submit, Confirmation<br>
+            • 1 Atomic transaction: Farmer Registration Submit (7 simultaneous inserts)
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/farmer.ts</h4>
+          <div class="backend-code-block">export const farmerRouter = t.router({
+  // Screen 1-4: Identity & OTP
+  initFarmerRegistration: publicProcedure,
+  submitFarmerIdentity: publicProcedure,
+  sendFarmerMobileOtp: publicProcedure,
+  verifyFarmerMobileOtp: publicProcedure,
+
+  // Screens 5-14: Setup Wizard (Protected)
+  selectLanguage: protectedProcedure,
+  confirmFarmerRole: protectedProcedure,
+  submitResidentialAddress: protectedProcedure,
+  submitFirstPondDetails: protectedProcedure,
+  submitPondLegalDocuments: protectedProcedure,
+  submitPondAddress: protectedProcedure,
+  submitPondGeofencing: protectedProcedure,
+  submitBankAccount: protectedProcedure,
+  verifyBankAccount: protectedProcedure,
+
+  // Screen 14-15: Submit & Confirm
+  submitFarmerRegistration: protectedProcedure,
+  getFarmerRegistrationConfirmation: protectedProcedure,
+});</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 4 - OTP Verify)</h4>
+          <ul class="backend-list">
+            <li><strong>If OTP matches EXISTING farmer:</strong> Load farmer detail screen (Update mode)</li>
+            <li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
+          </ul>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 14 - Submit)</h4>
+          <ul class="backend-list">
+            <li>1. Insert user record (role=farmer, status=pending_approval)</li>
+            <li>2. Insert farmer_profiles</li>
+            <li>3. Insert ponds (first pond)</li>
+            <li>4. Insert user_documents (ownership photos)</li>
+            <li>5. Insert user_bank_accounts (encrypted)</li>
+            <li>6. Insert farmer_approval_queue</li>
+            <li>7. Insert farmer_registration_events (audit trail)</li>
+            <li>→ On success: Trigger async Inngest jobs</li>
+            <li>→ On failure: Rollback all 7 inserts (no partial state)</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Database Schema -->
+        <div id="backend-db" class="tab-panel">
+          <h3 class="backend-section-title">Core Database Tables (Drizzle ORM)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">users (Universal User Record)</h4>
+          <div class="backend-code-block">CREATE TABLE users (
+  id UUID PRIMARY KEY,
+  mobile VARCHAR(15) UNIQUE NOT NULL,
+  role ENUM('scout','farmer','popper','admin'),
+  status ENUM('pending_approval','active','suspended'),
+  preferred_language ENUM('en','hi','bn') DEFAULT 'en',
+  created_via_scout_id UUID REFERENCES scouts(id),
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">farmer_profiles (Farmer-Specific)</h4>
+          <div class="backend-code-block">CREATE TABLE farmer_profiles (
+  id UUID PRIMARY KEY,
+  user_id UUID NOT NULL UNIQUE REFERENCES users(id),
+  full_name VARCHAR(100) NOT NULL,
+  date_of_birth DATE,
+  district VARCHAR(50) NOT NULL,
+  residential_address TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">user_bank_accounts (Encrypted)</h4>
+          <div class="backend-code-block">CREATE TABLE user_bank_accounts (
+  id UUID PRIMARY KEY,
+  user_id UUID NOT NULL REFERENCES users(id),
+  account_holder_name_encrypted BYTEA NOT NULL,
+  account_number_encrypted BYTEA NOT NULL,
+  ifsc_code VARCHAR(11) NOT NULL,
+  verified BOOLEAN DEFAULT FALSE,
+  verified_at TIMESTAMP,
+  penny_drop_job_id VARCHAR(255),
+  created_at TIMESTAMP DEFAULT NOW()
+);</div>
+
+          <div class="backend-info-box">
+            <strong>⚠️ Encryption:</strong><br>
+            • Bank account numbers: AES-256-GCM encrypted at-rest<br>
+            • Account holder names: AES-256-GCM encrypted<br>
+            • OTP: Hashed with bcrypt (never stored plaintext)<br>
+            • IFSC code: NOT encrypted (public information)
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">farmer_approval_queue (Workflow)</h4>
+          <div class="backend-code-block">CREATE TABLE farmer_approval_queue (
+  id UUID PRIMARY KEY,
+  farmer_id UUID NOT NULL REFERENCES users(id),
+  status ENUM('pending','approved','rejected'),
+  approved_by_admin_id UUID,
+  created_at TIMESTAMP DEFAULT NOW(),
+  approved_at TIMESTAMP
+);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Additional Tables</h4>
+          <ul class="backend-list">
+            <li><strong>ponds:</strong> Farmer's pond details (area, GPS, geofence)</li>
+            <li><strong>user_documents:</strong> Pond ownership/lease photos</li>
+            <li><strong>user_otp_verifications:</strong> OTP storage with expiration (10 min)</li>
+            <li><strong>farmer_registration_events:</strong> Complete audit trail</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Middleware & Auth -->
+        <div id="backend-middleware" class="tab-panel">
+          <h3 class="backend-section-title">Middleware Stack & Authentication</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Execution Order (Critical)</h4>
+          <table class="backend-table">
+            <tr><th>Order</th><th>Middleware</th><th>Purpose</th></tr>
+            <tr><td>1</td><td>loggingMiddleware</td><td>Correlation ID, request timing</td></tr>
+            <tr><td>2</td><td>authMiddleware</td><td>JWT validation, token refresh</td></tr>
+            <tr><td>3</td><td>scoutValidationMiddleware</td><td>Verify role=scout, assignment scope</td></tr>
+            <tr><td>4</td><td>validationMiddleware</td><td>Zod schema validation</td></tr>
+            <tr><td>5</td><td>contextMiddleware</td><td>Compose final context object</td></tr>
+            <tr><td>6</td><td>rateLimitMiddleware</td><td>Per-user, per-endpoint limits</td></tr>
+            <tr><td>7</td><td>errorHandlingMiddleware</td><td>RFC 9457 error formatting</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">JWT Strategy</h4>
+          <div class="backend-info-box">
+            <strong>Access Token:</strong> 15–30 minutes (short-lived)<br>
+            <strong>Refresh Token:</strong> 7–14 days (single-use, rotated)<br>
+            <strong>Storage:</strong> HttpOnly cookies (no XSS vulnerability)<br>
+            <strong>Flags:</strong> Secure (HTTPS), SameSite=Strict (CSRF prevention)
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Context Object Type</h4>
+          <div class="backend-code-block">type Context = {
+  userId: string;
+  userRole: "scout" | "farmer" | "popper" | "admin";
+  scoutId: string;
+  mobile: string;              // +91XXXXXXXXXX
+  traceId: string;             // Correlation ID
+  logger: pino.Logger;
+};</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Rate Limiting Limits</h4>
+          <table class="backend-table">
+            <tr><th>Endpoint</th><th>Limit</th><th>Window</th></tr>
+            <tr><td>sendFarmerMobileOtp</td><td>1 request</td><td>30 seconds</td></tr>
+            <tr><td>verifyFarmerMobileOtp</td><td>5 requests</td><td>1 minute</td></tr>
+            <tr><td>submitFarmerRegistration</td><td>1 request</td><td>1 minute</td></tr>
+            <tr><td>verifyBankAccount</td><td>1 request</td><td>5 minutes</td></tr>
+          </table>
+        </div>
+
+        <!-- TAB: Validation & Error Handling -->
+        <div id="backend-validation" class="tab-panel">
+          <h3 class="backend-section-title">Input Validation & Error Handling</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Validation Strategy</h4>
+          <div class="backend-info-box">
+            <strong>All inputs validated with Zod schemas:</strong><br>
+            • Backend always validates (never trust frontend)<br>
+            • Frontend uses same schemas for UX feedback<br>
+            • Custom refinements for business logic (mobile uniqueness, etc.)<br>
+            • Return 400 BAD_REQUEST with field-level errors
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">HTTP Error Codes by Category</h4>
+          <table class="backend-table">
+            <tr><th>Status</th><th>Error Code</th><th>Example</th></tr>
+            <tr><td>400</td><td>INVALID_MOBILE_FORMAT</td><td>User entered invalid mobile</td></tr>
+            <tr><td>401</td><td>TOKEN_EXPIRED</td><td>JWT beyond refresh window</td></tr>
+            <tr><td>403</td><td>SCOUT_NOT_ASSIGNED_TO_FARMER</td><td>Scout trying to edit other scout's farmer</td></tr>
+            <tr><td>409</td><td>MOBILE_ALREADY_EXISTS</td><td>Mobile registered twice</td></tr>
+            <tr><td>409</td><td>OTP_MAX_ATTEMPTS_EXCEEDED</td><td>5+ incorrect OTP attempts</td></tr>
+            <tr><td>422</td><td>OTP_EXPIRED</td><td>OTP older than 10 minutes</td></tr>
+            <tr><td>422</td><td>WIZARD_SESSION_EXPIRED</td><td>Registration session stale</td></tr>
+            <tr><td>500</td><td>DATABASE_ERROR</td><td>SQL query failed</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">RFC 9457 Error Response Format</h4>
+          <div class="backend-code-block">{
+  "type": "https://api.makhana.local/errors/otp-expired",
+  "title": "OTP Expired",
+  "status": 422,
+  "detail": "OTP has expired. Request a new OTP.",
+  "instance": "/api/trpc/farmer.verifyFarmerMobileOtp",
+  "traceId": "550e8400-e29b-41d4-a716-446655440000",
+  "extensions": {
+    "errorCode": "OTP_EXPIRED",
+    "retryAfter": 30
+  }
+}</div>
+
+          <div class="backend-info-box">
+            <strong>Error Logging:</strong><br>
+            ✓ Log error code, message, stacktrace<br>
+            ✓ Include request context (userId, scoutId, endpoint)<br>
+            ✓ Include correlation ID (traceId)<br>
+            ✗ Never log sensitive data (full mobile, account numbers, tokens)
+          </div>
+        </div>
+
+        <!-- TAB: Async Jobs -->
+        <div id="backend-async" class="tab-panel">
+          <h3 class="backend-section-title">Async Jobs with Inngest (Serverless Queue)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">1. farmer.send-otp-sms (Fire-and-Forget)</h4>
+          <div class="backend-info-box">
+            <strong>Trigger:</strong> Screen 3 "OTP Send"<br>
+            <strong>Steps:</strong> Generate → Hash → Store → Send via Twilio → Log<br>
+            <strong>Retry:</strong> 4 attempts with exponential backoff (1s, 5s, 30s)<br>
+            <strong>DLQ:</strong> Move to dead-letter queue after 4 failures
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">2. farmer.penny-drop-verification (Wait-for-External)</h4>
+          <div class="backend-info-box">
+            <strong>Trigger:</strong> Screen 13 "Bank Account Verification"<br>
+            <strong>Steps:</strong> Initiate → Wait for webhook (max 5 min) → Verify match → Update status<br>
+            <strong>Webhook:</strong> POST /api/webhooks/razorpay/verification-complete
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">3. farmer.registration-submitted (Chained)</h4>
+          <div class="backend-info-box">
+            <strong>Trigger:</strong> Screen 14 "Review & Submit"<br>
+            <strong>Steps:</strong> Verify farmer exists → Send confirmation SMS → Notify admin<br>
+            <strong>Dependencies:</strong> Ensure farmer record created before SMS
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Inngest Configuration</h4>
+          <div class="backend-code-block">import { Inngest } from "inngest";
+
+export const inngest = new Inngest({
+  id: "makhana-scout",
+  retryConfig: {
+    initial: 1000,        // 1 second
+    maxAttempts: 4,
+    multiplier: 5,        // 5x backoff
+  },
+});</div>
+        </div>
+
+        <!-- TAB: Security -->
+        <div id="backend-security" class="tab-panel">
+          <h3 class="backend-section-title">Security Best Practices</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Sensitive Data Handling</h4>
+          <div class="backend-info-box">
+            <strong>Never Log:</strong><br>
+            ✗ Full mobile numbers (log only last 4: ***6789)<br>
+            ✗ Full account numbers (log hash or last 4)<br>
+            ✗ Tokens or OTP<br>
+            ✗ Encryption keys or secrets<br>
+            <br>
+            <strong>Safe to Log:</strong><br>
+            ✓ Last 4 digits of mobile (padded: ***6789)<br>
+            ✓ District/state (non-identifying)<br>
+            ✓ Farmer status (pending, approved)<br>
+            ✓ Event types and timestamps
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Data Encryption</h4>
+          <table class="backend-table">
+            <tr><th>Field</th><th>Method</th><th>Rotation</th></tr>
+            <tr><td>Bank Account Number</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+            <tr><td>Account Holder Name</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+            <tr><td>OTP</td><td>bcrypt 10 rounds</td><td>N/A (hashed)</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">OTP Security</h4>
+          <ul class="backend-list">
+            <li>Generate 6-digit OTP locally (don't ask user for it)</li>
+            <li>Hash with bcrypt (10 rounds) before storage</li>
+            <li>Set expiration: 10 minutes</li>
+            <li>Max 5 attempts before blocking</li>
+            <li>Compare using bcrypt.compare() (constant-time)</li>
+          </ul>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">CORS & Security Headers</h4>
+          <div class="backend-code-block">Access-Control-Allow-Origin: https://app.makhana.local
+Access-Control-Allow-Credentials: true
+SameSite=Strict on all cookies
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=31536000</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">✅ Security Checklist</h4>
+          <ul class="backend-list">
+            <li>✓ All inputs validated with Zod</li>
+            <li>✓ Secrets in Cloudflare Secrets (not .env)</li>
+            <li>✓ Bank account numbers encrypted AES-256-GCM</li>
+            <li>✓ OTP hashed with bcrypt</li>
+            <li>✓ JWT tokens HttpOnly, Secure, SameSite=Strict</li>
+            <li>✓ Rate limiting on auth endpoints</li>
+            <li>✓ No SQL injection (ORM protects)</li>
+            <li>✓ Error messages don't leak sensitive data</li>
+            <li>✓ Audit logging for all sensitive operations</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="stepper-panel-container">
@@ -497,6 +870,29 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
       }
     });
+  </script>
+
+  <script>
+    function showTab(event, tabId) {
+      event.preventDefault();
+
+      // Hide all tab panels
+      const allPanels = document.querySelectorAll('.tab-panel');
+      allPanels.forEach(panel => panel.classList.remove('active'));
+
+      // Remove active class from all buttons
+      const allButtons = document.querySelectorAll('.tab-button');
+      allButtons.forEach(button => button.classList.remove('active'));
+
+      // Show selected tab panel
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add('active');
+      }
+
+      // Mark clicked button as active
+      event.target.classList.add('active');
+    }
   </script>
 </body>
 </html>
