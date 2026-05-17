@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Mark Lot Ready</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 6</div>
+  <h1 class="title">Mark Lot Ready</h1>
+  <p class="desc">5-step wizard for signalling production completion to buyer. Farmer/popper confirms bagged quantity and bag count with mandatory photos. Notifies Admin and schedules scout verification task before lot can be dispatched.</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Ready-to-Dispatch Steps</div>
+    <span class="step-count">5 Steps</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Choose Active PO</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Select the in-progress purchase order to mark as ready.</div></div>
+      <div class="spec-block"><div class="spec-label">Filter & Display</div><div class="spec-value">Only in_progress POs awarded to user shown. Cards show buyer name, product spec, quantity, bidding details.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">Confirm Quantity Bagged</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture actually bagged quantity (kg) produced by farmer/popper.</div></div>
+      <div class="spec-block"><div class="spec-label">Input</div><div class="spec-value">Numeric field (kg). Soft warning if differs >5% from PO quantity.</div></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Captures actual production yield; may differ from PO contracted qty due to weather, waste, etc.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Confirm Bag Count</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture number of bags in which lot is packed.</div></div>
+      <div class="spec-block"><div class="spec-label">Input</div><div class="spec-value">Numeric field (bag count). E.g., "25 bags" for 500kg lot.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Evidence Photos (Mandatory)</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Visual proof of bagged lot ready for dispatch.</div></div>
+      <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Wide shot (showing all bags, lot scale)</li><li>Close-up (showing bag detail, labelling if present)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Minimum 2 photos mandatory. Cannot proceed without both. Compress ≤1.5MB each; GPS-stamped.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Notify Admin & Confirmation</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Submit ready signal, notify Admin, schedule scout verification task.</div></div>
+      <div class="spec-block"><div class="spec-label">What's Shown</div><ul class="spec-list"><li>Final recap (PO details, bagged qty, bag count, photos)</li><li>Confirm checkbox before submit</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Backend Action</div><ul class="spec-list"><li>Updates purchase_orders.status → ready_for_verification</li><li>Creates scout_tasks for Lot Verification (quantity check + parameter readings)</li><li>Notifies Admin of ready status</li><li>Records queued to sync_queue</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Confirmation</div><div class="spec-value">Success state confirming ready status notified to Admin. Scout verification scheduled for [date]. Single CTA back to Today Dashboard.</div></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Workflow Integration & Next Steps</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Status Progression</div>
+        <div class="spec-value">PO in_progress → Mark ready → ready_for_verification → Scout Lot Verification → Sealed → Ready for dispatch.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Admin Notification</div>
+        <div class="spec-value">Admin alerted immediately when lot marked ready. Admin schedules scout verification visit.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Photo Evidence</div>
+        <div class="spec-value">2+ mandatory photos of bagged lot. Scout verification photos replace these for binding quality record.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Quantity Tolerance</div>
+        <div class="spec-value">Soft warning if actual bagged qty differs >5% from PO. Allows natural variance due to weather/waste.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

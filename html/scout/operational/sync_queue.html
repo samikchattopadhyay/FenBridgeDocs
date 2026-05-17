@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Sync Queue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .content-grid { max-width: 1280px; margin: 0 auto; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; }
+    .card-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; margin-top: 12px; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 16px; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 7</div>
+  <h1 class="title">Sync Queue</h1>
+  <p class="desc">Offline data sync management. Lists locally captured items awaiting upload (Inspection/Verification/Seal/Registration). Tracks sync state (Waiting/Syncing/Synced/Conflict) with conflict resolution screen for mismatches.</p>
+</div>
+
+<div class="content-grid">
+
+  <div class="section">
+    <h2 class="section-title">Sync Queue Screen</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-title">List View</div>
+        <div class="card-desc">Chronological list of locally captured items awaiting upload.</div>
+        <div class="spec-label">Row Information</div>
+        <ul class="spec-list">
+          <li>Item type icon (Inspection/Verification/Seal/Registration)</li>
+          <li>Entity reference (lot ID, farmer name, etc.)</li>
+          <li>Capture time (e.g., "2 hours ago")</li>
+          <li>Photo count + form size (e.g., "4 photos, 2.3MB")</li>
+          <li>State badge (Waiting/Syncing/Synced/Conflict)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">State Definitions</div>
+        <div class="card-desc">Each item tracks its upload status.</div>
+        <div class="spec-label">Item States</div>
+        <ul class="spec-list">
+          <li><strong>Waiting:</strong> Captured locally, not yet synced</li>
+          <li><strong>Syncing:</strong> In progress upload</li>
+          <li><strong>Synced:</strong> Successfully uploaded to server</li>
+          <li><strong>Conflict:</strong> Upload conflict detected (local vs server mismatch)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">User Actions</div>
+        <div class="card-desc">Scout can manage sync workflow.</div>
+        <div class="spec-label">Available Actions</div>
+        <ul class="spec-list">
+          <li>Sync Now button (top) — force immediate upload of all waiting items</li>
+          <li>Tap conflicted item → resolution screen (see next)</li>
+          <li>Pull-to-refresh for manual refresh</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Conflict Resolution Screen</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-title">Conflict Detection</div>
+        <div class="card-desc">When sync detects a mismatch between local and server records.</div>
+        <div class="spec-label">Conflict Scenarios</div>
+        <ul class="spec-list">
+          <li>Item was modified on server after local capture</li>
+          <li>Server-side deletion (item no longer exists on server)</li>
+          <li>Field value mismatch (e.g., different lot status)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Resolution Options</div>
+        <div class="card-desc">Scout resolves conflict by choosing authoritative source.</div>
+        <div class="spec-label">Choices</div>
+        <ul class="spec-list">
+          <li><strong>Keep Local:</strong> Local version is correct; overwrite server</li>
+          <li><strong>Use Server:</strong> Server version is authoritative; discard local</li>
+          <li><strong>Escalate to Admin:</strong> Unclear; request Admin manual review</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Conflict Flow</div>
+        <div class="card-desc">Scout sees both versions side-by-side for comparison.</div>
+        <div class="spec-label">Comparison</div>
+        <ul class="spec-list">
+          <li>Local version (what scout captured)</li>
+          <li>Server version (what's on backend)</li>
+          <li>Highlighted differences (red/green for changed fields)</li>
+          <li>Scout chooses which to keep</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Offline-First Architecture</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-title">Capture Pattern</div>
+        <div class="card-desc">All scout workflows are offline-first by design.</div>
+        <div class="spec-label">Workflow Sequence</div>
+        <ul class="spec-list">
+          <li>Scout captures (Inspection/Verification/Seal/Registration) entirely offline</li>
+          <li>Data + photos stored locally in app database</li>
+          <li>Record added to sync_queue automatically</li>
+          <li>When network available, sync_queue uploads all items</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Photo Handling</div>
+        <div class="card-desc">Photos compressed during capture for sync efficiency.</div>
+        <div class="spec-label">Compression</div>
+        <ul class="spec-list">
+          <li>Each photo compressed to ≤1.5MB at capture time</li>
+          <li>Compression happens locally (no wait for network)</li>
+          <li>Original full-res stored locally; compressed version synced</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Sync Trigger</div>
+        <div class="card-desc">Scout controls when data is uploaded.</div>
+        <div class="spec-label">Options</div>
+        <ul class="spec-list">
+          <li>Manual: Scout taps "Sync Now" from Sync Queue or Today Dashboard</li>
+          <li>Automatic (future): Background sync when network available</li>
+          <li>No forced sync; scout works offline all day if needed</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Data Integrity & Immutability</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-title">Immutable Records</div>
+        <div class="card-desc">Once synced, records are immutable by scout.</div>
+        <div class="spec-label">After Sync</div>
+        <ul class="spec-list">
+          <li>Scout cannot edit synced record</li>
+          <li>Admin can correct via backend only</li>
+          <li>Audit trail preserved (timestamps, scout ID)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Version Control</div>
+        <div class="card-desc">Tracks both local and server versions.</div>
+        <div class="spec-label">Tracking</div>
+        <ul class="spec-list">
+          <li>Local version has capture timestamp + scout ID</li>
+          <li>Server version has server-side timestamp</li>
+          <li>Conflict shows both with edit history (if available)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

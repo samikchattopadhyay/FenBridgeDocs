@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Popper Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .stepper-panel { max-width: 1280px; margin: 0 auto 48px; background: rgba(24, 24, 27, 0.95); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px 36px; }
+    .stepper-nodes { display: flex; align-items: center; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+    .stepper-node { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 50px; text-decoration: none; color: inherit; }
+    .node-num { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-card); border: 2px solid #3f3f46; color: var(--text-muted); font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .stepper-node.active .node-num { border-color: var(--accent-primary); color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); }
+    .node-label { font-size: 10px; font-weight: 600; color: #6b7280; text-transform: uppercase; text-align: center; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 24px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 20px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 6px; }
+    .spec-value { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 16px; font-size: 12px; color: var(--text-muted); margin-bottom: 3px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 4</div>
+  <h1 class="title">Popper Registration</h1>
+  <p class="desc">Scout-assisted 18-step wizard to register new popper (buying/processing facility) into system. Captures business identity, warehouse details, bank account, legal documents with all records entering pending approval status until admin review.</p>
+</div>
+
+<div class="stepper-panel">
+  <div class="stepper-nodes">
+    <div class="stepper-node active"><span class="node-num">1</span><span class="node-label">Consent</span></div>
+    <div class="stepper-node"><span class="node-num">2</span><span class="node-label">Identity</span></div>
+    <div class="stepper-node"><span class="node-num">3</span><span class="node-label">OTP Send</span></div>
+    <div class="stepper-node"><span class="node-num">4</span><span class="node-label">OTP Entry</span></div>
+    <div class="stepper-node"><span class="node-num">5</span><span class="node-label">Language</span></div>
+    <div class="stepper-node"><span class="node-num">6</span><span class="node-label">Role</span></div>
+    <div class="stepper-node"><span class="node-num">7</span><span class="node-label">Address</span></div>
+    <div class="stepper-node"><span class="node-num">8</span><span class="node-label">Business</span></div>
+    <div class="stepper-node"><span class="node-num">9</span><span class="node-label">Docs</span></div>
+    <div class="stepper-node"><span class="node-num">10</span><span class="node-label">Bus Addr</span></div>
+    <div class="stepper-node"><span class="node-num">11</span><span class="node-label">WH Addr</span></div>
+    <div class="stepper-node"><span class="node-num">12</span><span class="node-label">WH Details</span></div>
+    <div class="stepper-node"><span class="node-num">13</span><span class="node-label">WH Photos</span></div>
+    <div class="stepper-node"><span class="node-num">14</span><span class="node-label">GPS</span></div>
+    <div class="stepper-node"><span class="node-num">15</span><span class="node-label">Bank</span></div>
+    <div class="stepper-node"><span class="node-num">16</span><span class="node-label">Theme</span></div>
+    <div class="stepper-node"><span class="node-num">17</span><span class="node-label">Review</span></div>
+    <div class="stepper-node"><span class="node-num">18</span><span class="node-label">Confirm</span></div>
+  </div>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Registration Steps</div>
+    <span class="step-count">18 Steps</span>
+  </div>
+  <div class="workflow-body">
+
+    <!-- Step 1 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title">Intro & Consent</span></div></div><div class="step-body">
+      <div class="spec-label">Purpose</div>
+      <div class="spec-value">Scout explains registration process and obtains verbal consent from popper.</div>
+      <div class="spec-label">Requirements</div>
+      <ul class="spec-list"><li>Consent checkbox: "I understand popper will be pending approval"</li><li>Option to cancel and exit</li></ul>
+    </div></div>
+
+    <!-- Step 2 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title">Contact Person Identity</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>Contact person's full name</li><li>Date of birth (optional)</li><li>Mobile number (mandatory)</li></ul>
+    </div></div>
+
+    <!-- Step 3 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title">Mobile Verification — OTP Send</span></div></div><div class="step-body">
+      <div class="spec-label">Purpose</div>
+      <div class="spec-value">Verify popper's mobile is valid and scout present for consent.</div>
+      <div class="spec-label">Process</div>
+      <ul class="spec-list"><li>Scout triggers OTP send to popper's mobile</li><li>Scout reads OTP aloud; popper confirms receipt</li></ul>
+    </div></div>
+
+    <!-- Step 4 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title">Mobile Verification — OTP Entry</span></div></div><div class="step-body">
+      <div class="spec-label">Purpose</div>
+      <div class="spec-value">Scout enters OTP on popper's behalf (scout present).</div>
+      <div class="spec-label">Outcome</div>
+      <ul class="spec-list"><li>OTP verification success: mobile confirmed authentic</li><li>OTP failure: user prompted to retry (max 3 attempts)</li></ul>
+    </div></div>
+
+    <!-- Step 5 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title">Language Selection</span></div></div><div class="step-body">
+      <div class="spec-label">Options</div>
+      <ul class="spec-list"><li>Language: English / Hindi / Bengali</li></ul>
+    </div></div>
+
+    <!-- Step 6 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 6</span><span class="step-title">Confirm Role = Popper</span></div></div><div class="step-body">
+      <div class="spec-label">Purpose</div>
+      <div class="spec-value">Confirm popper type and primary business operation.</div>
+      <div class="spec-label">Role Options</div>
+      <ul class="spec-list"><li>Processor (processes/pops raw makhana)</li><li>Trader (buys finished makhana for resale)</li><li>Warehouse (stores makhana on behalf of others)</li><li>Multi-role (any combination)</li></ul>
+    </div></div>
+
+    <!-- Step 7 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 7</span><span class="step-title">Address Details</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>District, sub-district, village</li><li>Street address (free-text)</li><li>Postal code (if available)</li></ul>
+    </div></div>
+
+    <!-- Step 8 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 8</span><span class="step-title">Business Basic Details</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>Business legal name</li><li>GSTIN (if registered)</li><li>FSSAI license number (if applicable)</li></ul>
+    </div></div>
+
+    <!-- Step 9 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 9</span><span class="step-title">Business Legal Documents</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>GSTIN certificate (if registered) - 1-3 photos</li><li>FSSAI license (if applicable) - 1-3 photos</li><li>Business registration / factory license - 1-3 photos</li></ul>
+    </div></div>
+
+    <!-- Step 10 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 10</span><span class="step-title">Business Address Details</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>District, sub-district, village</li><li>Street address</li><li>Postal code</li></ul>
+    </div></div>
+
+    <!-- Step 11 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 11</span><span class="step-title">First Warehouse Address</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>District, sub-district, village</li><li>Street address</li><li>Postal code</li></ul>
+    </div></div>
+
+    <!-- Step 12 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 12</span><span class="step-title">First Warehouse Details</span></div></div><div class="step-body">
+      <div class="spec-label">Requirement</div>
+      <div class="spec-value">Popper must have at least one warehouse to transact.</div>
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>Warehouse name, capacity (kg/bags), type (processor/trader/storage)</li></ul>
+    </div></div>
+
+    <!-- Step 13 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 13</span><span class="step-title">First Warehouse Photos</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>Lease agreement OR ownership deed (1-3 photos)</li><li>Interior & exterior warehouse photos (up to 5 photos)</li></ul>
+    </div></div>
+
+    <!-- Step 14 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 14</span><span class="step-title">First Warehouse Geo-Fencing (GPS)</span></div></div><div class="step-body">
+      <div class="spec-label">Purpose</div>
+      <div class="spec-value">Capture GPS coordinates for warehouse location.</div>
+      <div class="spec-label">Requirements</div>
+      <ul class="spec-list"><li>Real-time GPS from device (scout must be at warehouse)</li><li>Accuracy reading in meters (usually 5-15m)</li><li>GPS auto-stamped to photos</li></ul>
+    </div></div>
+
+    <!-- Step 15 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 15</span><span class="step-title">Bank Account Details</span></div></div><div class="step-body">
+      <div class="spec-label">Capture</div>
+      <ul class="spec-list"><li>Account holder name (must match popper business name or authorized signatory)</li><li>Account number (entered twice for confirmation)</li><li>IFSC code</li></ul>
+      <div class="spec-label">Process</div>
+      <ul class="spec-list"><li>Penny-drop verification triggered server-side after submit</li></ul>
+    </div></div>
+
+    <!-- Step 16 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 16</span><span class="step-title">Theme Preference</span></div></div><div class="step-body">
+      <div class="spec-label">Options</div>
+      <ul class="spec-list"><li>Theme: Dark / Light</li></ul>
+    </div></div>
+
+    <!-- Step 17 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 17</span><span class="step-title">Review & Submit</span></div></div><div class="step-body">
+      <div class="spec-label">Display</div>
+      <div class="spec-value">Summary of all entered data. Scout reviews with popper for accuracy.</div>
+      <div class="spec-label">Actions</div>
+      <ul class="spec-list"><li>Edit (go back to specific step) OR Submit</li><li>Confirmation checkbox before submit</li></ul>
+    </div></div>
+
+    <!-- Step 18 -->
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 18</span><span class="step-title">Submission Confirmation</span></div></div><div class="step-body">
+      <div class="spec-label">Status</div>
+      <div class="spec-value">Popper registration submitted. Status: pending_approval. All records queued to sync_queue.</div>
+      <div class="spec-label">Next Steps</div>
+      <ul class="spec-list"><li>Admin reviews registration within 24-48 hours</li><li>Penny-drop verification runs server-side (results arrive in minutes)</li><li>Admin approves/rejects based on documents and bank verification</li><li>Popper notified of approval status</li></ul>
+    </div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Popper Registration Requirements & Approval Gates</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Pending Approval Status</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Popper registered but status locked as pending_approval. Cannot list/sell until admin approves. May take 24-48 hours.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Mandatory Warehouse</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Popper must have at least one warehouse at registration. Warehouse also enters pending_approval. Fitness baseline captured at registration.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Penny-Drop Verification</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Bank account verified via automatic penny-drop test (deposits 1-2 rupees). Results land in minutes. Required for payout eligibility after approval.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Offline-First & Immutability</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">All data captured locally; documents compressed ≤1.5MB. Once submitted, records immutable by scout. Admin-only corrections via backend.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

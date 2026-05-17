@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Ponds Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 3</div>
+  <h1 class="title">Ponds Directory</h1>
+  <p class="desc">Browse all assigned ponds with inspection history. Lists ponds scout is assigned to with search and filter capabilities. Detailed pond profiles showing inspection history, spot offers, and quick access to start new inspections.</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Directory Screens</div>
+    <span class="step-count">3 Screens</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 1</span><span class="step-title" style="margin-left: 12px;">Pond List</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Browse all assigned ponds with search and filter capabilities.</div></div>
+      <div class="spec-block"><div class="spec-label">Features</div><ul class="spec-list"><li>Search bar (by farmer name, pond code, village)</li><li>Filter chips by inspection recency (Today, This Week, Overdue)</li><li>Card layout showing: farmer name, pond code, village, area, last inspection date</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Scope</div><div class="spec-value">Scout-assigned ponds only; populated from scout_assignments_ponds table.</div></div>
+      <div class="spec-block"><div class="spec-label">User Actions</div><div class="spec-value">Search · Filter · Tap card → Pond Detail</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 2</span><span class="step-title" style="margin-left: 12px;">Pond Detail</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Layout</div><div class="spec-value">Header (pond name, farmer, area) + Tabbed content (Profile · Inspections · Spot Offers)</div></div>
+      <div class="spec-block"><div class="spec-label">Tab: Profile</div><ul class="spec-list"><li>Pond name, farmer contact</li><li>Area, unit (Acre/Bigha/Hectare)</li><li>GPS location with map</li><li>Address and landmark</li><li>Legal document proof indicator</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Tab: Inspections</div><div class="spec-value">Chronological history of all pond inspections (newest first). Show date, scout name, water level, algae, readiness score, photo count.</div></div>
+      <div class="spec-block"><div class="spec-label">Tab: Spot Offers</div><div class="spec-value">All spot_offers linked to this pond source. Show lot details, pricing, status (pending/verified/sealed/sold), and listing date.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 3</span><span class="step-title" style="margin-left: 12px;">Pond Inspection Record (Read-Only)</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Full view of a single past pond inspection; audit trail for learning data.</div></div>
+      <div class="spec-block"><div class="spec-label">Content Shown</div><ul class="spec-list"><li>Inspection metadata (date, scout, arrival GPS)</li><li>Conditions summary (water level, algae, pest flags, readiness)</li><li>Bund readings table with average displayed</li><li>Photo strip (all 1-3 photos from inspection)</li><li>Notes preview or full text</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Read-only; no edits allowed. Scout cannot modify past inspections after submission.</div></div>
+      <div class="spec-block"><div class="spec-label">Offline</div><div class="spec-value">Cached locally; photos available offline if previously synced.</div></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Key Design Patterns</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Scope Limitation</div>
+        <div class="spec-value">Scout sees only ponds assigned to them. No cross-territory visibility. Enforced server-side.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Tabbed Navigation</div>
+        <div class="spec-value">Profile, Inspections, and Spot Offers organized as tabs for clean information hierarchy.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Learning-Only Purpose</div>
+        <div class="spec-value">Pond inspections capture supply intelligence (Year 1 learning). Not yet transactional or commercialized.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Inspection Immutability</div>
+        <div class="spec-value">Once submitted, inspection record is read-only. Scout cannot edit; Admin-only corrections.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

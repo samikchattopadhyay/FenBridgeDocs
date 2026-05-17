@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Manage Farmer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .action-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; }
+    .action-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .action-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .action-specs { font-size: 12px; color: var(--text-dim); }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-top: 12px; margin-bottom: 6px; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 16px; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 5</div>
+  <h1 class="title">Manage Farmer</h1>
+  <p class="desc">Edit and manage registered farmer profiles. Supports identity updates, pond management (add/edit/deactivate), bank account changes with penny-drop verification, document uploads, and preference management.</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Farmer Management Actions</div>
+    <span class="step-count">8 Actions</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="action-card">
+      <div class="action-title">1. Edit Identity</div>
+      <div class="action-desc">Update farmer's name, address, contact info.</div>
+      <div class="action-specs">
+        <div class="spec-label">Editable Fields</div>
+        <ul class="spec-list"><li>Full name</li><li>Address (district, village, free-text)</li><li>Alternate phone</li></ul>
+        <div class="spec-label" style="margin-top: 10px;">Requirements</div>
+        <ul class="spec-list"><li>Name changes allowed by scout</li><li>Mobile changes require OTP re-verification</li></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-title">2. Add Pond</div>
+      <div class="action-desc">Register new pond for farmer (4-step mini-wizard).</div>
+      <div class="action-specs">
+        <div class="spec-label">Steps</div>
+        <ul class="spec-list"><li>Pond details (name, area, capacity)</li><li>Address (district, village)</li><li>Geo-fencing (GPS capture)</li><li>Legal documents</li></ul>
+        <div class="spec-label" style="margin-top: 10px;">Status</div>
+        <ul class="spec-list"><li>Added pond enters pending_approval until Admin approves</li></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-title">3. Edit Pond</div>
+      <div class="action-desc">Update existing pond details.</div>
+      <div class="action-specs">
+        <div class="spec-label">Editable Fields</div>
+        <ul class="spec-list"><li>Pond name, area, capacity</li><li>Address details</li><li>GPS location</li></ul>
+        <div class="spec-label" style="margin-top: 10px;">Restrictions</div>
+        <ul class="spec-list"><li>Pond code immutable</li><li>GPS edits flagged for Admin review</li></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-title">4. Deactivate Pond</div>
+      <div class="action-desc">Mark pond inactive (farmer no longer farms it).</div>
+      <div class="action-specs">
+        <div class="spec-label">Process</div>
+        <ul class="spec-list"><li>Select coded reason (Closed, Leased Out, Defunct, Other)</li><li>Soft deactivation (not deleted)</li></ul>
+        <div class="spec-label" style="margin-top: 10px;">Effect</div>
+        <ul class="spec-list"><li>Pond unavailable for new lot registrations</li></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-title">5. Add / Replace Bank Account</div>
+      <div class="action-desc">Add or replace farmer's bank account for payouts.</div>
+      <div class="action-specs">
+        <div class="spec-label">Process</div>
+        <ul class="spec-list"><li>Account holder name, account number (confirmed), IFSC</li><li>Penny-drop verification triggered at submit</li></ul>
+        <div class="spec-label" style="margin-top: 10px;">Policy</div>
+        <ul class="spec-list"><li>One active account per farmer (Year 1)</li><li>Old account marked inactive</li><li>Penny-drop re-runs automatically</li></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-title">6. Initiate / Retry Penny-Drop</div>
+      <div class="action-desc">Re-trigger penny-drop verification if previous attempt failed.</div>
+      <div class="action-specs">
+        <div class="spec-label">Trigger</div>
+        <ul class="spec-list"><li>Scout can manually retry failed penny-drops</li></ul>
+        <div class="spec-label" style="margin-top: 10px;">Escalation</div>
+        <ul class="spec-list"><li>Persistent failures escalate to Admin for manual review</li></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-title">7. Add / Replace Identity Documents</div>
+      <div class="action-desc">Upload or replace farmer's identity documents.</div>
+      <div class="action-specs">
+        <div class="spec-label">Document Types</div>
+        <ul class="spec-list"><li>Aadhar / PAN / Voter ID / Other</li><li>Up to 3 photos per document</li></ul>
+        <div class="spec-label" style="margin-top: 10px;">Purpose</div>
+        <ul class="spec-list"><li>Supports compliance and farmer profile verification</li></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <div class="action-title">8. Update Language / Theme on Behalf</div>
+      <div class="action-desc">Change farmer's app preferences.</div>
+      <div class="action-specs">
+        <div class="spec-label">Options</div>
+        <ul class="spec-list"><li>Language: English / Hindi / Bengali</li><li>Theme: Dark / Light</li></ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Management Pattern & Approval Gates</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Sensitive Changes</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Mobile number changes require OTP re-verification. Name changes scout-allowed. GPS edits flagged for Admin review.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Pond Management</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">New ponds enter pending_approval. Farmers can have multiple ponds; deactivation is soft (not permanent deletion).</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Bank Account Policy</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">One active account per farmer (Year 1). Old accounts marked inactive. Penny-drop is mandatory for payout eligibility.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">All edits captured locally; documents compressed. Sync via sync_queue when network available.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

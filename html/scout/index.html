@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Complete Workflow Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 48px 96px;
+    }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
+
+    .title { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; line-height: 1.8; }
+
+    .workflows-grid {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+    }
+
+    .workflow-card {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-card) 100%);
+      border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden;
+      transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+    }
+
+    .workflow-card:hover {
+      border-color: var(--accent-primary); box-shadow: 0 8px 24px rgba(6, 182, 212, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .workflow-card-header {
+      background: #19191d; padding: 18px 22px; border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+
+    .workflow-card-title {
+      font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
+    }
+
+    .workflow-badge {
+      font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700;
+      background: var(--accent-primary-glow); color: var(--accent-primary); padding: 4px 10px;
+      border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25); white-space: nowrap;
+    }
+
+    .workflow-card-body { padding: 20px 22px; flex: 1; }
+
+    .workflow-description { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
+
+    .workflow-meta {
+      display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-dim);
+    }
+
+    .meta-item { display: flex; align-items: center; gap: 4px; }
+
+    .meta-label { font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--accent-primary); }
+
+    .section-divider {
+      max-width: 1400px; margin: 60px auto 40px;
+      padding-top: 40px; border-top: 2px solid var(--border-color);
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <div class="tag">Scout Operations Module</div>
+    <h1 class="title">Scout Workflows & Operations</h1>
+    <p class="desc">Complete inventory of all scout-assisted workflows, on-behalf actions, and operational features. Field scouts manage farmer/popper registrations, perform lot verifications, apply seals, and oversee warehouse quality checks. All workflows are offline-first with pending admin approval gates.</p>
+  </div>
+
+  <!-- SECTION 1: ENTRY & ONBOARDING -->
+  <div class="section-divider" id="entry-section"></div>
+  <h2 class="section-title">1. Entry & Authentication</h2>
+  <div class="workflows-grid">
+    <a href="operational/index.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Entry & Authentication</div>
+        <span class="workflow-badge">3 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Secure mobile + OTP login flow with role-based routing. Scouts authenticate via registered number and OTP, then route to Scout Dashboard.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Screens:</span> Splash · Login · Routing</span>
+          <span class="meta-item"><span class="meta-label">Type:</span> Authentication</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION 2: REGISTRATION & USER MANAGEMENT -->
+  <div class="section-divider" id="registration-section"></div>
+  <h2 class="section-title">2. User Registration & Management</h2>
+  <div class="workflows-grid">
+    <a href="operational/farmer_registration.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Register Farmer</div>
+        <span class="workflow-badge">15 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Scout-assisted farmer profile creation. Captures identity, address, first pond details, legal docs, bank account with penny-drop verification, and mobile OTP confirmation.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Steps:</span> Consent · Identity · Address · Pond · Docs · Bank · Mobile OTP · Review</span>
+          <span class="meta-item"><span class="meta-label">Gate:</span> Admin Approval Required</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/popper_registration.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Register Popper</div>
+        <span class="workflow-badge">17 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Scout-assisted popper (processor) business registration. Captures contact person, business details (PAN/GSTIN/FSSAI), first warehouse, legal documents, bank account with penny-drop verification.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Steps:</span> Business Info · Warehouse · Bank · Mobile OTP · Review</span>
+          <span class="meta-item"><span class="meta-label">Gate:</span> Admin Approval Required</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/manage_farmer.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Manage Farmer</div>
+        <span class="workflow-badge">8 Actions</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Edit and manage registered farmer profiles. Supports identity updates, pond management (add/edit/deactivate), bank account changes with penny-drop verification, document uploads, and preference management.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Actions:</span> Edit Identity · Pond Mgmt · Bank · Documents · Preferences</span>
+          <span class="meta-item"><span class="meta-label">Approval:</span> Mobile changes require OTP re-verify</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/manage_popper.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Manage Popper</div>
+        <span class="workflow-badge">9 Actions</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Manage popper business profiles. Supports business detail updates, warehouse management (add/edit/deactivate), bank and legal document updates, and preference management.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Actions:</span> Business · Warehouse Mgmt · Bank · Documents · Preferences</span>
+          <span class="meta-item"><span class="meta-label">Gate:</span> Business changes flagged to Admin</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION 3: POND OPERATIONS -->
+  <div class="section-divider" id="pond-section"></div>
+  <h2 class="section-title">3. Pond Operations & Intelligence</h2>
+  <div class="workflows-grid">
+    <a href="operational/pond_inspection.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Pond Inspection</div>
+        <span class="workflow-badge">5 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Raw makhana learning intelligence. Scout captures pond conditions, water level, algae presence, pest/disease flags, and 3–5 bund-edge density readings with photos and notes.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Data:</span> GPS · Conditions · Bund Readings · Photos</span>
+          <span class="meta-item"><span class="meta-label">Purpose:</span> Learning-only (Year 1)</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/ponds_directory.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Ponds Directory</div>
+        <span class="workflow-badge">3 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Browse all assigned ponds with inspection history. Lists ponds scout is assigned to with search, filter by recency, and detailed pond profiles showing history and spot offers.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Features:</span> Search · Filter · History</span>
+          <span class="meta-item"><span class="meta-label">Scope:</span> Scout-assigned ponds only</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION 4: LOT VERIFICATION & QUALITY -->
+  <div class="section-divider" id="verification-section"></div>
+  <h2 class="section-title">4. Lot Verification & Quality Control</h2>
+  <div class="workflows-grid">
+    <a href="operational/verification.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Lot Verification & Inspection</div>
+        <span class="workflow-badge">8 Steps</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Multi-step warehouse quality verification. Captures quantity, parameter readings (moisture/foreign matter/defects), defect photos, disposition (Accept/Downgrade/Hold/Reject), and issues grade certificate.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Steps:</span> Quantity · Parameters · Defects · Photos · Disposition · Certificate</span>
+          <span class="meta-item"><span class="meta-label">Outcome:</span> Immutable grade certificate</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/seal_application.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Seal Application</div>
+        <span class="workflow-badge">5 Steps</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Tamper-evident lot sealing and spot market listing. Captures unique seal ID, GPS lock, storage check (bags off-floor, lined, segregated), shelf-life (30/45 days), and listing price with premium %.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Data:</span> Seal ID · GPS · Storage Check · Shelf-Life · Price</span>
+          <span class="meta-item"><span class="meta-label">Effect:</span> Lot listed in spot market</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/storage_recheck.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Storage Re-check</div>
+        <span class="workflow-badge">5 Steps</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Mid-window lot condition verification. Light check at ~50% shelf-life for unsealed lots. Verifies seal/net integrity, dry conditions, pest-free state, and determines outcome (Clean/Anomaly/Void).</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Trigger:</span> Half shelf-life unsold or anomaly report</span>
+          <span class="meta-item"><span class="meta-label">Outcome:</span> Continue · Re-inspect · Void lot</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/reinspection.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Re-inspection (Post-Reconditioning)</div>
+        <span class="workflow-badge">Multi-step</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Second inspection after rejection and reconditioning. Captures prior rejection context, then repeats full verification steps (parameters/defects/photos/disposition). May issue new grade certificate.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Trigger:</span> After lot rejection and supplier reconditioning</span>
+          <span class="meta-item"><span class="meta-label">Output:</span> New verification record · Certificate</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/rejection_handling.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Rejection Handling</div>
+        <span class="workflow-badge">1 Screen</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Post-rejection disposition management. Shows coded reason, supporting photos, and consequence path (Reconditionable → Re-inspect vs Terminal → Closed). Warehouse fitness flagged if needed.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Paths:</span> Reconditionable · Terminal</span>
+          <span class="meta-item"><span class="meta-label">Admin Review:</span> Required for Terminal closures</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION 5: WAREHOUSE OPERATIONS -->
+  <div class="section-divider" id="warehouse-section"></div>
+  <h2 class="section-title">5. Warehouse Operations & Fitness</h2>
+  <div class="workflows-grid">
+    <a href="operational/warehouse_fitness_check.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Warehouse Fitness Check</div>
+        <span class="workflow-badge">5 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">One-time and periodic warehouse suitability verification. Assesses 6 criteria (3 critical): dry/cool/shaded, off-floor stacking, no pest/rodent signs, chemical separation, roof/walls sound, adequate ventilation.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Criteria:</span> 6 total (3 critical)</span>
+          <span class="meta-item"><span class="meta-label">Outcome:</span> Pass → Hold lots · Fail → Admin review</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/warehouses_directory.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Warehouses Directory</div>
+        <span class="workflow-badge">2 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Browse all assigned warehouses with fitness status tracking. Lists warehouses scout is assigned to, with search/filter, detailed profiles showing fitness history, active lots, and storage failure roll-up.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Features:</span> Search · Filter · Fitness History</span>
+          <span class="meta-item"><span class="meta-label">Scope:</span> Scout-assigned warehouses only</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION 6: MARKETPLACE OPERATIONS -->
+  <div class="section-divider" id="marketplace-section"></div>
+  <h2 class="section-title">6. Marketplace Operations (Scout On-Behalf)</h2>
+  <div class="workflows-grid">
+    <a href="operational/submit_spot_offer.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Submit Spot Offer</div>
+        <span class="workflow-badge">6 Steps</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Create spot market listings on behalf of farmers/poppers. Selects source (pond/warehouse), captures lot details, uploads optional photos, and self-assigns scout inspection visit to trigger verification workflow.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Status:</span> Pending verification until scout inspects</span>
+          <span class="meta-item"><span class="meta-label">Sources:</span> Farmer pond · Popper warehouse</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/submit_bid.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Submit Bid On Behalf</div>
+        <span class="workflow-badge">6 Steps</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Submit bids on buyer requirements on behalf of farmers/poppers. Filters by capability match, selects bid invitation, sets price and ready-by date, picks source pond/warehouse, and submits with Admin approval gate.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Eligibility:</span> Capability match + grade tags</span>
+          <span class="meta-item"><span class="meta-label">Validation:</span> Price ceiling enforcement</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/mark_lot_ready.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Mark Lot Ready</div>
+        <span class="workflow-badge">5 Steps</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Signal production completion for PO (purchase order) lots. Captures bagged quantity, bag count, mandatory photos (wide + close-up), notifies Admin, and schedules scout verification task.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Triggered By:</span> Farmer indicates ready-to-dispatch</span>
+          <span class="meta-item"><span class="meta-label">Effect:</span> Notifies Admin + schedules verification</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION 7: DASHBOARD & NAVIGATION -->
+  <div class="section-divider" id="dashboard-section"></div>
+  <h2 class="section-title">7. Dashboard & Core Navigation</h2>
+  <div class="workflows-grid">
+    <a href="operational/dashboard.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Today Dashboard</div>
+        <span class="workflow-badge">4 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Scout's home base for daily task management. Shows today's tasks (colour-tagged by type), sync queue status, registered farmers count, and quick FAB for farmer registration. Offline-capable with pull-to-refresh sync.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Features:</span> Tasks · Sync Status · Activity Feed</span>
+          <span class="meta-item"><span class="meta-label">Offline:</span> Full offline-first capability</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/users_directory.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Registered Users Directory</div>
+        <span class="workflow-badge">3 Screens</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Browse and manage all farmers and poppers scout registered or is assigned to. Supports search/filter by role/status, with detailed profiles showing ponds/warehouses, bank accounts, documents, and activity history.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Filters:</span> Role · Status (Pending/Active/Suspended)</span>
+          <span class="meta-item"><span class="meta-label">Inline Actions:</span> Edit · Add Pond · Bank · Documents</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/sync_queue.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Sync Queue</div>
+        <span class="workflow-badge">1 Screen</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Manage offline data uploads. Lists locally captured items awaiting sync (Inspection/Verification/Seal/Registration), shows capture time, photo count, and sync state (Waiting/Syncing/Synced/Conflict). Supports conflict resolution.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Offline Pattern:</span> All workflows capture locally first</span>
+          <span class="meta-item"><span class="meta-label">Conflict Handling:</span> Resolution screen for conflicts</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="operational/profile.html" class="workflow-card">
+      <div class="workflow-card-header">
+        <div class="workflow-card-title">Profile & Settings</div>
+        <span class="workflow-badge">6 Options</span>
+      </div>
+      <div class="workflow-card-body">
+        <p class="workflow-description">Scout account management. Supports profile view/edit, assigned areas (read-only), language selection (EN/HI/BN), offline mode toggle, notifications, sync info, and logout with optional password change.</p>
+        <div class="workflow-meta">
+          <span class="meta-item"><span class="meta-label">Editable:</span> Name · Language · Theme</span>
+          <span class="meta-item"><span class="meta-label">Sensitive:</span> Mobile requires OTP re-verify</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- SUMMARY STATS -->
+  <div class="section-divider"></div>
+  <div style="max-width: 1400px; margin: 0 auto; padding: 40px 0; border-bottom: 1px solid var(--border-color);">
+    <h2 class="section-title">Summary Statistics</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px;">21</div>
+        <div style="font-size: 14px; color: var(--text-muted);">Total Workflows</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px;">130+</div>
+        <div style="font-size: 14px; color: var(--text-muted);">Total Screens</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px;">100%</div>
+        <div style="font-size: 14px; color: var(--text-muted);">Offline-First Pattern</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px;">All</div>
+        <div style="font-size: 14px; color: var(--text-muted);">Admin Approval Gates</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

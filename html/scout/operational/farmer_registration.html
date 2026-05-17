@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Register Farmer (Scout-Assisted)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+    .stepper-panel { max-width: 1280px; margin: 0 auto 48px; background: rgba(24, 24, 27, 0.95); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px 36px; }
+    .stepper-nodes { display: flex; align-items: center; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+    .stepper-node { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 50px; text-decoration: none; color: inherit; }
+    .node-num { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-card); border: 2px solid #3f3f46; color: var(--text-muted); font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .stepper-node.active .node-num { border-color: var(--accent-primary); color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); }
+    .node-label { font-size: 10px; font-weight: 600; color: #6b7280; text-transform: uppercase; text-align: center; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto 48px; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; display: flex; justify-content: space-between; align-items: center; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 5</div>
+  <h1 class="title">Register Farmer (Scout-Assisted)</h1>
+  <p class="desc">15-step scout-on-behalf farmer registration wizard. Captures identity, address, first pond, legal documents, bank account with penny-drop verification, and mobile OTP confirmation. All records enter Admin approval queue.</p>
+</div>
+
+<div class="stepper-panel">
+  <div class="stepper-nodes">
+    <div class="stepper-node active"><span class="node-num">1</span><span class="node-label">Consent</span></div>
+    <div class="stepper-node"><span class="node-num">2</span><span class="node-label">Identity</span></div>
+    <div class="stepper-node"><span class="node-num">3</span><span class="node-label">OTP Send</span></div>
+    <div class="stepper-node"><span class="node-num">4</span><span class="node-label">OTP Entry</span></div>
+    <div class="stepper-node"><span class="node-num">5</span><span class="node-label">Language</span></div>
+    <div class="stepper-node"><span class="node-num">6</span><span class="node-label">Role</span></div>
+    <div class="stepper-node"><span class="node-num">7</span><span class="node-label">Address</span></div>
+    <div class="stepper-node"><span class="node-num">8</span><span class="node-label">Pond</span></div>
+    <div class="stepper-node"><span class="node-num">9</span><span class="node-label">Docs</span></div>
+    <div class="stepper-node"><span class="node-num">10</span><span class="node-label">Pond Addr</span></div>
+    <div class="stepper-node"><span class="node-num">11</span><span class="node-label">GPS</span></div>
+    <div class="stepper-node"><span class="node-num">12</span><span class="node-label">Bank</span></div>
+    <div class="stepper-node"><span class="node-num">13</span><span class="node-label">Theme</span></div>
+    <div class="stepper-node"><span class="node-num">14</span><span class="node-label">Review</span></div>
+    <div class="stepper-node"><span class="node-num">15</span><span class="node-label">Confirm</span></div>
+  </div>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Registration Steps</div>
+    <span class="step-count">15 Screens</span>
+  </div>
+  <div class="workflow-body">
+
+    <!-- Step 1 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">1</span><span class="step-title">Intro & Consent</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Establishes scout is acting on farmer's behalf with verbal consent recorded.</div></div>
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>Consent checkbox: "Farmer has given verbal consent"</li><li>Plain-language explanation displayed</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Consent mandatory before proceeding; audit trail preserved.</div></div>
+    </div></div></div>
+
+    <!-- Step 2 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Farmer Identity Details</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>Full name (mandatory)</li><li>Date of birth (optional)</li><li>Mobile (farmer's own, mandatory)</li><li>Alternate phone (optional)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Validation</div><div class="spec-value">Mobile uniqueness check; same mobile cannot be registered twice.</div></div>
+    </div></div></div>
+
+    <!-- Step 3 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Mobile Verification — OTP Send</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Sends OTP to farmer's mobile number to verify ownership.</div></div>
+      <div class="spec-block"><div class="spec-label">Data Shown</div><ul class="spec-list"><li>Farmer's mobile number echoed for confirmation</li><li>"Send OTP" CTA</li><li>60-second cooldown on resend</li></ul></div>
+    </div></div></div>
+
+    <!-- Step 4 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Mobile Verification — OTP Entry</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Farmer (with scout present) enters 6-digit OTP received on their mobile.</div></div>
+      <div class="spec-block"><div class="spec-label">Requirements</div><ul class="spec-list"><li>Scout reads OTP from farmer's phone in their presence (no proxy allowed)</li><li>Six-box input, auto-verify on 6th digit</li><li>3 retries; 30-second resend timer</li><li>OTP confirms mobile is real and belongs to farmer</li></ul></div>
+    </div></div></div>
+
+    <!-- Step 5 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Language Selection</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Sets farmer's preferred app language for future app usage.</div></div>
+      <div class="spec-block"><div class="spec-label">Options</div><ul class="spec-list"><li>English</li><li>Hindi</li><li>Bengali</li></ul></div>
+    </div></div></div>
+
+    <!-- Step 6 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">Confirm Role = Farmer</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Final role confirmation before workflow fork into farmer-specific screens.</div></div>
+      <div class="spec-block"><div class="spec-label">Role Definition</div><div class="spec-value">Farmer: grows raw makhana seed; sells to processors (poppers) or directly to Bharat Makhana.</div></div>
+    </div></div></div>
+
+    <!-- Step 7 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">Farmer Address Details</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>District (dropdown, mandatory)</li><li>Panchayat/Village (text)</li><li>Full address (textarea)</li><li>Landmark (optional)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Business Requirement</div><div class="spec-value">District mandatory—drives scout assignment and broadcast targeting. Residential address often differs from pond address.</div></div>
+    </div></div></div>
+
+    <!-- Step 8 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Details</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>Pond name (optional)</li><li>Area + unit (Acre/Bigha/Hectare, mandatory)</li><li>Estimated annual capacity (kg)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Farmer must have at least one pond at registration; cannot skip.</div></div>
+    </div></div></div>
+
+    <!-- Step 9 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Legal Documents</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>Document type (Land Record / Pond Lease / Other)</li><li>Up to 3 photos per document</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Mandatory—at least one legal document required; proof of pond ownership or lease agreement.</div></div>
+    </div></div></div>
+
+    <!-- Step 10 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">First Pond Address</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>District (mandatory)</li><li>Village (mandatory)</li><li>Free-text address (mandatory)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Note</div><div class="spec-value">Pond address often differs from farmer's residential address. Toggle: "Same as farmer's address."</div></div>
+    </div></div></div>
+
+    <!-- Step 11 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">First Pond Geo-Fencing</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Captures pond GPS centre point for geo-fencing and task routing.</div></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Mandatory—draggable pin on map or "Use my location" shortcut. Offline-capable map required.</div></div>
+      <div class="spec-block"><div class="spec-label">Impact</div><div class="spec-value">GPS enables automatic task assignment to nearest scout and geofence-based lot verification.</div></div>
+    </div></div></div>
+
+    <!-- Step 12 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Bank Account Details</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>Account holder name (mandatory)</li><li>Account number (entered twice for confirmation)</li><li>IFSC (auto-resolves bank + branch)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Penny-Drop Verification</div><div class="spec-value">Triggered at submit—async ₹1 test transfer; name-match check. Result lands on bank record minutes later. Scout doesn't wait.</div></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Only one active bank account per farmer (Year 1); old accounts marked inactive; penny-drop is mandatory for payout eligibility.</div></div>
+    </div></div></div>
+
+    <!-- Step 13 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Theme Preference</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Options</div><div class="spec-value">Dark / Light theme preview tiles. Defaults to Dark.</div></div>
+    </div></div></div>
+
+    <!-- Step 14 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">14</span><span class="step-title">Review & Submit</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">What's Shown</div><ul class="spec-list"><li>Sectioned recap (Identity, Address, Pond, Bank, Documents)</li><li>Each section has "Edit" link for corrections</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Explicit final consent checkbox required: "I confirm all details are correct" before submit enabled.</div></div>
+    </div></div></div>
+
+    <!-- Step 15 -->
+    <div class="flow-card"><div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">15</span><span class="step-title">Submission Confirmation</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Success State</div><div class="spec-value">Echoes farmer's name, mobile, pond code, and sync status. Single CTA to return to Today Dashboard.</div></div>
+      <div class="spec-block"><div class="spec-label">Backend Action</div><div class="spec-value">Creates farmers record with status='pending_approval'. Record queued to sync_queue for upload. Penny-drop runs server-side.</div></div>
+      <div class="spec-block"><div class="spec-label">Admin Gate</div><div class="spec-value">Record in pending state until Admin approves. Farmer cannot transact (bid/list) until approved.</div></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+</body>
+</html>

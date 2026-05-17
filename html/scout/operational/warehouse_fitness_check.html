@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Warehouse Fitness Check</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+    .critical-marker { color: #ff6b6b; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 5</div>
+  <h1 class="title">Warehouse Fitness Check</h1>
+  <p class="desc">One-time and periodic warehouse suitability verification. Scout assesses 6 coded criteria (3 critical) to determine if warehouse can hold BM lots. Fail on any critical criterion blocks warehouse from holding inventory; notifies Admin.</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Fitness Assessment Steps</div>
+    <span class="step-count">5 Screens</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 1</span><span class="step-title" style="margin-left: 12px;">Confirm Warehouse & Arrival</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Confirms scout is at correct warehouse; captures arrival GPS as evidence.</div></div>
+      <div class="spec-block"><div class="spec-label">Data Shown</div><ul class="spec-list"><li>Warehouse identity card (name, popper, address)</li><li>Prior fitness check history (if any)</li><li>GPS capture block with mismatch warning</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Validation</div><div class="spec-value">Warns if GPS mismatch >200m from registered warehouse location.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 2</span><span class="step-title" style="margin-left: 12px;">Fitness Checklist</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Six Criteria (Pass / Fail Toggle)</div><ul class="spec-list">
+        <li>✓ Dry / Cool / Shaded (no direct sun, no heat) — Non-critical</li>
+        <li><span class="critical-marker">⚠ Stock off-floor (wooden pallets/platforms) — CRITICAL</span></li>
+        <li><span class="critical-marker">⚠ No pest/rodent signs — CRITICAL</span></li>
+        <li><span class="critical-marker">⚠ Chemical & odour separation (no pesticides nearby) — CRITICAL</span></li>
+        <li>✓ Roof & walls sound (no leaks, damp) — Non-critical</li>
+        <li>✓ Adequate ventilation (not humid/closed) — Non-critical</li>
+      </ul></div>
+      <div class="spec-block"><div class="spec-label">User Experience</div><ul class="spec-list"><li>Critical criteria marked with ⚠ badge</li><li>Each fail row expands coded-reason chooser</li><li>Live summary chip shows Pass/Fail count</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">All 6 must be assessed. Every fail must have coded reason selected from dropdown.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 3</span><span class="step-title" style="margin-left: 12px;">Evidence Photos</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Mandatory photographic evidence supporting checklist assessment.</div></div>
+      <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Interior wide-angle (showing full warehouse layout)</li><li>Storage/stacking detail (showing bag placement, pallets)</li><li>One auto-generated photo per failed criterion (e.g., pest evidence)</li><li>Optional: extra context photos</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Validation</div><div class="spec-value">Cannot proceed until all required slots filled. Photo compression ≤1.5MB each; GPS-stamped.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 4</span><span class="step-title" style="margin-left: 12px;">Verdict & Submit</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Verdict Logic</div><ul class="spec-list"><li>If any critical criterion failed: verdict LOCKED as FAIL</li><li>If only non-critical criteria failed: scout decides PASS or FAIL</li><li>If all pass: verdict PASS (locked, computed)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">What's Shown</div><ul class="spec-list"><li>Final verdict (PASS / FAIL)</li><li>Full checklist recap with reasons for each fail</li><li>Photo thumbnail strip</li><li>Optional overall notes (max 500 chars)</li><li>Confirm checkbox before submit</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Critical Warning</div><div class="spec-value">If FAIL: Scout sees message: "Warehouse FAILS inspection. This warehouse cannot hold BM lots until issues are resolved. Admin notified."</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 5</span><span class="step-title" style="margin-left: 12px;">Submission Confirmation</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Success State</div><div class="spec-value">Shows verdict (PASS / FAIL), warehouse name, sync status, single CTA: "Back to Warehouses."</div></div>
+      <div class="spec-block"><div class="spec-label">Backend Action</div><ul class="spec-list"><li>Creates fitness_checks record with verdict (pass / fail)</li><li>If FAIL: warehouse status → fitness_failed; notifies Admin immediately</li><li>If PASS: warehouse status → fitness_passed; allows lot sealing</li><li>Records queued to sync_queue</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Impact on Lots</div><div class="spec-value">FAIL blocks new lot sealing at this warehouse. Existing sealed lots remain valid. PASS enables sealing.</div></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Critical Requirements & Enforcement</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Critical Criteria (3)</div>
+        <div class="spec-value">Off-floor stacking, No pests, Chemical separation. Any fail = FAIL verdict, warehouse blocked.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Photo Evidence Mandatory</div>
+        <div class="spec-value">2 fixed photos + 1 per failed criterion + optional extras. Cannot submit without all required filled.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Admin Notification</div>
+        <div class="spec-value">FAIL triggers immediate Admin alert. Scout sees clear messaging about consequence (warehouse blocked).</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
+        <div class="spec-value">100% offline capable. Photos compressed during capture. Data synced via sync_queue.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Storage Re-check</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 4</div>
+  <h1 class="title">Storage Re-check</h1>
+  <p class="desc">Mid-window lot condition verification. Light check at ~50% shelf-life for unsealed lots awaiting buyers. Verifies seal/net integrity, dry conditions, no pest signs, and determines outcome (Clean → Continue listing / Anomaly → Re-inspect / Void lot).</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Re-check Steps</div>
+    <span class="step-count">5 Steps</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Lot & Warehouse Header</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Confirm identity and context of the sealed lot being rechecked.</div></div>
+      <div class="spec-block"><div class="spec-label">Data Shown</div><ul class="spec-list"><li>Lot identity (grade certificate ref, seal ID)</li><li>Warehouse location</li><li>Original seal date and shelf-life expiry</li><li>Days elapsed since sealing (shows progress in shelf-life window)</li></ul></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">Seal & Net Integrity</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Verify seal has not been broken or tampered with; assess net condition.</div></div>
+      <div class="spec-block"><div class="spec-label">Assessment Items</div><ul class="spec-list"><li>Seal intact (visual inspection) — Pass / Fail</li><li>Seal ID readable — Pass / Fail</li><li>Net coverage complete (no tears/gaps) — Pass / Fail</li><li>Evidence: 1 photo of seal + 1 of net condition</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">All three must pass. Any fail flags lot for escalation to Admin/Re-inspection.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Storage Conditions</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Light assessment of storage environment (not full warehouse fitness check).</div></div>
+      <div class="spec-block"><div class="spec-label">Checklist (3 items)</div><ul class="spec-list"><li>Lot stored dry (no moisture, visible water) — Pass / Fail</li><li>Lot off-floor (on pallet/platform) — Pass / Fail</li><li>No pest/rodent signs visible — Pass / Fail</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Evidence</div><div class="spec-value">1 wide-angle photo showing lot position in warehouse.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Evidence Photos</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Photographic evidence supporting re-check assessment.</div></div>
+      <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Close-up of seal</li><li>Net condition detail</li><li>Lot position in warehouse (wide)</li><li>Optional: anomaly detail if found</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Specs</div><div class="spec-value">Minimum 3 photos mandatory; compress ≤1.5MB each; GPS-stamped.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Outcome Determination</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Three Outcomes (Computed / Scout Choose)</div><ul class="spec-list">
+        <li><strong>CLEAN:</strong> Seal intact, net good, conditions dry → Lot continues listing in spot market</li>
+        <li><strong>ANOMALY:</strong> Seal/net issue OR storage concern → Routes to Re-inspection workflow; Admin notified</li>
+        <li><strong>VOID:</strong> Critical failure (broken seal, major damage, pest infestation) → Lot removed from market; warehouse fitness escalated</li>
+      </ul></div>
+      <div class="spec-block"><div class="spec-label">Submission</div><div class="spec-value">Scout selects outcome, adds optional notes (max 500 chars). Atomic submit creates re_check record; queued to sync_queue.</div></div>
+      <div class="spec-block"><div class="spec-label">Post-Submit</div><ul class="spec-list"><li>CLEAN: Lot refresh timestamp updated; continues visible in spot market</li><li>ANOMALY: Triggers re_inspection task; lot status paused</li><li>VOID: Lot status voided; warehouse fitness reviewed by Admin</li></ul></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Trigger Conditions & Light Check Pattern</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">When Triggered</div>
+        <div class="spec-value">Lot crosses ~50% shelf-life unsold. Admin pushes re-check task to scout. Alternatively, triggered by anomaly report from warehouse.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Light Check Pattern</div>
+        <div class="spec-value">NOT a full re-grade. Focuses on seal integrity, net condition, and basic storage state. Only escalates to full re-inspection if anomaly found.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
+        <div class="spec-value">All data captured locally; rides existing scout sync_queue. Designed for offline-capable inventory management.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Immutability</div>
+        <div class="spec-value">Once outcome recorded, scout cannot edit. Admin can correct via backend only.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

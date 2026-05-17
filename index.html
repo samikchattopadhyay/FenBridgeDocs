@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FenBridge - Digital Documentation Portal</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2310b981'/><text x='50%' y='68%' font-size='65' font-family='sans-serif' font-weight='bold' fill='%23ffffff' text-anchor='middle'>F</text></svg>" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2310b981'/><text x='50%' y='68%' font-size='65' font-family='sans-serif' font-weight='bold' fill='%23ffffff' text-anchor='middle'>F</text></svg>" />
   <!-- Modern Google Fonts: Outfit & Inter for ultra-premium visual aesthetics -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <!-- Load structured Master Specification Data -->
   <script src="./bkp/portal_data.js"></script>
   <style>
@@ -18,21 +22,23 @@
       --bg-surface: #18181b;
       --bg-surface-hover: #202024;
       --bg-surface-active: #27272a;
-      
+
       --accent-primary: #10b981;
       --accent-primary-hover: #34d399;
       --accent-primary-glow: rgba(16, 185, 129, 0.2);
-      
+
       --accent-secondary: #f59e0b;
       --accent-secondary-glow: rgba(245, 158, 11, 0.15);
-      
+
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
+      --text-muted: #9ca3af;
+      --text-muted: #9ca3af;
       --text-dim: #6b7280;
-      
+
       --border-color: #27272a;
       --border-color-light: #3f3f46;
-      
+
       --sidebar-width: 310px;
       --header-height: 70px;
     }
@@ -59,6 +65,7 @@
       display: none !important;
       width: 0 !important;
     }
+
     * {
       -ms-overflow-style: none !important;
       scrollbar-width: none !important;
@@ -200,8 +207,15 @@
     }
 
     @keyframes fadeInOverlay {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .search-results-header {
@@ -346,10 +360,21 @@
       transition: all 0.3s ease;
     }
 
-    .role-group-farmer { border-left-color: rgba(16, 185, 129, 0.4); }
-    .role-group-buyer { border-left-color: rgba(245, 158, 11, 0.4); }
-    .role-group-scout { border-left-color: rgba(6, 182, 212, 0.4); }
-    .role-group-admin { border-left-color: rgba(168, 85, 247, 0.4); }
+    .role-group-farmer {
+      border-left-color: rgba(16, 185, 129, 0.4);
+    }
+
+    .role-group-buyer {
+      border-left-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .role-group-scout {
+      border-left-color: rgba(6, 182, 212, 0.4);
+    }
+
+    .role-group-admin {
+      border-left-color: rgba(168, 85, 247, 0.4);
+    }
 
     .nav-group-title {
       font-family: 'Outfit', sans-serif;
@@ -480,11 +505,11 @@
 
     /* SPECIAL PREMIUM HIGHLIGHT FOR APP DEMO LINK */
     .nav-link.demo-highlight {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.25) 100%);
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.25) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
       color: #fff;
       font-weight: 600;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
       position: relative;
       overflow: hidden;
       margin-top: 6px;
@@ -494,34 +519,44 @@
     .nav-link.demo-highlight::before {
       content: "";
       position: absolute;
-      top: 0; left: -100%;
-      width: 50%; height: 100%;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
       animation: shimmerHighlight 3s infinite linear;
     }
 
     @keyframes shimmerHighlight {
-      0% { left: -100%; }
-      50% { left: 200%; }
-      100% { left: 200%; }
+      0% {
+        left: -100%;
+      }
+
+      50% {
+        left: 200%;
+      }
+
+      100% {
+        left: 200%;
+      }
     }
 
     .nav-link.demo-highlight:hover {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.35) 100%);
-      border-color: rgba(16, 185, 129, 0.5);
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.35) 100%);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25);
       transform: translateY(-1px);
     }
 
     .nav-link.demo-highlight .nav-icon {
-      color: var(--accent-primary);
+      color: #F59E0B;
       opacity: 1;
-      filter: drop-shadow(0 0 4px var(--accent-primary-glow));
+      filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.4));
     }
 
     .nav-link.demo-highlight.active {
-      border-left: 4px solid #10b981;
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.45) 100%);
+      border-left: 4px solid #F59E0B;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.45) 100%);
     }
 
     /* RIGHT CONTENT AREA */
@@ -710,12 +745,15 @@
       /* Vertically scrollable but without visible scrollbars */
       overflow-y: auto;
       overflow-x: hidden;
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
     }
 
     .modal-left-pane::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
+      display: none;
+      /* Chrome, Safari, Opera */
     }
 
     .modal-image-container {
@@ -751,7 +789,9 @@
     }
 
     @keyframes spin {
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
     }
 
     /* RIGHT PANE: Comprehensive Technical & Business Details */
@@ -849,6 +889,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- TOP PORTAL HEADER -->
@@ -863,10 +904,17 @@
 
     <div class="header-controls">
       <div class="search-container">
-        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <input type="text" class="search-input" id="global-search" placeholder="Quick search screens & flows..." autocomplete="off" />
-        <svg class="clear-icon" id="search-clear-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24" title="Clear search"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        
+        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input type="text" class="search-input" id="global-search" placeholder="Quick search screens & flows..."
+          autocomplete="off" />
+        <svg class="clear-icon" id="search-clear-btn" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          title="Clear search">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+
         <!-- INTEGRATED SEARCH RESULTS SUGGESTIONS MODAL -->
         <div id="search-suggestions-modal" class="search-suggestions-modal" style="display: none;">
           <div class="search-results-header">
@@ -887,18 +935,21 @@
     <!-- LEFT SIDEBAR: Menu Navigation Items -->
     <aside class="portal-sidebar custom-scrollbar">
       <div class="sidebar-inner">
-        
-        <!-- GROUP 1: Document Foundation -->
-        <div class="nav-group collapsed">
-          <div class="nav-group-title" title="Click to collapse/expand section">
+
+        <!-- GROUP 1: Document Foundation - Always Expanded -->
+        <div class="nav-group">
+          <div class="nav-group-title" style="cursor: default;">
             <span>Overview & Strategy</span>
-            <svg class="section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
           <ul class="nav-list">
             <li class="nav-item">
               <a class="nav-link active" data-hash="#home" onclick="navigateTo('#home')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                    </path>
+                  </svg>
                   <span>Landing Page Overview</span>
                 </div>
               </a>
@@ -906,7 +957,11 @@
             <li class="nav-item">
               <a class="nav-link" data-hash="#brd" onclick="navigateTo('#brd')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                    </path>
+                  </svg>
                   <span>Business Requirements</span>
                 </div>
               </a>
@@ -914,7 +969,10 @@
             <li class="nav-item">
               <a class="nav-link" data-hash="#phases" onclick="navigateTo('#phases')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
                   <span>70-Day Phase Roadmap</span>
                 </div>
               </a>
@@ -922,10 +980,14 @@
             <li class="nav-item">
               <a class="nav-link demo-highlight" data-hash="#app-demo" onclick="navigateTo('#app-demo')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #F59E0B;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                  </svg>
                   <span>Interactive App Demo</span>
                 </div>
-                <span class="wf-count-badge" style="background:rgba(16,185,129,0.15);color:var(--accent-primary);">Live</span>
+                <span class="wf-count-badge"
+                  style="background:rgba(245,158,11,0.15);color:#F59E0B;">Live</span>
               </a>
             </li>
           </ul>
@@ -935,74 +997,97 @@
         <div class="nav-group role-group-farmer collapsed" style="display: none;">
           <div class="nav-group-title" title="Click to collapse/expand section">
             <span>Farmer Workflows</span>
-            <svg class="section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
           </div>
           <ul class="nav-list">
             <li class="nav-item">
               <a class="nav-link" data-hash="#role-farmer" onclick="navigateTo('#role-farmer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a9 9 0 0 0-9 9c0 5 9 11 9 11s9-6 9-11a9 9 0 0 0-9-9z"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 2a9 9 0 0 0-9 9c0 5 9 11 9 11s9-6 9-11a9 9 0 0 0-9-9z"></path>
+                  </svg>
                   <span>Farmer Onboarding Flow</span>
                 </div>
-                <span class="wf-count-badge" style="background:rgba(16,185,129,0.15);color:var(--accent-primary);">New</span>
+                <span class="wf-count-badge"
+                  style="background:rgba(16,185,129,0.15);color:var(--accent-primary);">New</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-hash="#profile-farmer" onclick="navigateTo('#profile-farmer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                  </svg>
                   <span>Farmer Profile Management</span>
                 </div>
-                <span class="wf-count-badge" style="background:rgba(16,185,129,0.15);color:var(--accent-primary);">11</span>
+                <span class="wf-count-badge"
+                  style="background:rgba(16,185,129,0.15);color:var(--accent-primary);">11</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-hash="#operational-farmer" onclick="navigateTo('#operational-farmer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                  </svg>
                   <span>Farmer Operational Workflows</span>
                 </div>
-                <span class="wf-count-badge" style="background:rgba(16,185,129,0.15);color:var(--accent-primary);">19</span>
+                <span class="wf-count-badge"
+                  style="background:rgba(16,185,129,0.15);color:var(--accent-primary);">19</span>
               </a>
-              <ul class="sub-nav-list" style="padding-left: 28px; margin-top: 4px; list-style: none; display: flex; flex-direction: column; gap: 2px;">
+              <ul class="sub-nav-list"
+                style="padding-left: 28px; margin-top: 4px; list-style: none; display: flex; flex-direction: column; gap: 2px;">
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-farmer-dashboard" onclick="navigateTo('#operational-farmer-dashboard')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-farmer-dashboard" onclick="navigateTo('#operational-farmer-dashboard')">
                     <span>↳ Dashboard & Inbox</span>
                     <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;">2</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-farmer-bid" onclick="navigateTo('#operational-farmer-bid')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-farmer-bid" onclick="navigateTo('#operational-farmer-bid')">
                     <span>↳ Browse & Bid</span>
                     <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;">2</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-farmer-fulfillment" onclick="navigateTo('#operational-farmer-fulfillment')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-farmer-fulfillment" onclick="navigateTo('#operational-farmer-fulfillment')">
                     <span>↳ Active POs Hub</span>
                     <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;">2</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-farmer-mark-ready" onclick="navigateTo('#operational-farmer-mark-ready')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-farmer-mark-ready" onclick="navigateTo('#operational-farmer-mark-ready')">
                     <span>↳ Mark Ready Wizard</span>
                     <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;">4</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-farmer-spot" onclick="navigateTo('#operational-farmer-spot')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-farmer-spot" onclick="navigateTo('#operational-farmer-spot')">
                     <span>↳ Spot Channel</span>
                     <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;">2</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-farmer-request-spot" onclick="navigateTo('#operational-farmer-request-spot')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-farmer-request-spot"
+                    onclick="navigateTo('#operational-farmer-request-spot')">
                     <span>↳ Req Spot List</span>
                     <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;">4</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-farmer-financials" onclick="navigateTo('#operational-farmer-financials')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-farmer-financials" onclick="navigateTo('#operational-farmer-financials')">
                     <span>↳ Financials Ledger</span>
                     <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;">3</span>
                   </a>
@@ -1016,88 +1101,123 @@
         <div class="nav-group role-group-buyer collapsed" style="display: none;">
           <div class="nav-group-title" title="Click to collapse/expand section">
             <span>Buyer Workflows</span>
-            <svg class="section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
           </div>
           <ul class="nav-list">
             <li class="nav-item">
               <a class="nav-link" data-hash="#role-buyer" onclick="navigateTo('#role-buyer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  </svg>
                   <span>Buyer Onboarding Flow</span>
                 </div>
-                <span class="wf-count-badge" style="background:rgba(245,158,11,0.15);color:var(--accent-secondary);">New</span>
+                <span class="wf-count-badge"
+                  style="background:rgba(245,158,11,0.15);color:var(--accent-secondary);">New</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-hash="#profile-buyer" onclick="navigateTo('#profile-buyer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                    </path>
+                  </svg>
                   <span>Buyer Profile Management</span>
                 </div>
-                <span class="wf-count-badge" style="background:rgba(245,158,11,0.15);color:var(--accent-secondary);">9</span>
+                <span class="wf-count-badge"
+                  style="background:rgba(245,158,11,0.15);color:var(--accent-secondary);">9</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-hash="#operational-buyer" onclick="navigateTo('#operational-buyer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                  </svg>
                   <span>Buyer Operational Workflows</span>
                 </div>
-                <span class="wf-count-badge" style="background:rgba(245,158,11,0.15);color:var(--accent-secondary);">33</span>
+                <span class="wf-count-badge"
+                  style="background:rgba(245,158,11,0.15);color:var(--accent-secondary);">33</span>
               </a>
-              <ul class="sub-nav-list" style="padding-left: 28px; margin-top: 4px; list-style: none; display: flex; flex-direction: column; gap: 2px;">
+              <ul class="sub-nav-list"
+                style="padding-left: 28px; margin-top: 4px; list-style: none; display: flex; flex-direction: column; gap: 2px;">
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-post-req" onclick="navigateTo('#operational-buyer-post-req')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-post-req" onclick="navigateTo('#operational-buyer-post-req')">
                     <span>↳ Post Requirement</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">5</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">5</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-revise-req" onclick="navigateTo('#operational-buyer-revise-req')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-revise-req" onclick="navigateTo('#operational-buyer-revise-req')">
                     <span>↳ Revise Requirement</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">3</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">3</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-po-acc" onclick="navigateTo('#operational-buyer-po-acc')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-po-acc" onclick="navigateTo('#operational-buyer-po-acc')">
                     <span>↳ PO Acceptance</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">5</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">5</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-cancel-po" onclick="navigateTo('#operational-buyer-cancel-po')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-cancel-po" onclick="navigateTo('#operational-buyer-cancel-po')">
                     <span>↳ Cancel PO</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">2</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">2</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-payment-sent" onclick="navigateTo('#operational-buyer-payment-sent')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-payment-sent" onclick="navigateTo('#operational-buyer-payment-sent')">
                     <span>↳ Mark Pay Sent</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">2</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">2</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-spot-purchase" onclick="navigateTo('#operational-buyer-spot-purchase')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-spot-purchase"
+                    onclick="navigateTo('#operational-buyer-spot-purchase')">
                     <span>↳ Spot Purchase</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">5</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">5</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-reserve-lot" onclick="navigateTo('#operational-buyer-reserve-lot')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-reserve-lot" onclick="navigateTo('#operational-buyer-reserve-lot')">
                     <span>↳ Reserve Lot Hold</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">1</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">1</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-delivery-acc" onclick="navigateTo('#operational-buyer-delivery-acc')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-delivery-acc" onclick="navigateTo('#operational-buyer-delivery-acc')">
                     <span>↳ Delivery Acc Hub</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">9</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">9</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);" data-hash="#operational-buyer-feedback" onclick="navigateTo('#operational-buyer-feedback')">
+                  <a class="nav-link sub-link" style="padding: 6px 10px; font-size: 12px; color: var(--text-muted);"
+                    data-hash="#operational-buyer-feedback" onclick="navigateTo('#operational-buyer-feedback')">
                     <span>↳ Submit Feedback</span>
-                    <span class="wf-count-badge" style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">1</span>
+                    <span class="wf-count-badge"
+                      style="font-size:10px;padding:2px 6px;background:rgba(245,158,11,0.1);color:var(--accent-primary);">1</span>
                   </a>
                 </li>
               </ul>
@@ -1108,114 +1228,276 @@
         <!-- GROUP: Scout Workflows -->
         <div class="nav-group role-group-scout collapsed">
           <div class="nav-group-title" title="Click to collapse/expand section">
-            <span>Scout Workflows</span>
-            <svg class="section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <span>Scout Workflows (20)</span>
+            <svg class="section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
           </div>
           <ul class="nav-list">
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-entry" onclick="navigateTo('#operational-scout-entry')">
+              <a class="nav-link" data-hash="#scout-dashboard" onclick="navigateTo('#scout-dashboard')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
-                  <span>Entry & Auth</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                    </path>
+                  </svg>
+                  <span>scout_dashboard</span>
                 </div>
                 <span class="wf-count-badge">3</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-dashboard" onclick="navigateTo('#operational-scout-dashboard')">
+              <a class="nav-link" data-hash="#register-farmer" onclick="navigateTo('#register-farmer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                  <span>Today's Dashboard</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                  <span>register_a_farmer</span>
                 </div>
-                <span class="wf-count-badge">4</span>
+                <span class="wf-count-badge">15</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-verification" onclick="navigateTo('#operational-scout-verification')">
+              <a class="nav-link" data-hash="#register-popper" onclick="navigateTo('#register-popper')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  <span>Lot Verification</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4l3-3 3 3h4a2 2 0 012 2v14a2 2 0 01-2 2zM9 12h6m-3-3v6">
+                    </path>
+                  </svg>
+                  <span>register_a_popper</span>
+                </div>
+                <span class="wf-count-badge">18</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#registered-users" onclick="navigateTo('#registered-users')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 4.354a4 4 0 110 5.292M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z"></path>
+                  </svg>
+                  <span>registered_users</span>
+                </div>
+                <span class="wf-count-badge">3</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#ponds-directory" onclick="navigateTo('#ponds-directory')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z">
+                    </path>
+                  </svg>
+                  <span>ponds_directory</span>
+                </div>
+                <span class="wf-count-badge">3</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#pond-inspection" onclick="navigateTo('#pond-inspection')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                    </path>
+                  </svg>
+                  <span>pond_inspection</span>
+                </div>
+                <span class="wf-count-badge">6</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#warehouses" onclick="navigateTo('#warehouses')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                    </path>
+                  </svg>
+                  <span>warehouses</span>
+                </div>
+                <span class="wf-count-badge">5</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#warehouse-fitness-check" onclick="navigateTo('#warehouse-fitness-check')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m0 0V3a2 2 0 00-2-2h-2a2 2 0 00-2 2v2m0 0h0">
+                    </path>
+                  </svg>
+                  <span>warehouse_fitness_check</span>
+                </div>
+                <span class="wf-count-badge">5</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#lot-verification-inspection"
+                onclick="navigateTo('#lot-verification-inspection')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>lot_verification_inspection</span>
                 </div>
                 <span class="wf-count-badge">8</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-seal" onclick="navigateTo('#operational-scout-seal')">
+              <a class="nav-link" data-hash="#seal-application" onclick="navigateTo('#seal-application')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                  <span>Seal Application</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                    </path>
+                  </svg>
+                  <span>seal_application</span>
                 </div>
-                <span class="wf-count-badge">4</span>
+                <span class="wf-count-badge">6</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-logistics" onclick="navigateTo('#operational-scout-logistics')">
+              <a class="nav-link" data-hash="#storage-re-check" onclick="navigateTo('#storage-re-check')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
-                  <span>Dispatch Logistics</span>
-                </div>
-                <span class="wf-count-badge">3</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-recheck" onclick="navigateTo('#operational-scout-recheck')">
-                <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                  <span>Storage Re-check</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                  </svg>
+                  <span>storage_re_check</span>
                 </div>
                 <span class="wf-count-badge">5</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-fitness" onclick="navigateTo('#operational-scout-fitness')">
+              <a class="nav-link" data-hash="#re-inspection-post-reconditioning"
+                onclick="navigateTo('#re-inspection-post-reconditioning')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.82.551l-1.129 1.13a1 1 0 001.414 1.414l1.13-1.13a.5.5 0 01.455-.138l2.386.477a4 4 0 002.574-.344l.318-.158a4 4 0 012.574-.344l2.386.477a.5.5 0 01.255.137l1.13 1.13a1 1 0 001.414-1.414l-1.13-1.13zM14.999 11.15a3 3 0 11-4.998-2.298m4.998 2.298a3 3 0 01-4.998-2.298m4.998 2.298l-.001-.001m-4.998-2.298l.001.001M15 5.25a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                  <span>Warehouse Fitness</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                    </path>
+                  </svg>
+                  <span>re_inspection_post_reconditioning</span>
                 </div>
                 <span class="wf-count-badge">5</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-reinspection" onclick="navigateTo('#operational-scout-reinspection')">
+              <a class="nav-link" data-hash="#rejection-handling" onclick="navigateTo('#rejection-handling')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                  <span>Re-inspection</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>rejection_handling</span>
                 </div>
-                <span class="wf-count-badge">2</span>
+                <span class="wf-count-badge">5</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-rejection" onclick="navigateTo('#operational-scout-rejection')">
+              <a class="nav-link" data-hash="#mark-lot-ready-on-behalf"
+                onclick="navigateTo('#mark-lot-ready-on-behalf')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  <span>Rejection Handling</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M20 7l-8-4-8 4m16 0l-8 4m0 0L4 7m16 0v10l-8 4m0 0l-8-4m0 0V7m8 4v4"></path>
+                  </svg>
+                  <span>mark_lot_ready_on_behalf</span>
                 </div>
-                <span class="wf-count-badge">2</span>
+                <span class="wf-count-badge">5</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-warehouses" onclick="navigateTo('#operational-scout-warehouses')">
+              <a class="nav-link" data-hash="#submit-bid-on-behalf" onclick="navigateTo('#submit-bid-on-behalf')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                  <span>Warehouses Directory</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m0 0l-2-1m2 1v2.5M14 4l-2 1m0 0l-2-1m2 1v2.5"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 12a9 9 0 0118 0 9 9 0 01-18 0z"></path>
+                  </svg>
+                  <span>submit_bid_on_behalf</span>
                 </div>
-                <span class="wf-count-badge">3</span>
+                <span class="wf-count-badge">6</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#operational-scout-sync" onclick="navigateTo('#operational-scout-sync')">
+              <a class="nav-link" data-hash="#submit-spot-offer-on-behalf"
+                onclick="navigateTo('#submit-spot-offer-on-behalf')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                  <span>Sync Queue</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6"></path>
+                  </svg>
+                  <span>submit_spot_offer_on_behalf</span>
                 </div>
-                <span class="wf-count-badge">3</span>
+                <span class="wf-count-badge">6</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-hash="#profile-scout-settings" onclick="navigateTo('#profile-scout-settings')">
+              <a class="nav-link" data-hash="#manage-farmer" onclick="navigateTo('#manage-farmer')">
                 <div class="nav-link-left">
-                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                  <span>Profile & Settings</span>
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                    </path>
+                  </svg>
+                  <span>manage_farmer</span>
+                </div>
+                <span class="wf-count-badge">5</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#manage-popper" onclick="navigateTo('#manage-popper')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9.172 9.172a4 4 0 015.656 5.656M12 19c3.866 0 7-1.79 7-4m-7 4c-3.866 0-7-1.79-7-4m14 0V8c0-2.21-3.134-4-7-4s-7 1.79-7 4v7">
+                    </path>
+                  </svg>
+                  <span>manage_popper</span>
+                </div>
+                <span class="wf-count-badge">5</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#profile-settings" onclick="navigateTo('#profile-settings')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <span>profile_settings</span>
+                </div>
+                <span class="wf-count-badge">6</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-hash="#sync-queue" onclick="navigateTo('#sync-queue')">
+                <div class="nav-link-left">
+                  <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                    </path>
+                  </svg>
+                  <span>sync_queue</span>
                 </div>
                 <span class="wf-count-badge">3</span>
               </a>
@@ -1227,13 +1509,16 @@
         <div class="nav-group role-group-admin collapsed" style="display: none;">
           <div class="nav-group-title"><span>Admin Workflows</span></div>
           <ul class="nav-list">
-            <a class="nav-link" data-hash="#operational-admin-territory" onclick="navigateTo('#operational-admin-territory')">
+            <a class="nav-link" data-hash="#operational-admin-territory"
+              onclick="navigateTo('#operational-admin-territory')">
               <span>Territory Management Dashboard</span>
             </a>
-            <a class="nav-link" data-hash="#operational-admin-analytics" onclick="navigateTo('#operational-admin-analytics')">
+            <a class="nav-link" data-hash="#operational-admin-analytics"
+              onclick="navigateTo('#operational-admin-analytics')">
               <span>Farmer Cohort Analytics</span>
             </a>
-            <a class="nav-link" data-hash="#operational-admin-scout-perf" onclick="navigateTo('#operational-admin-scout-perf')">
+            <a class="nav-link" data-hash="#operational-admin-scout-perf"
+              onclick="navigateTo('#operational-admin-scout-perf')">
               <span>Scout Performance Dashboard</span>
             </a>
           </ul>
@@ -1260,7 +1545,7 @@
   <!-- INTERACTIVE DUAL-PANE PREVIEW MODAL -->
   <div id="preview-modal" class="modal-backdrop">
     <div class="modal-container">
-      
+
       <!-- MODAL HEADER -->
       <div class="modal-header">
         <div class="modal-title-wrapper">
@@ -1271,36 +1556,43 @@
         <div class="modal-nav-actions">
           <div class="workflow-cycle-container">
             <button id="modal-prev-btn" class="nav-btn" onclick="cycleScreen(-1)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
               Prev
             </button>
             <span class="step-indicator" id="modal-step-counter">1 / 6</span>
             <button id="modal-next-btn" class="nav-btn" onclick="cycleScreen(1)">
               Next
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
             </button>
           </div>
 
           <button class="close-modal-btn" onclick="closePreviewModal()" title="Close overlay">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
           </button>
         </div>
       </div>
 
       <!-- MODAL BODY -->
       <div class="modal-body">
-        
+
         <!-- LEFT: Screen Image -->
         <div class="modal-left-pane">
           <div class="img-loader" id="modal-img-loader"></div>
           <div class="modal-image-container">
-            <img id="modal-preview-img" class="screen-img" src="" alt="Screen Spec Rendering" onload="hideImgLoader()" onerror="handleImgError()" />
+            <img id="modal-preview-img" class="screen-img" src="" alt="Screen Spec Rendering" onload="hideImgLoader()"
+              onerror="handleImgError()" />
           </div>
         </div>
 
         <!-- RIGHT: Screen Details & Specifications -->
         <div class="modal-right-pane custom-scrollbar" id="modal-details-container">
-          
+
           <!-- SECTION 1: Purpose -->
           <div class="spec-section">
             <div class="spec-section-title">Operational Purpose</div>
@@ -1351,28 +1643,33 @@
 
       // Make top-level menu sections collapsible dynamically with Rich Micro-Animations
       const navGroupTitles = document.querySelectorAll(".portal-sidebar .nav-group-title");
-      navGroupTitles.forEach(titleEl => {
-        titleEl.style.cursor = "pointer";
+      navGroupTitles.forEach((titleEl, index) => {
+        const groupEl = titleEl.closest(".nav-group");
+        const isFirstGroup = index === 0;
+
         titleEl.style.display = "flex";
         titleEl.style.justifyContent = "space-between";
         titleEl.style.alignItems = "center";
-        titleEl.title = "Click to toggle section";
 
-        if (!titleEl.querySelector(".section-chevron")) {
-          const chevronSvg = document.createElement("div");
-          chevronSvg.className = "section-chevron";
-          chevronSvg.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
-          chevronSvg.style.transition = "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)";
-          chevronSvg.style.display = "flex";
-          titleEl.appendChild(chevronSvg);
-        }
+        if (!isFirstGroup) {
+          titleEl.style.cursor = "pointer";
+          titleEl.title = "Click to toggle section";
 
-        titleEl.addEventListener("click", () => {
-          const groupEl = titleEl.closest(".nav-group");
-          if (groupEl) {
-            groupEl.classList.toggle("collapsed");
+          if (!titleEl.querySelector(".section-chevron")) {
+            const chevronSvg = document.createElement("div");
+            chevronSvg.className = "section-chevron";
+            chevronSvg.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+            chevronSvg.style.transition = "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)";
+            chevronSvg.style.display = "flex";
+            titleEl.appendChild(chevronSvg);
           }
-        });
+
+          titleEl.addEventListener("click", () => {
+            if (groupEl) {
+              groupEl.classList.toggle("collapsed");
+            }
+          });
+        }
       });
 
       // Listen to browser native hash changes to guarantee bookmarkable state sync
@@ -1381,7 +1678,7 @@
       // High-Fidelity Search suggestions modal engine
       const searchInput = document.getElementById("global-search");
       const suggestionsModal = document.getElementById("search-suggestions-modal");
-      
+
       if (searchInput && suggestionsModal) {
         let currentSearchSelectionIndex = -1;
         const clearBtn = document.getElementById("search-clear-btn");
@@ -1576,7 +1873,7 @@
       window.fenbridgeData.forEach((wf, index) => {
         const li = document.createElement("li");
         li.className = "nav-item";
-        
+
         // Short title extraction for aesthetic menu mapping
         const shortTitle = wf.title.replace("Workflow ", "");
 
@@ -1605,7 +1902,11 @@
 
       // Ensure all menu groups collapse by default when navigating to a new page
       const navGroups = document.querySelectorAll(".portal-sidebar .nav-group");
-      navGroups.forEach(group => group.classList.add("collapsed"));
+      navGroups.forEach((group, index) => {
+        if (index !== 0) {
+          group.classList.add("collapsed");
+        }
+      });
 
       // Update sidebar active highlights and auto-open relevant parent group
       const navLinks = document.querySelectorAll(".portal-sidebar .nav-link");
@@ -1643,6 +1944,46 @@
         targetSrc = "html/scout/operational/profile.html";
       } else if (hash === "#operational-scout" || hash === "#operational-scout-entry") {
         targetSrc = "html/scout/operational/index.html";
+      } else if (hash === "#scout-dashboard") {
+        targetSrc = "html/scout/operational/dashboard.html";
+      } else if (hash === "#register-farmer") {
+        targetSrc = "html/scout/operational/farmer_registration.html";
+      } else if (hash === "#register-popper") {
+        targetSrc = "html/scout/operational/popper_registration.html";
+      } else if (hash === "#registered-users") {
+        targetSrc = "html/scout/operational/users_directory.html";
+      } else if (hash === "#ponds-directory") {
+        targetSrc = "html/scout/operational/ponds_directory.html";
+      } else if (hash === "#pond-inspection") {
+        targetSrc = "html/scout/operational/pond_inspection.html";
+      } else if (hash === "#warehouses") {
+        targetSrc = "html/scout/operational/warehouses_directory.html";
+      } else if (hash === "#warehouse-fitness-check") {
+        targetSrc = "html/scout/operational/warehouse_fitness_check.html";
+      } else if (hash === "#lot-verification-inspection") {
+        targetSrc = "html/scout/operational/verification.html";
+      } else if (hash === "#seal-application") {
+        targetSrc = "html/scout/operational/seal_application.html";
+      } else if (hash === "#storage-re-check") {
+        targetSrc = "html/scout/operational/storage_recheck.html";
+      } else if (hash === "#re-inspection-post-reconditioning") {
+        targetSrc = "html/scout/operational/reinspection.html";
+      } else if (hash === "#rejection-handling") {
+        targetSrc = "html/scout/operational/rejection_handling.html";
+      } else if (hash === "#mark-lot-ready-on-behalf") {
+        targetSrc = "html/scout/operational/mark_lot_ready.html";
+      } else if (hash === "#submit-bid-on-behalf") {
+        targetSrc = "html/scout/operational/submit_bid.html";
+      } else if (hash === "#submit-spot-offer-on-behalf") {
+        targetSrc = "html/scout/operational/submit_spot_offer.html";
+      } else if (hash === "#manage-farmer") {
+        targetSrc = "html/scout/operational/manage_farmer.html";
+      } else if (hash === "#manage-popper") {
+        targetSrc = "html/scout/operational/manage_popper.html";
+      } else if (hash === "#profile-settings") {
+        targetSrc = "html/scout/operational/profile.html";
+      } else if (hash === "#sync-queue") {
+        targetSrc = "html/scout/operational/sync_queue.html";
       } else if (hash === "#operational-scout-dashboard") {
         targetSrc = "html/scout/operational/dashboard.html";
       } else if (hash === "#operational-scout-fitness") {
@@ -1739,7 +2080,7 @@
         if (targetEl) {
           targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      } catch(err) {
+      } catch (err) {
         // Handle cross-origin edge cases locally if file protocol restriction triggers
         console.warn("Local protocol scroll bypass:", err);
       }
@@ -1750,7 +2091,7 @@
     /* GLOBAL MODAL SYSTEM CONTROLLERS */
     function openPreviewModal(wfIndex, screenIndex) {
       if (!window.fenbridgeData) return;
-      
+
       const wf = window.fenbridgeData[wfIndex];
       if (!wf || !wf.screens[screenIndex]) return;
 
@@ -1787,7 +2128,7 @@
       if (imgEl && loader) {
         loader.style.display = "block";
         imgEl.style.opacity = "0";
-        
+
         if (screen.isV2) {
           const rolePath = wf.role.toLowerCase();
           if (rolePath === "common") {
@@ -1800,7 +2141,7 @@
           // Legacy mapping logic for Phase 1/2 screens
           const isFarmer = wf.id === "workflow-1" || wf.title.includes("Farmer");
           const isBuyer = wf.id === "workflow-2" || wf.title.includes("Buyer");
-          
+
           let targetFolder = screen.folder;
           // Map legacy folders to modern image structure directories
           if (targetFolder === "role_selection") targetFolder = "choose_your_role";
@@ -1808,15 +2149,15 @@
           if (targetFolder === "profile_setup" || targetFolder === "buyer_profile_setup") targetFolder = "user_details";
           if (targetFolder === "bank_verification" || targetFolder === "buyer_financial_verification") targetFolder = "buyer_basic_details";
           if (targetFolder === "terms_privacy_consent" || targetFolder === "onboarding_progress_tracker") targetFolder = "you_re_all_set";
-          
+
           // Define source mapping overriding arrays
           const farmerSourceFolders = ["buyer_basic_details", "business_information_high_visibility_uploads", "business_address", "fenbridge_logo"];
           const buyerSourceFolders = ["farm_pond_details", "farm_pond_legal_details_high_visibility_uploads", "pond_address", "pond_geo_fencing"];
-          
+
           let targetRoleBase = wf.id === "workflow-2" || wf.title.includes("Buyer") ? "buyer_onboarding" : "farmer_onboarding";
           if (farmerSourceFolders.includes(targetFolder)) targetRoleBase = "farmer_onboarding";
           if (buyerSourceFolders.includes(targetFolder)) targetRoleBase = "buyer_onboarding";
-          
+
           imgEl.src = `./images/${targetRoleBase}/${targetFolder}/screen.png`;
         }
       }
@@ -1895,4 +2236,5 @@
     }
   </script>
 </body>
+
 </html>

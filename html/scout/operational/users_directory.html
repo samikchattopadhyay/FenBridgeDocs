@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Registered Users Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 7</div>
+  <h1 class="title">Registered Users Directory</h1>
+  <p class="desc">Browse and manage all farmers and poppers scout registered or is assigned to. Supports search/filter by role and status. Detailed profiles with inline edit actions for identity, ponds, bank accounts, and documents.</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Directory Screens</div>
+    <span class="step-count">3 Screens</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 1</span><span class="step-title" style="margin-left: 12px;">Combined Users List</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Browse all farmers and poppers scout registered or is assigned to.</div></div>
+      <div class="spec-block"><div class="spec-label">Features</div><ul class="spec-list"><li>Search bar (by name, mobile, ID)</li><li>Role filter chips: All / Farmer / Popper / Buyer (rare)</li><li>Status filter: Pending Approval / Active / Suspended</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Card Layout</div><ul class="spec-list"><li>Name, role pill (Farmer/Popper badge)</li><li>Mobile number</li><li>District</li><li>Last activity timestamp</li><li>Status indicator (Pending/Active/Suspended)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">FAB Action</div><div class="spec-value">"Register New User" floating button with role chooser (Farmer or Popper registration).</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 2</span><span class="step-title" style="margin-left: 12px;">Farmer Detail</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Tabs</div><ul class="spec-list">
+        <li><strong>Profile:</strong> Identity card, status, last activity</li>
+        <li><strong>Ponds:</strong> List of registered ponds with status</li>
+        <li><strong>Bank:</strong> Active bank account + penny-drop status</li>
+        <li><strong>Documents:</strong> Uploaded identity documents</li>
+        <li><strong>Activity:</strong> Chronological feed (bids, PO awards, lot verifications)</li>
+      </ul></div>
+      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Identity</li><li>Add Pond · Edit Pond · Deactivate Pond</li><li>Edit Bank · Retry Penny-Drop</li><li>Upload Documents</li><li>Update Language / Theme</li></ul></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 3</span><span class="step-title" style="margin-left: 12px;">Popper Detail</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Tabs</div><ul class="spec-list">
+        <li><strong>Profile:</strong> Business name, contact, GSTIN, FSSAI, status</li>
+        <li><strong>Warehouses:</strong> List of registered warehouses with fitness status</li>
+        <li><strong>Bank:</strong> Active bank account + penny-drop status</li>
+        <li><strong>Documents:</strong> Business & warehouse legal documents</li>
+        <li><strong>Activity:</strong> PO awards, spot offers, payment history</li>
+      </ul></div>
+      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Business Details</li><li>Add Warehouse · Edit Warehouse · Deactivate Warehouse</li><li>Edit Bank · Retry Penny-Drop</li><li>Upload / Update Documents</li><li>Update Language / Theme</li></ul></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Directory Features & User Hub Pattern</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Central Hub</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Users Directory is the scout's on-behalf management hub. One-stop for registering, editing, and monitoring farmers/poppers.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Inline Actions</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Quick actions (edit identity, add pond, update bank) directly from detail tabs. No separate edit screens for most actions.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Status Visibility</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Pending-approval users clearly marked. Activity feed shows recent transactions (bids, verifications, payments) for accountability.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
+        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">User list and profiles cached locally. Edits captured offline; sync via sync_queue when network available.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

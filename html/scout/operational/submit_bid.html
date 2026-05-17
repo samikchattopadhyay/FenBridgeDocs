@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Submit Bid On Behalf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 6</div>
+  <h1 class="title">Submit Bid On Behalf</h1>
+  <p class="desc">6-step wizard for submitting bids on buyer requirements on behalf of farmers/poppers. Filters by capability match, sets price and ready-by date, picks source pond/warehouse, and submits with Admin approval gate.</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Bid Submission Steps</div>
+    <span class="step-count">6 Steps</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Choose User</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Select farmer or popper to submit bid on behalf of.</div></div>
+      <div class="spec-block"><div class="spec-label">Data</div><div class="spec-value">Searchable list of active farmers/poppers scout has registered or is assigned to. Pending-approval users excluded.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">Open Bid Invitations</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">List requirements user is eligible to bid on.</div></div>
+      <div class="spec-block"><div class="spec-label">Eligibility Filters</div><ul class="spec-list"><li>Capability match (user's farm type / warehouse location / capacity)</li><li>Grade tags (user's registered grade tags vs requirement tags)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Card Layout</div><div class="spec-value">Show requirement details: buyer, product spec, qty needed, delivery window, bidding deadline. Soft highlight if near deadline.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Choose Invitation</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Single-tap selection from available invitations.</div></div>
+      <div class="spec-block"><div class="spec-label">Data</div><div class="spec-value">Requirement details populated for preview (buyer, product, qty, spec, delivery window).</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Price Offer & Ready-By Date</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture seller's bid price and production ready-by date.</div></div>
+      <div class="spec-block"><div class="spec-label">Data Inputs</div><ul class="spec-list"><li>Bid price (must be ≤ buyer's ceiling price)</li><li>Ready-by date (must be within buyer's delivery window)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Validation</div><div class="spec-value">Soft warnings on near-limit values (e.g., "Price is near ceiling" or "Ready date is near window end").</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Lot Reference (Fulfillment Source)</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Select which pond/warehouse user will fulfill from.</div></div>
+      <div class="spec-block"><div class="spec-label">Display</div><div class="spec-value">Cards of user's active sources (ponds for farmers, warehouses for poppers). Show area, capacity, recent activity.</div></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Must select exactly one source for bid fulfillment.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 6</span><span class="step-title" style="margin-left: 12px;">Confirm & Submit + Confirmation</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">What's Shown</div><ul class="spec-list"><li>Requirement summary (buyer, product, qty)</li><li>Bid price</li><li>Ready-by date</li><li>Source pond/warehouse</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Atomic Submit</div><div class="spec-value">Creates bids record (status: pending_approval). Records queued to sync_queue. Notifies Admin.</div></div>
+      <div class="spec-block"><div class="spec-label">Confirmation</div><div class="spec-value">Success state confirming bid submitted. Shows Admin approval required status. Single CTA back to Today Dashboard.</div></div>
+      <div class="spec-block"><div class="spec-label">Admin Gate</div><div class="spec-value">Bid in pending state until Admin approves. User cannot transact until approval.</div></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Bid Eligibility & Approval Flow</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Eligibility Filters</div>
+        <div class="spec-value">Capability match (location, capacity, farm type) + grade tag match. Eligible invitations only shown to eligible users.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Price Ceiling Enforcement</div>
+        <div class="spec-value">Bid price must be ≤ buyer's maximum. Soft warning if near limit; hard block if exceeding.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Admin Approval Gate</div>
+        <div class="spec-value">Bid created as pending_approval. User cannot see bid as active until Admin approves. Prevents premature commitments.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
+        <div class="spec-value">All data captured locally; sync via sync_queue. Invitations list cached locally.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

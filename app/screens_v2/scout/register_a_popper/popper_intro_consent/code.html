@@ -119,7 +119,7 @@
 <!-- TopAppBar Component -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant shadow-sm shadow-black/20">
     <div class="flex items-center gap-4">
-        <button onclick="window.location.href='../../scout_today_dashboard/code.html'" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+        <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
             <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
         </button>
         <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Intro &amp; Consent</h1>
@@ -133,9 +133,9 @@
 <div class="w-full bg-surface-container border-b border-outline-variant mt-16 px-margin-mobile py-3">
     <div class="max-w-2xl mx-auto">
         <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
-            <div class="h-full bg-primary transition-all duration-500" style="width: 5.8%;"></div>
+            <div class="h-full bg-primary transition-all duration-500" style="width: 5.6%;"></div>
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 1 of 17</span>
+                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 1 of 18</span>
             </div>
         </div>
     </div>
@@ -198,11 +198,11 @@
 </section>
     <!-- CTA Area -->
     <div class="mt-12 pb-12 flex gap-4">
-        <button disabled="" id="continue_btn" onclick="window.location.href='../popper_language_selection/code.html'" class="flex-grow bg-outline-variant text-on-surface-variant font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 cursor-not-allowed opacity-50 transition-all">
+        <button disabled="" id="continue_btn" onclick="window.location.href='../contact_person_identity/code.html'" class="flex-grow bg-outline-variant text-on-surface-variant font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 cursor-not-allowed opacity-50 transition-all">
             Continue
             <span class="material-symbols-outlined">arrow_forward</span>
         </button>
-        <button onclick="window.location.href='../../scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+        <button disabled="" id="save_draft_btn" onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant/40 font-label-md py-4 rounded-full uppercase tracking-wider cursor-not-allowed opacity-40 transition-all">
             Save Draft
         </button>
     </div>
@@ -216,14 +216,23 @@
 <script>
     document.getElementById('consent').addEventListener('change', function(e) {
         const btn = document.getElementById('continue_btn');
+        const draftBtn = document.getElementById('save_draft_btn');
         if (e.target.checked) {
             btn.disabled = false;
             btn.classList.remove('bg-outline-variant', 'text-on-surface-variant', 'cursor-not-allowed', 'opacity-50');
             btn.classList.add('bg-primary', 'text-on-primary', 'cursor-pointer', 'shadow-xl', 'shadow-primary/20', 'active:scale-95');
+            
+            draftBtn.disabled = false;
+            draftBtn.classList.remove('text-on-surface-variant/40', 'cursor-not-allowed', 'opacity-40');
+            draftBtn.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high', 'active:scale-95', 'cursor-pointer');
         } else {
             btn.disabled = true;
             btn.classList.add('bg-outline-variant', 'text-on-surface-variant', 'cursor-not-allowed', 'opacity-50');
             btn.classList.remove('bg-primary', 'text-on-primary', 'cursor-pointer', 'shadow-xl', 'shadow-primary/20', 'active:scale-95');
+            
+            draftBtn.disabled = true;
+            draftBtn.classList.add('text-on-surface-variant/40', 'cursor-not-allowed', 'opacity-40');
+            draftBtn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high', 'active:scale-95', 'cursor-pointer');
         }
     });
 </script>

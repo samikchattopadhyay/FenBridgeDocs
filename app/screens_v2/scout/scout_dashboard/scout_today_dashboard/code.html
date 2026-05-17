@@ -91,6 +91,8 @@
         }
         ::-webkit-scrollbar { display: none !important; }
         * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+        .no-scrollbar::-webkit-scrollbar { display: none !important; }
+        .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
     </style>
 </head>
 <body class="font-body-md text-body-md antialiased min-h-screen bg-background pb-32">
@@ -138,16 +140,16 @@
         <!-- Quick Actions Row -->
         <section class="space-y-4">
             <h3 class="font-label-md text-label-md text-on-surface-variant uppercase">Quick Actions</h3>
-            <div class="flex gap-3 overflow-x-auto no-scrollbar -mx-margin-mobile px-margin-mobile pb-2">
-                <button onclick="window.location.href='../../register_a_farmer/intro_consent/code.html'" class="flex-shrink-0 flex items-center gap-2 glass-card px-4 py-3 rounded-xl hover:bg-surface-container-high transition-colors active:scale-95">
+            <div class="flex gap-3 overflow-x-auto no-scrollbar -mx-margin-mobile px-margin-mobile pb-4 snap-x snap-mandatory">
+                <button onclick="window.location.href='../../register_a_farmer/intro_consent/code.html'" class="flex-shrink-0 flex items-center gap-2 glass-card px-4 py-3 rounded-xl hover:bg-surface-container-high transition-colors active:scale-95 snap-center">
                     <span class="material-symbols-outlined text-primary">person_add</span>
                     <span class="font-label-lg text-label-lg text-on-surface">Register Farmer</span>
                 </button>
-                <button onclick="window.location.href='../../register_a_popper/popper_intro_consent/code.html'" class="flex-shrink-0 flex items-center gap-2 glass-card px-4 py-3 rounded-xl hover:bg-surface-container-high transition-colors active:scale-95">
+                <button onclick="window.location.href='../../register_a_popper/popper_intro_consent/code.html'" class="flex-shrink-0 flex items-center gap-2 glass-card px-4 py-3 rounded-xl hover:bg-surface-container-high transition-colors active:scale-95 snap-center">
                     <span class="material-symbols-outlined text-secondary">factory</span>
                     <span class="font-label-lg text-label-lg text-on-surface">Register Popper</span>
                 </button>
-                <button onclick="window.location.href='../../submit_spot_offer_on_behalf/choose_user_for_spot_offer/code.html'" class="flex-shrink-0 flex items-center gap-2 glass-card px-4 py-3 rounded-xl hover:bg-surface-container-high transition-colors active:scale-95">
+                <button onclick="window.location.href='../../submit_spot_offer_on_behalf/choose_user_for_spot_offer/code.html'" class="flex-shrink-0 flex items-center gap-2 glass-card px-4 py-3 rounded-xl hover:bg-surface-container-high transition-colors active:scale-95 snap-center">
                     <span class="material-symbols-outlined text-tertiary">description</span>
                     <span class="font-label-lg text-label-lg text-on-surface">Submit Offer</span>
                 </button>

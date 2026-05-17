@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout Operations - Submit Spot Offer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
+      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
+    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
+    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
+    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
+    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .workflow-body { padding: 32px; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
+    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
+    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .step-body { padding: 24px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-list { list-style: none; }
+    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+  </style>
+</head>
+<body>
+
+<div class="header-banner">
+  <div class="tag">Workflow Module 6</div>
+  <h1 class="title">Submit Spot Offer</h1>
+  <p class="desc">6-step wizard for creating spot market listings on behalf of farmers/poppers. Selects source (pond/warehouse), captures lot details and optional photos, then self-assigns scout inspection visit to trigger verification workflow.</p>
+</div>
+
+<div class="workflow-grid">
+  <div class="workflow-header">
+    <div class="workflow-title">Spot Offer Steps</div>
+    <span class="step-count">6 Steps</span>
+  </div>
+  <div class="workflow-body">
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Choose User</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Select farmer or popper to list spot offer on behalf of.</div></div>
+      <div class="spec-block"><div class="spec-label">Data</div><div class="spec-value">Searchable list of active farmers/poppers scout has registered or is assigned to. Pending-approval users excluded (cannot list).</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">Choose Source</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Pick source pond (farmer) or warehouse (popper). Determines product type and verification path.</div></div>
+      <div class="spec-block"><div class="spec-label">Product Types</div><ul class="spec-list"><li>Farmer + Pond → Raw makhana seed (unprocessed)</li><li>Popper + Warehouse → Popped makhana (processed, graded)</li></ul></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Lot Details (Declared)</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture seller's claimed lot parameters. Non-binding declaration (replaced by scout verification).</div></div>
+      <div class="spec-block"><div class="spec-label">Raw Seed (Farmer)</div><ul class="spec-list"><li>Claimed quantity (kg)</li><li>Seed-grade parameters: size, maturity %, moisture %</li><li>Available-from date</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Popped Makhana (Popper)</div><ul class="spec-list"><li>Claimed quantity (kg + bag count)</li><li>Claimed grade (A/B/C)</li><li>Available-from date</li></ul></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Photos (Optional Declaration)</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Optional photographic declaration (non-binding visual hints for buyers). Replaced entirely by scout's verification photos as binding record.</div></div>
+      <div class="spec-block"><div class="spec-label">Input</div><div class="spec-value">Up to 4 photos from phone camera. Compression ≤1.5MB each.</div></div>
+      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Optional; scout's verification visit photos replace these as binding quality evidence.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Self-Assign Scout Visit</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Scout schedules inspection visit that turns offer into verified, sealed lot (linking to full Lot Verification workflow).</div></div>
+      <div class="spec-block"><div class="spec-label">Options</div><ul class="spec-list"><li>Date picker (defaults to today) — schedule future inspection</li><li>"Inspect now" shortcut — immediate verification (same day)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Effect</div><div class="spec-value">Creates scout_tasks record for Lot Verification; spot_offers status → pending_verification. Buyer cannot act until verified.</div></div>
+    </div></div></div>
+
+    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 6</span><span class="step-title" style="margin-left: 12px;">Review & Submit + Confirmation</span></div></div><div class="step-body"><div class="specs-grid">
+      <div class="spec-block"><div class="spec-label">What's Shown</div><ul class="spec-list"><li>User summary (seller)</li><li>Source (pond/warehouse)</li><li>Lot details recap</li><li>Scheduled verification visit date</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Atomic Submit</div><div class="spec-value">Creates spot_offers record (status: pending_verification) and verification task. Records queued to sync_queue.</div></div>
+      <div class="spec-block"><div class="spec-label">Confirmation</div><div class="spec-value">Success state confirming offer created and verification scheduled for [date]. Single CTA back to Today Dashboard.</div></div>
+    </div></div></div>
+
+  </div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto;">
+  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Workflow Integration & Data Flow</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Status Progression</div>
+        <div class="spec-value">Offer created as pending_verification → Scout inspects (Lot Verification workflow) → Sealed → Listed in spot market → Buyers can view.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Photo Handling</div>
+        <div class="spec-value">Declared photos are non-binding hints. Scout verification photos (from Lot Verification workflow) replace these as authoritative quality record.</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Admin Approval</div>
+        <div class="spec-value">Spot offer created without Admin gate. Verification task triggers Lot Verification workflow (which has no approval gate for seal application).</div>
+      </div>
+      <div>
+        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
+        <div class="spec-value">All data captured locally; photos compressed during capture. Full sync via sync_queue when network available.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

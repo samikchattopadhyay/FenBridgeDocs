@@ -158,22 +158,74 @@
     // Shared Auth Flow (Common)
     "splash": "common/login/code.html",
     "login": "common/choose_role/code.html", 
-    "choose_role": "scout/scout_dashboard/scout_today_dashboard/code.html"
+    "choose_role": "scout/scout_dashboard/scout_today_dashboard/code.html",
+
+    // Scout Farmer Onboarding Flow (Step 1 to 15)
+    "register_a_farmer/intro_consent": "../farmer_identity/code.html",
+    "register_a_farmer/farmer_identity": "../verify_mobile_send/code.html",
+    "register_a_farmer/verify_mobile_send": "../verify_mobile_entry/code.html",
+    "register_a_farmer/verify_mobile_entry": "../language_selection/code.html",
+    "register_a_farmer/language_selection": "../confirm_role_checkpoint/code.html",
+    "register_a_farmer/confirm_role_checkpoint": "../residential_address/code.html",
+    "register_a_farmer/residential_address": "../pond_details/code.html",
+    "register_a_farmer/pond_details": "../pond_documents/code.html",
+    "register_a_farmer/pond_documents": "../pond_address/code.html",
+    "register_a_farmer/pond_address": "../pond_geo_fencing/code.html",
+    "register_a_farmer/pond_geo_fencing": "../bank_account_details/code.html",
+    "register_a_farmer/bank_account_details": "../theme_preference/code.html",
+    "register_a_farmer/theme_preference": "../review_submit/code.html",
+    "register_a_farmer/review_submit": "../submission_confirmation/code.html",
+    "register_a_farmer/submission_confirmation": "../../scout_dashboard/scout_today_dashboard/code.html",
+
+    // Scout Popper Onboarding Flow (Step 1 to 18)
+    "register_a_popper/popper_intro_consent": "../contact_person_identity/code.html",
+    "register_a_popper/contact_person_identity": "../popper_mobile_verification_send/code.html",
+    "register_a_popper/popper_mobile_verification_send": "../popper_mobile_verification/code.html",
+    "register_a_popper/popper_mobile_verification": "../popper_language_selection/code.html",
+    "register_a_popper/popper_language_selection": "../confirm_popper_role/code.html",
+    "register_a_popper/confirm_popper_role": "../popper_address_details/code.html",
+    "register_a_popper/popper_address_details": "../business_basic_details/code.html",
+    "register_a_popper/business_basic_details": "../business_legal_documents/code.html",
+    "register_a_popper/business_legal_documents": "../business_address_details/code.html",
+    "register_a_popper/business_address_details": "../first_warehouse_address/code.html",
+    "register_a_popper/first_warehouse_address": "../first_warehouse_details/code.html",
+    "register_a_popper/first_warehouse_details": "../first_warehouse_photos/code.html",
+    "register_a_popper/first_warehouse_photos": "../first_warehouse_geofencing/code.html",
+    "register_a_popper/first_warehouse_geofencing": "../popper_bank_account_details/code.html",
+    "register_a_popper/popper_bank_account_details": "../popper_theme_preference/code.html",
+    "register_a_popper/popper_theme_preference": "../popper_review_submit/code.html",
+    "register_a_popper/popper_review_submit": "../popper_registration_confirmation/code.html",
+    "register_a_popper/popper_registration_confirmation": "../../scout_dashboard/scout_today_dashboard/code.html"
   };
 
   function getFolderContext() {
-    const segments = window.location.pathname.split("/");
+    const pathname = window.location.pathname;
+    const segments = pathname.split("/");
+    let folder = "";
+    let parent = "";
     // Usually code.html is the last segment, folder name is second to last
     for (let i = segments.length - 1; i >= 0; i--) {
       if (segments[i] && segments[i].toLowerCase() !== "code.html" && segments[i].toLowerCase() !== "index.html") {
         try {
-          return decodeURIComponent(segments[i]).toLowerCase();
+          folder = decodeURIComponent(segments[i]).toLowerCase();
         } catch(e) {
-          return segments[i].toLowerCase();
+          folder = segments[i].toLowerCase();
         }
+        if (i > 0) {
+          try {
+            parent = decodeURIComponent(segments[i-1]).toLowerCase();
+          } catch(e) {
+            parent = segments[i-1].toLowerCase();
+          }
+        }
+        break;
       }
     }
-    return "";
+    // Prepend parent directory name if it matches key flows to prevent collision of similar steps
+    if (parent === "register_a_farmer" || parent === "register_a_popper" || parent === "profile_settings") {
+      return parent + "/" + folder;
+    }
+    return folder;
   }
 
   function getScreensBase() {
@@ -535,6 +587,13 @@
       const el = e.target.closest("button, a, .group, [data-icon='arrow_back'], .material-symbols-outlined");
       if (!el) return;
 
+      // Respect standard disabled attribute for interactive elements to prevent bypassed routing
+      if (el.hasAttribute("disabled") || el.disabled) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
       // Ensure that if a generic group section container wraps internal interactive action buttons/links, clicking the empty whitespace area does not trigger section-wide routing
       if (el.classList.contains("group") && el.querySelector("button, a")) {
         if (!e.target.closest("button, a")) {
@@ -589,8 +648,7 @@
         }
       }
 
-      e.preventDefault();
-      e.stopPropagation();
+      const dynamicNextUrl = resolveNextTarget();
 
       // Handle structural role choices dynamically
       if (txt.includes("farmer") || txt.includes("i'm a farmer")) {
@@ -633,6 +691,8 @@
 
       // Back behavior mapping
       if (icon === "arrow_back" || txt === "back" || txt.includes("arrow_back") || txt.includes("◀")) {
+        e.preventDefault();
+        e.stopPropagation();
         if (window.history.length > 1) {
           window.history.back();
         } else if (window.parent && window.parent !== window) {
@@ -644,6 +704,8 @@
       // Forward routing mapping
       const baseScreens = getScreensBase();
       if (icon === "dashboard" || txt.includes("dashboard")) {
+        e.preventDefault();
+        e.stopPropagation();
         if (window.location.pathname.includes("buyer_profile") || (localStorage.getItem("fenbridge_active_role") === "buyer")) {
           window.location.href = baseScreens + "operations/my_active_pos/code.html";
         } else {
@@ -652,50 +714,74 @@
         return;
       }
       if (txt.includes("add account") || txt.includes("bank account details") || txt.includes("manage bank accounts")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/bank_account_details/code.html";
         return;
       }
       if (txt.includes("add tags") || txt.includes("capability tags")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/capability_tags/code.html";
         return;
       }
       if (txt.includes("link whatsapp") || txt.includes("link now")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/link_whatsapp/code.html";
         return;
       }
       if (txt.includes("edit farm/pond details") || txt.includes("manage ponds") || txt.includes("view all ponds")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/manage_ponds/code.html";
         return;
       }
       if (txt.includes("add pond") || (txt === "add" && window.location.pathname.includes("manage_ponds"))) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "buyer_onboarding/farm_pond_details/code.html";
         return;
       }
       if (txt.includes("edit business details")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/edit_business_details/code.html";
         return;
       }
       if (txt.includes("delivery addresses")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/delivery_addresses/code.html";
         return;
       }
       if (txt.includes("uploaded documents")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/uploaded_documents/code.html";
         return;
       }
       if (txt.includes("settings")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/settings/code.html";
         return;
       }
       if (txt.includes("notification preferences")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/notification_preferences/code.html";
         return;
       }
       if (txt.includes("help & support") || txt.includes("help support") || txt.includes("request an update") || txt.includes("something missing")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "profile/help_support/code.html";
         return;
       }
       if (txt.includes("logout")) {
+        e.preventDefault();
+        e.stopPropagation();
         window.location.href = baseScreens + "farmer_onboarding/welcome_to_fenbridge/code.html";
         return;
       }
@@ -706,8 +792,10 @@
         return;
       }
 
-      const dynamicNextUrl = resolveNextTarget();
+      // If we have a dynamic route from flowMap, intercept and navigate!
       if (dynamicNextUrl) {
+        e.preventDefault();
+        e.stopPropagation();
         el.style.transform = "scale(0.96)";
         el.style.transition = "transform 0.1s";
         setTimeout(() => {
@@ -715,10 +803,9 @@
           window.location.href = dynamicNextUrl;
         }, 120);
       } else {
-        console.warn("Target unmatched for folder:", currentFolder);
-        if (window.parent && window.parent !== window) {
-          window.parent.postMessage({ type: "REQUEST_NEXT_ROUTE", current: currentFolder }, "*");
-        }
+        // If there's no dynamic route, DO NOT prevent default behavior!
+        // Let standard inline onclick or standard href work natively!
+        console.log("No dynamic target matched for folder:", currentFolder, "- allowing native action");
       }
     });
   }
