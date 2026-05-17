@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,7 +11,8 @@
       --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    .content-wrapper { padding: 40px 48px 96px; }
     .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
     .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
@@ -32,10 +33,20 @@
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-list { list-style: none; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
+    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
   </style>
 </head>
 <body>
+
+<div class="address-bar">
+  <div class="address-bar-icon">📁</div>
+  <div class="address-bar-path" id="address-path">html/scout/operational/seal_application.html</div>
+</div>
+
+<div class="content-wrapper">
 
 <div class="header-banner">
   <div class="tag">Workflow Module 4</div>
@@ -52,36 +63,38 @@
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Scan Seal ID</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture unique numbered seal identity for tamper-evident tracking and dispute resolution.</div></div>
-      <div class="spec-block"><div class="spec-label">Input Method</div><ul class="spec-list"><li>Barcode / QR code scan, OR</li><li>Manual 10–15 digit seal ID entry</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Input Method</div><ul class="spec-list"><li>Barcode / QR code scan, OR</li><li>Manual 10â€“15 digit seal ID entry</li></ul></div>
       <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Seal ID must be unique per application; duplicate detection prevents reuse.</div></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">GPS Lock & Accuracy</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture current GPS coordinates with accuracy reading for chain-of-custody proof.</div></div>
-      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>GPS coordinates (latitude, longitude)</li><li>Accuracy in meters (e.g., ±10m)</li><li>Timestamp of lock</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>GPS coordinates (latitude, longitude)</li><li>Accuracy in meters (e.g., Â±10m)</li><li>Timestamp of lock</li></ul></div>
       <div class="spec-block"><div class="spec-label">Business Requirement</div><div class="spec-value">Proves lot was at specific location when sealed. Accuracy reading shows confidence level; warns if >50m variance.</div></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Storage Check at Seal Time</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Verify lot meets storage prerequisites before sealing and listing.</div></div>
-      <div class="spec-block"><div class="spec-label">Checklist (4 items)</div><ul class="spec-list"><li>Bags off-floor (on wooden pallets/platforms) — Pass / Fail</li><li>Lined / barrier packaging (moisture protection) — Pass / Fail</li><li>Segregated as BM inventory (not farmer's) — Pass / Fail</li><li>No pest/rodent signs — Pass / Fail</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Checklist (4 items)</div><ul class="spec-list"><li>Bags off-floor (on wooden pallets/platforms) â€” Pass / Fail</li><li>Lined / barrier packaging (moisture protection) â€” Pass / Fail</li><li>Segregated as BM inventory (not farmer's) â€” Pass / Fail</li><li>No pest/rodent signs â€” Pass / Fail</li></ul></div>
       <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">All 4 items must pass before seal applied. Any fail prevents sealing; escalates to Admin review.</div></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Evidence Photos</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Mandatory photographic evidence of applied seal and storage state.</div></div>
       <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Applied seal (close-up of seal on lot/net)</li><li>Bagged lot (showing bags, seal placement)</li><li>Wide warehouse view (storage environment context)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Photo Specs</div><div class="spec-value">3+ mandatory; compress ≤1.5MB each; GPS-stamped from seal location.</div></div>
+      <div class="spec-block"><div class="spec-label">Photo Specs</div><div class="spec-value">3+ mandatory; compress â‰¤1.5MB each; GPS-stamped from seal location.</div></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Shelf-Life & Spot Market Listing</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Shelf-Life Selection</div><ul class="spec-list"><li>30 days — Standard window</li><li>45 days — Extended (premium possible)</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Shelf-Life Selection</div><ul class="spec-list"><li>30 days â€” Standard window</li><li>45 days â€” Extended (premium possible)</li></ul></div>
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Caps on spot market listing; controls BM's risk window and buyer confidence (fresher product).</div></div>
-      <div class="spec-block"><div class="spec-label">Listing Price</div><ul class="spec-list"><li>Reference price displayed (derived from buyer demand signals)</li><li>Scout sets premium % (1–10% range)</li><li>Total listing price auto-calculated and displayed</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Listing Price</div><ul class="spec-list"><li>Reference price displayed (derived from buyer demand signals)</li><li>Scout sets premium % (1â€“10% range)</li><li>Total listing price auto-calculated and displayed</li></ul></div>
       <div class="spec-block"><div class="spec-label">Effect on Submit</div><div class="spec-value">Lot immediately listed in spot market. Status: sealed_ready_to_offer. Buyers see lot within 5 minutes of sync.</div></div>
     </div></div></div>
 
   </div>
+</div>
+
 </div>
 
 <div style="max-width: 1280px; margin: 0 auto;">
@@ -107,6 +120,28 @@
     </div>
   </div>
 </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+    });
+  </script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pathElement = document.getElementById('address-path');
+    if (pathElement) {
+      const pathname = window.location.pathname;
+      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    }
+  });
+</script>
 
 </body>
 </html>

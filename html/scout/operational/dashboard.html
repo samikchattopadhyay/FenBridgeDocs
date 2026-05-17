@@ -26,7 +26,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-base); color: var(--text-main);
-      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 48px 96px;
+      font-family: 'Inter', sans-serif; line-height: 1.6;
     }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-base); }
@@ -51,7 +51,7 @@
       max-width: 1280px; margin: 0 auto 48px;
       background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
       border: 1px solid var(--border-color); border-radius: 16px;
-      padding: 20px 36px; position: sticky; top: 20px; z-index: 100;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 100;
       box-shadow: 0 20px 50px rgba(0,0,0,0.7);
     }
     .stepper-nodes {
@@ -163,22 +163,24 @@
     .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
     .modal-body { flex: 1; width: 100%; height: 100%; }
     .modal-body iframe { width: 100%; height: 100%; border: none; }
-    .address-bar { background: #141416; border: 1px solid #27272a; border-radius: 8px; padding: 10px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 12px; max-width: 1280px; margin-left: auto; margin-right: auto; }
-    .address-bar-icon { font-size: 14px; color: #06b6d4; }
-    .address-bar-path { font-family: 'Inter', sans-serif; font-size: 13px; color: #9ca3af; word-break: break-all; }
+    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .content-wrapper { padding: 40px 48px 96px; }
   </style>
 </head>
 <body>
 
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/dashboard.html</div>
+  </div>
+
+  <div class="content-wrapper">
   <div class="header-banner">
     <div class="tag">Workflow Module 2</div>
     <h1 class="title">Scout Dashboard & Tasks</h1>
     <p class="desc">Mobile-first assignment hub for field agents, surfacing real-time lot inspections and warehouse audits with geofencing and priority logic.</p>
-  </div>
-
-  <div class="address-bar">
-    <div class="address-bar-icon">📁</div>
-    <div class="address-bar-path" id="address-path">html/scout/operational/dashboard.html</div>
   </div>
 
   <div class="stepper-panel-container">
@@ -189,14 +191,10 @@
       </a>
       <a href="#step-02" class="stepper-node">
         <span class="node-num">02</span>
-        <span class="node-label">Task Context</span>
+        <span class="node-label">Overdue Alerts</span>
       </a>
       <a href="#step-03" class="stepper-node">
         <span class="node-num">03</span>
-        <span class="node-label">Overdue Alerts</span>
-      </a>
-      <a href="#step-04" class="stepper-node">
-        <span class="node-num">04</span>
         <span class="node-label">Notifications</span>
       </a>
     </div>
@@ -205,7 +203,7 @@
   <div class="workflow-group-block">
     <div class="workflow-group-header">
       <div class="workflow-group-title">Screens Inventory</div>
-      <span class="step-count-pill">4 Screens</span>
+      <span class="step-count-pill">3 Screens</span>
     </div>
     <div class="workflow-group-body">
       
@@ -279,75 +277,13 @@ ORDER BY priority DESC, scheduled_date ASC;</div>
       <!-- Screen 2 -->
       <div class="flow-step-card" id="step-02">
         <div class="step-header">
-          <div class="step-title"><span class="step-badge">Screen 2</span>Task Detail Bottom Sheet</div>
-          <span class="step-folder-ref">task_detail_sheet</span>
+          <div class="step-title"><span class="step-badge">Screen 2</span>Overdue Tasks Screen</div>
+          <span class="step-folder-ref">overdue_tasks_screen</span>
         </div>
         <div class="step-body">
           <div class="step-left-pane">
             <div class="card-image-viewport">
-              <img class="preview-screen-img" src="../../../app/screens_v2/scout/scout_dashboard/task_detail_sheet/screen.png" />
-            </div>
-          </div>
-          <div class="step-right-pane">
-            <div class="specs-grid">
-              <div class="spec-block">
-                <div class="spec-label">Purpose</div>
-                <div class="spec-value">Secondary context layer providing specific details (Who, Where, What) before a scout commits to a multi-step inspection workflow.</div>
-              </div>
-              <div class="spec-block">
-                <div class="spec-label">Business Requirement</div>
-                <div class="spec-value">Must display warehouse contact details, previous fitness status, and PO constraints (for verification tasks). Prevents accidental entry into wrong lots.</div>
-              </div>
-              <div class="spec-block">
-                <div class="spec-label">User Experience (UX)</div>
-                <div class="spec-value">Standard Bottom Sheet (~65% height). Header with Task Title. Details sections: Location (with map link), Contact (click-to-call), and Historical Notes.</div>
-              </div>
-              <div class="spec-block">
-                <div class="spec-label">User Actions</div>
-                <ul class="spec-list">
-                  <li><strong>Start Task</strong>: Redirects to specific workflow (Fitness/Verification/etc).</li>
-                  <li><strong>Call Contact</strong>: Opens native dialer.</li>
-                  <li><strong>Directions</strong>: Opens Google Maps/Apple Maps to warehouse GPS.</li>
-                </ul>
-              </div>
-              <div class="spec-block">
-                <div class="spec-label">Technical Details</div>
-                <div class="spec-value">Hydrates from `scout_tasks` joined with `warehouses`, `poppers`, and `lot_seals`. Checks `sync_status` before allowing "Start".</div>
-              </div>
-              <div class="spec-block">
-                <div class="spec-label">Design Details</div>
-                <ul class="spec-list">
-                  <li>Rounded top corners (20dp radius).</li>
-                  <li>Cyan primary CTA at bottom.</li>
-                  <li>Iconography for contact and navigation.</li>
-                </ul>
-              </div>
-              <div class="spec-block full-width">
-                <div class="spec-label">Database Schema</div>
-                <div class="db-schema-box">SELECT t.*, w.address, w.contact_no, l.seal_no 
-FROM scout_tasks t 
-JOIN warehouses w ON t.warehouse_id = w.id 
-LEFT JOIN lots l ON t.lot_id = l.id 
-WHERE t.id = $1;</div>
-              </div>
-            </div>
-            <div class="step-actions">
-              <a href="../../../app/screens_v2/scout/scout_dashboard/task_detail_bottom_sheet/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Screen 3 -->
-      <div class="flow-step-card" id="step-03">
-        <div class="step-header">
-          <div class="step-title"><span class="step-badge">Screen 3</span>Overdue Tasks Screen</div>
-          <span class="step-folder-ref">overdue_assignments</span>
-        </div>
-        <div class="step-body">
-          <div class="step-left-pane">
-            <div class="card-image-viewport">
-              <img class="preview-screen-img" src="../../../app/screens_v2/scout/scout_dashboard/overdue_assignments/screen.png" />
+              <img class="preview-screen-img" src="../../../app/screens_v2/scout/scout_dashboard/overdue_tasks_screen/screen.png" />
             </div>
           </div>
           <div class="step-right-pane">
@@ -398,10 +334,10 @@ WHERE t.id = $1;</div>
         </div>
       </div>
 
-      <!-- Screen 4 -->
-      <div class="flow-step-card" id="step-04">
+      <!-- Screen 3 -->
+      <div class="flow-step-card" id="step-03">
         <div class="step-header">
-          <div class="step-title"><span class="step-badge">Screen 4</span>Notifications Center</div>
+          <div class="step-title"><span class="step-badge">Screen 3</span>Notifications Center</div>
           <span class="step-folder-ref">scout_notifications</span>
         </div>
         <div class="step-body">
@@ -477,6 +413,7 @@ WHERE t.id = $1;</div>
       </div>
       <div class="modal-body"><iframe id="modal-iframe" src=""></iframe></div>
     </div>
+  </div>
   </div>
 
   <script>

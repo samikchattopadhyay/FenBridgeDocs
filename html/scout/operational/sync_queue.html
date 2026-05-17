@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,7 +11,8 @@
       --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    .content-wrapper { padding: 40px 48px 96px; }
     .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
     .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
@@ -26,10 +27,20 @@
     .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; margin-top: 12px; }
     .spec-list { list-style: none; }
     .spec-list li { position: relative; padding-left: 16px; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
-    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
+    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
   </style>
 </head>
 <body>
+
+<div class="address-bar">
+  <div class="address-bar-icon">📁</div>
+  <div class="address-bar-path" id="address-path">html/scout/operational/sync_queue.html</div>
+</div>
+
+<div class="content-wrapper">
 
 <div class="header-banner">
   <div class="tag">Workflow Module 7</div>
@@ -73,8 +84,8 @@
         <div class="card-desc">Scout can manage sync workflow.</div>
         <div class="spec-label">Available Actions</div>
         <ul class="spec-list">
-          <li>Sync Now button (top) — force immediate upload of all waiting items</li>
-          <li>Tap conflicted item → resolution screen (see next)</li>
+          <li>Sync Now button (top) â€” force immediate upload of all waiting items</li>
+          <li>Tap conflicted item â†’ resolution screen (see next)</li>
           <li>Pull-to-refresh for manual refresh</li>
         </ul>
       </div>
@@ -144,7 +155,7 @@
         <div class="card-desc">Photos compressed during capture for sync efficiency.</div>
         <div class="spec-label">Compression</div>
         <ul class="spec-list">
-          <li>Each photo compressed to ≤1.5MB at capture time</li>
+          <li>Each photo compressed to â‰¤1.5MB at capture time</li>
           <li>Compression happens locally (no wait for network)</li>
           <li>Original full-res stored locally; compressed version synced</li>
         </ul>
@@ -194,6 +205,18 @@
   </div>
 
 </div>
+
+</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+    });
+  </script>
 
 </body>
 </html>

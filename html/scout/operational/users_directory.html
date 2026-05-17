@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,7 +11,8 @@
       --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    .content-wrapper { padding: 40px 48px 96px; }
     .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
     .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
@@ -32,10 +33,20 @@
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-list { list-style: none; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
+    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
   </style>
 </head>
 <body>
+
+<div class="address-bar">
+  <div class="address-bar-icon">📁</div>
+  <div class="address-bar-path" id="address-path">html/scout/operational/users_directory.html</div>
+</div>
+
+<div class="content-wrapper">
 
 <div class="header-banner">
   <div class="tag">Workflow Module 7</div>
@@ -65,7 +76,7 @@
         <li><strong>Documents:</strong> Uploaded identity documents</li>
         <li><strong>Activity:</strong> Chronological feed (bids, PO awards, lot verifications)</li>
       </ul></div>
-      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Identity</li><li>Add Pond · Edit Pond · Deactivate Pond</li><li>Edit Bank · Retry Penny-Drop</li><li>Upload Documents</li><li>Update Language / Theme</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Identity</li><li>Add Pond Â· Edit Pond Â· Deactivate Pond</li><li>Edit Bank Â· Retry Penny-Drop</li><li>Upload Documents</li><li>Update Language / Theme</li></ul></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 3</span><span class="step-title" style="margin-left: 12px;">Popper Detail</span></div></div><div class="step-body"><div class="specs-grid">
@@ -76,10 +87,12 @@
         <li><strong>Documents:</strong> Business & warehouse legal documents</li>
         <li><strong>Activity:</strong> PO awards, spot offers, payment history</li>
       </ul></div>
-      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Business Details</li><li>Add Warehouse · Edit Warehouse · Deactivate Warehouse</li><li>Edit Bank · Retry Penny-Drop</li><li>Upload / Update Documents</li><li>Update Language / Theme</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Inline Actions</div><ul class="spec-list"><li>Edit Business Details</li><li>Add Warehouse Â· Edit Warehouse Â· Deactivate Warehouse</li><li>Edit Bank Â· Retry Penny-Drop</li><li>Upload / Update Documents</li><li>Update Language / Theme</li></ul></div>
     </div></div></div>
 
   </div>
+</div>
+
 </div>
 
 <div style="max-width: 1280px; margin: 0 auto;">
@@ -105,6 +118,17 @@
     </div>
   </div>
 </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+    });
+  </script>
 
 </body>
 </html>

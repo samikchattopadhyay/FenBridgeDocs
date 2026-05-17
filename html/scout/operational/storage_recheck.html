@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,7 +11,8 @@
       --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 40px 48px 96px; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    .content-wrapper { padding: 40px 48px 96px; }
     .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
     .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
@@ -32,15 +33,25 @@
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-list { list-style: none; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
+    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
+    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
   </style>
 </head>
 <body>
 
+<div class="address-bar">
+  <div class="address-bar-icon">📁</div>
+  <div class="address-bar-path" id="address-path">html/scout/operational/storage_recheck.html</div>
+</div>
+
+<div class="content-wrapper">
+
 <div class="header-banner">
   <div class="tag">Workflow Module 4</div>
   <h1 class="title">Storage Re-check</h1>
-  <p class="desc">Mid-window lot condition verification. Light check at ~50% shelf-life for unsealed lots awaiting buyers. Verifies seal/net integrity, dry conditions, no pest signs, and determines outcome (Clean → Continue listing / Anomaly → Re-inspect / Void lot).</p>
+  <p class="desc">Mid-window lot condition verification. Light check at ~50% shelf-life for unsealed lots awaiting buyers. Verifies seal/net integrity, dry conditions, no pest signs, and determines outcome (Clean â†’ Continue listing / Anomaly â†’ Re-inspect / Void lot).</p>
 </div>
 
 <div class="workflow-grid">
@@ -57,33 +68,35 @@
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">Seal & Net Integrity</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Verify seal has not been broken or tampered with; assess net condition.</div></div>
-      <div class="spec-block"><div class="spec-label">Assessment Items</div><ul class="spec-list"><li>Seal intact (visual inspection) — Pass / Fail</li><li>Seal ID readable — Pass / Fail</li><li>Net coverage complete (no tears/gaps) — Pass / Fail</li><li>Evidence: 1 photo of seal + 1 of net condition</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Assessment Items</div><ul class="spec-list"><li>Seal intact (visual inspection) â€” Pass / Fail</li><li>Seal ID readable â€” Pass / Fail</li><li>Net coverage complete (no tears/gaps) â€” Pass / Fail</li><li>Evidence: 1 photo of seal + 1 of net condition</li></ul></div>
       <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">All three must pass. Any fail flags lot for escalation to Admin/Re-inspection.</div></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Storage Conditions</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Light assessment of storage environment (not full warehouse fitness check).</div></div>
-      <div class="spec-block"><div class="spec-label">Checklist (3 items)</div><ul class="spec-list"><li>Lot stored dry (no moisture, visible water) — Pass / Fail</li><li>Lot off-floor (on pallet/platform) — Pass / Fail</li><li>No pest/rodent signs visible — Pass / Fail</li></ul></div>
+      <div class="spec-block"><div class="spec-label">Checklist (3 items)</div><ul class="spec-list"><li>Lot stored dry (no moisture, visible water) â€” Pass / Fail</li><li>Lot off-floor (on pallet/platform) â€” Pass / Fail</li><li>No pest/rodent signs visible â€” Pass / Fail</li></ul></div>
       <div class="spec-block"><div class="spec-label">Evidence</div><div class="spec-value">1 wide-angle photo showing lot position in warehouse.</div></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Evidence Photos</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Photographic evidence supporting re-check assessment.</div></div>
       <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Close-up of seal</li><li>Net condition detail</li><li>Lot position in warehouse (wide)</li><li>Optional: anomaly detail if found</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Specs</div><div class="spec-value">Minimum 3 photos mandatory; compress ≤1.5MB each; GPS-stamped.</div></div>
+      <div class="spec-block"><div class="spec-label">Specs</div><div class="spec-value">Minimum 3 photos mandatory; compress â‰¤1.5MB each; GPS-stamped.</div></div>
     </div></div></div>
 
     <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Outcome Determination</span></div></div><div class="step-body"><div class="specs-grid">
       <div class="spec-block"><div class="spec-label">Three Outcomes (Computed / Scout Choose)</div><ul class="spec-list">
-        <li><strong>CLEAN:</strong> Seal intact, net good, conditions dry → Lot continues listing in spot market</li>
-        <li><strong>ANOMALY:</strong> Seal/net issue OR storage concern → Routes to Re-inspection workflow; Admin notified</li>
-        <li><strong>VOID:</strong> Critical failure (broken seal, major damage, pest infestation) → Lot removed from market; warehouse fitness escalated</li>
+        <li><strong>CLEAN:</strong> Seal intact, net good, conditions dry â†’ Lot continues listing in spot market</li>
+        <li><strong>ANOMALY:</strong> Seal/net issue OR storage concern â†’ Routes to Re-inspection workflow; Admin notified</li>
+        <li><strong>VOID:</strong> Critical failure (broken seal, major damage, pest infestation) â†’ Lot removed from market; warehouse fitness escalated</li>
       </ul></div>
       <div class="spec-block"><div class="spec-label">Submission</div><div class="spec-value">Scout selects outcome, adds optional notes (max 500 chars). Atomic submit creates re_check record; queued to sync_queue.</div></div>
       <div class="spec-block"><div class="spec-label">Post-Submit</div><ul class="spec-list"><li>CLEAN: Lot refresh timestamp updated; continues visible in spot market</li><li>ANOMALY: Triggers re_inspection task; lot status paused</li><li>VOID: Lot status voided; warehouse fitness reviewed by Admin</li></ul></div>
     </div></div></div>
 
   </div>
+</div>
+
 </div>
 
 <div style="max-width: 1280px; margin: 0 auto;">
@@ -109,6 +122,28 @@
     </div>
   </div>
 </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+    });
+  </script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pathElement = document.getElementById('address-path');
+    if (pathElement) {
+      const pathname = window.location.pathname;
+      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    }
+  });
+</script>
 
 </body>
 </html>

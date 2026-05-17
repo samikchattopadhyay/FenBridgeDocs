@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -26,8 +26,9 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-base); color: var(--text-main);
-      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 48px 96px;
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
     }
+    .content-wrapper { padding: 40px 48px 96px; }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-base); }
     ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
@@ -136,7 +137,7 @@
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-list { list-style: none; padding-left: 0; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
+    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
 
     .db-schema-box {
       background: #000; border: 1px solid var(--border-color); border-radius: 6px;
@@ -163,42 +164,51 @@
     .modal-close { background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; }
     .modal-body { flex: 1; width: 100%; height: 100%; }
     .modal-body iframe { width: 100%; height: 100%; border: none; }
+    .address-bar { background: #121212; border-bottom: 1px solid var(--border-color); padding: 12px 16px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
   </style>
 </head>
 <body>
 
-  <div class="header-banner">
-    <div class="tag">Workflow Module 3</div>
-    <h1 class="title">Warehouse Fitness Check</h1>
-    <p class="desc">Comprehensive multi-point infrastructure audit and GPS arrival verification to ensure storage nodes meet FenBridge quality and safety standards.</p>
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/fitness.html</div>
   </div>
 
-  <div class="stepper-panel-container">
-    <div class="stepper-nodes">
-      <a href="#step-01" class="stepper-node">
-        <span class="node-num">01</span>
-        <span class="node-label">Arrival & GPS</span>
-      </a>
-      <a href="#step-02" class="stepper-node">
-        <span class="node-num">02</span>
-        <span class="node-label">Facilities</span>
-      </a>
-      <a href="#step-03" class="stepper-node">
-        <span class="node-num">03</span>
-        <span class="node-label">Safety</span>
-      </a>
-      <a href="#step-04" class="stepper-node">
-        <span class="node-num">04</span>
-        <span class="node-label">Verdict</span>
-      </a>
-      <a href="#step-05" class="stepper-node">
-        <span class="node-num">05</span>
-        <span class="node-label">Done</span>
-      </a>
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <div class="tag">Workflow Module 3</div>
+      <h1 class="title">Warehouse Fitness Check</h1>
+      <p class="desc">Comprehensive multi-point infrastructure audit and GPS arrival verification to ensure storage nodes meet FenBridge quality and safety standards.</p>
     </div>
-  </div>
 
-  <div class="workflow-group-block">
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node">
+          <span class="node-num">01</span>
+          <span class="node-label">Arrival & GPS</span>
+        </a>
+        <a href="#step-02" class="stepper-node">
+          <span class="node-num">02</span>
+          <span class="node-label">Facilities</span>
+        </a>
+        <a href="#step-03" class="stepper-node">
+          <span class="node-num">03</span>
+          <span class="node-label">Safety</span>
+        </a>
+        <a href="#step-04" class="stepper-node">
+          <span class="node-num">04</span>
+          <span class="node-label">Verdict</span>
+        </a>
+        <a href="#step-05" class="stepper-node">
+          <span class="node-num">05</span>
+          <span class="node-label">Done</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="workflow-group-block">
     <div class="workflow-group-header">
       <div class="workflow-group-title">Screens Inventory</div>
       <span class="step-count-pill">5 Screens</span>
@@ -287,7 +297,7 @@
                 <div class="spec-label">Business Requirement</div>
                 <ul class="spec-list">
                   <li>Audit items: 1. Interior Dry/Cool, 2. Pallets present, 3. No Pests, 4. No Chemicals, 5. Sound Roof/Walls, 6. Ventilation.</li>
-                  <li>Items 3, 4, 5 are CRITICAL (⚠).</li>
+                  <li>Items 3, 4, 5 are CRITICAL (âš ).</li>
                 </ul>
               </div>
               <div class="spec-block">
@@ -308,7 +318,7 @@
               <div class="spec-block">
                 <div class="spec-label">Design Details</div>
                 <ul class="spec-list">
-                  <li>⚠ markers on critical items.</li>
+                  <li>âš  markers on critical items.</li>
                   <li>Danger-tinted backgrounds for Fail results.</li>
                 </ul>
               </div>
@@ -367,7 +377,7 @@
               </div>
               <div class="spec-block">
                 <div class="spec-label">Technical Details</div>
-                <div class="spec-value">Wizard state accumulation. Photo compression ≤ 1.5MB. GPS-stamped photos.</div>
+                <div class="spec-value">Wizard state accumulation. Photo compression â‰¤ 1.5MB. GPS-stamped photos.</div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">Design Details</div>
@@ -506,6 +516,7 @@
 
     </div>
   </div>
+  </div>
 
   <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
     <div class="modal-win" onclick="event.stopPropagation()">
@@ -539,6 +550,17 @@
       stepCards.forEach(card => observer.observe(card));
     });
   </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+    });
+  </script>
+
 </body>
 </html>
 
