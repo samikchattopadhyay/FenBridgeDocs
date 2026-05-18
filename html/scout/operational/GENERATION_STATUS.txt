@@ -1,0 +1,51 @@
+STATUS: Workflow page restructuring in progress
+TEMPLATE: verification.html (completed - 564 lines, full template pattern)
+
+COMPLETED (1/16):
+✓ verification.html - Lot Verification Inspection (7 steps) - Template established
+
+REMAINING (15/16):
+
+LOT VERIFICATION WORKFLOWS (3 pages):
+[ ] seal_application.html - Seal Application (6 steps)
+[ ] storage_recheck.html - Storage Re-Check (5 steps)
+[ ] reinspection.html - Re-Inspection (5 steps)
+[ ] rejection_handling.html - Rejection Handling (5 steps)
+
+POND & WAREHOUSE WORKFLOWS (2 pages):
+[ ] pond_inspection.html - Pond Inspection (6 steps)
+[ ] warehouse_fitness_check.html - Warehouse Fitness Check (5 steps)
+
+USER MANAGEMENT WORKFLOWS (3 pages):
+[ ] manage_farmer.html - Manage Farmer (5 steps)
+[ ] manage_popper.html - Manage Popper (5 steps)
+[ ] profile.html - Profile Settings (6 steps)
+
+OPERATIONAL TASK WORKFLOWS (4 pages):
+[ ] mark_lot_ready.html - Mark Lot Ready (5 steps)
+[ ] submit_bid.html - Submit Bid (6 steps)
+[ ] submit_spot_offer.html - Submit Spot Offer (4 steps)
+[ ] sync_queue.html - Sync Queue (1 step - simplified)
+
+DIRECTORY/LISTING PAGES (3 pages):
+[ ] ponds_directory.html - Ponds Directory (3 screens)
+[ ] warehouses_directory.html - Warehouses Directory (3 screens)
+[ ] users_directory.html - Registered Users Directory (3 screens)
+
+TEMPLATE PATTERN ESTABLISHED:
+- Address bar with path
+- Header banner with tag, title, description
+- Backend tabs (API, DB, Validation, Async, Security as applicable)
+- Stepper panel with step navigation
+- Workflow group with step cards
+- Each card has: header (badge+title), left pane (screen placeholder), right pane (specs grid)
+- Specs grid with full-width blocks: Purpose, User Experience, Business Requirement, Technical Details
+- JavaScript for stepper sync and tab switching
+
+NEXT STEPS:
+1. Create all 15 remaining workflow pages using verification.html as exact template
+2. Update title, description, step counts, step labels
+3. Populate step details in specs blocks
+4. Adjust backend tabs based on workflow type
+5. For directory pages: simplify structure (no stepper, no backend tabs)
+6. For sync_queue: single-step simplified layout

@@ -1,42 +1,167 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Warehouses Directory</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Warehouses Directory - Scout Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
-      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
-    .content-wrapper { padding: 40px 48px 96px; }
-    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
-    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
+    }
+    .content-wrapper { padding: 40px 48px 96px; max-width: 1280px; margin: 0 auto; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .address-bar {
+      background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
+      height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100;
+    }
+    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
+    .address-bar-path {
+      font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
-    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
-    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
-    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .workflow-body { padding: 32px; }
-    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
-    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
-    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
-    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-    .step-body { padding: 24px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .backend-tabs-container {
+      background: #141416; border: 1px solid var(--border-color); border-radius: 16px;
+      margin-bottom: 48px; overflow: hidden;
+    }
+    .tabs-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary);
+      padding: 16px 24px; display: flex; gap: 2px; overflow-x: auto;
+    }
+    .tab-button {
+      padding: 8px 16px; background: transparent; border: none; color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer;
+      white-space: nowrap; transition: all 0.3s ease; border-bottom: 2px solid transparent;
+    }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tab-button:hover { color: var(--text-main); }
+    .tabs-content {
+      padding: 28px; display: none;
+    }
+    .tabs-content.active { display: block; }
+    .tab-section { margin-bottom: 24px; }
+    .tab-section-title {
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
+      color: var(--accent-primary); margin-bottom: 12px; text-transform: uppercase;
+    }
+    .tab-section-content {
+      font-size: 13px; color: var(--text-muted); line-height: 1.7;
+    }
+
+    .stepper-panel-container {
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2; overflow-x: auto;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 60px;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 10px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-overview {
+      background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px;
+      padding: 28px; margin-bottom: 48px;
+    }
+    .overview-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .overview-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    .workflow-grid {
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; scroll-margin-top: 160px;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px;
+      border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+    .step-body { padding: 28px; }
     .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
-    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
-    .spec-list { list-style: none; }
+    .spec-list { list-style: none; padding-left: 0; }
     .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
-    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
-    .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
-    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
+
+    .sql-block {
+      background: #050d11; border: 1px solid var(--border-color); border-radius: 8px;
+      padding: 16px; font-family: 'Courier New', monospace; font-size: 12px;
+      color: #06b6d4; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;
+    }
   </style>
 </head>
 <body>
@@ -47,74 +172,382 @@
 </div>
 
 <div class="content-wrapper">
-
-<div class="header-banner">
-  <div class="tag">Workflow Module 5</div>
-  <h1 class="title">Warehouses Directory</h1>
-  <p class="desc">Browse all assigned warehouses with fitness status tracking and inventory history. Lists warehouses scout is assigned to with search/filter capabilities. Detailed profiles showing fitness history, active lots, and storage failure roll-up.</p>
-</div>
-
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Directory Screens</div>
-    <span class="step-count">2 Screens</span>
+  <div class="header-banner">
+    <div class="tag">Workflow Module 5</div>
+    <h1 class="title">Warehouses Directory</h1>
+    <p class="desc">Scout's comprehensive directory of all assigned warehouses with fitness status tracking, active lot inventory, and complete storage failure audit trail. Enables fast access to any warehouse with at-a-glance status visibility and deep drilling into fitness checks, stored lots, and failure patterns.</p>
   </div>
-  <div class="workflow-body">
 
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 1</span><span class="step-title" style="margin-left: 12px;">Warehouse List</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Browse all assigned warehouses with search and filter capabilities.</div></div>
-      <div class="spec-block"><div class="spec-label">Features</div><ul class="spec-list"><li>Search bar (by warehouse name, popper, district)</li><li>Filter chips by fitness status (Pass, Fail, Not Checked)</li><li>Card layout showing: warehouse name, popper, district, fitness status indicator, last check date</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Scope</div><div class="spec-value">Scout-assigned warehouses only; populated from scout_assignments_warehouses table.</div></div>
-      <div class="spec-block"><div class="spec-label">User Actions</div><div class="spec-value">Search Â· Filter Â· Tap card â†’ Warehouse Detail</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 2</span><span class="step-title" style="margin-left: 12px;">Warehouse Detail</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Layout</div><div class="spec-value">Header (warehouse name, popper, address) + Tabbed content (Profile Â· Fitness Â· Lots Â· Failures)</div></div>
-      <div class="spec-block"><div class="spec-label">Tab: Profile + GPS</div><ul class="spec-list"><li>Warehouse identity card (name, popper contact, address)</li><li>GPS location with map</li><li>Built capacity (kg or bags)</li><li>Fitness status indicator (Pass/Fail/Not Checked)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Tab: Fitness Status & History</div><ul class="spec-list"><li>Latest fitness check verdict (Pass / Fail) with date</li><li>Chronological history of all fitness checks</li><li>Each check shows date, scout name, verdict, key failed criteria (if fail)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Tab: Lots</div><ul class="spec-list"><li>Active / sealed / expired lots stored at this warehouse</li><li>Show lot details, seal ID, status (sealed/ready/sold/voided), listing date, shelf-life countdown</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Tab: Storage-Failure History</div><ul class="spec-list"><li>Roll-up of storage-related failures (rejections, voids, anomalies) from lots stored here</li><li>Shows defect patterns, frequency, remediation status</li></ul></div>
-    </div></div></div>
-
-  </div>
-</div>
-
-</div>
-
-<div style="max-width: 1280px; margin: 0 auto;">
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Key Design Patterns</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Fitness Status Impact</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Pass = Warehouse eligible to hold BM lots. Fail = Blocks new lot sealing at this warehouse until issues resolved.</div>
+  <div class="backend-tabs-container">
+    <div class="tabs-header">
+      <button class="tab-button active" onclick="switchTab(event, 'api')">API Architecture</button>
+      <button class="tab-button" onclick="switchTab(event, 'database')">Database Schema</button>
+      <button class="tab-button" onclick="switchTab(event, 'validation')">Validation & Error</button>
+      <button class="tab-button" onclick="switchTab(event, 'features')">Features</button>
+    </div>
+    <div id="api" class="tabs-content active">
+      <div class="tab-section">
+        <div class="tab-section-title">Warehouse List API</div>
+        <div class="tab-section-content">
+          <strong>Procedure:</strong> scout.getWarehouseList(filters, searchQuery, sortBy)<br>
+          <strong>Input:</strong> filter chips (Fit/Unfit/Unchecked/HasActiveLots), search string (popper name / warehouse code / area), sort order (byName/byRecentActivity/byFitnessStatus)<br>
+          <strong>Output:</strong> List of warehouses with popper name, code, location, fitness status pill, active sealed lot count, open-issue flag<br>
+          <strong>Cache:</strong> Returns from local cache first; real-time subscription updates live when online<br>
+          <strong>Offline:</strong> Fully supported — list renders from cached data; pull-to-refresh syncs when online
+        </div>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Failure Analysis</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Storage-failure history shows pattern of defects linked to this warehouse. Helps identify systematic issues.</div>
+      <div class="tab-section">
+        <div class="tab-section-title">Warehouse Detail API</div>
+        <div class="tab-section-content">
+          <strong>Procedure:</strong> scout.getWarehouseDetail(warehouseId)<br>
+          <strong>Output:</strong> Four tabs: Profile (identity + GPS), Fitness (check history), Lots (grouped by status), Failures (storage-failure roll-up)<br>
+          <strong>Profile Tab:</strong> warehouses + poppers joined, GPS map preview, last seal date, last re-check date<br>
+          <strong>Fitness Tab:</strong> warehouse_fitness_checks ordered by checked_at DESC, verdict pill, scout name, critical-failure marker<br>
+          <strong>Lots Tab:</strong> lots grouped by status (Active Sealed / Listed / Sold / Expired / Voided / Closed Terminal), with lot code, grade pill, quantity, status dot, last-event date<br>
+          <strong>Failures Tab:</strong> warehouse_storage_failures ordered by created_at DESC, failure outcome pill, lot code, reason, date<br>
+          <strong>Start Fitness Check:</strong> Creates scout_tasks row with task_type='warehouse_fitness_check'; enabled only if no in-progress check
+        </div>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Scope Limitation</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Scout sees only warehouses assigned to them. No cross-territory visibility. Enforced server-side.</div>
+      <div class="tab-section">
+        <div class="tab-section-title">Lot Detail API</div>
+        <div class="tab-section-content">
+          <strong>Procedure:</strong> scout.getLotDetail(lotId)<br>
+          <strong>Output:</strong> Single lot's full record — header card with lot code, popper, warehouse, current status banner (colour-coded by lifecycle state), then stacked sections: Summary, Inspection Timeline, Current Seal, Re-check Log, Documents<br>
+          <strong>Inspection Timeline:</strong> inspections WHERE lot_id=? ORDER BY checked_at ASC, including reinspection_seq > 0<br>
+          <strong>Current Seal:</strong> lot_seals WHERE lot_id=? AND status='active', with past seals (expired/broken/voided) under "Past seals" expander<br>
+          <strong>Re-check Log:</strong> storage_rechecks WHERE lot_id=? ORDER BY checked_at ASC<br>
+          <strong>Documents:</strong> grade_certificates WHERE lot_id=?, latest is primary<br>
+          <strong>All sections:</strong> Read-only for scout, fully offline-capable (renders from cache)
+        </div>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Inventory Tracking</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Real-time lot status visible (sealed, ready, sold, voided). Helps scout manage warehouse capacity and monitor shelf-life.</div>
+    </div>
+    <div id="database" class="tabs-content">
+      <div class="tab-section">
+        <div class="tab-section-title">Warehouses Table</div>
+        <div class="sql-block">CREATE TABLE warehouses (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  popper_user_id    UUID NOT NULL REFERENCES users(id),
+  warehouse_code    TEXT UNIQUE NOT NULL,
+  name              TEXT,
+  built_capacity_kg NUMERIC(10,2),
+  capacity_unit     TEXT CHECK (capacity_unit IN ('kg','bags')),
+  district          TEXT,
+  village_area      TEXT,
+  full_address      TEXT,
+  gps_lat           NUMERIC(9,6),
+  gps_lng           NUMERIC(9,6),
+  fitness_status    TEXT NOT NULL DEFAULT 'unchecked' CHECK (fitness_status IN
+                      ('unchecked','fit','unfit','needs_recheck')),
+  last_fitness_check_at TIMESTAMPTZ,
+  status            TEXT NOT NULL DEFAULT 'active' CHECK (status IN
+                      ('active','inactive','pending_approval')),
+  created_at        TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX idx_warehouses_popper ON warehouses (popper_user_id);
+CREATE INDEX idx_warehouses_scout_assigned ON warehouses (id) WHERE status = 'active';</div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Scout Assignments (Warehouses)</div>
+        <div class="sql-block">CREATE TABLE scout_assignments (
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scout_id     UUID NOT NULL REFERENCES scouts(id),
+  warehouse_id UUID NOT NULL REFERENCES warehouses(id),
+  assigned_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  active       BOOLEAN NOT NULL DEFAULT true,
+  UNIQUE (scout_id, warehouse_id)
+);
+CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Warehouse Fitness Checks & Related Tables</div>
+        <div class="sql-block">-- Reads existing tables: warehouse_fitness_checks, warehouse_fitness_items, lot_seals, lots, storage_rechecks, warehouse_storage_failures
+-- No new tables required; directory queries join existing schema</div>
+      </div>
+    </div>
+    <div id="validation" class="tabs-content">
+      <div class="tab-section">
+        <div class="tab-section-title">Search & Filter Validation</div>
+        <div class="tab-section-content">
+          <strong>Search:</strong> Fuzzy match on local cache first (popper name, warehouse code, village/area), then server-side parallel<br>
+          <strong>Filter Chips:</strong> Multi-select allowed (All / Fit / Unfit / Unchecked / Has active lots)<br>
+          <strong>Sort:</strong> By name (default) / by recent activity / by fitness status<br>
+          <strong>Scope Validation:</strong> Scout sees only warehouses in scout_assignments with active=true; Admin bypass enforced server-side
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Start Fitness Check Validation</div>
+        <div class="tab-section-content">
+          <strong>Precondition:</strong> No in-progress warehouse_fitness_check task for this warehouse (idempotency guard)<br>
+          <strong>Permission:</strong> Scout role only; not available for read-only guest users<br>
+          <strong>Error:</strong> If fitness check already in progress, show: "Fitness check for this warehouse is already in progress" (409 Conflict)
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Lot Detail Access</div>
+        <div class="tab-section-content">
+          <strong>Permission:</strong> Scout must have warehouse_id matching lot.warehouse_id via scout_assignments<br>
+          <strong>Read-only:</strong> All tabs are read-only; only deep-links to originating inspection/re-check records if those are tappable<br>
+          <strong>Error:</strong> If lot not found or warehouse not assigned: 404 Not Found
+        </div>
+      </div>
+    </div>
+    <div id="features" class="tabs-content">
+      <div class="tab-section">
+        <div class="tab-section-title">Warehouse List Features</div>
+        <div class="tab-section-content">
+          ✓ Search by popper name, warehouse code, or area<br>
+          ✓ Filter chips: All / Fit / Unfit / Unchecked / Has active lots (multi-select)<br>
+          ✓ Sort control: By name (default) / by recent activity / by fitness status<br>
+          ✓ Pull-to-refresh syncs latest data<br>
+          ✓ Warehouse cards show: popper name, code, location, fitness pill, active lot count, danger marker<br>
+          ✓ Bottom nav: Today · Warehouses (active) · Sync · Profile<br>
+          ✓ Empty state: "No warehouses assigned yet" with illustration
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Warehouse Detail Features</div>
+        <div class="tab-section-content">
+          ✓ Header card: popper name + warehouse code, fitness pill (large), active lot count, action buttons (Start Fitness Check, Navigate, Call Popper)<br>
+          ✓ Four tabs: Profile · Fitness · Lots · Failures<br>
+          ✓ Profile tab: popper card, warehouse code, address, GPS with map preview, last seal/re-check dates<br>
+          ✓ Fitness tab: chronological history (newest first), verdict pill, check date, scout name, critical-failure marker<br>
+          ✓ Lots tab: grouped by status (Active Sealed / Listed / Sold / Expired / Voided / Closed Terminal), each collapsible<br>
+          ✓ Failures tab: newest first, failure outcome pill, lot code, reason, date<br>
+          ✓ Tap lot row → Lot Detail; tap inspection/failure row → read-only detail
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Lot Detail Features</div>
+        <div class="tab-section-content">
+          ✓ Header card: lot code (large), popper name, warehouse code, declared/verified quantity<br>
+          ✓ Status banner: colour-coded by lifecycle (Pending inspection / Verified — awaiting seal / Sealed — listed / Sold / Expired — needs re-inspection / Seal voided / Terminal closure)<br>
+          ✓ Summary section: declared vs verified quantity, claimed vs assessed grade, source (Spot / Against PO)<br>
+          ✓ Inspection Timeline: oldest first with connector lines, each inspection tappable for detail (accepted → inspection detail; rejected → rejection detail)<br>
+          ✓ Current Seal: active seal record, past seals under expander<br>
+          ✓ Re-check Log: storage_rechecks ordered by checked_at<br>
+          ✓ Documents: Grade certificates (latest primary, earlier archived)<br>
+          ✓ Fully offline — all details render from cache
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="stepper-panel-container">
+    <div class="stepper-nodes">
+      <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Warehouse List</div></a>
+      <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Warehouse Detail</div></a>
+      <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Lot Detail</div></a>
+    </div>
+  </div>
+
+  <div class="workflow-overview">
+    <div class="overview-title">Workflow Overview</div>
+    <div class="overview-text">
+      Warehouses Directory is the scout's primary browse interface for all warehouses assigned to them. The workflow provides search and filtering capabilities to locate specific warehouses, view detailed profiles including GPS coordinates and linked popper information, browse complete fitness check history with pass/fail verdicts, examine all lots currently held (grouped by status), and review storage-failure patterns. Scout can initiate a fresh warehouse fitness check directly from Warehouse Detail. Scope is enforced server-side — scouts see only warehouses assigned via scout_assignments. The directory mirrors the Pond List/Detail pattern for consistency with existing pond management flows. Every lot visible in the Lots tab links through to a comprehensive Lot Detail screen showing the full lifecycle history from inspection through sealing, re-checks, and any closure.
+    </div>
+  </div>
+
+  <div class="workflow-grid">
+
+    <!-- SCREEN 5.1: Warehouse List -->
+    <div class="flow-step-card" id="step-01">
+      <div class="step-header">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="step-badge">5.1</span>
+          <span class="step-title">Warehouse List</span>
+        </div>
+      </div>
+      <div class="step-body" style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);">
+          <div style="width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; border-radius: 12px; border: 2px solid var(--border-color); background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px; text-align: center; padding: 20px;">
+            <img src="../../../app/screens_v2/scout/warehouses/warehouse_list/screen.png" style="width: 100%; height: auto;" alt="Warehouse List" />
+          </div>
+        </div>
+        <div style="flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column;">
+          <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">The scout's directory of warehouses — every warehouse in their assigned area, browsable and filterable.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Scout works a fixed set of warehouses over time and needs fast access to any, whether or not there's a task today. List should make warehouse's current standing visible at a glance — fitness status, active sealed lot count, any open issues. Scouts only see assigned warehouses; Admin sees all.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Standard searchable list. Search bar at top, filter chips below, vertical list of warehouse cards. Each card shows: popper name, warehouse code, location, fitness status pill, active sealed lot count, danger marker if issues. Pull-to-refresh syncs.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Search by popper name / warehouse code / area<br>• Toggle filter chips: All / Fit / Unfit / Unchecked / Has active lots<br>• Sort: by name (default) / by recent activity / by fitness status<br>• Tap warehouse card → Warehouse Detail<br>• Pull down to refresh</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Loads via: SELECT * FROM warehouses w JOIN scout_assignments sa ON w.id = sa.warehouse_id WHERE sa.scout_id = ? (scope guard). Aggregates per warehouse: active_sealed_lot_count from lot_seals WHERE status='active', open_issue_flag if any lot_seals.status='broken' unresolved, recent warehouse_storage_failures, or fitness_status='unfit'. Search is local fuzzy match first, then server-side in parallel. Offline-first: list renders from cache; pull-to-refresh syncs. Real-time subscription on warehouses for scout's assigned set.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Top bar: "Warehouses" title (left), filter icon (right). Search bar: "Search popper, code, area…" (sticky). Filter chips: All · Fit · Unfit · Unchecked · Has active lots (multi-select, scrollable). Warehouse cards: popper name (Body strong), code · village/area (Body), fitness pill (accent "Fit" / amber "Unchecked" / danger "Unfit"), "X active lots" chip, ⚠ open-issue dot if applicable. Sort button "Sort by: Name ↓". Empty state: "No warehouses assigned yet". Bottom nav: Today · Warehouses (active) · Sync · Profile.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="sql-block">CREATE TABLE scout_assignments (
+  id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scout_id     UUID NOT NULL REFERENCES scouts(id),
+  warehouse_id UUID NOT NULL REFERENCES warehouses(id),
+  assigned_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  active       BOOLEAN NOT NULL DEFAULT true,
+  UNIQUE (scout_id, warehouse_id)
+);
+CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 5.2: Warehouse Detail -->
+    <div class="flow-step-card" id="step-02">
+      <div class="step-header">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="step-badge">5.2</span>
+          <span class="step-title">Warehouse Detail</span>
+        </div>
+      </div>
+      <div class="step-body" style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);">
+          <div style="width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; border-radius: 12px; border: 2px solid var(--border-color); background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px; text-align: center; padding: 20px;">
+            <img src="../../../app/screens_v2/scout/warehouses/warehouse_detail/screen.png" style="width: 100%; height: auto;" alt="Warehouse Detail" />
+          </div>
+        </div>
+        <div style="flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column;">
+          <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">The single warehouse's full record — profile and GPS, fitness history, lots held, and storage-failure history — in one tabbed screen.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Everything scout (or Admin) needs to know about a warehouse must be reachable from this screen. Four views: Profile (identity, address, GPS, contact), Fitness History (every fitness check ever performed, with outcomes), Lots (active sealed + sold/expired lots), Storage Failures (rollup of failed re-checks). Scout can initiate fresh fitness check from here if due or warranted.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Header section with warehouse identity and primary action (Start Fitness Check, when permitted), then tab row: Profile · Fitness · Lots · Failures. Each tab is scrollable section. Current fitness status always visible in header.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• View warehouse header (name, code, fitness status pill, active lot count)<br>• Tap "Start Fitness Check" → enters Warehouse Fitness Check workflow<br>• Tap "Navigate" → maps app<br>• Tap "Call popper" → dialer<br>• Switch tabs: Profile · Fitness · Lots · Failures<br>• Inside Lots tab → tap lot row → Lot Detail<br>• Inside Fitness tab → tap check row → read-only detail<br>• Inside Failures tab → tap failure row → originating Storage Re-check record</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Hydrates from cached warehouses, poppers. Tab data: Profile = warehouses + poppers joined; Fitness = warehouse_fitness_checks WHERE warehouse_id=? ORDER BY checked_at DESC; Lots = lots WHERE warehouse_id=? with joined lot_seals, grouped by status; Failures = warehouse_storage_failures WHERE warehouse_id=? ORDER BY created_at DESC with joined storage_rechecks. "Start Fitness Check" enabled only when no in-progress check task (idempotency); creates scout_tasks row with task_type='warehouse_fitness_check'. All data renders from cache; real-time subscriptions push updates live when online. Tab counts computed client-side from cache.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Top bar: back, popper-name + warehouse-code (Title 3). Header card: popper name + warehouse code, fitness pill (large, prominent): "Fit · checked 2 Feb 2026" / "Unfit · since 14 Mar" / "Unchecked", counts chip "5 active lots · 2 open issues", action row: "Start Fitness Check" (primary, when permitted) · "Navigate" · "Call popper". Tab bar: Profile · Fitness · Lots · Failures (with counts). Profile tab: popper card (name, phone, district), warehouse code, address, GPS coordinates with map preview, last seal/re-check dates. Fitness tab: newest first, each row shows verdict pill (Pass/Fail), check date, scout, critical-failure marker if applicable. Lots tab: grouped collapsible sections (Active Sealed / Listed / Sold / Expired / Voided / Closed Terminal), lot row shows code, grade pill, quantity, status dot, last-event date. Failures tab: newest first, failure outcome pill, lot code, reason, date, or "No storage failures recorded" empty state.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="spec-value">Reads: warehouses, poppers, warehouse_fitness_checks, warehouse_fitness_items, lots, lot_seals, inspections, warehouse_storage_failures, storage_rechecks. No new tables required; directory queries join existing schema.</div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 5.3: Lot Detail -->
+    <div class="flow-step-card" id="step-03">
+      <div class="step-header">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="step-badge">5.3</span>
+          <span class="step-title">Lot Detail</span>
+        </div>
+      </div>
+      <div class="step-body" style="display: flex; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);">
+          <div style="width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; border-radius: 12px; border: 2px solid var(--border-color); background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px; text-align: center; padding: 20px;">
+            <img src="../../../app/screens_v2/scout/warehouses/lot_detail/screen.png" style="width: 100%; height: auto;" alt="Lot Detail" />
+          </div>
+        </div>
+        <div style="flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column;">
+          <div class="specs-grid">
+          <div class="spec-block">
+            <div class="spec-label">Purpose</div>
+            <div class="spec-value">The single lot's full record — from declaration through inspection, sealing, re-checks, and any rejection/closure — on one screen.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Business Requirement</div>
+            <div class="spec-value">Lot can have complex history: declared → inspected (possibly rejected, reconditioned, re-inspected) → sealed → re-checked (possibly voided or rerouted) → listed → sold (or expired, or closed terminal). Screen must show all as coherent narrative, with every artefact reachable: inspection records, Grade Certificate, seal record (chain-of-custody), re-check log, and any closure record. Scout viewing lot they're about to work on should see at a glance: where is this lot in lifecycle, and what records exist.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Experience (UX)</div>
+            <div class="spec-value">Header card with lot identity and current status banner, then stacked sections: Summary, Inspection History (timeline), Current Seal (if sealed), Re-check Log, Documents (certificates, seal record). Sections expand/collapse where lengthy.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">User Actions</div>
+            <div class="spec-value">• Review lot header — lot code, popper, warehouse, current status<br>• Review status banner (colour-coded by lifecycle state, with closure banner for terminal lots)<br>• Scroll inspection timeline (oldest first, with connector lines)<br>• Tap inspection row → opens detail (accepted → inspection detail; rejected → Rejection Detail)<br>• Tap active seal record → Seal Record Detail<br>• Tap re-check row → opens read-only detail<br>• Tap Grade Certificate → Grade Certificate Viewer<br>• (If terminal) tap "View closing record" → closing inspection or storage re-check<br>• Back → Warehouse Detail (Lots tab)</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Technical Details</div>
+            <div class="spec-value">Hydrates from cached lots (header) + queries: Inspections timeline = inspections WHERE lot_id=? ORDER BY checked_at ASC (full chain including re-inspections where reinspection_seq > 0); Current seal = lot_seals WHERE lot_id=? AND status='active' LIMIT 1, with historical seals (status IN ('expired','broken','voided')) under "Past seals" expander; Re-check log = storage_rechecks WHERE lot_id=? ORDER BY checked_at ASC; Documents = grade_certificates WHERE lot_id=? (latest is primary, earlier archived); Closure (if any) = lot_closure_log WHERE lot_id=?. Each row deep-links to relevant detail surface, all read-only. Lifecycle state derived from lots.status + lot_seals.status + inspections.outcome — single computed banner in header. Real-time subscriptions on lot_seals and inspections. Fully offline (all details render from cache).</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Design Details</div>
+            <div class="spec-value">Top bar: back, lot code (Title 3) + grade pill (if assessed). Header card: lot code (large), popper name, warehouse code, declared/verified quantity. Status banner (colour-coded): "Pending inspection" (text-lo) / "Verified — awaiting seal" (accent) / "Sealed — listed" (accent) / "Sold" (text-lo) / "Expired — needs re-inspection" (amber) / "Seal voided" (danger) / "Pending re-inspection" (amber) / "Closed terminal" (danger, full Terminal Closure banner). PO link chip if related_po_id. Summary section: declared vs verified quantity (with variance line), claimed vs assessed grade, source (Spot / Against PO). Inspection Timeline section: vertical list oldest first with connector lines. Tap inspection → detail (accepted or rejected). Current Seal: active record shown, past seals under expander. Re-check Log: list ordered by checked_at. Documents: grade certificates (latest primary, earlier archived). Fully offline.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Database Schema</div>
+            <div class="spec-value">Read-only. Reads from: lots, lot_seals, inspections, storage_rechecks, grade_certificates, lot_closure_log (all existing tables). No new tables required. Deep-links to inspection/seal/closure detail surfaces via existing schema.</div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
+<script>
+  function switchTab(event, tabName) {
+    event.preventDefault();
+    const buttons = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tabs-content');
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const pathElement = document.getElementById('address-path');
-      if (pathElement) {
-        const pathname = window.location.pathname;
-        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
-      }
-    });
-  </script>
+    buttons.forEach(btn => btn.classList.remove('active'));
+    contents.forEach(content => content.classList.remove('active'));
+
+    event.target.classList.add('active');
+    document.getElementById(tabName).classList.add('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const stepCards = document.querySelectorAll(".flow-step-card");
+    const stepperNodes = document.querySelectorAll(".stepper-node");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          stepperNodes.forEach(node => {
+            node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+    stepCards.forEach(card => observer.observe(card));
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pathElement = document.getElementById('address-path');
+    if (pathElement) {
+      const pathname = window.location.pathname;
+      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    }
+  });
+</script>
 
 </body>
 </html>

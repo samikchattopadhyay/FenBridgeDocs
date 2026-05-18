@@ -1,135 +1,617 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Warehouse Fitness Check</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Warehouse Fitness Check - Scout Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
-      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
+    }
     .content-wrapper { padding: 40px 48px 96px; }
-    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
-    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
-    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
-    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
-    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .workflow-body { padding: 32px; }
-    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
-    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
-    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
-    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-    .step-body { padding: 24px; }
-    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
-    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
-    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
-    .spec-list { list-style: none; }
-    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
-    .critical-marker { color: #ff6b6b; font-weight: bold; }
-    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .address-bar {
+      background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
+      height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100;
+    }
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
-    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .address-bar-path {
+      font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+
+    .stepper-panel-container {
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2; overflow-x: auto;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 60px;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 10px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-group-block {
+      max-width: 1280px; margin: 0 auto 48px; background: #141416;
+      border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;
+    }
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill {
+      background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light);
+      padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+    }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 48px; }
+
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+      scroll-margin-top: 160px;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+
+    .step-body { display: flex; flex-wrap: wrap; }
+    .step-left-pane {
+      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
+      display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
+    }
+    .card-image-viewport {
+      width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+      border-radius: 12px; border: 2px solid var(--border-color); background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    .screen-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim); font-size: 13px; text-align: center; padding: 20px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    }
+
+    .step-right-pane { flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
+
+    .backend-tabs-container {
+      max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
+      overflow: hidden;
+    }
+    .backend-tabs-header {
+      padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .backend-tabs-subtitle {
+      font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .tabs-nav {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border-color);
+      background: #0a0a0b; gap: 0;
+    }
+    .tab-button {
+      flex: 0 0 auto; padding: 16px 20px; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.3s ease; white-space: nowrap; text-transform: uppercase;
+      letter-spacing: 0.5px; font-family: 'Outfit', sans-serif;
+    }
+    .tab-button:hover { color: var(--accent-primary); }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tabs-content { display: flex; flex-direction: column; }
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+    .backend-section-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; margin-top: 24px; }
+    .backend-section-title:first-child { margin-top: 0; }
+    .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+      border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
+      overflow-x: auto; margin: 16px 0; line-height: 1.5; }
+    .backend-list { margin: 16px 0; padding-left: 20px; }
+    .backend-list li { margin-bottom: 8px; font-size: 13px; color: var(--text-main); }
+    .backend-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
+    .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+
+    @media print {
+      :root {
+        --bg-base: #ffffff;
+        --bg-surface: #ffffff;
+        --bg-card: #f9fafb;
+        --bg-active: #f3f4f6;
+        --accent-primary: #0891b2;
+        --accent-primary-hover: #0369a1;
+        --accent-primary-glow: rgba(8, 145, 178, 0.08);
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --text-dim: #6b7280;
+        --border-color: #e5e7eb;
+        --border-light: #d1d5db;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .address-bar, .stepper-panel-container, .tabs-nav {
+        display: none !important;
+      }
+      .tab-panel {
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-panel:not(.active) {
+        display: none !important;
+      }
+      .backend-code-block, .spec-code {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #0f766e !important;
+        white-space: pre-wrap !important;
+      }
+      .flow-step-card, .backend-tabs-container, .header-banner {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px !important;
+      }
+      .step-left-pane {
+        background: #f9fafb !important;
+        border-right: 1px solid #e5e7eb !important;
+      }
+      .card-image-viewport {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div class="address-bar">
-  <div class="address-bar-icon">📁</div>
-  <div class="address-bar-path" id="address-path">html/scout/operational/warehouse_fitness_check.html</div>
-</div>
-
-<div class="content-wrapper">
-
-<div class="header-banner">
-  <div class="tag">Workflow Module 5</div>
-  <h1 class="title">Warehouse Fitness Check</h1>
-  <p class="desc">One-time and periodic warehouse suitability verification. Scout assesses 6 coded criteria (3 critical) to determine if warehouse can hold BM lots. Fail on any critical criterion blocks warehouse from holding inventory; notifies Admin.</p>
-</div>
-
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Fitness Assessment Steps</div>
-    <span class="step-count">5 Screens</span>
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/warehouse_fitness_check.html</div>
   </div>
-  <div class="workflow-body">
 
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 1</span><span class="step-title" style="margin-left: 12px;">Confirm Warehouse & Arrival</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Confirms scout is at correct warehouse; captures arrival GPS as evidence.</div></div>
-      <div class="spec-block"><div class="spec-label">Data Shown</div><ul class="spec-list"><li>Warehouse identity card (name, popper, address)</li><li>Prior fitness check history (if any)</li><li>GPS capture block with mismatch warning</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Validation</div><div class="spec-value">Warns if GPS mismatch >200m from registered warehouse location.</div></div>
-    </div></div></div>
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <span class="tag">Scout Operations</span>
+      <h1 class="title">Warehouse Fitness Check</h1>
+      <p class="desc">One-time and periodic safety assessment wizard. Standardizes technical and hygienic evaluations of popper warehouses to ensure they are fit to store BM-sealed raw and processed makhana lots.</p>
+    </div>
 
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 2</span><span class="step-title" style="margin-left: 12px;">Fitness Checklist</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Six Criteria (Pass / Fail Toggle)</div><ul class="spec-list">
-        <li>âœ“ Dry / Cool / Shaded (no direct sun, no heat) â€” Non-critical</li>
-        <li><span class="critical-marker">âš  Stock off-floor (wooden pallets/platforms) â€” CRITICAL</span></li>
-        <li><span class="critical-marker">âš  No pest/rodent signs â€” CRITICAL</span></li>
-        <li><span class="critical-marker">âš  Chemical & odour separation (no pesticides nearby) â€” CRITICAL</span></li>
-        <li>âœ“ Roof & walls sound (no leaks, damp) â€” Non-critical</li>
-        <li>âœ“ Adequate ventilation (not humid/closed) â€” Non-critical</li>
-      </ul></div>
-      <div class="spec-block"><div class="spec-label">User Experience</div><ul class="spec-list"><li>Critical criteria marked with âš  badge</li><li>Each fail row expands coded-reason chooser</li><li>Live summary chip shows Pass/Fail count</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">All 6 must be assessed. Every fail must have coded reason selected from dropdown.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 3</span><span class="step-title" style="margin-left: 12px;">Evidence Photos</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Mandatory photographic evidence supporting checklist assessment.</div></div>
-      <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Interior wide-angle (showing full warehouse layout)</li><li>Storage/stacking detail (showing bag placement, pallets)</li><li>One auto-generated photo per failed criterion (e.g., pest evidence)</li><li>Optional: extra context photos</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Validation</div><div class="spec-value">Cannot proceed until all required slots filled. Photo compression â‰¤1.5MB each; GPS-stamped.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 4</span><span class="step-title" style="margin-left: 12px;">Verdict & Submit</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Verdict Logic</div><ul class="spec-list"><li>If any critical criterion failed: verdict LOCKED as FAIL</li><li>If only non-critical criteria failed: scout decides PASS or FAIL</li><li>If all pass: verdict PASS (locked, computed)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">What's Shown</div><ul class="spec-list"><li>Final verdict (PASS / FAIL)</li><li>Full checklist recap with reasons for each fail</li><li>Photo thumbnail strip</li><li>Optional overall notes (max 500 chars)</li><li>Confirm checkbox before submit</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Critical Warning</div><div class="spec-value">If FAIL: Scout sees message: "Warehouse FAILS inspection. This warehouse cannot hold BM lots until issues are resolved. Admin notified."</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Screen 5</span><span class="step-title" style="margin-left: 12px;">Submission Confirmation</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Success State</div><div class="spec-value">Shows verdict (PASS / FAIL), warehouse name, sync status, single CTA: "Back to Warehouses."</div></div>
-      <div class="spec-block"><div class="spec-label">Backend Action</div><ul class="spec-list"><li>Creates fitness_checks record with verdict (pass / fail)</li><li>If FAIL: warehouse status â†’ fitness_failed; notifies Admin immediately</li><li>If PASS: warehouse status â†’ fitness_passed; allows lot sealing</li><li>Records queued to sync_queue</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Impact on Lots</div><div class="spec-value">FAIL blocks new lot sealing at this warehouse. Existing sealed lots remain valid. PASS enables sealing.</div></div>
-    </div></div></div>
-
-  </div>
-</div>
-
-</div>
-
-<div style="max-width: 1280px; margin: 0 auto;">
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Critical Requirements & Enforcement</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Critical Criteria (3)</div>
-        <div class="spec-value">Off-floor stacking, No pests, Chemical separation. Any fail = FAIL verdict, warehouse blocked.</div>
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Confirm Arrival</div></a>
+        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Checklist</div></a>
+        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Evidence Photos</div></a>
+        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Verdict & Submit</div></a>
+        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Confirmation</div></a>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Photo Evidence Mandatory</div>
-        <div class="spec-value">2 fixed photos + 1 per failed criterion + optional extras. Cannot submit without all required filled.</div>
+    </div>
+
+    <!-- Backend Architecture Documentation -->
+    <div class="backend-tabs-container">
+      <div class="backend-tabs-header">
+        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Admin Notification</div>
-        <div class="spec-value">FAIL triggers immediate Admin alert. Scout sees clear messaging about consequence (warehouse blocked).</div>
+
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
-        <div class="spec-value">100% offline capable. Photos compressed during capture. Data synced via sync_queue.</div>
+
+      <div class="tabs-content">
+        <!-- TAB: API Architecture -->
+        <div id="backend-api" class="tab-panel active">
+          <h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Warehouse Fitness Check operates on a session-draft wizard lifecycle before executing an atomic write transactional block.</p>
+
+          <div class="backend-info-box">
+            <strong>Procedure Flow Strategy:</strong><br>
+            • Screen 1 (confirmWarehouseArrival): GPS coordinate matching with standard geo-fencing (50m bounds).<br>
+            • Screens 2-3 (submitFitnessChecklist, submitFitnessPhotos): Validates and caches checklist parameters and evidence image URLs.<br>
+            • Screen 4 (submitWarehouseFitnessVerdict): Commits transaction into relational tables.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+          <ul class="backend-list">
+            <li><strong>confirmWarehouseArrival</strong> — Protected. Checks scout coordinate distance to the popper warehouse profile. Returns arrival match validation.</li>
+            <li><strong>submitWarehouseFitnessVerdict</strong> — Protected. Atomic transaction executing:
+              <br>1. Insert <code>warehouse_fitness_checks</code> row (verdict outcome).
+              <br>2. Bulk insert <code>warehouse_fitness_items</code> (checklist details).
+              <br>3. Bulk insert <code>warehouse_fitness_photos</code> (media references).
+              <br>4. Update parent <code>warehouses.fitness_status</code>.
+            </li>
+          </ul>
+        </div>
+
+        <!-- TAB: Database Schema -->
+        <div id="backend-db" class="tab-panel">
+          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">warehouse_fitness_checks (Header Table)</h4>
+          <div class="backend-code-block">CREATE TABLE warehouse_fitness_checks (
+  id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scout_id       UUID NOT NULL REFERENCES scouts(id),
+  warehouse_id   UUID NOT NULL REFERENCES warehouses(id),
+  checked_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
+  check_type     TEXT NOT NULL CHECK (check_type IN ('initial','periodic')),
+  gps_lat        NUMERIC(9,6) NOT NULL,
+  gps_lng        NUMERIC(9,6) NOT NULL,
+  gps_accuracy_m NUMERIC(4,1) NOT NULL,
+  verdict        TEXT NOT NULL CHECK (verdict IN ('fit','unfit')),
+  notes          TEXT
+);
+
+CREATE INDEX idx_wfc_warehouse ON warehouse_fitness_checks (warehouse_id, checked_at DESC);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">warehouse_fitness_items (Checklist Criteria)</h4>
+          <div class="backend-code-block">CREATE TABLE warehouse_fitness_items (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  fitness_check_id UUID NOT NULL REFERENCES warehouse_fitness_checks(id) ON DELETE CASCADE,
+  criterion_code   TEXT NOT NULL CHECK (criterion_code IN ('dry_space','elevated_floor','off_ground_pallets','dampness_check')),
+  result           TEXT NOT NULL CHECK (result IN ('pass','fail')),
+  remarks          TEXT
+);
+
+CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">warehouse_fitness_photos (Evidence Media)</h4>
+          <div class="backend-code-block">CREATE TABLE warehouse_fitness_photos (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  fitness_check_id UUID NOT NULL REFERENCES warehouse_fitness_checks(id) ON DELETE CASCADE,
+  photo_url        TEXT NOT NULL,
+  caption          TEXT
+);</div>
+        </div>
+
+        <!-- TAB: Validation & Error Handling -->
+        <div id="backend-validation" class="tab-panel">
+          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
+
+          <div class="backend-info-box">
+            <strong>Server-Side Core Rules:</strong><br>
+            • GPS distance check to the warehouse profile must be &le; 50 meters.<br>
+            • All 4 checklist criteria are mandatory. Failing any critical criteria (e.g., dampness_check) forces the overall verdict to 'unfit'.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">HTTP Status Code Mapping</h4>
+          <table class="backend-table">
+            <tr><th>Status</th><th>Error Code</th><th>Triggering Event / Condition</th></tr>
+            <tr><td>403</td><td>WAREHOUSE_GEO_FENCE_VIOLATION</td><td>Distance between current scout coordinates and registered warehouse &gt; 50 meters</td></tr>
+            <tr><td>400</td><td>WEAK_GPS_SIGNAL</td><td>Scout coordinate lock accuracy &gt; 15 meters</td></tr>
+            <tr><td>422</td><td>INCOMPLETE_FITNESS_CHECKLIST</td><td>Missing results on one or more mandatory checklist items</td></tr>
+          </table>
+        </div>
+
+        <!-- TAB: Offline & Async -->
+        <div id="backend-sync" class="tab-panel">
+          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
+          <ul class="backend-list">
+            <li><strong>Offline Cache:</strong> Serializes transaction data inside client SQLite <code>sync_queue</code> if the network is absent during submission.</li>
+            <li><strong>Conflict Mitigation:</strong> Employs transaction UUIDs on the device client to guarantee idempotency and avoid duplicate submissions.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Security -->
+        <div id="backend-security" class="tab-panel">
+          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
+          <ul class="backend-list">
+            <li>Scouts only have access to warehouses assigned to their active operational zones.</li>
+            <li>Camera files are processed client-side and saved to Supabase Storage utilizing pre-signed secure POST URLs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow Steps Block -->
+    <div class="workflow-group-block">
+      <div class="workflow-group-header">
+        <div class="workflow-group-title">Warehouse Fitness Steps Directory</div>
+        <div class="step-count-pill">5 Steps</div>
+      </div>
+      <div class="workflow-group-body">
+
+        <!-- STEP 1: Confirm Warehouse & Arrival -->
+        <div class="flow-step-card" id="step-01">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">1</span>
+              <span class="step-title">Confirm Warehouse & Arrival (GPS Check)</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/warehouse_fitness_check/confirm_warehouse_arrival/screen.png" alt="Confirm Warehouse Arrival" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: GPS Arrival Lock Screen</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Ensures the scout is physically present on-site at the target warehouse profile before initiating the check.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Verifies mobile GPS coordinates within 50 meters of the warehouse location, locking accuracy at under 15 meters.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Top header displays target warehouse ID and name. Interactive maps calculate distance to the warehouse. A prominent card displays GPS signal strength, unlocking the primary "Lock Location & Start" button when in bounds.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Retrieves geodetic position using navigator API. Caches GPS coordinate metrics inside local wizard state context.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Fitness Checklist -->
+        <div class="flow-step-card" id="step-02">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">2</span>
+              <span class="step-title">Fitness Checklist</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/warehouse_fitness_check/fitness_checklist/screen.png" alt="Fitness Checklist" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Safety Criteria Checklist Form</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Evaluates essential technical and hygienic parameters at the warehouse.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Mandatory logging of 4 core criteria: Dry Space, Elevated Floor, Off-Ground Pallets, and Dampness Check. Failing any item mandates an "Unfit" final verdict.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Renders large, touch-friendly option rows. Each criterion has clear "Pass" / "Fail" selectors. Failing critical items automatically highlights warning messages alerting that the warehouse will be graded unfit.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Zod validation ensures all checklist rows are resolved before allowing page advancement. Stores selections in session cache.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Evidence Photos -->
+        <div class="flow-step-card" id="step-03">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">3</span>
+              <span class="step-title">Evidence Photos</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/warehouse_fitness_check/evidence_photos/screen.png" alt="Evidence Photos" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Photographic Evidence Capture Grid</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Captures photographic verification documenting warehouse conditions.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Requires at least 2 photos (General interior layout, close-up of ventilation or flooring). Images are tagged with caption notes.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Grid list displaying camera triggers. Progressive loaders track uploading states. Optional input boxes allow scouts to write captions per image.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Uploads compressed JPEGs (max 2MB) to secure Supabase buckets, caching signed URLs locally inside wizard draft state.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Verdict & Submit -->
+        <div class="flow-step-card" id="step-04">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">4</span>
+              <span class="step-title">Verdict & Submit</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/warehouse_fitness_check/verdict_submit/screen.png" alt="Verdict & Submit" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Assessment Summary & Submission Verdict</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Reviews all criteria assessments and commits the final verdict.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Renders calculated final verdict ('Fit' or 'Unfit'). Unfit verdicts must log mandatory reasoning comments. Executes atomic multi-table inserts.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Detailed review panel. Calculated status is displayed in large pills (Green checkmark for "Fit", Amber warning for "Unfit"). Notes text area is required for unfit outcomes. High-contrast primary cyan button reads "Submit Verification".</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes <code>submitWarehouseFitnessVerdict</code> procedure. Automatically updates the parent <code>warehouses.fitness_status</code> column. On database failure, rolls back all updates.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: Submission Confirmation -->
+        <div class="flow-step-card" id="step-05">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">5</span>
+              <span class="step-title">Submission Confirmation</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/warehouse_fitness_check/submission_confirmation/screen.png" alt="Submission Confirmation" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Success Confirmation and Return Portal</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Confirmation page indicating completion, showing local sync queue status.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Generates and displays unique audit check code (e.g. <code>#WFC-1882</code>) and confirms local database task completions.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Full-screen glassmorphism layout with centered, pulsing green checkmark. Displays sync state badge ("Synced" or "Offline Queued"). Primary solid cyan CTA "View Today's Tasks" returns scout back to list.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Clears all temporary draft context variables. Switches local task queue state to completed.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
-
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => {
+              node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       const pathElement = document.getElementById('address-path');
       if (pathElement) {
@@ -137,7 +619,19 @@
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
       }
     });
-  </script>
 
+    function showTab(event, tabId) {
+      event.preventDefault();
+      const allPanels = document.querySelectorAll('.tab-panel');
+      allPanels.forEach(panel => panel.classList.remove('active'));
+      const allButtons = document.querySelectorAll('.tab-button');
+      allButtons.forEach(button => button.classList.remove('active'));
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add('active');
+      }
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>

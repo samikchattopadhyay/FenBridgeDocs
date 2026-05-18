@@ -1,132 +1,603 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Rejection Handling</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rejection Handling - Scout Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
-      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
+    }
     .content-wrapper { padding: 40px 48px 96px; }
-    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
-    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
-    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
-    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
-    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .workflow-body { padding: 32px; }
-    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
-    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
-    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
-    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-    .step-body { padding: 24px; }
-    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
-    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
-    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
-    .spec-list { list-style: none; }
-    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); }
-    .content-wrapper { padding: 40px 48px 96px; }
-    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .address-bar {
+      background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
+      height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100;
+    }
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
-    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .address-bar-path {
+      font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+
+    .stepper-panel-container {
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2; overflow-x: auto;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 60px;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 10px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-group-block {
+      max-width: 1280px; margin: 0 auto 48px; background: #141416;
+      border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;
+    }
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill {
+      background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light);
+      padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+    }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 48px; }
+
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+      scroll-margin-top: 160px;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+
+    .step-body { display: flex; flex-wrap: wrap; }
+    .step-left-pane {
+      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
+      display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
+    }
+    .card-image-viewport {
+      width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+      border-radius: 12px; border: 2px solid var(--border-color); background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    .screen-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim); font-size: 13px; text-align: center; padding: 20px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    }
+
+    .step-right-pane { flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
+
+    .backend-tabs-container {
+      max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
+      overflow: hidden;
+    }
+    .backend-tabs-header {
+      padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .backend-tabs-subtitle {
+      font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .tabs-nav {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border-color);
+      background: #0a0a0b; gap: 0;
+    }
+    .tab-button {
+      flex: 0 0 auto; padding: 16px 20px; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.3s ease; white-space: nowrap; text-transform: uppercase;
+      letter-spacing: 0.5px; font-family: 'Outfit', sans-serif;
+    }
+    .tab-button:hover { color: var(--accent-primary); }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tabs-content { display: flex; flex-direction: column; }
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+    .backend-section-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; margin-top: 24px; }
+    .backend-section-title:first-child { margin-top: 0; }
+    .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+      border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
+      overflow-x: auto; margin: 16px 0; line-height: 1.5; }
+    .backend-list { margin: 16px 0; padding-left: 20px; }
+    .backend-list li { margin-bottom: 8px; font-size: 13px; color: var(--text-main); }
+    .backend-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
+    .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+
+    @media print {
+      :root {
+        --bg-base: #ffffff;
+        --bg-surface: #ffffff;
+        --bg-card: #f9fafb;
+        --bg-active: #f3f4f6;
+        --accent-primary: #0891b2;
+        --accent-primary-hover: #0369a1;
+        --accent-primary-glow: rgba(8, 145, 178, 0.08);
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --text-dim: #6b7280;
+        --border-color: #e5e7eb;
+        --border-light: #d1d5db;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .address-bar, .stepper-panel-container, .tabs-nav {
+        display: none !important;
+      }
+      .tab-panel {
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-panel:not(.active) {
+        display: none !important;
+      }
+      .backend-code-block, .spec-code {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #0f766e !important;
+        white-space: pre-wrap !important;
+      }
+      .flow-step-card, .backend-tabs-container, .header-banner {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px !important;
+      }
+      .step-left-pane {
+        background: #f9fafb !important;
+        border-right: 1px solid #e5e7eb !important;
+      }
+      .card-image-viewport {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div class="address-bar">
-  <div class="address-bar-icon">📁</div>
-  <div class="address-bar-path" id="address-path">html/scout/operational/rejection_handling.html</div>
-</div>
-
-<div class="content-wrapper">
-  <div class="header-banner">
-    <div class="tag">Workflow Module 6</div>
-    <h1 class="title">Rejection Handling</h1>
-    <p class="desc">Process lot rejections during verification with disposition options. Scout documents rejection reason with coded categories and defect evidence. Determines if lot is reconditionable (path to re-inspection) or terminal (voided from market).</p>
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/rejection_handling.html</div>
   </div>
 
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Rejection Disposition Steps</div>
-    <span class="step-count">6 Steps</span>
-  </div>
-  <div class="workflow-body">
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <span class="tag">Scout Operations</span>
+      <h1 class="title">Rejection Handling & Closures</h1>
+      <p class="desc">Quality triage management system for failed lots. Tracks reconditionable defect cycles and issues terminal closures to isolate fraudulent or unhygienic raw stocks.</p>
+    </div>
 
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Rejection Initiation</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Trigger</div><div class="spec-value">Scout detected defect during verification or seal application that prevents lot from transacting.</div></div>
-      <div class="spec-block"><div class="spec-label">Context</div><div class="spec-value">Scout must provide reason and document with evidence photos. Rejection recorded to lot audit trail.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">Rejection Reason Selection</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Coded Categories</div><ul class="spec-list"><li>Quality Defect (color, smell, texture, foreign matter)</li><li>Storage Failure (moisture, pest signs, mold, contamination)</li><li>Seal Integrity Issue (broken seal, tampering signs, net damage)</li><li>Documentation Mismatch (grade claim vs actual, quantity variance >10%)</li><li>Non-Compliance (regulatory, traceability, missing certifications)</li><li>Environmental Damage (water damage, exposure, packaging failure)</li></ul></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Defect Evidence & Notes</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Evidence Photos</div><div class="spec-value">Minimum 2-3 mandatory defect close-ups showing affected product. Geo-stamped, ≤1.5MB each.</div></div>
-      <div class="spec-block"><div class="spec-label">Description</div><div class="spec-value">Optional detailed notes (≤500 chars) explaining severity and affected portion of lot.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Reconditionability Assessment</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Reconditionable Path</div><ul class="spec-list"><li>Defect is partial (affects portion of lot, not entire)</li><li>Remediation is feasible (re-grade, re-bag, re-clean)</li><li>Post-reconditioning re-inspection possible within 7 days</li><li>Example: partial moisture damage in sealed lot → dry out, re-inspect</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Terminal Path</div><ul class="spec-list"><li>Defect is total (entire lot compromised)</li><li>Remediation not feasible (pest infestation, contamination, severe mold)</li><li>Lot cannot return to market; no re-inspection pathway</li><li>Example: sealed lot with rodent infestation → void immediately</li></ul></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Disposition Decision</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Reconditionable Decision</div><ul class="spec-list"><li>Scout marks lot status: rejected_pending_reconditioning</li><li>Creates re-inspection task scheduled for 7 days out</li><li>Farmer/popper notified to recondition lot</li><li>On re-inspection success: lot status restored to previous state (sealed/active)</li><li>On re-inspection fail: lot voided immediately (irreversible)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Terminal Decision</div><ul class="spec-list"><li>Scout marks lot status: voided (irreversible)</li><li>Notifies farmer/popper immediately</li><li>Lot removed from all marketplaces (spot offers voided, PO cancelled)</li><li>Financial settlement per contract terms (if active PO)</li></ul></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 6</span><span class="step-title" style="margin-left: 12px;">Notification & Recording</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Notifications</div><ul class="spec-list"><li>Scout receives confirmation of rejection recorded</li><li>Farmer/popper alerted with rejection reason and photos</li><li>Buyer notified if active PO (status change to cancelled)</li><li>Admin sees rejection in audit trail with full photo + notes evidence</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Record & Sync</div><div class="spec-value">Rejection record queued to sync_queue. All photos, reason, evidence persisted to lot audit trail. Record immutable; no scout editing allowed.</div></div>
-    </div></div></div>
-
-  </div>
-</div>
-
-<div style="max-width: 1280px; margin: 0 auto;">
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Rejection Workflow & Next Steps</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Recondition Pathway</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Rejected → Pending Reconditioning → Re-Inspect (success: Restore status, fail: Void). Max 7-day recondition window.</div>
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Rejection Report</div></a>
+        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Reconditioning Notice</div></a>
+        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Terminal Notice</div></a>
+        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Lot History</div></a>
+        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Terminal Closure</div></a>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Terminal Pathway</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Voided immediately. Farmer loses revenue. No appeal pathway; Admin review only for edge cases.</div>
+    </div>
+
+    <!-- Backend Architecture Documentation -->
+    <div class="backend-tabs-container">
+      <div class="backend-tabs-header">
+        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Market Impact</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Active spot offers voided. Active POs cancelled with settlement. Sealed lots marked void in all marketplaces.</div>
+
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Immutability</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Rejection record cannot be edited by scout. Full evidence chain preserved in audit trail for accountability.</div>
+
+      <div class="tabs-content">
+        <!-- TAB: API Architecture -->
+        <div id="backend-api" class="tab-panel active">
+          <h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Rejection Handling manages state forks between salvageable lots and absolute closures.</p>
+
+          <div class="backend-info-box">
+            <strong>Triage Trigger Strategy:</strong><br>
+            • Written automatically by the Lot Verification wizard at Disposition submit when <code>outcome = 'rejected'</code>.<br>
+            • If <code>reject_recondition = 'terminal'</code>, sets lot status to <code>rejected_terminal</code> and inserts records into <code>lot_closure_log</code>.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+          <ul class="backend-list">
+            <li><strong>getRejectionReport</strong> — Protected. Fetches failed parameter metrics, captured defect photos, and notes for a rejected lot.</li>
+            <li><strong>acknowledgeRejection</strong> — Protected. Invoked by poppers to record receipt of rejection notices. Mutates <code>lots.popper_acknowledged_at</code>.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Database Schema -->
+        <div id="backend-db" class="tab-panel">
+          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">lot_closure_log (Permanent Closing Ledger)</h4>
+          <div class="backend-code-block">CREATE TABLE lot_closure_log (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  lot_id            UUID NOT NULL REFERENCES lots(id),
+  closure_type      TEXT NOT NULL CHECK (closure_type IN ('terminal_rejection','storage_recheck_terminal')),
+  source_record_id  UUID NOT NULL,   -- inspections.id or storage_rechecks.id
+  source_record_type TEXT NOT NULL CHECK (source_record_type IN ('inspection','storage_recheck')),
+  reason_code       TEXT NOT NULL,   -- defect_code or storage failure code
+  closed_at         TIMESTAMPTZ NOT NULL,
+  closed_by         UUID REFERENCES users(id),   -- scout id; null if system
+  created_at        TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">lots (Columns added for acknowledgment tracking)</h4>
+          <div class="backend-code-block">ALTER TABLE lots 
+  ADD COLUMN popper_acknowledged_at   TIMESTAMPTZ,
+  ADD COLUMN popper_acknowledged_by   UUID REFERENCES users(id);</div>
+        </div>
+
+        <!-- TAB: Validation & Error Handling -->
+        <div id="backend-validation" class="tab-panel">
+          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
+          <ul class="backend-list">
+            <li><strong>Defect Catalogue Controls:</strong> Critical defects from the reference catalogue (infestation, rancidity, rodent contamination) are flagged non-salvageable, blocking reconditioning notice paths and forcing terminal closures.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Offline & Async -->
+        <div id="backend-sync" class="tab-panel">
+          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
+          <ul class="backend-list">
+            <li><strong>Immediate Listing Halts:</strong> Synchronization of any rejected outcome automatically suspends corresponding market listings and sends instant push warning notices to popper accounts.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Security -->
+        <div id="backend-security" class="tab-panel">
+          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
+          <ul class="backend-list">
+            <li><strong>Permanence:</strong> Terminal closure is irreversible. Closed lots cannot re-enter verification pipelines. Unique batch IDs are isolated to guard against re-submitting rejected stocks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow Steps Block -->
+    <div class="workflow-group-block">
+      <div class="workflow-group-header">
+        <div class="workflow-group-title">Rejection & Closure Views Directory</div>
+        <div class="step-count-pill">5 Screens</div>
+      </div>
+      <div class="workflow-group-body">
+
+        <!-- STEP 1: Rejection Report -->
+        <div class="flow-step-card" id="step-01">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">1</span>
+              <span class="step-title">Rejection Report (Scout Detail View)</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/rejection_handling/rejection_detail_scout/screen.png" alt="Rejection Detail" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Detailed Rejection Report</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Displays detailed quality failure metrics and defect records compiled during the inspection.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Clearly illustrates the root reasons behind the failing grade. Maps failing parameters (e.g. moisture 18%) against specs.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Header shows red failure banner. Displays parameters checklist indicating failed bands. Renders grid containing defect evidence photos. Prompts optional notes and coordinates.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Pulls data from active <code>inspections</code> records, mapping child defects directly.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Reconditioning Notice -->
+        <div class="flow-step-card" id="step-02">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">2</span>
+              <span class="step-title">Reconditioning Notice (Popper View)</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/rejection_handling/rejection_notice_reconditionable/screen.png" alt="Reconditioning Notice" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Popper Reconditioning Guide</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Guides poppers on fixing salvageable defects (e.g. wet makhana needing drying).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Issued for reconditionable defects only. Details specific guidelines (e.g., dry to moisture &le; 12%). Mutates lot state to <code>pending_reinspection</code> on popper acknowledgment.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Renders yellow advisory banners. Displays step-by-step drying/cleaning guidelines. Active checkbox reads "I acknowledge rejection & will recondition lot". Primary button triggers acknowledgment submission.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Logs acknowledgment timestamps into parent <code>lots</code>.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Terminal Notice -->
+        <div class="flow-step-card" id="step-03">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">3</span>
+              <span class="step-title">Terminal Notice (Popper View)</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/rejection_handling/rejection_notice_terminal/screen.png" alt="Terminal Rejection Notice" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Absolute Rejection Notice</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Official notification to poppers stating that the lot has been permanently rejected and barred.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Issued for critical unconditionable defects (infestation, rodent contact). Sets status to <code>rejected_terminal</code>, barring the lot from any future listings.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Full-screen danger warning. Displays red warning badges indicating permanent bans. Outlines specific safety hazard policies. Popper is required to tap acknowledgment triggers to clear notification panels.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Coordinates and logs acknowledgment details, archiving records.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Chronological Quality History -->
+        <div class="flow-step-card" id="step-04">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">4</span>
+              <span class="step-title">Chronological Quality History (Supporting View)</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/rejection_handling/lot_inspection_history/screen.png" alt="Lot Inspection History" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Quality Lifecycle Timeline</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Renders complete inspection chronology of a makhana lot in a single scroll timeline.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Assures complete traceability history. Lists first verification failures, re-conditioning dates, and reinspection results. Walks the lineage indices.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Vertical chronological flow lines connecting events. Each node is a compact card displaying outcome status pills, inspection dates, and scout IDs. Tapping cards opens corresponding report details.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Queries <code>inspections</code> joined on <code>lot_id</code>, ordering entries chronologically.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: Terminal Closure Log -->
+        <div class="flow-step-card" id="step-05">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">5</span>
+              <span class="step-title">Terminal Closure Log (Admin View)</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/rejection_handling/lot_detail_terminal_closure/screen.png" alt="Terminal Closure Log" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Permanent Closure Archive</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Permanent record details of lot closing events available for administrative review.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Preserves comprehensive close logs containing close type, source inspection records, reason code mappings, and timestamps.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Detailed ledger row display. Shows system sync status. Displays secure warning logs details. Search fields enable quick lookups.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Read-only view loading from <code>lot_closure_log</code> tables. Marks lots closed permanently.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const pathElement = document.getElementById('address-path');
-    if (pathElement) {
-      const pathname = window.location.pathname;
-      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => {
+              node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+    });
+
+    function showTab(event, tabId) {
+      event.preventDefault();
+      const allPanels = document.querySelectorAll('.tab-panel');
+      allPanels.forEach(panel => panel.classList.remove('active'));
+      const allButtons = document.querySelectorAll('.tab-button');
+      allButtons.forEach(button => button.classList.remove('active'));
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add('active');
+      }
+      event.target.classList.add('active');
     }
-  });
-</script>
-
+  </script>
 </body>
 </html>

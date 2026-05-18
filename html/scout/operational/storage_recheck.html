@@ -1,131 +1,607 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Storage Re-Check</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Storage Re-Check - Scout Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
-      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
+    }
     .content-wrapper { padding: 40px 48px 96px; }
-    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
-    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
-    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
-    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
-    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .workflow-body { padding: 32px; }
-    .flow-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 32px; }
-    .step-header { background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px; }
-    .step-badge { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary); background: rgba(6, 182, 212, 0.15); padding: 3px 8px; border-radius: 4px; }
-    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-    .step-body { padding: 24px; }
-    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
-    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; }
-    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
-    .spec-list { list-style: none; }
-    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
-    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .address-bar {
+      background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
+      height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100;
+    }
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
-    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .address-bar-path {
+      font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+
+    .stepper-panel-container {
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2; overflow-x: auto;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 60px;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 10px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-group-block {
+      max-width: 1280px; margin: 0 auto 48px; background: #141416;
+      border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;
+    }
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill {
+      background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light);
+      padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+    }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 48px; }
+
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+      scroll-margin-top: 160px;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+
+    .step-body { display: flex; flex-wrap: wrap; }
+    .step-left-pane {
+      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
+      display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
+    }
+    .card-image-viewport {
+      width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+      border-radius: 12px; border: 2px solid var(--border-color); background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    .screen-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim); font-size: 13px; text-align: center; padding: 20px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    }
+
+    .step-right-pane { flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
+
+    .backend-tabs-container {
+      max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
+      overflow: hidden;
+    }
+    .backend-tabs-header {
+      padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .backend-tabs-subtitle {
+      font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .tabs-nav {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border-color);
+      background: #0a0a0b; gap: 0;
+    }
+    .tab-button {
+      flex: 0 0 auto; padding: 16px 20px; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.3s ease; white-space: nowrap; text-transform: uppercase;
+      letter-spacing: 0.5px; font-family: 'Outfit', sans-serif;
+    }
+    .tab-button:hover { color: var(--accent-primary); }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tabs-content { display: flex; flex-direction: column; }
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+    .backend-section-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; margin-top: 24px; }
+    .backend-section-title:first-child { margin-top: 0; }
+    .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+      border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
+      overflow-x: auto; margin: 16px 0; line-height: 1.5; }
+    .backend-list { margin: 16px 0; padding-left: 20px; }
+    .backend-list li { margin-bottom: 8px; font-size: 13px; color: var(--text-main); }
+    .backend-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
+    .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+
+    @media print {
+      :root {
+        --bg-base: #ffffff;
+        --bg-surface: #ffffff;
+        --bg-card: #f9fafb;
+        --bg-active: #f3f4f6;
+        --accent-primary: #0891b2;
+        --accent-primary-hover: #0369a1;
+        --accent-primary-glow: rgba(8, 145, 178, 0.08);
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --text-dim: #6b7280;
+        --border-color: #e5e7eb;
+        --border-light: #d1d5db;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .address-bar, .stepper-panel-container, .tabs-nav {
+        display: none !important;
+      }
+      .tab-panel {
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-panel:not(.active) {
+        display: none !important;
+      }
+      .backend-code-block, .spec-code {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #0f766e !important;
+        white-space: pre-wrap !important;
+      }
+      .flow-step-card, .backend-tabs-container, .header-banner {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px !important;
+      }
+      .step-left-pane {
+        background: #f9fafb !important;
+        border-right: 1px solid #e5e7eb !important;
+      }
+      .card-image-viewport {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div class="address-bar">
-  <div class="address-bar-icon">📁</div>
-  <div class="address-bar-path" id="address-path">html/scout/operational/storage_recheck.html</div>
-</div>
-
-<div class="content-wrapper">
-
-<div class="header-banner">
-  <div class="tag">Workflow Module 4</div>
-  <h1 class="title">Storage Re-check</h1>
-  <p class="desc">Mid-window lot condition verification. Light check at ~50% shelf-life for unsealed lots awaiting buyers. Verifies seal/net integrity, dry conditions, no pest signs, and determines outcome (Clean â†’ Continue listing / Anomaly â†’ Re-inspect / Void lot).</p>
-</div>
-
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Re-check Steps</div>
-    <span class="step-count">5 Steps</span>
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/storage_recheck.html</div>
   </div>
-  <div class="workflow-body">
 
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Lot & Warehouse Header</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Confirm identity and context of the sealed lot being rechecked.</div></div>
-      <div class="spec-block"><div class="spec-label">Data Shown</div><ul class="spec-list"><li>Lot identity (grade certificate ref, seal ID)</li><li>Warehouse location</li><li>Original seal date and shelf-life expiry</li><li>Days elapsed since sealing (shows progress in shelf-life window)</li></ul></div>
-    </div></div></div>
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <span class="tag">Scout Operations</span>
+      <h1 class="title">Storage Re-Check Audits</h1>
+      <p class="desc">Periodic inventory verification and seal preservation monitoring wizard. Audits seal status, verifies warehouse integrity, and executes conditional triage for degrading makhana lots.</p>
+    </div>
 
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">Seal & Net Integrity</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Verify seal has not been broken or tampered with; assess net condition.</div></div>
-      <div class="spec-block"><div class="spec-label">Assessment Items</div><ul class="spec-list"><li>Seal intact (visual inspection) â€” Pass / Fail</li><li>Seal ID readable â€” Pass / Fail</li><li>Net coverage complete (no tears/gaps) â€” Pass / Fail</li><li>Evidence: 1 photo of seal + 1 of net condition</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">All three must pass. Any fail flags lot for escalation to Admin/Re-inspection.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Storage Conditions</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Light assessment of storage environment (not full warehouse fitness check).</div></div>
-      <div class="spec-block"><div class="spec-label">Checklist (3 items)</div><ul class="spec-list"><li>Lot stored dry (no moisture, visible water) â€” Pass / Fail</li><li>Lot off-floor (on pallet/platform) â€” Pass / Fail</li><li>No pest/rodent signs visible â€” Pass / Fail</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Evidence</div><div class="spec-value">1 wide-angle photo showing lot position in warehouse.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Evidence Photos</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Photographic evidence supporting re-check assessment.</div></div>
-      <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Close-up of seal</li><li>Net condition detail</li><li>Lot position in warehouse (wide)</li><li>Optional: anomaly detail if found</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Specs</div><div class="spec-value">Minimum 3 photos mandatory; compress â‰¤1.5MB each; GPS-stamped.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Outcome Determination</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Three Outcomes (Computed / Scout Choose)</div><ul class="spec-list">
-        <li><strong>CLEAN:</strong> Seal intact, net good, conditions dry â†’ Lot continues listing in spot market</li>
-        <li><strong>ANOMALY:</strong> Seal/net issue OR storage concern â†’ Routes to Re-inspection workflow; Admin notified</li>
-        <li><strong>VOID:</strong> Critical failure (broken seal, major damage, pest infestation) â†’ Lot removed from market; warehouse fitness escalated</li>
-      </ul></div>
-      <div class="spec-block"><div class="spec-label">Submission</div><div class="spec-value">Scout selects outcome, adds optional notes (max 500 chars). Atomic submit creates re_check record; queued to sync_queue.</div></div>
-      <div class="spec-block"><div class="spec-label">Post-Submit</div><ul class="spec-list"><li>CLEAN: Lot refresh timestamp updated; continues visible in spot market</li><li>ANOMALY: Triggers re_inspection task; lot status paused</li><li>VOID: Lot status voided; warehouse fitness reviewed by Admin</li></ul></div>
-    </div></div></div>
-
-  </div>
-</div>
-
-</div>
-
-<div style="max-width: 1280px; margin: 0 auto;">
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Trigger Conditions & Light Check Pattern</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">When Triggered</div>
-        <div class="spec-value">Lot crosses ~50% shelf-life unsold. Admin pushes re-check task to scout. Alternatively, triggered by anomaly report from warehouse.</div>
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Confirm Lot</div></a>
+        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Seal Integrity</div></a>
+        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Storage Conditions</div></a>
+        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Outcome & Submit</div></a>
+        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Confirmation</div></a>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Light Check Pattern</div>
-        <div class="spec-value">NOT a full re-grade. Focuses on seal integrity, net condition, and basic storage state. Only escalates to full re-inspection if anomaly found.</div>
+    </div>
+
+    <!-- Backend Architecture Documentation -->
+    <div class="backend-tabs-container">
+      <div class="backend-tabs-header">
+        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
-        <div class="spec-value">All data captured locally; rides existing scout sync_queue. Designed for offline-capable inventory management.</div>
+
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Immutability</div>
-        <div class="spec-value">Once outcome recorded, scout cannot edit. Admin can correct via backend only.</div>
+
+      <div class="tabs-content">
+        <!-- TAB: API Architecture -->
+        <div id="backend-api" class="tab-panel active">
+          <h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Storage Re-check workflow evaluates active tamper-evident lots, routing deteriorated items out of the market pipeline.</p>
+
+          <div class="backend-info-box">
+            <strong>Precondition Guard:</strong><br>
+            • The lot seal status must be exactly <code>active</code>. Sold, voided, or terminally rejected lots block the audit wizard.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+          <ul class="backend-list">
+            <li><strong>initStorageRecheck</strong> — Fetches active <code>lot_seals</code>, details remaining shelf-life, and queries historical quality logs.</li>
+            <li><strong>submitStorageRecheckOutcome</strong> — Atomic transaction executing:
+              <br>1. Inserts <code>storage_rechecks</code> row (status check details).
+              <br>2. Conditionally inserts <code>warehouse_storage_failures</code> if outcome is non-clean.
+              <br>3. Mutates <code>lot_seals.status</code> (broken, voided, etc.) and updates parent <code>lots.status</code>.
+            </li>
+          </ul>
+        </div>
+
+        <!-- TAB: Database Schema -->
+        <div id="backend-db" class="tab-panel">
+          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">storage_rechecks (Primary Header)</h4>
+          <div class="backend-code-block">CREATE TABLE storage_rechecks (
+  id                   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  lot_seal_id          UUID NOT NULL REFERENCES lot_seals(id),
+  lot_id               UUID NOT NULL REFERENCES lots(id),
+  warehouse_id         UUID NOT NULL REFERENCES warehouses(id),
+  popper_id            UUID NOT NULL REFERENCES poppers(id),
+  scout_id             UUID NOT NULL REFERENCES scouts(id),
+  task_id              UUID REFERENCES scout_tasks(id),
+  recheck_trigger      TEXT NOT NULL CHECK (recheck_trigger IN ('half_life','anomaly_report')),
+  seal_id_match        BOOLEAN NOT NULL,
+  seal_integrity       TEXT NOT NULL CHECK (seal_integrity IN ('intact','broken')),
+  seal_reason_code     TEXT,
+  net_integrity        TEXT NOT NULL CHECK (net_integrity IN ('intact','broken')),
+  net_reason_code      TEXT,
+  outcome              TEXT NOT NULL CHECK (outcome IN ('clean','void','route_reinspection','terminal')),
+  overall_note         TEXT,
+  arrival_lat          NUMERIC(9,6) NOT NULL,
+  arrival_lng          NUMERIC(9,6) NOT NULL,
+  arrival_accuracy_m   NUMERIC(6,1),
+  checked_at           TIMESTAMPTZ NOT NULL,
+  created_at           TIMESTAMPTZ NOT NULL DEFAULT now(),
+  synced_at            TIMESTAMPTZ
+);
+
+CREATE INDEX idx_srk_lot ON storage_rechecks (lot_id, checked_at DESC);
+CREATE INDEX idx_srk_seal ON storage_rechecks (lot_seal_id);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">warehouse_storage_failures (Triage Mappings)</h4>
+          <div class="backend-code-block">CREATE TABLE warehouse_storage_failures (
+  id                   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  warehouse_id         UUID NOT NULL REFERENCES warehouses(id),
+  storage_recheck_id   UUID NOT NULL REFERENCES storage_rechecks(id),
+  lot_id               UUID NOT NULL REFERENCES lots(id),
+  failure_outcome      TEXT NOT NULL,    -- 'void'|'route_reinspection'|'terminal'
+  created_at           TIMESTAMPTZ NOT NULL DEFAULT now()
+);</div>
+        </div>
+
+        <!-- TAB: Validation & Error Handling -->
+        <div id="backend-validation" class="tab-panel">
+          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
+          <ul class="backend-list">
+            <li><strong>Outcome Dependency:</strong> If seal integrity is marked broken, the clean outcome option is hard-blocked client-side.</li>
+            <li><strong>Recheck Reason Codes:</strong> Broken locks/nets require mandatory coded explanation inputs before continuing.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Offline & Async -->
+        <div id="backend-sync" class="tab-panel">
+          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
+          <ul class="backend-list">
+            <li><strong>Offline Lock:</strong> All parameters save to local SQL drafts. Enqueues atomic submission records.</li>
+            <li><strong>Pipeline Workflows:</strong> On syncing non-clean outcomes, the server triggers instant listing suspensions, notifies admin, and dynamically schedules reinspections or logistics returns.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Security -->
+        <div id="backend-security" class="tab-panel">
+          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
+          <ul class="backend-list">
+            <li><strong>Coordinate Locks:</strong> Scout arrival location is recorded at initialization to verify presence at popper warehouses.</li>
+            <li><strong>Immutability:</strong> Submitted recheck details are finalized and read-only. Corrections require new sequential audits.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow Steps Block -->
+    <div class="workflow-group-block">
+      <div class="workflow-group-header">
+        <div class="workflow-group-title">Storage Re-Check Steps Directory</div>
+        <div class="step-count-pill">5 Steps</div>
+      </div>
+      <div class="workflow-group-body">
+
+        <!-- STEP 1: Confirm Sealed Lot -->
+        <div class="flow-step-card" id="step-01">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">1</span>
+              <span class="step-title">Confirm Sealed Lot</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/storage_re_check/confirm_sealed_lot/screen.png" alt="Confirm Sealed Lot" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Target Lot Assessment</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Identifies the target sealed lot and outlines remaining shelf-life schedules.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Guards against checking invalid lots. Asserts that the lot seal status is currently active. Notes the recheck trigger (Routine half-life or anomaly report).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Displays lot identification, stored seals, and assessed grades. Shows remaining shelf-life days countdown. Details trigger alerts. Main button reads "Begin Re-check".</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Initializes wizard context parameters in device cache, preparing integrity indicators.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Seal & Net Integrity -->
+        <div class="flow-step-card" id="step-02">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">2</span>
+              <span class="step-title">Seal & Net Integrity</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/storage_re_check/seal_net_integrity/screen.png" alt="Seal Net Integrity" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Integrity Verification</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Audits the physical state of the applied lock and net to identify tampering or breakdown.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Mandatory logging of: Seal ID match (Pass/Fail), Seal integrity (Intact/Broken), and Net integrity (Intact/Broken). Coded explanations are required on failures.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Three checkbox groups with Pass/Fail segments. Failures open nested selectors displaying failure codes (e.g. cut net, broken seal loop). Amber alerts warn that fails block clean classifications.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Checks matches and writes integrity outcomes into wizard local states.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Storage Conditions -->
+        <div class="flow-step-card" id="step-03">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">3</span>
+              <span class="step-title">Storage Conditions</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/storage_re_check/storage_conditions/screen.png" alt="Storage Conditions" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Storage Audit Checklist</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Audits current environmental and placement qualities of the host warehouse since the previous check.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Inspects floor dampness, humidity indicators, ventilation, and pest signs. Failures trigger warnings suggesting reinspection routes.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Touch-friendly check rows listing key points (Dampness, pests, space). Fails reveal notes boxes enabling short descriptions. Dynamic warning bars display triage guidance.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Validates parameters to ensure all checklists are fully resolved before allowing page advancement.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Outcome & Submit -->
+        <div class="flow-step-card" id="step-04">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">4</span>
+              <span class="step-title">Outcome & Submit</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/storage_re_check/outcome_submit/screen.png" alt="Outcome Submit" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Disposition Action Panel</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Selects the authoritative outcome classification and commits re-check records to database tables.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Outcomes: Clean (Lot continues listed), Void (Seal broken/tampered, listing suspended), Route Reinspection (Environmental moisture failure), or Terminal (Severe pest/rot defects). Atomic writes run on submit.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Recaps integrity audits and coordinates. Renders segmented buttons selecting the outcome (Fails restrict Clean). Prompts validation signature checkbox. Solid cyan button reads "Submit Re-check".</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes <code>submitStorageRecheckOutcome</code>, updating <code>lot_seals</code> status and conditional failure mapping routes.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: Submission Confirmation -->
+        <div class="flow-step-card" id="step-05">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">5</span>
+              <span class="step-title">Submission Confirmation</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/storage_re_check/re_check_submitted/screen.png" alt="Submission Confirmation" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Success Terminal & Sync Info</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Confirms completion of the audit check and details next steps.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Displays sync queue badges and warns if admin channels were alerted regarding suspended lots.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Centered glassmorphic modal with success badges. Echoes selected outcomes in color-coded pills. Primary solid cyan button returns back to dashboard lists.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Resets wizard parameters. Marks SQLite re-check tasks completed.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
-
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => {
+              node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       const pathElement = document.getElementById('address-path');
       if (pathElement) {
@@ -133,18 +609,19 @@
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
       }
     });
-  </script>
 
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const pathElement = document.getElementById('address-path');
-    if (pathElement) {
-      const pathname = window.location.pathname;
-      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    function showTab(event, tabId) {
+      event.preventDefault();
+      const allPanels = document.querySelectorAll('.tab-panel');
+      allPanels.forEach(panel => panel.classList.remove('active'));
+      const allButtons = document.querySelectorAll('.tab-button');
+      allButtons.forEach(button => button.classList.remove('active'));
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add('active');
+      }
+      event.target.classList.add('active');
     }
-  });
-</script>
-
+  </script>
 </body>
 </html>

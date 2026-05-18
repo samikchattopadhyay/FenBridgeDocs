@@ -1,178 +1,580 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Manage Farmer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Farmer - Scout Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #121212; --bg-surface: #18181b; --bg-card: #202024; --accent-primary: #06b6d4;
-      --text-main: #f3f4f6; --text-muted: #9ca3af; --border-color: #27272a;
+      --bg-base: #121212;
+      --bg-surface: #18181b;
+      --bg-card: #202024;
+      --bg-active: #27272a;
+      --accent-primary: #06b6d4;
+      --accent-primary-hover: #22d3ee;
+      --accent-primary-glow: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-color: #27272a;
+      --border-light: #3f3f46;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 0; }
+    body {
+      background-color: var(--bg-base); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
+    }
     .content-wrapper { padding: 40px 48px 96px; }
-    .header-banner { background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary); border-radius: 16px; padding: 32px 40px; margin-bottom: 48px; }
-    .tag { display: inline-flex; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
     .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 900px; }
-    .workflow-grid { max-width: 1280px; margin: 0 auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-bottom: 48px; }
-    .workflow-header { background: linear-gradient(90deg, #1f1f23 0%, #161618 100%); border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary); padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .workflow-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; }
-    .step-count { background: var(--bg-base); color: var(--text-muted); border: 1px solid #3f3f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .workflow-body { padding: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .action-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; }
-    .action-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-    .action-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
-    .action-specs { font-size: 12px; color: var(--text-dim); }
-    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-top: 12px; margin-bottom: 6px; }
-    .spec-list { list-style: none; }
-    .spec-list li { position: relative; padding-left: 16px; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
-    .spec-list li::before { content: "â€¢"; position: absolute; left: 0; color: var(--accent-primary); }
-    .content-wrapper { padding: 40px 48px 96px; }
-    .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
+    .address-bar {
+      background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
+      height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100;
+    }
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
-    .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .address-bar-path {
+      font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+
+    .stepper-panel-container {
+      background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .stepper-nodes {
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2; overflow-x: auto;
+    }
+    .stepper-node {
+      display: flex; flex-direction: column; align-items: center; flex: 1;
+      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 60px;
+    }
+    .stepper-node:not(:last-child)::after {
+      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      height: 2px; background: var(--border-light); z-index: -1;
+    }
+    .node-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
+      border: 2px solid var(--border-light); color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+    }
+    .stepper-node.active .node-num {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+      background: var(--accent-primary-glow); box-shadow: 0 0 16px var(--accent-primary);
+      transform: scale(1.15);
+    }
+    .node-label {
+      font-size: 10px; font-weight: 600; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s ease; white-space: nowrap;
+    }
+    .stepper-node.active .node-label { color: var(--accent-primary); font-weight: 800; }
+
+    .workflow-group-block {
+      max-width: 1280px; margin: 0 auto 48px; background: #141416;
+      border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;
+    }
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill {
+      background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light);
+      padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+    }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 48px; }
+
+    .flow-step-card {
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+      scroll-margin-top: 160px;
+    }
+    .step-header {
+      background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .step-badge {
+      font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+
+    .step-body { display: flex; flex-wrap: wrap; }
+    .step-left-pane {
+      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
+      display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
+    }
+    .card-image-viewport {
+      width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+      border-radius: 12px; border: 2px solid var(--border-color); background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    .screen-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim); font-size: 13px; text-align: center; padding: 20px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    }
+
+    .step-right-pane { flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
+    .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
+    .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
+    .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
+
+    .backend-tabs-container {
+      max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
+      overflow: hidden;
+    }
+    .backend-tabs-header {
+      padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .backend-tabs-subtitle {
+      font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .tabs-nav {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border-color);
+      background: #0a0a0b; gap: 0;
+    }
+    .tab-button {
+      flex: 0 0 auto; padding: 16px 20px; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.3s ease; white-space: nowrap; text-transform: uppercase;
+      letter-spacing: 0.5px; font-family: 'Outfit', sans-serif;
+    }
+    .tab-button:hover { color: var(--accent-primary); }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tabs-content { display: flex; flex-direction: column; }
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+    .backend-section-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; margin-top: 24px; }
+    .backend-section-title:first-child { margin-top: 0; }
+    .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+      border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
+      overflow-x: auto; margin: 16px 0; line-height: 1.5; }
+    .backend-list { margin: 16px 0; padding-left: 20px; }
+    .backend-list li { margin-bottom: 8px; font-size: 13px; color: var(--text-main); }
+    .backend-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
+    .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+
+    @media print {
+      :root {
+        --bg-base: #ffffff;
+        --bg-surface: #ffffff;
+        --bg-card: #f9fafb;
+        --bg-active: #f3f4f6;
+        --accent-primary: #0891b2;
+        --accent-primary-hover: #0369a1;
+        --accent-primary-glow: rgba(8, 145, 178, 0.08);
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --text-dim: #6b7280;
+        --border-color: #e5e7eb;
+        --border-light: #d1d5db;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .address-bar, .stepper-panel-container, .tabs-nav {
+        display: none !important;
+      }
+      .tab-panel {
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-panel:not(.active) {
+        display: none !important;
+      }
+      .backend-code-block, .spec-code {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #0f766e !important;
+        white-space: pre-wrap !important;
+      }
+      .flow-step-card, .backend-tabs-container, .header-banner {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px !important;
+      }
+      .step-left-pane {
+        background: #f9fafb !important;
+        border-right: 1px solid #e5e7eb !important;
+      }
+      .card-image-viewport {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div class="address-bar">
-  <div class="address-bar-icon">📁</div>
-  <div class="address-bar-path" id="address-path">html/scout/operational/manage_farmer.html</div>
-</div>
-
-<div class="content-wrapper">
-  <div class="header-banner">
-    <div class="tag">Workflow Module 5</div>
-    <h1 class="title">Manage Farmer</h1>
-    <p class="desc">Edit and manage registered farmer profiles. Supports identity updates, pond management (add/edit/deactivate), bank account changes with penny-drop verification, document uploads, and preference management.</p>
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/manage_farmer.html</div>
   </div>
 
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Farmer Management Actions</div>
-    <span class="step-count">8 Actions</span>
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <span class="tag">Scout Operations</span>
+      <h1 class="title">Manage Farmer Accounts & Assets</h1>
+      <p class="desc">Farmer portfolio proxy administration directory. Allows scouts to modify basic profiles, replace bank accounts, edit pond parameters, add new pond assets, or deactivate assets.</p>
+    </div>
+
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Edit Profile</div></a>
+        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Bank Account</div></a>
+        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Edit Pond</div></a>
+        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Add Pond</div></a>
+        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Deactivate</div></a>
+      </div>
+    </div>
+
+    <!-- Backend Architecture Documentation -->
+    <div class="backend-tabs-container">
+      <div class="backend-tabs-header">
+        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+      </div>
+
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
+      </div>
+
+      <div class="tabs-content">
+        <!-- TAB: API Architecture -->
+        <div id="backend-api" class="tab-panel active">
+          <h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This dashboard manages offline farmer properties and physical pond allocations.</p>
+
+          <div class="backend-info-box">
+            <strong>State Operations:</strong><br>
+            • Profile edits save directly. Bank changes and pond deactivations log historical audits before committing mutations.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+          <ul class="backend-list">
+            <li><strong>updateFarmerProfile</strong> — Protected. Mutates identity details.</li>
+            <li><strong>updateFarmerBankDetails</strong> — Protected. Updates bank rows, sets approval to <code>pending</code>, and schedules checks.</li>
+            <li><strong>upsertPondAsset</strong> — Protected. Saves pond edits or appends new coordinates.</li>
+            <li><strong>togglePondStatus</strong> — Protected. Sets pond state.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Database Schema -->
+        <div id="backend-db" class="tab-panel">
+          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">ponds (Source Asset Modifications)</h4>
+          <div class="backend-code-block">CREATE TABLE ponds (
+  id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  farmer_user_id      UUID NOT NULL REFERENCES users(id),
+  pond_code           TEXT NOT NULL UNIQUE,
+  name                TEXT NOT NULL,
+  area_value          NUMERIC(5,2) NOT NULL,
+  area_unit           TEXT NOT NULL DEFAULT 'acres',
+  district            TEXT NOT NULL,
+  panchayat_village   TEXT NOT NULL,
+  gps_coordinates     POINT NOT NULL,
+  status              TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active','pending_approval','inactive')),
+  created_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+);</div>
+        </div>
+
+        <!-- TAB: Validation & Error Handling -->
+        <div id="backend-validation" class="tab-panel">
+          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
+          <ul class="backend-list">
+            <li><strong>IFSC Code Format:</strong> Checked against expressions.</li>
+            <li><strong>GPS Coordinates:</strong> Asserts that location parameters exist within regional borders.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Offline & Async -->
+        <div id="backend-sync" class="tab-panel">
+          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
+          <ul class="backend-list">
+            <li><strong>Offline Storage:</strong> Edits cache locally in SQLite tables, writing updates sequentially once network resolves.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Security -->
+        <div id="backend-security" class="tab-panel">
+          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
+          <ul class="backend-list">
+            <li><strong>Scope Access:</strong> Restricts operations exclusively to scouts assigned to the target district.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow Steps Block -->
+    <div class="workflow-group-block">
+      <div class="workflow-group-header">
+        <div class="workflow-group-title">Manage Farmer Steps Directory</div>
+        <div class="step-count-pill">5 Steps</div>
+      </div>
+      <div class="workflow-group-body">
+
+        <!-- STEP 1: Edit Profile Identity -->
+        <div class="flow-step-card" id="step-01">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">1</span>
+              <span class="step-title">Edit Identity Profile</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/manage_farmer/edit_identity/screen.png" alt="Edit Identity" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Personal Details Dashboard</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Edits simple profile fields like spelling, phone numbers, and addresses.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Restricts editing verified mobile numbers directly without OTP challenges.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Text inputs are pre-filled with active profile data. Verification badges flag status indicators. Bottom CTA updates profiles.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes <code>updateFarmerProfile</code> mutations.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Replace Bank Account -->
+        <div class="flow-step-card" id="step-02">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">2</span>
+              <span class="step-title">Replace Bank Account Details</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/manage_farmer/replace_bank_account/screen.png" alt="Bank Account" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Financial Account Replacements</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Updates bank routing information for offline payouts.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Requires uploading pictures of cancelled cheques to verify validity before payouts run.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Displays current active banking fields. Entry panels handle Account and IFSC parameters. Document cameras log media verification check images.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes <code>updateFarmerBankDetails</code> routines. Sets status flags back to pending approvals.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Edit Pond Parameters -->
+        <div class="flow-step-card" id="step-03">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">3</span>
+              <span class="step-title">Edit Pond Parameters</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/manage_farmer/edit_pond/screen.png" alt="Edit Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Pond Parameter Modifiers</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Modifies existing pond variables (Area, landmarks, locations).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Locks changes to pond sizes if bids have already run against their allocations.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Selects target ponds. Dynamic panels handle size and capacity variables. GPS buttons capture active positioning points.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes <code>upsertPondAsset</code> mutations.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Add New Pond -->
+        <div class="flow-step-card" id="step-04">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">4</span>
+              <span class="step-title">Add New Pond Asset</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/manage_farmer/add_pond_review_submit/screen.png" alt="Add Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Asset Registration Portal</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Appends new ponds to the farmer's active directory profile.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Requires exact GPS verification matching pond coordinates.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Wizard flows input names, sizes, villages. GPS trackers lock active coordinate tags. Reviews and submits new pond registrations.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Generates unique <code>pond_code</code> values. Invokes <code>upsertPondAsset</code>.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: Deactivate Pond -->
+        <div class="flow-step-card" id="step-05">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">5</span>
+              <span class="step-title">Deactivate Pond Asset</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/manage_farmer/deactivate_pond/screen.png" alt="Deactivate Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Asset Suspensions Dialog</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Temporarily or permanently disables active ponds from market lists.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Identifies deactivation reasons (e.g. seasonal changes, water contamination).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Renders warning sheets listing active listing links. Selection options choose deactivation codes. Dark amber buttons suspend allocations.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes <code>togglePondStatus</code> transactions to deactivate allocations.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-  <div class="workflow-body">
-
-    <div class="action-card">
-      <div class="action-title">1. Edit Identity</div>
-      <div class="action-desc">Update farmer's name, address, contact info.</div>
-      <div class="action-specs">
-        <div class="spec-label">Editable Fields</div>
-        <ul class="spec-list"><li>Full name</li><li>Address (district, village, free-text)</li><li>Alternate phone</li></ul>
-        <div class="spec-label" style="margin-top: 10px;">Requirements</div>
-        <ul class="spec-list"><li>Name changes allowed by scout</li><li>Mobile changes require OTP re-verification</li></ul>
-      </div>
-    </div>
-
-    <div class="action-card">
-      <div class="action-title">2. Add Pond</div>
-      <div class="action-desc">Register new pond for farmer (4-step mini-wizard).</div>
-      <div class="action-specs">
-        <div class="spec-label">Steps</div>
-        <ul class="spec-list"><li>Pond details (name, area, capacity)</li><li>Address (district, village)</li><li>Geo-fencing (GPS capture)</li><li>Legal documents</li></ul>
-        <div class="spec-label" style="margin-top: 10px;">Status</div>
-        <ul class="spec-list"><li>Added pond enters pending_approval until Admin approves</li></ul>
-      </div>
-    </div>
-
-    <div class="action-card">
-      <div class="action-title">3. Edit Pond</div>
-      <div class="action-desc">Update existing pond details.</div>
-      <div class="action-specs">
-        <div class="spec-label">Editable Fields</div>
-        <ul class="spec-list"><li>Pond name, area, capacity</li><li>Address details</li><li>GPS location</li></ul>
-        <div class="spec-label" style="margin-top: 10px;">Restrictions</div>
-        <ul class="spec-list"><li>Pond code immutable</li><li>GPS edits flagged for Admin review</li></ul>
-      </div>
-    </div>
-
-    <div class="action-card">
-      <div class="action-title">4. Deactivate Pond</div>
-      <div class="action-desc">Mark pond inactive (farmer no longer farms it).</div>
-      <div class="action-specs">
-        <div class="spec-label">Process</div>
-        <ul class="spec-list"><li>Select coded reason (Closed, Leased Out, Defunct, Other)</li><li>Soft deactivation (not deleted)</li></ul>
-        <div class="spec-label" style="margin-top: 10px;">Effect</div>
-        <ul class="spec-list"><li>Pond unavailable for new lot registrations</li></ul>
-      </div>
-    </div>
-
-    <div class="action-card">
-      <div class="action-title">5. Add / Replace Bank Account</div>
-      <div class="action-desc">Add or replace farmer's bank account for payouts.</div>
-      <div class="action-specs">
-        <div class="spec-label">Process</div>
-        <ul class="spec-list"><li>Account holder name, account number (confirmed), IFSC</li><li>Penny-drop verification triggered at submit</li></ul>
-        <div class="spec-label" style="margin-top: 10px;">Policy</div>
-        <ul class="spec-list"><li>One active account per farmer (Year 1)</li><li>Old account marked inactive</li><li>Penny-drop re-runs automatically</li></ul>
-      </div>
-    </div>
-
-    <div class="action-card">
-      <div class="action-title">6. Initiate / Retry Penny-Drop</div>
-      <div class="action-desc">Re-trigger penny-drop verification if previous attempt failed.</div>
-      <div class="action-specs">
-        <div class="spec-label">Trigger</div>
-        <ul class="spec-list"><li>Scout can manually retry failed penny-drops</li></ul>
-        <div class="spec-label" style="margin-top: 10px;">Escalation</div>
-        <ul class="spec-list"><li>Persistent failures escalate to Admin for manual review</li></ul>
-      </div>
-    </div>
-
-    <div class="action-card">
-      <div class="action-title">7. Add / Replace Identity Documents</div>
-      <div class="action-desc">Upload or replace farmer's identity documents.</div>
-      <div class="action-specs">
-        <div class="spec-label">Document Types</div>
-        <ul class="spec-list"><li>Aadhar / PAN / Voter ID / Other</li><li>Up to 3 photos per document</li></ul>
-        <div class="spec-label" style="margin-top: 10px;">Purpose</div>
-        <ul class="spec-list"><li>Supports compliance and farmer profile verification</li></ul>
-      </div>
-    </div>
-
-    <div class="action-card">
-      <div class="action-title">8. Update Language / Theme on Behalf</div>
-      <div class="action-desc">Change farmer's app preferences.</div>
-      <div class="action-specs">
-        <div class="spec-label">Options</div>
-        <ul class="spec-list"><li>Language: English / Hindi / Bengali</li><li>Theme: Dark / Light</li></ul>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div style="max-width: 1280px; margin: 0 auto;">
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Management Pattern & Approval Gates</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Sensitive Changes</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">Mobile number changes require OTP re-verification. Name changes scout-allowed. GPS edits flagged for Admin review.</div>
-      </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Pond Management</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">New ponds enter pending_approval. Farmers can have multiple ponds; deactivation is soft (not permanent deletion).</div>
-      </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Bank Account Policy</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">One active account per farmer (Year 1). Old accounts marked inactive. Penny-drop is mandatory for payout eligibility.</div>
-      </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Offline-First</div>
-        <div style="font-size: 13px; color: var(--text-main); line-height: 1.6;">All edits captured locally; documents compressed. Sync via sync_queue when network available.</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => {
+              node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       const pathElement = document.getElementById('address-path');
       if (pathElement) {
@@ -180,18 +582,19 @@
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
       }
     });
-  </script>
 
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const pathElement = document.getElementById('address-path');
-    if (pathElement) {
-      const pathname = window.location.pathname;
-      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    function showTab(event, tabId) {
+      event.preventDefault();
+      const allPanels = document.querySelectorAll('.tab-panel');
+      allPanels.forEach(panel => panel.classList.remove('active'));
+      const allButtons = document.querySelectorAll('.tab-button');
+      allButtons.forEach(button => button.classList.remove('active'));
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add('active');
+      }
+      event.target.classList.add('active');
     }
-  });
-</script>
-
+  </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Lot Verification Inspection</title>
+  <title>Lot Verification Inspection - Scout Operations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,6 +34,21 @@
     ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
 
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
     .address-bar {
       background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
       display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
@@ -45,26 +60,12 @@
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
     }
 
-    .header-banner {
-      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
-      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
-      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    }
-    .tag {
-      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
-      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
-      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
-    }
-    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
-
     .stepper-panel-container {
-      max-width: 1280px; margin: 0 auto 48px;
       background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
       border: 1px solid var(--border-color); border-radius: 16px;
-      padding: 20px 36px; position: sticky; top: 52px; z-index: 100;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+      max-width: 1280px; margin-left: auto; margin-right: auto;
     }
     .stepper-nodes {
       display: flex; align-items: center; justify-content: space-between;
@@ -115,6 +116,7 @@
     .flow-step-card {
       background: var(--bg-surface); border: 1px solid var(--border-color);
       border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+      scroll-margin-top: 160px;
     }
     .step-header {
       background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
@@ -126,7 +128,7 @@
     }
     .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
 
-    .step-body { display: flex; flex-wrap: wrap; min-height: 480px; }
+    .step-body { display: flex; flex-wrap: wrap; }
     .step-left-pane {
       flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
       display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
@@ -152,7 +154,6 @@
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
 
-    /* Backend Architecture Tabs */
     .backend-tabs-container {
       max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
       border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
@@ -196,9 +197,64 @@
     .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
     .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
     .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+
+    @media print {
+      :root {
+        --bg-base: #ffffff;
+        --bg-surface: #ffffff;
+        --bg-card: #f9fafb;
+        --bg-active: #f3f4f6;
+        --accent-primary: #0891b2;
+        --accent-primary-hover: #0369a1;
+        --accent-primary-glow: rgba(8, 145, 178, 0.08);
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --text-dim: #6b7280;
+        --border-color: #e5e7eb;
+        --border-light: #d1d5db;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .address-bar, .stepper-panel-container, .tabs-nav {
+        display: none !important;
+      }
+      .tab-panel {
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-panel:not(.active) {
+        display: none !important;
+      }
+      .backend-code-block, .spec-code {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #0f766e !important;
+        white-space: pre-wrap !important;
+      }
+      .flow-step-card, .backend-tabs-container, .header-banner {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px !important;
+      }
+      .step-left-pane {
+        background: #f9fafb !important;
+        border-right: 1px solid #e5e7eb !important;
+      }
+      .card-image-viewport {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+      }
+    }
   </style>
 </head>
 <body>
+
   <div class="address-bar">
     <div class="address-bar-icon">📁</div>
     <div class="address-bar-path" id="address-path">html/scout/operational/verification.html</div>
@@ -208,8 +264,20 @@
     <div class="header-banner">
       <span class="tag">Scout Operations</span>
       <h1 class="title">Lot Verification Inspection</h1>
-      <p class="desc">Complete 7-step workflow for inspecting and verifying incoming lots of raw makhana with quality assessment, reference samples, and approval queue.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">Scout inspects a newly received lot of raw makhana at the warehouse or collection center. Captures quality data (color, moisture, defects), takes reference photos, and submits for admin approval. Lot enters pending_approval state until verified.</p>
+      <p class="desc">Physical quality measurement and raw makhana intake verification protocol. Maps moisture ranges, size metrics, photographic logs, and lab retaining samples to lock grade declarations securely.</p>
+    </div>
+
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Confirm Qty</div></a>
+        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Parameters</div></a>
+        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Defects</div></a>
+        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Evidence Photos</div></a>
+        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Ref Sample</div></a>
+        <a href="#step-06" class="stepper-node"><div class="node-num">6</div><div class="node-label">Disposition</div></a>
+        <a href="#step-07" class="stepper-node"><div class="node-num">7</div><div class="node-label">Preview Cert</div></a>
+        <a href="#step-08" class="stepper-node"><div class="node-num">8</div><div class="node-label">Confirmation</div></a>
+      </div>
     </div>
 
     <!-- Backend Architecture Documentation -->
@@ -223,284 +291,407 @@
         <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
         <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
         <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-async')">Async Jobs</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
         <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
       </div>
 
       <div class="tabs-content">
         <!-- TAB: API Architecture -->
         <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedure Architecture (7 Procedures)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Lot Verification Inspection workflow consists of 7 tRPC procedures for lot intake, quality assessment, photo capture, and submission.</p>
+          <h3 class="backend-section-title">tRPC Procedures (8 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Lot Verification involves progressive state accumulation inside the mobile wizard, finishing with an atomic database write transaction.</p>
 
           <div class="backend-info-box">
-            <strong>Procedure Breakdown:</strong><br>
-            • 1 Public procedure: Initiate lot verification<br>
-            • 5 Protected procedures: Quality data, photos, reference samples<br>
-            • 1 Protected procedure: Submit verification (atomic transaction, 4 inserts)
+            <strong>Precondition Guard:</strong><br>
+            • Entry requires <code>warehouses.fitness_status = 'fit'</code>. If unfit or unchecked, the workflow is hard-blocked.
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/lot.ts</h4>
-          <div class="backend-code-block">export const lotRouter = t.router({
-  // Screen 1: Init Lot Verification
-  initLotVerification: publicProcedure,
-
-  // Screens 2-4: Quality Assessment
-  submitQualityMetrics: protectedProcedure,
-  submitLotPhotos: protectedProcedure,
-  submitReferenceSamples: protectedProcedure,
-
-  // Screens 5-6: Assessment Details
-  submitDefectAnalysis: protectedProcedure,
-  submitGradeAssignment: protectedProcedure,
-
-  // Screen 7: Submit
-  submitLotVerification: protectedProcedure,
-});</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 7 - Submit)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li>1. Insert lot_inspections record (status=pending_approval)</li>
-            <li>2. Insert lot_inspection_photos (array, up to 10 per lot)</li>
-            <li>3. Insert lot_inspection_reference_samples (array)</li>
-            <li>4. Insert lot_inspection_events (audit trail)</li>
-            <li>→ On success: Trigger async Inngest job lot.inspection-submitted</li>
-            <li>→ On failure: Rollback all 4 inserts (no partial state)</li>
+            <li><strong>initLotVerification</strong> — Fetches active cached lot specifications, locked grade configurations, and target warehouse fitness states.</li>
+            <li><strong>submitLotVerification</strong> — Protected procedure. Executes atomic multi-table write transaction. Inserts one <code>inspections</code> header, bulk inserts readings, defects, photos, and updates the child task states.</li>
           </ul>
         </div>
 
         <!-- TAB: Database Schema -->
         <div id="backend-db" class="tab-panel">
-          <h3 class="backend-section-title">Core Database Tables (Drizzle ORM)</h3>
+          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">lot_inspections (Main Record)</h4>
-          <div class="backend-code-block">CREATE TABLE lot_inspections (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  lot_id UUID NOT NULL REFERENCES lots(id),
-  scout_id UUID NOT NULL REFERENCES scouts(id),
-  warehouse_id UUID NOT NULL REFERENCES warehouses(id),
-  status ENUM('pending_approval','approved','rejected'),
-  color_grade VARCHAR(50),
-  moisture_percentage DECIMAL(5,2),
-  defect_percentage DECIMAL(5,2),
-  overall_grade VARCHAR(10),
-  notes TEXT,
-  submitted_at TIMESTAMPTZ NOT NULL,
-  approved_by_admin_id UUID REFERENCES users(id),
-  approved_at TIMESTAMPTZ,
-  created_at TIMESTAMPTZ DEFAULT NOW()
+          <h4 class="backend-section-title" style="font-size: 14px;">inspections (Header Table)</h4>
+          <div class="backend-code-block">CREATE TABLE inspections (
+  id                    UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  lot_id                UUID NOT NULL REFERENCES lots(id),
+  warehouse_id          UUID NOT NULL REFERENCES warehouses(id),
+  popper_id             UUID NOT NULL REFERENCES poppers(id),
+  scout_id              UUID NOT NULL REFERENCES scouts(id),
+  task_id               UUID REFERENCES scout_tasks(id),
+  related_po_id         UUID REFERENCES purchase_orders(id),
+  prior_inspection_id   UUID REFERENCES inspections(id),   -- for re-inspections
+  declared_quantity_kg  NUMERIC(10,2) NOT NULL,
+  verified_quantity_kg  NUMERIC(10,2) NOT NULL,
+  verified_bag_count    INT NOT NULL,
+  quantity_variance_pct NUMERIC(6,2),
+  claimed_grade         TEXT,
+  assessed_grade        TEXT CHECK (assessed_grade IN ('A','B','C')),
+  outcome               TEXT NOT NULL CHECK (outcome IN ('accepted','downgrade','hold_admin','rejected')),
+  outcome_locked        BOOLEAN NOT NULL DEFAULT false,
+  reject_reason_code    TEXT,
+  reject_recondition    TEXT CHECK (reject_recondition IN ('reconditionable','terminal')),
+  sample_ref            TEXT,
+  bags_sampled_from     INT,
+  retain_until          DATE,
+  overall_note          TEXT,
+  spec_version          INT NOT NULL,
+  checked_at            TIMESTAMPTZ NOT NULL,
+  created_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  synced_at             TIMESTAMPTZ
+);
+
+CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">inspection_parameter_readings (Quality Metrics)</h4>
+          <div class="backend-code-block">CREATE TABLE inspection_parameter_readings (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  inspection_id   UUID NOT NULL REFERENCES inspections(id) ON DELETE CASCADE,
+  parameter_code  TEXT NOT NULL,          -- 'moisture'|'foreign_matter'|'broken'|'size_suta'|'colour_luster'
+  value_numeric   NUMERIC(7,2),
+  value_coded     TEXT,
+  unit            TEXT,
+  band            TEXT CHECK (band IN ('A','B','C','out')),
+  spec_version    INT NOT NULL
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">lot_inspection_photos (Photos)</h4>
-          <div class="backend-code-block">CREATE TABLE lot_inspection_photos (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  lot_inspection_id UUID NOT NULL REFERENCES lot_inspections(id),
-  photo_url TEXT NOT NULL,
-  photo_type ENUM('full_lot','close_up','defect'),
-  caption TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">lot_inspection_reference_samples (Lab Samples)</h4>
-          <div class="backend-code-block">CREATE TABLE lot_inspection_reference_samples (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  lot_inspection_id UUID NOT NULL REFERENCES lot_inspections(id),
-  sample_id VARCHAR(50) UNIQUE NOT NULL,
-  weight_grams DECIMAL(8,2),
-  lab_test_status ENUM('pending','completed','failed'),
-  lab_result_url TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);</div>
-
-          <div class="backend-info-box">
-            <strong>⚠️ Encryption:</strong><br>
-            • Photo URLs: Signed/expiring S3-style URLs (Supabase Storage)<br>
-            • Reference sample data: Plain text (no PII)
-          </div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->
         <div id="backend-validation" class="tab-panel">
-          <h3 class="backend-section-title">Input Validation & Error Handling</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Validation Strategy</h4>
-          <div class="backend-info-box">
-            <strong>All inputs validated with Zod schemas:</strong><br>
-            • Quality metrics: moisture 0-30%, defects 0-100%<br>
-            • Photos: max 10 per lot, JPEG/PNG only, <5MB each<br>
-            • Reference samples: weight > 0, unique sample_ids<br>
-            • Grade: must be A, B, C, or D
-          </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">HTTP Error Codes by Category</h4>
-          <table class="backend-table">
-            <tr><th>Status</th><th>Error Code</th><th>Example</th></tr>
-            <tr><td>400</td><td>INVALID_MOISTURE_RANGE</td><td>Moisture outside 0-30%</td></tr>
-            <tr><td>409</td><td>LOT_ALREADY_VERIFIED</td><td>Lot verification submitted twice</td></tr>
-            <tr><td>422</td><td>PHOTOS_REQUIRED</td><td>At least 1 photo required</td></tr>
-            <tr><td>500</td><td>PHOTO_UPLOAD_FAILED</td><td>Storage service error</td></tr>
-          </table>
+          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
+          <ul class="backend-list">
+            <li><strong>Hard Limits:</strong> Moisture locks in 0-25% bounds. Coded defect items map strictly against active catalogue lists.</li>
+            <li><strong>Soft Warnings:</strong> Variance check triggers warning banner if <code>abs(variance) &gt; 5%</code>, prompting scout verification before continuation.</li>
+          </ul>
         </div>
 
-        <!-- TAB: Async Jobs -->
-        <div id="backend-async" class="tab-panel">
-          <h3 class="backend-section-title">Async Jobs with Inngest (Serverless Queue)</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">1. lot.inspection-submitted (Chained)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 7 "Submit Verification"<br>
-            <strong>Steps:</strong> Verify lot exists → Calculate composite grade → Notify admin → Update status<br>
-            <strong>Retry:</strong> 3 attempts with exponential backoff
-          </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">2. lot.approved (Event-Triggered)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Admin approves lot in dashboard<br>
-            <strong>Steps:</strong> Update lot status → Send SMS to farmer → Update inventory<br>
-          </div>
+        <!-- TAB: Offline & Async -->
+        <div id="backend-sync" class="tab-panel">
+          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
+          <ul class="backend-list">
+            <li><strong>Offline-First:</strong> Mobile client serializes full transaction packages into SQLite <code>sync_queue</code> if connectivity drops.</li>
+            <li><strong>Server Sync Reconciliations:</strong> Reconciles local temporary sample IDs (e.g., <code>SMP-temp</code>) to final database formats (<code>SMP-FY-XXXX</code>) and fires PDF grade certificate creations asynchronously.</li>
+          </ul>
         </div>
 
         <!-- TAB: Security -->
         <div id="backend-security" class="tab-panel">
-          <h3 class="backend-section-title">Security Best Practices</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Sensitive Data Handling</h4>
-          <div class="backend-info-box">
-            <strong>Never Log:</strong><br>
-            ✗ Full photo URLs (log only domain)<br>
-            ✗ Scout's exact GPS coordinates<br>
-            <br>
-            <strong>Safe to Log:</strong><br>
-            ✓ Lot ID, warehouse ID, scout ID<br>
-            ✓ Quality metrics, grades<br>
-            ✓ Event types and timestamps
-          </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Photo Upload Security</h4>
+          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
           <ul class="backend-list">
-            <li>Store photos in Supabase Storage with RLS (scout can only view own uploads)</li>
-            <li>Generate signed URLs with 24-hour expiration</li>
-            <li>Scan photos for malware before storage</li>
-            <li>Compress images to max 2MB before upload</li>
+            <li><strong>RLS Access Policies:</strong> Scouts are constrained to operate only on lots housed within their geographical assignments.</li>
+            <li><strong>Storage Protection:</strong> Camera photos compress client-side and upload directly to secure, authenticated Supabase buckets.</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="stepper-panel-container">
-      <div class="stepper-nodes">
-        <a href="#step-01" class="stepper-node active"><span class="node-num">1</span><span class="node-label">Init</span></a>
-        <a href="#step-02" class="stepper-node"><span class="node-num">2</span><span class="node-label">Quality</span></a>
-        <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">Photos</span></a>
-        <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Samples</span></a>
-        <a href="#step-05" class="stepper-node"><span class="node-num">5</span><span class="node-label">Defects</span></a>
-        <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Grade</span></a>
-        <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Submit</span></a>
-      </div>
-    </div>
-
+    <!-- Workflow Steps Block -->
     <div class="workflow-group-block">
       <div class="workflow-group-header">
-        <div class="workflow-group-title">Lot Verification Workflow</div>
-        <div class="step-count-pill">7 Steps</div>
+        <div class="workflow-group-title">Lot Verification Steps Directory</div>
+        <div class="step-count-pill">8 Steps</div>
       </div>
       <div class="workflow-group-body">
 
-        <!-- Step 1: Initialize Lot Verification -->
+        <!-- STEP 1: Confirm Lot & Quantity -->
         <div class="flow-step-card" id="step-01">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">1</span><span class="step-title">Initialize Lot Verification</span></div></div>
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">1</span>
+              <span class="step-title">Confirm Lot & Quantity</span>
+            </div>
+          </div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><div class="screen-placeholder">Lot selection screen</div></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Scout selects the incoming lot to be verified.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Dropdown list of unverified lots with lot ID, supplier, quantity, date received.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Wizard context initialized: { lot_id, warehouse_id, scout_id }. No DB write yet.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-label">Lot selection dropdown with timestamps, quick search by lot ID.</div></div>
-            </div></div>
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/confirm_lot_quantity/screen.png" alt="Confirm Lot Quantity" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Quantity Assessment Form</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Identifies the incoming lot and records the physical quantity verified by the scout against popper declarations.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Verifies physical bag counts and net weight (kg). Activates amber warning notice if net variance exceeds &plusmn;5%.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Top panel shows lot reference metadata and linked PO. Displays declared values. Renders numeric entry fields for actual bag count and verified weight. Inline chips display live calculated variance metrics.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Locks target <code>spec_version</code> in context, fetching the active specification tolerances before navigating downstream.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 2: Quality Metrics -->
+        <!-- STEP 2: Parameter Readings -->
         <div class="flow-step-card" id="step-02">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Quality Metrics Assessment</span></div></div>
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">2</span>
+              <span class="step-title">Parameter Readings</span>
+            </div>
+          </div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><div class="screen-placeholder">Quality assessment form</div></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures primary quality indicators: color, moisture, defects.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Color grade (A/B/C/D), moisture % (0-30), visible defect %. Required for lot approval.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Form with sliders for moisture/defects, color grade selector.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Validation: moisture 0-30% (decimals), defects 0-100%, color A/B/C/D.</div></div>
-            </div></div>
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/parameter_readings/screen.png" alt="Parameter Readings" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Quality Parameter Assessments</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Logs objective physical measurements for primary quality factors defined in the grade specification.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Evaluates Moisture %, Foreign Matter %, Broken/Defective %, Size Grade (Suta), and Coded Colour Luster (Bright white / Acceptable / Dull-discoloured).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Cards for each parameter displaying limits for A/B/C bands. Inputting values instantly renders pass/near-limit/fail status colors. A sticky footer reflects the provisional calculated grade in real-time.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Zod schemas block impossible ranges (e.g. moisture &gt; 25%). Compiles readings into local context objects.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 3: Lot Photos -->
+        <!-- STEP 3: Defect Capture -->
         <div class="flow-step-card" id="step-03">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Lot Photos</span></div></div>
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">3</span>
+              <span class="step-title">Defect Capture</span>
+            </div>
+          </div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><div class="screen-placeholder">Photo grid preview</div></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Scout captures reference photos of the lot at intake.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Minimum 3 photos required: full lot view, close-up of quality, defect areas. Max 10 photos.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Photo grid with camera integration, type selector (full lot/close-up/defect).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Photos compressed (JPEG, max 5MB), uploaded to Supabase Storage, queued for sync.</div></div>
-            </div></div>
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/defect_capture/screen.png" alt="Defect Capture" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Coded Defect Checklist</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Checks the lot for critical, major, and minor physical defects from the standard quality framework catalogue.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Locks severity tiers automatically based on defect code. Critical defects (e.g. mold, pest infestation, rodent contact) force immediate rejection verdicts.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Default toggle reads "No defects found". Toggling off unlocks bottom sheets displaying coded options categorized by severity. Renders active summary badges showing the worst defect currently logged.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Failing to resolve defects while toggling off blocks navigation. Critical/major defects dynamically append mandatory photo capture flags for Step 4.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 4: Reference Samples -->
+        <!-- STEP 4: Evidence Photos -->
         <div class="flow-step-card" id="step-04">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Reference Samples</span></div></div>
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">4</span>
+              <span class="step-title">Evidence Photos</span>
+            </div>
+          </div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><div class="screen-placeholder">Sample details form</div></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Scout collects sample(s) from the lot for lab testing.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Unique sample ID, weight in grams. Samples sent to lab for confirmation testing.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Form to enter sample IDs and weights, add multiple samples.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Sample IDs must be unique across all lots. Weight > 0g. Status: pending_lab_test.</div></div>
-            </div></div>
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/evidence_photos_inspection/screen.png" alt="Evidence Photos" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Inspection Evidence Media Capture</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Generates robust photographic records supporting the quality grade and defending against downstream disputes.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Mandatory slots: wide lot shot, close-up seed view, and moisture meter readout. Dynamically includes mandatory slots for logged critical/major defects.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Structured grid display showing dashed slots representing pending captures. Active previews replace slots on snap. Retake icons allow fast recaptures. Continue button disabled until all mandatory slots are resolved.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Compresses files to &le; 1.5MB. Stamps GPS metadata. Uploads to Supabase storage buckets.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 5: Defect Analysis -->
+        <!-- STEP 5: Reference Sample -->
         <div class="flow-step-card" id="step-05">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Defect Analysis</span></div></div>
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">5</span>
+              <span class="step-title">Reference Sample</span>
+            </div>
+          </div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><div class="screen-placeholder">Defect checklist</div></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Scout identifies specific defect types to categorize quality.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Check for: foreign material, discoloration, damage, under-formed. Count if possible.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Checklist of defect types with optional count fields.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Stored in context as defect_types array. Used to refine overall grade.</div></div>
-            </div></div>
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/reference_sample/screen.png" alt="Reference Sample" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Physical Sample Registration Form</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Logs the physical dispute-reference sample collected and locked on-site by the scout.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Nudges multi-bag draws. Captures a mandatory picture of the locked sample bag. Enforces 6-month retention policies.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Generates distinct, copyable sample reference ID. Prompts a numeric input asking for the bag count sampled. Echoes read-only quality metric bands.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Assigns temporary <code>sample_ref</code> values, resolving final unique identifiers server-side. Auto-calculates <code>retain_until</code> date (checked_at + 6 months).</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 6: Grade Assignment -->
+        <!-- STEP 6: Disposition -->
         <div class="flow-step-card" id="step-06">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">Overall Grade Assignment</span></div></div>
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">6</span>
+              <span class="step-title">Disposition</span>
+            </div>
+          </div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><div class="screen-placeholder">Grade summary</div></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Final quality grade based on all assessments.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Auto-calculated from color + moisture + defects, or override by scout. Grade A/B/C/D.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Show calculated grade, allow manual adjustment with confirmation.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Server-side grade calc: A (color A + moisture <15% + defects <5%), B/C/D by metric combinations.</div></div>
-            </div></div>
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/disposition/screen.png" alt="Disposition" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 6: Verdict Summary and Final Commitment</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Applies standard decision rules to calculate and verify the final lot verdict before database submission.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Auto-evaluates disposition logic. Accept (worst parameter band is A), Downgrade (assessed grade &lt; claimed grade), Hold (majors out-of-spec), or Reject (critical defects present, locks outcome). Commits atomic multi-table writes.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Renders large outcome banners (Red warning for critical rejections, Amber warning for downgrades). Displays detailed checklists echoing previous assessments. Prompts mandatory confirmation checks. Primary action reads "Submit Inspection".</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes atomic database transaction. Mutates lots state column values. Enqueues updates to the synchronization pipelines.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 7: Submit Verification -->
+        <!-- STEP 7: Grade Certificate Preview -->
         <div class="flow-step-card" id="step-07">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">Submit Verification</span></div></div>
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">7</span>
+              <span class="step-title">Grade Certificate Preview</span>
+            </div>
+          </div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><div class="screen-placeholder">Review summary</div></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Final review and submission of lot verification.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Summary card showing all metrics, photos count, grade. Final confirmation CTA.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Atomic insert: lot_inspections, lot_inspection_photos, lot_inspection_reference_samples, lot_inspection_events. Status: pending_approval. Triggers async job.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Summary sections with edit links, final confirmation checkbox, submit button.</div></div>
-            </div></div>
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/grade_certificate_preview/screen.png" alt="Grade Certificate Preview" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 7: Generated Grade Certificate Preview</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Visualizes the authoritative, auto-generated Grade Certificate that will be shared with the popper and prospective buyers.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Ensures a valid preview can be generated reflecting the assessed grade, verified bags, quality metrics, and inline evidence photos. (Skipped on Reject/Hold outcomes).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Displays an interactive, read-only PDF view container. Renders certificate identifiers. Single active cyan button reads "Finish".</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Renders an on-device local HTML mockup representing the server-side PDF generator template to ensure full offline operations.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 8: Submission Confirmation -->
+        <div class="flow-step-card" id="step-08">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">8</span>
+              <span class="step-title">Submission Confirmation</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/lot_verification_inspection/lot_verification_submitted/screen.png" alt="Submission Confirmation" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 8: Success Terminal & Action Portal</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Confirms completion and maps shortcuts for following task pipelines.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Offers a direct "Apply seal now" shortcut button if the lot is accepted (and downgrade consent is not required/pending). Otherwise routes back to the dashboard.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Full-screen confirmation. Shows sync statuses ("Synced" or "Offline Queued"). Banners display alerts indicating if downgrade notifications or reconditioning alerts were sent. Cyan CTA maps onwards.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Clears all temporary draft context storage variables. Marks local SQLite task items resolved.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -526,9 +717,7 @@
 
       stepCards.forEach(card => observer.observe(card));
     });
-  </script>
 
-  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const pathElement = document.getElementById('address-path');
       if (pathElement) {
@@ -536,27 +725,17 @@
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
       }
     });
-  </script>
 
-  <script>
     function showTab(event, tabId) {
       event.preventDefault();
-
-      // Hide all tab panels
       const allPanels = document.querySelectorAll('.tab-panel');
       allPanels.forEach(panel => panel.classList.remove('active'));
-
-      // Remove active class from all buttons
       const allButtons = document.querySelectorAll('.tab-button');
       allButtons.forEach(button => button.classList.remove('active'));
-
-      // Show selected tab panel
       const selectedPanel = document.getElementById(tabId);
       if (selectedPanel) {
         selectedPanel.classList.add('active');
       }
-
-      // Mark clicked button as active
       event.target.classList.add('active');
     }
   </script>

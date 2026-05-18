@@ -28,11 +28,26 @@
       background-color: var(--bg-base); color: var(--text-main);
       font-family: 'Inter', sans-serif; line-height: 1.6; padding: 0;
     }
-    .content-wrapper { padding: 40px 48px 96px; max-width: 1280px; margin: 0 auto; }
+    .content-wrapper { padding: 40px 48px 96px; }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-base); }
     ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
 
     .address-bar {
       background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
@@ -45,25 +60,12 @@
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
     }
 
-    .header-banner {
-      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
-      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
-      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    }
-    .tag {
-      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
-      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
-      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
-    }
-    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
-
     .stepper-panel-container {
       background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
       border: 1px solid var(--border-color); border-radius: 16px;
       padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
       box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+      max-width: 1280px; margin-left: auto; margin-right: auto;
     }
     .stepper-nodes {
       display: flex; align-items: center; justify-content: space-between;
@@ -97,112 +99,254 @@
 
     .workflow-overview {
       background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px;
-      padding: 28px; margin-bottom: 48px;
+      padding: 28px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;
     }
     .overview-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 16px; }
     .overview-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-    .workflow-grid {
-      display: flex; flex-direction: column; gap: 32px;
+    .workflow-group-block {
+      max-width: 1280px; margin: 0 auto 48px; background: #141416;
+      border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;
     }
+    .workflow-group-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color); border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .workflow-group-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #fff; }
+    .step-count-pill {
+      background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border-light);
+      padding: 4px 12px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+    }
+    .workflow-group-body { padding: 32px; display: flex; flex-direction: column; gap: 48px; }
+
     .flow-step-card {
       background: var(--bg-surface); border: 1px solid var(--border-color);
-      border-radius: 14px; overflow: hidden; scroll-margin-top: 160px;
+      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+      scroll-margin-top: 160px;
     }
     .step-header {
       background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
     }
     .step-badge {
       font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--accent-primary);
-      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px;
-      border: 1px solid rgba(6, 182, 212, 0.25);
+      background: var(--accent-primary-glow); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.25);
     }
     .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
-    .step-body { padding: 28px; }
-    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+    .step-body { display: flex; flex-wrap: wrap; }
+    .step-left-pane {
+      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
+      display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
+    }
+    .card-image-viewport {
+      width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
+      border-radius: 12px; border: 2px solid var(--border-color); background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card-image-viewport::-webkit-scrollbar { display: none; }
+    .preview-screen-img { width: 100%; height: auto; display: block; }
+    .screen-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim); font-size: 13px; text-align: center; padding: 20px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    }
+
+    .step-right-pane { flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column; }
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
     .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+    .spec-block.full-width { grid-column: 1 / -1; }
     .spec-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
-    .spec-list { list-style: none; padding-left: 0; }
-    .spec-list li { position: relative; padding-left: 18px; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-    .spec-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
+    .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
 
-    .sql-block {
-      background: #050d11; border: 1px solid var(--border-color); border-radius: 8px;
-      padding: 16px; font-family: 'Courier New', monospace; font-size: 12px;
-      color: #06b6d4; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;
+    .backend-tabs-container {
+      max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
+      overflow: hidden;
+    }
+    .backend-tabs-header {
+      padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .backend-tabs-subtitle {
+      font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .tabs-nav {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border-color);
+      background: #0a0a0b; gap: 0;
+    }
+    .tab-button {
+      flex: 0 0 auto; padding: 16px 20px; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.3s ease; white-space: nowrap; text-transform: uppercase;
+      letter-spacing: 0.5px; font-family: 'Outfit', sans-serif;
+    }
+    .tab-button:hover { color: var(--accent-primary); }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tabs-content { display: flex; flex-direction: column; }
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+    .backend-section-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; margin-top: 24px; }
+    .backend-section-title:first-child { margin-top: 0; }
+    .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+      border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
+      overflow-x: auto; margin: 16px 0; line-height: 1.5; }
+    .backend-list { margin: 16px 0; padding-left: 20px; }
+    .backend-list li { margin-bottom: 8px; font-size: 13px; color: var(--text-main); }
+    .backend-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
+    .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+
+    @media print {
+      :root {
+        --bg-base: #ffffff;
+        --bg-surface: #ffffff;
+        --bg-card: #f9fafb;
+        --bg-active: #f3f4f6;
+        --accent-primary: #0891b2;
+        --accent-primary-hover: #0369a1;
+        --accent-primary-glow: rgba(8, 145, 178, 0.08);
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --text-dim: #6b7280;
+        --border-color: #e5e7eb;
+        --border-light: #d1d5db;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .address-bar, .stepper-panel-container, .tabs-nav {
+        display: none !important;
+      }
+      .tab-panel {
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-panel:not(.active) {
+        display: none !important;
+      }
+      .backend-code-block, .spec-code {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #0f766e !important;
+        white-space: pre-wrap !important;
+      }
+      .flow-step-card, .backend-tabs-container, .header-banner {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px !important;
+      }
+      .step-left-pane {
+        background: #f9fafb !important;
+        border-right: 1px solid #e5e7eb !important;
+      }
+      .card-image-viewport {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="address-bar">
-  <div class="address-bar-icon">📁</div>
-  <div class="address-bar-path" id="address-path">html/scout/operational/ponds_directory.html</div>
-</div>
-
-<div class="content-wrapper">
-  <div class="header-banner">
-    <div class="tag">Workflow Module 3</div>
-    <h1 class="title">Ponds Directory</h1>
-    <p class="desc">Scout's directory of all assigned ponds with inspection history and linked spot offers. Search, filter, and browse full pond profiles with inspection records and recent offer activity.</p>
+  <div class="address-bar">
+    <div class="address-bar-icon">📁</div>
+    <div class="address-bar-path" id="address-path">html/scout/operational/ponds_directory.html</div>
   </div>
 
-  <div class="stepper-panel-container">
-    <div class="stepper-nodes">
-      <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Pond List</div></a>
-      <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Pond Detail</div></a>
-      <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Inspection Record</div></a>
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <span class="tag">Scout Operations</span>
+      <h1 class="title">Ponds Directory</h1>
+      <p class="desc">Comprehensive browse and management hub for all ponds assigned to the scout. Enables searching, filtering, and deep viewing of pond profiles, inspection logs, and linked spot offers.</p>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">The scout's primary directory of assigned production assets, mirroring the warehouse flows. Provides deep auditability, GPS coordinate mapping, full historic logs of physical/biological inspections, and a quick launcher to initiate fresh field inspections.</p>
     </div>
-  </div>
 
-  <div class="workflow-overview">
-    <div class="overview-title">Workflow Overview</div>
-    <div class="overview-text">
-      Ponds Directory is the scout's primary browse interface for all ponds assigned to them. The workflow provides search and filtering capabilities to locate specific ponds, view detailed profiles including GPS coordinates and linked farmer information, browse complete inspection history, and access spot offers linked to each pond. Scout can initiate new pond inspections directly from Pond Detail. Scope is enforced server-side — scouts see only ponds assigned via scout_assignments_ponds. The directory mirrors the Warehouse List/Detail pattern for consistency with existing warehouse management flows.
-    </div>
-  </div>
-
-  <div class="workflow-grid">
-
-    <!-- SCREEN 3.1: Pond List -->
-    <div class="flow-step-card" id="step-01">
-      <div class="step-header">
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">3.1</span>
-          <span class="step-title">Pond List</span>
-        </div>
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Pond List</div></a>
+        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Pond Detail</div></a>
+        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Inspection Record</div></a>
       </div>
-      <div class="step-body">
-        <div class="specs-grid">
-          <div class="spec-block">
-            <div class="spec-label">Purpose</div>
-            <div class="spec-value">Directory of every pond the scout is assigned to.</div>
+    </div>
+
+    <!-- Backend Architecture Documentation -->
+    <div class="backend-tabs-container">
+      <div class="backend-tabs-header">
+        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+      </div>
+
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-features')">Features</button>
+      </div>
+
+      <div class="tabs-content">
+        <!-- TAB: API Architecture -->
+        <div id="backend-api" class="tab-panel active">
+          <h3 class="backend-section-title">tRPC Procedures (3 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Ponds Directory is designed as a unified workflow consisting of three linked views.</p>
+
+          <div class="backend-info-box">
+            <strong>Screen Breakdown:</strong><br>
+            • Screen 1: Combined Pond List (search, filter chips, browse list)<br>
+            • Screen 2: Pond Detail (3 tabs: Profile, Inspections, Spot Offers)<br>
+            • Screen 3: Pond Inspection Record (read-only audit detail of historical inspection)
           </div>
-          <div class="spec-block">
-            <div class="spec-label">Business Requirement</div>
-            <div class="spec-value">Scope-limited via scout_assignments_ponds. Search by farmer / village / pond code; filter by inspection recency.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">User Experience (UX)</div>
-            <div class="spec-value">Same pattern as Warehouse List: search + filter chips + cards. Each card: farmer name, pond code, village, area, last inspection date.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">User Actions</div>
-            <div class="spec-value">• Search by farmer name, village, or pond code<br>• Apply filter chips (Today, This Week, Overdue)<br>• Tap card → Pond Detail</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Technical Details</div>
-            <div class="spec-value">Reads ponds joined scout_assignments_ponds. Aggregate "last inspection" from pond_inspections. Scope enforced via WHERE scout_id = current_user. Search queries pond_code, panchayat_village, and joined farmer name.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Design Details</div>
-            <div class="spec-value">Card layout identical to Warehouse List; pill shows "Inspected 12 Feb" / "Not inspected". Each card displays: farmer name (Title 3), pond code, village, area (Acre/Bigha/Hectare), and last inspection pill with date or "Never inspected".</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Database Schema</div>
-            <div class="sql-block">CREATE TABLE scout_assignments_ponds (
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+          <ul class="backend-list">
+            <li><strong>listAssignedPonds</strong> — Protected. Returns ponds joined with <code>scout_assignments_ponds</code> and farmer user profile information. Supports search parameters (farmer, village, pond code) and filter by inspection recency.</li>
+            <li><strong>getPondDetail</strong> — Protected. Hydrates single pond metadata + farmer user profile info + chronological pond inspections (ordered by <code>checked_at</code> DESC) + active spot offers.</li>
+            <li><strong>getPondInspectionRecord</strong> — Protected. Reads detailed physical and biological readings from <code>pond_inspections</code>, joined with <code>pond_bund_readings</code> and <code>pond_inspection_photos</code> for a specific inspection ID.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Database Schema -->
+        <div id="backend-db" class="tab-panel">
+          <h3 class="backend-section-title">Core Database Tables (Drizzle ORM)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">ponds (Pond Identity & Meta)</h4>
+          <div class="backend-code-block">CREATE TABLE ponds (
+  id                     UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  farmer_user_id         UUID NOT NULL REFERENCES users(id),
+  pond_code              TEXT UNIQUE NOT NULL,
+  name                   TEXT,
+  area_value             NUMERIC(6,2),
+  area_unit              TEXT CHECK (area_unit IN ('acre','bigha','hectare')),
+  est_annual_capacity_kg NUMERIC(10,2),
+  district               TEXT,
+  panchayat_village      TEXT,
+  full_address           TEXT,
+  gps_lat                NUMERIC(9,6),
+  gps_lng                NUMERIC(9,6),
+  status                 TEXT NOT NULL DEFAULT 'pending_approval' CHECK (status IN
+                           ('pending_approval','active','inactive','rejected')),
+  created_via_scout_id   UUID REFERENCES scouts(id),
+  created_at             TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_ponds_farmer ON ponds (farmer_user_id);
+CREATE INDEX idx_ponds_scout ON ponds (created_via_scout_id);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">scout_assignments_ponds (Access Scope Enforcement)</h4>
+          <div class="backend-code-block">CREATE TABLE scout_assignments_ponds (
   id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   scout_id     UUID NOT NULL REFERENCES scouts(id),
   pond_id      UUID NOT NULL REFERENCES ponds(id),
@@ -210,148 +354,254 @@
   active       BOOLEAN NOT NULL DEFAULT true,
   UNIQUE (scout_id, pond_id)
 );
+
 CREATE INDEX idx_sapo_scout ON scout_assignments_ponds (scout_id, active);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Related Tables</h4>
+          <ul class="backend-list">
+            <li><strong>users:</strong> Base farmer user profiles (full_name, mobile) linked via <code>farmer_user_id</code></li>
+            <li><strong>pond_inspections:</strong> Chronological logs of physical, chemical, and biological measurements</li>
+            <li><strong>pond_bund_readings:</strong> Granular sub-readings detailing density and biological maturity</li>
+            <li><strong>pond_inspection_photos:</strong> Uploaded inspection site verification media</li>
+            <li><strong>spot_offers:</strong> Bids and offers placed with a pond as the supply source</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Validation & Error Handling -->
+        <div id="backend-validation" class="tab-panel">
+          <h3 class="backend-section-title">Enforcement & Scope Rules</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Server-Side Scope Security</h4>
+          <div class="backend-info-box">
+            <strong>Scope Constraint:</strong><br>
+            All procedures must enforce server-side constraints. A scout is strictly restricted to viewing and interacting only with ponds that are actively linked to their profile:
+            <br><br>
+            <code>WHERE scout_assignments_ponds.scout_id = session.scout_id AND scout_assignments_ponds.active = true</code>
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Query & Search Filters</h4>
+          <table class="backend-table">
+            <tr><th>Filter Type</th><th>Target Fields / Behavior</th><th>Validation / Options</th></tr>
+            <tr><td>Text Search</td><td>Pond Code, Panchayat/Village, Farmer Name</td><td>Case-insensitive partial match</td></tr>
+            <tr><td>Recency Filter</td><td>Computes <code>checked_at</code> on joined <code>pond_inspections</code></td><td>Today / This Week / Overdue (not inspected in last 30 days)</td></tr>
+            <tr><td>Pond Status</td><td>ponds.status</td><td>Enforced check for active pond context prior to starting inspection</td></tr>
+          </table>
+        </div>
+
+        <!-- TAB: Features -->
+        <div id="backend-features" class="tab-panel">
+          <h3 class="backend-section-title">Interface Features & Interactions</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 1: Combined Pond List</h4>
+          <div class="backend-info-box">
+            ✓ Search bar targeting pond identifiers, farmers, or locations.<br>
+            ✓ Recency filter chips (All, Today, This Week, Overdue) to prioritize urgent tasks.<br>
+            ✓ Pond cards displaying pond code, farmer name, village name, and exact acreage.<br>
+            ✓ High-visibility status badge ("Never Inspected" / "Inspected [Date]") to track state.<br>
+            ✓ Seamless row tap navigation → Pond Detail.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 2: Pond Detail</h4>
+          <div class="backend-info-box">
+            ✓ Sticky action banner with main CTA: "Start Inspection" launches the inspection flow.<br>
+            ✓ Profile Tab: Displays comprehensive legal metadata, address details, capacity metrics, and GPS mapping coordinates.<br>
+            ✓ Inspections Tab: Chronological grid of past inspection logs (checked date, water levels, biological indices, defect checks, photo count). Tapping a log row navigates to the read-only inspection record.<br>
+            ✓ Spot Offers Tab: Lists all spot offers tied to this specific pond, tracking lot status and finalized pricing.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 3: Pond Inspection Record</h4>
+          <div class="backend-info-box">
+            ✓ Read-only historic audit viewport for verifying specific inspections.<br>
+            ✓ Displays biological indices, arrival coordinates (with GPS accuracy), check type (initial vs periodic), and defect scores.<br>
+            ✓ Interactive Bund Readings Table showing granular measurements (density, maturity %) for all bund lines with a live computed average row at the bottom.<br>
+            ✓ Photo Grid displaying verified uploads (wide view, sample view, anomalies) with full-screen lightbox tap support.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCREEN 3.2: Pond Detail -->
-    <div class="flow-step-card" id="step-02">
-      <div class="step-header">
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">3.2</span>
-          <span class="step-title">Pond Detail</span>
-        </div>
+    <!-- Workflow Steps Block -->
+    <div class="workflow-group-block">
+      <div class="workflow-group-header">
+        <div class="workflow-group-title">Ponds Directory Operational Workflow</div>
+        <div class="step-count-pill">3 Screens</div>
       </div>
-      <div class="step-body">
-        <div class="specs-grid">
-          <div class="spec-block">
-            <div class="spec-label">Purpose</div>
-            <div class="spec-value">Full record of a single pond — profile, GPS, inspection history, linked farmer, linked spot offers.</div>
+      <div class="workflow-group-body">
+
+        <!-- SCREEN 3.1: Pond List -->
+        <div class="flow-step-card" id="step-01">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">1</span>
+              <span class="step-title">Combined Ponds List</span>
+            </div>
           </div>
-          <div class="spec-block">
-            <div class="spec-label">Business Requirement</div>
-            <div class="spec-value">Mirrors Warehouse Detail. Scout can start a fresh inspection from here.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">User Experience (UX)</div>
-            <div class="spec-value">Header + tabs: Profile · Inspections · Spot Offers.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">User Actions</div>
-            <div class="spec-value">• Switch tabs<br>• Tap inspection row → Pond Inspection Record<br>• Tap spot offer → Spot Offer Detail<br>• Primary CTA: "Start Inspection"</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Technical Details</div>
-            <div class="spec-value">Reads ponds, users (farmer), pond_inspections, spot_offers WHERE source_type='pond' AND source_id=?. Profile tab: hydrates farmer contact and pond metadata. Inspections tab: queries pond_inspections ordered by checked_at DESC, joined with pond_bund_readings and pond_inspection_photos for display. Spot Offers tab: queries spot_offers for this pond source with status and pricing.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Design Details</div>
-            <div class="spec-value">Header card with pond name (Title 2), farmer name, status pill (Pending Approval / Active / Inactive), and area. Tab row with counts. Profile tab: pond code, GPS coordinates with map embed, district, village, address. Inspections tab: chronological rows showing date, water level, algae, readiness score, photo count. Spot Offers tab: shows linked offers with lot status and price. "Start Inspection" CTA floats or appears in header.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Database Schema</div>
-            <div class="sql-block">CREATE TABLE ponds (
-  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  farmer_user_id    UUID NOT NULL REFERENCES users(id),
-  pond_code         TEXT UNIQUE NOT NULL,
-  name              TEXT,
-  area_value        NUMERIC(6,2),
-  area_unit         TEXT CHECK (area_unit IN ('acre','bigha','hectare')),
-  est_annual_capacity_kg NUMERIC(10,2),
-  district          TEXT,
-  panchayat_village TEXT,
-  full_address      TEXT,
-  gps_lat           NUMERIC(9,6),
-  gps_lng           NUMERIC(9,6),
-  status            TEXT NOT NULL DEFAULT 'pending_approval' CHECK (status IN
-                      ('pending_approval','active','inactive','rejected')),
-  created_via_scout_id UUID REFERENCES scouts(id),
-  created_at        TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-CREATE INDEX idx_ponds_farmer ON ponds (farmer_user_id);
-CREATE INDEX idx_ponds_scout ON ponds (created_via_scout_id);</div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/ponds_directory/pond_list/screen.png" alt="Pond List" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Ponds List Directory with Search & Recency Filters</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Direct browse index for all assigned farmer ponds that the scout is responsible for managing. Provides rapid lookup, filtering, and visual urgency cues.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Enforces strict server-side scoping via <code>scout_assignments_ponds</code>. The list must display key parameters (Farmer name, Pond ID, Village, Area) and support partial string search alongside inspection recency filters (Today, This Week, Overdue).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Mirrors the Warehouse Directory. Top navigation bar holds a text search field and active filter chips. List items render as sleek interactive cards with robust layout architecture: farmer name (heavy font), pond identifier, village location, area values, and a high-visibility inspection status badge ("Never Inspected" in amber/danger, or "Inspected [Date]" in subtle gray).</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Actions</div>
+                  <div class="spec-value">
+                    • Type search query (filters instantaneously by farmer, village, or pond code)<br>
+                    • Toggle recency filter chips (All, Today, This Week, Overdue)<br>
+                    • Tap any pond card → navigates to the Pond Detail view
+                  </div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Queries <code>ponds</code> joined with <code>scout_assignments_ponds</code> where <code>scout_assignments_ponds.scout_id = session.user_id</code>. Aggregates the last inspection timestamp by querying <code>MAX(checked_at)</code> from <code>pond_inspections</code>. Filters are evaluated post-fetch or dynamically injected in the database query.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Database Schema & Scope</div>
+                  <div class="spec-value">Reads from: <code>ponds</code>, <code>scout_assignments_ponds</code>, <code>users</code> (farmer profiles). Enforces scope using <code>scout_assignments_ponds.active = true</code>.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- SCREEN 3.2: Pond Detail -->
+        <div class="flow-step-card" id="step-02">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">2</span>
+              <span class="step-title">Pond Detail Dashboard</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/ponds_directory/pond_detail/screen.png" alt="Pond Detail" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Pond Detail with Profile, Inspections, and Spot Offers Tabs</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Comprehensive, multi-tab single pond file. Serves as the central control dashboard for reviewing pond conditions, auditing history, checking associated transaction records, and launching new pond inspections.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Must mirror the Warehouse Detail screen design. Organize data into three tabs: Profile, Inspections, and Spot Offers. The primary CTA "Start Inspection" must be prominent and easily accessible, serving as the entry point for starting a fresh inspection wizard.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Sleek header card containing the pond name, farmer name, active/inactive status badge, and total area. An amber banner warns if the pond is in "Pending Approval" state. Below, three equal-width tabs (Profile · Inspections · Spot Offers) structure independent scrolling panels. Action buttons populate respective tabs.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Tab Contents & Layout</div>
+                  <div class="spec-value">
+                    <strong>• Profile Tab:</strong> Pond Code, capacity estimation, exact GPS coordinates with map embed (latitude/longitude), full address description, village, and panchayat info.<br>
+                    <strong>• Inspections Tab:</strong> Chronological log list. Row cards show inspection date, checked-by scout, water level, algae/disease tags, readiness scores, and verified photo count. Tap row → Inspection Record.<br>
+                    <strong>• Spot Offers Tab:</strong> Lists recent bids/offers using this pond as supply source. Shows offer ID, lot status, created date, and bid pricing metrics.
+                  </div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Combines multiple SQL queries to hydrate all tabs: profile metadata from <code>ponds</code>, logs from <code>pond_inspections ORDER BY checked_at DESC</code>, and bids from <code>spot_offers WHERE source_type = 'pond' AND source_id = pond_id</code>. Offline-first profile caching is activated for active assignments.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 3.3: Pond Inspection Record -->
+        <div class="flow-step-card" id="step-03">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">3</span>
+              <span class="step-title">Pond Inspection Record</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/ponds_directory/pond_inspection_record/screen.png" alt="Pond Inspection Record" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Pond Inspection Record (Read-only Historical Audit)</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Read-only historical audit report detailing the physical, biological, and chemical parameters captured during a past pond inspection. Provides critical historic evolutionary context.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Must remain strictly read-only after submission. Modifying historical audits is prohibited for compliance. Must show all captured details: GPS arrival coordinates, check type (periodic/initial), physical conditions, bund readings, and verification media.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Upper panel: inspection header with date, scout name, GPS arrival accuracy, check type, and physical indicators (water level, algae count, pest flags). Middle panel: detailed bund readings table with row items for density and biological maturity percentages, with a computed average row highlighted at the bottom. Lower panel: verified photo strip (fixed-ratio preview tiles) with full-screen viewer lightbox on tap.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details & Schema</div>
+                  <div class="spec-value">Hydrates from three tables: <code>pond_inspections</code> (header logs), <code>pond_bund_readings</code> (granular measurements), and <code>pond_inspection_photos</code> (media storage references). Images are automatically cached in local device storage for rapid offline viewing.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <!-- SCREEN 3.3: Pond Inspection Record (read-only) -->
-    <div class="flow-step-card" id="step-03">
-      <div class="step-header">
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <span class="step-badge">3.3</span>
-          <span class="step-title">Pond Inspection Record</span>
-        </div>
-      </div>
-      <div class="step-body">
-        <div class="specs-grid">
-          <div class="spec-block">
-            <div class="spec-label">Purpose</div>
-            <div class="spec-value">Full view of a single past pond inspection.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Business Requirement</div>
-            <div class="spec-value">Read-only audit detail. No edits. Provides historical context for pond evolution over time.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">User Experience (UX)</div>
-            <div class="spec-value">Header, readings table, photos strip, notes.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">User Actions</div>
-            <div class="spec-value">• View inspection details (read-only)<br>• Tap photos for full-screen lightbox<br>• Back to Pond Detail</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Technical Details</div>
-            <div class="spec-value">Reads pond_inspections + children (pond_bund_readings, pond_inspection_photos). No write operations. Photos cached locally if previously synced; available offline.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Design Details</div>
-            <div class="spec-value">Header section: inspection date, scout name, arrival GPS + accuracy, check type (initial/periodic). Conditions summary: water level, algae, pest/disease flags, readiness score. Bund readings table: all 3-5 readings with densities and maturity percentages, live average row at bottom. Photo strip: all 1-3 photos in fixed-width grid (wide pond, sample, anomaly-or-extra), tappable for lightbox. Notes section (if present): full text display.</div>
-          </div>
-          <div class="spec-block">
-            <div class="spec-label">Database Schema</div>
-            <div class="spec-value">Read-only. Reads from pond_inspections, pond_bund_readings, and pond_inspection_photos (all defined in Pond Inspection workflow §2).</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-</div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const stepCards = document.querySelectorAll(".flow-step-card");
-    const stepperNodes = document.querySelectorAll(".stepper-node");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => {
+              node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute("id");
-          stepperNodes.forEach(node => {
-            node.classList.toggle("active", node.getAttribute("href") === "#" + id);
-          });
-        }
-      });
-    }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+      stepCards.forEach(card => observer.observe(card));
+    });
 
-    stepCards.forEach(card => observer.observe(card));
-  });
-</script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pathElement = document.getElementById('address-path');
+      if (pathElement) {
+        const pathname = window.location.pathname;
+        pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+    });
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const pathElement = document.getElementById('address-path');
-    if (pathElement) {
-      const pathname = window.location.pathname;
-      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    function showTab(event, tabId) {
+      event.preventDefault();
+      const allPanels = document.querySelectorAll('.tab-panel');
+      allPanels.forEach(panel => panel.classList.remove('active'));
+      const allButtons = document.querySelectorAll('.tab-button');
+      allButtons.forEach(button => button.classList.remove('active'));
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add('active');
+      }
+      event.target.classList.add('active');
     }
-  });
-</script>
-
+  </script>
 </body>
 </html>

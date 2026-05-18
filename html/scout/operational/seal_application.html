@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Seal Application</title>
+  <title>Seal Application - Scout Operations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,6 +34,21 @@
     ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
 
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
+      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
+      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .tag {
+      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
+
     .address-bar {
       background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px;
       display: flex; align-items: center; gap: 10px; max-width: 1280px; margin-left: auto; margin-right: auto;
@@ -45,26 +60,12 @@
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
     }
 
-    .header-banner {
-      background: linear-gradient(135deg, var(--bg-surface) 0%, #082f37 100%);
-      border: 1px solid var(--border-color); border-left: 4px solid var(--accent-primary);
-      border-radius: 16px; padding: 32px 40px; margin-bottom: 48px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    }
-    .tag {
-      display: inline-flex; align-items: center; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
-      background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); padding: 4px 12px; border-radius: 20px;
-      border: 1px solid rgba(6, 182, 212, 0.25); text-transform: uppercase; margin-bottom: 12px;
-    }
-    .title { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .desc { font-size: 14px; color: var(--text-muted); max-width: 800px; }
-
     .stepper-panel-container {
-      max-width: 1280px; margin: 0 auto 48px;
       background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
       border: 1px solid var(--border-color); border-radius: 16px;
-      padding: 20px 36px; position: sticky; top: 52px; z-index: 100;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      padding: 20px 36px; position: sticky; top: 52px; z-index: 99;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7); margin-bottom: 48px;
+      max-width: 1280px; margin-left: auto; margin-right: auto;
     }
     .stepper-nodes {
       display: flex; align-items: center; justify-content: space-between;
@@ -115,6 +116,7 @@
     .flow-step-card {
       background: var(--bg-surface); border: 1px solid var(--border-color);
       border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+      scroll-margin-top: 160px;
     }
     .step-header {
       background: #19191d; border-bottom: 1px solid var(--border-color); padding: 14px 22px;
@@ -126,7 +128,7 @@
     }
     .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
 
-    .step-body { display: flex; flex-wrap: wrap; min-height: 480px; }
+    .step-body { display: flex; flex-wrap: wrap; }
     .step-left-pane {
       flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
       display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
@@ -152,7 +154,6 @@
     .spec-value { font-size: 13.5px; color: var(--text-main); line-height: 1.6; }
     .spec-code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px; overflow-x: auto; color: #a6e3a1; margin-top: 8px; }
 
-    /* Backend Architecture Tabs */
     .backend-tabs-container {
       max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
       border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
@@ -196,91 +197,443 @@
     .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
     .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
     .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+
+    @media print {
+      :root {
+        --bg-base: #ffffff;
+        --bg-surface: #ffffff;
+        --bg-card: #f9fafb;
+        --bg-active: #f3f4f6;
+        --accent-primary: #0891b2;
+        --accent-primary-hover: #0369a1;
+        --accent-primary-glow: rgba(8, 145, 178, 0.08);
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --text-dim: #6b7280;
+        --border-color: #e5e7eb;
+        --border-light: #d1d5db;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .address-bar, .stepper-panel-container, .tabs-nav {
+        display: none !important;
+      }
+      .tab-panel {
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-panel:not(.active) {
+        display: none !important;
+      }
+      .backend-code-block, .spec-code {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #0f766e !important;
+        white-space: pre-wrap !important;
+      }
+      .flow-step-card, .backend-tabs-container, .header-banner {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px !important;
+      }
+      .step-left-pane {
+        background: #f9fafb !important;
+        border-right: 1px solid #e5e7eb !important;
+      }
+      .card-image-viewport {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+      }
+    }
   </style>
 </head>
 <body>
+
   <div class="address-bar">
     <div class="address-bar-icon">📁</div>
     <div class="address-bar-path" id="address-path">html/scout/operational/seal_application.html</div>
   </div>
 
-<div class="content-wrapper">
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <span class="tag">Scout Operations</span>
+      <h1 class="title">Tamper-Evident Seal Application</h1>
+      <p class="desc">Chain-of-custody sealing and BM inventory packaging protocol. Binds numbered seals and reusable nets, captures geo-stamped evidence, and sets shelf-life expiry clocks.</p>
+    </div>
 
-<div class="header-banner">
-  <div class="tag">Workflow Module 4</div>
-  <h1 class="title">Seal Application</h1>
-  <p class="desc">Tamper-evident lot sealing and spot market listing. Scout applies unique numbered seal, captures GPS lock, verifies storage check (bags off-floor, lined, segregated), sets shelf-life window (30/45 days), and publishes lot to spot market with listing price.</p>
-</div>
-
-<div class="workflow-grid">
-  <div class="workflow-header">
-    <div class="workflow-title">Sealing Steps</div>
-    <span class="step-count">5 Steps</span>
-  </div>
-  <div class="workflow-body">
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 1</span><span class="step-title" style="margin-left: 12px;">Scan Seal ID</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture unique numbered seal identity for tamper-evident tracking and dispute resolution.</div></div>
-      <div class="spec-block"><div class="spec-label">Input Method</div><ul class="spec-list"><li>Barcode / QR code scan, OR</li><li>Manual 10â€“15 digit seal ID entry</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">Seal ID must be unique per application; duplicate detection prevents reuse.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 2</span><span class="step-title" style="margin-left: 12px;">GPS Lock & Accuracy</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Capture current GPS coordinates with accuracy reading for chain-of-custody proof.</div></div>
-      <div class="spec-block"><div class="spec-label">Data Captured</div><ul class="spec-list"><li>GPS coordinates (latitude, longitude)</li><li>Accuracy in meters (e.g., Â±10m)</li><li>Timestamp of lock</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Business Requirement</div><div class="spec-value">Proves lot was at specific location when sealed. Accuracy reading shows confidence level; warns if >50m variance.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 3</span><span class="step-title" style="margin-left: 12px;">Storage Check at Seal Time</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Verify lot meets storage prerequisites before sealing and listing.</div></div>
-      <div class="spec-block"><div class="spec-label">Checklist (4 items)</div><ul class="spec-list"><li>Bags off-floor (on wooden pallets/platforms) â€” Pass / Fail</li><li>Lined / barrier packaging (moisture protection) â€” Pass / Fail</li><li>Segregated as BM inventory (not farmer's) â€” Pass / Fail</li><li>No pest/rodent signs â€” Pass / Fail</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Requirement</div><div class="spec-value">All 4 items must pass before seal applied. Any fail prevents sealing; escalates to Admin review.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 4</span><span class="step-title" style="margin-left: 12px;">Evidence Photos</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Mandatory photographic evidence of applied seal and storage state.</div></div>
-      <div class="spec-block"><div class="spec-label">Required Photos</div><ul class="spec-list"><li>Applied seal (close-up of seal on lot/net)</li><li>Bagged lot (showing bags, seal placement)</li><li>Wide warehouse view (storage environment context)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Photo Specs</div><div class="spec-value">3+ mandatory; compress â‰¤1.5MB each; GPS-stamped from seal location.</div></div>
-    </div></div></div>
-
-    <div class="flow-card"><div class="step-header"><div><span class="step-badge">Step 5</span><span class="step-title" style="margin-left: 12px;">Shelf-Life & Spot Market Listing</span></div></div><div class="step-body"><div class="specs-grid">
-      <div class="spec-block"><div class="spec-label">Shelf-Life Selection</div><ul class="spec-list"><li>30 days â€” Standard window</li><li>45 days â€” Extended (premium possible)</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Purpose</div><div class="spec-value">Caps on spot market listing; controls BM's risk window and buyer confidence (fresher product).</div></div>
-      <div class="spec-block"><div class="spec-label">Listing Price</div><ul class="spec-list"><li>Reference price displayed (derived from buyer demand signals)</li><li>Scout sets premium % (1â€“10% range)</li><li>Total listing price auto-calculated and displayed</li></ul></div>
-      <div class="spec-block"><div class="spec-label">Effect on Submit</div><div class="spec-value">Lot immediately listed in spot market. Status: sealed_ready_to_offer. Buyers see lot within 5 minutes of sync.</div></div>
-    </div></div></div>
-
-  </div>
-</div>
-
-</div>
-
-<div style="max-width: 1280px; margin: 0 auto;">
-  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 40px;">
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #fff;">Key Workflow Requirements</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Offline Capability</div>
-        <div class="spec-value">100% offline-first. All data cached locally; sync_queue uploads when network available. Photos compressed during capture.</div>
+    <div class="stepper-panel-container">
+      <div class="stepper-nodes">
+        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Confirm Lot</div></a>
+        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Apply Seal & Net</div></a>
+        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Seal Photos</div></a>
+        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Storage Check</div></a>
+        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Shelf-life</div></a>
+        <a href="#step-06" class="stepper-node"><div class="node-num">6</div><div class="node-label">Confirmation</div></a>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Immutability</div>
-        <div class="spec-value">Once seal applied and lot listed, scout cannot edit seal ID or GPS. Admin can correct via backend only.</div>
+    </div>
+
+    <!-- Backend Architecture Documentation -->
+    <div class="backend-tabs-container">
+      <div class="backend-tabs-header">
+        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Storage Validation</div>
-        <div class="spec-value">All 4 storage criteria must pass; any fail prevents seal application and triggers Admin review.</div>
+
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
       </div>
-      <div>
-        <div class="spec-label" style="margin-bottom: 12px;">Marketplace Effect</div>
-        <div class="spec-value">On confirm, lot listed immediately. Sealed_ready_to_offer status visible to buyers within 5 minutes of sync.</div>
+
+      <div class="tabs-content">
+        <!-- TAB: API Architecture -->
+        <div id="backend-api" class="tab-panel active">
+          <h3 class="backend-section-title">tRPC Procedures (6 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Tamper-evident Sealing locks down the inspected makhana bags into the platform ledger via pre-defined rules.</p>
+
+          <div class="backend-info-box">
+            <strong>Critical Precondition Guards:</strong><br>
+            • Guard 1: The lot's latest inspection outcome must be <code>accepted</code>, or <code>downgrade</code> with <code>lots.downgrade_consent_status = 'consented'</code>.<br>
+            • Guard 2: The host warehouse fitness check status must be <code>fit</code>.
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+          <ul class="backend-list">
+            <li><strong>initSealApplication</strong> — Protected. Fetches lot details, latest inspection findings, downgrade consent statuses, and geofence parameters.</li>
+            <li><strong>submitSealRecord</strong> — Protected. Atomic multi-table write committing <code>lot_seals</code>, bulk <code>lot_seal_photos</code>, bulk <code>lot_seal_storage_items</code>, and updating the parent <code>lots</code> status and GC seal reference.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Database Schema -->
+        <div id="backend-db" class="tab-panel">
+          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">lot_seals (Primary Header)</h4>
+          <div class="backend-code-block">CREATE TABLE lot_seals (
+  id                 UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  seal_id            TEXT UNIQUE NOT NULL,            -- physical seal barcode number
+  lot_id             UUID NOT NULL REFERENCES lots(id),
+  inspection_id      UUID NOT NULL REFERENCES inspections(id),
+  cert_id            UUID REFERENCES grade_certificates(id),
+  warehouse_id       UUID NOT NULL REFERENCES warehouses(id),
+  popper_id          UUID NOT NULL REFERENCES poppers(id),
+  scout_id           UUID NOT NULL REFERENCES scouts(id),
+  task_id            UUID REFERENCES scout_tasks(id),
+  net_applied        BOOLEAN NOT NULL DEFAULT true,
+  sealed_lat         NUMERIC(9,6) NOT NULL,
+  sealed_lng         NUMERIC(9,6) NOT NULL,
+  sealed_accuracy_m  NUMERIC(6,1),
+  sealed_at          TIMESTAMPTZ NOT NULL,
+  shelf_life_days    INT NOT NULL CHECK (shelf_life_days IN (30,45)),
+  expires_at         DATE NOT NULL,                   -- sealed_at + shelf_life_days
+  status             TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active','expired','broken','voided')),
+  created_at         TIMESTAMPTZ NOT NULL DEFAULT now(),
+  synced_at          TIMESTAMPTZ
+);
+
+CREATE INDEX idx_lotseals_lot ON lot_seals (lot_id);
+CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">lot_seal_photos (Evidence Media)</h4>
+          <div class="backend-code-block">CREATE TABLE lot_seal_photos (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  lot_seal_id   UUID NOT NULL REFERENCES lot_seals(id) ON DELETE CASCADE,
+  slot_type     TEXT NOT NULL,    -- 'seal_closeup'|'bags_net'|'warehouse_wide'|'extra'
+  storage_path  TEXT NOT NULL,
+  captured_at   TIMESTAMPTZ NOT NULL
+);</div>
+        </div>
+
+        <!-- TAB: Validation & Error Handling -->
+        <div id="backend-validation" class="tab-panel">
+          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
+          <ul class="backend-list">
+            <li><strong>Seal ID Formatting:</strong> Validates against barcode structure formats. Local duplicate checks run immediately.</li>
+            <li><strong>Geofence Limits:</strong> Verifies coordinates against registered warehouse locations. Triggers amber warnings if <code>distance &gt; 200m</code>.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Offline & Async -->
+        <div id="backend-sync" class="tab-panel">
+          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
+          <ul class="backend-list">
+            <li><strong>Offline-First Scan:</strong> Local decoders scan barcodes offline. Commits submit atomically to client SQLite caches.</li>
+            <li><strong>Traceability Reconciliation:</strong> On network synchronization, the backend reconciles the new seal reference, triggers server-side PDF regeneration of the <code>grade_certificates</code>, and enqueues the lot into admin pricing list channels.</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Security -->
+        <div id="backend-security" class="tab-panel">
+          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
+          <ul class="backend-list">
+            <li><strong>Guard Rules:</strong> Double sealing blocks are strictly enforced. If a lot already contains an active seal, subsequent attempts are blocked.</li>
+            <li><strong>RLS Bounds:</strong> Asserts that only assigned scouts can finalize seal registers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow Steps Block -->
+    <div class="workflow-group-block">
+      <div class="workflow-group-header">
+        <div class="workflow-group-title">Seal Application Steps Directory</div>
+        <div class="step-count-pill">6 Steps</div>
+      </div>
+      <div class="workflow-group-body">
+
+        <!-- STEP 1: Confirm Verified Lot -->
+        <div class="flow-step-card" id="step-01">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">1</span>
+              <span class="step-title">Confirm Verified Lot</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/seal_application/confirm_verified_lot/screen.png" alt="Confirm Verified Lot" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Eligibility Check Page</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Verifies that the target lot meets all precondition quality standards and is ready for seal placement.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Guards against unauthorized sealing. Validates that host warehouse is rated FIT and that popper consent is recorded for downgrades.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Read-only info sheet. Displays lot identification, assessed grade, and verified weights. Renders green validation alerts for eligible lots and secure explanations for blocked candidates. Primary CTA reads "Begin Sealing".</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Caches parent <code>inspection_id</code> and <code>cert_id</code> into the sealing context state.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Apply Seal & Net -->
+        <div class="flow-step-card" id="step-02">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">2</span>
+              <span class="step-title">Apply Seal & Net</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/seal_application/apply_seal_net/screen.png" alt="Apply Seal & Net" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Physical Seal Placement</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Logs the unique physical seal number applied to the lot bags along with on-site GPS verification.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Captures unique seal barcode reference via scan. Requires mandatory confirmation check marking that the reusable net was applied. Logs GPS metadata.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Top actions display scan triggers. Succesful scans populate alphanumeric seal IDs in monospace font. Renders mandatory net confirmation toggle. Displays GPS accuracy locks. Primary cyan button unlocks on completion.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Validates barcode formatting schemas. Triggers warnings if GPS coordinate mismatches register.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Seal Evidence Photos -->
+        <div class="flow-step-card" id="step-03">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">3</span>
+              <span class="step-title">Seal Evidence Photos</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/seal_application/seal_evidence_photos/screen.png" alt="Seal Evidence Photos" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Sealing Photo Evidence</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Captures photographic logs documenting applied seal placement.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Requires three mandatory photographs: Close-up of the applied seal (ID numbers must be legible), bags with net applied, and a wide-angle warehouse shot.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Standard grid checklist displaying dashed camera buttons. Previews replace buttons on capture. Helpful indicators alert scouts that characters on the seal must remain clear.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Compiles photographs into <code>lot_seal_photos</code> mappings in temporary memory.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Storage Check at Seal Time -->
+        <div class="flow-step-card" id="step-04">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">4</span>
+              <span class="step-title">Storage Check at Seal Time</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/seal_application/storage_check_at_seal_time/screen.png" alt="Storage Check" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Lot Placement Checklist</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Performs a lightweight verification confirming correct placement of the specific lot in the warehouse.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Logs three parameters: Off the floor platform support, moisture barrier lining, and physical segregation from loose stock. Fails do not block sealing but alert admin channels.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Three large checkbox cards with Pass/Fail toggles (unset by default). Failing parameters displays reason list pickers. Yellow warning bars alert scouts to coordinate quick corrections on failures.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Maintains checks in <code>lot_seal_storage_items</code> formats. Raises <code>storage_flag = true</code> on any failed item.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: Shelf-life & Confirm -->
+        <div class="flow-step-card" id="step-05">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">5</span>
+              <span class="step-title">Shelf-life & Confirm</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/seal_application/shelf_life_confirm/screen.png" alt="Shelf life Confirm" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Final Verification Review</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Specifies quality re-inspection durations and commits sealing registers atomically.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Selects shelf-life duration: 30 days (default) or 45 days. Auto-calculates <code>expires_at</code> date bounds. Requires mandatory checklist signature checks.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Top options render segmented controls picking 30/45 days, updating expiry dates live. Summary cards show all accumulated metadata. Prompts signature confirmation checkboxes. Solid cyan button reads "Submit Seal".</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Invokes <code>submitSealRecord</code> database transactions. Mutates parent status to <code>sealed</code>, linking seal identifiers.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6: Submission Confirmation -->
+        <div class="flow-step-card" id="step-06">
+          <div class="step-header">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="step-badge">6</span>
+              <span class="step-title">Submission Confirmation</span>
+            </div>
+          </div>
+          <div class="step-body">
+            <div class="step-left-pane">
+              <div class="card-image-viewport">
+                <img src="../../../app/screens_v2/scout/seal_application/seal_submission_confirmation/screen.png" alt="Submission Confirmation" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 6: Success Terminal page</div>'" />
+              </div>
+            </div>
+            <div class="step-right-pane">
+              <div class="specs-grid">
+                <div class="spec-block full-width">
+                  <div class="spec-label">Purpose</div>
+                  <div class="spec-value">Confirms successful ledger commitment and guides scouts onward.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Business Requirement</div>
+                  <div class="spec-value">Verifies data persistence and echoes sync queue state flags. Details onward admin pricing pipelines.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">User Experience (UX)</div>
+                  <div class="spec-value">Success modal with pulsing lock icons. Displays generated seal codes and expiry schedules. Cyan CTA redirects back to today dashboard list.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Technical Details</div>
+                  <div class="spec-value">Resets temporary memory buffers. Switches local SQLite queue loaders to completed.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
-
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stepCards = document.querySelectorAll(".flow-step-card");
+      const stepperNodes = document.querySelectorAll(".stepper-node");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            stepperNodes.forEach(node => {
+              node.classList.toggle("active", node.getAttribute("href") === "#" + id);
+            });
+          }
+        });
+      }, { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.1 });
+
+      stepCards.forEach(card => observer.observe(card));
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       const pathElement = document.getElementById('address-path');
       if (pathElement) {
@@ -288,18 +641,19 @@
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
       }
     });
-  </script>
 
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const pathElement = document.getElementById('address-path');
-    if (pathElement) {
-      const pathname = window.location.pathname;
-      pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+    function showTab(event, tabId) {
+      event.preventDefault();
+      const allPanels = document.querySelectorAll('.tab-panel');
+      allPanels.forEach(panel => panel.classList.remove('active'));
+      const allButtons = document.querySelectorAll('.tab-button');
+      allButtons.forEach(button => button.classList.remove('active'));
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add('active');
+      }
+      event.target.classList.add('active');
     }
-  });
-</script>
-
+  </script>
 </body>
 </html>
