@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#dde4dd",
+            "surface-variant": "#2f3632",
+            "on-secondary-container": "#87c5ac",
+            "primary-container": "#4edea3",
+            "on-tertiary-fixed": "#370d0d",
+            "outline": "#86948a",
+            "surface-container-high": "#242c27",
+            "on-primary-fixed": "#002114",
+            "tertiary": "#ffb3af",
+            "inverse-primary": "#006c4a",
+            "on-tertiary": "#512120",
+            "surface-container": "#1a211d",
+            "on-background": "#dde4dd",
+            "surface-container-low": "#161d19",
+            "tertiary-fixed": "#ffdad7",
+            "on-secondary": "#003829",
+            "on-surface-variant": "#bbcabf",
+            "tertiary-fixed-dim": "#ffb3af",
+            "on-primary": "#003824",
+            "tertiary-container": "#ffb3af",
+            "surface-lowest": "#0e0e0e",
+            "inverse-surface": "#dde4dd",
+            "secondary": "#95d3ba",
+            "background": "#0e1511",
+            "surface-bright": "#393939",
+            "primary": "#6ffbbe",
+            "on-error-container": "#ffdad6",
+            "surface-container-highest": "#2f3632",
+            "error": "#ffb4ab",
+            "surface-tint": "#4edea3",
+            "on-tertiary-container": "#7b4240",
+            "secondary-fixed-dim": "#95d3ba",
+            "outline-variant": "#3c4a42",
+            "primary-fixed": "#6ffbbe",
+            "surface": "#0e1511",
+            "secondary-fixed": "#b1f0d6",
+            "inverse-on-surface": "#2b322d",
+            "primary-fixed-dim": "#4edea3",
+            "on-secondary-fixed-variant": "#0d503e",
+            "on-primary-fixed-variant": "#005236",
+            "error-container": "#93000a",
+            "secondary-container": "#115340",
+            "on-tertiary-fixed-variant": "#6d3735",
+            "surface-dim": "#0e1511",
+            "on-primary-container": "#005f40",
+            "surface-container-lowest": "#09100c",
+            "on-secondary-fixed": "#002117",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "unit": "4px",
+            "gutter": "16px",
+            "margin-mobile": "16px",
+            "base-unit": "4px",
+            "container-max": "1440px"
+          },
+          "fontFamily": {
+            "body-lg": ["Hanken Grotesk"],
+            "mono-data": ["JetBrains Mono"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "headline-sm": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .tonal-gradient {
+      background: radial-gradient(circle at top, rgba(111, 251, 190, 0.08) 0%, transparent 70%);
+    }
+    ::-webkit-scrollbar { display: none !important; }
+    * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+  </style>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+  <!-- Top App Bar -->
+  <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+    <span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">FenBridge</span>
+    <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors text-primary active:scale-95 transition-transform">
+      <span class="material-symbols-outlined">account_circle</span>
+    </button>
+  </header>
+
+  <!-- Main Canvas -->
+  <main class="flex-grow flex flex-col items-center justify-center px-margin-mobile pt-16 pb-32 tonal-gradient">
+    <!-- Illustration Section -->
+    <div class="relative mb-8 flex items-center justify-center">
+      <div class="absolute w-48 h-48 bg-primary/10 blur-3xl rounded-full"></div>
+      <div class="relative z-10 w-60 h-60 flex items-center justify-center bg-surface-container rounded-full border border-outline-variant/20 shadow-lg">
+        <img alt="Success Illustration" class="w-36 h-36 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYi9FEnSyyHZp6TmyZAQwXomJZtBHPNA6_laqEHnQpefSXS9X3-9gSKPqx5OLdcEbmdNHPSd1mDpqymOCKcBAa1BlILFrliof9LpFY7Aso2KkNbGMPsiM9qzgilBuIUED90h1jd0zCkfLRZHs78RkCpntm_FaMrxZmut5O6Xr6YIPf84ZbuEjneTGCk50WhdhznBYeLm6pj69EI6g1msMEPy57LaOqe0-khezaeSjDxyD_HWpGh8SLhBTtXi-41t2S-dPCGwD8E3L0"/>
+      </div>
+    </div>
+
+    <!-- Feedback Content -->
+    <div class="text-center space-y-4 max-w-xs mb-8">
+      <h1 class="text-headline-md font-bold text-on-background">Popper Registration Submitted</h1>
+      <div class="flex flex-col items-center gap-2">
+        <!-- Verdict Chip -->
+        <div class="inline-flex items-center px-4 py-1 rounded-full bg-primary-container/20 border border-primary/30">
+          <span class="text-primary font-bold text-xs uppercase tracking-wider">Status: Pending Sync</span>
+        </div>
+        <!-- Status Details -->
+        <div class="space-y-1">
+          <p class="text-body-md text-on-surface-variant flex items-center justify-center gap-2">
+            <span class="text-sm">⏳</span> Queued to offline sync
+          </p>
+          <p class="text-xs text-outline uppercase tracking-wider">Corporate details locked & verified</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Area -->
+    <div class="w-full max-w-sm flex flex-col gap-3">
+      <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="w-full h-14 bg-primary text-on-primary rounded-full font-bold text-headline-sm shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center">
+        Back to Today's Dashboard
+      </button>
+    </div>
+  </main>
+
+  <script src="../../../../app_logic.js"></script>
+</body>
+</html>
