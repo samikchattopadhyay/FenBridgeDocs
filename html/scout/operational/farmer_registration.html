@@ -208,8 +208,8 @@
     <div class="header-banner">
       <span class="tag">Scout Operations</span>
       <h1 class="title">Register Farmer (Scout-Assisted)</h1>
-      <p class="desc">Complete 15-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 15-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
+      <p class="desc">Complete 13-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 14-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
     </div>
 
     <!-- Backend Architecture Documentation -->
@@ -232,24 +232,26 @@
         <!-- TAB: API Architecture -->
         <div id="backend-api" class="tab-panel active">
           <h3 class="backend-section-title">tRPC Procedure Architecture (15 Procedures)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 15 tRPC procedures organized by authentication level.</p>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 14 tRPC procedures organized by authentication level.</p>
 
           <div class="backend-info-box">
             <strong>Procedure Breakdown:</strong><br>
             • 3 Public procedures: Identity, OTP Send, OTP Verify<br>
-            • 12 Protected procedures: Language, Role, Address, Pond Details (3), Bank (2), Submit, Confirmation<br>
+            • 11 Protected procedures: Language, Role, Address, Pond Details (3), Bank (2), Verify Bank<br>
             • 1 Atomic transaction: Farmer Registration Submit (7 simultaneous inserts)
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/farmer.ts</h4>
           <div class="backend-code-block">export const farmerRouter = t.router({
-  // Screen 1-4: Identity & OTP
+  // Screen 1-3: Identity & OTP
   initFarmerRegistration: publicProcedure,
-  submitFarmerIdentity: publicProcedure,
   sendFarmerMobileOtp: publicProcedure,
   verifyFarmerMobileOtp: publicProcedure,
 
-  // Screens 5-14: Setup Wizard (Protected)
+  // Screen 4: User Identity
+  submitFarmerIdentity: publicProcedure,
+
+  // Screens 5-12: Setup Wizard (Protected)
   selectLanguage: protectedProcedure,
   confirmFarmerRole: protectedProcedure,
   submitResidentialAddress: protectedProcedure,
@@ -260,18 +262,17 @@
   submitBankAccount: protectedProcedure,
   verifyBankAccount: protectedProcedure,
 
-  // Screen 14-15: Submit & Confirm
+  // Screen 13: Submit
   submitFarmerRegistration: protectedProcedure,
-  getFarmerRegistrationConfirmation: protectedProcedure,
 });</div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 4 - OTP Verify)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 3 - OTP Entry)</h4>
           <ul class="backend-list">
             <li><strong>If OTP matches EXISTING farmer:</strong> Load farmer detail screen (Update mode)</li>
             <li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 14 - Submit)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 13 - Review & Submit)</h4>
           <ul class="backend-list">
             <li>1. Insert user record (role=farmer, status=pending_approval)</li>
             <li>2. Insert farmer_profiles</li>
@@ -558,16 +559,14 @@ Strict-Transport-Security: max-age=31536000</div>
         <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">Pond Addr</span></a>
         <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">GPS</span></a>
         <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Bank</span></a>
-        <a href="#step-13" class="stepper-node"><span class="node-num">13</span><span class="node-label">Theme</span></a>
-        <a href="#step-14" class="stepper-node"><span class="node-num">14</span><span class="node-label">Review</span></a>
-        <a href="#step-15" class="stepper-node"><span class="node-num">15</span><span class="node-label">Confirm</span></a>
+        <a href="#step-13" class="stepper-node"><span class="node-num">13</span><span class="node-label">Review</span></a>
       </div>
     </div>
 
     <div class="workflow-group-block">
       <div class="workflow-group-header">
         <div class="workflow-group-title">Farmer Registration Workflow</div>
-        <div class="step-count-pill">15 Steps</div>
+        <div class="step-count-pill">14 Steps</div>
       </div>
       <div class="workflow-group-body">
 
@@ -755,12 +754,12 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 
         <!-- Step 11: First Pond Geo-Fencing -->
         <div class="flow-step-card" id="step-11">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">First Pond Geo-Fencing</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">First Pond Geo-Fencing (Optional)</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_geo_fencing/screen.png" alt="Geo-Fencing Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the pond's GPS centre point.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Year-1: single GPS point. Year-2 polygon optional. Mandatory because scout-task routing depends on it.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the pond's GPS centre point (optional).</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Year-1: single GPS point (optional). Year-2 polygon optional. Future feature for scout-task routing.</div></div>
               <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Map view with a draggable pin. "Use my location" auto-places pin at scout's current GPS.</div></div>
               <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap map to place / drag pin · or "Use my location" · Continue.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Map: Google Maps Flutter. Captures lat/lng + accuracy. Wizard context: pond.{gps_lat, gps_lng}.</div></div>
@@ -787,26 +786,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 13: Theme Preference -->
+        <!-- Step 13: Review & Submit -->
         <div class="flow-step-card" id="step-13">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Theme Preference</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/theme_preference/screen.png" alt="Theme Preference Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets app theme for the farmer's eventual login.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Trivial preference; defaults to Dark. Scout can skip or set on behalf.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Two preview tiles · or "Use default (Dark)" link.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap a tile · or skip · Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: theme: 'dark'|'light'. Written to user_preferences at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Two tile previews, same as scout's theme pattern.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">user_preferences (existing).</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 14: Review & Submit -->
-        <div class="flow-step-card" id="step-14">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">14</span><span class="step-title">Review & Submit</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Review & Submit</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/review_submit/screen.png" alt="Review Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -821,23 +803,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 15: Submission Confirmation -->
-        <div class="flow-step-card" id="step-15">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">15</span><span class="step-title">Submission Confirmation</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/submission_confirmation/screen.png" alt="Confirmation Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Closes the wizard and tells the scout what happens next.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Plain language outcome — "Submitted, pending Admin approval. Farmer will be notified by SMS when approved."</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Success state echoing farmer's name, mobile, pond code, and sync status.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">"Back to Users" · "Register another farmer" · "Next task →" if relevant.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Reads back local writes. No further state changes.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Success icon, headline, summary chips, sync line.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Read-only.</div></div>
-            </div></div>
-          </div>
-        </div>
-
+        <!-- Step 14: Submission Confirmation -->
       </div>
     </div>
   </div>
