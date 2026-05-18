@@ -208,8 +208,8 @@
     <div class="header-banner">
       <span class="tag">Scout Operations</span>
       <h1 class="title">Register Farmer (Scout-Assisted)</h1>
-      <p class="desc">Complete 13-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 14-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
+      <p class="desc">Complete 12-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 13-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
     </div>
 
     <!-- Backend Architecture Documentation -->
@@ -231,8 +231,8 @@
       <div class="tabs-content">
         <!-- TAB: API Architecture -->
         <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedure Architecture (15 Procedures)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 14 tRPC procedures organized by authentication level.</p>
+          <h3 class="backend-section-title">tRPC Procedure Architecture (14 Procedures)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 13 tRPC procedures organized by authentication level.</p>
 
           <div class="backend-info-box">
             <strong>Procedure Breakdown:</strong><br>
@@ -253,7 +253,6 @@
 
   // Screens 5-12: Setup Wizard (Protected)
   selectLanguage: protectedProcedure,
-  confirmFarmerRole: protectedProcedure,
   submitResidentialAddress: protectedProcedure,
   submitFirstPondDetails: protectedProcedure,
   submitPondLegalDocuments: protectedProcedure,
@@ -552,21 +551,20 @@ Strict-Transport-Security: max-age=31536000</div>
         <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">OTP Entry</span></a>
         <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Identity</span></a>
         <a href="#step-05" class="stepper-node"><span class="node-num">5</span><span class="node-label">Language</span></a>
-        <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Role</span></a>
-        <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Address</span></a>
-        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">Pond</span></a>
-        <a href="#step-09" class="stepper-node"><span class="node-num">9</span><span class="node-label">Docs</span></a>
-        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">Pond Addr</span></a>
-        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">GPS</span></a>
-        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Bank</span></a>
-        <a href="#step-13" class="stepper-node"><span class="node-num">13</span><span class="node-label">Review</span></a>
+        <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Address</span></a>
+        <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Pond</span></a>
+        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">Docs</span></a>
+        <a href="#step-09" class="stepper-node"><span class="node-num">9</span><span class="node-label">Pond Addr</span></a>
+        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">GPS</span></a>
+        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">Bank</span></a>
+        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Review</span></a>
       </div>
     </div>
 
     <div class="workflow-group-block">
       <div class="workflow-group-header">
         <div class="workflow-group-title">Farmer Registration Workflow</div>
-        <div class="step-count-pill">14 Steps</div>
+        <div class="step-count-pill">12 Steps</div>
       </div>
       <div class="workflow-group-body">
 
@@ -667,26 +665,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 6: Confirm Role = Farmer -->
+        <!-- Step 6: Address Details -->
         <div class="flow-step-card" id="step-06">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">Confirm Role = Farmer</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/confirm_role_checkpoint/screen.png" alt="Role Confirmation"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Final role confirmation before the role-specific fork begins.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Catches misclassification at the scout's last opportunity. Locked once past this screen.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Read-only card showing "Role: Farmer — produces raw makhana from ponds" + Confirm CTA + Back link to choose Popper instead.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Confirm · or Back → Role chooser (return to Register a Popper workflow).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: role='farmer'.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Single card with role description + Confirm button.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None.</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 7: Address Details -->
-        <div class="flow-step-card" id="step-07">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">Address Details</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">Address Details</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/residential_address/screen.png" alt="Address Details"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -701,9 +682,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 8: First Pond Details -->
-        <div class="flow-step-card" id="step-08">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Details</span></div></div>
+        <!-- Step 7: First Pond Details -->
+        <div class="flow-step-card" id="step-07">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">First Pond Details</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_details/screen.png" alt="Pond Details Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -718,9 +699,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 9: First Pond Legal Documents -->
-        <div class="flow-step-card" id="step-09">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Legal Documents</span></div></div>
+        <!-- Step 8: First Pond Legal Documents -->
+        <div class="flow-step-card" id="step-08">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Legal Documents</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_documents/screen.png" alt="Documents Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -735,9 +716,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 10: First Pond Address -->
-        <div class="flow-step-card" id="step-10">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">First Pond Address</span></div></div>
+        <!-- Step 9: First Pond Address -->
+        <div class="flow-step-card" id="step-09">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Address</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_address/screen.png" alt="Pond Address Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -752,9 +733,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 11: First Pond Geo-Fencing -->
-        <div class="flow-step-card" id="step-11">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">First Pond Geo-Fencing (Optional)</span></div></div>
+        <!-- Step 10: First Pond Geo-Fencing -->
+        <div class="flow-step-card" id="step-10">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">First Pond Geo-Fencing (Optional)</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_geo_fencing/screen.png" alt="Geo-Fencing Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -769,9 +750,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 12: Bank Account Details -->
-        <div class="flow-step-card" id="step-12">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Bank Account Details</span></div></div>
+        <!-- Step 11: Bank Account Details -->
+        <div class="flow-step-card" id="step-11">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Bank Account Details</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/bank_account_details/screen.png" alt="Bank Account Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -786,9 +767,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 13: Review & Submit -->
-        <div class="flow-step-card" id="step-13">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Review & Submit</span></div></div>
+        <!-- Step 12: Review & Submit -->
+        <div class="flow-step-card" id="step-12">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Review & Submit</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/review_submit/screen.png" alt="Review Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
