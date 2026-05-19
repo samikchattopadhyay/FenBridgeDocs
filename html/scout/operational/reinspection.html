@@ -336,6 +336,74 @@
           </ul>
         </div>
 
+        <!-- TAB: React Component Design -->
+        <div id="backend-react" class="tab-panel">
+          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+
+          <div class="backend-info-box">
+            <strong>✅ Design Philosophy:</strong><br>
+            • Single Responsibility: Each component does ONE thing<br>
+            • Prop-based composition: Components accept data + actions as props<br>
+            • No local state for business logic: Context + hooks for state<br>
+            • Reuse across workflows: 80% of components shared across 20 workflows<br>
+            • Variant management: Props define UI variants, not separate components
+          </div>
+
+          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
+            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
+            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
+            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
+            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
+            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
+            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
+            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <ul class="backend-list">
+            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
+            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
+            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
+            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
+            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
+            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
+            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
+            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
+            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
+            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+          </ul>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+          <div class="backend-info-box">
+            <strong>When to Create a New Component:</strong><br>
+            ✓ Logic/JSX repeats 2+ times<br>
+            ✓ Testable in isolation<br>
+            ✓ Clear, single responsibility<br>
+            ✗ Used in only 1 workflow (inline)<br>
+            ✗ Just a styling wrapper (use CSS)
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
+            • TopAppBar (header in all)<br>
+            • TextInput (21+ uses)<br>
+            • AddressForm (6+ uses)<br>
+            • PhotoGrid (16+ uses)<br>
+            • LocationPicker (8+ uses)<br>
+            • DocumentUpload (9+ uses)<br>
+            • SelectInput (12+ uses)
+          </div>
+        </div>
+
         <!-- TAB: Database Schema -->
         <div id="backend-db" class="tab-panel">
           <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
