@@ -244,6 +244,7 @@
 
       <div class="tabs-nav">
         <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-components')">Component Architecture</button>
         <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
         <button class="tab-button" onclick="showTab(event, 'backend-middleware')">Middleware & Auth</button>
         <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
@@ -389,6 +390,227 @@ warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equ
             <li>8. Insert popper_registration_events (audit trail)</li>
             <li>→ On success: Trigger async Inngest jobs</li>
             <li>→ On failure: Rollback all 8 inserts (no partial state)</li>
+          </ul>
+        </div>
+
+        <!-- TAB: Component Architecture -->
+        <div id="backend-components" class="tab-panel">
+          <h3 class="backend-section-title">React Component Architecture</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">All 15 popper registration screens built from composable, reusable React components following atomic design principles.</p>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Directory Structure</h4>
+          <div class="backend-code-block">src/features/scout/register-popper/
+├── components/
+│   ├── common/
+│   │   ├── TopAppBar.tsx
+│   │   ├── StepperPanel.tsx
+│   │   ├── HeroCard.tsx
+│   │   ├── CTAFooter.tsx
+│   │   └── ScreenLayout.tsx (wrapper)
+│   ├── form-inputs/
+│   │   ├── TextInput.tsx
+│   │   ├── SelectInput.tsx
+│   │   ├── CheckboxInput.tsx
+│   │   ├── DatePickerInput.tsx
+│   │   ├── PhoneInput.tsx
+│   │   ├── RadioGroup.tsx
+│   │   ├── FileUpload.tsx
+│   │   └── FormGrid.tsx (layout wrapper)
+│   ├── screens/
+│   │   ├── ConsentScreen.tsx (Step 1)
+│   │   ├── MobileVerificationScreen.tsx (Step 2)
+│   │   ├── ContactPersonScreen.tsx (Step 3)
+│   │   ├── LanguageSelectionScreen.tsx (Step 4)
+│   │   ├── BusinessDetailsScreen.tsx (Step 5)
+│   │   ├── BusinessDocumentsScreen.tsx (Step 6)
+│   │   ├── BusinessAddressScreen.tsx (Step 7)
+│   │   ├── WarehouseAddressScreen.tsx (Step 8)
+│   │   ├── WarehouseDetailsScreen.tsx (Step 9)
+│   │   ├── WarehouseGeofencingScreen.tsx (Step 10)
+│   │   ├── PoppingCapabilityScreen.tsx (Step 11)
+│   │   ├── AncillaryEquipmentScreen.tsx (Step 12)
+│   │   ├── BankAccountScreen.tsx (Step 13)
+│   │   ├── ReviewSubmitScreen.tsx (Step 14)
+│   │   └── ConfirmationScreen.tsx (Step 15)
+│   └── shared/
+│       ├── EquipmentGrid.tsx (Step 11 & 12)
+│       ├── AddressForm.tsx (Steps 7, 8, 9)
+│       ├── DocumentUpload.tsx (Step 6)
+│       └── PhotoGrid.tsx (Multi-photo upload)
+├── hooks/
+│   ├── useRegistrationForm.ts (Wizard state)
+│   ├── useAddressSearch.ts (District/village lookup)
+│   └── useFileUpload.ts (Photo upload + compression)
+├── types/
+│   ├── forms.ts (Input schemas)
+│   ├── screens.ts (Screen state)
+│   └── index.ts (Exports)
+├── utils/
+│   ├── validation.ts (Zod schemas)
+│   ├── formatters.ts (Phone, PAN, GSTIN masks)
+│   └── calculations.ts (Capacity, scoring)
+├── context/
+│   └── RegistrationContext.tsx (Global wizard state)
+├── pages/
+│   └── PopperRegistrationWizard.tsx (Main router)
+└── styles/
+    └── index.css (Shared styles)</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Reusable Component Library</h4>
+
+          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Layout Components (Used by ALL screens)</h5>
+          <div class="backend-code-block"><strong>TopAppBar:</strong>
+• Props: title, onBack, onMenu
+• Used in: All 15 screens
+• Features: Back navigation, title, menu icon, shadow
+
+<strong>StepperPanel:</strong>
+• Props: currentStep (1-15), totalSteps (15)
+• Used in: All 15 screens
+• Features: Progress bar, step counter, sticky positioning
+
+<strong>ScreenLayout:</strong>
+• Props: children, topAppBar, stepper, footer
+• Used in: All 15 screens (wrapper)
+• Features: Consistent padding, max-width, responsive grid
+
+<strong>CTAFooter:</strong>
+• Props: primaryLabel, primaryAction, secondaryLabel, secondaryAction
+• Used in: All 15 screens
+• Features: Two-button layout, disabled states, loading spinner
+
+<strong>HeroCard:</strong>
+• Props: icon, title, subtitle, description
+• Used in: All 15 screens
+• Features: Icon rendering, gradient background, spacing</div>
+
+          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Form Input Components (Generic, Reused across Steps)</h5>
+          <div class="backend-code-block"><strong>TextInput:</strong>
+• Props: label, value, onChange, placeholder, maxLength, required, helper, error
+• Used in: Steps 3, 4, 5, 7, 8, 9, 13
+• Examples: Name, business name, address fields
+
+<strong>PhoneInput:</strong>
+• Props: label, countryCode (default +91), value, onChange, required, error
+• Used in: Steps 2, 3, 13
+• Features: Auto-formatting, validation on blur
+
+<strong>SelectInput:</strong>
+• Props: label, options, value, onChange, required, placeholder, error
+• Used in: Steps 4, 7, 8, 9
+• Examples: Language, district, bank name dropdowns
+
+<strong>CheckboxInput:</strong>
+• Props: label, checked, onChange, required, helper
+• Used in: Steps 1, 11, 12
+• Examples: Consent, equipment selection, QA capability
+
+<strong>RadioGroup:</strong>
+• Props: label, options, value, onChange, inline
+• Used in: Step 4 (language selection)
+• Features: Custom styling for language tiles
+
+<strong>DatePickerInput:</strong>
+• Props: label, value, onChange, required, minDate, maxDate, error
+• Used in: Step 3 (DoB)
+• Features: Native date picker on mobile, modal on web
+
+<strong>FileUpload:</strong>
+• Props: label, multiple, maxFiles, accept, onFilesSelected, preview, error
+• Used in: Steps 6, 11, 12
+• Features: Camera trigger, compression, preview thumbnails</div>
+
+          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Shared Domain Components (Used across multiple Steps)</h5>
+          <div class="backend-code-block"><strong>AddressForm:</strong>
+• Props: prefix, value, onChange, sameAsToggle, error
+• Used in: Steps 7 (business), 8 (warehouse), 9 (warehouse address)
+• Fields: District (select), village (text), address (textarea), landmark (text)
+• Feature: "Same as..." toggle for pre-fill
+
+<strong>EquipmentGrid:</strong>
+• Props: categories, value, onChange
+• Used in: Step 12 (Ancillary Equipment)
+• Structure: 4 categories with checkbox tiles, icon + label per item
+
+<strong>DocumentUpload:</strong>
+• Props: documents, onUpload, onRemove
+• Used in: Step 6 (Business Documents)
+• Features: Dynamic list based on Step 5 inputs (PAN, GSTIN, FSSAI)
+
+<strong>PhotoGrid:</strong>
+• Props: photos, onAdd, onRemove, maxPhotos
+• Used in: Steps 6, 11, 12
+• Features: Thumbnail grid, delete overlay, loading state</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen Composition Pattern</h4>
+          <div class="backend-code-block">/* All screens follow this pattern */
+export const ConsentScreen: React.FC = () => {
+  const { state, setState } = useRegistrationForm();
+
+  return (
+    &lt;ScreenLayout
+      topAppBar={{ title: "Register Popper" }}
+      stepper={{ currentStep: 1, totalSteps: 15 }}
+    &gt;
+      &lt;HeroCard
+        icon="how_to_reg"
+        title="Consent & Verification"
+        subtitle="Scout-assisted registration"
+      /&gt;
+
+      &lt;form onSubmit={handleSubmit}&gt;
+        &lt;CheckboxInput
+          label="I confirm..."
+          checked={state.consent}
+          onChange={(e) =&gt; setState({ ...state, consent: e.target.checked })}
+          required
+        /&gt;
+      &lt;/form&gt;
+
+      &lt;CTAFooter
+        primaryLabel="Continue"
+        primaryAction={handleContinue}
+        secondaryLabel="Save Draft"
+        secondaryAction={handleSaveDraft}
+      /&gt;
+    &lt;/ScreenLayout&gt;
+  );
+};
+
+/* Validation at input level + form level */
+const validation = z.object({
+  consent: z.boolean().refine((v) =&gt; v === true, "Required")
+});</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">State Management (Context + Local)</h4>
+          <div class="backend-code-block"><strong>Global (RegistrationContext):</strong>
+• wizard_id: string
+• currentStep: number (1-15)
+• formData: { [step]: value } (wizard-wide state)
+• errors: { [field]: string[] } (validation errors)
+• loading: boolean
+• savedDraft: boolean
+
+<strong>Local (useRegistrationForm hook):</strong>
+• Persists formData to AsyncStorage (mobile)
+• Auto-saves after 3s of inactivity
+• Manages optimistic UI (loading, disabled CTAs)
+• Debounces API calls on Continue
+
+<strong>Per-Screen (Local state):</strong>
+• File uploads (before compression)
+• Date picker modal open/close
+• Dropdown open/close
+• Temporary focus states</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Common Patterns Across Steps</h4>
+          <ul class="backend-list">
+            <li><strong>Steps 3, 5:</strong> Stacked form fields with inline validation → Use &lt;FormGrid&gt; + TextInput array</li>
+            <li><strong>Steps 6, 11, 12:</strong> Multi-file upload → Use &lt;FileUpload multiple={true}&gt; + &lt;PhotoGrid&gt;</li>
+            <li><strong>Steps 7, 8, 9:</strong> Address capture with same-as toggle → Use &lt;AddressForm&gt; wrapper</li>
+            <li><strong>Steps 11, 12:</strong> Equipment selection grid → Use &lt;EquipmentGrid&gt; or &lt;CheckboxInput&gt; array</li>
+            <li><strong>Steps 4, 12:</strong> Category selection (language, equipment) → Use &lt;RadioGroup&gt; or checkbox grid</li>
+            <li><strong>Steps 2, 3, 13:</strong> Phone number input with formatting → Use &lt;PhoneInput&gt; component</li>
           </ul>
         </div>
 
