@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Popping Capability Profile | FenBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0a0a0a;
+            color: #e5e2e1;
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 10px;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#83c2a9",
+                        "on-tertiary-fixed": "#410005",
+                        "surface-tint": "#4edea3",
+                        "on-secondary-fixed": "#002117",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "on-primary-container": "#00422b",
+                        "secondary-container": "#0b513d",
+                        "background": "#131313",
+                        "inverse-primary": "#006c49",
+                        "on-surface": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-background": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "secondary": "#95d3ba",
+                        "primary-container": "#10b981",
+                        "on-tertiary-container": "#711419",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-surface-variant": "#bbcabf",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#003829",
+                        "surface-container-highest": "#353534",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary": "#650911",
+                        "on-secondary-fixed-variant": "#0b513d",
+                        "surface-dim": "#131313",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-fixed": "#b0f0d6",
+                        "surface": "#131313",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error": "#690005",
+                        "outline": "#86948a",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container": "#201f1f",
+                        "primary": "#4edea3",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-primary": "#003824",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-bright": "#393939",
+                        "outline-variant": "#3c4a42"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "container-max": "1440px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="custom-scrollbar overflow-x-hidden">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant shadow-sm shadow-black/20">
+    <div class="flex items-center gap-4">
+        <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+            <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
+        </button>
+        <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Popping Capability</h1>
+    </div>
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+    </div>
+</header>
+
+<!-- Stepper Panel -->
+<div class="sticky top-16 left-0 w-full z-40 bg-surface-container/90 backdrop-blur-md border-b border-outline-variant mt-16 px-margin-mobile py-3">
+    <div class="max-w-2xl mx-auto">
+        <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 31.25%"></div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 5 of 16</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="flex-grow pt-8 px-margin-mobile max-w-lg mx-auto w-full">
+<form class="space-y-8" id="capability-form">
+<!-- Section 1: Traditional Popping (Chulas) -->
+<section class="p-4 bg-surface-container-low rounded-xl border border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Traditional chulas (iron/earthen pots)</h2>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 uppercase">Count (0-50)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-mono-data text-headline-sm px-3 py-2.5 rounded-lg focus:ring-1 focus:ring-primary-container focus:border-primary-container outline-none transition-all" id="chula-count" max="50" min="0" oninput="calculateCapacity()" type="number" value="0"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 uppercase">Throughput (kg/day)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-mono-data text-headline-sm px-3 py-2.5 rounded-lg focus:ring-1 focus:ring-primary-container focus:border-primary-container outline-none transition-all" id="chula-rate" oninput="calculateCapacity()" placeholder="5-10" type="number" value="8"/>
+</div>
+</div>
+<div class="mt-3 flex justify-between items-center text-on-surface-variant">
+<span class="font-label-md text-label-md uppercase">Subtotal</span>
+<span class="font-mono-data text-body-lg text-primary"><span id="chula-subtotal">0</span> kg/day</span>
+</div>
+</section>
+<!-- Section 2: Semi-Mechanized Popping (Machines) -->
+<section class="p-4 bg-surface-container-low rounded-xl border border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Semi-mechanized popping machines</h2>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 uppercase">Count (0-20)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-mono-data text-headline-sm px-3 py-2.5 rounded-lg focus:ring-1 focus:ring-primary-container focus:border-primary-container outline-none transition-all" id="machine-count" max="20" min="0" oninput="calculateCapacity()" type="number" value="1"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 uppercase">Throughput (kg/day)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-mono-data text-headline-sm px-3 py-2.5 rounded-lg focus:ring-1 focus:ring-primary-container focus:border-primary-container outline-none transition-all" id="machine-rate" oninput="calculateCapacity()" placeholder="50-250" type="number" value="150"/>
+</div>
+</div>
+<div class="mt-3 flex justify-between items-center text-on-surface-variant">
+<span class="font-label-md text-label-md uppercase">Subtotal</span>
+<span class="font-mono-data text-body-lg text-primary"><span id="machine-subtotal">150</span> kg/day</span>
+</div>
+</section>
+<!-- Section 3: Industrial/Automated Popping (Units) -->
+<section class="p-4 bg-surface-container-low rounded-xl border border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Industrial/automated popping units</h2>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 uppercase">Count (0-10)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-mono-data text-headline-sm px-3 py-2.5 rounded-lg focus:ring-1 focus:ring-primary-container focus:border-primary-container outline-none transition-all" id="unit-count" max="10" min="0" oninput="calculateCapacity()" type="number" value="0"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5 uppercase">Throughput (kg/day)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-mono-data text-headline-sm px-3 py-2.5 rounded-lg focus:ring-1 focus:ring-primary-container focus:border-primary-container outline-none transition-all" id="unit-rate" oninput="calculateCapacity()" placeholder="500-2000" type="number" value="1000"/>
+</div>
+</div>
+<div class="mt-3 flex justify-between items-center text-on-surface-variant">
+<span class="font-label-md text-label-md uppercase">Subtotal</span>
+<span class="font-mono-data text-body-lg text-primary"><span id="unit-subtotal">0</span> kg/day</span>
+</div>
+</section>
+<!-- Section 4: Equipment Photos -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Equipment Photos</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-primary text-[32px]">add_a_photo</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Take Photo</span>
+</div>
+<div class="aspect-square bg-surface-container-low rounded-xl relative overflow-hidden border border-outline-variant">
+<div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-white font-bold">3 of 5</span>
+<span class="font-label-md text-label-md text-white/80">photos</span>
+</div>
+<div class="w-full h-full bg-gradient-to-br from-surface-variant to-surface-container-highest"></div>
+</div>
+</div>
+</section>
+<!-- Section 5: Total Daily Capacity Summary (Read-Only) -->
+<section class="p-6 bg-primary-container/10 border border-primary-container/30 rounded-xl">
+<h2 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-wider text-center">Total Daily Capacity Summary</h2>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>Traditional Chulas</span>
+<span class="font-mono-data"><span id="summary-chula">0</span> kg/day</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>Semi-mechanized</span>
+<span class="font-mono-data"><span id="summary-machine">150</span> kg/day</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-md">
+<span>Industrial Units</span>
+<span class="font-mono-data"><span id="summary-unit">0</span> kg/day</span>
+</div>
+</div>
+<div class="pt-4 border-t border-primary-container/20 flex justify-between items-end">
+<span class="font-headline-sm text-headline-sm text-on-surface">TOTAL CAPACITY</span>
+<div class="text-right">
+<span class="font-display-lg text-[32px] leading-none text-primary font-bold"><span id="total-capacity">150</span></span>
+<span class="font-label-md text-label-md text-on-surface-variant block uppercase">kg / day</span>
+</div>
+</div>
+</section>
+<!-- Section 6: Grades You Can Produce -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-4">Grades You Can Produce</h2>
+<div class="flex flex-wrap gap-2">
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container font-label-md text-label-md text-on-surface-variant transition-all peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container active:scale-95">6 Suta Plus</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container font-label-md text-label-md text-on-surface-variant transition-all peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container active:scale-95">5 Suta</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container font-label-md text-label-md text-on-surface-variant transition-all peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container active:scale-95">4.5 Suta</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container font-label-md text-label-md text-on-surface-variant transition-all peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container active:scale-95">Murrah</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container font-label-md text-label-md text-on-surface-variant transition-all peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container active:scale-95">Chipta</div>
+</label>
+</div>
+</section>
+<!-- Section 7: Quality Assurance -->
+<section class="space-y-6">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2">Quality Assurance</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Do you have an established QA process?</p>
+<div class="flex gap-4">
+<label class="flex-1 cursor-pointer">
+<input checked="" class="sr-only peer" id="qa-yes" name="qa" onclick="document.getElementById('qa-details').classList.remove('hidden')" type="radio" value="yes"/>
+<div class="text-center py-3 rounded-lg border border-outline-variant bg-surface-container font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all">YES</div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input class="sr-only peer" id="qa-no" name="qa" onclick="document.getElementById('qa-details').classList.add('hidden')" type="radio" value="no"/>
+<div class="text-center py-3 rounded-lg border border-outline-variant bg-surface-container font-label-md text-label-md text-on-surface-variant peer-checked:bg-surface-container-highest peer-checked:border-outline peer-checked:text-on-surface transition-all">NO</div>
+</label>
+</div>
+</div>
+<div class="animate-in fade-in slide-in-from-top-4 duration-300 space-y-3 bg-surface-container-low p-4 rounded-xl border border-outline-variant/30" id="qa-details">
+<p class="font-label-md text-label-md text-primary mb-2 uppercase">Select testing methods</p>
+<div class="grid grid-cols-1 gap-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative w-5 h-5 flex items-center justify-center border border-outline-variant rounded group-hover:border-primary transition-colors">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 bg-primary w-full h-full flex items-center justify-center rounded">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface">Manual grading</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative w-5 h-5 flex items-center justify-center border border-outline-variant rounded group-hover:border-primary transition-colors">
+<input class="sr-only peer" type="checkbox"/>
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 bg-primary w-full h-full flex items-center justify-center rounded">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface">Moisture testing equipment</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative w-5 h-5 flex items-center justify-center border border-outline-variant rounded group-hover:border-primary transition-colors">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 bg-primary w-full h-full flex items-center justify-center rounded">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface">Weight/size sorting</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative w-5 h-5 flex items-center justify-center border border-outline-variant rounded group-hover:border-primary transition-colors">
+<input class="sr-only peer" type="checkbox"/>
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 bg-primary w-full h-full flex items-center justify-center rounded">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface flex items-center gap-2">
+                                ICAR-certified testing
+                                <span class="material-symbols-outlined text-[14px] text-primary-fixed" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</label>
+</div>
+</div>
+</section>
+    <!-- CTA Area -->
+    <div class="mt-12 pb-12 flex gap-4">
+        <button onclick="window.location.href='../ancillary_equipment_optional/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+            Continue
+            <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+        <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+            Save Draft
+        </button>
+    </div>
+</main>
+<!-- Background Texture -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+</div>
+<script>
+        function calculateCapacity() {
+            const chulaCount = parseFloat(document.getElementById('chula-count').value) || 0;
+            const chulaRate = parseFloat(document.getElementById('chula-rate').value) || 0;
+            const machineCount = parseFloat(document.getElementById('machine-count').value) || 0;
+            const machineRate = parseFloat(document.getElementById('machine-rate').value) || 0;
+            const unitCount = parseFloat(document.getElementById('unit-count').value) || 0;
+            const unitRate = parseFloat(document.getElementById('unit-rate').value) || 0;
+
+            const chulaSub = chulaCount * chulaRate;
+            const machineSub = machineCount * machineRate;
+            const unitSub = unitCount * unitRate;
+            const total = chulaSub + machineSub + unitSub;
+
+            document.getElementById('chula-subtotal').innerText = chulaSub;
+            document.getElementById('machine-subtotal').innerText = machineSub;
+            document.getElementById('unit-subtotal').innerText = unitSub;
+
+            document.getElementById('summary-chula').innerText = chulaSub;
+            document.getElementById('summary-machine').innerText = machineSub;
+            document.getElementById('summary-unit').innerText = unitSub;
+            document.getElementById('total-capacity').innerText = total;
+
+            if (window.navigator && window.navigator.vibrate) {
+                window.navigator.vibrate(5);
+            }
+        }
+
+        // Initialize values
+        document.addEventListener('DOMContentLoaded', calculateCapacity);
+    </script>
+</body></html>

@@ -63,27 +63,27 @@
       max-width: 1280px; margin: 0 auto 48px;
       background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(12px);
       border: 1px solid var(--border-color); border-radius: 16px;
-      padding: 20px 36px; position: sticky; top: 52px; z-index: 100;
+      padding: 28px 36px; position: sticky; top: 52px; z-index: 100;
       box-shadow: 0 20px 50px rgba(0,0,0,0.7);
     }
     .stepper-nodes {
       display: flex; align-items: center; justify-content: space-between;
-      position: relative; z-index: 2; overflow-x: auto;
+      position: relative; z-index: 2; overflow-x: auto; gap: 16px;
     }
     .stepper-node {
       display: flex; flex-direction: column; align-items: center; flex: 1;
-      text-decoration: none; gap: 8px; cursor: pointer; transition: transform 0.2s ease;
-      position: relative; min-width: 60px;
+      text-decoration: none; gap: 12px; cursor: pointer; transition: transform 0.2s ease;
+      position: relative; min-width: 105px; padding: 8px 4px;
     }
     .stepper-node:not(:last-child)::after {
-      content: ""; position: absolute; top: 18px; left: 50%; width: 100%;
+      content: ""; position: absolute; top: 20px; left: calc(50% + 20px); width: 100%;
       height: 2px; background: var(--border-light); z-index: -1;
     }
     .node-num {
       width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card);
       border: 2px solid var(--border-light); color: var(--text-muted);
       font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0;
     }
     .stepper-node.active .node-num {
       border-color: var(--accent-primary); color: var(--accent-primary);
@@ -126,10 +126,10 @@
     }
     .step-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
 
-    .step-body { display: flex; flex-wrap: wrap; min-height: 480px; }
+    .step-body { display: flex; flex-wrap: wrap; min-height: 480px; gap: 20px; }
     .step-left-pane {
-      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 24px;
-      display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border-color);
+      flex: 1; min-width: 320px; max-width: 380px; background: #050d11; padding: 16px;
+      display: flex; align-items: flex-start; justify-content: center; border-right: 1px solid var(--border-color);
     }
     .card-image-viewport {
       width: 280px; height: 500px; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;
@@ -144,7 +144,7 @@
       background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
     }
 
-    .step-right-pane { flex: 2; min-width: 380px; padding: 28px; display: flex; flex-direction: column; }
+    .step-right-pane { flex: 2; min-width: 380px; padding: 16px; display: flex; flex-direction: column; }
     .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
     .spec-block { background: var(--bg-base); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
     .spec-block.full-width { grid-column: 1 / -1; }
@@ -231,8 +231,8 @@
     <div class="header-banner">
       <span class="tag">Scout Operations</span>
       <h1 class="title">Register Popper (Scout-Assisted)</h1>
-      <p class="desc">Complete 15-step workflow for scout-assisted popper registration with business identity capture, warehouse management, real-time mobile OTP verification, and admin approval queue.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 15-screen wizard. The scout sits with the popper (at their business/warehouse), explains the consent line, collects answers, captures business documents and warehouse photos, and submits. The popper's contact person's phone receives the OTP; scout reads it from the phone and enters it. On submit, the popper enters Pending Approval state and warehouse enters fitness check queue.</p>
+      <p class="desc">Complete 15-step workflow for scout-assisted popper registration with business identity capture, warehouse equipment documentation, warehouse management, real-time mobile OTP verification, and admin approval queue.</p>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 15-screen wizard including new popping capability profiling and ancillary equipment documentation. The scout sits with the popper (at their business/warehouse), explains the consent line, collects answers, captures business documents and warehouse photos, documents equipment specifications and capabilities, and submits. The popper's contact person's phone receives the OTP via bottom sheet overlay; scout reads it from the phone and enters it. On submit, the popper enters Pending Approval state and warehouse enters fitness check queue.</p>
     </div>
 
     <!-- Backend Architecture Documentation -->
@@ -254,48 +254,47 @@
       <div class="tabs-content">
         <!-- TAB: API Architecture -->
         <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedure Architecture (16 Procedures)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Popper workflow consists of 16 tRPC procedures organized by authentication level.</p>
+          <h3 class="backend-section-title">tRPC Procedure Architecture (15 Procedures)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Popper workflow consists of 15 tRPC procedures organized by authentication level.</p>
 
           <div class="backend-info-box">
             <strong>Procedure Breakdown:</strong><br>
-            • 4 Public procedures: Init Registration, Send OTP, Verify OTP, Submit Identity<br>
-            • 12 Protected procedures: Language, Role, Address, Business Details (3), Warehouse (4), Bank (2)<br>
+            • 2 Public procedures: Send OTP, Verify OTP<br>
+            • 12 Protected procedures: Identity, Language, Business (3), Warehouse (3), Equipment (2), Bank (2)<br>
             • 1 Atomic transaction: Popper Registration Submit (8 simultaneous inserts)
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/popper.ts</h4>
           <div class="backend-code-block">export const popperRouter = t.router({
-  // Screens 1-4: Contact Person Info
-  initPopperRegistration: publicProcedure,
+  // Steps 1-2: Public Auth (OTP)
   sendPopperMobileOtp: publicProcedure,
   verifyPopperMobileOtp: publicProcedure,
-  submitPopperIdentity: publicProcedure,
 
-  // Screens 5-14: Setup Wizard (Protected)
+  // Steps 3-13: Protected Setup Wizard
+  submitPopperIdentity: protectedProcedure,
   selectLanguage: protectedProcedure,
-  submitResidentialAddress: protectedProcedure,
   submitBusinessDetails: protectedProcedure,
   submitBusinessLegalDocuments: protectedProcedure,
   submitBusinessAddress: protectedProcedure,
   submitWarehouseAddress: protectedProcedure,
   submitWarehouseDetails: protectedProcedure,
-  submitWarehousePhotos: protectedProcedure,
   submitWarehouseGeofencing: protectedProcedure,
+  submitPoppingCapability: protectedProcedure,
+  submitAncillaryEquipment: protectedProcedure,
   submitBankAccount: protectedProcedure,
   verifyBankAccount: protectedProcedure,
 
-  // Screen 14: Review & Submit
+  // Step 14: Atomic Review & Submit
   submitPopperRegistration: protectedProcedure,
 });</div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 11 - Mobile Verification)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Step 2 - Mobile Verification OTP)</h4>
           <ul class="backend-list">
             <li><strong>If OTP matches EXISTING popper:</strong> Load popper detail screen (Update mode)</li>
             <li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 14 - Review & Submit)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Step 14 - Review & Submit)</h4>
           <ul class="backend-list">
             <li>1. Insert user record (role=popper, status=pending_approval)</li>
             <li>2. Insert popper_profiles</li>
@@ -543,7 +542,7 @@ CREATE TABLE popper_registration_events (
 
           <h4 class="backend-section-title" style="font-size: 14px;">1. popper.send-otp-sms (Fire-and-Forget)</h4>
           <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 11 (Mobile Verification)<br>
+            <strong>Trigger:</strong> Step 2 (Mobile Verification OTP)<br>
             <strong>Steps:</strong> Generate 6-digit → Hash with bcrypt → Store in DB → Send via Twilio SMS → Log<br>
             <strong>Retry:</strong> 4 attempts with exponential backoff (1s, 5s, 30s)<br>
             <strong>DLQ:</strong> Move to dead-letter queue after 4 failures, alert ops
@@ -551,14 +550,14 @@ CREATE TABLE popper_registration_events (
 
           <h4 class="backend-section-title" style="font-size: 14px;">2. popper.penny-drop-verification (Wait-for-External)</h4>
           <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 12 (Bank Account Details)<br>
+            <strong>Trigger:</strong> Step 13 (Bank Account Details)<br>
             <strong>Steps:</strong> Initiate Razorpay penny-drop → Store job ID → Wait for webhook (max 5 min) → Verify match → Update status<br>
             <strong>Webhook:</strong> POST /api/webhooks/razorpay/verification-complete
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">3. popper.registration-submitted (Chained)</h4>
           <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 14 (Review & Submit)<br>
+            <strong>Trigger:</strong> Step 14 (Review & Submit)<br>
             <strong>Steps:</strong> Verify popper exists → Send confirmation SMS (in preferred_language) → Notify Admin (dashboard alert)<br>
             <strong>Dependencies:</strong> Ensure popper record created before SMS
           </div>
@@ -656,18 +655,18 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains</div>
     <div class="stepper-panel-container">
       <div class="stepper-nodes">
         <a href="#step-01" class="stepper-node active"><span class="node-num">1</span><span class="node-label">Consent</span></a>
-        <a href="#step-02" class="stepper-node"><span class="node-num">2</span><span class="node-label">Language</span></a>
-        <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">Address</span></a>
-        <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Identity</span></a>
+        <a href="#step-02" class="stepper-node"><span class="node-num">2</span><span class="node-label">Mobile</span></a>
+        <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">Identity</span></a>
+        <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Language</span></a>
         <a href="#step-05" class="stepper-node"><span class="node-num">5</span><span class="node-label">Business</span></a>
         <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Bus Docs</span></a>
         <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Bus Addr</span></a>
-        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">WH Details</span></a>
+        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">WH Detail</span></a>
         <a href="#step-09" class="stepper-node"><span class="node-num">9</span><span class="node-label">WH Addr</span></a>
-        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">GPS</span></a>
-        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">Mobile</span></a>
-        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Bank</span></a>
-        <a href="#step-13" class="stepper-node"><span class="node-num">13</span><span class="node-label">Theme</span></a>
+        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">Geofence</span></a>
+        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">Pop Equip</span></a>
+        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Aux Equip</span></a>
+        <a href="#step-13" class="stepper-node"><span class="node-num">13</span><span class="node-label">Bank</span></a>
         <a href="#step-14" class="stepper-node"><span class="node-num">14</span><span class="node-label">Review</span></a>
         <a href="#step-15" class="stepper-node"><span class="node-num">15</span><span class="node-label">Confirm</span></a>
       </div>
@@ -697,53 +696,50 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains</div>
           </div>
         </div>
 
-        <!-- Step 2: Language Selection -->
+        <!-- Step 2: Mobile Verification (OTP Send) -->
         <div class="flow-step-card" id="step-02">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Language Selection</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification (OTP Send)</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_language_selection/screen.png" alt="Language Selection"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_mobile_verification_send/screen.png" alt="Mobile Verification"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets contact person's preferred app language for SMS <code>notifications</code>, dashboards, future self-login sessions.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Language determines notification language (SMS, dashboard, emails).</p><p>Three options: English / हिंदी (Hindi) / বাংলা (Bengali).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Three large tiles with native script labels.</p><p>Top bar: Back arrow, no title, progress "2 of 15".</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap one language</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue auto-enabled. Defaults to 'en' if skipped.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: preferred_language: 'en' | 'hi' | 'bn'.</p><p>Written to <code>popper_profiles.preferred_language</code> at final submit.</p><p>Used for all SMS and dashboard text.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Heading: "Preferred Language" + helper "We'll send <code>notifications</code> to the contact person in this language." Three radio tiles: English / हिंदी / বাংলা.</p><p>Primary CTA: "Continue" (always enabled, defaults to 'en').</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">Written to popper_profiles.preferred_language at submit.</div></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Verifies the popper's contact person's mobile number via OTP (One-Time Password).</p><p>Ensures the phone number entered is real and accessible to the contact person.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Mobile verification is mandatory for popper login authentication.</p><p>The contact person must be able to receive SMS at the registered number.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Mobile number input field with country code prefix (+91).</p><p>"Send OTP" button triggers SMS delivery.</p><p>OTP entry via bottom sheet overlay (inline verification).</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Triggers async SMS job.</p><p>OTP verified inline without page navigation.</p><p>Max 5 attempts, 10-minute expiration.</p></div></div>
             </div></div>
           </div>
         </div>
 
-        <!-- Step 3: Contact Person's Address -->
+        <!-- Step 3: Contact Person Identity -->
         <div class="flow-step-card" id="step-03">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Contact Person's Address</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_address_details/screen.png" alt="Address Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures contact person's residential address (the individual who will log in and manage the account).</p><p>Often the business owner or manager.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>District mandatory (from controlled list).</p><p>Village/panchayat searchable.</p><p>Full address mandatory.</p><p>Used for KYC and contact verification.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Identical form pattern to farmer residential address.</p><p>District dropdown, village text/searchable, full address textarea, optional landmark.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap District dropdown</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">select or type to filter</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap Panchayat/village</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">enter free text or search</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap Full address</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">enter multi-line address</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Tap Landmark</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">enter notable landmark</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: contact_person: { district, panchayat_village, full_address, landmark }.</p><p>District from whitelist; others free text.</p><p>Written to <code>popper_profiles</code> at submit.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "3 of 15".</p><p>Heading: "Contact Person's Address" + helper "The district where the contact person lives." Form fields (stacked, surface-hi): District (dropdown), Panchayat/Village (text/searchable), Full Address (multiline textarea), Landmark (optional).</p><p>Primary CTA: "Continue" (enabled once District and Full Address filled).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">Written to popper_profiles: residential_district, residential_address, residential_landmark (optional) at submit.</div></div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 4: Contact Person Identity -->
-        <div class="flow-step-card" id="step-04">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Contact Person Identity</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Contact Person Identity</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/contact_person_identity/screen.png" alt="Identity Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures contact person's personal identity (name, mobile, DoB).</p><p>The contact person is the human who logs in and operates the popper's account.</p></div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Contact person name and mobile are mandatory.</p><p>Mobile must be the contact person's own — this is what they'll use to log in with OTP.</p><p>Uniqueness check ensures mobile isn't already registered.</p><p>DoB optional but recommended.</p><p>Alternate phone optional.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Stacked form: Name (required), DoB (optional, date picker), Mobile (required, 10-digit Indian with +91 chip), Alternate Phone (optional).</p><p>On Continue, uniqueness check performed; if duplicate, error shown with escalation path.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Stacked form: Name (required), DoB (optional, date picker), Mobile (required, 10-digit Indian with +91 chip), Alternate Phone (optional).</p><p>On Continue, uniqueness check performed; if duplicate, error shown with escalation path.</p><p>Top bar: Back arrow, no title, progress "3 of 15".</p></div></div>
               <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter contact person's full name</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Tap DoB</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">date picker</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">select or skip</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter mobile (10 digits, auto-formatted)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Enter alternate phone</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Continue"</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">if mobile is unique, proceed to Business Basic Details; if duplicate, show error modal with "Go back" and "Contact Admin" buttons.</span></div></div>
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: contact_person: { full_name, dob, mobile, alt_phone }.</p><p>Mobile validated as 10-digit Indian.</p><p>Uniqueness check on Continue: query <code>users.mobile</code> for duplicate.</p><p>Written to <code>users.mobile</code> and <code>popper_profiles.contact_person_name</code>, <code>popper_profiles.date_of_birth</code> at submit.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "4 of 15".</p><p>Heading: "Contact Person Identity" + form fields (stacked): Contact Person Name (required, max 100 chars, helper "The person who will manage this account."), DoB (optional, date picker, helper "Used for compliance checks."), Mobile (required, country chip +91, helper "This is the contact person's mobile — they will receive OTP and SMS here.</p><p>Make sure you are using their own number, not a business reception number."), Alternate Phone (optional, helper "A secondary contact number if available.").</p><p>Error handling: If mobile invalid: "Please enter a valid 10-digit number".</p><p>If mobile already registered: modal "This mobile is already registered.</p><p>Go back, Contact Admin".</p><p>Primary CTA: "Continue" (enabled once Name and Mobile filled with valid values).</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "3 of 15".</p><p>Heading: "Contact Person Identity" + form fields (stacked): Contact Person Name (required, max 100 chars, helper "The person who will manage this account."), DoB (optional, date picker, helper "Used for compliance checks."), Mobile (required, country chip +91, helper "This is the contact person's mobile — they will receive OTP and SMS here.</p><p>Make sure you are using their own number, not a business reception number."), Alternate Phone (optional, helper "A secondary contact number if available.").</p><p>Error handling: If mobile invalid: "Please enter a valid 10-digit number".</p><p>If mobile already registered: modal "This mobile is already registered.</p><p>Go back, Contact Admin".</p><p>Primary CTA: "Continue" (enabled once Name and Mobile filled with valid values).</p></div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">users.mobile, popper_profiles.contact_person_name, popper_profiles.date_of_birth (optional).</div></div></div>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- Step 4: Language Selection -->
+        <div class="flow-step-card" id="step-04">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Language Selection</span></div></div>
+          <div class="step-body">
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_language_selection/screen.png" alt="Language Selection"/></div></div>
+            <div class="step-right-pane"><div class="specs-grid">
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets contact person's preferred app language for SMS <code>notifications</code>, dashboards, future self-login sessions.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Language determines notification language (SMS, dashboard, emails).</p><p>Three options: English / हिंदी (Hindi) / বাংলা (Bengali).</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Three large tiles with native script labels.</p><p>Top bar: Back arrow, no title, progress "4 of 15".</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap one language</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue auto-enabled. Defaults to 'en' if skipped.</span></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: preferred_language: 'en' | 'hi' | 'bn'.</p><p>Written to <code>popper_profiles.preferred_language</code> at final submit.</p><p>Used for all SMS and dashboard text.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Heading: "Preferred Language" + helper "We'll send <code>notifications</code> to the contact person in this language." Three radio tiles: English / हिंदी / বাংলা.</p><p>Primary CTA: "Continue" (always enabled, defaults to 'en').</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">Written to popper_profiles.preferred_language at submit.</div></div></div>
             </div></div>
           </div>
         </div>
@@ -850,26 +846,43 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains</div>
           </div>
         </div>
 
-        <!-- Step 11: Mobile Verification -->
+        <!-- Step 11: Popping Capability Profile -->
         <div class="flow-step-card" id="step-11">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Mobile Verification (OTP Send & Verify)</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Popping Capability Profile</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_mobile_verification/screen.png" alt="OTP Send"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popping_capability_profile_detailed_breakdown/screen.png" alt="Popping Capability"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Enter popper's contact person's mobile number and trigger SMS verification.</p><p>OTP entry is handled inside this screen via a bottom sheet overlay.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>OTP confirms the mobile entered is real and belongs to the contact person (contact person's phone must physically receive it).</p><p>Without verified mobile, the popper can't later log in themselves.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Mobile input field with helper text, country code prefix (+91), "Send OTP" CTA.</p><p>Brings up OTP entry bottom sheet overlay.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Type contact person's mobile number</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Send OTP" to open interactive bottom sheet overlay. Enter OTP to auto-verify.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Calls sendPopperMobileOtp and verifyPopperMobileOtp.</p><p>Triggers background SMS async job.</p><p>Opens inline sheet overlay for OTP Entry to avoid page navigation.</p><p>Note that popper_mobile_verification exists in the codebase as a standalone fallback screen but the production app integrates it as an interactive sheet inside Step 11, resulting in a streamlined 14-step wizard + 1 confirmation page workflow.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><span class="spec-badge-inline">Mobile chip + "Change" link</span> <span class="spec-badge-inline">Send OTP primary</span> <span class="spec-badge-inline">cooldown timer.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">user_otp_verifications: mobile, otp_hash (bcrypt), expires_at (now + 10 min), max_attempts=5, context='scout_assisted_registration'.</div></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Documents the popper's warehouse equipment inventory and daily production capacity.</p><p>Captures popping methods (traditional chulas, semi-mechanized, industrial/automated) and maximum producible grades.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Equipment documentation mandatory for production capacity planning and grade compatibility.</p><p>Daily capacity calculated from equipment counts and throughput rates.</p><p>Producible grades multi-select (6 Suta Plus, 5 Suta, 4.5 Suta, Murrah, Chipta).</p><p>Quality assurance capability optional but scored for facility ranking.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Sectioned form: Traditional Equipment (count + throughput per unit), Semi-mechanized (count + throughput), Industrial/Automated (count + throughput), Equipment Photos (optional, up to 5), Total Daily Capacity (auto-calculated, read-only), Producible Grades (multi-select checkboxes), QA Capability (optional with methods: manual, moisture testing, sorting, ICAR certified).</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter chula count (0-50)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter kg per chula per day (5-10)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter machine count (0-20)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter kg per machine (50-250)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter unit count (0-10)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter kg per unit (500-2000)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Add equipment photos</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">View auto-calculated daily capacity</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Select producible grades</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Enable QA capability and select methods</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue.</span></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { chula_count, chula_throughput_kg_per_day, machine_count, machine_throughput_kg_per_day, unit_count, unit_throughput_kg_per_day, equipment_photos, producible_grades, qa_capability, qa_methods }.</p><p>Daily capacity auto-calculated: (chula_count × chula_throughput) + (machine_count × machine_throughput) + (unit_count × unit_throughput).</p><p>Written to warehouses table at submit.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "11 of 15".</p><p>Heading: "Popping Capability Profile" + helper "Document equipment and production capacity." + sectioned form (stacked): [Traditional Chulas] Chula Count (required, 0-50), Throughput per Chula (required, kg/day), [Semi-mechanized] Machine Count (required, 0-20), Throughput per Machine (required, kg/day), [Industrial/Automated] Unit Count (required, 0-10), Throughput per Unit (required, kg/day), [Equipment Photos] Optional upload (up to 5), [Total Daily Capacity] Auto-calculated, read-only badge, [Producible Grades] Multi-select checkboxes, [Quality Assurance] Toggle + conditional methods (Manual, Moisture Testing, Sorting, ICAR Certified).</p><p>Primary CTA: "Continue" (enabled once all required fields filled and daily capacity > 0).</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box"><code>warehouses</code> table fields:<br>• <code>chula_count</code> (integer, 0-50)<br>• <code>chula_throughput_kg_per_day</code> (decimal)<br>• <code>machine_count</code> (integer, 0-20)<br>• <code>machine_throughput_kg_per_day</code> (decimal)<br>• <code>unit_count</code> (integer, 0-10)<br>• <code>unit_throughput_kg_per_day</code> (decimal)<br>• <code>daily_capacity_kg</code> (auto-calculated, decimal)<br>• <code>equipment_photos</code> (JSONB array)<br>• <code>producible_grades</code> (array: SUTA6P, SUTA5, SUTA45, MURRAH, CHIPTA)<br>• <code>has_qa_capability</code> (boolean)<br>• <code>qa_methods</code> (array: MANUAL, MOISTURE, SORTING, ICAR_CERTIFIED)<br>• <code>qa_capability_verified_at</code> (timestamp, nullable)</div></div></div>
             </div></div>
           </div>
         </div>
 
-        <!-- Step 12: Bank Account Details -->
+        <!-- Step 12: Ancillary Equipment (Optional) -->
         <div class="flow-step-card" id="step-12">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Bank Account Details</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Ancillary Equipment (Optional)</span></div></div>
+          <div class="step-body">
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/ancillary_equipment_optional/screen.png" alt="Ancillary Equipment"/></div></div>
+            <div class="step-right-pane"><div class="specs-grid">
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Documents additional processing machinery and value-add services available at the warehouse.</p><p>Enables facility scoring and production capability assessment.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>This step is optional — can be skipped to proceed to Bank Account Details.</p><p>Equipment categories: Pre-Popping (cleaning/winnowing, drying, pre-roast grading), Roasting (sand roaster, rotary/air roaster), Post-Popping (de-shelling, polishing, post-pop grading), Value-Add (flavor coating, packaging vacuum, packaging nitrogen).</p><p>Facility score boost: 0–15 points based on equipment presence.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Responsive grid of equipment category cards with toggle checkboxes.</p><p>Each equipment item shows as a checkbox tile with icon and description.</p><p>Optional equipment photo upload (up to 5).</p><p>"Skip (Optional)" button allows bypassing this section.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Review equipment categories (Pre-Popping, Roasting, Post-Popping, Value-Add)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Check boxes for available equipment</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Add equipment photos (up to 5)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Or tap "Skip (Optional)" to proceed without equipment data.</span></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { ancillary_equipment: { pre_popping: { cleaning_winnowing, drying, pre_roast_grading }, roasting: { sand_roaster, rotary_roaster }, post_popping: { de_shelling, polishing, post_pop_grading }, value_add: { flavor_coating, packaging_vacuum, packaging_nitrogen } }, ancillary_equipment_photos, facility_score_boost }.</p><p>Facility score boost calculated: +1 point per equipment type available (max 12 points baseline, bonus for rare combinations).</p><p>Written to warehouses table at submit.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "12 of 15".</p><p>Heading: "Ancillary Equipment & Services" + helper "Document additional processing machinery and value-add capabilities." + responsive equipment grid (mobile-first): [Pre-Popping Equipment] Cleaning/Winnowing (checkbox), Drying Equipment (checkbox), Pre-roast Grading Machine (checkbox), [Roasting Equipment] Sand Roaster (checkbox), Rotary/Air Roaster (checkbox), [Post-Popping Equipment] De-shelling Machine (checkbox), Polishing Machine (checkbox), Post-pop Grading Machine (checkbox), [Value-Add Equipment] Flavor Coating Drum (checkbox), Packaging Machine (Vacuum) (checkbox), Packaging Machine (Nitrogen) (checkbox), [Equipment Photos] Optional upload (up to 5).</p><p>Primary CTA: "Continue" (always enabled).</p><p>Secondary CTA: "Skip (Optional)" (links to Bank Account Details, bypassing this step).</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box"><code>warehouses</code> table fields:<br>• <code>ancillary_equipment</code> (JSONB object with boolean flags):<br>&nbsp;&nbsp;- pre_popping: { cleaning_winnowing, drying, pre_roast_grading }<br>&nbsp;&nbsp;- roasting: { sand_roaster, rotary_roaster }<br>&nbsp;&nbsp;- post_popping: { de_shelling, polishing, post_pop_grading }<br>&nbsp;&nbsp;- value_add: { flavor_coating, packaging_vacuum, packaging_nitrogen }<br>• <code>ancillary_equipment_photos</code> (JSONB array, up to 5 files)<br>• <code>facility_score_boost</code> (integer, 0-15 points)</div></div></div>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- Step 13: Bank Account Details -->
+        <div class="flow-step-card" id="step-13">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Bank Account Details</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_bank_account_details/screen.png" alt="Bank Account"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -878,25 +891,8 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains</div>
               <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Identical form pattern to farmer bank account, but pre-fill account holder name with business name (editable).</div></div>
               <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Verify/edit Account Holder Name (pre-filled with business name)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter Account Number (12–18 digits)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Confirm Account Number</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter IFSC Code</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">bank/branch auto-resolves</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Review resolved bank and branch</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue.</span></div></div>
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: bank: { account_holder_name, account_number, ifsc_code }.</p><p>IFSC regex: ^[A-Z]{4}0[A-Z0-9]{6}$.</p><p>Account number: 12–18 digits.</p><p>Bank/branch via Razorpay IFSC API or local lookup.</p><p>Account number AES-256-GCM encrypted.</p><p>Penny-drop async (Inngest `<code>popper.penny</code>-drop-verification`).</p><p>Status: pennydrop_status='pending' initially.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "12 of 14".</p><p>Heading: "Bank Account" + helper "We will send payments to this account.</p><p>Ensure the account holder name matches the business entity name or authorized person." + form fields (stacked, surface-hi): Account Holder Name (mandatory, pre-filled with business name, editable, max 100 chars, helper "Must match the name on the bank account (business name or authorized signatory)."), Account Number (mandatory, numeric, placeholder "<code>e.g</code>., 1234567890123", helper "Without spaces or dashes."), Confirm Account Number (mandatory, numeric, placeholder "Re-enter for confirmation", validation: must match), IFSC Code (mandatory, uppercase auto-format, placeholder "<code>e.g</code>., HDFC0001234", helper "Find your IFSC code on the bank cheque or online banking."), Bank Details (auto-resolved, read-only, label "Resolved Bank & Branch", display after IFSC is valid: "Bank: HDFC Bank" + "Branch: Kolkata Main Branch") + penny-drop note (surface-mid) "We will send ₹1 to verify this account — penny-drop verification.</p><p>This may take a few minutes." + primary CTA "Continue" (enabled once Account Number, Confirm, and IFSC are filled and valid).</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "13 of 15".</p><p>Heading: "Bank Account" + helper "We will send payments to this account.</p><p>Ensure the account holder name matches the business entity name or authorized person." + form fields (stacked, surface-hi): Account Holder Name (mandatory, pre-filled with business name, editable, max 100 chars, helper "Must match the name on the bank account (business name or authorized signatory)."), Account Number (mandatory, numeric, placeholder "<code>e.g</code>., 1234567890123", helper "Without spaces or dashes."), Confirm Account Number (mandatory, numeric, placeholder "Re-enter for confirmation", validation: must match), IFSC Code (mandatory, uppercase auto-format, placeholder "<code>e.g</code>., HDFC0001234", helper "Find your IFSC code on the bank cheque or online banking."), Bank Details (auto-resolved, read-only, label "Resolved Bank & Branch", display after IFSC is valid: "Bank: HDFC Bank" + "Branch: Kolkata Main Branch") + penny-drop note (surface-mid) "We will send ₹1 to verify this account — penny-drop verification.</p><p>This may take a few minutes." + primary CTA "Continue" (enabled once Account Number, Confirm, and IFSC are filled and valid).</p></div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">user_bank_accounts: user_id, account_holder_name_encrypted, account_number_encrypted, account_number_masked (last 4), ifsc_code, bank_name, branch_name, pennydrop_status='pending', pennydrop_job_id.</div></div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 13: Theme Preference -->
-        <div class="flow-step-card" id="step-13">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Theme Preference</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/farmer_onboarding/streamlined_theme_selection/screen.png" alt="Theme"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets contact person's preferred app theme (visual appearance).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Determines visual appearance when contact person logs in later (dark/light mode).</p><p>Default is dark.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Two large preview tiles: Dark / Light.</p><p>Skip link "Use default (Dark)".</p><p>Primary CTA always enabled.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap one theme or skip with "Use default (Dark)"</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue auto-enabled.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: theme: 'dark' | 'light'.</p><p>Written to <code>user_preferences</code> at submit.</p><p>Defaults to 'dark'.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "13 of 14".</p><p>Heading: "Theme Preference" + helper "Choose how the app will look when the contact person logs in." + two preview tiles (Dark / Light, side-by-side or stacked) + skip link "Use default (Dark)" + primary CTA "Continue" (always enabled, defaults to 'dark').</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">user_preferences: user_id, theme ('dark' | 'light'), preferred_language.</div></div></div>
             </div></div>
           </div>
         </div>
@@ -912,13 +908,13 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains</div>
               <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Sectioned recap layout: Contact Person Identity, Business Information, Business Address, Warehouse Details, Bank, Documents.</p><p>Each section has an inline "Edit" link to jump back and correct any field.</p></div></div>
               <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Review all sections</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Edit" on any section</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">return to relevant screen, edit, return with updated values</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tick final consent checkbox</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Submit Registration</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">atomic write to database, queue to sync, advance to Submission Confirmation.</span></div></div>
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>On submit (atomic, offline-capable): writes <code>users</code>, <code>popper_profiles</code>, <code>warehouses</code>, <code>user_bank_accounts</code> (+ pennydrop async), <code>user_documents</code>, <code>user_preferences</code>.</p><p>Status: <code>users.status</code>='pending_approval'.</p><p>Created via scout context.</p><p>All queued to <code>sync_queue</code>.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "14 of 14".</p><p>Heading: "Review Information" + recap sections (stacked, surface-hi) + final consent checkbox + primary "Submit Registration" disabled until checked.</p></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "14 of 15".</p><p>Heading: "Review Information" + recap sections (stacked, surface-hi) + final consent checkbox + primary "Submit Registration" disabled until checked.</p></div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">All tables defined above (<code>users</code>, <code>popper_profiles</code>, <code>warehouses</code>, <code>user_bank_accounts</code>, <code>user_documents</code>, <code>user_preferences</code>, popper_approval_queue, popper_registration_events).</div></div>
             </div></div>
           </div>
         </div>
 
-        <!-- Step 15: Submission Confirmation -->
+        <!-- Step 17: Submission Confirmation -->
         <div class="flow-step-card" id="step-15">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">15</span><span class="step-title">Submission Confirmation</span></div></div>
           <div class="step-body">

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ancillary Equipment | FenBridge Scout Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#4edea3",
+                        "error": "#ffb4ab",
+                        "on-primary": "#003824",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#83c2a9",
+                        "background": "#0a0a0a",
+                        "surface-bright": "#393939",
+                        "primary-fixed": "#6ffbbe",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-fixed": "#002117",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-tertiary": "#650911",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#bbcabf",
+                        "on-secondary-fixed-variant": "#0b513d",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-container-highest": "#353534",
+                        "surface-tint": "#4edea3",
+                        "surface": "#131313",
+                        "secondary": "#95d3ba",
+                        "primary": "#4edea3",
+                        "primary-container": "#10b981",
+                        "outline": "#262626",
+                        "surface-dim": "#131313",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "surface-variant": "#353534",
+                        "surface-container": "#201f1f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#003829",
+                        "tertiary-container": "#fc7c78",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary-container": "#711419",
+                        "on-primary-container": "#00422b",
+                        "secondary-container": "#0b513d",
+                        "tertiary": "#ffb3af",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#b0f0d6",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#410005",
+                        "outline-variant": "#3c4a42"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-card {
+            background-color: #131313;
+            border: 1px solid #262626;
+            transition: border-color 0.2s ease;
+        }
+        .bento-card:hover {
+            border-color: #404040;
+        }
+        .custom-checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #262626;
+            background: #0a0a0a;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background: #10b981;
+            border-color: #10b981;
+        }
+        .custom-checkbox:checked::after {
+            content: '\e5ca';
+            font-family: 'Material Symbols Outlined';
+            font-size: 14px;
+            color: #002113;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .image-dropzone {
+            border: 2px dashed #262626;
+            transition: all 0.3s ease;
+        }
+        .image-dropzone:hover {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.05);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #262626; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant shadow-sm shadow-black/20">
+    <div class="flex items-center gap-4">
+        <button onclick="window.history.back()" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors text-primary">
+            <span class="material-symbols-outlined cursor-pointer active:opacity-80 active:scale-95 transition-all">arrow_back</span>
+        </button>
+        <h1 class="text-headline-sm font-headline-sm text-primary font-bold truncate">Ancillary Equipment</h1>
+    </div>
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+    </div>
+</header>
+
+<!-- Stepper Panel -->
+<div class="sticky top-16 left-0 w-full z-40 bg-surface-container/90 backdrop-blur-md border-b border-outline-variant mt-16 px-margin-mobile py-3">
+    <div class="max-w-2xl mx-auto">
+        <div class="relative w-full h-6 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+            <div class="h-full bg-primary transition-all duration-500" style="width: 37.5%"></div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span class="text-[10px] font-bold text-on-primary-container uppercase tracking-widest">Step 6 of 16</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<main class="flex-grow pt-8 px-margin-mobile max-w-lg mx-auto w-full">
+<!-- Hero/Instruction Card (Bento Style) -->
+<div class="mb-8 p-6 bg-surface-container-low border border-outline-variant rounded-xl relative overflow-hidden shadow-2xl">
+<div class="relative z-10">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-2">Ancillary Equipment & Services</h2>
+<p class="text-body-md text-on-surface-variant opacity-80 leading-relaxed">Document additional processing machinery and value-add capabilities available at this warehouse. This is optional but increases facility eligibility score.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</div>
+</div>
+<!-- Equipment Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Processing Flow Section -->
+<div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Pre-Popping Equipment -->
+<section class="bento-card p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-fixed-dim">settings_input_component</span>
+<h3 class="text-headline-sm font-headline-sm">Pre-Popping</h3>
+</div>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Cleaning/Winnowing Machine</span>
+<span class="text-label-md text-on-surface-variant">Foreign matter removal</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Drying Equipment</span>
+<span class="text-label-md text-on-surface-variant">Sun or mechanical moisture control</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Pre-roast Grading Machine</span>
+<span class="text-label-md text-on-surface-variant">Size calibration before heat</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Roasting Equipment -->
+<section class="bento-card p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-fixed-dim">local_fire_department</span>
+<h3 class="text-headline-sm font-headline-sm">Roasting</h3>
+</div>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Sand Roaster</span>
+<span class="text-label-md text-on-surface-variant">Traditional high-thermal conduction</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Rotary/Air Roaster</span>
+<span class="text-label-md text-on-surface-variant">Controlled convection technology</span>
+</div>
+</label>
+</div>
+<div class="mt-auto pt-4">
+<div class="bg-surface-container rounded p-3 flex gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]">info</span>
+<p class="text-label-md text-on-surface-variant">Roasting equipment affects thermal efficiency scores.</p>
+</div>
+</div>
+</section>
+<!-- Post-Popping Equipment -->
+<section class="bento-card p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-fixed-dim">precision_manufacturing</span>
+<h3 class="text-headline-sm font-headline-sm">Post-Popping</h3>
+</div>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">De-shelling Machine</span>
+<span class="text-label-md text-on-surface-variant">Automated husk extraction</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Polishing Machine</span>
+<span class="text-label-md text-on-surface-variant">Surface friction refinement</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Post-pop Grading Machine</span>
+<span class="text-label-md text-on-surface-variant">Final product sorting</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Value-Add Equipment -->
+<section class="bento-card p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-fixed-dim">inventory_2</span>
+<h3 class="text-headline-sm font-headline-sm">Value-Add</h3>
+</div>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Flavor Coating Drum</span>
+<span class="text-label-md text-on-surface-variant">Seasoning and oil application</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Packaging Machine (Vacuum)</span>
+<span class="text-label-md text-on-surface-variant">Airtight compression sealing</span>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-body-md font-medium group-hover:text-primary transition-colors">Packaging Machine (Nitrogen)</span>
+<span class="text-label-md text-on-surface-variant">Inert gas flushing for shelf-life</span>
+</div>
+</label>
+</div>
+</section>
+</div>
+</div>
+<!-- Photo Uploader Section -->
+<div class="col-span-full">
+<section class="bento-card p-6 h-full flex flex-col">
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-headline-sm font-headline-sm">Equipment Photos</h3>
+<p class="text-label-md text-on-surface-variant">Optional, up to 5 photos</p>
+</div>
+<div class="image-dropzone flex-grow rounded flex flex-col items-center justify-center text-center p-8 cursor-pointer border-dashed border-2 border-outline mb-6">
+<span class="material-symbols-outlined text-[48px] text-primary-fixed-dim mb-3">add_a_photo</span>
+<p class="text-body-md font-medium">Capture or Upload</p>
+<p class="text-label-md text-on-surface-variant mt-1">PNG, JPG up to 10MB each</p>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<!-- Placeholder Thumbnails -->
+<div class="aspect-square bg-surface-container rounded flex items-center justify-center overflow-hidden border border-outline-variant relative group">
+<img alt="Equipment Preview" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all" data-alt="A close-up, high-precision photograph of industrial agricultural machinery in a dark, high-contrast factory setting. The machinery is made of brushed steel and lit with cold, clinical emerald green lighting that highlights the complex mechanical gears and components. The mood is utilitarian and professional, following an Agri-Tech Noir aesthetic with deep shadows and sharp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhqgIINshB_GxXeCHgOgI6dMhiq4keMHuMKErcOUNi8R_LOisaxYEkXhhsmE34ee63m4rDLvJdd0PD2pMg-l6P0jKcYn_4Ts0LfBlyb6LEta3OnJVQRnZAS8GrSz5uHSZBTOnWk7mbUlI6NPftRe_ZuVoxJP-sZbCSgXu-q9wY4jfPyeQTRLTfrcxsjkBUXOu7Q-kjZ9W1YEZjBWzRmXUdkJVYMYbs_n5_MHtRqJ22Hw59yZW8kxEDed4VC96hLXoemyvB8NhuXE7k"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-primary">delete</span>
+</div>
+</div>
+<div class="aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant/40">image</span>
+</div>
+<div class="aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant/40">image</span>
+</div>
+</div>
+<div class="mt-6 space-y-3">
+<div class="flex justify-between items-center text-label-md font-mono-data">
+<span class="text-on-surface-variant">Storage Utilized</span>
+<span class="text-primary">12%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1">
+<div class="bg-primary h-full rounded-full w-[12%] shadow-[0_0_8px_rgba(78,222,163,0.4)]"></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+    <!-- CTA Area -->
+    <div class="mt-12 pb-12 flex gap-4">
+        <button onclick="window.location.href='../popper_bank_account_details/code.html'" class="flex-grow bg-primary text-on-primary font-bold py-4 rounded-full text-headline-sm flex justify-center items-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+            Continue
+            <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+        <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+            Skip (Optional)
+        </button>
+    </div>
+</main>
+<!-- Background Texture -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_#3c4a42_1px,_transparent_0)] bg-[size:24px_24px]"></div>
+</div>
+<script>
+        // Simple micro-interaction for checkbox effects
+        document.querySelectorAll('.custom-checkbox').forEach(cb => {
+            cb.addEventListener('change', (e) => {
+                const parent = e.target.closest('.bento-card');
+                if (e.target.checked) {
+                    // Flash effect on card
+                    parent.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.1)';
+                    setTimeout(() => {
+                        parent.style.boxShadow = 'none';
+                    }, 400);
+                }
+            });
+        });
+
+        // Dropzone interaction
+        const dropzone = document.querySelector('.image-dropzone');
+        dropzone.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.multiple = true;
+            input.click();
+        });
+    </script>
+</body></html>
