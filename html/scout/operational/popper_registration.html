@@ -288,6 +288,89 @@
   submitPopperRegistration: protectedProcedure,
 });</div>
 
+          <h4 class="backend-section-title" style="font-size: 14px;">Equipment Procedures (Steps 11-12)</h4>
+          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Step 11: submitPoppingCapability</h5>
+          <div class="backend-code-block"><strong>Input Schema:</strong>
+{
+  warehouse_id: UUID,
+  chula_count: number (0-50),
+  chula_throughput_kg_per_day: number (5-10),
+  machine_count: number (0-20),
+  machine_throughput_kg_per_day: number (50-250),
+  unit_count: number (0-10),
+  unit_throughput_kg_per_day: number (500-2000),
+  equipment_photos: File[] (max 5),
+  producible_grades: string[] (SUTA6P, SUTA5, SUTA45, MURRAH, CHIPTA),
+  has_qa_capability: boolean,
+  qa_methods: string[] (MANUAL, MOISTURE, SORTING, ICAR_CERTIFIED)
+}
+
+<strong>Output Schema:</strong>
+{
+  success: boolean,
+  warehouse_id: UUID,
+  daily_capacity_kg: number (auto-calculated),
+  equipment_verified: boolean
+}
+
+<strong>Validation Rules:</strong>
+• At least one equipment type required (chula_count > 0 OR machine_count > 0 OR unit_count > 0)
+• Daily capacity = (chula_count × chula_throughput) + (machine_count × machine_throughput) + (unit_count × unit_throughput)
+• Producible grades: multi-select, at least one required
+• QA methods: only validated if has_qa_capability = true
+• Photos: uploaded to Supabase bucket popper-equipment-photos
+
+<strong>DB Write:</strong>
+warehouses table: Update record with equipment inventory + daily_capacity_kg + equipment_photos (JSONB)</div>
+
+          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Step 12: submitAncillaryEquipment (Optional)</h5>
+          <div class="backend-code-block"><strong>Input Schema:</strong>
+{
+  warehouse_id: UUID,
+  ancillary_equipment: {
+    pre_popping: {
+      cleaning_winnowing: boolean,
+      drying: boolean,
+      pre_roast_grading: boolean
+    },
+    roasting: {
+      sand_roaster: boolean,
+      rotary_roaster: boolean
+    },
+    post_popping: {
+      de_shelling: boolean,
+      polishing: boolean,
+      post_pop_grading: boolean
+    },
+    value_add: {
+      flavor_coating: boolean,
+      packaging_vacuum: boolean,
+      packaging_nitrogen: boolean
+    }
+  },
+  ancillary_equipment_photos: File[] (max 5)
+}
+
+<strong>Output Schema:</strong>
+{
+  success: boolean,
+  warehouse_id: UUID,
+  facility_score_boost: number (0-15 points),
+  skip_confirmed: boolean
+}
+
+<strong>Scoring Logic:</strong>
+• +1 point per equipment type available (max 12 base)
+• +3 bonus for rare combination (e.g., all 4 categories present)
+• Max 15 points total
+
+<strong>Skip Behavior:</strong>
+• If user skips: skip_confirmed = true, facility_score_boost = 0
+• Continue to next step (Bank Account Details)
+
+<strong>DB Write:</strong>
+warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equipment_photos + facility_score_boost</div>
+
           <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Step 2 - Mobile Verification OTP)</h4>
           <ul class="backend-list">
             <li><strong>If OTP matches EXISTING popper:</strong> Load popper detail screen (Update mode)</li>
@@ -347,7 +430,7 @@
   created_at TIMESTAMP DEFAULT NOW()
 );</div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">warehouses (Warehouse Details)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">warehouses (Warehouse Details + Equipment)</h4>
           <div class="backend-code-block">CREATE TABLE warehouses (
   id UUID PRIMARY KEY,
   popper_id UUID NOT NULL REFERENCES users(id),
@@ -362,9 +445,34 @@
   gps_lat DECIMAL(10,7),
   gps_lng DECIMAL(10,7),
   arrival_accuracy_m INTEGER,
+
+  -- Popping Capability (Step 11)
+  chula_count INTEGER DEFAULT 0,
+  chula_throughput_kg_per_day DECIMAL(8,2),
+  machine_count INTEGER DEFAULT 0,
+  machine_throughput_kg_per_day DECIMAL(8,2),
+  unit_count INTEGER DEFAULT 0,
+  unit_throughput_kg_per_day DECIMAL(8,2),
+  daily_capacity_kg DECIMAL(10,2) GENERATED ALWAYS AS (
+    (COALESCE(chula_count, 0) * COALESCE(chula_throughput_kg_per_day, 0)) +
+    (COALESCE(machine_count, 0) * COALESCE(machine_throughput_kg_per_day, 0)) +
+    (COALESCE(unit_count, 0) * COALESCE(unit_throughput_kg_per_day, 0))
+  ) STORED,
+  equipment_photos JSONB DEFAULT '[]'::jsonb,
+  producible_grades TEXT[] DEFAULT '{}',
+  has_qa_capability BOOLEAN DEFAULT FALSE,
+  qa_methods TEXT[] DEFAULT '{}',
+  qa_capability_verified_at TIMESTAMP,
+
+  -- Ancillary Equipment (Step 12)
+  ancillary_equipment JSONB DEFAULT '{"pre_popping":{},"roasting":{},"post_popping":{},"value_add":{}}'::jsonb,
+  ancillary_equipment_photos JSONB DEFAULT '[]'::jsonb,
+  facility_score_boost INTEGER DEFAULT 0 CHECK (facility_score_boost >= 0 AND facility_score_boost <= 15),
+
   status ENUM('pending_approval','active','inactive','rejected') DEFAULT 'pending_approval',
   created_via_scout_id UUID REFERENCES scouts(id),
-  created_at TIMESTAMP DEFAULT NOW()
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
 );</div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">user_bank_accounts (Encrypted)</h4>
