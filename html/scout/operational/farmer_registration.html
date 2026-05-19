@@ -881,7 +881,7 @@ Strict-Transport-Security: max-age=31536000</div>
         <div class="flow-step-card" id="step-02">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification (OTP Send & Verify)</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/farmer_onboarding/verify_mobile_step_1/screen.png" alt="OTP Send Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/verify_mobile_send/screen.png" alt="OTP Send Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Enter farmer's mobile number and trigger SMS verification. OTP entry is handled inside this screen via a bottom sheet overlay.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">OTP confirms the mobile entered is real and belongs to the farmer (the farmer's phone must physically receive it). Without verified mobile, the farmer can't later log in themselves.</div></div>
@@ -965,7 +965,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         <div class="flow-step-card" id="step-06">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">First Pond Details</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/farm_pond_details/screen.png" alt="Pond Details Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_details/screen.png" alt="Pond Details Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the farmer's first pond's basic details.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Farmer must have at least one pond at registration. Additional ponds added later via Manage Farmer. Pond name, area + unit, estimated annual capacity.</div></div>
@@ -983,7 +983,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         <div class="flow-step-card" id="step-07">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">First Pond Legal Documents</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/farm_pond_legal_details_high_visibility_uploads/screen.png" alt="Documents Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_documents/screen.png" alt="Documents Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures legal proof of pond ownership / lease.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Pond lease or land record is required for legitimacy. Mandatory at least one document; up to 3 photos per document. Scout uses camera to photograph the physical document the farmer presents.</div></div>
@@ -1001,7 +1001,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         <div class="flow-step-card" id="step-08">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Address</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/pond_address/screen.png" alt="Pond Address Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_address/screen.png" alt="Pond Address Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures pond's address (often differs from farmer's residential).</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">District + village + free-text address. Pre-fill with farmer's address as a starting point; scout edits if pond is elsewhere.</div></div>
@@ -1019,7 +1019,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         <div class="flow-step-card" id="step-09">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Geo-Fencing</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/pond_geo_fencing/screen.png" alt="Geo-Fencing Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_geo_fencing/screen.png" alt="Geo-Fencing Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the pond's GPS centre point.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Year-1: single GPS point (optional). Year-2 polygon optional. Future feature for scout-task routing.</div></div>
@@ -1037,7 +1037,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         <div class="flow-step-card" id="step-10">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">Bank Account Details</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/profile/bank_account_details/screen.png" alt="Bank Account Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/bank_account_details/screen.png" alt="Bank Account Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's bank account for payments.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Account holder name (must match identity), account number (entered twice for confirmation), IFSC. Penny-drop verification triggered at submit (₹1 test transfer, name-match check). Bank account is one per farmer in Year 1.</div></div>
@@ -1055,7 +1055,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         <div class="flow-step-card" id="step-11">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Review & Submit</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/profile/scout/farmer_detail_scout/screen.png" alt="Review Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/review_submit/screen.png" alt="Review Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Final recap before commit.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Scout reviews every captured field; farmer can be shown the screen for transparency. Explicit final consent checkbox + submit.</div></div>
@@ -1073,7 +1073,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
         <div class="flow-step-card" id="step-12">
           <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Submission Confirmation</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/farmer_onboarding/you_re_all_set/screen.png" alt="Confirmation Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/submission_confirmation/screen.png" alt="Confirmation Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Confirms successful registration submission.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Verify transaction was captured and queued for sync if offline. Shows local/remote sync state feedback.</div></div>

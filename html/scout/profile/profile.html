@@ -731,6 +731,15 @@ Displays crisp high-contrast red feedback prompts immediately below input target
   last_login TIMESTAMP
 )</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Header bar display for brand context)
+                • TextInput (Credential username and password entry fields)
+                • HeroCard (Centering brand presentation and styling headers)
+                • CTAFooter (Submit action button invoking validation states)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/scout/scout_login/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -810,6 +819,15 @@ Top-right corner incorporates persistent network indicators lighting green durin
   is_active BOOLEAN DEFAULT true
 )</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with menu triggers)
+                • HeroCard (Personnel badge container showing avatar and basic info)
+                • DataTable (Overview summary panels for stats and metrics reporting)
+                • CTAFooter (Navigation controls mapping key sub-features)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/scout/scout_profile/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -884,6 +902,16 @@ JOIN users u ON fsa.farmer_id = u.id
 LEFT JOIN ponds p ON u.id = p.user_id 
 WHERE fsa.scout_id = current_scout GROUP BY u.id;</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with search icons)
+                • TextInput (Search queries input toolbar)
+                • DataTable (Scrollable list of allocated farmer accounts)
+                • StatusBadge (Active, pending validation status indicator chips)
+                • CTAFooter (Register floating action controls)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/scout/assigned_farmers/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -956,6 +984,15 @@ Bottom layout container houses persistent stacked actionable helper controls: "E
 SELECT * FROM users u LEFT JOIN ponds p ON u.id = p.user_id 
 LEFT JOIN farmer_bank_account b ON u.id = b.user_id 
 WHERE u.id = target_farmer_id;</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Header options menu controls)
+                • StatusBadge (Bank ledger verification indicator tags)
+                • DataTable (Horizontal tab details, pond records grid, preview thumbnails)
+                • CTAFooter (Proxy actions button container)
+              </div>
             </div>
           </div>
           <div class="step-actions">
@@ -1032,6 +1069,16 @@ Features informative vector empty states when no tasks remain: E.g., "No tasks f
   due_time TIME,
   status ENUM ['not_started', 'in_progress', 'completed', 'cancelled'] DEFAULT 'not_started'
 )</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Header controls with page updates)
+                • ProgressBar (Visual indicator tracking daily execution percentages)
+                • DataTable (Categorized card lists separating task states)
+                • StatusBadge (Task state duration timers and indicators)
+                • CTAFooter (Data updates synchronization trigger blocks)
+              </div>
             </div>
           </div>
           <div class="step-actions">
@@ -1867,10 +1914,40 @@ Report Problem strip embeds full-width primary buttons opening clean modal overl
                 <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display sync status, logout confirmation state</td>
                 <td style="padding: 14px; color: var(--text-muted);">5, 6</td>
               </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">DateInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Calendar range filtering for historical records</td>
+                <td style="padding: 14px; color: var(--text-muted);">7 (Inspection History)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">ProgressBar</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Visual indicator for performance targets</td>
+                <td style="padding: 14px; color: var(--text-muted);">9 (Performance Dashboard)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">PasswordInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Secure credential input with validation indicators</td>
+                <td style="padding: 14px; color: var(--text-muted);">10 (Edit Profile)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">PhoneInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Mobile number input with code selection</td>
+                <td style="padding: 14px; color: var(--text-muted);">11 (Link WhatsApp)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">OTPEntrySheet</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Sliding sheet for multi-digit OTP validation codes</td>
+                <td style="padding: 14px; color: var(--text-muted);">11 (Link WhatsApp)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">HeroCard</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display welcome banners, personnel profiles, or header details</td>
+                <td style="padding: 14px; color: var(--text-muted);">1, 2</td>
+              </tr>
               <tr>
                 <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CTAFooter</td>
                 <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Save, Cancel, Confirm, Logout action buttons</td>
-                <td style="padding: 14px; color: var(--text-muted);">All 7</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 14</td>
               </tr>
             </tbody>
           </table>
