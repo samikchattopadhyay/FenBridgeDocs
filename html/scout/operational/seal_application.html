@@ -188,7 +188,7 @@
     .backend-section-title:first-child { margin-top: 0; }
     .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
       padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
-    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px; white-space: pre;
       border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
       overflow-x: auto; margin: 16px 0; line-height: 1.5; }
     .backend-list { margin: 16px 0; padding-left: 20px; }
@@ -251,7 +251,30 @@
         box-shadow: none !important;
       }
     }
-  </style>
+  
+    /* Enhanced formatting styles */
+    .spec-value p { margin-bottom: 8px; line-height: 1.6; }
+    .spec-value p:last-child { margin-bottom: 0; }
+    .spec-value ul.spec-list, .spec-value ol.spec-list { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .spec-value li { margin-bottom: 6px; line-height: 1.5; color: var(--text-main); }
+    .spec-value strong { color: var(--accent-primary); font-weight: 600; }
+    .spec-value code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; color: #38bdf8; }
+    .spec-badge-inline { display: inline-block; padding: 2px 6px; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 2px; }
+    .flow-arrow { color: var(--accent-primary); font-weight: bold; margin: 0 6px; font-size: 14px; }
+    .db-schema-box, .spec-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      background: #09090b !important;
+      color: #22d3ee !important;
+      padding: 12px 16px !important;
+      border-radius: 6px !important;
+      border: 1px solid #1e293b !important;
+      overflow-x: auto !important;
+      white-space: pre-wrap !important;
+      margin-top: 8px !important;
+      line-height: 1.5 !important;
+    }
+</style>
 </head>
 <body>
 
@@ -411,11 +434,11 @@ CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Guards against unauthorized sealing. Validates that host warehouse is rated FIT and that popper consent is recorded for downgrades.</div>
+                  <div class="spec-value"><p>Guards against unauthorized sealing.</p><p>Validates that host warehouse is rated FIT and that popper consent is recorded for downgrades.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Read-only info sheet. Displays lot identification, assessed grade, and verified weights. Renders green validation alerts for eligible lots and secure explanations for blocked candidates. Primary CTA reads "Begin Sealing".</div>
+                  <div class="spec-value"><p>Read-only info sheet.</p><p>Displays lot identification, assessed grade, and verified weights.</p><p>Renders green validation alerts for eligible <code>lots</code> and secure explanations for blocked candidates.</p><p>Primary CTA reads "Begin Sealing".</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -448,15 +471,15 @@ CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Captures unique seal barcode reference via scan. Requires mandatory confirmation check marking that the reusable net was applied. Logs GPS metadata.</div>
+                  <div class="spec-value"><p>Captures unique seal barcode reference via scan.</p><p>Requires mandatory confirmation check marking that the reusable net was applied.</p><p>Logs GPS metadata.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Top actions display scan triggers. Succesful scans populate alphanumeric seal IDs in monospace font. Renders mandatory net confirmation toggle. Displays GPS accuracy locks. Primary cyan button unlocks on completion.</div>
+                  <div class="spec-value"><p>Top actions display scan triggers.</p><p>Succesful scans populate alphanumeric seal IDs in monospace font.</p><p>Renders mandatory net confirmation toggle.</p><p>Displays GPS accuracy locks.</p><p>Primary cyan button unlocks on completion.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Validates barcode formatting schemas. Triggers warnings if GPS coordinate mismatches register.</div>
+                  <div class="spec-value"><p>Validates barcode formatting schemas.</p><p>Triggers warnings if GPS coordinate mismatches register.</p></div>
                 </div>
               </div>
             </div>
@@ -489,7 +512,7 @@ CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Standard grid checklist displaying dashed camera buttons. Previews replace buttons on capture. Helpful indicators alert scouts that characters on the seal must remain clear.</div>
+                  <div class="spec-value"><p>Standard grid checklist displaying dashed camera buttons.</p><p>Previews replace buttons on capture.</p><p>Helpful indicators alert <code>scouts</code> that characters on the seal must remain clear.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -522,15 +545,15 @@ CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Logs three parameters: Off the floor platform support, moisture barrier lining, and physical segregation from loose stock. Fails do not block sealing but alert admin channels.</div>
+                  <div class="spec-value"><p>Logs three parameters: Off the floor platform support, moisture barrier lining, and physical segregation from loose stock.</p><p>Fails do not block sealing but alert admin channels.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Three large checkbox cards with Pass/Fail toggles (unset by default). Failing parameters displays reason list pickers. Yellow warning bars alert scouts to coordinate quick corrections on failures.</div>
+                  <div class="spec-value"><p>Three large checkbox cards with Pass/Fail toggles (unset by default).</p><p>Failing parameters displays reason list pickers.</p><p>Yellow warning bars alert <code>scouts</code> to coordinate quick corrections on failures.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Maintains checks in <code>lot_seal_storage_items</code> formats. Raises <code>storage_flag = true</code> on any failed item.</div>
+                  <div class="spec-value"><p>Maintains checks in <code>lot_seal_storage_items</code> formats.</p><p>Raises <code>storage_flag = true</code> on any failed item.</p></div>
                 </div>
               </div>
             </div>
@@ -559,15 +582,15 @@ CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Selects shelf-life duration: 30 days (default) or 45 days. Auto-calculates <code>expires_at</code> date bounds. Requires mandatory checklist signature checks.</div>
+                  <div class="spec-value"><div class="db-schema-box">Selects shelf-life duration: 30 days (default) or 45 days. Auto-calculates <code>expires_at</code> date bounds. Requires mandatory checklist signature checks.</div></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Top options render segmented controls picking 30/45 days, updating expiry dates live. Summary cards show all accumulated metadata. Prompts signature confirmation checkboxes. Solid cyan button reads "Submit Seal".</div>
+                  <div class="spec-value"><p>Top options render segmented controls picking 30/45 days, updating expiry dates live.</p><p>Summary cards show all accumulated metadata.</p><p>Prompts signature confirmation checkboxes.</p><p>Solid cyan button reads "Submit Seal".</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Invokes <code>submitSealRecord</code> database transactions. Mutates parent status to <code>sealed</code>, linking seal identifiers.</div>
+                  <div class="spec-value"><p>Invokes <code>submitSealRecord</code> database transactions.</p><p>Mutates parent status to <code>sealed</code>, linking seal identifiers.</p></div>
                 </div>
               </div>
             </div>
@@ -592,19 +615,19 @@ CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
               <div class="specs-grid">
                 <div class="spec-block full-width">
                   <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Confirms successful ledger commitment and guides scouts onward.</div>
+                  <div class="spec-value">Confirms successful ledger commitment and guides <code>scouts</code> onward.</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Verifies data persistence and echoes sync queue state flags. Details onward admin pricing pipelines.</div>
+                  <div class="spec-value"><p>Verifies data persistence and echoes sync queue state flags.</p><p>Details onward admin pricing pipelines.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Success modal with pulsing lock icons. Displays generated seal codes and expiry schedules. Cyan CTA redirects back to today dashboard list.</div>
+                  <div class="spec-value"><p>Success modal with pulsing lock icons.</p><p>Displays generated seal codes and expiry schedules.</p><p>Cyan CTA redirects back to today dashboard list.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Resets temporary memory buffers. Switches local SQLite queue loaders to completed.</div>
+                  <div class="spec-value"><p>Resets temporary memory buffers.</p><p>Switches local SQLite queue loaders to completed.</p></div>
                 </div>
               </div>
             </div>

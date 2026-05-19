@@ -167,7 +167,30 @@
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
     .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
     .content-wrapper { padding: 40px 48px 96px; }
-  </style>
+  
+    /* Enhanced formatting styles */
+    .spec-value p { margin-bottom: 8px; line-height: 1.6; }
+    .spec-value p:last-child { margin-bottom: 0; }
+    .spec-value ul.spec-list, .spec-value ol.spec-list { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .spec-value li { margin-bottom: 6px; line-height: 1.5; color: var(--text-main); }
+    .spec-value strong { color: var(--accent-primary); font-weight: 600; }
+    .spec-value code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; color: #38bdf8; }
+    .spec-badge-inline { display: inline-block; padding: 2px 6px; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 2px; }
+    .flow-arrow { color: var(--accent-primary); font-weight: bold; margin: 0 6px; font-size: 14px; }
+    .db-schema-box, .spec-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      background: #09090b !important;
+      color: #22d3ee !important;
+      padding: 12px 16px !important;
+      border-radius: 6px !important;
+      border: 1px solid #1e293b !important;
+      overflow-x: auto !important;
+      white-space: pre-wrap !important;
+      margin-top: 8px !important;
+      line-height: 1.5 !important;
+    }
+</style>
 </head>
 <body>
 
@@ -223,21 +246,19 @@
             <div class="specs-grid">
               <div class="spec-block">
                 <div class="spec-label">Purpose</div>
-                <div class="spec-value">Primary field hub for the scout's daily workflow. Surfaces all active assignments (Inspections, Fitness Checks, Re-checks) based on proximity and priority.</div>
+                <div class="spec-value"><p>Primary field hub for the scout's daily workflow.</p><p>Surfaces all active assignments (Inspections, Fitness Checks, Re-checks) based on proximity and priority.</p></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">Business Requirement</div>
-                <div class="spec-value">
-                  <ul class="spec-list">
+                <div class="spec-value"><ul class="spec-list">
                     <li>Dynamic task list scoped to the logged-in scout.</li>
                     <li>Status grouping: New, In-Progress, Completed.</li>
                     <li>Priority markers for lots linked to active Buyer POs.</li>
-                  </ul>
-                </div>
+                  </ul></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">User Experience (UX)</div>
-                <div class="spec-value">Scrollable list of task cards. Each card shows Warehouse/Lot Name, Task Type, Distance (km), and Priority Pill. Pull-to-refresh for latest sync.</div>
+                <div class="spec-value"><p>Scrollable list of task cards.</p><p>Each card shows Warehouse/Lot Name, Task Type, Distance (km), and Priority Pill.</p><p>Pull-to-refresh for latest sync.</p></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">User Actions</div>
@@ -249,7 +270,7 @@
               </div>
               <div class="spec-block">
                 <div class="spec-label">Technical Details</div>
-                <div class="spec-value">Polls `scout_tasks` table. Uses device GPS to calculate `distance_km` client-side via Haversine. Offline-first caching enabled.</div>
+                <div class="spec-value"><p>Polls `<code>scout_tasks</code>` table.</p><p>Uses device GPS to calculate `distance_km` client-side via Haversine.</p><p>Offline-first caching enabled.</p></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">Design Details</div>
@@ -302,7 +323,7 @@ ORDER BY priority DESC, scheduled_date ASC;</div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">User Experience (UX)</div>
-                <div class="spec-value">Separate tab or filtered list with "Overdue" header. Time-elapsed counter shown on each card (e.g., "Overdue by 14 hrs").</div>
+                <div class="spec-value"><p>Separate tab or filtered list with "Overdue" header.</p><p>Time-elapsed counter shown on each card (<code>e.g</code>., "Overdue by 14 hrs").</p></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">User Actions</div>
@@ -313,7 +334,7 @@ ORDER BY priority DESC, scheduled_date ASC;</div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">Technical Details</div>
-                <div class="spec-value">Calculates `now() - scheduled_date`. Filter: `status = 'pending' AND scheduled_date < now()`.</div>
+                <div class="spec-value"><p>Calculates `now() - scheduled_date`.</p><p>Filter: `status = 'pending' AND scheduled_date < now()`.</p></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">Design Details</div>
@@ -362,7 +383,7 @@ ORDER BY priority DESC, scheduled_date ASC;</div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">User Experience (UX)</div>
-                <div class="spec-value">Chronological list of notification cards. Grouped by Today/Yesterday/Older. Badge count on the bell icon in Top Bar.</div>
+                <div class="spec-value"><p>Chronological list of notification cards.</p><p>Grouped by Today/Yesterday/Older.</p><p>Badge count on the bell icon in Top Bar.</p></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">User Actions</div>
@@ -373,7 +394,7 @@ ORDER BY priority DESC, scheduled_date ASC;</div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">Technical Details</div>
-                <div class="spec-value">Uses Supabase real-time subscriptions for the `notifications` table. FCM (Firebase Cloud Messaging) for background pushes.</div>
+                <div class="spec-value"><p>Uses Supabase real-time subscriptions for the `<code>notifications</code>` table.</p><p>FCM (Firebase Cloud Messaging) for background pushes.</p></div>
               </div>
               <div class="spec-block">
                 <div class="spec-label">Design Details</div>

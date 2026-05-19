@@ -188,7 +188,7 @@
     .backend-section-title:first-child { margin-top: 0; }
     .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
       padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
-    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px; white-space: pre;
       border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
       overflow-x: auto; margin: 16px 0; line-height: 1.5; }
     .backend-list { margin: 16px 0; padding-left: 20px; }
@@ -251,7 +251,30 @@
         box-shadow: none !important;
       }
     }
-  </style>
+  
+    /* Enhanced formatting styles */
+    .spec-value p { margin-bottom: 8px; line-height: 1.6; }
+    .spec-value p:last-child { margin-bottom: 0; }
+    .spec-value ul.spec-list, .spec-value ol.spec-list { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .spec-value li { margin-bottom: 6px; line-height: 1.5; color: var(--text-main); }
+    .spec-value strong { color: var(--accent-primary); font-weight: 600; }
+    .spec-value code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; color: #38bdf8; }
+    .spec-badge-inline { display: inline-block; padding: 2px 6px; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 2px; }
+    .flow-arrow { color: var(--accent-primary); font-weight: bold; margin: 0 6px; font-size: 14px; }
+    .db-schema-box, .spec-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      background: #09090b !important;
+      color: #22d3ee !important;
+      padding: 12px 16px !important;
+      border-radius: 6px !important;
+      border: 1px solid #1e293b !important;
+      overflow-x: auto !important;
+      white-space: pre-wrap !important;
+      margin-top: 8px !important;
+      line-height: 1.5 !important;
+    }
+</style>
 </head>
 <body>
 
@@ -392,11 +415,11 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Clearly illustrates the root reasons behind the failing grade. Maps failing parameters (e.g. moisture 18%) against specs.</div>
+                  <div class="spec-value"><p>Clearly illustrates the root reasons behind the failing grade.</p><p>Maps failing parameters (<code>e.g</code>.</p><p>moisture 18%) against specs.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Header shows red failure banner. Displays parameters checklist indicating failed bands. Renders grid containing defect evidence photos. Prompts optional notes and coordinates.</div>
+                  <div class="spec-value"><p>Header shows red failure banner.</p><p>Displays parameters checklist indicating failed bands.</p><p>Renders grid containing defect evidence photos.</p><p>Prompts optional notes and coordinates.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -425,15 +448,15 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
               <div class="specs-grid">
                 <div class="spec-block full-width">
                   <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Guides poppers on fixing salvageable defects (e.g. wet makhana needing drying).</div>
+                  <div class="spec-value"><p>Guides poppers on fixing salvageable defects (<code>e.g</code>.</p><p>wet makhana needing drying).</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Issued for reconditionable defects only. Details specific guidelines (e.g., dry to moisture &le; 12%). Mutates lot state to <code>pending_reinspection</code> on popper acknowledgment.</div>
+                  <div class="spec-value"><p>Issued for reconditionable defects only.</p><p>Details specific guidelines (<code>e.g</code>., dry to moisture &le; 12%).</p><p>Mutates lot state to <code>pending_reinspection</code> on popper acknowledgment.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Renders yellow advisory banners. Displays step-by-step drying/cleaning guidelines. Active checkbox reads "I acknowledge rejection & will recondition lot". Primary button triggers acknowledgment submission.</div>
+                  <div class="spec-value"><p>Renders yellow advisory banners.</p><p>Displays step-by-step drying/cleaning guidelines.</p><p>Active checkbox reads "I acknowledge rejection & will recondition lot".</p><p>Primary button triggers acknowledgment submission.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -466,11 +489,11 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Issued for critical unconditionable defects (infestation, rodent contact). Sets status to <code>rejected_terminal</code>, barring the lot from any future listings.</div>
+                  <div class="spec-value"><p>Issued for critical unconditionable defects (infestation, rodent contact).</p><p>Sets status to <code>rejected_terminal</code>, barring the lot from any future listings.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Full-screen danger warning. Displays red warning badges indicating permanent bans. Outlines specific safety hazard policies. Popper is required to tap acknowledgment triggers to clear notification panels.</div>
+                  <div class="spec-value"><p>Full-screen danger warning.</p><p>Displays red warning badges indicating permanent bans.</p><p>Outlines specific safety hazard policies.</p><p>Popper is required to tap acknowledgment triggers to clear notification panels.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -503,11 +526,11 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Assures complete traceability history. Lists first verification failures, re-conditioning dates, and reinspection results. Walks the lineage indices.</div>
+                  <div class="spec-value"><p>Assures complete traceability history.</p><p>Lists first verification failures, re-conditioning dates, and reinspection results.</p><p>Walks the lineage indices.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Vertical chronological flow lines connecting events. Each node is a compact card displaying outcome status pills, inspection dates, and scout IDs. Tapping cards opens corresponding report details.</div>
+                  <div class="spec-value"><p>Vertical chronological flow lines connecting events.</p><p>Each node is a compact card displaying outcome status pills, inspection dates, and scout IDs.</p><p>Tapping cards opens corresponding report details.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -544,11 +567,11 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Detailed ledger row display. Shows system sync status. Displays secure warning logs details. Search fields enable quick lookups.</div>
+                  <div class="spec-value"><p>Detailed ledger row display.</p><p>Shows system sync status.</p><p>Displays secure warning logs details.</p><p>Search fields enable quick lookups.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Read-only view loading from <code>lot_closure_log</code> tables. Marks lots closed permanently.</div>
+                  <div class="spec-value"><p>Read-only view loading from <code>lot_closure_log</code> tables.</p><p>Marks <code>lots</code> closed permanently.</p></div>
                 </div>
               </div>
             </div>

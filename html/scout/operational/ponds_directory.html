@@ -195,7 +195,7 @@
     .backend-section-title:first-child { margin-top: 0; }
     .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
       padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
-    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px; white-space: pre;
       border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
       overflow-x: auto; margin: 16px 0; line-height: 1.5; }
     .backend-list { margin: 16px 0; padding-left: 20px; }
@@ -258,7 +258,30 @@
         box-shadow: none !important;
       }
     }
-  </style>
+  
+    /* Enhanced formatting styles */
+    .spec-value p { margin-bottom: 8px; line-height: 1.6; }
+    .spec-value p:last-child { margin-bottom: 0; }
+    .spec-value ul.spec-list, .spec-value ol.spec-list { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .spec-value li { margin-bottom: 6px; line-height: 1.5; color: var(--text-main); }
+    .spec-value strong { color: var(--accent-primary); font-weight: 600; }
+    .spec-value code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; color: #38bdf8; }
+    .spec-badge-inline { display: inline-block; padding: 2px 6px; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 2px; }
+    .flow-arrow { color: var(--accent-primary); font-weight: bold; margin: 0 6px; font-size: 14px; }
+    .db-schema-box, .spec-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      background: #09090b !important;
+      color: #22d3ee !important;
+      padding: 12px 16px !important;
+      border-radius: 6px !important;
+      border: 1px solid #1e293b !important;
+      overflow-x: auto !important;
+      white-space: pre-wrap !important;
+      margin-top: 8px !important;
+      line-height: 1.5 !important;
+    }
+</style>
 </head>
 <body>
 
@@ -446,31 +469,27 @@ CREATE INDEX idx_sapo_scout ON scout_assignments_ponds (scout_id, active);</div>
               <div class="specs-grid">
                 <div class="spec-block full-width">
                   <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Direct browse index for all assigned farmer ponds that the scout is responsible for managing. Provides rapid lookup, filtering, and visual urgency cues.</div>
+                  <div class="spec-value"><p>Direct browse index for all assigned farmer ponds that the scout is responsible for managing.</p><p>Provides rapid lookup, filtering, and visual urgency cues.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Enforces strict server-side scoping via <code>scout_assignments_ponds</code>. The list must display key parameters (Farmer name, Pond ID, Village, Area) and support partial string search alongside inspection recency filters (Today, This Week, Overdue).</div>
+                  <div class="spec-value"><p>Enforces strict server-side scoping via <code>scout_assignments_ponds</code>.</p><p>The list must display key parameters (Farmer name, Pond ID, Village, Area) and support partial string search alongside inspection recency filters (Today, This Week, Overdue).</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Mirrors the Warehouse Directory. Top navigation bar holds a text search field and active filter chips. List items render as sleek interactive cards with robust layout architecture: farmer name (heavy font), pond identifier, village location, area values, and a high-visibility inspection status badge ("Never Inspected" in amber/danger, or "Inspected [Date]" in subtle gray).</div>
+                  <div class="spec-value"><p>Mirrors the Warehouse Directory.</p><p>Top navigation bar holds a text search field and active filter chips.</p><p>List items render as sleek interactive cards with robust layout architecture: farmer name (heavy font), pond identifier, village location, area values, and a high-visibility inspection status badge ("Never Inspected" in amber/danger, or "Inspected [Date]" in subtle gray).</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Actions</div>
-                  <div class="spec-value">
-                    • Type search query (filters instantaneously by farmer, village, or pond code)<br>
-                    • Toggle recency filter chips (All, Today, This Week, Overdue)<br>
-                    • Tap any pond card → navigates to the Pond Detail view
-                  </div>
+                  <div class="spec-value"><ul class="spec-list"><li>Type search query (filters instantaneously by farmer, village, or pond code)<br></li><li>Toggle recency filter chips (All, Today, This Week, Overdue)<br></li><li>Tap any pond card → navigates to the Pond Detail view</li></ul></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Queries <code>ponds</code> joined with <code>scout_assignments_ponds</code> where <code>scout_assignments_ponds.scout_id = session.user_id</code>. Aggregates the last inspection timestamp by querying <code>MAX(checked_at)</code> from <code>pond_inspections</code>. Filters are evaluated post-fetch or dynamically injected in the database query.</div>
+                  <div class="spec-value"><p>Queries <code>ponds</code> joined with <code>scout_assignments_ponds</code> where <code><code>scout_assignments_ponds.scout_id</code> = <code>session.user_id</code></code>.</p><p>Aggregates the last inspection timestamp by querying <code>MAX(checked_at)</code> from <code>pond_inspections</code>.</p><p>Filters are evaluated post-fetch or dynamically injected in the database query.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Database Schema & Scope</div>
-                  <div class="spec-value">Reads from: <code>ponds</code>, <code>scout_assignments_ponds</code>, <code>users</code> (farmer profiles). Enforces scope using <code>scout_assignments_ponds.active = true</code>.</div>
+                  <div class="spec-value"><p>Reads from: <code>ponds</code>, <code>scout_assignments_ponds</code>, <code>users</code> (farmer profiles).</p><p>Enforces scope using <code><code>scout_assignments_ponds.active</code> = true</code>.</p></div>
                 </div>
               </div>
             </div>
@@ -495,27 +514,23 @@ CREATE INDEX idx_sapo_scout ON scout_assignments_ponds (scout_id, active);</div>
               <div class="specs-grid">
                 <div class="spec-block full-width">
                   <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Comprehensive, multi-tab single pond file. Serves as the central control dashboard for reviewing pond conditions, auditing history, checking associated transaction records, and launching new pond inspections.</div>
+                  <div class="spec-value"><p>Comprehensive, multi-tab single pond file.</p><p>Serves as the central control dashboard for reviewing pond conditions, auditing history, checking associated transaction records, and launching new pond <code>inspections</code>.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Must mirror the Warehouse Detail screen design. Organize data into three tabs: Profile, Inspections, and Spot Offers. The primary CTA "Start Inspection" must be prominent and easily accessible, serving as the entry point for starting a fresh inspection wizard.</div>
+                  <div class="spec-value"><p>Must mirror the Warehouse Detail screen design.</p><p>Organize data into three tabs: Profile, Inspections, and Spot Offers.</p><p>The primary CTA "Start Inspection" must be prominent and easily accessible, serving as the entry point for starting a fresh inspection wizard.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Sleek header card containing the pond name, farmer name, active/inactive status badge, and total area. An amber banner warns if the pond is in "Pending Approval" state. Below, three equal-width tabs (Profile · Inspections · Spot Offers) structure independent scrolling panels. Action buttons populate respective tabs.</div>
+                  <div class="spec-value"><span class="spec-badge-inline">Sleek header card containing the pond name, farmer name, active/inactive status badge, and total area. An amber banner warns if the pond is in "Pending Approval" state. Below, three equal-width tabs (Profile</span> <span class="spec-badge-inline">Inspections</span> <span class="spec-badge-inline">Spot Offers) structure independent scrolling panels. Action buttons populate respective tabs.</span></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Tab Contents & Layout</div>
-                  <div class="spec-value">
-                    <strong>• Profile Tab:</strong> Pond Code, capacity estimation, exact GPS coordinates with map embed (latitude/longitude), full address description, village, and panchayat info.<br>
-                    <strong>• Inspections Tab:</strong> Chronological log list. Row cards show inspection date, checked-by scout, water level, algae/disease tags, readiness scores, and verified photo count. Tap row → Inspection Record.<br>
-                    <strong>• Spot Offers Tab:</strong> Lists recent bids/offers using this pond as supply source. Shows offer ID, lot status, created date, and bid pricing metrics.
-                  </div>
+                  <div class="spec-value"><ul class="spec-list"><li><strong></li><li>Profile Tab:</strong> Pond Code, capacity estimation, exact GPS coordinates with map embed (latitude/longitude), full address description, village, and panchayat info.<br></li><li><strong></li><li>Inspections Tab:</strong> Chronological log list. Row cards show inspection date, checked-by scout, water level, algae/disease tags, readiness scores, and verified photo count. Tap row → Inspection Record.<br></li><li><strong></li><li>Spot Offers Tab:</strong> Lists recent bids/offers using this pond as supply source. Shows offer ID, lot status, created date, and bid pricing metrics.</li></ul></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Combines multiple SQL queries to hydrate all tabs: profile metadata from <code>ponds</code>, logs from <code>pond_inspections ORDER BY checked_at DESC</code>, and bids from <code>spot_offers WHERE source_type = 'pond' AND source_id = pond_id</code>. Offline-first profile caching is activated for active assignments.</div>
+                  <div class="spec-value"><p>Combines multiple SQL queries to hydrate all tabs: profile metadata from <code>ponds</code>, logs from <code>pond_inspections ORDER BY checked_at DESC</code>, and bids from <code>spot_offers WHERE source_type = 'pond' AND source_id = pond_id</code>.</p><p>Offline-first profile caching is activated for active assignments.</p></div>
                 </div>
               </div>
             </div>
@@ -540,19 +555,19 @@ CREATE INDEX idx_sapo_scout ON scout_assignments_ponds (scout_id, active);</div>
               <div class="specs-grid">
                 <div class="spec-block full-width">
                   <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Read-only historical audit report detailing the physical, biological, and chemical parameters captured during a past pond inspection. Provides critical historic evolutionary context.</div>
+                  <div class="spec-value"><p>Read-only historical audit report detailing the physical, biological, and chemical parameters captured during a past pond inspection.</p><p>Provides critical historic evolutionary context.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Must remain strictly read-only after submission. Modifying historical audits is prohibited for compliance. Must show all captured details: GPS arrival coordinates, check type (periodic/initial), physical conditions, bund readings, and verification media.</div>
+                  <div class="spec-value"><p>Must remain strictly read-only after submission.</p><p>Modifying historical audits is prohibited for compliance.</p><p>Must show all captured details: GPS arrival coordinates, check type (periodic/initial), physical conditions, bund readings, and verification media.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Upper panel: inspection header with date, scout name, GPS arrival accuracy, check type, and physical indicators (water level, algae count, pest flags). Middle panel: detailed bund readings table with row items for density and biological maturity percentages, with a computed average row highlighted at the bottom. Lower panel: verified photo strip (fixed-ratio preview tiles) with full-screen viewer lightbox on tap.</div>
+                  <div class="spec-value"><p>Upper panel: inspection header with date, scout name, GPS arrival accuracy, check type, and physical indicators (water level, algae count, pest flags).</p><p>Middle panel: detailed bund readings table with row items for density and biological maturity percentages, with a computed average row highlighted at the bottom.</p><p>Lower panel: verified photo strip (fixed-ratio preview tiles) with full-screen viewer lightbox on tap.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details & Schema</div>
-                  <div class="spec-value">Hydrates from three tables: <code>pond_inspections</code> (header logs), <code>pond_bund_readings</code> (granular measurements), and <code>pond_inspection_photos</code> (media storage references). Images are automatically cached in local device storage for rapid offline viewing.</div>
+                  <div class="spec-value"><p>Hydrates from three tables: <code>pond_inspections</code> (header logs), <code>pond_bund_readings</code> (granular measurements), and <code>pond_inspection_photos</code> (media storage references).</p><p>Images are automatically cached in local device storage for rapid offline viewing.</p></div>
                 </div>
               </div>
             </div>

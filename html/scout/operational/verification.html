@@ -188,7 +188,7 @@
     .backend-section-title:first-child { margin-top: 0; }
     .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
       padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
-    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px; white-space: pre;
       border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
       overflow-x: auto; margin: 16px 0; line-height: 1.5; }
     .backend-list { margin: 16px 0; padding-left: 20px; }
@@ -251,7 +251,30 @@
         box-shadow: none !important;
       }
     }
-  </style>
+  
+    /* Enhanced formatting styles */
+    .spec-value p { margin-bottom: 8px; line-height: 1.6; }
+    .spec-value p:last-child { margin-bottom: 0; }
+    .spec-value ul.spec-list, .spec-value ol.spec-list { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .spec-value li { margin-bottom: 6px; line-height: 1.5; color: var(--text-main); }
+    .spec-value strong { color: var(--accent-primary); font-weight: 600; }
+    .spec-value code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; color: #38bdf8; }
+    .spec-badge-inline { display: inline-block; padding: 2px 6px; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 2px; }
+    .flow-arrow { color: var(--accent-primary); font-weight: bold; margin: 0 6px; font-size: 14px; }
+    .db-schema-box, .spec-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      background: #09090b !important;
+      color: #22d3ee !important;
+      padding: 12px 16px !important;
+      border-radius: 6px !important;
+      border: 1px solid #1e293b !important;
+      overflow-x: auto !important;
+      white-space: pre-wrap !important;
+      margin-top: 8px !important;
+      line-height: 1.5 !important;
+    }
+</style>
 </head>
 <body>
 
@@ -421,11 +444,11 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Verifies physical bag counts and net weight (kg). Activates amber warning notice if net variance exceeds &plusmn;5%.</div>
+                  <div class="spec-value"><p>Verifies physical bag counts and net weight (kg).</p><p>Activates amber warning notice if net variance exceeds &plusmn;5%.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Top panel shows lot reference metadata and linked PO. Displays declared values. Renders numeric entry fields for actual bag count and verified weight. Inline chips display live calculated variance metrics.</div>
+                  <div class="spec-value"><p>Top panel shows lot reference metadata and linked PO.</p><p>Displays declared values.</p><p>Renders numeric entry fields for actual bag count and verified weight.</p><p>Inline chips display live calculated variance metrics.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -462,11 +485,11 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Cards for each parameter displaying limits for A/B/C bands. Inputting values instantly renders pass/near-limit/fail status colors. A sticky footer reflects the provisional calculated grade in real-time.</div>
+                  <div class="spec-value"><p>Cards for each parameter displaying limits for A/B/C bands.</p><p>Inputting values instantly renders pass/near-limit/fail status colors.</p><p>A sticky footer reflects the provisional calculated grade in real-time.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Zod schemas block impossible ranges (e.g. moisture &gt; 25%). Compiles readings into local context objects.</div>
+                  <div class="spec-value"><p>Zod schemas block impossible ranges (<code>e.g</code>.</p><p>moisture &gt; 25%).</p><p>Compiles readings into local context objects.</p></div>
                 </div>
               </div>
             </div>
@@ -495,15 +518,15 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Locks severity tiers automatically based on defect code. Critical defects (e.g. mold, pest infestation, rodent contact) force immediate rejection verdicts.</div>
+                  <div class="spec-value"><p>Locks severity tiers automatically based on defect code.</p><p>Critical defects (<code>e.g</code>.</p><p>mold, pest infestation, rodent contact) force immediate rejection verdicts.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Default toggle reads "No defects found". Toggling off unlocks bottom sheets displaying coded options categorized by severity. Renders active summary badges showing the worst defect currently logged.</div>
+                  <div class="spec-value"><p>Default toggle reads "No defects found".</p><p>Toggling off unlocks bottom sheets displaying coded options categorized by severity.</p><p>Renders active summary badges showing the worst defect currently logged.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Failing to resolve defects while toggling off blocks navigation. Critical/major defects dynamically append mandatory photo capture flags for Step 4.</div>
+                  <div class="spec-value"><p>Failing to resolve defects while toggling off blocks navigation.</p><p>Critical/major defects dynamically append mandatory photo capture flags for Step 4.</p></div>
                 </div>
               </div>
             </div>
@@ -532,15 +555,15 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Mandatory slots: wide lot shot, close-up seed view, and moisture meter readout. Dynamically includes mandatory slots for logged critical/major defects.</div>
+                  <div class="spec-value"><p>Mandatory slots: wide lot shot, close-up seed view, and moisture meter readout.</p><p>Dynamically includes mandatory slots for logged critical/major defects.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Structured grid display showing dashed slots representing pending captures. Active previews replace slots on snap. Retake icons allow fast recaptures. Continue button disabled until all mandatory slots are resolved.</div>
+                  <div class="spec-value"><p>Structured grid display showing dashed slots representing pending captures.</p><p>Active previews replace slots on snap.</p><p>Retake icons allow fast recaptures.</p><p>Continue button disabled until all mandatory slots are resolved.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Compresses files to &le; 1.5MB. Stamps GPS metadata. Uploads to Supabase storage buckets.</div>
+                  <div class="spec-value"><p>Compresses files to &le; 1.5MB.</p><p>Stamps GPS metadata.</p><p>Uploads to Supabase storage buckets.</p></div>
                 </div>
               </div>
             </div>
@@ -569,15 +592,15 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Nudges multi-bag draws. Captures a mandatory picture of the locked sample bag. Enforces 6-month retention policies.</div>
+                  <div class="spec-value"><p>Nudges multi-bag draws.</p><p>Captures a mandatory picture of the locked sample bag.</p><p>Enforces 6-month retention policies.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Generates distinct, copyable sample reference ID. Prompts a numeric input asking for the bag count sampled. Echoes read-only quality metric bands.</div>
+                  <div class="spec-value"><p>Generates distinct, copyable sample reference ID.</p><p>Prompts a numeric input asking for the bag count sampled.</p><p>Echoes read-only quality metric bands.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Assigns temporary <code>sample_ref</code> values, resolving final unique identifiers server-side. Auto-calculates <code>retain_until</code> date (checked_at + 6 months).</div>
+                  <div class="spec-value"><p>Assigns temporary <code>sample_ref</code> values, resolving final unique identifiers server-side.</p><p>Auto-calculates <code>retain_until</code> date (checked_at + 6 months).</p></div>
                 </div>
               </div>
             </div>
@@ -606,15 +629,15 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Auto-evaluates disposition logic. Accept (worst parameter band is A), Downgrade (assessed grade &lt; claimed grade), Hold (majors out-of-spec), or Reject (critical defects present, locks outcome). Commits atomic multi-table writes.</div>
+                  <div class="spec-value"><p>Auto-evaluates disposition logic.</p><p>Accept (worst parameter band is A), Downgrade (assessed grade &lt; claimed grade), Hold (majors out-of-spec), or Reject (critical defects present, locks outcome).</p><p>Commits atomic multi-table writes.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Renders large outcome banners (Red warning for critical rejections, Amber warning for downgrades). Displays detailed checklists echoing previous assessments. Prompts mandatory confirmation checks. Primary action reads "Submit Inspection".</div>
+                  <div class="spec-value"><p>Renders large outcome banners (Red warning for critical rejections, Amber warning for downgrades).</p><p>Displays detailed checklists echoing previous assessments.</p><p>Prompts mandatory confirmation checks.</p><p>Primary action reads "Submit Inspection".</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Invokes atomic database transaction. Mutates lots state column values. Enqueues updates to the synchronization pipelines.</div>
+                  <div class="spec-value"><p>Invokes atomic database transaction.</p><p>Mutates <code>lots</code> state column values.</p><p>Enqueues updates to the synchronization pipelines.</p></div>
                 </div>
               </div>
             </div>
@@ -643,11 +666,11 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Ensures a valid preview can be generated reflecting the assessed grade, verified bags, quality metrics, and inline evidence photos. (Skipped on Reject/Hold outcomes).</div>
+                  <div class="spec-value"><p>Ensures a valid preview can be generated reflecting the assessed grade, verified bags, quality metrics, and inline evidence photos.</p><p>(Skipped on Reject/Hold outcomes).</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Displays an interactive, read-only PDF view container. Renders certificate identifiers. Single active cyan button reads "Finish".</div>
+                  <div class="spec-value"><p>Displays an interactive, read-only PDF view container.</p><p>Renders certificate identifiers.</p><p>Single active cyan button reads "Finish".</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -680,15 +703,15 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Offers a direct "Apply seal now" shortcut button if the lot is accepted (and downgrade consent is not required/pending). Otherwise routes back to the dashboard.</div>
+                  <div class="spec-value"><p>Offers a direct "Apply seal now" shortcut button if the lot is accepted (and downgrade consent is not required/pending).</p><p>Otherwise routes back to the dashboard.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Full-screen confirmation. Shows sync statuses ("Synced" or "Offline Queued"). Banners display alerts indicating if downgrade notifications or reconditioning alerts were sent. Cyan CTA maps onwards.</div>
+                  <div class="spec-value"><p>Full-screen confirmation.</p><p>Shows sync statuses ("Synced" or "Offline Queued").</p><p>Banners display alerts indicating if downgrade <code>notifications</code> or reconditioning alerts were sent.</p><p>Cyan CTA maps onwards.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Clears all temporary draft context storage variables. Marks local SQLite task items resolved.</div>
+                  <div class="spec-value"><p>Clears all temporary draft context storage variables.</p><p>Marks local SQLite task items resolved.</p></div>
                 </div>
               </div>
             </div>

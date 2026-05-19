@@ -188,7 +188,7 @@
     .backend-section-title:first-child { margin-top: 0; }
     .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
       padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
-    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px;
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px; white-space: pre;
       border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
       overflow-x: auto; margin: 16px 0; line-height: 1.5; }
     .backend-list { margin: 16px 0; padding-left: 20px; }
@@ -251,7 +251,30 @@
         box-shadow: none !important;
       }
     }
-  </style>
+  
+    /* Enhanced formatting styles */
+    .spec-value p { margin-bottom: 8px; line-height: 1.6; }
+    .spec-value p:last-child { margin-bottom: 0; }
+    .spec-value ul.spec-list, .spec-value ol.spec-list { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .spec-value li { margin-bottom: 6px; line-height: 1.5; color: var(--text-main); }
+    .spec-value strong { color: var(--accent-primary); font-weight: 600; }
+    .spec-value code { font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; color: #38bdf8; }
+    .spec-badge-inline { display: inline-block; padding: 2px 6px; background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 2px; }
+    .flow-arrow { color: var(--accent-primary); font-weight: bold; margin: 0 6px; font-size: 14px; }
+    .db-schema-box, .spec-code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      background: #09090b !important;
+      color: #22d3ee !important;
+      padding: 12px 16px !important;
+      border-radius: 6px !important;
+      border: 1px solid #1e293b !important;
+      overflow-x: auto !important;
+      white-space: pre-wrap !important;
+      margin-top: 8px !important;
+      line-height: 1.5 !important;
+    }
+</style>
 </head>
 <body>
 
@@ -430,11 +453,11 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Top header displays target warehouse ID and name. Interactive maps calculate distance to the warehouse. A prominent card displays GPS signal strength, unlocking the primary "Lock Location & Start" button when in bounds.</div>
+                  <div class="spec-value"><p>Top header displays target warehouse ID and name.</p><p>Interactive maps calculate distance to the warehouse.</p><p>A prominent card displays GPS signal strength, unlocking the primary "Lock Location & Start" button when in bounds.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Retrieves geodetic position using navigator API. Caches GPS coordinate metrics inside local wizard state context.</div>
+                  <div class="spec-value"><p>Retrieves geodetic position using navigator API.</p><p>Caches GPS coordinate metrics inside local wizard state context.</p></div>
                 </div>
               </div>
             </div>
@@ -463,15 +486,15 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Mandatory logging of 4 core criteria: Dry Space, Elevated Floor, Off-Ground Pallets, and Dampness Check. Failing any item mandates an "Unfit" final verdict.</div>
+                  <div class="spec-value"><p>Mandatory logging of 4 core criteria: Dry Space, Elevated Floor, Off-Ground Pallets, and Dampness Check.</p><p>Failing any item mandates an "Unfit" final verdict.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Renders large, touch-friendly option rows. Each criterion has clear "Pass" / "Fail" selectors. Failing critical items automatically highlights warning messages alerting that the warehouse will be graded unfit.</div>
+                  <div class="spec-value"><p>Renders large, touch-friendly option rows.</p><p>Each criterion has clear "Pass" / "Fail" selectors.</p><p>Failing critical items automatically highlights warning messages alerting that the warehouse will be graded unfit.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Zod validation ensures all checklist rows are resolved before allowing page advancement. Stores selections in session cache.</div>
+                  <div class="spec-value"><p>Zod validation ensures all checklist rows are resolved before allowing page advancement.</p><p>Stores selections in session cache.</p></div>
                 </div>
               </div>
             </div>
@@ -500,11 +523,11 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Requires at least 2 photos (General interior layout, close-up of ventilation or flooring). Images are tagged with caption notes.</div>
+                  <div class="spec-value"><p>Requires at least 2 photos (General interior layout, close-up of ventilation or flooring).</p><p>Images are tagged with caption notes.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Grid list displaying camera triggers. Progressive loaders track uploading states. Optional input boxes allow scouts to write captions per image.</div>
+                  <div class="spec-value"><p>Grid list displaying camera triggers.</p><p>Progressive loaders track uploading states.</p><p>Optional input boxes allow <code>scouts</code> to write captions per image.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
@@ -537,15 +560,15 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Renders calculated final verdict ('Fit' or 'Unfit'). Unfit verdicts must log mandatory reasoning comments. Executes atomic multi-table inserts.</div>
+                  <div class="spec-value"><p>Renders calculated final verdict ('Fit' or 'Unfit').</p><p>Unfit verdicts must log mandatory reasoning comments.</p><p>Executes atomic multi-table inserts.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Detailed review panel. Calculated status is displayed in large pills (Green checkmark for "Fit", Amber warning for "Unfit"). Notes text area is required for unfit outcomes. High-contrast primary cyan button reads "Submit Verification".</div>
+                  <div class="spec-value"><p>Detailed review panel.</p><p>Calculated status is displayed in large pills (Green checkmark for "Fit", Amber warning for "Unfit").</p><p>Notes text area is required for unfit outcomes.</p><p>High-contrast primary cyan button reads "Submit Verification".</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Invokes <code>submitWarehouseFitnessVerdict</code> procedure. Automatically updates the parent <code>warehouses.fitness_status</code> column. On database failure, rolls back all updates.</div>
+                  <div class="spec-value"><p>Invokes <code>submitWarehouseFitnessVerdict</code> procedure.</p><p>Automatically updates the parent <code><code>warehouses.fitness_status</code></code> column.</p><p>On database failure, rolls back all updates.</p></div>
                 </div>
               </div>
             </div>
@@ -574,15 +597,15 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Generates and displays unique audit check code (e.g. <code>#WFC-1882</code>) and confirms local database task completions.</div>
+                  <div class="spec-value"><p>Generates and displays unique audit check code (<code>e.g</code>.</p><p><code>#WFC-1882</code>) and confirms local database task completions.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value">Full-screen glassmorphism layout with centered, pulsing green checkmark. Displays sync state badge ("Synced" or "Offline Queued"). Primary solid cyan CTA "View Today's Tasks" returns scout back to list.</div>
+                  <div class="spec-value"><p>Full-screen glassmorphism layout with centered, pulsing green checkmark.</p><p>Displays sync state badge ("Synced" or "Offline Queued").</p><p>Primary solid cyan CTA "View Today's Tasks" returns scout back to list.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Clears all temporary draft context variables. Switches local task queue state to completed.</div>
+                  <div class="spec-value"><p>Clears all temporary draft context variables.</p><p>Switches local task queue state to completed.</p></div>
                 </div>
               </div>
             </div>
