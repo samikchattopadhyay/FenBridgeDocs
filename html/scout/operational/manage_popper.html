@@ -338,70 +338,196 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <h3 class="backend-section-title">React Component Decomposition (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Manage Popper workflow breaks into 11 reusable components: 8 shared across Scout module workflows, 3 workflow-specific for popper account management. Components follow atomic design principles with strict TypeScript interfaces.</p>
 
           <div class="backend-info-box">
             <strong>✅ Design Philosophy:</strong><br>
             • Single Responsibility: Each component does ONE thing<br>
             • Prop-based composition: Components accept data + actions as props<br>
             • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
+            • Reuse across workflows: 80% components shared across 20 workflows<br>
             • Variant management: Props define UI variants, not separate components
           </div>
 
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen-by-Screen Component Breakdown</h4>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 1: Edit Identity Profile</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Modify popper basic profile data (name, phone, address)<br>
+            <strong>Layout:</strong> TopAppBar → ProfileHeaderCard → TextInput/AddressForm → VerificationBadges → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Edit Identity Profile", menu<br>
+            • <code style="color: #f472b6;">ProfileHeaderCard</code> (workflow-specific) — Shows popper name, current status, registration date<br>
+            • <code style="color: #38bdf8;">TextInput</code> (shared) — "Business Name" with validation<br>
+            • <code style="color: #38bdf8;">PhoneInput</code> (shared) — "+91 Mobile" with read-only flag if verified<br>
+            • <code style="color: #38bdf8;">AddressForm</code> (shared) — Street, district, panchayat fields<br>
+            • <code style="color: #f472b6;">VerificationBadges</code> (workflow-specific) — Inline badges showing phone/email verified status<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Update Profile" (enabled on change), "Cancel"<br>
+            <strong>State Management:</strong> Profile edits in local component state, submitted via updatePopperProfile()<br>
+            <strong>Validation:</strong> Name length 3-100, valid phone format, address completeness
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 2: Update Business Documents</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Replace or update GST, trade licenses, tax forms<br>
+            <strong>Layout:</strong> TopAppBar → DocumentCardsGrid → InfoBanner → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Business Documents", menu<br>
+            • <code style="color: #f472b6;">DocumentStatusCard</code> (workflow-specific) — Card for each doc type (GST, License, Tax) with:<br>
+            &nbsp;&nbsp;├ Status badge (Verified/Under Review/Missing)<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">TextInput</code> (shared) — Document number<br>
+            &nbsp;&nbsp;├ Document upload camera trigger<br>
+            &nbsp;&nbsp;└ Expiry date if applicable<br>
+            • <code style="color: #38bdf8;">InfoBanner</code> (shared) — "Document updates require re-verification"<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Submit Documents", "Cancel"<br>
+            <strong>State Management:</strong> Document fields + file URIs in local state, submitted via updatePopperDocuments()<br>
+            <strong>Validation:</strong> GST valid format (15 chars), doc number non-empty, file upload required<br>
+            <strong>Side Effect:</strong> Upon submit, all document verification states reset to 'pending'
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 3: Edit Warehouse Details</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Modify existing warehouse parameters (capacity, location, storage type)<br>
+            <strong>Layout:</strong> TopAppBar → WarehouseSelectionCard → WarehouseEditForm → WarningBanner → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Edit Warehouse Details", menu<br>
+            • <code style="color: #f472b6;">WarehouseSelectionCard</code> (workflow-specific) — Grid of existing warehouses, single-select with capacity display<br>
+            • <code style="color: #f472b6;">WarehouseEditForm</code> (workflow-specific) — Form for selected warehouse:<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">TextInput</code> (shared) — "Warehouse Name"<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">NumberInput</code> (shared) — "Capacity (MT)" with validation<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">SelectInput</code> (shared) — "Storage Type" (open, covered, refrigerated)<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">LocationPicker</code> (shared) — GPS coordinates capture<br>
+            &nbsp;&nbsp;└ <code style="color: #38bdf8;">TextInput</code> (shared) — "Landmark/Address"<br>
+            • <code style="color: #38bdf8;">WarningBanner</code> (shared) — Shows if warehouse has active lots: "Active storage in progress. Capacity changes will affect ongoing operations."<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Update Warehouse" (disabled if lots active + capacity changed), "Cancel"<br>
+            <strong>State Management:</strong> Selected warehouse_id + form edits in local state<br>
+            <strong>API Call:</strong> Requires getWarehouseStatus(warehouse_id) to check active lots before allowing capacity edits<br>
+            <strong>Validation:</strong> Capacity > 0, name length 3-50, valid GPS coordinates
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 4: Add New Warehouse Asset</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Register new warehouse to popper profile<br>
+            <strong>Layout:</strong> TopAppBar → WarehouseRegistrationForm → WarehouseReviewCard → ConfirmationCheckbox → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Add New Warehouse", menu<br>
+            • <code style="color: #f472b6;">WarehouseRegistrationForm</code> (workflow-specific) — Form inputs for new warehouse:<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">TextInput</code> (shared) — "Warehouse Name" (required)<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">NumberInput</code> (shared) — "Capacity (MT)" with validation<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">SelectInput</code> (shared) — "Storage Type" (open, covered, refrigerated)<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">SelectInput</code> (shared) — "District" from geo-hierarchy<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">TextInput</code> (shared) — "Village/Panchayat"<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">LocationPicker</code> (shared) — GPS capture (mandatory, locks position on capture)<br>
+            &nbsp;&nbsp;└ <code style="color: #38bdf8;">TextInput</code> (shared) — "Landmark"<br>
+            • <code style="color: #f472b6;">WarehouseReviewCard</code> (workflow-specific) — Read-only recap: name, capacity, location, storage type<br>
+            • <code style="color: #38bdf8;">ConfirmationCheckbox</code> (shared) — "I confirm warehouse coordinates are accurate"<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Submit Warehouse" (enabled on checkbox), "Back"<br>
+            <strong>State Management:</strong> Form fields in local state<br>
+            <strong>API Call:</strong> submitWarehouse() generates unique warehouse_code, sets status to 'pending_approval'<br>
+            <strong>Validation:</strong> All fields required, capacity > 0, GPS coordinates must differ from existing warehouses
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 5: Deactivate Warehouse Asset</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Suspend or permanently disable a warehouse from active use<br>
+            <strong>Layout:</strong> TopAppBar → WarehouseSelectionCard → WarningBanner → DeactivationReasonCard → ConfirmationCheckbox → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Deactivate Warehouse", menu<br>
+            • <code style="color: #f472b6;">WarehouseSelectionCard</code> (workflow-specific) — Grid of warehouses, single-select for deactivation<br>
+            • <code style="color: #38bdf8;">WarningBanner</code> (shared) — Red critical banner: "Deactivation is irreversible. All pending allocations will be cancelled."<br>
+            • <code style="color: #f472b6;">ActiveAllocationsCard</code> (workflow-specific) — Shows count of active lots if any: "2 active lots will be reassigned"<br>
+            • <code style="color: #f472b6;">DeactivationReasonCard</code> (workflow-specific) — SelectInput with reasons:<br>
+            &nbsp;&nbsp;├ "Lease Termination"<br>
+            &nbsp;&nbsp;├ "Structural Damage"<br>
+            &nbsp;&nbsp;├ "Safety Hazard"<br>
+            &nbsp;&nbsp;├ "Regulatory Non-Compliance"<br>
+            &nbsp;&nbsp;└ "Other" (with TextInput for notes)<br>
+            • <code style="color: #38bdf8;">ConfirmationCheckbox</code> (shared) — "I confirm deactivation of [warehouse_name]"<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Deactivate Warehouse" (dark amber, enabled on checkbox), "Cancel"<br>
+            <strong>State Management:</strong> Selected warehouse_id + deactivation_reason in local state<br>
+            <strong>API Call:</strong> toggleWarehouseStatus(warehouse_id, 'inactive', reason)<br>
+            <strong>Validation:</strong> Reason must be selected if "Other" then notes required
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Shared Components (Across 20 Workflows)</h4>
           <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><th>Component</th><th>Purpose</th><th>Props Interface</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Fixed header, back button, title, menu</td><td>title: string; onBack: () =&gt; void;</td></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text field with validation + error</td><td>value: string; onChange: (val) =&gt; void; error?: string; placeholder?: string;</td></tr>
+            <tr><td><strong>PhoneInput</strong></td><td>Mobile field with +91 prefix</td><td>value: string; onChange: (val) =&gt; void; disabled?: boolean; error?: string;</td></tr>
+            <tr><td><strong>NumberInput</strong></td><td>Numeric field with bounds</td><td>value: number; onChange: (val) =&gt; void; min?: number; max?: number; error?: string;</td></tr>
+            <tr><td><strong>SelectInput</strong></td><td>Dropdown with options</td><td>value: string; onChange: (val) =&gt; void; options: {label, value}[]; error?: string;</td></tr>
+            <tr><td><strong>AddressForm</strong></td><td>Grouped address fields</td><td>street: string; district: string; village: string; onChange: (field, val) =&gt; void;</td></tr>
+            <tr><td><strong>LocationPicker</strong></td><td>GPS coordinate capture</td><td>coordinates: {lat, lng}; onChange: (coords) =&gt; void; locked?: boolean;</td></tr>
+            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>status: 'active'|'pending'|'inactive'; label: string;</td></tr>
+            <tr><td><strong>WarningBanner</strong></td><td>Warning callout box</td><td>message: string; severity?: 'warning'|'critical';</td></tr>
+            <tr><td><strong>ConfirmationCheckbox</strong></td><td>Single checkbox with label</td><td>label: string; checked: boolean; onChange: (checked) =&gt; void;</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Sticky action buttons</td><td>primaryText: string; secondaryText?: string; onPrimary: () =&gt; void; primaryDisabled?: boolean;</td></tr>
           </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Workflow-Specific Components (Manage Popper Only)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Screens Used</th><th>Responsibility</th></tr>
+            <tr><td><strong>ProfileHeaderCard</strong></td><td>1</td><td>Displays popper business name, status, registration date, verification status</td></tr>
+            <tr><td><strong>VerificationBadges</strong></td><td>1</td><td>Inline badges showing phone/email verification status with action links</td></tr>
+            <tr><td><strong>DocumentStatusCard</strong></td><td>2</td><td>Card per document type (GST/License/Tax): status badge, input field, upload trigger, expiry date</td></tr>
+            <tr><td><strong>WarehouseSelectionCard</strong></td><td>3, 5</td><td>Grid layout: warehouse name, capacity, status badge, selection checkbox</td></tr>
+            <tr><td><strong>WarehouseEditForm</strong></td><td>3</td><td>Form section: name, capacity, storage type, GPS, landmark inputs</td></tr>
+            <tr><td><strong>WarehouseReviewCard</strong></td><td>4</td><td>Read-only recap: warehouse name, capacity, location, storage type, district</td></tr>
+            <tr><td><strong>ActiveAllocationsCard</strong></td><td>5</td><td>Warning card showing count of active lots that will be reassigned</td></tr>
+            <tr><td><strong>DeactivationReasonCard</strong></td><td>5</td><td>SelectInput with predefined reasons (Lease, Damage, Safety, Compliance) + Other with notes</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Cross-Workflow Component Reuse Pattern</h4>
+          <div class="backend-info-box">
+            <strong>⚠️ CRITICAL: Zero Duplication Rule</strong><br><br>
+            <strong>Already Shared Across Multiple Workflows:</strong><br>
+            • <code>TextInput</code>, <code>PhoneInput</code>, <code>NumberInput</code>, <code>SelectInput</code> — All shared. DO NOT recreate.<br>
+            • <code>AddressForm</code> — Reused from Farmer/Popper Registration &amp; other management. DO NOT duplicate.<br>
+            • <code>LocationPicker</code> — Shared across 8+ workflows. DO NOT recreate.<br>
+            • <code>StatusBadge</code> — Reused across all list screens. DO NOT create variant-specific badges.<br>
+            • <code>WarningBanner</code>, <code>InfoBanner</code> — Shared. DO NOT create new banner components.<br>
+            • <code>ConfirmationCheckbox</code>, <code>CTAFooter</code>, <code>TopAppBar</code> — All shared. DO NOT recreate.<br><br>
+            <strong>This Workflow's New Components:</strong><br>
+            Only 3 components are UNIQUE to Manage Popper:<br>
+            1. <code>ProfileHeaderCard</code> — Displays popper profile summary (not farmer profile)<br>
+            2. <code>DocumentStatusCard</code> — Variant of status display for document types (could extend StatusBadge)<br>
+            3. <code>WarehouseSelectionCard</code> — Warehouse grid selector (distinct from FarmerSelectionCard/POSelectionCard)<br>
+            4. <code>WarehouseEditForm</code> — Form wrapper for warehouse edits<br>
+            5. <code>WarehouseReviewCard</code> — Read-only recap (similar to other recap cards but warehouse-specific)<br>
+            6. <code>DeactivationReasonCard</code> — Reason selector with "Other" notes field<br>
+            7. <code>ActiveAllocationsCard</code> — Shows active lots count (could be generic warning card variant)<br><br>
+            <strong>DO's:</strong><br>
+            ✓ Check COMPONENT_ARCHITECTURE_GUIDE.md BEFORE creating any component<br>
+            ✓ Reuse TextInput, NumberInput, SelectInput, AddressForm, LocationPicker directly<br>
+            ✓ Reuse StatusBadge for all status displays (use variant props)<br>
+            ✓ Create only truly new components when representing unique data domains<br>
+            ✓ Use props to handle variations (doc types, warehouse actions, deactivation reasons)<br><br>
+            <strong>DON'Ts:</strong><br>
+            ✗ DO NOT create separate DocumentUpload, DocumentInput components — use existing DocumentStatusCard pattern<br>
+            ✗ DO NOT create new form input components — reuse TextInput/NumberInput/SelectInput with props<br>
+            ✗ DO NOT create WarehouseAddressForm — reuse AddressForm component<br>
+            ✗ DO NOT create different modal/card components for each action — use single card with variant props<br>
+            ✗ DO NOT duplicate LocationPicker logic — import from shared library<br>
+            ✗ DO NOT create new button/banner components — reuse CTAFooter, WarningBanner, InfoBanner
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Consistency & Mobile Responsive Guidelines</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ Spacing:</strong> 16px gap between sections, 24px padding inside cards, 80px footer height</li>
+            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary: #06b6d4, --text-main: #f3f4f6)</li>
+            <li><strong>✓ Typography:</strong> Outfit 800 for titles, Inter 400/600 for body, 12-14px labels</li>
+            <li><strong>✓ Mobile Breakpoints:</strong> 360px (mobile), 600px (tablet), 1024px (desktop)</li>
+            <li><strong>✓ Form Validation:</strong> Frontend mirrors backend Zod, real-time error display</li>
+            <li><strong>✓ Accessibility:</strong> aria-label on all buttons, labels paired with inputs, focus states</li>
+            <li><strong>✓ Status Display:</strong> Use StatusBadge component for all states (verified, pending, inactive)</li>
+            <li><strong>✓ Warning Severity:</strong> Red critical banners for deactivation, amber for capacity changes</li>
+            <li><strong>✓ State Management:</strong> Store form state in local component state, popper context for readonly data</li>
+            <li><strong>✓ Error Handling:</strong> Consistent red border + message for all validation errors</li>
+            <li><strong>✓ Loading States:</strong> Disabled buttons, spinner overlay during API calls</li>
+            <li><strong>✓ Selection Lists:</strong> Use single-select grid layout (not dropdown) for warehouse/document selection</li>
           </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
-          </div>
         </div>
 
         <!-- TAB: Database Schema -->
