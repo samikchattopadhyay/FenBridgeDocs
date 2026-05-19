@@ -342,7 +342,7 @@
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
           <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This 8-screen lot verification workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
 
           <div class="backend-info-box">
             <strong>✅ Design Philosophy:</strong><br>
@@ -358,18 +358,222 @@
             <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
-          </table>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 1: Confirm Qty — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Confirm Quantity" back={true} progress={1/8} /&gt;<br>
+            &lt;StepperBar currentStep={1} totalSteps={8} /&gt;<br>
+            &lt;LotHeaderCard lot={lot} popper={popper} warehouse={warehouse} /&gt;<br>
+            &lt;QuantityComparisonCard declared={declaredQty} variance={varianceThreshold} /&gt;<br>
+            &lt;NumberInput label="Verified Quantity (kg)" value={verifiedQty} onChange={setVerifiedQty} /&gt;<br>
+            &lt;NumberInput label="Bag Count" value={bagCount} onChange={setBagCount} /&gt;<br>
+            &lt;VarianceCalculator declared={declaredQty} verified={verifiedQty} /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Parameters" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress 1/8 (all multi-step workflows)<br>
+            ✓ NumberInput — Numeric field (Warehouse Fitness Check, Pond Inspection)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • LotHeaderCard — Lot code, popper, warehouse, claimed grade<br>
+            • QuantityComparisonCard — Tolerance threshold banner<br>
+            • VarianceCalculator — Real-time variance % display
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 2: Parameters — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Quality Parameters" back={true} progress={2/8} /&gt;<br>
+            &lt;StepperBar currentStep={2} totalSteps={8} /&gt;<br>
+            &lt;ParameterCard label="Moisture %" min={minVal} max={maxVal} measured={value} onChange={setValue} /&gt;<br>
+            &lt;ParameterCard label="Size (mm)" min={minVal} max={maxVal} measured={value} onChange={setValue} /&gt;<br>
+            &lt;ParameterCard label="Color Grade" type="select" options={grades} value={grade} onChange={setGrade} /&gt;<br>
+            &lt;GradeAssessmentCard claimedGrade={claimed} assessedGrade={assessed} /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Defects" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress 2/8 (all multi-step workflows)<br>
+            ✓ SelectInput — Grade dropdown (12+ workflows)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • ParameterCard — Measured value with min/max range visual<br>
+            • GradeAssessmentCard — Claimed vs assessed grade comparison
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 3: Defects — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Defect Assessment" back={true} progress={3/8} /&gt;<br>
+            &lt;StepperBar currentStep={3} totalSteps={8} /&gt;<br>
+            &lt;DefectSampleCard sampleSize={bagsSampled} totalBags={bagCount} /&gt;<br>
+            &lt;DefectCategory category="Broken" count={value} onCount={setValue} /&gt;<br>
+            &lt;DefectCategory category="Discolored" count={value} onCount={setValue} /&gt;<br>
+            &lt;DefectCategory category="Immature" count={value} onCount={setValue} /&gt;<br>
+            &lt;DefectCategory category="Damaged" count={value} onCount={setValue} /&gt;<br>
+            &lt;DefectSummaryCard totalDefects={total} percentDefect={percent} /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Evidence Photos" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress 3/8 (all multi-step workflows)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • DefectSampleCard — Sample size indicator<br>
+            • DefectCategory — Count input for defect type (4 instances)<br>
+            • DefectSummaryCard — Total count + percentage calculation
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 4: Evidence Photos — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Evidence Photos" back={true} progress={4/8} /&gt;<br>
+            &lt;StepperBar currentStep={4} totalSteps={8} /&gt;<br>
+            &lt;PhotoCaptureCard onCapture={capturePhoto} /&gt;<br>
+            &lt;PhotoGrid photos={photos} onDelete={removePhoto} onCaption={setCaption} /&gt;<br>
+            &lt;RequiredPhotosChecklist requiredCount={3} capturedCount={photos.length} /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Sample Retention" disabled={photos.length &lt; 3} /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress 4/8 (all multi-step workflows)<br>
+            ✓ PhotoGrid — Display/manage photos (16+ workflows)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • PhotoCaptureCard — Camera trigger with preview<br>
+            • RequiredPhotosChecklist — Evidence checklist (min 3 photos)
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 5: Ref Sample — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Reference Sample" back={true} progress={5/8} /&gt;<br>
+            &lt;StepperBar currentStep={5} totalSteps={8} /&gt;<br>
+            &lt;SampleRetentionCard samplesFrom={bagsSampled} totalBags={bagCount} /&gt;<br>
+            &lt;TextInput label="Sample Reference Code" value={refCode} onChange={setRefCode} /&gt;<br>
+            &lt;DateInput label="Retain Until" value={retainDate} onChange={setRetainDate} /&gt;<br>
+            &lt;SampleInstructionsCard /&gt;<br>
+            &lt;PhotoCaptureCard onCapture={captureSamplePhoto} label="Sample Container Photo" /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Disposition" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress 5/8 (all multi-step workflows)<br>
+            ✓ TextInput — Reference code field (12+ workflows)<br>
+            ✓ DateInput — Retention date picker (Farmer/Popper Registration)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • SampleRetentionCard — Sample volume indicator<br>
+            • SampleInstructionsCard — Labeling instructions<br>
+            • PhotoCaptureCard — Sample container documentation
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 6: Disposition — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Disposition & Outcome" back={true} progress={6/8} /&gt;<br>
+            &lt;StepperBar currentStep={6} totalSteps={8} /&gt;<br>
+            &lt;OutcomeSelector outcome={outcome} onChange={setOutcome} options={['Accepted', 'Downgrade', 'Hold for Admin', 'Rejected']} /&gt;<br>
+            {outcome === 'Rejected' &amp;&amp; &lt;RejectionReasonSelector reason={reason} onSelect={setReason} /&gt;}<br>
+            {outcome === 'Rejected' &amp;&amp; &lt;ReconditionSelector recondition={recondition} onChange={setRecondition} /&gt;}<br>
+            &lt;TextInput label="Overall Notes" value={notes} onChange={setNotes} multiline={true} /&gt;<br>
+            &lt;DispositionSummaryCard outcome={outcome} grade={assessedGrade} variance={variance} /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Certificate" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress 6/8 (all multi-step workflows)<br>
+            ✓ TextInput — Notes field, multiline (12+ workflows)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • OutcomeSelector — 4-way outcome radio buttons<br>
+            • RejectionReasonSelector — Conditional reason code selector<br>
+            • ReconditionSelector — Conditional recondition choice<br>
+            • DispositionSummaryCard — Final outcome summary
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 7: Preview Cert — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Grade Certificate" back={true} progress={7/8} /&gt;<br>
+            &lt;StepperBar currentStep={7} totalSteps={8} /&gt;<br>
+            &lt;CertificatePreview<br>
+            &nbsp;&nbsp;lot={lot}<br>
+            &nbsp;&nbsp;grade={assessedGrade}<br>
+            &nbsp;&nbsp;verified={verifiedQty}<br>
+            &nbsp;&nbsp;parameters={parameters}<br>
+            /&gt;<br>
+            &lt;CertificateActions onEdit={goBack} onLock={lockCertificate} /&gt;<br>
+            &lt;CTAFooter primaryText="Confirm & Submit" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress 7/8 (all multi-step workflows)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • CertificatePreview — Read-only certificate document display<br>
+            • CertificateActions — Edit + lock controls
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 8: Confirmation — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Confirmation" /&gt;<br>
+            &lt;SuccessBanner outcome={outcome} timestamp={submittedAt} /&gt;<br>
+            &lt;LotSummaryCard<br>
+            &nbsp;&nbsp;lot={lot}<br>
+            &nbsp;&nbsp;verifiedQty={qty}<br>
+            &nbsp;&nbsp;assessedGrade={grade}<br>
+            &nbsp;&nbsp;outcome={outcome}<br>
+            /&gt;<br>
+            &lt;InspectionDetailsExpandable<br>
+            &nbsp;&nbsp;parameters={parameters}<br>
+            &nbsp;&nbsp;defects={defects}<br>
+            &nbsp;&nbsp;photos={photoCount}<br>
+            &nbsp;&nbsp;sample={sample}<br>
+            /&gt;<br>
+            &lt;CTAFooter primaryText="Return to Lots" onPrimary={goToLots} /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ ExpandableSection — Collapsible inspection details (Warehouse Detail, Lot Detail)<br>
+            ✓ CTAFooter — Actions (all form screens)<br><br>
+            <strong>Verification-Specific:</strong><br>
+            • SuccessBanner — Green success with outcome badge<br>
+            • LotSummaryCard — Final lot summary<br>
+            • InspectionDetailsExpandable — Expandable verification details
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy — Lot Verification</h4>
+          <div class="backend-info-box">
+            <strong>Layer 1: Foundation (Atoms)</strong><br>
+            • TopAppBar — Header in all 8 screens<br>
+            • TextInput — Notes fields (Screens 5, 6)<br>
+            • NumberInput — Quantity, defect counts (Screens 1, 3)<br>
+            • DateInput — Retention date (Screen 5)<br>
+            • SelectInput — Grade, reason dropdowns (Screens 2, 6)<br>
+            • CTAFooter — Action buttons (all 8 screens)<br>
+            • Badge/Pill — Outcome indicators<br><br>
+            <strong>Layer 2: Composite (Molecules)</strong><br>
+            • StepperBar — Progress 1/8–8/8 (all 8 screens)<br>
+            • PhotoGrid — Evidence photos (Screen 4)<br>
+            • ExpandableSection — Details accordion (Screen 8)<br>
+            • PhotoCaptureCard — Camera + upload (Screens 4, 5)<br><br>
+            <strong>Layer 3: Feature (Organisms)</strong><br>
+            • LotHeaderCard — Lot identity (Screens 1, 8)<br>
+            • QuantityComparisonCard — Variance banner (Screen 1)<br>
+            • VarianceCalculator — Variance % display (Screen 1)<br>
+            • ParameterCard — Moisture/size/grade (Screen 2)<br>
+            • GradeAssessmentCard — Claimed vs assessed (Screen 2)<br>
+            • DefectSampleCard — Sample size (Screen 3)<br>
+            • DefectCategory — Defect type counter (Screen 3)<br>
+            • DefectSummaryCard — Total defect % (Screen 3)<br>
+            • RequiredPhotosChecklist — Photo requirement (Screen 4)<br>
+            • SampleRetentionCard — Sample volume (Screen 5)<br>
+            • SampleInstructionsCard — Labeling guide (Screen 5)<br>
+            • OutcomeSelector — 4-way outcome (Screen 6)<br>
+            • RejectionReasonSelector — Reason codes (Screen 6)<br>
+            • ReconditionSelector — Recondition choice (Screen 6)<br>
+            • DispositionSummaryCard — Outcome summary (Screen 6)<br>
+            • CertificatePreview — Certificate document (Screen 7)<br>
+            • CertificateActions — Edit/lock (Screen 7)<br>
+            • SuccessBanner — Success confirmation (Screen 8)<br>
+            • LotSummaryCard — Final summary (Screen 8)<br>
+            • InspectionDetailsExpandable — Details expansion (Screen 8)
+          </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
           <ul class="backend-list">
@@ -392,18 +596,19 @@
             ✓ Testable in isolation<br>
             ✓ Clear, single responsibility<br>
             ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
+            ✗ Just a styling wrapper (use CSS)<br><br>
+            <strong>DO THIS:</strong><br>
+            • Reuse TopAppBar, StepperBar, CTAFooter, PhotoGrid, TextInput, SelectInput, DateInput across workflows<br>
+            • Single ParameterCard component for all 3 parameters with type prop<br>
+            • Single DefectCategory component instantiated 4 times with category prop<br>
+            • Props define outcome: &lt;OutcomeSelector outcome="accepted" /&gt; vs &lt;OutcomeSelector outcome="rejected" /&gt;<br>
+            • Shared ExpandableSection for Screen 8 details (also Warehouse Detail, Lot Detail)<br><br>
+            <strong>DON'T DO THIS:</strong><br>
+            ✗ Create ParameterCardMoisture AND ParameterCardSize (use single ParameterCard with type prop)<br>
+            ✗ Create DefectCategoryBroken AND DefectCategoryDiscolored (use single DefectCategory)<br>
+            ✗ Copy-paste TextInput for multiple notes fields (reuse same component)<br>
+            ✗ Duplicate StepperBar from other workflows (share one across all)<br>
+            ✗ Inline outcome logic in 8 screens (use VerificationContext for shared state)
           </div>
         </div>
 
