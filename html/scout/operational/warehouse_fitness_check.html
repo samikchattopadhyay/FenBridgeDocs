@@ -360,18 +360,132 @@
             <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
-          </table>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 1: Confirm Warehouse & Arrival — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Confirm Arrival" back={true} /&gt;<br>
+            &lt;WarehouseHeaderCard warehouse={warehouse} /&gt;<br>
+            &lt;GPSStatusCard gpsAccuracy={accuracy} isInBounds={distance &lt;= 50} /&gt;<br>
+            &lt;MapPreview warehouseLocation={location} currentLocation={current} /&gt;<br>
+            &lt;DistanceIndicator distance={distance} maxDistance={50} /&gt;<br>
+            &lt;CTAFooter disabled={!isInBounds} primaryText="Lock Location & Start" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ MapPreview — Map thumbnail (also Pond Inspection, Farmer/Popper Registration)<br>
+            ✓ CTAFooter — Primary + secondary actions (all form screens)<br><br>
+            <strong>Fitness-Check-Specific:</strong><br>
+            • WarehouseHeaderCard — Shows warehouse name, popper, location<br>
+            • GPSStatusCard — GPS signal strength, accuracy indicator<br>
+            • DistanceIndicator — Visual distance gauge to warehouse
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 2: Checklist — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Fitness Checklist" back={true} progress={2/5} /&gt;<br>
+            &lt;StepperBar currentStep={2} totalSteps={5} /&gt;<br>
+            &lt;ChecklistCard criterion="Dry Space" description="..." result={result} onChange={setResult} /&gt;<br>
+            &lt;ChecklistCard criterion="Elevated Floor" description="..." result={result} onChange={setResult} /&gt;<br>
+            &lt;ChecklistCard criterion="Off-Ground Pallets" description="..." result={result} onChange={setResult} /&gt;<br>
+            &lt;ChecklistCard criterion="Dampness Check" description="..." result={result} onChange={setResult} /&gt;<br>
+            &lt;TextInput label="Additional Notes" value={notes} onChange={setNotes} /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Photos" /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress indicator (all multi-step workflows)<br>
+            ✓ TextInput — Text field with label, error (12+ workflows)<br>
+            ✓ CTAFooter — Actions footer (all form screens)<br><br>
+            <strong>Fitness-Check-Specific:</strong><br>
+            • ChecklistCard — Binary pass/fail toggle with criterion details (4 instances)
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 3: Evidence Photos — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Evidence Photos" back={true} progress={3/5} /&gt;<br>
+            &lt;StepperBar currentStep={3} totalSteps={5} /&gt;<br>
+            &lt;PhotoCaptureCard onCapture={capturePhoto} /&gt;<br>
+            &lt;PhotoGrid photos={photos} onDelete={removePhoto} onCaption={setCaption} /&gt;<br>
+            &lt;RequiredPhotosChecklist requiredCount={4} capturedCount={photos.length} /&gt;<br>
+            &lt;CTAFooter primaryText="Continue to Verdict" disabled={photos.length &lt; 4} /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress indicator (all multi-step workflows)<br>
+            ✓ PhotoGrid — Display/manage photos with delete (16+ workflows)<br>
+            ✓ CTAFooter — Actions footer (all form screens)<br><br>
+            <strong>Fitness-Check-Specific:</strong><br>
+            • PhotoCaptureCard — Camera trigger with upload preview<br>
+            • RequiredPhotosChecklist — Progress indicator for required photos
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 4: Verdict & Submit — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Verdict & Submit" back={true} progress={4/5} /&gt;<br>
+            &lt;StepperBar currentStep={4} totalSteps={5} /&gt;<br>
+            &lt;VerdictSummaryCard checklist={items} photoCount={photos.length} /&gt;<br>
+            &lt;VerdictSelector verdict={verdict} onChange={setVerdict} /&gt;<br>
+            &lt;TextInput label="Notes" value={notes} onChange={setNotes} multiline={true} /&gt;<br>
+            &lt;EnvironmentMetricsCard humidity={humidity} temperature={temp} /&gt;<br>
+            &lt;ReviewCard summary={summary} /&gt;<br>
+            &lt;CTAFooter primaryText="Submit Check" loading={isSubmitting} /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ StepperBar — Progress indicator (all multi-step workflows)<br>
+            ✓ TextInput — Text field, multiline mode (12+ workflows)<br>
+            ✓ CTAFooter — Actions footer (all form screens)<br><br>
+            <strong>Fitness-Check-Specific:</strong><br>
+            • VerdictSummaryCard — Summary of checklist results + photo count<br>
+            • VerdictSelector — Fit/Unfit radio buttons with explanations<br>
+            • EnvironmentMetricsCard — Humidity, temperature display<br>
+            • ReviewCard — Final verification before submission
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen 5: Confirmation — Component Breakdown</h4>
+          <div class="backend-info-box">
+            <strong>Screen Structure:</strong><br>
+            &lt;TopAppBar title="Confirmation" /&gt;<br>
+            &lt;SuccessBanner verdict={verdict} timestamp={submittedAt} /&gt;<br>
+            &lt;WarehouseSummaryCard warehouse={warehouse} verdict={verdict} /&gt;<br>
+            &lt;DetailsExpandable<br>
+            &nbsp;&nbsp;checklist={items}<br>
+            &nbsp;&nbsp;photos={photos}<br>
+            &nbsp;&nbsp;metrics={metrics}<br>
+            /&gt;<br>
+            &lt;CTAFooter primaryText="Return to Dashboard" onPrimary={goToDashboard} /&gt;<br><br>
+            <strong>Shared Components:</strong><br>
+            ✓ TopAppBar — Header (all 20 workflows)<br>
+            ✓ ExpandableSection — Collapsible details (Warehouses Directory, Lot Detail)<br>
+            ✓ CTAFooter — Actions footer (all form screens)<br><br>
+            <strong>Fitness-Check-Specific:</strong><br>
+            • SuccessBanner — Green success message with timestamp<br>
+            • WarehouseSummaryCard — Warehouse + verdict summary<br>
+            • DetailsExpandable — Expandable section showing full check details
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy — Warehouse Fitness Check</h4>
+          <div class="backend-info-box">
+            <strong>Layer 1: Foundation (Atoms)</strong><br>
+            • TopAppBar — Header in all 5 screens<br>
+            • TextInput — Notes fields (Screens 2, 4)<br>
+            • CTAFooter — Action buttons (all 5 screens)<br>
+            • Badge/Pill — Status indicators (Fit/Unfit verdict)<br><br>
+            <strong>Layer 2: Composite (Molecules)</strong><br>
+            • StepperBar — Progress 2/5, 3/5, 4/5, 5/5 (Screens 2-5)<br>
+            • MapPreview — Warehouse location map (Screen 1)<br>
+            • PhotoGrid — Photo display + caption (Screen 3)<br>
+            • ExpandableSection — Details accordion (Screen 5)<br><br>
+            <strong>Layer 3: Feature (Organisms)</strong><br>
+            • WarehouseHeaderCard — Warehouse identity (Screens 1, 5)<br>
+            • GPSStatusCard — GPS signal + distance (Screen 1)<br>
+            • ChecklistCard — Pass/fail toggle × 4 (Screen 2)<br>
+            • PhotoCaptureCard — Camera + upload (Screen 3)<br>
+            • VerdictSummaryCard — Check results summary (Screen 4)<br>
+            • VerdictSelector — Fit/Unfit choice (Screen 4)<br>
+            • EnvironmentMetricsCard — Humidity/temp (Screen 4)<br>
+            • ReviewCard — Final review (Screen 4)<br>
+            • SuccessBanner — Success confirmation (Screen 5)
+          </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
           <ul class="backend-list">
@@ -394,18 +508,17 @@
             ✓ Testable in isolation<br>
             ✓ Clear, single responsibility<br>
             ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
+            ✗ Just a styling wrapper (use CSS)<br><br>
+            <strong>DO THIS:</strong><br>
+            • Reuse TopAppBar, StepperBar, CTAFooter, PhotoGrid, TextInput, MapPreview, ExpandableSection across workflows<br>
+            • Use shared mapping component (MapPreview) for location display<br>
+            • Props define verdict state: &lt;VerdictSelector verdict="fit" /&gt; vs &lt;VerdictSelector verdict="unfit" /&gt;<br>
+            • Checklist items are instances of same ChecklistCard with different criterion data<br><br>
+            <strong>DON'T DO THIS:</strong><br>
+            ✗ Create ChecklistCardFit AND ChecklistCardUnfit (use single ChecklistCard with result prop)<br>
+            ✗ Duplicate TextInput for notes fields (reuse same TextInput with different labels)<br>
+            ✗ Copy-paste StepperBar from other workflows (share one across all)<br>
+            ✗ Inline verdict logic in 5 separate screens (use VerdictContext for shared state)
           </div>
         </div>
 
