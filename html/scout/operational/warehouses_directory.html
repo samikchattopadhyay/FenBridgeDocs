@@ -181,6 +181,7 @@
   <div class="backend-tabs-container">
     <div class="tabs-header">
       <button class="tab-button active" onclick="switchTab(event, 'api')">API Architecture</button>
+      <button class="tab-button" onclick="switchTab(event, 'react-components')">React Component Design</button>
       <button class="tab-button" onclick="switchTab(event, 'database')">Database Schema</button>
       <button class="tab-button" onclick="switchTab(event, 'validation')">Validation & Error</button>
       <button class="tab-button" onclick="switchTab(event, 'features')">Features</button>
@@ -218,6 +219,172 @@
           <strong>Re-check Log:</strong> storage_rechecks WHERE lot_id=? ORDER BY checked_at ASC<br>
           <strong>Documents:</strong> grade_certificates WHERE lot_id=?, latest is primary<br>
           <strong>All sections:</strong> Read-only for scout, fully offline-capable (renders from cache)
+        </div>
+      </div>
+    </div>
+    <div id="react-components" class="tabs-content">
+      <div class="tab-section">
+        <div class="tab-section-title">React Component Decomposition & Reusability</div>
+        <div class="tab-section-content">
+          <strong>✅ Design Philosophy:</strong><br>
+          • Single Responsibility: Each component does ONE thing<br>
+          • Prop-based composition: Components accept data + actions as props<br>
+          • No local state for business logic: Context + hooks for state<br>
+          • Reuse across workflows: 80% of components shared across 20 workflows<br>
+          • Variant management: Props define UI variants, not separate components
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Cross-Workflow Component Library</div>
+        <div class="tab-section-content">
+          <strong>All scout workflows share a unified component library.</strong><br>
+          See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Screen 5.1: Warehouse List — Component Breakdown</div>
+        <div class="tab-section-content">
+          <strong>Screen Structure:</strong><br>
+          <code>
+            &lt;TopAppBar title="Warehouses" icon={FilterIcon} /&gt;<br>
+            &lt;SearchBar placeholder="Search popper, code, area…" onSearch={handleSearch} /&gt;<br>
+            &lt;FilterChips filters={['All', 'Fit', 'Unfit', 'Unchecked', 'Has Active']} onFilter={handleFilter} /&gt;<br>
+            &lt;SortSelector options={['Name', 'Recent Activity', 'Fitness Status']} onSort={handleSort} /&gt;<br>
+            &lt;PullToRefresh onRefresh={handleRefresh}&gt;<br>
+            &nbsp;&nbsp;&lt;WarehouseCard warehouse={warehouse} onClick={goToDetail} /&gt;<br>
+            &lt;/PullToRefresh&gt;
+          </code><br><br>
+          <strong>Shared Components:</strong><br>
+          ✓ TopAppBar — Header with back button, title, action icon (20 workflows)<br>
+          ✓ SearchBar — Search input with debounce, clear button (Users Directory, Lot Verification)<br>
+          ✓ FilterChips — Multi-select filter pills (Pond Inspection, Lot Verification)<br>
+          ✓ PullToRefresh — iOS-style pull gesture (all mobile workflows)<br>
+          ✓ SortSelector — Dropdown sort menu (Users Directory, Pond Inspection)<br><br>
+          <strong>Warehouse-Specific Components:</strong><br>
+          • WarehouseCard — List item showing popper name, code, location, fitness pill, active lot count, danger marker
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Screen 5.2: Warehouse Detail — Component Breakdown</div>
+        <div class="tab-section-content">
+          <strong>Screen Structure:</strong><br>
+          <code>
+            &lt;TopAppBar title="Warehouse Detail" back={true} /&gt;<br>
+            &lt;DetailHeaderCard warehouse={warehouse} fitnessStatus={status} activeLotCount={count} /&gt;<br>
+            &lt;DetailActionBar actions={['Start Fitness Check', 'Navigate', 'Call']} /&gt;<br>
+            &lt;TabBar tabs={['Profile', 'Fitness', 'Lots', 'Failures']} activeTab={tab} /&gt;<br>
+            {tab === 'Profile' &amp;&amp; &lt;ProfileTab warehouse={warehouse} /&gt;}<br>
+            {tab === 'Fitness' &amp;&amp; &lt;FitnessHistoryTab checks={checks} /&gt;}<br>
+            {tab === 'Lots' &amp;&amp; &lt;LotsGroupedTab lots={lots} /&gt;}<br>
+            {tab === 'Failures' &amp;&amp; &lt;FailuresListTab failures={failures} /&gt;}
+          </code><br><br>
+          <strong>Shared Components:</strong><br>
+          ✓ TopAppBar (20 workflows)<br>
+          ✓ DetailHeaderCard — Large header card with title, status pills, metadata (also Farmer Detail, Popper Detail)<br>
+          ✓ TabBar — 4-tab navigation (also Farmer Detail 5 tabs, Popper Detail 5 tabs, Lot Detail implicit)<br>
+          ✓ StatusPill/FitnessPill — Colored status indicator (all list/detail screens)<br>
+          ✓ ExpandableSection — Collapsible groups (Lots grouped by status, Past Seals)<br>
+          ✓ ListCard/HistoryCard — Reusable list item (Fitness checks, Failures, Lots)<br>
+          ✓ LocationPreview/MapCard — GPS map thumbnail (Profile tab)<br><br>
+          <strong>Warehouse-Specific Components:</strong><br>
+          • ProfileTabContent — Popper info + warehouse identity + GPS<br>
+          • FitnessHistoryList — Chronological fitness checks with verdict pills<br>
+          • LotsGroupedByStatus — Lots accordion grouped by lifecycle state<br>
+          • FailuresList — Storage failures with outcome pills
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Screen 5.3: Lot Detail — Component Breakdown</div>
+        <div class="tab-section-content">
+          <strong>Screen Structure:</strong><br>
+          <code>
+            &lt;TopAppBar title="Lot Detail" back={true} /&gt;<br>
+            &lt;LotDetailHeader lot={lot} status={lifecycleStatus} /&gt;<br>
+            &lt;StatusBanner status={lifecycleStatus} color={getStatusColor()} /&gt;<br>
+            &lt;SummaryCard declared={qty} verified={qty} grade={grade} source={source} /&gt;<br>
+            &lt;InspectionTimeline inspections={inspections} /&gt;<br>
+            &lt;SealCard currentSeal={seal} /&gt;<br>
+            &lt;ExpandableSection title="Past Seals"&gt;<br>
+            &nbsp;&nbsp;&lt;SealCard seal={pastSeal} /&gt;<br>
+            &lt;/ExpandableSection&gt;<br>
+            &lt;RechecksTimeline rechecks={rechecks} /&gt;<br>
+            &lt;DocumentsList documents={documents} /&gt;
+          </code><br><br>
+          <strong>Shared Components:</strong><br>
+          ✓ TopAppBar (20 workflows)<br>
+          ✓ DetailHeader — Lot code, popper, warehouse, quantities (read-only)<br>
+          ✓ StatusBanner — Color-coded lifecycle state (Pending / Verified / Sealed / Sold / Expired / Voided / Terminal)<br>
+          ✓ InspectionTimeline — Vertical timeline with connector lines (also Lot Verification inspections)<br>
+          ✓ ExpandableSection — Collapse/expand groups (Past Seals)<br>
+          ✓ ListCard/SectionCard — Reusable card for seal, recheck, document records<br>
+          ✓ Badge/Pill — Status indicators (grade pill, lifecycle state)<br><br>
+          <strong>Lot-Specific Components:</strong><br>
+          • LotDetailHeader — Lot code large header, metadata<br>
+          • SummaryCard — Declared vs verified quantity, grade, source<br>
+          • SealRecord — Single seal card with date, status, seal details<br>
+          • RechecksTimeline — Storage rechecks ordered by date<br>
+          • DocumentsList — Grade certificates list, latest primary
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Shared Component Hierarchy — Warehouses Directory</div>
+        <div class="tab-section-content">
+          <strong>Layer 1: Foundation (Atoms)</strong><br>
+          • TopAppBar — Header in all 3 screens<br>
+          • SearchBar — Warehouse List search<br>
+          • FilterChips — Warehouse List filters<br>
+          • SortSelector — Warehouse List sort dropdown<br>
+          • StatusPill — Fitness status, lifecycle status, failure outcome<br>
+          • Badge — Grade pill, chip badges<br><br>
+          <strong>Layer 2: Composite (Molecules)</strong><br>
+          • DetailHeaderCard — Warehouse Detail + Lot Detail headers<br>
+          • ListCard — Generic card for fitness checks, lots, failures, seals, rechecks<br>
+          • ExpandableSection — Grouped sections (Lots by status, Past Seals)<br>
+          • LocationPreview — GPS map thumbnail<br><br>
+          <strong>Layer 3: Feature (Organisms)</strong><br>
+          • PullToRefresh — Warehouse List refresh<br>
+          • TabBar — Warehouse Detail 4 tabs<br>
+          • InspectionTimeline — Lot Detail timeline<br>
+          • WarehouseCard — Warehouse list item<br>
+          • FitnessHistoryList — Fitness tab content<br>
+          • LotsGroupedByStatus — Lots tab accordion<br>
+          • FailuresList — Failures tab list
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Consistency Checklist</div>
+        <div class="tab-section-content">
+          ✓ <strong>Props Interface:</strong> All components export TypeScript interfaces for props<br>
+          ✓ <strong>Error Handling:</strong> Consistent error display (red border + message)<br>
+          ✓ <strong>Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)<br>
+          ✓ <strong>Colors:</strong> Use CSS variables (--accent-primary, --text-main, --text-muted)<br>
+          ✓ <strong>Validation:</strong> Frontend validation mirrors backend Zod schemas<br>
+          ✓ <strong>Accessibility:</strong> Labels paired with inputs, ARIA attributes<br>
+          ✓ <strong>Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px<br>
+          ✓ <strong>No Duplication:</strong> Extract common patterns into reusable components<br>
+          ✓ <strong>Variant Props:</strong> Use props for variants, not separate components<br>
+          ✓ <strong>No Local State:</strong> Business logic state in Context, UI state locally
+        </div>
+      </div>
+      <div class="tab-section">
+        <div class="tab-section-title">Component Usage Guidelines</div>
+        <div class="tab-section-content">
+          <strong>When to Create a New Component:</strong><br>
+          ✓ Logic/JSX repeats 2+ times<br>
+          ✓ Testable in isolation<br>
+          ✓ Clear, single responsibility<br>
+          ✗ Used in only 1 workflow (inline)<br>
+          ✗ Just a styling wrapper (use CSS)<br><br>
+          <strong>DO THIS:</strong><br>
+          • Reuse TopAppBar, SearchBar, FilterChips, StatusPill across all workflows<br>
+          • Use shared TabBar component for any multi-tab detail screen<br>
+          • Use shared InspectionTimeline, ExpandableSection for grouped content<br>
+          • Props define variants: &lt;StatusPill status="fit" /&gt; vs &lt;StatusPill status="unfit" /&gt;<br><br>
+          <strong>DON'T DO THIS:</strong><br>
+          ✗ Create WarehouseCard AND WarehouseCardSmall (use variant prop)<br>
+          ✗ Inline fitness check list styling (use shared ListCard + custom content)<br>
+          ✗ Duplicate TopAppBar with different button styles (extend via props)<br>
+          ✗ Copy-paste Timeline from Lot Verification (reuse shared InspectionTimeline)
         </div>
       </div>
     </div>
