@@ -221,6 +221,7 @@
 
       <div class="tabs-nav">
         <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+        <button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
         <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
         <button class="tab-button" onclick="showTab(event, 'backend-middleware')">Middleware & Auth</button>
         <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
@@ -283,6 +284,244 @@
             <li>→ On success: Trigger async Inngest jobs</li>
             <li>→ On failure: Rollback all 7 inserts (no partial state)</li>
           </ul>
+        </div>
+
+        <!-- TAB: React Component Design -->
+        <div id="backend-react" class="tab-panel">
+          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Farmer Registration breaks into reusable React components across the Scout module's 20 workflows. Follow atomic design principles: atoms (inputs) → molecules (form groups) → organisms (form sections) → templates (screens).</p>
+
+          <div class="backend-info-box">
+            <strong>✅ Design Philosophy:</strong><br>
+            • Single Responsibility: Each component does ONE thing<br>
+            • Prop-based composition: Components accept data + actions as props<br>
+            • No local state for business logic: Context + hooks for state<br>
+            • Reuse across workflows: 80% of components shared across 20 workflows<br>
+            • Variant management: Props define UI variants, not separate components
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 1: Layout)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back button, title, menu</td><td>title, onBack, onMenu</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>StepperPanel</strong></td><td>Progress indicator with step counter</td><td>currentStep, totalSteps, steps[]</td><td>13 registration workflows</td></tr>
+            <tr><td><strong>ScreenLayout</strong></td><td>Wraps content with padding + spacing</td><td>children, withStepper</td><td>All screens</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions at bottom</td><td>primaryLabel, primaryAction, secondaryLabel, secondaryAction</td><td>All form screens</td></tr>
+            <tr><td><strong>HeroCard</strong></td><td>Icon + title + subtitle instruction block</td><td>icon, title, subtitle</td><td>All registration steps</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 2: Form Inputs)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Reuse Count</th></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text field with label, helper, error</td><td>label, value, onChange, error, hint, maxLength</td><td>Farmer (8x) + Popper (10x) + Others</td></tr>
+            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>value, onChange, error, disabled</td><td>Farmer, Popper, Farmer Mgmt</td></tr>
+            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select option</td><td>label, options[], value, onChange, error, multi</td><td>Farmer (language) + All workflows</td></tr>
+            <tr><td><strong>DatePickerInput</strong></td><td>Date picker with label, validation</td><td>label, value, onChange, error, min, max</td><td>Farmer (DOB) + Popper (establishment)</td></tr>
+            <tr><td><strong>CheckboxInput</strong></td><td>Single checkbox with label</td><td>label, checked, onChange, disabled</td><td>All screens (consent, acknowledgments)</td></tr>
+            <tr><td><strong>RadioGroup</strong></td><td>Radio buttons with options</td><td>label, options[], value, onChange</td><td>Registration (verification mode), Lot Inspection</td></tr>
+            <tr><td><strong>FileUpload</strong></td><td>File picker for documents/photos</td><td>label, accept, multiple, onSelect, error</td><td>Farmer (docs) + Popper (docs) + Lot (photos)</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 3: Domain Components)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
+            <tr><td><strong>AddressForm</strong></td><td>Composed: street + city + district + zip</td><td>address, onChange, error</td><td>Farmer (5x), Popper (2x), Pond Inspection</td></tr>
+            <tr><td><strong>PhotoGrid</strong></td><td>Display uploaded photos with delete action</td><td>photos[], onDelete, maxPhotos</td><td>Farmer, Popper, Lot Inspection, Pond Inspection</td></tr>
+            <tr><td><strong>DocumentUpload</strong></td><td>Manages photo/doc upload with preview</td><td>label, onSelect, maxSize, documentType</td><td>Farmer Docs, Popper Docs, Lot Reference Samples</td></tr>
+            <tr><td><strong>LocationPicker</strong></td><td>Google Maps integration for GPS + radius</td><td>onLocationSelect, onRadiusChange, initialLocation</td><td>Farmer (pond geofencing), Popper (warehouse), Lot (pickup)</td></tr>
+            <tr><td><strong>StatusBadge</strong></td><td>Display status with color coding</td><td>status, size</td><td>All list screens, detail screens</td></tr>
+            <tr><td><strong>GradeDisplay</strong></td><td>Show producible grades with icons</td><td>grades[], interactive</td><td>Popper (popping capability), Lot (grades)</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Farmer Registration Screen Decomposition</h4>
+          <div class="backend-info-box">
+            <strong>Step 1: Intro & Consent</strong><br>
+            &nbsp;├─ TopAppBar (title="Register a Farmer")<br>
+            &nbsp;├─ HeroCard (icon="person", title="Create Farmer Profile")<br>
+            &nbsp;├─ CheckboxInput (consent checkbox)<br>
+            &nbsp;└─ CTAFooter (Continue, Save Draft)
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 2: Mobile Verification</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (1/12)<br>
+            &nbsp;├─ HeroCard (icon="phone")<br>
+            &nbsp;├─ PhoneInput (mobile number)<br>
+            &nbsp;├─ OTPEntrySheet (modal overlay)<br>
+            &nbsp;│&nbsp;├─ TextInput (6-digit OTP)<br>
+            &nbsp;│&nbsp;└─ Timer (60 sec cooldown)<br>
+            &nbsp;└─ CTAFooter
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 3: Farmer Identity</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (3/12)<br>
+            &nbsp;├─ HeroCard (icon="id_card")<br>
+            &nbsp;├─ TextInput (full name)<br>
+            &nbsp;├─ DatePickerInput (DOB)<br>
+            &nbsp;├─ SelectInput (district dropdown)<br>
+            &nbsp;└─ CTAFooter
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 5–6: Address Forms</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel<br>
+            &nbsp;├─ HeroCard<br>
+            &nbsp;├─ AddressForm (composed)<br>
+            &nbsp;│&nbsp;├─ TextInput (street)<br>
+            &nbsp;│&nbsp;├─ TextInput (city)<br>
+            &nbsp;│&nbsp;├─ SelectInput (district)<br>
+            &nbsp;│&nbsp;└─ TextInput (pincode)<br>
+            &nbsp;└─ CTAFooter
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 7: Pond Ownership Documents</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (7/12)<br>
+            &nbsp;├─ HeroCard (icon="document")<br>
+            &nbsp;├─ DocumentUpload (multiple, max 3)<br>
+            &nbsp;├─ PhotoGrid (preview uploaded docs)<br>
+            &nbsp;└─ CTAFooter
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 9: GPS & Geofencing</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (9/12)<br>
+            &nbsp;├─ HeroCard (icon="location")<br>
+            &nbsp;├─ LocationPicker (Google Maps)<br>
+            &nbsp;│&nbsp;├─ Latitude input<br>
+            &nbsp;│&nbsp;├─ Longitude input<br>
+            &nbsp;│&nbsp;└─ Radius slider (50–500m)<br>
+            &nbsp;└─ CTAFooter
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 10: Bank Account</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (10/12)<br>
+            &nbsp;├─ HeroCard (icon="account_balance")<br>
+            &nbsp;├─ TextInput (account holder name)<br>
+            &nbsp;├─ TextInput (account number)<br>
+            &nbsp;├─ TextInput (IFSC code)<br>
+            &nbsp;└─ CTAFooter (Verify → Penny-drop)
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">State Management Pattern</h4>
+          <div class="backend-code-block">// Context Hook (src/contexts/FarmerRegistrationContext.ts)
+type FarmerRegistrationState = {
+  step: number;
+  consent: boolean;
+  mobile: string;
+  identity: { fullName, dob, district };
+  address: { street, city, district, pincode };
+  pond: { area, unit, legalDoc, ownership };
+  pondAddress: { street, city, district, pincode };
+  geofence: { lat, lng, radius };
+  bank: { holder, account, ifsc };
+  errors: Record<string, string>;
+};
+
+// Provider wraps entire wizard
+&lt;FarmerRegistrationProvider&gt;
+  &lt;Step1 /&gt;
+  &lt;Step2 /&gt;
+  ...
+&lt;/FarmerRegistrationProvider&gt;
+
+// Components access via hook
+const { state, updateField, setError } = useFarmerRegistration();</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Component Reuse Matrix</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Farmer Reg</th><th>Popper Reg</th><th>Lot Verify</th><th>Pond Insp</th><th>Others</th></tr>
+            <tr><td>TopAppBar</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓ (18/20)</td></tr>
+            <tr><td>StepperPanel</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>✓ (6/20)</td></tr>
+            <tr><td>TextInput</td><td>✓ (8)</td><td>✓ (10)</td><td>✓ (2)</td><td>✓ (1)</td><td>✓ (12/20)</td></tr>
+            <tr><td>PhoneInput</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>✓ (8/20)</td></tr>
+            <tr><td>AddressForm</td><td>✓ (2)</td><td>✓ (1)</td><td>✗</td><td>✓ (1)</td><td>✓ (9/20)</td></tr>
+            <tr><td>PhotoGrid</td><td>✓</td><td>✓</td><td>✓ (5)</td><td>✓ (4)</td><td>✓ (16/20)</td></tr>
+            <tr><td>LocationPicker</td><td>✓ (1)</td><td>✓ (1)</td><td>✓ (1)</td><td>✗</td><td>✓ (8/20)</td></tr>
+            <tr><td>DocumentUpload</td><td>✓ (1)</td><td>✓ (2)</td><td>✓ (1)</td><td>✗</td><td>✓ (9/20)</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Code Organization</h4>
+          <div class="backend-code-block">src/
+├── components/
+│   ├── atoms/                    // Reusable input primitives
+│   │   ├── TextInput.tsx         // Used in all 20 workflows
+│   │   ├── PhoneInput.tsx        // Used in 8 workflows
+│   │   ├── DatePickerInput.tsx   // Used in 6 workflows
+│   │   ├── SelectInput.tsx       // Used in 12 workflows
+│   │   └── ...
+│   ├── molecules/                // Composed form groups
+│   │   ├── AddressForm.tsx       // Used in 9 workflows
+│   │   ├── PhotoGrid.tsx         // Used in 16 workflows
+│   │   ├── DocumentUpload.tsx    // Used in 9 workflows
+│   │   └── ...
+│   ├── organisms/                // Complete form sections
+│   │   ├── IdentitySection.tsx   // Farmer registration
+│   │   ├── AddressSection.tsx    // Farmer + Popper
+│   │   ├── BankSection.tsx       // Farmer + Popper
+│   │   └── ...
+│   ├── templates/                // Full screens
+│   │   ├── RegistrationScreen.tsx     // Wizard base
+│   │   ├── VerificationScreen.tsx     // Lot + Pond
+│   │   └── ...
+│   └── layouts/                  // Global layout
+│       ├── TopAppBar.tsx         // Header
+│       ├── StepperPanel.tsx      // Progress
+│       ├── CTAFooter.tsx         // Actions
+│       └── ScreenLayout.tsx      // Container
+├── contexts/
+│   ├── FarmerRegistrationContext.tsx
+│   ├── PopperRegistrationContext.tsx
+│   ├── LotVerificationContext.tsx
+│   └── ...
+└── hooks/
+    ├── useFarmerRegistration.ts
+    ├── useFormValidation.ts
+    ├── usePhotoUpload.ts
+    └── ...</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <ul class="backend-list">
+            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces for props</li>
+            <li><strong>✓ Error Handling:</strong> All inputs display errors consistently (red border + error message below)</li>
+            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md) not hardcoded px</li>
+            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main) from root design system</li>
+            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas (shared-types)</li>
+            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes for complex components</li>
+            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
+            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components immediately</li>
+            <li><strong>✓ Variant Props:</strong> Use variant/size/state props, not separate components (e.g., Button variant="primary" | "secondary")</li>
+            <li><strong>✓ No Local State:</strong> Business logic state lives in Context, component state only for transient UI (hover, focus, sheet open/closed)</li>
+          </ul>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+          <div class="backend-info-box">
+            <strong>When to Create a New Component:</strong><br>
+            ✓ Logic/JSX repeats 2+ times across workflows<br>
+            ✓ Component is testable in isolation<br>
+            ✓ Component has clear, single responsibility<br>
+            ✗ Component is used in only 1 workflow (inline it)<br>
+            ✗ Component is just a styling wrapper (use CSS utility classes instead)
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Common Components Shared Across Farmer + Popper + Others:</strong><br>
+            • TopAppBar (header in all 20 workflows)<br>
+            • TextInput (8x farmer, 10x popper, 2x lot, 1x pond = 21 uses)<br>
+            • AddressForm (2x farmer, 1x popper, 1x pond = 4+ uses)<br>
+            • PhotoGrid (farmer docs, popper docs, lot photos, pond photos)<br>
+            • LocationPicker (farmer pond GPS, popper warehouse, lot pickup point)<br>
+            • DocumentUpload (farmer ownership, popper ownership, lot reference samples)<br>
+            • SelectInput (farmer language, popper equipment, lot grade selection, others)
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Reference Implementation:</strong><br>
+            See COMPONENT_ARCHITECTURE_GUIDE.md for detailed specs of all 40+ shared components<br>
+            across 20 Scout workflows, with variants, props, and cross-workflow usage matrix.
+          </div>
         </div>
 
         <!-- TAB: Database Schema -->
