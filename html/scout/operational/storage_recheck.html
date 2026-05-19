@@ -328,8 +328,8 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>initStorageRecheck</strong> — Fetches active <code>lot_seals</code>, details remaining shelf-life, and queries historical quality logs.</li>
-            <li><strong>submitStorageRecheckOutcome</strong> — Atomic transaction executing:
+            <li><strong>scout.storage.initRecheck</strong> — Fetches active <code>lot_seals</code>, details remaining shelf-life, and queries historical quality logs.</li>
+            <li><strong>scout.storage.submitRecheckOutcome</strong> — Atomic transaction executing:
               <br>1. Inserts <code>storage_rechecks</code> row (status check details).
               <br>2. Conditionally inserts <code>warehouse_storage_failures</code> if outcome is non-clean.
               <br>3. Mutates <code>lot_seals.status</code> (broken, voided, etc.) and updates parent <code>lots.status</code>.
@@ -347,8 +347,8 @@
   lot_seal_id          UUID NOT NULL REFERENCES lot_seals(id),
   lot_id               UUID NOT NULL REFERENCES lots(id),
   warehouse_id         UUID NOT NULL REFERENCES warehouses(id),
-  popper_id            UUID NOT NULL REFERENCES poppers(id),
-  scout_id             UUID NOT NULL REFERENCES scouts(id),
+  popper_id            UUID NOT NULL REFERENCES users(id),
+  scout_id             UUID NOT NULL REFERENCES users(id),
   task_id              UUID REFERENCES scout_tasks(id),
   recheck_trigger      TEXT NOT NULL CHECK (recheck_trigger IN ('half_life','anomaly_report')),
   seal_id_match        BOOLEAN NOT NULL,
@@ -378,6 +378,18 @@ CREATE INDEX idx_srk_seal ON storage_rechecks (lot_seal_id);</div>
   failure_outcome      TEXT NOT NULL,    -- 'void'|'route_reinspection'|'terminal'
   created_at           TIMESTAMPTZ NOT NULL DEFAULT now()
 );</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Scouts only access storage rechecks for their assigned warehouses
+CREATE POLICY scout_storage_recheck_scope ON storage_rechecks
+  USING (
+    warehouse_id IN (
+      SELECT warehouse_id FROM scout_assignments_warehouses
+      WHERE scout_id = current_user_id() AND active = true
+    )
+  );
+CREATE POLICY scout_storage_recheck_write ON storage_rechecks
+  FOR INSERT WITH CHECK (scout_id = current_user_id());</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->

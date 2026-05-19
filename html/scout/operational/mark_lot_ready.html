@@ -328,8 +328,10 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>initProxyFulfillment</strong> — Protected. Fetches active <code>purchase_orders</code> locked in production state for target farmers.</li>
-            <li><strong>markLotReady</strong> — Protected. Atomic mutator. Set PO state to <code>ready</code>, populates bagging metrics, logs photos, and inserts <code>lot_ready_events</code> rows.</li>
+            <li><strong>scout.lot.initProxyFulfillment</strong> — Protected. Fetches active <code>purchase_orders</code> locked in production state for target farmers.</li>
+            <li><strong>scout.lot.markReady</strong> — Protected. Atomic mutator. Set PO state to <code>ready</code>, populates bagging metrics, logs photos, and inserts <code>lot_ready_events</code> rows.</li>
+            <li><strong>scout.media.getUploadUrl</strong> — Protected. Issues a short-lived Cloudflare R2 presigned POST URL for direct photo upload from the mobile device. Returns <code>{ uploadUrl, fileKey }</code>.</li>
+            <li><strong>scout.media.confirmUpload</strong> — Protected. Registers the uploaded R2 file key and content hash into <code>lot_photos</code> after client confirms successful upload.</li>
           </ul>
         </div>
 
@@ -341,7 +343,7 @@
           <div class="backend-code-block">CREATE TABLE lot_ready_events (
   id                       UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   po_id                    UUID NOT NULL REFERENCES purchase_orders(id),
-  farmer_id                UUID NOT NULL REFERENCES farmers(id),
+  farmer_id                UUID NOT NULL REFERENCES users(id),
   bagged_quantity_kg       INT NOT NULL,
   bag_count                INT NOT NULL,
   marked_ready_at          TIMESTAMPTZ NOT NULL,
@@ -360,6 +362,18 @@ CREATE INDEX idx_lre_po ON lot_ready_events (po_id);</div>
   uploaded_at           TIMESTAMPTZ NOT NULL,
   uploaded_by_user_id   UUID NOT NULL REFERENCES users(id)
 );</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Proxy fulfillment: scout must be assigned to the lot's warehouse
+CREATE POLICY scout_lot_ready_write ON lot_ready_events
+  FOR INSERT WITH CHECK (
+    declared_by_scout_id = current_user_id()
+    AND lot_id IN (
+      SELECT l.id FROM lots l
+      JOIN scout_assignments_warehouses sa ON l.warehouse_id = sa.warehouse_id
+      WHERE sa.scout_id = current_user_id() AND sa.active = true
+    )
+  );</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->

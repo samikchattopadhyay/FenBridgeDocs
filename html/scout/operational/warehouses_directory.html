@@ -189,7 +189,7 @@
       <div class="tab-section">
         <div class="tab-section-title">Warehouse List API</div>
         <div class="tab-section-content">
-          <strong>Procedure:</strong> scout.getWarehouseList(filters, searchQuery, sortBy)<br>
+          <strong>Procedure:</strong> scout.warehouse.listAssigned(filters, searchQuery, sortBy)<br>
           <strong>Input:</strong> filter chips (Fit/Unfit/Unchecked/HasActiveLots), search string (popper name / warehouse code / area), sort order (byName/byRecentActivity/byFitnessStatus)<br>
           <strong>Output:</strong> List of warehouses with popper name, code, location, fitness status pill, active sealed lot count, open-issue flag<br>
           <strong>Cache:</strong> Returns from local cache first; real-time subscription updates live when online<br>
@@ -199,7 +199,7 @@
       <div class="tab-section">
         <div class="tab-section-title">Warehouse Detail API</div>
         <div class="tab-section-content">
-          <strong>Procedure:</strong> scout.getWarehouseDetail(warehouseId)<br>
+          <strong>Procedure:</strong> scout.warehouse.getDetail(warehouseId)<br>
           <strong>Output:</strong> Four tabs: Profile (identity + GPS), Fitness (check history), Lots (grouped by status), Failures (storage-failure roll-up)<br>
           <strong>Profile Tab:</strong> warehouses + poppers joined, GPS map preview, last seal date, last re-check date<br>
           <strong>Fitness Tab:</strong> warehouse_fitness_checks ordered by checked_at DESC, verdict pill, scout name, critical-failure marker<br>
@@ -211,7 +211,7 @@
       <div class="tab-section">
         <div class="tab-section-title">Lot Detail API</div>
         <div class="tab-section-content">
-          <strong>Procedure:</strong> scout.getLotDetail(lotId)<br>
+          <strong>Procedure:</strong> scout.warehouse.getLotDetail(lotId)<br>
           <strong>Output:</strong> Single lot's full record — header card with lot code, popper, warehouse, current status banner (colour-coded by lifecycle state), then stacked sections: Summary, Inspection Timeline, Current Seal, Re-check Log, Documents<br>
           <strong>Inspection Timeline:</strong> inspections WHERE lot_id=? ORDER BY checked_at ASC, including reinspection_seq > 0<br>
           <strong>Current Seal:</strong> lot_seals WHERE lot_id=? AND status='active', with past seals (expired/broken/voided) under "Past seals" expander<br>
@@ -248,15 +248,15 @@ CREATE INDEX idx_warehouses_scout_assigned ON warehouses (id) WHERE status = 'ac
       </div>
       <div class="tab-section">
         <div class="tab-section-title">Scout Assignments (Warehouses)</div>
-        <div class="sql-block">CREATE TABLE scout_assignments (
+        <div class="sql-block">CREATE TABLE scout_assignments_warehouses (
   id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  scout_id     UUID NOT NULL REFERENCES scouts(id),
+  scout_id     UUID NOT NULL REFERENCES users(id),
   warehouse_id UUID NOT NULL REFERENCES warehouses(id),
   assigned_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
   active       BOOLEAN NOT NULL DEFAULT true,
   UNIQUE (scout_id, warehouse_id)
 );
-CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
+CREATE INDEX idx_saw_scout ON scout_assignments_warehouses (scout_id, active);</div>
       </div>
       <div class="tab-section">
         <div class="tab-section-title">Warehouse Fitness Checks & Related Tables</div>
@@ -271,7 +271,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
           <strong>Search:</strong> Fuzzy match on local cache first (popper name, warehouse code, village/area), then server-side parallel<br>
           <strong>Filter Chips:</strong> Multi-select allowed (All / Fit / Unfit / Unchecked / Has active lots)<br>
           <strong>Sort:</strong> By name (default) / by recent activity / by fitness status<br>
-          <strong>Scope Validation:</strong> Scout sees only warehouses in scout_assignments with active=true; Admin bypass enforced server-side
+          <strong>Scope Validation:</strong> Scout sees only warehouses in scout_assignments_warehouses with active=true; Admin bypass enforced server-side
         </div>
       </div>
       <div class="tab-section">
@@ -285,7 +285,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
       <div class="tab-section">
         <div class="tab-section-title">Lot Detail Access</div>
         <div class="tab-section-content">
-          <strong>Permission:</strong> Scout must have warehouse_id matching lot.warehouse_id via scout_assignments<br>
+          <strong>Permission:</strong> Scout must have warehouse_id matching lot.warehouse_id via scout_assignments_warehouses<br>
           <strong>Read-only:</strong> All tabs are read-only; only deep-links to originating inspection/re-check records if those are tappable<br>
           <strong>Error:</strong> If lot not found or warehouse not assigned: 404 Not Found
         </div>
@@ -343,7 +343,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
   <div class="workflow-overview">
     <div class="overview-title">Workflow Overview</div>
     <div class="overview-text">
-      Warehouses Directory is the scout's primary browse interface for all warehouses assigned to them. The workflow provides search and filtering capabilities to locate specific warehouses, view detailed profiles including GPS coordinates and linked popper information, browse complete fitness check history with pass/fail verdicts, examine all lots currently held (grouped by status), and review storage-failure patterns. Scout can initiate a fresh warehouse fitness check directly from Warehouse Detail. Scope is enforced server-side — scouts see only warehouses assigned via scout_assignments. The directory mirrors the Pond List/Detail pattern for consistency with existing pond management flows. Every lot visible in the Lots tab links through to a comprehensive Lot Detail screen showing the full lifecycle history from inspection through sealing, re-checks, and any closure.
+      Warehouses Directory is the scout's primary browse interface for all warehouses assigned to them. The workflow provides search and filtering capabilities to locate specific warehouses, view detailed profiles including GPS coordinates and linked popper information, browse complete fitness check history with pass/fail verdicts, examine all lots currently held (grouped by status), and review storage-failure patterns. Scout can initiate a fresh warehouse fitness check directly from Warehouse Detail. Scope is enforced server-side — scouts see only warehouses assigned via scout_assignments_warehouses. The directory mirrors the Pond List/Detail pattern for consistency with existing pond management flows. Every lot visible in the Lots tab links through to a comprehensive Lot Detail screen showing the full lifecycle history from inspection through sealing, re-checks, and any closure.
     </div>
   </div>
 
@@ -383,7 +383,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
           </div>
           <div class="spec-block">
             <div class="spec-label">Technical Details</div>
-            <div class="spec-value">Loads via: SELECT * FROM warehouses w JOIN scout_assignments sa ON w.id = sa.warehouse_id WHERE sa.scout_id = ? (scope guard). Aggregates per warehouse: active_sealed_lot_count from lot_seals WHERE status='active', open_issue_flag if any lot_seals.status='broken' unresolved, recent warehouse_storage_failures, or fitness_status='unfit'. Search is local fuzzy match first, then server-side in parallel. Offline-first: list renders from cache; pull-to-refresh syncs. Real-time subscription on warehouses for scout's assigned set.</div>
+            <div class="spec-value">Loads via: SELECT * FROM warehouses w JOIN scout_assignments_warehouses sa ON w.id = sa.warehouse_id WHERE sa.scout_id = ? (scope guard). Aggregates per warehouse: active_sealed_lot_count from lot_seals WHERE status='active', open_issue_flag if any lot_seals.status='broken' unresolved, recent warehouse_storage_failures, or fitness_status='unfit'. Search is local fuzzy match first, then server-side in parallel. Offline-first: list renders from cache; pull-to-refresh syncs. Real-time subscription on warehouses for scout's assigned set.</div>
           </div>
           <div class="spec-block">
             <div class="spec-label">Design Details</div>
@@ -391,7 +391,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
           </div>
           <div class="spec-block">
             <div class="spec-label">Database Schema</div>
-            <div class="sql-block">CREATE TABLE scout_assignments (
+            <div class="sql-block">CREATE TABLE scout_assignments_warehouses (
   id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   scout_id     UUID NOT NULL REFERENCES scouts(id),
   warehouse_id UUID NOT NULL REFERENCES warehouses(id),
@@ -399,7 +399,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
   active       BOOLEAN NOT NULL DEFAULT true,
   UNIQUE (scout_id, warehouse_id)
 );
-CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
+CREATE INDEX idx_saw_scout ON scout_assignments_warehouses (scout_id, active);</div>
           </div>
         </div>
       </div>
@@ -488,7 +488,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
           </div>
           <div class="spec-block">
             <div class="spec-label">Technical Details</div>
-            <div class="spec-value">Hydrates from cached lots (header) + queries: Inspections timeline = inspections WHERE lot_id=? ORDER BY checked_at ASC (full chain including re-inspections where reinspection_seq > 0); Current seal = lot_seals WHERE lot_id=? AND status='active' LIMIT 1, with historical seals (status IN ('expired','broken','voided')) under "Past seals" expander; Re-check log = storage_rechecks WHERE lot_id=? ORDER BY checked_at ASC; Documents = grade_certificates WHERE lot_id=? (latest is primary, earlier archived); Closure (if any) = lot_closure_log WHERE lot_id=?. Each row deep-links to relevant detail surface, all read-only. Lifecycle state derived from lots.status + lot_seals.status + inspections.outcome — single computed banner in header. Real-time subscriptions on lot_seals and inspections. Fully offline (all details render from cache).</div>
+            <div class="spec-value">Hydrates from cached lots (header) + queries: Inspections timeline = inspections WHERE lot_id=? ORDER BY checked_at ASC (full chain including re-inspections where reinspection_seq > 0); Current seal = lot_seals WHERE lot_id=? AND status='active' LIMIT 1, with historical seals (status IN ('expired','broken','voided')) under "Past seals" expander; Re-check log = storage_rechecks WHERE lot_id=? ORDER BY checked_at ASC; Documents = grade_certificates WHERE lot_id=? (latest is primary, earlier archived); Closure state (if terminal) = derived from lots.status IN ('voided','expired','terminal') — no separate closure table; closing record resolved via final inspection or storage_rechecks row. Each row deep-links to relevant detail surface, all read-only. Lifecycle state derived from lots.status + lot_seals.status + inspections.outcome — single computed banner in header. Real-time subscriptions on lot_seals and inspections. Fully offline (all details render from cache).</div>
           </div>
           <div class="spec-block">
             <div class="spec-label">Design Details</div>
@@ -496,7 +496,7 @@ CREATE INDEX idx_sa_scout ON scout_assignments (scout_id, active);</div>
           </div>
           <div class="spec-block">
             <div class="spec-label">Database Schema</div>
-            <div class="spec-value">Read-only. Reads from: lots, lot_seals, inspections, storage_rechecks, grade_certificates, lot_closure_log (all existing tables). No new tables required. Deep-links to inspection/seal/closure detail surfaces via existing schema.</div>
+            <div class="spec-value">Read-only. Reads from: lots, lot_seals, inspections, storage_rechecks, grade_certificates (all existing tables). Closure state derived from lots.status — no separate closure table. No new tables required. Deep-links to inspection/seal/re-check detail surfaces via existing schema.</div>
           </div>
         </div>
         </div>

@@ -328,8 +328,8 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>initProxyBid</strong> — Protected. Fetches open buyer requirements, highlights active parameters, and pulls farmer profile coordinates.</li>
-            <li><strong>submitProxyBid</strong> — Protected. Atomic mutator. Inserts a new row in <code>bids</code> with <code>submitted_by_scout = true</code> and logs historical trail.</li>
+            <li><strong>scout.bid.initProxy</strong> — Protected. Fetches open buyer requirements, highlights active parameters, and pulls farmer profile coordinates.</li>
+            <li><strong>scout.bid.submitProxy</strong> — Protected. Atomic mutator. Inserts a new row in <code>bids</code> with <code>submitted_by_scout = true</code> and logs historical trail.</li>
           </ul>
         </div>
 
@@ -348,12 +348,22 @@
   dispatch_location   TEXT NOT NULL,
   status              TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','accepted','rejected','withdrawn')),
   submitted_by_scout  BOOLEAN NOT NULL DEFAULT true,
-  scout_id            UUID REFERENCES scouts(id),
+  scout_id            UUID REFERENCES users(id),
   created_at          TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE INDEX idx_bids_requirement ON bids (requirement_id);
 CREATE INDEX idx_bids_farmer ON bids (farmer_id);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Scout can only submit proxy bids for farmers in their zone
+CREATE POLICY scout_bid_proxy_write ON bids
+  FOR INSERT WITH CHECK (
+    submitted_by_scout_id = current_user_id()
+  );
+-- Bids are immutable once submitted
+CREATE POLICY bids_no_update ON bids
+  FOR UPDATE USING (false);</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->

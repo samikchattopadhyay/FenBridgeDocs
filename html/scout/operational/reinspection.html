@@ -329,8 +329,10 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>initReinspection</strong> — Protected. Fetches historical inspections lists, grabs preceding parameters, and loads locked specifications version.</li>
-            <li><strong>submitReinspection</strong> — Protected. Atomic multi-table write. Sets <code>reinspection_seq = prior.reinspection_seq + 1</code>. Writes new inspections row, child readings, and defects.</li>
+            <li><strong>scout.lot.initReinspection</strong> — Protected. Fetches historical inspections lists, grabs preceding parameters, and loads locked specifications version.</li>
+            <li><strong>scout.lot.submitReinspection</strong> — Protected. Atomic multi-table write. Sets <code>reinspection_seq = prior.reinspection_seq + 1</code>. Writes new inspections row, child readings, and defects.</li>
+            <li><strong>scout.media.getUploadUrl</strong> — Protected. Issues a short-lived Cloudflare R2 presigned POST URL for direct photo upload from the mobile device. Returns <code>{ uploadUrl, fileKey }</code>.</li>
+            <li><strong>scout.media.confirmUpload</strong> — Protected. Registers the uploaded file's R2 key and content hash into the relevant inspection photo record after client confirms successful upload.</li>
           </ul>
         </div>
 
@@ -356,6 +358,18 @@ CREATE TABLE inspection_parameter_readings (
   band            TEXT CHECK (band IN ('A','B','C','out')),
   spec_version    INT NOT NULL
 );</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Re-inspections inherit the same scope guard as initial inspections
+CREATE POLICY scout_reinspection_scope ON inspections
+  USING (
+    warehouse_id IN (
+      SELECT warehouse_id FROM scout_assignments_warehouses
+      WHERE scout_id = current_user_id() AND active = true
+    )
+  );
+-- Prior failing inspection is immutable — no UPDATE permitted for non-admin roles
+REVOKE UPDATE ON inspections FROM scout_role;</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->
@@ -417,7 +431,7 @@ CREATE TABLE inspection_parameter_readings (
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Fetches preceding <code>inspections</code> logs.</p><p>Outlines targeted failure codes (<code>e.g</code>.</p><p>moisture over tolerance) and notes compiled by prior <code>scouts</code>.</p></div>
+                  <div class="spec-value"><p>Fetches preceding <code>inspections</code> logs.</p><p>Outlines targeted failure codes (e.g. moisture over tolerance) and notes compiled by prior <code>scouts</code>.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
@@ -569,7 +583,7 @@ CREATE TABLE inspection_parameter_readings (
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Centered checkmark success banner.</p><p>Displays reinspection sequence details (<code>e.g</code>.</p><p>Sequence #1).</p><p>Shows color-coded verdict chips.</p><p>Primary solid button navigates back to list.</p></div>
+                  <div class="spec-value"><p>Centered checkmark success banner.</p><p>Displays reinspection sequence details (e.g. Sequence #1).</p><p>Shows color-coded verdict chips.</p><p>Primary solid button navigates back to list.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>

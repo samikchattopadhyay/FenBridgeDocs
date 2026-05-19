@@ -331,8 +331,10 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>initLotVerification</strong> — Fetches active cached lot specifications, locked grade configurations, and target warehouse fitness states.</li>
-            <li><strong>submitLotVerification</strong> — Protected procedure. Executes atomic multi-table write transaction. Inserts one <code>inspections</code> header, bulk inserts readings, defects, photos, and updates the child task states.</li>
+            <li><strong>scout.lot.initVerification</strong> — Fetches active cached lot specifications, locked grade configurations, and target warehouse fitness states.</li>
+            <li><strong>scout.lot.submitVerification</strong> — Protected. Executes atomic multi-table write transaction. Inserts one <code>inspections</code> header, bulk inserts readings, defects, photo path references, and updates child task states.</li>
+            <li><strong>scout.media.getUploadUrl</strong> — Protected. Issues a short-lived Cloudflare R2 presigned POST URL for direct photo upload from the mobile device. Returns <code>{ uploadUrl, fileKey }</code>.</li>
+            <li><strong>scout.media.confirmUpload</strong> — Protected. Registers the uploaded file's R2 key and content hash into the relevant inspection photo record after client confirms successful upload.</li>
           </ul>
         </div>
 
@@ -345,11 +347,12 @@
   id                    UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   lot_id                UUID NOT NULL REFERENCES lots(id),
   warehouse_id          UUID NOT NULL REFERENCES warehouses(id),
-  popper_id             UUID NOT NULL REFERENCES poppers(id),
-  scout_id              UUID NOT NULL REFERENCES scouts(id),
+  popper_id             UUID NOT NULL REFERENCES users(id),
+  scout_id              UUID NOT NULL REFERENCES users(id),
   task_id               UUID REFERENCES scout_tasks(id),
   related_po_id         UUID REFERENCES purchase_orders(id),
-  prior_inspection_id   UUID REFERENCES inspections(id),   -- for re-inspections
+  prior_inspection_id   UUID REFERENCES inspections(id),
+  reinspection_seq      INT NOT NULL DEFAULT 0,
   declared_quantity_kg  NUMERIC(10,2) NOT NULL,
   verified_quantity_kg  NUMERIC(10,2) NOT NULL,
   verified_bag_count    INT NOT NULL,
@@ -370,7 +373,8 @@
   synced_at             TIMESTAMPTZ
 );
 
-CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
+CREATE INDEX idx_insp_lot     ON inspections (lot_id, checked_at DESC);
+CREATE INDEX idx_insp_lineage ON inspections (prior_inspection_id, reinspection_seq);</div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">inspection_parameter_readings (Quality Metrics)</h4>
           <div class="backend-code-block">CREATE TABLE inspection_parameter_readings (
@@ -383,6 +387,32 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
   band            TEXT CHECK (band IN ('A','B','C','out')),
   spec_version    INT NOT NULL
 );</div>
+        </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Scouts see only inspections for their assigned warehouses
+CREATE POLICY scout_inspections_scope ON inspections
+  USING (
+    warehouse_id IN (
+      SELECT warehouse_id FROM scout_assignments_warehouses
+      WHERE scout_id = current_user_id() AND active = true
+    )
+  );
+CREATE POLICY scout_inspections_own_write ON inspections
+  FOR INSERT WITH CHECK (scout_id = current_user_id());</div>
+        </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Scouts see only inspections for their assigned warehouses
+CREATE POLICY scout_inspections_scope ON inspections
+  USING (
+    warehouse_id IN (
+      SELECT warehouse_id FROM scout_assignments_warehouses
+      WHERE scout_id = current_user_id() AND active = true
+    )
+  );
+CREATE POLICY scout_inspections_own_write ON inspections
+  FOR INSERT WITH CHECK (scout_id = current_user_id());</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->
@@ -408,7 +438,7 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
           <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
           <ul class="backend-list">
             <li><strong>RLS Access Policies:</strong> Scouts are constrained to operate only on lots housed within their geographical assignments.</li>
-            <li><strong>Storage Protection:</strong> Camera photos compress client-side and upload directly to secure, authenticated Supabase buckets.</li>
+            <li><strong>Storage Protection:</strong> Camera photos are compressed client-side (WebP, target &lt;400KB) and uploaded directly to Cloudflare R2 via short-lived presigned POST URLs obtained from <code>scout.media.getUploadUrl</code>. EXIF GPS metadata is preserved for field inspection photos; stripped from identity document captures.</li>
           </ul>
         </div>
       </div>
@@ -563,7 +593,7 @@ CREATE INDEX idx_insp_lot ON inspections (lot_id, checked_at DESC);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Compresses files to &le; 1.5MB.</p><p>Stamps GPS metadata.</p><p>Uploads to Supabase storage buckets.</p></div>
+                  <div class="spec-value"><p>Compresses files to &le; 1.5MB.</p><p>Stamps GPS metadata.</p><p>Uploads photos directly to Cloudflare R2 via presigned POST URLs obtained from <code>scout.media.getUploadUrl</code>. EXIF GPS metadata preserved.</p></div>
                 </div>
               </div>
             </div>

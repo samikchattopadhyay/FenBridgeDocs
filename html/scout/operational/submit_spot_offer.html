@@ -329,9 +329,9 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>initProxySpotOffer</strong> — Protected. Fetches assigned farmers list and queries corresponding active pond indices.</li>
-            <li><strong>getScoutAvailability</strong> — Protected. Computes available inspection calendar slots based on district calendars and travel distances.</li>
-            <li><strong>submitProxySpotOffer</strong> — Protected. Atomic mutator. Inserts a new row in <code>spot_listings</code>, initializes a child <code>lots</code> row, and logs a scheduled <code>visit_schedules</code> event.</li>
+            <li><strong>scout.spotOffer.initProxy</strong> — Protected. Fetches assigned farmers list and queries corresponding active pond indices.</li>
+            <li><strong>scout.spotOffer.getAvailability</strong> — Protected. Computes available inspection calendar slots based on district calendars and travel distances.</li>
+            <li><strong>scout.spotOffer.submitProxy</strong> — Protected. Atomic mutator. Inserts a new row in <code>spot_listings</code>, initializes a child <code>lots</code> row, and logs a scheduled <code>visit_schedules</code> event.</li>
           </ul>
         </div>
 
@@ -342,9 +342,9 @@
           <h4 class="backend-section-title" style="font-size: 14px;">spot_listings (Market Registry Header)</h4>
           <div class="backend-code-block">CREATE TABLE spot_listings (
   id                       UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  farmer_id                UUID NOT NULL REFERENCES farmers(id),
+  farmer_id                UUID NOT NULL REFERENCES users(id),
   lot_id                   UUID NOT NULL REFERENCES lots(id),
-  scout_id                 UUID REFERENCES scouts(id),
+  scout_id                 UUID REFERENCES users(id),
   status                   TEXT NOT NULL DEFAULT 'pending_verification' CHECK (status IN ('pending_verification','listed','reserved','sold','cancelled')),
   scout_visit_scheduled_at TIMESTAMPTZ NOT NULL,
   estimated_parameters     JSONB NOT NULL,
@@ -357,14 +357,22 @@ CREATE INDEX idx_spot_listings_status ON spot_listings (status);</div>
           <h4 class="backend-section-title" style="font-size: 14px;">visit_schedules (Audit Verification Booking)</h4>
           <div class="backend-code-block">CREATE TABLE visit_schedules (
   id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  farmer_id         UUID NOT NULL REFERENCES farmers(id),
-  scout_id          UUID NOT NULL REFERENCES scouts(id),
+  farmer_id         UUID NOT NULL REFERENCES users(id),
+  scout_id          UUID NOT NULL REFERENCES users(id),
   pond_id           UUID REFERENCES ponds(id),
   scheduled_for     TIMESTAMPTZ NOT NULL,
   purpose           TEXT NOT NULL CHECK (purpose IN ('pond_inspection','lot_verification','seal_application')),
   status            TEXT NOT NULL DEFAULT 'scheduled' CHECK (status IN ('scheduled','in_progress','completed','cancelled')),
   spot_listing_id   UUID REFERENCES spot_listings(id)
 );</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Scout can only submit spot offers
+CREATE POLICY scout_spot_offer_write ON spot_listings
+  FOR INSERT WITH CHECK (scout_id = current_user_id());
+-- Visit schedules visible only to the assigned scout
+CREATE POLICY scout_visit_schedules_scope ON visit_schedules
+  USING (scout_id = current_user_id());</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->

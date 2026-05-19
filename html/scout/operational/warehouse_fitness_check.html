@@ -330,8 +330,8 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>confirmWarehouseArrival</strong> — Protected. Checks scout coordinate distance to the popper warehouse profile. Returns arrival match validation.</li>
-            <li><strong>submitWarehouseFitnessVerdict</strong> — Protected. Atomic transaction executing:
+            <li><strong>scout.warehouse.confirmArrival</strong> — Protected. Checks scout coordinate distance to the popper warehouse profile. Returns arrival match validation.</li>
+            <li><strong>scout.warehouse.submitFitnessVerdict</strong> — Protected. Atomic transaction executing:
               <br>1. Insert <code>warehouse_fitness_checks</code> row (verdict outcome).
               <br>2. Bulk insert <code>warehouse_fitness_items</code> (checklist details).
               <br>3. Bulk insert <code>warehouse_fitness_photos</code> (media references).
@@ -346,16 +346,20 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">warehouse_fitness_checks (Header Table)</h4>
           <div class="backend-code-block">CREATE TABLE warehouse_fitness_checks (
-  id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  scout_id       UUID NOT NULL REFERENCES scouts(id),
-  warehouse_id   UUID NOT NULL REFERENCES warehouses(id),
-  checked_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
-  check_type     TEXT NOT NULL CHECK (check_type IN ('initial','periodic')),
-  gps_lat        NUMERIC(9,6) NOT NULL,
-  gps_lng        NUMERIC(9,6) NOT NULL,
-  gps_accuracy_m NUMERIC(4,1) NOT NULL,
-  verdict        TEXT NOT NULL CHECK (verdict IN ('fit','unfit')),
-  notes          TEXT
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  scout_id          UUID NOT NULL REFERENCES users(id),
+  warehouse_id      UUID NOT NULL REFERENCES warehouses(id),
+  checked_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  check_type        TEXT NOT NULL CHECK (check_type IN ('initial','periodic')),
+  gps_lat           NUMERIC(9,6) NOT NULL,
+  gps_lng           NUMERIC(9,6) NOT NULL,
+  gps_accuracy_m    NUMERIC(4,1) NOT NULL,
+  humidity_pct      NUMERIC(5,2),
+  temperature_c     NUMERIC(4,1),
+  cleanliness_score SMALLINT CHECK (cleanliness_score BETWEEN 1 AND 10),
+  pest_control_ok   BOOLEAN,
+  verdict           TEXT NOT NULL CHECK (verdict IN ('fit','unfit')),
+  notes             TEXT
 );
 
 CREATE INDEX idx_wfc_warehouse ON warehouse_fitness_checks (warehouse_id, checked_at DESC);</div>
@@ -378,6 +382,18 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
   photo_url        TEXT NOT NULL,
   caption          TEXT
 );</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Scouts only access fitness checks for their assigned warehouses
+CREATE POLICY scout_fitness_check_scope ON warehouse_fitness_checks
+  USING (
+    warehouse_id IN (
+      SELECT warehouse_id FROM scout_assignments_warehouses
+      WHERE scout_id = current_user_id() AND active = true
+    )
+  );
+CREATE POLICY scout_fitness_check_write ON warehouse_fitness_checks
+  FOR INSERT WITH CHECK (scout_id = current_user_id());</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->
@@ -394,7 +410,7 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
           <table class="backend-table">
             <tr><th>Status</th><th>Error Code</th><th>Triggering Event / Condition</th></tr>
             <tr><td>403</td><td>WAREHOUSE_GEO_FENCE_VIOLATION</td><td>Distance between current scout coordinates and registered warehouse &gt; 50 meters</td></tr>
-            <tr><td>400</td><td>WEAK_GPS_SIGNAL</td><td>Scout coordinate lock accuracy &gt; 15 meters</td></tr>
+            <tr><td>400</td><td>WEAK_GPS_SIGNAL</td><td>Scout coordinate lock accuracy &gt; 100 meters (50m ideal; 50–100m triggers warning)</td></tr>
             <tr><td>422</td><td>INCOMPLETE_FITNESS_CHECKLIST</td><td>Missing results on one or more mandatory checklist items</td></tr>
           </table>
         </div>
@@ -413,7 +429,7 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
           <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
           <ul class="backend-list">
             <li>Scouts only have access to warehouses assigned to their active operational zones.</li>
-            <li>Camera files are processed client-side and saved to Supabase Storage utilizing pre-signed secure POST URLs.</li>
+            <li>Camera files are compressed client-side (WebP, target &lt;400KB) and uploaded directly to Cloudflare R2 via short-lived presigned POST URLs obtained from <code>scout.media.getUploadUrl</code>.</li>
           </ul>
         </div>
       </div>
@@ -449,7 +465,7 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Verifies mobile GPS coordinates within 50 meters of the warehouse location, locking accuracy at under 15 meters.</div>
+                  <div class="spec-value">Verifies mobile GPS coordinates within 50 meters of the warehouse location. Accuracy thresholds: ≤50m = ideal (unlocks); 50–100m = warning (proceeds with caution); &gt;100m = error (blocks).</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
@@ -568,7 +584,7 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Invokes <code>submitWarehouseFitnessVerdict</code> procedure.</p><p>Automatically updates the parent <code><code>warehouses.fitness_status</code></code> column.</p><p>On database failure, rolls back all updates.</p></div>
+                  <div class="spec-value"><p>Invokes <code>submitWarehouseFitnessVerdict</code> procedure.</p><p>Automatically updates the parent <code>warehouses.fitness_status</code> column.</p><p>On database failure, rolls back all updates.</p></div>
                 </div>
               </div>
             </div>
@@ -597,7 +613,7 @@ CREATE INDEX idx_wfi_check ON warehouse_fitness_items (fitness_check_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Generates and displays unique audit check code (<code>e.g</code>.</p><p><code>#WFC-1882</code>) and confirms local database task completions.</p></div>
+                  <div class="spec-value"><p>Generates and displays unique audit check code (e.g. <code>#WFC-1882</code>) and confirms local database task completions.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>

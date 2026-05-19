@@ -330,8 +330,10 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>initSealApplication</strong> — Protected. Fetches lot details, latest inspection findings, downgrade consent statuses, and geofence parameters.</li>
-            <li><strong>submitSealRecord</strong> — Protected. Atomic multi-table write committing <code>lot_seals</code>, bulk <code>lot_seal_photos</code>, bulk <code>lot_seal_storage_items</code>, and updating the parent <code>lots</code> status and GC seal reference.</li>
+            <li><strong>scout.seal.initApplication</strong> — Protected. Fetches lot details, latest inspection findings, downgrade consent statuses, and geofence parameters.</li>
+            <li><strong>scout.seal.submitRecord</strong> — Protected. Atomic multi-table write committing <code>lot_seals</code>, bulk <code>lot_seal_photos</code>, bulk <code>lot_seal_storage_items</code>, and updating the parent <code>lots</code> status and GC seal reference.</li>
+            <li><strong>scout.media.getUploadUrl</strong> — Protected. Issues a short-lived Cloudflare R2 presigned POST URL for direct photo upload from the mobile device. Returns <code>{ uploadUrl, fileKey }</code>.</li>
+            <li><strong>scout.media.confirmUpload</strong> — Protected. Registers the uploaded file's R2 key and content hash into <code>lot_seal_photos</code> after client confirms successful upload.</li>
           </ul>
         </div>
 
@@ -347,8 +349,8 @@
   inspection_id      UUID NOT NULL REFERENCES inspections(id),
   cert_id            UUID REFERENCES grade_certificates(id),
   warehouse_id       UUID NOT NULL REFERENCES warehouses(id),
-  popper_id          UUID NOT NULL REFERENCES poppers(id),
-  scout_id           UUID NOT NULL REFERENCES scouts(id),
+  popper_id          UUID NOT NULL REFERENCES users(id),
+  scout_id           UUID NOT NULL REFERENCES users(id),
   task_id            UUID REFERENCES scout_tasks(id),
   net_applied        BOOLEAN NOT NULL DEFAULT true,
   sealed_lat         NUMERIC(9,6) NOT NULL,
@@ -373,6 +375,20 @@ CREATE INDEX idx_lotseals_status ON lot_seals (status, expires_at);</div>
   storage_path  TEXT NOT NULL,
   captured_at   TIMESTAMPTZ NOT NULL
 );</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Only assigned scouts can insert seal records for their warehouses
+CREATE POLICY scout_seal_own_write ON lot_seals
+  FOR INSERT WITH CHECK (
+    scout_id = current_user_id()
+    AND warehouse_id IN (
+      SELECT warehouse_id FROM scout_assignments_warehouses
+      WHERE scout_id = current_user_id() AND active = true
+    )
+  );
+-- Block double-sealing at DB level
+CREATE UNIQUE INDEX idx_lotseals_active_lot ON lot_seals (lot_id)
+  WHERE status = 'active';</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->

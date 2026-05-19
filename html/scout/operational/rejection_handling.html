@@ -329,8 +329,8 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
           <ul class="backend-list">
-            <li><strong>getRejectionReport</strong> — Protected. Fetches failed parameter metrics, captured defect photos, and notes for a rejected lot.</li>
-            <li><strong>acknowledgeRejection</strong> — Protected. Invoked by poppers to record receipt of rejection notices. Mutates <code>lots.popper_acknowledged_at</code>.</li>
+            <li><strong>scout.rejection.getReport</strong> — Protected. Fetches failed parameter metrics, captured defect photos, and notes for a rejected lot.</li>
+            <li><strong>scout.rejection.acknowledge</strong> — Protected. Invoked by poppers to record receipt of rejection notices. Mutates <code>lots.popper_acknowledged_at</code>.</li>
           </ul>
         </div>
 
@@ -357,6 +357,16 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
           <div class="backend-code-block">ALTER TABLE lots 
   ADD COLUMN popper_acknowledged_at   TIMESTAMPTZ,
   ADD COLUMN popper_acknowledged_by   UUID REFERENCES users(id);</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Row-Level Security (RLS)</h4>
+          <div class="backend-code-block">-- Scouts can only insert closure records for lots they processed
+CREATE POLICY scout_closure_log_write ON lot_closure_log
+  FOR INSERT WITH CHECK (
+    closed_by_scout_id = current_user_id()
+  );
+-- Terminal closure records are immutable
+CREATE POLICY closure_log_no_update ON lot_closure_log
+  FOR UPDATE USING (false);</div>
         </div>
 
         <!-- TAB: Validation & Error Handling -->
@@ -415,7 +425,7 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Clearly illustrates the root reasons behind the failing grade.</p><p>Maps failing parameters (<code>e.g</code>.</p><p>moisture 18%) against specs.</p></div>
+                  <div class="spec-value"><p>Clearly illustrates the root reasons behind the failing grade.</p><p>Maps failing parameters (e.g. moisture 18%) against specs.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
@@ -448,11 +458,11 @@ CREATE INDEX idx_lcl_lot ON lot_closure_log (lot_id);</div>
               <div class="specs-grid">
                 <div class="spec-block full-width">
                   <div class="spec-label">Purpose</div>
-                  <div class="spec-value"><p>Guides poppers on fixing salvageable defects (<code>e.g</code>.</p><p>wet makhana needing drying).</p></div>
+                  <div class="spec-value"><p>Guides poppers on fixing salvageable defects (e.g. wet makhana needing drying).</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Issued for reconditionable defects only.</p><p>Details specific guidelines (<code>e.g</code>., dry to moisture &le; 12%).</p><p>Mutates lot state to <code>pending_reinspection</code> on popper acknowledgment.</p></div>
+                  <div class="spec-value"><p>Issued for reconditionable defects only.</p><p>Details specific guidelines (e.g., dry to moisture &le; 12%).</p><p>Mutates lot state to <code>pending_reinspection</code> on popper acknowledgment.</p></div>
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">User Experience (UX)</div>
