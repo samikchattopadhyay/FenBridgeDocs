@@ -23,25 +23,25 @@ Definitions:
 - **settings**: common = 5, custom = 0
 - **sync_info**: common = 2, custom = 4
 - **sync_queue**: common = 5, custom = 0
-- **task_detail**: common = 5, custom = 0
+- **task_detail**: common = 4, custom = 1
 - **today_s_tasks**: common = 5, custom = 0
 ## Workflow: dashboard.html
 - **overdue_tasks_screen**: common = 6, custom = 2
 - **scout_notifications**: common = 3, custom = 2
 - **scout_today_dashboard**: common = 6, custom = 4
 ## Workflow: farmer_registration.html
-- **bank_account_details**: common = 4, custom = 0
-- **farmer_identity**: common = 6, custom = 0
-- **intro_consent**: common = 4, custom = 0
-- **language_selection**: common = 4, custom = 0
-- **pond_address**: common = 6, custom = 0
-- **pond_details**: common = 6, custom = 0
-- **pond_documents**: common = 7, custom = 0
-- **pond_geo_fencing**: common = 5, custom = 0
-- **residential_address**: common = 5, custom = 0
-- **review_submit**: common = 7, custom = 0
+- **bank_account_details**: common = 5, custom = 0
+- **farmer_identity**: common = 7, custom = 0
+- **intro_consent**: common = 5, custom = 0
+- **language_selection**: common = 5, custom = 0
+- **pond_address**: common = 7, custom = 0
+- **pond_details**: common = 7, custom = 0
+- **pond_documents**: common = 8, custom = 0
+- **pond_geo_fencing**: common = 6, custom = 0
+- **residential_address**: common = 6, custom = 0
+- **review_submit**: common = 8, custom = 0
 - **submission_confirmation**: common = 5, custom = 1
-- **verify_mobile_send**: common = 6, custom = 0
+- **verify_mobile_send**: common = 8, custom = 0
 ## Workflow: index.html
 - **otp_login**: common = 7, custom = 1
 - **role_routing**: common = 3, custom = 0
@@ -76,21 +76,21 @@ Definitions:
 - **pond_inspection_record**: common = 2, custom = 2
 - **pond_list**: common = 4, custom = 1
 ## Workflow: popper_registration.html
-- **ancillary_equipment_optional**: common = 6, custom = 0
-- **business_address_details**: common = 7, custom = 0
-- **business_basic_details**: common = 4, custom = 1
-- **business_legal_documents**: common = 7, custom = 0
-- **contact_person_identity**: common = 6, custom = 0
-- **first_warehouse_address**: common = 7, custom = 0
-- **first_warehouse_details**: common = 5, custom = 1
-- **first_warehouse_geofencing**: common = 7, custom = 0
-- **popper_bank_account_details**: common = 6, custom = 0
-- **popper_intro_consent**: common = 4, custom = 0
-- **popper_language_selection**: common = 4, custom = 0
-- **popper_mobile_verification_send**: common = 6, custom = 0
-- **popper_review_submit**: common = 5, custom = 2
-- **popping_capability_profile_detailed_breakdown**: common = 8, custom = 0
-- **you_re_all_set**: common = 5, custom = 0
+- **ancillary_equipment_optional**: common = 6, custom = 1
+- **business_address_details**: common = 8, custom = 0
+- **business_basic_details**: common = 6, custom = 1
+- **business_legal_documents**: common = 8, custom = 0
+- **contact_person_identity**: common = 7, custom = 0
+- **first_warehouse_address**: common = 8, custom = 0
+- **first_warehouse_details**: common = 7, custom = 1
+- **first_warehouse_geofencing**: common = 8, custom = 0
+- **popper_bank_account_details**: common = 5, custom = 0
+- **popper_intro_consent**: common = 5, custom = 0
+- **popper_language_selection**: common = 5, custom = 0
+- **popper_mobile_verification_send**: common = 8, custom = 0
+- **popper_review_submit**: common = 6, custom = 2
+- **popping_capability_profile_detailed_breakdown**: common = 9, custom = 0
+- **you_re_all_set**: common = 4, custom = 1
 ## Workflow: reinspection.html
 - **confirm_lot_quantity_re_inspection**: common = 3, custom = 3
 - **defect_capture_re_inspection**: common = 5, custom = 2

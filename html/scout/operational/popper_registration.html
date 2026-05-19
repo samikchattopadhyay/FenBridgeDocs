@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Register Popper (Scout-Assisted)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scout Operations - Register Popper (Scout-Assisted)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg-base: #121212;
       --bg-surface: #18181b;
@@ -222,65 +223,58 @@
 </style>
 </head>
 <body>
-  <div class="address-bar">
-    <div class="address-bar-icon">📁</div>
-    <div class="address-bar-path" id="address-path">html/scout/operational/popper_registration.html</div>
-  </div>
-
-  <div class="content-wrapper">
-    <div class="header-banner">
-      <span class="tag">Scout Operations</span>
-      <h1 class="title">Register Popper (Scout-Assisted)</h1>
-      <p class="desc">Complete 15-step workflow for scout-assisted popper registration with business identity capture, warehouse equipment documentation, warehouse management, real-time mobile OTP verification, and admin approval queue.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 15-screen wizard including new popping capability profiling and ancillary equipment documentation. The scout sits with the popper (at their business/warehouse), explains the consent line, collects answers, captures business documents and warehouse photos, documents equipment specifications and capabilities, and submits. The popper's contact person's phone receives the OTP via bottom sheet overlay; scout reads it from the phone and enters it. On submit, the popper enters Pending Approval state and warehouse enters fitness check queue.</p>
-    </div>
-
-    <!-- COMMON COMPONENTS SECTION -->
-    <div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
-        <span style="font-size: 24px;">🔗</span>
-        <div>
-          <div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
-          <p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
-          <div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
-            <strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, StepperPanel, TextInput, PhoneInput, SelectInput, DatePickerInput, CheckboxInput, RadioGroup, FileUpload, AddressForm, PhotoGrid, DocumentUpload, LocationPicker, StatusBadge, CTAFooter, HeroCard, ScreenLayout, EquipmentGrid
+<div class="address-bar">
+<div class="address-bar-icon">📁</div>
+<div class="address-bar-path" id="address-path">html/scout/operational/popper_registration.html</div>
+</div>
+<div class="content-wrapper">
+<div class="header-banner">
+<span class="tag">Scout Operations</span>
+<h1 class="title">Register Popper (Scout-Assisted)</h1>
+<p class="desc">Complete 15-step workflow for scout-assisted popper registration with business identity capture, warehouse equipment documentation, warehouse management, real-time mobile OTP verification, and admin approval queue.</p>
+<p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 15-screen wizard including new popping capability profiling and ancillary equipment documentation. The scout sits with the popper (at their business/warehouse), explains the consent line, collects answers, captures business documents and warehouse photos, documents equipment specifications and capabilities, and submits. The popper's contact person's phone receives the OTP via bottom sheet overlay; scout reads it from the phone and enters it. On submit, the popper enters Pending Approval state and warehouse enters fitness check queue.</p>
+</div>
+<!-- COMMON COMPONENTS SECTION -->
+<div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
+<div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
+<span style="font-size: 24px;">🔗</span>
+<div>
+<div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
+<p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
+<div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
+<strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, StepperPanel, TextInput, PhoneInput, SelectInput, DatePickerInput, CheckboxInput, RadioGroup, FileUpload, AddressForm, PhotoGrid, DocumentUpload, LocationPicker, StatusBadge, CTAFooter, HeroCard, ScreenLayout, EquipmentGrid
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Backend Architecture Documentation -->
-    <div class="backend-tabs-container">
-      <div class="backend-tabs-header">
-        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
-        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
-      </div>
-
-      <div class="tabs-nav">
-        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-middleware')">Middleware & Auth</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-async')">Async Jobs</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
-      </div>
-
-      <div class="tabs-content">
-        <!-- TAB: API Architecture -->
-        <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedure Architecture (15 Procedures)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Popper workflow consists of 15 tRPC procedures organized by authentication level.</p>
-
-          <div class="backend-info-box">
-            <strong>Procedure Breakdown:</strong><br>
-            • 2 Public procedures: Send OTP, Verify OTP<br>
-            • 12 Protected procedures: Identity, Language, Business (3), Warehouse (3), Equipment (2), Bank (2)<br>
+</div>
+</div>
+</div>
+<!-- Backend Architecture Documentation -->
+<div class="backend-tabs-container">
+<div class="backend-tabs-header">
+<h2 class="backend-tabs-title">Backend Architecture &amp; Implementation Guide</h2>
+<p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+</div>
+<div class="tabs-nav">
+<button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+<button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
+<button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+<button class="tab-button" onclick="showTab(event, 'backend-middleware')">Middleware &amp; Auth</button>
+<button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation &amp; Error</button>
+<button class="tab-button" onclick="showTab(event, 'backend-async')">Async Jobs</button>
+<button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
+</div>
+<div class="tabs-content">
+<!-- TAB: API Architecture -->
+<div class="tab-panel active" id="backend-api">
+<h3 class="backend-section-title">tRPC Procedure Architecture (15 Procedures)</h3>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Popper workflow consists of 15 tRPC procedures organized by authentication level.</p>
+<div class="backend-info-box">
+<strong>Procedure Breakdown:</strong><br/>
+            • 2 Public procedures: Send OTP, Verify OTP<br/>
+            • 12 Protected procedures: Identity, Language, Business (3), Warehouse (3), Equipment (2), Bank (2)<br/>
             • 1 Atomic transaction: Popper Registration Submit (8 simultaneous inserts)
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/popper.ts</h4>
-          <div class="backend-code-block">export const popperRouter = t.router({
+<h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/popper.ts</h4>
+<div class="backend-code-block">export const popperRouter = t.router({
   // Steps 1-2: Public Auth (OTP)
   sendPopperMobileOtp: publicProcedure,
   verifyPopperMobileOtp: publicProcedure,
@@ -299,13 +293,12 @@
   submitBankAccount: protectedProcedure,
   verifyBankAccount: protectedProcedure,
 
-  // Step 14: Atomic Review & Submit
+  // Step 14: Atomic Review &amp; Submit
   submitPopperRegistration: protectedProcedure,
 });</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Equipment Procedures (Steps 11-12)</h4>
-          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Step 11: submitPoppingCapability</h5>
-          <div class="backend-code-block"><strong>Input Schema:</strong>
+<h4 class="backend-section-title" style="font-size: 14px;">Equipment Procedures (Steps 11-12)</h4>
+<h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Step 11: submitPoppingCapability</h5>
+<div class="backend-code-block"><strong>Input Schema:</strong>
 {
   warehouse_id: UUID,
   chula_count: number (0-50),
@@ -329,7 +322,7 @@
 }
 
 <strong>Validation Rules:</strong>
-• At least one equipment type required (chula_count > 0 OR machine_count > 0 OR unit_count > 0)
+• At least one equipment type required (chula_count &gt; 0 OR machine_count &gt; 0 OR unit_count &gt; 0)
 • Daily capacity = (chula_count × chula_throughput) + (machine_count × machine_throughput) + (unit_count × unit_throughput)
 • Producible grades: multi-select, at least one required
 • QA methods: only validated if has_qa_capability = true
@@ -337,9 +330,8 @@
 
 <strong>DB Write:</strong>
 warehouses table: Update record with equipment inventory + daily_capacity_kg + equipment_photos (JSONB)</div>
-
-          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Step 12: submitAncillaryEquipment (Optional)</h5>
-          <div class="backend-code-block"><strong>Input Schema:</strong>
+<h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Step 12: submitAncillaryEquipment (Optional)</h5>
+<div class="backend-code-block"><strong>Input Schema:</strong>
 {
   warehouse_id: UUID,
   ancillary_equipment: {
@@ -385,49 +377,43 @@ warehouses table: Update record with equipment inventory + daily_capacity_kg + e
 
 <strong>DB Write:</strong>
 warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equipment_photos + facility_score_boost</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Step 2 - Mobile Verification OTP)</h4>
-          <ul class="backend-list">
-            <li><strong>If OTP matches EXISTING popper:</strong> Load popper detail screen (Update mode)</li>
-            <li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
-          </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Step 14 - Review & Submit)</h4>
-          <ul class="backend-list">
-            <li>1. Insert user record (role=popper, status=pending_approval)</li>
-            <li>2. Insert popper_profiles</li>
-            <li>3. Insert business_profiles</li>
-            <li>4. Insert warehouses (first warehouse)</li>
-            <li>5. Insert user_documents (business docs + warehouse ownership)</li>
-            <li>6. Insert user_bank_accounts (encrypted)</li>
-            <li>7. Insert popper_approval_queue</li>
-            <li>8. Insert popper_registration_events (audit trail)</li>
-            <li>→ On success: Trigger async Inngest jobs</li>
-            <li>→ On failure: Rollback all 8 inserts (no partial state)</li>
-          </ul>
-        </div>
-
-        <!-- TAB: React Component Design -->
-        <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Popper Registration breaks into reusable React components across the Scout module's 20 workflows. Follow atomic design principles: atoms (inputs) → molecules (form groups) → organisms (form sections) → templates (screens).</p>
-
-          <div class="backend-info-box">
-            <strong>✅ Design Philosophy:</strong><br>
-            • Single Responsibility: Each component does ONE thing<br>
-            • Prop-based composition: Components accept data + actions as props<br>
-            • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
+<h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Step 2 - Mobile Verification OTP)</h4>
+<ul class="backend-list">
+<li><strong>If OTP matches EXISTING popper:</strong> Load popper detail screen (Update mode)</li>
+<li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Step 14 - Review &amp; Submit)</h4>
+<ul class="backend-list">
+<li>1. Insert user record (role=popper, status=pending_approval)</li>
+<li>2. Insert popper_profiles</li>
+<li>3. Insert business_profiles</li>
+<li>4. Insert warehouses (first warehouse)</li>
+<li>5. Insert user_documents (business docs + warehouse ownership)</li>
+<li>6. Insert user_bank_accounts (encrypted)</li>
+<li>7. Insert popper_approval_queue</li>
+<li>8. Insert popper_registration_events (audit trail)</li>
+<li>→ On success: Trigger async Inngest jobs</li>
+<li>→ On failure: Rollback all 8 inserts (no partial state)</li>
+</ul>
+</div>
+<!-- TAB: React Component Design -->
+<div class="tab-panel" id="backend-react">
+<h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Popper Registration breaks into reusable React components across the Scout module's 20 workflows. Follow atomic design principles: atoms (inputs) → molecules (form groups) → organisms (form sections) → templates (screens).</p>
+<div class="backend-info-box">
+<strong>✅ Design Philosophy:</strong><br/>
+            • Single Responsibility: Each component does ONE thing<br/>
+            • Prop-based composition: Components accept data + actions as props<br/>
+            • No local state for business logic: Context + hooks for state<br/>
+            • Reuse across workflows: 80% of components shared across 20 workflows<br/>
             • Variant management: Props define UI variants, not separate components
           </div>
-
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows (Popper Register, Farmer Register, Lot Verification, Pond Inspection, etc.) share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
-          </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Directory Structure</h4>
-          <div class="backend-code-block">src/features/scout/register-popper/
+<div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
+<strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br/>
+<span style="font-size: 12px; color: var(--text-muted);">All scout workflows (Popper Register, Farmer Register, Lot Verification, Pond Inspection, etc.) share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+</div>
+<h4 class="backend-section-title" style="font-size: 14px;">Directory Structure</h4>
+<div class="backend-code-block">src/features/scout/register-popper/
 ├── components/
 │   ├── common/
 │   │   ├── TopAppBar.tsx
@@ -461,7 +447,7 @@ warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equ
 │   │   ├── ReviewSubmitScreen.tsx (Step 14)
 │   │   └── ConfirmationScreen.tsx (Step 15)
 │   └── shared/
-│       ├── EquipmentGrid.tsx (Step 11 & 12)
+│       ├── EquipmentGrid.tsx (Step 11 &amp; 12)
 │       ├── AddressForm.tsx (Steps 7, 8, 9)
 │       ├── DocumentUpload.tsx (Step 6)
 │       └── PhotoGrid.tsx (Multi-photo upload)
@@ -483,11 +469,9 @@ warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equ
 │   └── PopperRegistrationWizard.tsx (Main router)
 └── styles/
     └── index.css (Shared styles)</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Reusable Component Library</h4>
-
-          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Layout Components (Used by ALL screens)</h5>
-          <div class="backend-code-block"><strong>TopAppBar:</strong>
+<h4 class="backend-section-title" style="font-size: 14px;">Reusable Component Library</h4>
+<h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Layout Components (Used by ALL screens)</h5>
+<div class="backend-code-block"><strong>TopAppBar:</strong>
 • Props: title, onBack, onMenu
 • Used in: All 15 screens
 • Features: Back navigation, title, menu icon, shadow
@@ -511,9 +495,8 @@ warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equ
 • Props: icon, title, subtitle, description
 • Used in: All 15 screens
 • Features: Icon rendering, gradient background, spacing</div>
-
-          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Form Input Components (Generic, Reused across Steps)</h5>
-          <div class="backend-code-block"><strong>TextInput:</strong>
+<h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Form Input Components (Generic, Reused across Steps)</h5>
+<div class="backend-code-block"><strong>TextInput:</strong>
 • Props: label, value, onChange, placeholder, maxLength, required, helper, error
 • Used in: Steps 3, 4, 5, 7, 8, 9, 13
 • Examples: Name, business name, address fields
@@ -547,9 +530,8 @@ warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equ
 • Props: label, multiple, maxFiles, accept, onFilesSelected, preview, error
 • Used in: Steps 6, 11, 12
 • Features: Camera trigger, compression, preview thumbnails</div>
-
-          <h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Shared Domain Components (Used across multiple Steps)</h5>
-          <div class="backend-code-block"><strong>AddressForm:</strong>
+<h5 style="font-size: 12px; color: var(--text-muted); margin: 12px 0 8px 0; font-weight: 600;">Shared Domain Components (Used across multiple Steps)</h5>
+<div class="backend-code-block"><strong>AddressForm:</strong>
 • Props: prefix, value, onChange, sameAsToggle, error
 • Used in: Steps 7 (business), 8 (warehouse), 9 (warehouse address)
 • Fields: District (select), village (text), address (textarea), landmark (text)
@@ -569,153 +551,136 @@ warehouses table: Update record with ancillary_equipment (JSONB) + ancillary_equ
 • Props: photos, onAdd, onRemove, maxPhotos
 • Used in: Steps 6, 11, 12
 • Features: Thumbnail grid, delete overlay, loading state</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Popper Registration Screen Decomposition</h4>
-
-          <div class="backend-info-box">
-            <strong>Step 1: Consent & Verification</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (1/15)<br>
-            &nbsp;├─ HeroCard (icon="how_to_reg")<br>
-            &nbsp;├─ CheckboxInput (consent checkbox)<br>
-            &nbsp;└─ CTAFooter (Continue, Save Draft)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 2: Mobile Verification</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (2/15)<br>
-            &nbsp;├─ HeroCard (icon="phone")<br>
-            &nbsp;├─ PhoneInput (mobile number)<br>
-            &nbsp;├─ OTPEntrySheet (modal overlay)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 3: Contact Person Details</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (3/15)<br>
-            &nbsp;├─ HeroCard (icon="person")<br>
-            &nbsp;├─ TextInput (full name)<br>
-            &nbsp;├─ DatePickerInput (DoB)<br>
-            &nbsp;├─ PhoneInput (alt mobile)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 4: Language Selection</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (4/15)<br>
-            &nbsp;├─ HeroCard (icon="language")<br>
-            &nbsp;├─ RadioGroup or SelectableCard (English, Hindi, Bengali)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 5: Business Details</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (5/15)<br>
-            &nbsp;├─ HeroCard (icon="business")<br>
-            &nbsp;├─ TextInput (business name)<br>
-            &nbsp;├─ SelectInput (business type)<br>
-            &nbsp;├─ TextInput (PAN, GSTIN, FSSAI)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 6: Business Documents</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (6/15)<br>
-            &nbsp;├─ HeroCard (icon="document")<br>
-            &nbsp;├─ DocumentUpload (dynamic based on Step 5)<br>
-            &nbsp;├─ PhotoGrid (preview docs)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 7: Business Address</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (7/15)<br>
-            &nbsp;├─ HeroCard (icon="location_on")<br>
-            &nbsp;├─ AddressForm (district, village, address)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 8: Warehouse Address</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (8/15)<br>
-            &nbsp;├─ HeroCard (icon="warehouse")<br>
-            &nbsp;├─ ToggleSwitch (Same as business address)<br>
-            &nbsp;├─ AddressForm (if different)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 9: Warehouse Details</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (9/15)<br>
-            &nbsp;├─ HeroCard (icon="info")<br>
-            &nbsp;├─ TextInput (warehouse name, area)<br>
-            &nbsp;├─ SelectInput (capacity unit)<br>
-            &nbsp;├─ TextInput (annual throughput)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 10: Warehouse Geofencing</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (10/15)<br>
-            &nbsp;├─ HeroCard (icon="location_on")<br>
-            &nbsp;├─ LocationPicker (Google Maps, draggable pin)<br>
-            &nbsp;├─ Button (Use my location)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 11: Popping Capability</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (11/15)<br>
-            &nbsp;├─ HeroCard (icon="settings")<br>
-            &nbsp;├─ CheckboxInput array or EquipmentGrid<br>
-            &nbsp;├─ TextInput (capacity per equipment)<br>
-            &nbsp;├─ FileUpload (equipment photos)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 12: Ancillary Equipment</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (12/15)<br>
-            &nbsp;├─ HeroCard (icon="build")<br>
-            &nbsp;├─ EquipmentGrid (checklist with icons)<br>
-            &nbsp;├─ TextInput (custom equipment description)<br>
-            &nbsp;├─ FileUpload (equipment images)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 13: Bank Account Details</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (13/15)<br>
-            &nbsp;├─ HeroCard (icon="account_balance")<br>
-            &nbsp;├─ TextInput (account holder name)<br>
-            &nbsp;├─ TextInput (account number, confirm)<br>
-            &nbsp;├─ TextInput (IFSC code)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 14: Review & Submit</strong><br>
-            &nbsp;├─ TopAppBar + StepperPanel (14/15)<br>
-            &nbsp;├─ HeroCard (icon="done_all")<br>
-            &nbsp;├─ SectionCard (Business recap)<br>
-            &nbsp;├─ SectionCard (Warehouse recap)<br>
-            &nbsp;├─ SectionCard (Equipment recap)<br>
-            &nbsp;├─ SectionCard (Bank recap)<br>
-            &nbsp;├─ CheckboxInput (final consent)<br>
-            &nbsp;└─ CTAFooter (Submit, Edit)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 15: Submission Confirmation</strong><br>
-            &nbsp;├─ TopAppBar<br>
-            &nbsp;├─ SuccessIllustration<br>
-            &nbsp;├─ StatusBadge (Pending Sync / Synced)<br>
-            &nbsp;├─ TextBlock (confirmation message)<br>
-            &nbsp;└─ Button (Back to Dashboard)
-          </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Screen Composition Pattern</h4>
-          <div class="backend-code-block">/* All screens follow this pattern */
-export const ConsentScreen: React.FC = () => {
+<h4 class="backend-section-title" style="font-size: 14px;">Popper Registration Screen Decomposition</h4>
+<div class="backend-info-box"><strong>Step 1: Consent &amp; Verification</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ CheckboxInput (consent checkbox)<br/>
+             └─ CTAFooter (Continue, Save Draft)</div>
+<div class="backend-info-box"><strong>Step 2: Mobile Verification</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ PhoneInput (mobile number)<br/>
+             ├─ OTPEntrySheet (modal overlay)<br/>
+             ├─ TextInput (6-digit OTP)<br/>
+             ├─ Timer (60 sec cooldown)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 3: Contact Person Details</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ TextInput (full name)<br/>
+             ├─ DatePickerInput (DoB)<br/>
+             ├─ PhoneInput (alt mobile)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 4: Language Selection</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ SelectableCard (language tiles)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 5: Business Details</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ TextInput (business name)<br/>
+             ├─ SelectInput (business type)<br/>
+             ├─ TextInput (PAN, GSTIN, FSSAI)<br/>
+             ├─ FormValidation (live validation status)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 6: Business Documents</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ DocumentUpload (composed docs uploader)<br/>
+             ├─ PhotoCaptureCard (camera trigger)<br/>
+             ├─ PhotoGrid (preview docs)<br/>
+             ├─ ExpandableSection (add additional documents)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 7: Business Address</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ CheckboxInput (same as contact address toggle)<br/>
+             ├─ SelectInput (district dropdown)<br/>
+             ├─ TextInput (pincode/city/street)<br/>
+             ├─ AddressForm (composed address details form)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 8: First Warehouse Details</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ TextInput (warehouse name, area)<br/>
+             ├─ NumberInput (capacity value)<br/>
+             ├─ SelectInput (capacity unit)<br/>
+             ├─ Helper (throughput text helper)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 9: First Warehouse Address</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ CheckboxInput (same as business address toggle)<br/>
+             ├─ SelectInput (district dropdown)<br/>
+             ├─ TextInput (pincode/city/street)<br/>
+             ├─ AddressForm (composed address details form)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 10: Warehouse Geofencing</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ LocationPicker (Google Maps)<br/>
+             ├─ CoordinatesDisplay (latitude/longitude)<br/>
+             ├─ StatusBadge (GPS lock accuracy)<br/>
+             ├─ Button (Use my location)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 11: Popping Capability Profile</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ NumberInput (roasting capacity)<br/>
+             ├─ PhotoCaptureCard (camera trigger)<br/>
+             ├─ StatusBadge (upload status)<br/>
+             ├─ CheckboxInput (equipment specs)<br/>
+             ├─ ToggleSwitch (ancillary services)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 12: Ancillary Equipment (Optional)</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ EquipmentGrid (grading/packing checklist)<br/>
+             ├─ PhotoCaptureCard (camera trigger)<br/>
+             ├─ Button (Save Draft / Skip)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 13: Bank Account Details</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ TextInput (account holder name)<br/>
+             ├─ TextInput (account number)<br/>
+             ├─ TextInput (confirm account number)<br/>
+             ├─ TextInput (IFSC code)<br/>
+             ├─ TextInput (bank/branch name)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 14: Review &amp; Submit</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperBar (step progress indicator)<br/>
+             ├─ HeroCard (onboarding visual anchor)<br/>
+             ├─ ExpandableSection (collapsible recaps)<br/>
+             ├─ TextLink (inline edit links)<br/>
+             ├─ SectionCard (recap groups)<br/>
+             ├─ CheckboxInput (final consent)<br/>
+             └─ CTAFooter</div>
+<div class="backend-info-box"><strong>Step 15: Submission Confirmation</strong><br/>
+             ├─ TopAppBar<br/>
+             ├─ SuccessIllustration<br/>
+             ├─ StatusBadge (sync state)<br/>
+             ├─ TextBlock (confirmation message)<br/>
+             └─ Button (Back to Dashboard)</div>
+<h4 class="backend-section-title" style="font-size: 14px;">Screen Composition Pattern</h4>
+<div class="backend-code-block">/* All screens follow this pattern */
+export const ConsentScreen: React.FC = () =&gt; {
   const { state, setState } = useRegistrationForm();
 
   return (
@@ -725,7 +690,7 @@ export const ConsentScreen: React.FC = () => {
     &gt;
       &lt;HeroCard
         icon="how_to_reg"
-        title="Consent & Verification"
+        title="Consent &amp; Verification"
         subtitle="Scout-assisted registration"
       /&gt;
 
@@ -752,9 +717,8 @@ export const ConsentScreen: React.FC = () => {
 const validation = z.object({
   consent: z.boolean().refine((v) =&gt; v === true, "Required")
 });</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">State Management (Context + Local)</h4>
-          <div class="backend-code-block"><strong>Global (RegistrationContext):</strong>
+<h4 class="backend-section-title" style="font-size: 14px;">State Management (Context + Local)</h4>
+<div class="backend-code-block"><strong>Global (RegistrationContext):</strong>
 • wizard_id: string
 • currentStep: number (1-15)
 • formData: { [step]: value } (wizard-wide state)
@@ -773,74 +737,67 @@ const validation = z.object({
 • Date picker modal open/close
 • Dropdown open/close
 • Temporary focus states</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Common Patterns Across Steps</h4>
-          <ul class="backend-list">
-            <li><strong>Steps 3, 5:</strong> Stacked form fields with inline validation → Use &lt;FormGrid&gt; + TextInput array</li>
-            <li><strong>Steps 6, 11, 12:</strong> Multi-file upload → Use &lt;FileUpload multiple={true}&gt; + &lt;PhotoGrid&gt;</li>
-            <li><strong>Steps 7, 8, 9:</strong> Address capture with same-as toggle → Use &lt;AddressForm&gt; wrapper</li>
-            <li><strong>Steps 11, 12:</strong> Equipment selection grid → Use &lt;EquipmentGrid&gt; or &lt;CheckboxInput&gt; array</li>
-            <li><strong>Steps 4, 12:</strong> Category selection (language, equipment) → Use &lt;RadioGroup&gt; or checkbox grid</li>
-            <li><strong>Steps 2, 3, 13:</strong> Phone number input with formatting → Use &lt;PhoneInput&gt; component</li>
-          </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Component Reuse Matrix (Popper Registration)</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Popper Reg</th><th>Farmer Reg</th><th>Lot Verify</th><th>Pond Insp</th><th>Other Workflows</th></tr>
-            <tr><td>TopAppBar</td><td>✓ (15x)</td><td>✓ (12x)</td><td>✓ (7x)</td><td>✓ (6x)</td><td>✓ (18/20)</td></tr>
-            <tr><td>StepperPanel</td><td>✓ (15x)</td><td>✓ (12x)</td><td>✗</td><td>✗</td><td>✓ (6/20)</td></tr>
-            <tr><td>TextInput</td><td>✓ (10x)</td><td>✓ (8x)</td><td>✓ (2x)</td><td>✓ (1x)</td><td>✓ (12/20)</td></tr>
-            <tr><td>PhoneInput</td><td>✓ (3x)</td><td>✓ (1x)</td><td>✗</td><td>✗</td><td>✓ (8/20)</td></tr>
-            <tr><td>SelectInput</td><td>✓ (4x)</td><td>✓ (2x)</td><td>✓ (1x)</td><td>✗</td><td>✓ (12/20)</td></tr>
-            <tr><td>AddressForm</td><td>✓ (3x)</td><td>✓ (2x)</td><td>✗</td><td>✓ (1x)</td><td>✓ (9/20)</td></tr>
-            <tr><td>PhotoGrid</td><td>✓ (3x)</td><td>✓ (1x)</td><td>✓ (5x)</td><td>✓ (4x)</td><td>✓ (16/20)</td></tr>
-            <tr><td>DocumentUpload</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✗</td><td>✓ (9/20)</td></tr>
-            <tr><td>LocationPicker</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✗</td><td>✓ (8/20)</td></tr>
-            <tr><td>EquipmentGrid</td><td>✓ (2x)</td><td>✗</td><td>✗</td><td>✗</td><td>✓ (4/20)</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
-          <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces for props</li>
-            <li><strong>✓ Error Handling:</strong> All inputs display errors consistently (red border + error message below)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md) not hardcoded px</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main) from root design system</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas (shared-types)</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes for complex components</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components immediately</li>
-            <li><strong>✓ Variant Props:</strong> Use variant/size/state props, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state lives in Context, component state only for transient UI</li>
-          </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times across workflows<br>
-            ✓ Component is testable in isolation<br>
-            ✓ Component has clear, single responsibility<br>
-            ✗ Component is used in only 1 workflow (inline it)<br>
+<h4 class="backend-section-title" style="font-size: 14px;">Common Patterns Across Steps</h4>
+<ul class="backend-list">
+<li><strong>Steps 3, 5:</strong> Stacked form fields with inline validation → Use &lt;FormGrid&gt; + TextInput array</li>
+<li><strong>Steps 6, 11, 12:</strong> Multi-file upload → Use &lt;FileUpload multiple={true}&gt; + &lt;PhotoGrid&gt;</li>
+<li><strong>Steps 7, 8, 9:</strong> Address capture with same-as toggle → Use &lt;AddressForm&gt; wrapper</li>
+<li><strong>Steps 11, 12:</strong> Equipment selection grid → Use &lt;EquipmentGrid&gt; or &lt;CheckboxInput&gt; array</li>
+<li><strong>Steps 4, 12:</strong> Category selection (language, equipment) → Use &lt;RadioGroup&gt; or checkbox grid</li>
+<li><strong>Steps 2, 3, 13:</strong> Phone number input with formatting → Use &lt;PhoneInput&gt; component</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Component Reuse Matrix (Popper Registration)</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Popper Reg</th><th>Farmer Reg</th><th>Lot Verify</th><th>Pond Insp</th><th>Other Workflows</th></tr>
+<tr><td>TopAppBar</td><td>✓ (15x)</td><td>✓ (12x)</td><td>✓ (7x)</td><td>✓ (6x)</td><td>✓ (18/20)</td></tr>
+<tr><td>StepperPanel</td><td>✓ (15x)</td><td>✓ (12x)</td><td>✗</td><td>✗</td><td>✓ (6/20)</td></tr>
+<tr><td>TextInput</td><td>✓ (10x)</td><td>✓ (8x)</td><td>✓ (2x)</td><td>✓ (1x)</td><td>✓ (12/20)</td></tr>
+<tr><td>PhoneInput</td><td>✓ (3x)</td><td>✓ (1x)</td><td>✗</td><td>✗</td><td>✓ (8/20)</td></tr>
+<tr><td>SelectInput</td><td>✓ (4x)</td><td>✓ (2x)</td><td>✓ (1x)</td><td>✗</td><td>✓ (12/20)</td></tr>
+<tr><td>AddressForm</td><td>✓ (3x)</td><td>✓ (2x)</td><td>✗</td><td>✓ (1x)</td><td>✓ (9/20)</td></tr>
+<tr><td>PhotoGrid</td><td>✓ (3x)</td><td>✓ (1x)</td><td>✓ (5x)</td><td>✓ (4x)</td><td>✓ (16/20)</td></tr>
+<tr><td>DocumentUpload</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✗</td><td>✓ (9/20)</td></tr>
+<tr><td>LocationPicker</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✓ (1x)</td><td>✗</td><td>✓ (8/20)</td></tr>
+<tr><td>EquipmentGrid</td><td>✓ (2x)</td><td>✗</td><td>✗</td><td>✗</td><td>✓ (4/20)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+<ul class="backend-list">
+<li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces for props</li>
+<li><strong>✓ Error Handling:</strong> All inputs display errors consistently (red border + error message below)</li>
+<li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md) not hardcoded px</li>
+<li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main) from root design system</li>
+<li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas (shared-types)</li>
+<li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes for complex components</li>
+<li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
+<li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components immediately</li>
+<li><strong>✓ Variant Props:</strong> Use variant/size/state props, not separate components</li>
+<li><strong>✓ No Local State:</strong> Business logic state lives in Context, component state only for transient UI</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+<div class="backend-info-box">
+<strong>When to Create a New Component:</strong><br/>
+            ✓ Logic/JSX repeats 2+ times across workflows<br/>
+            ✓ Component is testable in isolation<br/>
+            ✓ Component has clear, single responsibility<br/>
+            ✗ Component is used in only 1 workflow (inline it)<br/>
             ✗ Component is just a styling wrapper (use CSS utility classes instead)
           </div>
-
-          <div class="backend-info-box">
-            <strong>Common Components Shared (Popper + Farmer + Others):</strong><br>
-            • TopAppBar (header in all 20 workflows)<br>
-            • TextInput (10x popper, 8x farmer, 2x lot, 1x pond = 21 uses)<br>
-            • AddressForm (3x popper, 2x farmer, 1x pond = 6+ uses)<br>
-            • PhotoGrid (popper docs, farmer docs, lot photos, pond photos)<br>
-            • LocationPicker (popper warehouse, farmer pond GPS, lot pickup)<br>
-            • DocumentUpload (popper ownership, farmer ownership, lot samples)<br>
+<div class="backend-info-box">
+<strong>Common Components Shared (Popper + Farmer + Others):</strong><br/>
+            • TopAppBar (header in all 20 workflows)<br/>
+            • TextInput (10x popper, 8x farmer, 2x lot, 1x pond = 21 uses)<br/>
+            • AddressForm (3x popper, 2x farmer, 1x pond = 6+ uses)<br/>
+            • PhotoGrid (popper docs, farmer docs, lot photos, pond photos)<br/>
+            • LocationPicker (popper warehouse, farmer pond GPS, lot pickup)<br/>
+            • DocumentUpload (popper ownership, farmer ownership, lot samples)<br/>
             • SelectInput (popper language/equipment, farmer language, lot grades, others)
           </div>
-        </div>
-
-        <!-- TAB: Database Schema -->
-        <div id="backend-db" class="tab-panel">
-          <h3 class="backend-section-title">Core Database Tables (Drizzle ORM)</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">users (Universal User Record)</h4>
-          <div class="backend-code-block">CREATE TABLE users (
+</div>
+<!-- TAB: Database Schema -->
+<div class="tab-panel" id="backend-db">
+<h3 class="backend-section-title">Core Database Tables (Drizzle ORM)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">users (Universal User Record)</h4>
+<div class="backend-code-block">CREATE TABLE users (
   id UUID PRIMARY KEY,
   mobile VARCHAR(15) UNIQUE NOT NULL,
   role ENUM('scout','farmer','popper','admin'),
@@ -851,9 +808,8 @@ const validation = z.object({
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">popper_profiles (Popper-Specific)</h4>
-          <div class="backend-code-block">CREATE TABLE popper_profiles (
+<h4 class="backend-section-title" style="font-size: 14px;">popper_profiles (Popper-Specific)</h4>
+<div class="backend-code-block">CREATE TABLE popper_profiles (
   id UUID PRIMARY KEY,
   user_id UUID NOT NULL UNIQUE REFERENCES users(id),
   contact_person_name VARCHAR(100) NOT NULL,
@@ -872,9 +828,8 @@ const validation = z.object({
   preferred_language ENUM('en','hi','bn') DEFAULT 'en',
   created_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">warehouses (Warehouse Details + Equipment)</h4>
-          <div class="backend-code-block">CREATE TABLE warehouses (
+<h4 class="backend-section-title" style="font-size: 14px;">warehouses (Warehouse Details + Equipment)</h4>
+<div class="backend-code-block">CREATE TABLE warehouses (
   id UUID PRIMARY KEY,
   popper_id UUID NOT NULL REFERENCES users(id),
   warehouse_code VARCHAR(20) UNIQUE NOT NULL,
@@ -910,16 +865,15 @@ const validation = z.object({
   -- Ancillary Equipment (Step 12)
   ancillary_equipment JSONB DEFAULT '{"pre_popping":{},"roasting":{},"post_popping":{},"value_add":{}}'::jsonb,
   ancillary_equipment_photos JSONB DEFAULT '[]'::jsonb,
-  facility_score_boost INTEGER DEFAULT 0 CHECK (facility_score_boost >= 0 AND facility_score_boost <= 15),
+  facility_score_boost INTEGER DEFAULT 0 CHECK (facility_score_boost &gt;= 0 AND facility_score_boost &lt;= 15),
 
   status ENUM('pending_approval','active','inactive','rejected') DEFAULT 'pending_approval',
   created_via_scout_id UUID REFERENCES scouts(id),
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">user_bank_accounts (Encrypted)</h4>
-          <div class="backend-code-block">CREATE TABLE user_bank_accounts (
+<h4 class="backend-section-title" style="font-size: 14px;">user_bank_accounts (Encrypted)</h4>
+<div class="backend-code-block">CREATE TABLE user_bank_accounts (
   id UUID PRIMARY KEY,
   user_id UUID NOT NULL REFERENCES users(id),
   account_holder_name_encrypted BYTEA NOT NULL,
@@ -933,20 +887,18 @@ const validation = z.object({
   verified_at TIMESTAMP,
   created_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <div class="backend-info-box">
-            <strong>⚠️ Encryption:</strong><br>
-            • GSTIN: AES-256-GCM encrypted (sensitive business identifier)<br>
-            • Business legal name: AES-256-GCM encrypted at-rest<br>
-            • Bank account numbers: AES-256-GCM encrypted at-rest<br>
-            • Account holder names: AES-256-GCM encrypted<br>
-            • OTP: Hashed with bcrypt (never stored plaintext)<br>
-            • IFSC code: NOT encrypted (public information)<br>
+<div class="backend-info-box">
+<strong>⚠️ Encryption:</strong><br/>
+            • GSTIN: AES-256-GCM encrypted (sensitive business identifier)<br/>
+            • Business legal name: AES-256-GCM encrypted at-rest<br/>
+            • Bank account numbers: AES-256-GCM encrypted at-rest<br/>
+            • Account holder names: AES-256-GCM encrypted<br/>
+            • OTP: Hashed with bcrypt (never stored plaintext)<br/>
+            • IFSC code: NOT encrypted (public information)<br/>
             • FSSAI: Masked in logs (last 4 digits only)
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">user_documents (Photos & Certificates)</h4>
-          <div class="backend-code-block">CREATE TABLE user_documents (
+<h4 class="backend-section-title" style="font-size: 14px;">user_documents (Photos &amp; Certificates)</h4>
+<div class="backend-code-block">CREATE TABLE user_documents (
   id UUID PRIMARY KEY,
   user_id UUID NOT NULL REFERENCES users(id),
   doc_type ENUM('business_pan','gstin_cert','fssai_cert','warehouse_ownership','warehouse_interior','warehouse_exterior'),
@@ -954,9 +906,8 @@ const validation = z.object({
   uploaded_by_scout_id UUID REFERENCES scouts(id),
   created_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">popper_approval_queue & Audit</h4>
-          <div class="backend-code-block">CREATE TABLE popper_approval_queue (
+<h4 class="backend-section-title" style="font-size: 14px;">popper_approval_queue &amp; Audit</h4>
+<div class="backend-code-block">CREATE TABLE popper_approval_queue (
   id UUID PRIMARY KEY,
   popper_id UUID NOT NULL REFERENCES users(id),
   status ENUM('pending','approved','rejected') DEFAULT 'pending',
@@ -973,41 +924,36 @@ CREATE TABLE popper_registration_events (
   event_data JSONB,
   created_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Additional Tables</h4>
-          <ul class="backend-list">
-            <li><strong>user_otp_verifications:</strong> OTP storage with expiration (10 min), max 5 attempts</li>
-            <li><strong>user_preferences:</strong> Theme preference, language, notification settings</li>
-            <li><strong>warehouse_fitness_queue:</strong> Async fitness inspection assignments</li>
-          </ul>
-        </div>
-
-        <!-- TAB: Middleware & Auth -->
-        <div id="backend-middleware" class="tab-panel">
-          <h3 class="backend-section-title">Middleware Stack & Authentication</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Execution Order (Critical)</h4>
-          <table class="backend-table">
-            <tr><th>Order</th><th>Middleware</th><th>Purpose</th></tr>
-            <tr><td>1</td><td>loggingMiddleware</td><td>Correlation ID, request timing</td></tr>
-            <tr><td>2</td><td>authMiddleware</td><td>JWT validation, token refresh</td></tr>
-            <tr><td>3</td><td>scoutValidationMiddleware</td><td>Verify role=scout, assignment scope</td></tr>
-            <tr><td>4</td><td>validationMiddleware</td><td>Zod schema validation</td></tr>
-            <tr><td>5</td><td>contextMiddleware</td><td>Compose final context object</td></tr>
-            <tr><td>6</td><td>rateLimitMiddleware</td><td>Per-user, per-endpoint limits</td></tr>
-            <tr><td>7</td><td>errorHandlingMiddleware</td><td>RFC 9457 error formatting</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">JWT Strategy</h4>
-          <div class="backend-info-box">
-            <strong>Access Token:</strong> 15–30 minutes (short-lived)<br>
-            <strong>Refresh Token:</strong> 7–14 days (single-use, rotated)<br>
-            <strong>Storage:</strong> HttpOnly cookies (no XSS vulnerability)<br>
-            <strong>Flags:</strong> Secure (HTTPS), SameSite=Strict (CSRF prevention)
+<h4 class="backend-section-title" style="font-size: 14px;">Additional Tables</h4>
+<ul class="backend-list">
+<li><strong>user_otp_verifications:</strong> OTP storage with expiration (10 min), max 5 attempts</li>
+<li><strong>user_preferences:</strong> Theme preference, language, notification settings</li>
+<li><strong>warehouse_fitness_queue:</strong> Async fitness inspection assignments</li>
+</ul>
+</div>
+<!-- TAB: Middleware & Auth -->
+<div class="tab-panel" id="backend-middleware">
+<h3 class="backend-section-title">Middleware Stack &amp; Authentication</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Execution Order (Critical)</h4>
+<table class="backend-table">
+<tr><th>Order</th><th>Middleware</th><th>Purpose</th></tr>
+<tr><td>1</td><td>loggingMiddleware</td><td>Correlation ID, request timing</td></tr>
+<tr><td>2</td><td>authMiddleware</td><td>JWT validation, token refresh</td></tr>
+<tr><td>3</td><td>scoutValidationMiddleware</td><td>Verify role=scout, assignment scope</td></tr>
+<tr><td>4</td><td>validationMiddleware</td><td>Zod schema validation</td></tr>
+<tr><td>5</td><td>contextMiddleware</td><td>Compose final context object</td></tr>
+<tr><td>6</td><td>rateLimitMiddleware</td><td>Per-user, per-endpoint limits</td></tr>
+<tr><td>7</td><td>errorHandlingMiddleware</td><td>RFC 9457 error formatting</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">JWT Strategy</h4>
+<div class="backend-info-box">
+<strong>Access Token:</strong> 15–30 minutes (short-lived)<br/>
+<strong>Refresh Token:</strong> 7–14 days (single-use, rotated)<br/>
+<strong>Storage:</strong> HttpOnly cookies (no XSS vulnerability)<br/>
+<strong>Flags:</strong> Secure (HTTPS), SameSite=Strict (CSRF prevention)
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Context Object Type</h4>
-          <div class="backend-code-block">type Context = {
+<h4 class="backend-section-title" style="font-size: 14px;">Context Object Type</h4>
+<div class="backend-code-block">type Context = {
   userId: string;
   userRole: "scout" | "farmer" | "popper" | "admin";
   scoutId: string;
@@ -1015,57 +961,51 @@ CREATE TABLE popper_registration_events (
   traceId: string;             // Correlation ID
   logger: pino.Logger;
 };</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Rate Limiting Limits</h4>
-          <table class="backend-table">
-            <tr><th>Endpoint</th><th>Limit</th><th>Window</th></tr>
-            <tr><td>sendPopperMobileOtp</td><td>1 request</td><td>30 seconds</td></tr>
-            <tr><td>verifyPopperMobileOtp</td><td>5 requests</td><td>1 minute</td></tr>
-            <tr><td>submitPopperRegistration</td><td>1 request</td><td>1 minute</td></tr>
-            <tr><td>verifyBankAccount</td><td>1 request</td><td>5 minutes</td></tr>
-          </table>
-        </div>
-
-        <!-- TAB: Validation & Error Handling -->
-        <div id="backend-validation" class="tab-panel">
-          <h3 class="backend-section-title">Input Validation & Error Handling</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Validation Strategy</h4>
-          <div class="backend-info-box">
-            <strong>All inputs validated with Zod schemas:</strong><br>
-            • Backend always validates (never trust frontend)<br>
-            • Frontend uses same schemas for UX feedback<br>
-            • Custom refinements for business logic (mobile uniqueness, GSTIN format, PAN format, IFSC)<br>
+<h4 class="backend-section-title" style="font-size: 14px;">Rate Limiting Limits</h4>
+<table class="backend-table">
+<tr><th>Endpoint</th><th>Limit</th><th>Window</th></tr>
+<tr><td>sendPopperMobileOtp</td><td>1 request</td><td>30 seconds</td></tr>
+<tr><td>verifyPopperMobileOtp</td><td>5 requests</td><td>1 minute</td></tr>
+<tr><td>submitPopperRegistration</td><td>1 request</td><td>1 minute</td></tr>
+<tr><td>verifyBankAccount</td><td>1 request</td><td>5 minutes</td></tr>
+</table>
+</div>
+<!-- TAB: Validation & Error Handling -->
+<div class="tab-panel" id="backend-validation">
+<h3 class="backend-section-title">Input Validation &amp; Error Handling</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Validation Strategy</h4>
+<div class="backend-info-box">
+<strong>All inputs validated with Zod schemas:</strong><br/>
+            • Backend always validates (never trust frontend)<br/>
+            • Frontend uses same schemas for UX feedback<br/>
+            • Custom refinements for business logic (mobile uniqueness, GSTIN format, PAN format, IFSC)<br/>
             • Return 400 BAD_REQUEST with field-level errors
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Key Validation Rules</h4>
-          <table class="backend-table">
-            <tr><th>Field</th><th>Validation</th><th>Error Code</th></tr>
-            <tr><td>Mobile</td><td>10-digit Indian number, uniqueness check</td><td>INVALID_MOBILE_FORMAT, MOBILE_ALREADY_EXISTS</td></tr>
-            <tr><td>PAN</td><td>^[A-Z]{5}[0-9]{4}[A-Z]{1}$</td><td>PAN_FORMAT_INVALID</td></tr>
-            <tr><td>GSTIN (optional)</td><td>^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$</td><td>GSTIN_FORMAT_INVALID</td></tr>
-            <tr><td>FSSAI (optional)</td><td>14 digits exactly</td><td>FSSAI_FORMAT_INVALID</td></tr>
-            <tr><td>IFSC</td><td>^[A-Z]{4}0[A-Z0-9]{6}$</td><td>IFSC_FORMAT_INVALID</td></tr>
-            <tr><td>Account Number</td><td>12–18 digits</td><td>ACCOUNT_NUMBER_INVALID</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">HTTP Error Codes by Category</h4>
-          <table class="backend-table">
-            <tr><th>Status</th><th>Error Code</th><th>Example</th></tr>
-            <tr><td>400</td><td>INVALID_MOBILE_FORMAT</td><td>User entered invalid mobile</td></tr>
-            <tr><td>400</td><td>PAN_FORMAT_INVALID</td><td>PAN doesn't match regex</td></tr>
-            <tr><td>400</td><td>GSTIN_FORMAT_INVALID</td><td>GSTIN doesn't match regex</td></tr>
-            <tr><td>401</td><td>TOKEN_EXPIRED</td><td>JWT beyond refresh window</td></tr>
-            <tr><td>403</td><td>SCOUT_NOT_ASSIGNED</td><td>Scout trying to edit other scout's popper</td></tr>
-            <tr><td>409</td><td>MOBILE_ALREADY_EXISTS</td><td>Mobile registered twice</td></tr>
-            <tr><td>409</td><td>OTP_MAX_ATTEMPTS</td><td>5+ incorrect OTP attempts</td></tr>
-            <tr><td>422</td><td>OTP_EXPIRED</td><td>OTP older than 10 minutes</td></tr>
-            <tr><td>500</td><td>DATABASE_ERROR</td><td>SQL query failed</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">RFC 9457 Error Response Format</h4>
-          <div class="backend-code-block">{
+<h4 class="backend-section-title" style="font-size: 14px;">Key Validation Rules</h4>
+<table class="backend-table">
+<tr><th>Field</th><th>Validation</th><th>Error Code</th></tr>
+<tr><td>Mobile</td><td>10-digit Indian number, uniqueness check</td><td>INVALID_MOBILE_FORMAT, MOBILE_ALREADY_EXISTS</td></tr>
+<tr><td>PAN</td><td>^[A-Z]{5}[0-9]{4}[A-Z]{1}$</td><td>PAN_FORMAT_INVALID</td></tr>
+<tr><td>GSTIN (optional)</td><td>^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$</td><td>GSTIN_FORMAT_INVALID</td></tr>
+<tr><td>FSSAI (optional)</td><td>14 digits exactly</td><td>FSSAI_FORMAT_INVALID</td></tr>
+<tr><td>IFSC</td><td>^[A-Z]{4}0[A-Z0-9]{6}$</td><td>IFSC_FORMAT_INVALID</td></tr>
+<tr><td>Account Number</td><td>12–18 digits</td><td>ACCOUNT_NUMBER_INVALID</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">HTTP Error Codes by Category</h4>
+<table class="backend-table">
+<tr><th>Status</th><th>Error Code</th><th>Example</th></tr>
+<tr><td>400</td><td>INVALID_MOBILE_FORMAT</td><td>User entered invalid mobile</td></tr>
+<tr><td>400</td><td>PAN_FORMAT_INVALID</td><td>PAN doesn't match regex</td></tr>
+<tr><td>400</td><td>GSTIN_FORMAT_INVALID</td><td>GSTIN doesn't match regex</td></tr>
+<tr><td>401</td><td>TOKEN_EXPIRED</td><td>JWT beyond refresh window</td></tr>
+<tr><td>403</td><td>SCOUT_NOT_ASSIGNED</td><td>Scout trying to edit other scout's popper</td></tr>
+<tr><td>409</td><td>MOBILE_ALREADY_EXISTS</td><td>Mobile registered twice</td></tr>
+<tr><td>409</td><td>OTP_MAX_ATTEMPTS</td><td>5+ incorrect OTP attempts</td></tr>
+<tr><td>422</td><td>OTP_EXPIRED</td><td>OTP older than 10 minutes</td></tr>
+<tr><td>500</td><td>DATABASE_ERROR</td><td>SQL query failed</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">RFC 9457 Error Response Format</h4>
+<div class="backend-code-block">{
   "type": "https://api.makhana.local/errors/gstin-invalid",
   "title": "GSTIN Format Invalid",
   "status": 400,
@@ -1077,44 +1017,38 @@ CREATE TABLE popper_registration_events (
     "field": "gstin"
   }
 }</div>
-
-          <div class="backend-info-box">
-            <strong>Error Logging:</strong><br>
-            ✓ Log error code, message, stacktrace<br>
-            ✓ Include request context (userId, scoutId, endpoint)<br>
-            ✓ Include correlation ID (traceId)<br>
+<div class="backend-info-box">
+<strong>Error Logging:</strong><br/>
+            ✓ Log error code, message, stacktrace<br/>
+            ✓ Include request context (userId, scoutId, endpoint)<br/>
+            ✓ Include correlation ID (traceId)<br/>
             ✗ Never log sensitive data (full mobile, GSTIN, account numbers, tokens)
           </div>
-        </div>
-
-        <!-- TAB: Async Jobs -->
-        <div id="backend-async" class="tab-panel">
-          <h3 class="backend-section-title">Async Jobs with Inngest (Serverless Queue)</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">1. popper.send-otp-sms (Fire-and-Forget)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Step 2 (Mobile Verification OTP)<br>
-            <strong>Steps:</strong> Generate 6-digit → Hash with bcrypt → Store in DB → Send via Twilio SMS → Log<br>
-            <strong>Retry:</strong> 4 attempts with exponential backoff (1s, 5s, 30s)<br>
-            <strong>DLQ:</strong> Move to dead-letter queue after 4 failures, alert ops
+</div>
+<!-- TAB: Async Jobs -->
+<div class="tab-panel" id="backend-async">
+<h3 class="backend-section-title">Async Jobs with Inngest (Serverless Queue)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">1. popper.send-otp-sms (Fire-and-Forget)</h4>
+<div class="backend-info-box">
+<strong>Trigger:</strong> Step 2 (Mobile Verification OTP)<br/>
+<strong>Steps:</strong> Generate 6-digit → Hash with bcrypt → Store in DB → Send via Twilio SMS → Log<br/>
+<strong>Retry:</strong> 4 attempts with exponential backoff (1s, 5s, 30s)<br/>
+<strong>DLQ:</strong> Move to dead-letter queue after 4 failures, alert ops
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">2. popper.penny-drop-verification (Wait-for-External)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Step 13 (Bank Account Details)<br>
-            <strong>Steps:</strong> Initiate Razorpay penny-drop → Store job ID → Wait for webhook (max 5 min) → Verify match → Update status<br>
-            <strong>Webhook:</strong> POST /api/webhooks/razorpay/verification-complete
+<h4 class="backend-section-title" style="font-size: 14px;">2. popper.penny-drop-verification (Wait-for-External)</h4>
+<div class="backend-info-box">
+<strong>Trigger:</strong> Step 13 (Bank Account Details)<br/>
+<strong>Steps:</strong> Initiate Razorpay penny-drop → Store job ID → Wait for webhook (max 5 min) → Verify match → Update status<br/>
+<strong>Webhook:</strong> POST /api/webhooks/razorpay/verification-complete
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">3. popper.registration-submitted (Chained)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Step 14 (Review & Submit)<br>
-            <strong>Steps:</strong> Verify popper exists → Send confirmation SMS (in preferred_language) → Notify Admin (dashboard alert)<br>
-            <strong>Dependencies:</strong> Ensure popper record created before SMS
+<h4 class="backend-section-title" style="font-size: 14px;">3. popper.registration-submitted (Chained)</h4>
+<div class="backend-info-box">
+<strong>Trigger:</strong> Step 14 (Review &amp; Submit)<br/>
+<strong>Steps:</strong> Verify popper exists → Send confirmation SMS (in preferred_language) → Notify Admin (dashboard alert)<br/>
+<strong>Dependencies:</strong> Ensure popper record created before SMS
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Inngest Configuration</h4>
-          <div class="backend-code-block">import { Inngest } from "inngest";
+<h4 class="backend-section-title" style="font-size: 14px;">Inngest Configuration</h4>
+<div class="backend-code-block">import { Inngest } from "inngest";
 
 export const inngest = new Inngest({
   id: "makhana-scout",
@@ -1124,54 +1058,49 @@ export const inngest = new Inngest({
     multiplier: 5,        // 5x backoff
   },
 });</div>
-        </div>
-
-        <!-- TAB: Security -->
-        <div id="backend-security" class="tab-panel">
-          <h3 class="backend-section-title">Security Best Practices</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Sensitive Data Handling</h4>
-          <div class="backend-info-box">
-            <strong>Never Log:</strong><br>
-            ✗ Full mobile numbers (log only last 4: ***6789)<br>
-            ✗ GSTIN or business legal name<br>
-            ✗ PAN number<br>
-            ✗ Full account numbers (log hash or last 4)<br>
-            ✗ FSSAI numbers (log hash only)<br>
-            ✗ Tokens or OTP<br>
-            ✗ Encryption keys or secrets<br>
-            <br>
-            <strong>Safe to Log:</strong><br>
-            ✓ Last 4 digits of mobile (padded: ***6789)<br>
-            ✓ District/state (non-identifying)<br>
-            ✓ Popper type (processor, trader, warehouse)<br>
-            ✓ Approval status (pending, approved, rejected)<br>
-            ✓ Event types and timestamps<br>
+</div>
+<!-- TAB: Security -->
+<div class="tab-panel" id="backend-security">
+<h3 class="backend-section-title">Security Best Practices</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Sensitive Data Handling</h4>
+<div class="backend-info-box">
+<strong>Never Log:</strong><br/>
+            ✗ Full mobile numbers (log only last 4: ***6789)<br/>
+            ✗ GSTIN or business legal name<br/>
+            ✗ PAN number<br/>
+            ✗ Full account numbers (log hash or last 4)<br/>
+            ✗ FSSAI numbers (log hash only)<br/>
+            ✗ Tokens or OTP<br/>
+            ✗ Encryption keys or secrets<br/>
+<br/>
+<strong>Safe to Log:</strong><br/>
+            ✓ Last 4 digits of mobile (padded: ***6789)<br/>
+            ✓ District/state (non-identifying)<br/>
+            ✓ Popper type (processor, trader, warehouse)<br/>
+            ✓ Approval status (pending, approved, rejected)<br/>
+            ✓ Event types and timestamps<br/>
             ✓ Warehouse code (WARE-1024 format)
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Data Encryption</h4>
-          <table class="backend-table">
-            <tr><th>Field</th><th>Method</th><th>Rotation</th></tr>
-            <tr><td>GSTIN</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
-            <tr><td>Business Legal Name</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
-            <tr><td>Bank Account Number</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
-            <tr><td>Account Holder Name</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
-            <tr><td>OTP</td><td>bcrypt 10 rounds</td><td>N/A (hashed, never retrieved)</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">OTP Security</h4>
-          <ul class="backend-list">
-            <li>Generate 6-digit OTP locally (cryptographically random)</li>
-            <li>Hash with bcrypt (10 rounds) before storage</li>
-            <li>Set expiration: 10 minutes</li>
-            <li>Max 5 attempts before blocking (10-min cooldown after 5 failures)</li>
-            <li>Compare using bcrypt.compare() (constant-time, timing-attack resistant)</li>
-            <li>Resend cooldown: 30 seconds enforced server-side</li>
-          </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">CORS & Security Headers</h4>
-          <div class="backend-code-block">Access-Control-Allow-Origin: https://app.makhana.local
+<h4 class="backend-section-title" style="font-size: 14px;">Data Encryption</h4>
+<table class="backend-table">
+<tr><th>Field</th><th>Method</th><th>Rotation</th></tr>
+<tr><td>GSTIN</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+<tr><td>Business Legal Name</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+<tr><td>Bank Account Number</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+<tr><td>Account Holder Name</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+<tr><td>OTP</td><td>bcrypt 10 rounds</td><td>N/A (hashed, never retrieved)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">OTP Security</h4>
+<ul class="backend-list">
+<li>Generate 6-digit OTP locally (cryptographically random)</li>
+<li>Hash with bcrypt (10 rounds) before storage</li>
+<li>Set expiration: 10 minutes</li>
+<li>Max 5 attempts before blocking (10-min cooldown after 5 failures)</li>
+<li>Compare using bcrypt.compare() (constant-time, timing-attack resistant)</li>
+<li>Resend cooldown: 30 seconds enforced server-side</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">CORS &amp; Security Headers</h4>
+<div class="backend-code-block">Access-Control-Allow-Origin: https://app.makhana.local
 Access-Control-Allow-Credentials: true
 Access-Control-Allow-Methods: POST, OPTIONS
 Access-Control-Allow-Headers: Content-Type, Authorization
@@ -1182,327 +1111,306 @@ HttpOnly flag on JWT cookies
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 Strict-Transport-Security: max-age=31536000; includeSubDomains</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">✅ Security Checklist</h4>
-          <ul class="backend-list">
-            <li>✓ All inputs validated with Zod schemas</li>
-            <li>✓ Secrets in Cloudflare Workers Secrets (not .env)</li>
-            <li>✓ GSTIN encrypted AES-256-GCM at-rest</li>
-            <li>✓ Business name encrypted AES-256-GCM at-rest</li>
-            <li>✓ Bank account numbers encrypted AES-256-GCM at-rest</li>
-            <li>✓ Account holder names encrypted AES-256-GCM</li>
-            <li>✓ OTP hashed with bcrypt (10 rounds), never plaintext</li>
-            <li>✓ JWT tokens HttpOnly, Secure, SameSite=Strict</li>
-            <li>✓ Rate limiting on OTP and auth endpoints</li>
-            <li>✓ No SQL injection (Drizzle ORM protects)</li>
-            <li>✓ Error messages don't leak sensitive data</li>
-            <li>✓ Audit logging for all sensitive operations</li>
-            <li>✓ Scout assignment validation on all protected endpoints</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="stepper-panel-container">
-      <div class="stepper-nodes">
-        <a href="#step-01" class="stepper-node active"><span class="node-num">1</span><span class="node-label">Consent</span></a>
-        <a href="#step-02" class="stepper-node"><span class="node-num">2</span><span class="node-label">Mobile</span></a>
-        <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">Identity</span></a>
-        <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Language</span></a>
-        <a href="#step-05" class="stepper-node"><span class="node-num">5</span><span class="node-label">Business</span></a>
-        <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Bus Docs</span></a>
-        <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Bus Addr</span></a>
-        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">WH Detail</span></a>
-        <a href="#step-09" class="stepper-node"><span class="node-num">9</span><span class="node-label">WH Addr</span></a>
-        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">Geofence</span></a>
-        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">Pop Equip</span></a>
-        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Aux Equip</span></a>
-        <a href="#step-13" class="stepper-node"><span class="node-num">13</span><span class="node-label">Bank</span></a>
-        <a href="#step-14" class="stepper-node"><span class="node-num">14</span><span class="node-label">Review</span></a>
-        <a href="#step-15" class="stepper-node"><span class="node-num">15</span><span class="node-label">Confirm</span></a>
-      </div>
-    </div>
-
-    <div class="workflow-group-block">
-      <div class="workflow-group-header">
-        <div class="workflow-group-title">Popper Registration Workflow</div>
-        <div class="step-count-pill">15 Steps</div>
-      </div>
-      <div class="workflow-group-body">
-
-        <!-- Step 1: Intro & Consent -->
-        <div class="flow-step-card" id="step-01">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">1</span><span class="step-title">Intro & Consent</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_intro_consent/screen.png" alt="Consent Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Scout acts on popper's behalf; verbal consent required before any data collected.</p><p>Binding profile creation requires explicit attestation.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Consent timestamp + scout ID + popper mobile = audit minimum.</p><p>Binding profile creation requires attestation via checkbox.</p><p>Popper's verbal consent is the source; scout attests via checkbox.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Single screen, plain-language explanation, consent checkbox, disabled CTA until ticked.</p><p>Scout reads consent line aloud to popper.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Read consent line aloud to popper</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">tick "I confirm the popper has given verbal consent to register on FenBridge"</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context initialised: { role: 'popper', consent_at: now(), scout_id }.</p><p>No database write yet.</p><p>Disabled CTA enforced via form validation.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Headline "Register a Popper" + explanation block with business context ("The popper is a business that buys raw makhana seed and processes it into finished product for sale.</p><p>We will collect contact person's name and mobile, business identity (PAN, GSTIN, FSSAI), warehouse information, and bank account.</p><p>Once submitted, the registration will be reviewed by our team — the popper will be notified by SMS when approved.") + consent checkbox + disabled CTA until ticked.</p><p>Helper: "Ensure you have explained the above to the contact person and they have agreed.".</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None at this step. Context only.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header)<br>• HeadlineText (description block)<br>• CheckboxInput (consent checkbox)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 2: Mobile Verification (OTP Send) -->
-        <div class="flow-step-card" id="step-02">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification (OTP Send)</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_mobile_verification_send/screen.png" alt="Mobile Verification"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Verifies the popper's contact person's mobile number via OTP (One-Time Password).</p><p>Ensures the phone number entered is real and accessible to the contact person.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Mobile verification is mandatory for popper login authentication.</p><p>The contact person must be able to receive SMS at the registered number.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Mobile number input field with country code prefix (+91).</p><p>"Send OTP" button triggers SMS delivery.</p><p>OTP entry via bottom sheet overlay (inline verification).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Triggers async SMS job.</p><p>OTP verified inline without page navigation.</p><p>Max 5 attempts, 10-minute expiration.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header)<br>• PhoneInput (mobile number with +91 prefix)<br>• OTPEntrySheet (modal overlay for OTP entry)<br>• TextInput (OTP field inside sheet)<br>• Timer (cooldown countdown)<br>• CTAFooter (Send OTP / Verify buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 3: Contact Person Identity -->
-        <div class="flow-step-card" id="step-03">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Contact Person Identity</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/contact_person_identity/screen.png" alt="Identity Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures contact person's personal identity (name, mobile, DoB).</p><p>The contact person is the human who logs in and operates the popper's account.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Contact person name and mobile are mandatory.</p><p>Mobile must be the contact person's own — this is what they'll use to log in with OTP.</p><p>Uniqueness check ensures mobile isn't already registered.</p><p>DoB optional but recommended.</p><p>Alternate phone optional.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Stacked form: Name (required), DoB (optional, date picker), Mobile (required, 10-digit Indian with +91 chip), Alternate Phone (optional).</p><p>On Continue, uniqueness check performed; if duplicate, error shown with escalation path.</p><p>Top bar: Back arrow, no title, progress "3 of 15".</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter contact person's full name</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Tap DoB</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">date picker</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">select or skip</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter mobile (10 digits, auto-formatted)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Enter alternate phone</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Continue"</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">if mobile is unique, proceed to Business Basic Details; if duplicate, show error modal with "Go back" and "Contact Admin" buttons.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: contact_person: { full_name, dob, mobile, alt_phone }.</p><p>Mobile validated as 10-digit Indian.</p><p>Uniqueness check on Continue: query <code>users.mobile</code> for duplicate.</p><p>Written to <code>users.mobile</code> and <code>popper_profiles.contact_person_name</code>, <code>popper_profiles.date_of_birth</code> at submit.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "3 of 15".</p><p>Heading: "Contact Person Identity" + form fields (stacked): Contact Person Name (required, max 100 chars, helper "The person who will manage this account."), DoB (optional, date picker, helper "Used for compliance checks."), Mobile (required, country chip +91, helper "This is the contact person's mobile — they will receive OTP and SMS here.</p><p>Make sure you are using their own number, not a business reception number."), Alternate Phone (optional, helper "A secondary contact number if available.").</p><p>Error handling: If mobile invalid: "Please enter a valid 10-digit number".</p><p>If mobile already registered: modal "This mobile is already registered.</p><p>Go back, Contact Admin".</p><p>Primary CTA: "Continue" (enabled once Name and Mobile filled with valid values).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">users.mobile, popper_profiles.contact_person_name, popper_profiles.date_of_birth (optional).</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 3 of 15)<br>• TextInput (contact person full name)<br>• DatePickerInput (DoB selection)<br>• PhoneInput (mobile and alternate phone)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 4: Language Selection -->
-        <div class="flow-step-card" id="step-04">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Language Selection</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_language_selection/screen.png" alt="Language Selection"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets contact person's preferred app language for SMS <code>notifications</code>, dashboards, future self-login sessions.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Language determines notification language (SMS, dashboard, emails).</p><p>Three options: English / हिंदी (Hindi) / বাংলা (Bengali).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Three large tiles with native script labels.</p><p>Top bar: Back arrow, no title, progress "4 of 15".</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap one language</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue auto-enabled. Defaults to 'en' if skipped.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: preferred_language: 'en' | 'hi' | 'bn'.</p><p>Written to <code>popper_profiles.preferred_language</code> at final submit.</p><p>Used for all SMS and dashboard text.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Heading: "Preferred Language" + helper "We'll send <code>notifications</code> to the contact person in this language." Three radio tiles: English / हिंदी / বাংলা.</p><p>Primary CTA: "Continue" (always enabled, defaults to 'en').</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">Written to popper_profiles.preferred_language at submit.</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 4 of 15)<br>• SelectableCard or RadioGroup (language tiles: English, हिंदी, বাংলা)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 5: Business Information -->
-        <div class="flow-step-card" id="step-05">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Business Information</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/business_basic_details/screen.png" alt="Business Details"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the popper's business identity: legal name, PAN (Permanent Account Number), and optional GSTIN and FSSAI registrations.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Business name and PAN are mandatory.</p><p>GSTIN is optional in Year 1 but recommended.</p><p>FSSAI is optional but flagged as recommended for food handling compliance.</p><p>PAN and GSTIN must match the business entity's legal documents.</p><p>Name uniqueness is soft-checked (businesses in different regions may share names).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Stacked form with four fields.</p><p>PAN and GSTIN validated via regex on entry.</p><p>FSSAI is 14-digit number.</p><p>Each legal field has a helper explaining what it is and where to find it.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter business name (<code>e.g</code>., "ABC Makhana Processing Pvt. Ltd.")</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter PAN (10-char code, <code>e.g</code>., "AAAAA1234A")</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Enter GSTIN (15-char code, <code>e.g</code>., "05AABCT1234A1Z0")</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Enter FSSAI number (14 digits, <code>e.g</code>., "10012345678901")</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: business: { business_name, pan_number, gstin, fssai_number }.</p><p>PAN validated: regex ^[A-Z]{5}[0-9]{4}[A-Z]{1}$.</p><p>GSTIN validated (if entered): regex ^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$.</p><p>FSSAI validated (if entered): 14-digit numeric.</p><p>Name uniqueness is soft (no hard constraint; businesses may have same name in different regions).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "5 of 15".</p><p>Heading: "Business Information" + form fields (stacked, surface-hi): Business Name (mandatory, max 150 chars, helper "The legal name of the business as registered."), PAN (mandatory, uppercase auto-format, placeholder "AAAAA1234A", validation helper "PAN must be 10 characters (5 letters, 4 digits, 1 letter).", helper "Find this on your PAN certificate or IT acknowledgment."), GSTIN (optional, uppercase auto-format, placeholder "05AABCT1234A1Z0", validation helper "GSTIN must be 15 characters.", helper "Find this on your GSTIN certificate or GST portal.</p><p>Required if registered for GST."), FSSAI (optional, 14-digit, placeholder "14-digit number", validation helper "FSSAI must be 14 digits.", helper "Find this on your FSSAI registration certificate.</p><p>Recommended for food processing business.").</p><p>Primary CTA: "Continue" (enabled once Business Name and PAN are filled with valid formats).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">popper_profiles: business_name, pan_number, gstin, fssai_number.</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 5 of 15)<br>• TextInput (business name, PAN, GSTIN, FSSAI)<br>• FormValidation (inline regex validation)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 6: Business Legal Documents -->
-        <div class="flow-step-card" id="step-06">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">Business Legal Documents</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/business_legal_documents/screen.png" alt="Documents"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures photo uploads of the business's legal documents (PAN card, and optionally GSTIN/FSSAI certificates if details were entered in Step 5).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>PAN upload is mandatory.</p><p>GSTIN upload is mandatory if GSTIN details were entered in Step 5.</p><p>FSSAI upload is mandatory if FSSAI details were entered in Step 5.</p><p>Maximum 3 photos per document.</p><p>Uses camera to capture physical document.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Dynamic list of document upload widgets based on Step 5 inputs.</p><p>Each widget displays document name, optional badge, photo capture slots, and preview thumbnails.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">For each required document card: Tap "Take Photo"</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">open system camera</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">capture clear image of document</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">crop/confirm</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">view thumbnail with delete option</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">repeat up to 3 photos if needed</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Continue" once all required documents have at least one photo.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: documents: { pan_photos: [], gstin_photos: [], fssai_photos: [] }.</p><p>Dynamic fields rendered: PAN Card (always required), GSTIN Certificate (required if gstin != null), FSSAI Certificate (required if fssai_number != null).</p><p>Photos compressed, stored in temp offline folder, uploaded to Supabase Storage bucket `popper-documents` on final sync.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "6 of 15".</p><p>Heading: "Business Documents" + helper "Please upload clear photos of the business's certificates.</p><p>Ensure text is legible." + document upload list (cards): 1.</p><p>Business PAN Card (required, 3 slots).</p><p>2.</p><p>GSTIN Certificate (conditional, 3 slots).</p><p>3.</p><p>FSSAI License (conditional, 3 slots).</p><p>Each slot: dotted border box with camera icon or thumbnail preview with delete (red trash icon) overlay.</p><p>Primary CTA: "Continue" (enabled once all rendered cards have at least 1 photo).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">user_documents: user_id, document_type ('pan','gstin','fssai'), file_url, uploaded_at, verified_at=null.</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 6 of 15)<br>• DocumentUpload widget (dynamic based on Step 5)<br>• PhotoCaptureCard (camera trigger for each document)<br>• PhotoGrid (thumbnail preview with delete)<br>• ExpandableSection (optional multi-photos per doc)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 7: Business Address -->
-        <div class="flow-step-card" id="step-07">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">Business Address</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/business_address_details/screen.png" alt="Business Address Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures the business's registered address (office/headquarters).</p><p>May differ from contact person's address and warehouse location.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>District mandatory (controlled whitelist).</p><p>Full address mandatory.</p><p>Used for business registration records, tax registration location, and legal notices.</p><p>Same-as-contact address toggle supported.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Same address form layout.</p><p>"Same as contact person's address" toggle at top to pre-fill fields.</p><p>District dropdown, village/panchayat searchable, address textarea, landmark.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">(Optional) Toggle "Same as contact person's address" to pre-fill</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Edit any field if needed</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">or enter address manually: District</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Village/Panchayat</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Full Address</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Landmark</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Continue".</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: business: { district, panchayat_village, full_address, landmark }.</p><p>If toggle active, pre-fill from contact_person context.</p><p>Written to <code>popper_profiles</code> at submit.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "7 of 15".</p><p>Heading: "Business Address" + helper "The registered address of the business entity." + toggle "Same as contact person's address" + form fields (stacked): District (dropdown), Panchayat/Village (text), Full Address (textarea), Landmark (optional).</p><p>Primary CTA: "Continue" (enabled once District and Full Address are filled).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">popper_profiles: business_district, business_address, business_landmark (optional).</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 7 of 15)<br>• CheckboxInput (same as contact person toggle)<br>• SelectInput (district dropdown)<br>• TextInput (village, full address, landmark)<br>• AddressForm wrapper (pre-fill logic)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 8: First Warehouse Details -->
-        <div class="flow-step-card" id="step-08">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Warehouse Details</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/first_warehouse_details/screen.png" alt="Warehouse Details"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures details of the popper's primary processing warehouse.</p><p>Poppers must register at least one warehouse.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>At least one warehouse mandatory.</p><p>Warehouse Name (mandatory), Built Capacity in sq ft (mandatory), Bag Capacity in 80kg bags (mandatory).</p><p>Details verified by scout.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Form fields with numeric-only constraints for capacities.</p><p>Real-time conversion helper displays bag capacity estimate based on square footage.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter Warehouse Name (<code>e.g</code>., "ABC Warehouse 1")</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter Built Area (sq ft, numeric)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter Bag Storage Capacity (number of bags, numeric)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Continue".</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { name, area_sq_ft, bag_capacity }.</p><p>Auto-generates warehouse code `WH-POP-{seq}` on backend.</p><p>Written to <code>warehouses</code> table.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "8 of 15".</p><p>Heading: "First Warehouse Details" + helper "Each popper must register at least one processing/storage warehouse." + form fields: Warehouse Name (required), Built Area (sq ft, numeric), Bag Capacity (number of 80kg bags, numeric).</p><p>Primary CTA: "Continue" (enabled once all fields have valid positive numbers).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">warehouses: code, owner_user_id, name, area_sq_ft, bag_capacity, status='pending_approval'.</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 8 of 15)<br>• TextInput (warehouse name)<br>• NumberInput (built area sq ft, bag capacity)<br>• Helper text (capacity conversion display)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 9: First Warehouse Address -->
-        <div class="flow-step-card" id="step-09">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Warehouse Address</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/first_warehouse_address/screen.png" alt="Warehouse Address"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures the physical address of the primary warehouse.</p><p>Frequently differs from office and home address.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>District (controlled whitelist) and Full Address mandatory.</p><p>Same-as-business address pre-fill toggle supported.</p><p>Used for shipping, logistics, and verification audits.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Standard address form.</p><p>"Same as business address" toggle at top.</p><p>District dropdown, village text/search, address textarea, landmark.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">(Optional) Toggle "Same as business address" to pre-fill</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Edit fields if needed</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">or enter address manually: District</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Village/Panchayat</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Full Address</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Landmark</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Continue".</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { district, panchayat_village, full_address, landmark }.</p><p>Pre-fill from business context if toggle active.</p><p>Written to <code>warehouses</code> table.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "9 of 15".</p><p>Heading: "Warehouse Address" + helper "The physical location of the warehouse facility." + toggle "Same as business address" + form fields (stacked): District (dropdown), Panchayat/Village (text), Full Address (textarea), Landmark (optional).</p><p>Primary CTA: "Continue" (enabled once District and Full Address filled).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">warehouses: district, address, landmark.</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 9 of 15)<br>• CheckboxInput (same as business address toggle)<br>• SelectInput (district dropdown)<br>• TextInput (village, full address, landmark)<br>• AddressForm wrapper (pre-fill logic)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 10: First Warehouse Geo-Fencing -->
-        <div class="flow-step-card" id="step-10">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">Warehouse Location (GPS)</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/first_warehouse_geofencing/screen.png" alt="Warehouse GPS"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures GPS coordinates of the warehouse center point.</p><p>Mandatory for location verification.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>GPS center point coordinates mandatory for warehouse verification audits, logistics routing, and fraud prevention.</p><p>GPS accuracy threshold check (minimum accuracy <= 15m recommended).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Embedded map view with draggable marker.</p><p>"Use my location" button.</p><p>Coordinates strip (lat, lng, accuracy) at bottom.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap map to place marker / drag marker to center of warehouse structure · or Tap "Use current location" to fetch current GPS coordinates</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Continue" once marker is placed.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { gps_lat, gps_lng, gps_accuracy }.</p><p>Marker placement triggers coordinates update.</p><p>accuracy fetched from device sensor.</p><p>Written to <code>warehouses</code> table.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "10 of 15".</p><p>Heading: "Warehouse GPS Location" + helper "Drag the marker to the center of the warehouse facility or stand in the center and use your device location." + Map view (Google Maps Flutter, 300dp height) + coordinates banner (dark, surface-hi) showing Latitude, Longitude, and Accuracy (color-coded: green if <= 10m, yellow if 10-20m, red if > 20m) + secondary button "Use My Location" + primary CTA "Continue" (enabled once coordinates are set and accuracy is within acceptable limits).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">warehouses: gps_lat, gps_lng, gps_accuracy.</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 10 of 15)<br>• MapInput (Google Maps with draggable marker)<br>• StatusBadge (accuracy color-coded: green/yellow/red)<br>• CoordinatesDisplay (lat, lng, accuracy read-only)<br>• Button (Use My Location)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 11: Popping Capability Profile -->
-        <div class="flow-step-card" id="step-11">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Popping Capability Profile</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popping_capability_profile_detailed_breakdown/screen.png" alt="Popping Capability"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Documents the popper's warehouse equipment inventory and daily production capacity.</p><p>Captures popping methods (traditional chulas, semi-mechanized, industrial/automated) and maximum producible grades.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Equipment documentation mandatory for production capacity planning and grade compatibility.</p><p>Daily capacity calculated from equipment counts and throughput rates.</p><p>Producible grades multi-select (6 Suta Plus, 5 Suta, 4.5 Suta, Murrah, Chipta).</p><p>Quality assurance capability optional but scored for facility ranking.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Sectioned form: Traditional Equipment (count + throughput per unit), Semi-mechanized (count + throughput), Industrial/Automated (count + throughput), Equipment Photos (optional, up to 5), Total Daily Capacity (auto-calculated, read-only), Producible Grades (multi-select checkboxes), QA Capability (optional with methods: manual, moisture testing, sorting, ICAR certified).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter chula count (0-50)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter kg per chula per day (5-10)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter machine count (0-20)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter kg per machine (50-250)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter unit count (0-10)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter kg per unit (500-2000)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Add equipment photos</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">View auto-calculated daily capacity</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Select producible grades</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Enable QA capability and select methods</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { chula_count, chula_throughput_kg_per_day, machine_count, machine_throughput_kg_per_day, unit_count, unit_throughput_kg_per_day, equipment_photos, producible_grades, qa_capability, qa_methods }.</p><p>Daily capacity auto-calculated: (chula_count × chula_throughput) + (machine_count × machine_throughput) + (unit_count × unit_throughput).</p><p>Written to warehouses table at submit.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "11 of 15".</p><p>Heading: "Popping Capability Profile" + helper "Document equipment and production capacity." + sectioned form (stacked): [Traditional Chulas] Chula Count (required, 0-50), Throughput per Chula (required, kg/day), [Semi-mechanized] Machine Count (required, 0-20), Throughput per Machine (required, kg/day), [Industrial/Automated] Unit Count (required, 0-10), Throughput per Unit (required, kg/day), [Equipment Photos] Optional upload (up to 5), [Total Daily Capacity] Auto-calculated, read-only badge, [Producible Grades] Multi-select checkboxes, [Quality Assurance] Toggle + conditional methods (Manual, Moisture Testing, Sorting, ICAR Certified).</p><p>Primary CTA: "Continue" (enabled once all required fields filled and daily capacity > 0).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box"><code>warehouses</code> table fields:<br>• <code>chula_count</code> (integer, 0-50)<br>• <code>chula_throughput_kg_per_day</code> (decimal)<br>• <code>machine_count</code> (integer, 0-20)<br>• <code>machine_throughput_kg_per_day</code> (decimal)<br>• <code>unit_count</code> (integer, 0-10)<br>• <code>unit_throughput_kg_per_day</code> (decimal)<br>• <code>daily_capacity_kg</code> (auto-calculated, decimal)<br>• <code>equipment_photos</code> (JSONB array)<br>• <code>producible_grades</code> (array: SUTA6P, SUTA5, SUTA45, MURRAH, CHIPTA)<br>• <code>has_qa_capability</code> (boolean)<br>• <code>qa_methods</code> (array: MANUAL, MOISTURE, SORTING, ICAR_CERTIFIED)<br>• <code>qa_capability_verified_at</code> (timestamp, nullable)</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 11 of 15)<br>• NumberInput (equipment counts: chulas, machines, units)<br>• NumberInput (throughput values)<br>• PhotoCaptureCard (optional equipment photos, up to 5)<br>• StatusBadge (auto-calculated daily capacity)<br>• CheckboxInput (producible grades multi-select)<br>• ToggleSwitch (QA capability)<br>• CheckboxInput (QA methods: manual, moisture, sorting, ICAR)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 12: Ancillary Equipment (Optional) -->
-        <div class="flow-step-card" id="step-12">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Ancillary Equipment (Optional)</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/ancillary_equipment_optional/screen.png" alt="Ancillary Equipment"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Documents additional processing machinery and value-add services available at the warehouse.</p><p>Enables facility scoring and production capability assessment.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>This step is optional — can be skipped to proceed to Bank Account Details.</p><p>Equipment categories: Pre-Popping (cleaning/winnowing, drying, pre-roast grading), Roasting (sand roaster, rotary/air roaster), Post-Popping (de-shelling, polishing, post-pop grading), Value-Add (flavor coating, packaging vacuum, packaging nitrogen).</p><p>Facility score boost: 0–15 points based on equipment presence.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Responsive grid of equipment category cards with toggle checkboxes.</p><p>Each equipment item shows as a checkbox tile with icon and description.</p><p>Optional equipment photo upload (up to 5).</p><p>"Skip (Optional)" button allows bypassing this section.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Review equipment categories (Pre-Popping, Roasting, Post-Popping, Value-Add)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Check boxes for available equipment</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">(Optional) Add equipment photos (up to 5)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Or tap "Skip (Optional)" to proceed without equipment data.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { ancillary_equipment: { pre_popping: { cleaning_winnowing, drying, pre_roast_grading }, roasting: { sand_roaster, rotary_roaster }, post_popping: { de_shelling, polishing, post_pop_grading }, value_add: { flavor_coating, packaging_vacuum, packaging_nitrogen } }, ancillary_equipment_photos, facility_score_boost }.</p><p>Facility score boost calculated: +1 point per equipment type available (max 12 points baseline, bonus for rare combinations).</p><p>Written to warehouses table at submit.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "12 of 15".</p><p>Heading: "Ancillary Equipment & Services" + helper "Document additional processing machinery and value-add capabilities." + responsive equipment grid (mobile-first): [Pre-Popping Equipment] Cleaning/Winnowing (checkbox), Drying Equipment (checkbox), Pre-roast Grading Machine (checkbox), [Roasting Equipment] Sand Roaster (checkbox), Rotary/Air Roaster (checkbox), [Post-Popping Equipment] De-shelling Machine (checkbox), Polishing Machine (checkbox), Post-pop Grading Machine (checkbox), [Value-Add Equipment] Flavor Coating Drum (checkbox), Packaging Machine (Vacuum) (checkbox), Packaging Machine (Nitrogen) (checkbox), [Equipment Photos] Optional upload (up to 5).</p><p>Primary CTA: "Continue" (always enabled).</p><p>Secondary CTA: "Skip (Optional)" (links to Bank Account Details, bypassing this step).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box"><code>warehouses</code> table fields:<br>• <code>ancillary_equipment</code> (JSONB object with boolean flags):<br>&nbsp;&nbsp;- pre_popping: { cleaning_winnowing, drying, pre_roast_grading }<br>&nbsp;&nbsp;- roasting: { sand_roaster, rotary_roaster }<br>&nbsp;&nbsp;- post_popping: { de_shelling, polishing, post_pop_grading }<br>&nbsp;&nbsp;- value_add: { flavor_coating, packaging_vacuum, packaging_nitrogen }<br>• <code>ancillary_equipment_photos</code> (JSONB array, up to 5 files)<br>• <code>facility_score_boost</code> (integer, 0-15 points)</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 12 of 15)<br>• CheckboxInput (equipment category checklist: Pre-Popping, Roasting, Post-Popping, Value-Add)<br>• PhotoCaptureCard (optional equipment photos, up to 5)<br>• Button (secondary: Skip Optional)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 13: Bank Account Details -->
-        <div class="flow-step-card" id="step-13">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Bank Account Details</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_bank_account_details/screen.png" alt="Bank Account"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the popper's business bank account for payment settlement.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Account holder name should match the business name or contact person name (soft check).</p><p>Account number (12–18 digits), IFSC code mandatory.</p><p>Penny-drop async verification triggered on submit.</p><p>One bank account per popper Year-1.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Identical form pattern to farmer bank account, but pre-fill account holder name with business name (editable).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Verify/edit Account Holder Name (pre-filled with business name)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter Account Number (12–18 digits)</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Confirm Account Number</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Enter IFSC Code</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">bank/branch auto-resolves</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Review resolved bank and branch</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Continue.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: bank: { account_holder_name, account_number, ifsc_code }.</p><p>IFSC regex: ^[A-Z]{4}0[A-Z0-9]{6}$.</p><p>Account number: 12–18 digits.</p><p>Bank/branch via Razorpay IFSC API or local lookup.</p><p>Account number AES-256-GCM encrypted.</p><p>Penny-drop async (Inngest `<code>popper.penny</code>-drop-verification`).</p><p>Status: pennydrop_status='pending' initially.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "13 of 15".</p><p>Heading: "Bank Account" + helper "We will send payments to this account.</p><p>Ensure the account holder name matches the business entity name or authorized person." + form fields (stacked, surface-hi): Account Holder Name (mandatory, pre-filled with business name, editable, max 100 chars, helper "Must match the name on the bank account (business name or authorized signatory)."), Account Number (mandatory, numeric, placeholder "<code>e.g</code>., 1234567890123", helper "Without spaces or dashes."), Confirm Account Number (mandatory, numeric, placeholder "Re-enter for confirmation", validation: must match), IFSC Code (mandatory, uppercase auto-format, placeholder "<code>e.g</code>., HDFC0001234", helper "Find your IFSC code on the bank cheque or online banking."), Bank Details (auto-resolved, read-only, label "Resolved Bank & Branch", display after IFSC is valid: "Bank: HDFC Bank" + "Branch: Kolkata Main Branch") + penny-drop note (surface-mid) "We will send ₹1 to verify this account — penny-drop verification.</p><p>This may take a few minutes." + primary CTA "Continue" (enabled once Account Number, Confirm, and IFSC are filled and valid).</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">user_bank_accounts: user_id, account_holder_name_encrypted, account_number_encrypted, account_number_masked (last 4), ifsc_code, bank_name, branch_name, pennydrop_status='pending', pennydrop_job_id.</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 13 of 15)<br>• TextInput (account holder name, account number, IFSC code)<br>• TextInput (read-only: bank and branch auto-resolved)<br>• StatusBadge (penny-drop verification status)<br>• InfoBanner (penny-drop explanation)<br>• CTAFooter (Continue button)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 14: Review & Submit -->
-        <div class="flow-step-card" id="step-14">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">14</span><span class="step-title">Review & Submit</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_review_submit/screen.png" alt="Review"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Final recap before all records are committed.</p><p>Scout reviews every field on behalf of the popper.</p><p>Explicit consent checkbox before submit.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Immutable on submit.</p><p>Changes require Manage Popper workflows or Admin intervention.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Sectioned recap layout: Contact Person Identity, Business Information, Business Address, Warehouse Details, Bank, Documents.</p><p>Each section has an inline "Edit" link to jump back and correct any field.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Review all sections</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tap "Edit" on any section</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">return to relevant screen, edit, return with updated values</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Tick final consent checkbox</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">Submit Registration</span><span class="flow-arrow">&rarr;</span><span class="spec-badge-inline">atomic write to database, queue to sync, advance to Submission Confirmation.</span></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>On submit (atomic, offline-capable): writes <code>users</code>, <code>popper_profiles</code>, <code>warehouses</code>, <code>user_bank_accounts</code> (+ pennydrop async), <code>user_documents</code>, <code>user_preferences</code>.</p><p>Status: <code>users.status</code>='pending_approval'.</p><p>Created via scout context.</p><p>All queued to <code>sync_queue</code>.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "14 of 15".</p><p>Heading: "Review Information" + recap sections (stacked, surface-hi) + final consent checkbox + primary "Submit Registration" disabled until checked.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">All tables defined above (<code>users</code>, <code>popper_profiles</code>, <code>warehouses</code>, <code>user_bank_accounts</code>, <code>user_documents</code>, <code>user_preferences</code>, popper_approval_queue, popper_registration_events).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress 14 of 15)<br>• ExpandableSection (recap sections: Identity, Business, Warehouse, Equipment, Bank)<br>• TextLink (inline Edit links per section)<br>• SectionCard (read-only display of each section)<br>• CheckboxInput (final consent checkbox)<br>• CTAFooter (Submit Registration button, disabled until consent)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 17: Submission Confirmation -->
-        <div class="flow-step-card" id="step-15">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">15</span><span class="step-title">Submission Confirmation</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/farmer_onboarding/you_re_all_set/screen.png" alt="Confirmation Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Confirms successful business registration submission.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Verify transaction was captured and queued for sync if offline.</p><p>Shows local/remote sync state feedback.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Success visual confirmation, offline status chip ("Pending Sync"), and "Back to Today's Dashboard" button.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap "Back to Today's Dashboard" to return to scout operations.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Displays success illustration and logs offline queue receipt.</p><p>Closes registration wizard session.</p></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Clean success screen, state badge, high contrast primary button.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None (read/confirm view).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header, no back)<br>• SuccessIllustration or HeroCard (success visual)<br>• StatusBadge (Pending Sync / Synced state)<br>• HeadlineText (confirmation message)<br>• Button (primary: Back to Today's Dashboard)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <script>
+<h4 class="backend-section-title" style="font-size: 14px;">✅ Security Checklist</h4>
+<ul class="backend-list">
+<li>✓ All inputs validated with Zod schemas</li>
+<li>✓ Secrets in Cloudflare Workers Secrets (not .env)</li>
+<li>✓ GSTIN encrypted AES-256-GCM at-rest</li>
+<li>✓ Business name encrypted AES-256-GCM at-rest</li>
+<li>✓ Bank account numbers encrypted AES-256-GCM at-rest</li>
+<li>✓ Account holder names encrypted AES-256-GCM</li>
+<li>✓ OTP hashed with bcrypt (10 rounds), never plaintext</li>
+<li>✓ JWT tokens HttpOnly, Secure, SameSite=Strict</li>
+<li>✓ Rate limiting on OTP and auth endpoints</li>
+<li>✓ No SQL injection (Drizzle ORM protects)</li>
+<li>✓ Error messages don't leak sensitive data</li>
+<li>✓ Audit logging for all sensitive operations</li>
+<li>✓ Scout assignment validation on all protected endpoints</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="stepper-panel-container">
+<div class="stepper-nodes">
+<a class="stepper-node active" href="#step-01"><span class="node-num">1</span><span class="node-label">Consent</span></a>
+<a class="stepper-node" href="#step-02"><span class="node-num">2</span><span class="node-label">Mobile</span></a>
+<a class="stepper-node" href="#step-03"><span class="node-num">3</span><span class="node-label">Identity</span></a>
+<a class="stepper-node" href="#step-04"><span class="node-num">4</span><span class="node-label">Language</span></a>
+<a class="stepper-node" href="#step-05"><span class="node-num">5</span><span class="node-label">Business</span></a>
+<a class="stepper-node" href="#step-06"><span class="node-num">6</span><span class="node-label">Bus Docs</span></a>
+<a class="stepper-node" href="#step-07"><span class="node-num">7</span><span class="node-label">Bus Addr</span></a>
+<a class="stepper-node" href="#step-08"><span class="node-num">8</span><span class="node-label">WH Detail</span></a>
+<a class="stepper-node" href="#step-09"><span class="node-num">9</span><span class="node-label">WH Addr</span></a>
+<a class="stepper-node" href="#step-10"><span class="node-num">10</span><span class="node-label">Geofence</span></a>
+<a class="stepper-node" href="#step-11"><span class="node-num">11</span><span class="node-label">Pop Equip</span></a>
+<a class="stepper-node" href="#step-12"><span class="node-num">12</span><span class="node-label">Aux Equip</span></a>
+<a class="stepper-node" href="#step-13"><span class="node-num">13</span><span class="node-label">Bank</span></a>
+<a class="stepper-node" href="#step-14"><span class="node-num">14</span><span class="node-label">Review</span></a>
+<a class="stepper-node" href="#step-15"><span class="node-num">15</span><span class="node-label">Confirm</span></a>
+</div>
+</div>
+<div class="workflow-group-block">
+<div class="workflow-group-header">
+<div class="workflow-group-title">Popper Registration Workflow</div>
+<div class="step-count-pill">15 Steps</div>
+</div>
+<div class="workflow-group-body">
+<!-- Step 1: Intro & Consent -->
+<div class="flow-step-card" id="step-01">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">1</span><span class="step-title">Intro &amp; Consent</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Consent Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_intro_consent/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Scout acts on popper's behalf; verbal consent required before any data collected.</p><p>Binding profile creation requires explicit attestation.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Consent timestamp + scout ID + popper mobile = audit minimum.</p><p>Binding profile creation requires attestation via checkbox.</p><p>Popper's verbal consent is the source; scout attests via checkbox.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Single screen, plain-language explanation, consent checkbox, disabled CTA until ticked.</p><p>Scout reads consent line aloud to popper.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Read consent line aloud to popper</span><span class="flow-arrow">→</span><span class="spec-badge-inline">tick "I confirm the popper has given verbal consent to register on FenBridge"</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Continue.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context initialised: { role: 'popper', consent_at: now(), scout_id }.</p><p>No database write yet.</p><p>Disabled CTA enforced via form validation.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Headline "Register a Popper" + explanation block with business context ("The popper is a business that buys raw makhana seed and processes it into finished product for sale.</p><p>We will collect contact person's name and mobile, business identity (PAN, GSTIN, FSSAI), warehouse information, and bank account.</p><p>Once submitted, the registration will be reviewed by our team — the popper will be notified by SMS when approved.") + consent checkbox + disabled CTA until ticked.</p><p>Helper: "Ensure you have explained the above to the contact person and they have agreed.".</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None at this step. Context only.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• CheckboxInput (consent checkbox)<br/>• CTAFooter (Continue, Save Draft)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 2: Mobile Verification (OTP Send) -->
+<div class="flow-step-card" id="step-02">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification (OTP Send)</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Mobile Verification" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_mobile_verification_send/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Verifies the popper's contact person's mobile number via OTP (One-Time Password).</p><p>Ensures the phone number entered is real and accessible to the contact person.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Mobile verification is mandatory for popper login authentication.</p><p>The contact person must be able to receive SMS at the registered number.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Mobile number input field with country code prefix (+91).</p><p>"Send OTP" button triggers SMS delivery.</p><p>OTP entry via bottom sheet overlay (inline verification).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Triggers async SMS job.</p><p>OTP verified inline without page navigation.</p><p>Max 5 attempts, 10-minute expiration.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• PhoneInput (mobile number)<br/>• OTPEntrySheet (modal overlay)<br/>• TextInput (6-digit OTP)<br/>• Timer (60 sec cooldown)<br/>• CTAFooter (Send OTP / Verify buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 3: Contact Person Identity -->
+<div class="flow-step-card" id="step-03">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Contact Person Identity</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Identity Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/contact_person_identity/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures contact person's personal identity (name, mobile, DoB).</p><p>The contact person is the human who logs in and operates the popper's account.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Contact person name and mobile are mandatory.</p><p>Mobile must be the contact person's own — this is what they'll use to log in with OTP.</p><p>Uniqueness check ensures mobile isn't already registered.</p><p>DoB optional but recommended.</p><p>Alternate phone optional.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Stacked form: Name (required), DoB (optional, date picker), Mobile (required, 10-digit Indian with +91 chip), Alternate Phone (optional).</p><p>On Continue, uniqueness check performed; if duplicate, error shown with escalation path.</p><p>Top bar: Back arrow, no title, progress "3 of 15".</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter contact person's full name</span><span class="flow-arrow">→</span><span class="spec-badge-inline">(Optional) Tap DoB</span><span class="flow-arrow">→</span><span class="spec-badge-inline">date picker</span><span class="flow-arrow">→</span><span class="spec-badge-inline">select or skip</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter mobile (10 digits, auto-formatted)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">(Optional) Enter alternate phone</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tap "Continue"</span><span class="flow-arrow">→</span><span class="spec-badge-inline">if mobile is unique, proceed to Business Basic Details; if duplicate, show error modal with "Go back" and "Contact Admin" buttons.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: contact_person: { full_name, dob, mobile, alt_phone }.</p><p>Mobile validated as 10-digit Indian.</p><p>Uniqueness check on Continue: query <code>users.mobile</code> for duplicate.</p><p>Written to <code>users.mobile</code> and <code>popper_profiles.contact_person_name</code>, <code>popper_profiles.date_of_birth</code> at submit.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "3 of 15".</p><p>Heading: "Contact Person Identity" + form fields (stacked): Contact Person Name (required, max 100 chars, helper "The person who will manage this account."), DoB (optional, date picker, helper "Used for compliance checks."), Mobile (required, country chip +91, helper "This is the contact person's mobile — they will receive OTP and SMS here.</p><p>Make sure you are using their own number, not a business reception number."), Alternate Phone (optional, helper "A secondary contact number if available.").</p><p>Error handling: If mobile invalid: "Please enter a valid 10-digit number".</p><p>If mobile already registered: modal "This mobile is already registered.</p><p>Go back, Contact Admin".</p><p>Primary CTA: "Continue" (enabled once Name and Mobile filled with valid values).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">users.mobile, popper_profiles.contact_person_name, popper_profiles.date_of_birth (optional).</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• TextInput (contact person name field)<br/>• DatePickerInput (date of birth picker)<br/>• PhoneInput (alternate phone optional)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 4: Language Selection -->
+<div class="flow-step-card" id="step-04">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Language Selection</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Language Selection" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_language_selection/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets contact person's preferred app language for SMS <code>notifications</code>, dashboards, future self-login sessions.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Language determines notification language (SMS, dashboard, emails).</p><p>Three options: English / हिंदी (Hindi) / বাংলা (Bengali).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Three large tiles with native script labels.</p><p>Top bar: Back arrow, no title, progress "4 of 15".</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap one language</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Continue auto-enabled. Defaults to 'en' if skipped.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: preferred_language: 'en' | 'hi' | 'bn'.</p><p>Written to <code>popper_profiles.preferred_language</code> at final submit.</p><p>Used for all SMS and dashboard text.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Heading: "Preferred Language" + helper "We'll send <code>notifications</code> to the contact person in this language." Three radio tiles: English / हिंदी / বাংলা.</p><p>Primary CTA: "Continue" (always enabled, defaults to 'en').</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">Written to popper_profiles.preferred_language at submit.</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 4/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• SelectableCard (language tiles)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 5: Business Information -->
+<div class="flow-step-card" id="step-05">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Business Information</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Business Details" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/business_basic_details/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the popper's business identity: legal name, PAN (Permanent Account Number), and optional GSTIN and FSSAI registrations.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Business name and PAN are mandatory.</p><p>GSTIN is optional in Year 1 but recommended.</p><p>FSSAI is optional but flagged as recommended for food handling compliance.</p><p>PAN and GSTIN must match the business entity's legal documents.</p><p>Name uniqueness is soft-checked (businesses in different regions may share names).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Stacked form with four fields.</p><p>PAN and GSTIN validated via regex on entry.</p><p>FSSAI is 14-digit number.</p><p>Each legal field has a helper explaining what it is and where to find it.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter business name (<code>e.g</code>., "ABC Makhana Processing Pvt. Ltd.")</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter PAN (10-char code, <code>e.g</code>., "AAAAA1234A")</span><span class="flow-arrow">→</span><span class="spec-badge-inline">(Optional) Enter GSTIN (15-char code, <code>e.g</code>., "05AABCT1234A1Z0")</span><span class="flow-arrow">→</span><span class="spec-badge-inline">(Optional) Enter FSSAI number (14 digits, <code>e.g</code>., "10012345678901")</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Continue.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: business: { business_name, pan_number, gstin, fssai_number }.</p><p>PAN validated: regex ^[A-Z]{5}[0-9]{4}[A-Z]{1}$.</p><p>GSTIN validated (if entered): regex ^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$.</p><p>FSSAI validated (if entered): 14-digit numeric.</p><p>Name uniqueness is soft (no hard constraint; businesses may have same name in different regions).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "5 of 15".</p><p>Heading: "Business Information" + form fields (stacked, surface-hi): Business Name (mandatory, max 150 chars, helper "The legal name of the business as registered."), PAN (mandatory, uppercase auto-format, placeholder "AAAAA1234A", validation helper "PAN must be 10 characters (5 letters, 4 digits, 1 letter).", helper "Find this on your PAN certificate or IT acknowledgment."), GSTIN (optional, uppercase auto-format, placeholder "05AABCT1234A1Z0", validation helper "GSTIN must be 15 characters.", helper "Find this on your GSTIN certificate or GST portal.</p><p>Required if registered for GST."), FSSAI (optional, 14-digit, placeholder "14-digit number", validation helper "FSSAI must be 14 digits.", helper "Find this on your FSSAI registration certificate.</p><p>Recommended for food processing business.").</p><p>Primary CTA: "Continue" (enabled once Business Name and PAN are filled with valid formats).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">popper_profiles: business_name, pan_number, gstin, fssai_number.</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 5/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• TextInput (business name)<br/>• SelectInput (business type)<br/>• TextInput (PAN, GSTIN, FSSAI)<br/>• FormValidation (live validation status)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 6: Business Legal Documents -->
+<div class="flow-step-card" id="step-06">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">Business Legal Documents</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Documents" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/business_legal_documents/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures photo uploads of the business's legal documents (PAN card, and optionally GSTIN/FSSAI certificates if details were entered in Step 5).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>PAN upload is mandatory.</p><p>GSTIN upload is mandatory if GSTIN details were entered in Step 5.</p><p>FSSAI upload is mandatory if FSSAI details were entered in Step 5.</p><p>Maximum 3 photos per document.</p><p>Uses camera to capture physical document.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Dynamic list of document upload widgets based on Step 5 inputs.</p><p>Each widget displays document name, optional badge, photo capture slots, and preview thumbnails.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">For each required document card: Tap "Take Photo"</span><span class="flow-arrow">→</span><span class="spec-badge-inline">open system camera</span><span class="flow-arrow">→</span><span class="spec-badge-inline">capture clear image of document</span><span class="flow-arrow">→</span><span class="spec-badge-inline">crop/confirm</span><span class="flow-arrow">→</span><span class="spec-badge-inline">view thumbnail with delete option</span><span class="flow-arrow">→</span><span class="spec-badge-inline">repeat up to 3 photos if needed</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tap "Continue" once all required documents have at least one photo.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: documents: { pan_photos: [], gstin_photos: [], fssai_photos: [] }.</p><p>Dynamic fields rendered: PAN Card (always required), GSTIN Certificate (required if gstin != null), FSSAI Certificate (required if fssai_number != null).</p><p>Photos compressed, stored in temp offline folder, uploaded to Supabase Storage bucket `popper-documents` on final sync.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "6 of 15".</p><p>Heading: "Business Documents" + helper "Please upload clear photos of the business's certificates.</p><p>Ensure text is legible." + document upload list (cards): 1.</p><p>Business PAN Card (required, 3 slots).</p><p>2.</p><p>GSTIN Certificate (conditional, 3 slots).</p><p>3.</p><p>FSSAI License (conditional, 3 slots).</p><p>Each slot: dotted border box with camera icon or thumbnail preview with delete (red trash icon) overlay.</p><p>Primary CTA: "Continue" (enabled once all rendered cards have at least 1 photo).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">user_documents: user_id, document_type ('pan','gstin','fssai'), file_url, uploaded_at, verified_at=null.</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 6/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• DocumentUpload (composed docs uploader)<br/>• PhotoCaptureCard (camera trigger)<br/>• PhotoGrid (preview docs)<br/>• ExpandableSection (add additional documents)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 7: Business Address -->
+<div class="flow-step-card" id="step-07">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">Business Address</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Business Address Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/business_address_details/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures the business's registered address (office/headquarters).</p><p>May differ from contact person's address and warehouse location.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>District mandatory (controlled whitelist).</p><p>Full address mandatory.</p><p>Used for business registration records, tax registration location, and legal notices.</p><p>Same-as-contact address toggle supported.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Same address form layout.</p><p>"Same as contact person's address" toggle at top to pre-fill fields.</p><p>District dropdown, village/panchayat searchable, address textarea, landmark.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">(Optional) Toggle "Same as contact person's address" to pre-fill</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Edit any field if needed</span><span class="flow-arrow">→</span><span class="spec-badge-inline">or enter address manually: District</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Village/Panchayat</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Full Address</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Landmark</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tap "Continue".</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: business: { district, panchayat_village, full_address, landmark }.</p><p>If toggle active, pre-fill from contact_person context.</p><p>Written to <code>popper_profiles</code> at submit.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "7 of 15".</p><p>Heading: "Business Address" + helper "The registered address of the business entity." + toggle "Same as contact person's address" + form fields (stacked): District (dropdown), Panchayat/Village (text), Full Address (textarea), Landmark (optional).</p><p>Primary CTA: "Continue" (enabled once District and Full Address are filled).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">popper_profiles: business_district, business_address, business_landmark (optional).</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 7/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• CheckboxInput (same as contact address toggle)<br/>• SelectInput (district dropdown)<br/>• TextInput (pincode/city/street)<br/>• AddressForm (composed address details form)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 8: First Warehouse Details -->
+<div class="flow-step-card" id="step-08">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Warehouse Details</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Warehouse Details" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/first_warehouse_details/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures details of the popper's primary processing warehouse.</p><p>Poppers must register at least one warehouse.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>At least one warehouse mandatory.</p><p>Warehouse Name (mandatory), Built Capacity in sq ft (mandatory), Bag Capacity in 80kg bags (mandatory).</p><p>Details verified by scout.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Form fields with numeric-only constraints for capacities.</p><p>Real-time conversion helper displays bag capacity estimate based on square footage.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter Warehouse Name (<code>e.g</code>., "ABC Warehouse 1")</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter Built Area (sq ft, numeric)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter Bag Storage Capacity (number of bags, numeric)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tap "Continue".</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { name, area_sq_ft, bag_capacity }.</p><p>Auto-generates warehouse code `WH-POP-{seq}` on backend.</p><p>Written to <code>warehouses</code> table.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "8 of 15".</p><p>Heading: "First Warehouse Details" + helper "Each popper must register at least one processing/storage warehouse." + form fields: Warehouse Name (required), Built Area (sq ft, numeric), Bag Capacity (number of 80kg bags, numeric).</p><p>Primary CTA: "Continue" (enabled once all fields have valid positive numbers).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">warehouses: code, owner_user_id, name, area_sq_ft, bag_capacity, status='pending_approval'.</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 8/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• TextInput (warehouse name, area)<br/>• NumberInput (capacity value)<br/>• SelectInput (capacity unit)<br/>• Helper (throughput text helper)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 9: First Warehouse Address -->
+<div class="flow-step-card" id="step-09">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Warehouse Address</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Warehouse Address" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/first_warehouse_address/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures the physical address of the primary warehouse.</p><p>Frequently differs from office and home address.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>District (controlled whitelist) and Full Address mandatory.</p><p>Same-as-business address pre-fill toggle supported.</p><p>Used for shipping, logistics, and verification audits.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Standard address form.</p><p>"Same as business address" toggle at top.</p><p>District dropdown, village text/search, address textarea, landmark.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">(Optional) Toggle "Same as business address" to pre-fill</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Edit fields if needed</span><span class="flow-arrow">→</span><span class="spec-badge-inline">or enter address manually: District</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Village/Panchayat</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Full Address</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Landmark</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tap "Continue".</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { district, panchayat_village, full_address, landmark }.</p><p>Pre-fill from business context if toggle active.</p><p>Written to <code>warehouses</code> table.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "9 of 15".</p><p>Heading: "Warehouse Address" + helper "The physical location of the warehouse facility." + toggle "Same as business address" + form fields (stacked): District (dropdown), Panchayat/Village (text), Full Address (textarea), Landmark (optional).</p><p>Primary CTA: "Continue" (enabled once District and Full Address filled).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">warehouses: district, address, landmark.</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 9/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• CheckboxInput (same as business address toggle)<br/>• SelectInput (district dropdown)<br/>• TextInput (pincode/city/street)<br/>• AddressForm (composed address details form)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 10: First Warehouse Geo-Fencing -->
+<div class="flow-step-card" id="step-10">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">Warehouse Location (GPS)</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Warehouse GPS" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/first_warehouse_geofencing/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Captures GPS coordinates of the warehouse center point.</p><p>Mandatory for location verification.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>GPS center point coordinates mandatory for warehouse verification audits, logistics routing, and fraud prevention.</p><p>GPS accuracy threshold check (minimum accuracy &lt;= 15m recommended).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Embedded map view with draggable marker.</p><p>"Use my location" button.</p><p>Coordinates strip (lat, lng, accuracy) at bottom.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Tap map to place marker / drag marker to center of warehouse structure · or Tap "Use current location" to fetch current GPS coordinates</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tap "Continue" once marker is placed.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { gps_lat, gps_lng, gps_accuracy }.</p><p>Marker placement triggers coordinates update.</p><p>accuracy fetched from device sensor.</p><p>Written to <code>warehouses</code> table.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "10 of 15".</p><p>Heading: "Warehouse GPS Location" + helper "Drag the marker to the center of the warehouse facility or stand in the center and use your device location." + Map view (Google Maps Flutter, 300dp height) + coordinates banner (dark, surface-hi) showing Latitude, Longitude, and Accuracy (color-coded: green if &lt;= 10m, yellow if 10-20m, red if &gt; 20m) + secondary button "Use My Location" + primary CTA "Continue" (enabled once coordinates are set and accuracy is within acceptable limits).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">warehouses: gps_lat, gps_lng, gps_accuracy.</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 10/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• LocationPicker (Google Maps)<br/>• CoordinatesDisplay (latitude/longitude)<br/>• StatusBadge (GPS lock accuracy)<br/>• Button (Use my location)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 11: Popping Capability Profile -->
+<div class="flow-step-card" id="step-11">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Popping Capability Profile</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Popping Capability" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popping_capability_profile_detailed_breakdown/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Documents the popper's warehouse equipment inventory and daily production capacity.</p><p>Captures popping methods (traditional chulas, semi-mechanized, industrial/automated) and maximum producible grades.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Equipment documentation mandatory for production capacity planning and grade compatibility.</p><p>Daily capacity calculated from equipment counts and throughput rates.</p><p>Producible grades multi-select (6 Suta Plus, 5 Suta, 4.5 Suta, Murrah, Chipta).</p><p>Quality assurance capability optional but scored for facility ranking.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Sectioned form: Traditional Equipment (count + throughput per unit), Semi-mechanized (count + throughput), Industrial/Automated (count + throughput), Equipment Photos (optional, up to 5), Total Daily Capacity (auto-calculated, read-only), Producible Grades (multi-select checkboxes), QA Capability (optional with methods: manual, moisture testing, sorting, ICAR certified).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Enter chula count (0-50)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter kg per chula per day (5-10)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter machine count (0-20)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter kg per machine (50-250)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter unit count (0-10)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter kg per unit (500-2000)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">(Optional) Add equipment photos</span><span class="flow-arrow">→</span><span class="spec-badge-inline">View auto-calculated daily capacity</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Select producible grades</span><span class="flow-arrow">→</span><span class="spec-badge-inline">(Optional) Enable QA capability and select methods</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Continue.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { chula_count, chula_throughput_kg_per_day, machine_count, machine_throughput_kg_per_day, unit_count, unit_throughput_kg_per_day, equipment_photos, producible_grades, qa_capability, qa_methods }.</p><p>Daily capacity auto-calculated: (chula_count × chula_throughput) + (machine_count × machine_throughput) + (unit_count × unit_throughput).</p><p>Written to warehouses table at submit.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "11 of 15".</p><p>Heading: "Popping Capability Profile" + helper "Document equipment and production capacity." + sectioned form (stacked): [Traditional Chulas] Chula Count (required, 0-50), Throughput per Chula (required, kg/day), [Semi-mechanized] Machine Count (required, 0-20), Throughput per Machine (required, kg/day), [Industrial/Automated] Unit Count (required, 0-10), Throughput per Unit (required, kg/day), [Equipment Photos] Optional upload (up to 5), [Total Daily Capacity] Auto-calculated, read-only badge, [Producible Grades] Multi-select checkboxes, [Quality Assurance] Toggle + conditional methods (Manual, Moisture Testing, Sorting, ICAR Certified).</p><p>Primary CTA: "Continue" (enabled once all required fields filled and daily capacity &gt; 0).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box"><code>warehouses</code> table fields:<br/>• <code>chula_count</code> (integer, 0-50)<br/>• <code>chula_throughput_kg_per_day</code> (decimal)<br/>• <code>machine_count</code> (integer, 0-20)<br/>• <code>machine_throughput_kg_per_day</code> (decimal)<br/>• <code>unit_count</code> (integer, 0-10)<br/>• <code>unit_throughput_kg_per_day</code> (decimal)<br/>• <code>daily_capacity_kg</code> (auto-calculated, decimal)<br/>• <code>equipment_photos</code> (JSONB array)<br/>• <code>producible_grades</code> (array: SUTA6P, SUTA5, SUTA45, MURRAH, CHIPTA)<br/>• <code>has_qa_capability</code> (boolean)<br/>• <code>qa_methods</code> (array: MANUAL, MOISTURE, SORTING, ICAR_CERTIFIED)<br/>• <code>qa_capability_verified_at</code> (timestamp, nullable)</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 11/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• NumberInput (roasting capacity)<br/>• PhotoCaptureCard (camera trigger)<br/>• StatusBadge (upload status)<br/>• CheckboxInput (equipment specs)<br/>• ToggleSwitch (ancillary services)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 12: Ancillary Equipment (Optional) -->
+<div class="flow-step-card" id="step-12">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Ancillary Equipment (Optional)</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Ancillary Equipment" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/ancillary_equipment_optional/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Documents additional processing machinery and value-add services available at the warehouse.</p><p>Enables facility scoring and production capability assessment.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>This step is optional — can be skipped to proceed to Bank Account Details.</p><p>Equipment categories: Pre-Popping (cleaning/winnowing, drying, pre-roast grading), Roasting (sand roaster, rotary/air roaster), Post-Popping (de-shelling, polishing, post-pop grading), Value-Add (flavor coating, packaging vacuum, packaging nitrogen).</p><p>Facility score boost: 0–15 points based on equipment presence.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Responsive grid of equipment category cards with toggle checkboxes.</p><p>Each equipment item shows as a checkbox tile with icon and description.</p><p>Optional equipment photo upload (up to 5).</p><p>"Skip (Optional)" button allows bypassing this section.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Review equipment categories (Pre-Popping, Roasting, Post-Popping, Value-Add)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Check boxes for available equipment</span><span class="flow-arrow">→</span><span class="spec-badge-inline">(Optional) Add equipment photos (up to 5)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Continue</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Or tap "Skip (Optional)" to proceed without equipment data.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: warehouse: { ancillary_equipment: { pre_popping: { cleaning_winnowing, drying, pre_roast_grading }, roasting: { sand_roaster, rotary_roaster }, post_popping: { de_shelling, polishing, post_pop_grading }, value_add: { flavor_coating, packaging_vacuum, packaging_nitrogen } }, ancillary_equipment_photos, facility_score_boost }.</p><p>Facility score boost calculated: +1 point per equipment type available (max 12 points baseline, bonus for rare combinations).</p><p>Written to warehouses table at submit.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "12 of 15".</p><p>Heading: "Ancillary Equipment &amp; Services" + helper "Document additional processing machinery and value-add capabilities." + responsive equipment grid (mobile-first): [Pre-Popping Equipment] Cleaning/Winnowing (checkbox), Drying Equipment (checkbox), Pre-roast Grading Machine (checkbox), [Roasting Equipment] Sand Roaster (checkbox), Rotary/Air Roaster (checkbox), [Post-Popping Equipment] De-shelling Machine (checkbox), Polishing Machine (checkbox), Post-pop Grading Machine (checkbox), [Value-Add Equipment] Flavor Coating Drum (checkbox), Packaging Machine (Vacuum) (checkbox), Packaging Machine (Nitrogen) (checkbox), [Equipment Photos] Optional upload (up to 5).</p><p>Primary CTA: "Continue" (always enabled).</p><p>Secondary CTA: "Skip (Optional)" (links to Bank Account Details, bypassing this step).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box"><code>warehouses</code> table fields:<br/>• <code>ancillary_equipment</code> (JSONB object with boolean flags):<br/>  - pre_popping: { cleaning_winnowing, drying, pre_roast_grading }<br/>  - roasting: { sand_roaster, rotary_roaster }<br/>  - post_popping: { de_shelling, polishing, post_pop_grading }<br/>  - value_add: { flavor_coating, packaging_vacuum, packaging_nitrogen }<br/>• <code>ancillary_equipment_photos</code> (JSONB array, up to 5 files)<br/>• <code>facility_score_boost</code> (integer, 0-15 points)</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 12/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• EquipmentGrid (grading/packing checklist)<br/>• PhotoCaptureCard (camera trigger)<br/>• Button (Save Draft / Skip)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 13: Bank Account Details -->
+<div class="flow-step-card" id="step-13">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">13</span><span class="step-title">Bank Account Details</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Bank Account" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_bank_account_details/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the popper's business bank account for payment settlement.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Account holder name should match the business name or contact person name (soft check).</p><p>Account number (12–18 digits), IFSC code mandatory.</p><p>Penny-drop async verification triggered on submit.</p><p>One bank account per popper Year-1.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Identical form pattern to farmer bank account, but pre-fill account holder name with business name (editable).</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Verify/edit Account Holder Name (pre-filled with business name)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter Account Number (12–18 digits)</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Confirm Account Number</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Enter IFSC Code</span><span class="flow-arrow">→</span><span class="spec-badge-inline">bank/branch auto-resolves</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Review resolved bank and branch</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Continue.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Wizard context: bank: { account_holder_name, account_number, ifsc_code }.</p><p>IFSC regex: ^[A-Z]{4}0[A-Z0-9]{6}$.</p><p>Account number: 12–18 digits.</p><p>Bank/branch via Razorpay IFSC API or local lookup.</p><p>Account number AES-256-GCM encrypted.</p><p>Penny-drop async (Inngest `<code>popper.penny</code>-drop-verification`).</p><p>Status: pennydrop_status='pending' initially.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "13 of 15".</p><p>Heading: "Bank Account" + helper "We will send payments to this account.</p><p>Ensure the account holder name matches the business entity name or authorized person." + form fields (stacked, surface-hi): Account Holder Name (mandatory, pre-filled with business name, editable, max 100 chars, helper "Must match the name on the bank account (business name or authorized signatory)."), Account Number (mandatory, numeric, placeholder "<code>e.g</code>., 1234567890123", helper "Without spaces or dashes."), Confirm Account Number (mandatory, numeric, placeholder "Re-enter for confirmation", validation: must match), IFSC Code (mandatory, uppercase auto-format, placeholder "<code>e.g</code>., HDFC0001234", helper "Find your IFSC code on the bank cheque or online banking."), Bank Details (auto-resolved, read-only, label "Resolved Bank &amp; Branch", display after IFSC is valid: "Bank: HDFC Bank" + "Branch: Kolkata Main Branch") + penny-drop note (surface-mid) "We will send ₹1 to verify this account — penny-drop verification.</p><p>This may take a few minutes." + primary CTA "Continue" (enabled once Account Number, Confirm, and IFSC are filled and valid).</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="db-schema-box">user_bank_accounts: user_id, account_holder_name_encrypted, account_number_encrypted, account_number_masked (last 4), ifsc_code, bank_name, branch_name, pennydrop_status='pending', pennydrop_job_id.</div></div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 13/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• TextInput (account holder name)<br/>• TextInput (account number)<br/>• TextInput (confirm account number)<br/>• TextInput (IFSC code)<br/>• TextInput (bank/branch name)<br/>• CTAFooter (Continue / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 14: Review & Submit -->
+<div class="flow-step-card" id="step-14">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">14</span><span class="step-title">Review &amp; Submit</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Review" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_popper/popper_review_submit/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value"><p>Final recap before all records are committed.</p><p>Scout reviews every field on behalf of the popper.</p><p>Explicit consent checkbox before submit.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Immutable on submit.</p><p>Changes require Manage Popper workflows or Admin intervention.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value"><p>Sectioned recap layout: Contact Person Identity, Business Information, Business Address, Warehouse Details, Bank, Documents.</p><p>Each section has an inline "Edit" link to jump back and correct any field.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value"><span class="spec-badge-inline">Review all sections</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tap "Edit" on any section</span><span class="flow-arrow">→</span><span class="spec-badge-inline">return to relevant screen, edit, return with updated values</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Tick final consent checkbox</span><span class="flow-arrow">→</span><span class="spec-badge-inline">Submit Registration</span><span class="flow-arrow">→</span><span class="spec-badge-inline">atomic write to database, queue to sync, advance to Submission Confirmation.</span></div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>On submit (atomic, offline-capable): writes <code>users</code>, <code>popper_profiles</code>, <code>warehouses</code>, <code>user_bank_accounts</code> (+ pennydrop async), <code>user_documents</code>, <code>user_preferences</code>.</p><p>Status: <code>users.status</code>='pending_approval'.</p><p>Created via scout context.</p><p>All queued to <code>sync_queue</code>.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value"><p>Top bar: Back arrow, no title, progress "14 of 15".</p><p>Heading: "Review Information" + recap sections (stacked, surface-hi) + final consent checkbox + primary "Submit Registration" disabled until checked.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">All tables defined above (<code>users</code>, <code>popper_profiles</code>, <code>warehouses</code>, <code>user_bank_accounts</code>, <code>user_documents</code>, <code>user_preferences</code>, popper_approval_queue, popper_registration_events).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 14/15)<br/>• StepperBar (step progress indicator)<br/>• HeroCard (onboarding visual anchor)<br/>• ExpandableSection (collapsible recaps)<br/>• TextLink (inline edit links)<br/>• SectionCard (recap groups)<br/>• CheckboxInput (final consent)<br/>• CTAFooter (Submit / Back buttons)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 17: Submission Confirmation -->
+<div class="flow-step-card" id="step-15">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">15</span><span class="step-title">Submission Confirmation</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Confirmation Screen" class="preview-screen-img" src="../../../images/farmer_onboarding/you_re_all_set/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Confirms successful business registration submission.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value"><p>Verify transaction was captured and queued for sync if offline.</p><p>Shows local/remote sync state feedback.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Success visual confirmation, offline status chip ("Pending Sync"), and "Back to Today's Dashboard" button.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap "Back to Today's Dashboard" to return to scout operations.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value"><p>Displays success illustration and logs offline queue receipt.</p><p>Closes registration wizard session.</p></div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Clean success screen, state badge, high contrast primary button.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None (read/confirm view).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 15/15)<br/>• SuccessIllustration<br/>• StatusBadge (sync state)<br/>• TextBlock (confirmation message)<br/>• Button (Back to Dashboard)</div></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
     // Intersection Observer for stepper highlighting
     document.addEventListener('DOMContentLoaded', function() {
       const nodes = document.querySelectorAll('.stepper-node');
