@@ -338,70 +338,191 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <h3 class="backend-section-title">React Component Decomposition (6 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Submit Spot Offer workflow breaks into 12 reusable components: 8 shared across Scout module workflows, 4 workflow-specific for spot listing mechanics. Components follow atomic design principles with strict TypeScript interfaces.</p>
 
           <div class="backend-info-box">
             <strong>✅ Design Philosophy:</strong><br>
             • Single Responsibility: Each component does ONE thing<br>
             • Prop-based composition: Components accept data + actions as props<br>
             • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
+            • Reuse across workflows: 80% components shared across 20 workflows<br>
             • Variant management: Props define UI variants, not separate components
           </div>
 
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen-by-Screen Component Breakdown</h4>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 1: Select Farmer User</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Search and select an offline farmer from assigned roster<br>
+            <strong>Layout:</strong> TopAppBar → SearchInput → FarmerSelectionCardList → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Select Farmer", menu<br>
+            • <code style="color: #38bdf8;">SearchInput</code> (shared) — Live search input with farmers index<br>
+            • <code style="color: #f472b6;">FarmerSelectionCardList</code> (workflow-specific) — Scrollable list of farmers<br>
+            • <code style="color: #f472b6;">FarmerSelectionCard</code> (workflow-specific) — Farm name, location, active ponds count, pending status badge<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Next" (enabled only after selection), "Cancel" (back)<br>
+            <strong>State Management:</strong> Selected farmer_id in wizard context<br>
+            <strong>Validation:</strong> Only farmers with status 'active' + zone-scoped filtering
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 2: Select Supply Source</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Choose pond or warehouse as crop source<br>
+            <strong>Layout:</strong> TopAppBar → SourceSelectionCardList (tabs: Ponds/Warehouses) → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Select Source", menu<br>
+            • <code style="color: #f472b6;">SourceSelectionCardList</code> (workflow-specific) — Tabbed grid: active ponds + warehouses<br>
+            • <code style="color: #f472b6;">SourceSelectionCard</code> (workflow-specific) — Pond/warehouse name, capacity, coordinates, landmark<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Next" (enabled on selection), "Back"<br>
+            <strong>State Management:</strong> Selected pond_id or warehouse_id in wizard context<br>
+            <strong>Props Interface:</strong><br>
+            <code style="display: block; margin-top: 8px;">interface SourceSelectionCardProps {<br>
+&nbsp;&nbsp;sourceId: string;<br>
+&nbsp;&nbsp;type: 'pond' | 'warehouse';<br>
+&nbsp;&nbsp;name: string;<br>
+&nbsp;&nbsp;capacity: number;<br>
+&nbsp;&nbsp;coordinates: {lat: number; lng: number};<br>
+&nbsp;&nbsp;landmark: string;<br>
+&nbsp;&nbsp;isSelected: boolean;<br>
+&nbsp;&nbsp;onSelect: () => void;<br>
+}</code>
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 3: Lot Details & Grade Expectations</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Declare estimated volumes and tentative quality grade<br>
+            <strong>Layout:</strong> TopAppBar → SpotDetailsCard → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Lot Details", menu<br>
+            • <code style="color: #f472b6;">SpotDetailsCard</code> (workflow-specific) — Grouped input section<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">NumberInput</code> (shared) — "Total Quantity (kg)" with validation<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">NumberInput</code> (shared) — "Estimated Moisture %" with validation<br>
+            &nbsp;&nbsp;├ <code style="color: #f472b6;">GradeSegmentedControl</code> (workflow-specific) — Buttons: A, B, C, "Unsure"<br>
+            &nbsp;&nbsp;└ <code style="color: #38bdf8;">ExpandableSection</code> (shared) — "Additional Details" with advanced params<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Next", "Back"<br>
+            <strong>State Management:</strong> estimated_volume, estimated_moisture, expected_grade in wizard context<br>
+            <strong>Validation:</strong> Volume &gt; 0 &amp;&amp; Volume &lt;= pond_capacity, Moisture 0-20%<br>
+            <strong>Calculation:</strong> Live estimated_weight = volume - (volume * moisture/100)
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 4: Crop Quality Photos</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Capture raw crop photos for buyer preview<br>
+            <strong>Layout:</strong> TopAppBar → PhotoCaptureCard → PhotoGrid → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Quality Photos", menu<br>
+            • <code style="color: #f472b6;">PhotoCaptureCard</code> (workflow-specific) — Camera icon + upload button<br>
+            • <code style="color: #38bdf8;">PhotoGrid</code> (shared) — Thumbnail grid with delete overlay, 2-3 cols responsive<br>
+            • <code style="color: #38bdf8;">InfoBanner</code> (shared) — "Capture at least 2 photos showing crop quality"<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Next" (enabled if 2+ photos), "Back"<br>
+            <strong>State Management:</strong> photo_uris array in wizard context<br>
+            <strong>Offline Support:</strong> Photos cached in SQLite blob table until sync<br>
+            <strong>Validation:</strong> Minimum 2 photos required, file size &lt; 5MB per photo
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 5: Schedule Quality Verification Visit</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Reserve inspection slot for quality verification<br>
+            <strong>Layout:</strong> TopAppBar → InspectionSlotSelector → ScheduleSummaryCard → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Schedule Inspection", menu<br>
+            • <code style="color: #f472b6;">InspectionSlotSelector</code> (workflow-specific) — Horizontal date scroll + hour chips<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">DateInput</code> (shared) — Horizontal calendar picker<br>
+            &nbsp;&nbsp;└ <code style="color: #f472b6;">InspectionSlotChip</code> (workflow-specific) — Time slot with availability status<br>
+            • <code style="color: #f472b6;">ScheduleSummaryCard</code> (workflow-specific) — Selected date, time, inspector name, location<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Next", "Back"<br>
+            <strong>State Management:</strong> scheduled_inspection_date, scheduled_inspection_time, inspector_id in wizard context<br>
+            <strong>API Call:</strong> getScoutAvailability(pond_id, district) returns available slots<br>
+            <strong>Validation:</strong> Only future dates, only within operational hours (6am-6pm), only slots marked available
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 6: Review & Submit Spot Offer</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Final review of all spot listing details before atomic submission<br>
+            <strong>Layout:</strong> TopAppBar → SpotSummaryCard → ConfirmationCheckbox → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Review Spot Offer", menu<br>
+            • <code style="color: #f472b6;">SpotSummaryCard</code> (workflow-specific) — Read-only recap of farmer, source, grade, volume, photos count, inspection date<br>
+            • <code style="color: #38bdf8;">ConfirmationCheckbox</code> (shared) — "I confirm the spot listing details are accurate"<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Submit Spot Offer" (enabled on checkbox), "Back"<br>
+            <strong>State Management:</strong> All wizard state read from context<br>
+            <strong>Submit Flow:</strong> Invokes submitProxySpotOffer() → inserts spot_listings row → creates visit_schedules entry → broadcasts notification → success screen<br>
+            <strong>Success State:</strong> Transitions to SpotSuccessTerminalCard with listing_id + farmer notification confirmation
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Shared Components (Across 20 Workflows)</h4>
           <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><th>Component</th><th>Purpose</th><th>Props Interface</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Fixed header, back button, title, menu</td><td>title: string; onBack: () =&gt; void;</td></tr>
+            <tr><td><strong>StepperBar</strong></td><td>Horizontal progress indicator (6 steps)</td><td>currentStep: 1-6; onStepClick: (step) =&gt; void;</td></tr>
+            <tr><td><strong>SearchInput</strong></td><td>Live search with debounce + suggestions</td><td>value: string; onChange: (val) =&gt; void; onSelect: (item) =&gt; void;</td></tr>
+            <tr><td><strong>NumberInput</strong></td><td>Numeric field with validation + error</td><td>value: number; onChange: (val) =&gt; void; min?: number; max?: number; error?: string;</td></tr>
+            <tr><td><strong>DateInput</strong></td><td>Date picker with constraints</td><td>value: Date; onChange: (date) =&gt; void; minDate?: Date; maxDate?: Date;</td></tr>
+            <tr><td><strong>PhotoGrid</strong></td><td>Thumbnail grid with delete overlay</td><td>photos: string[]; onDelete: (index) =&gt; void; columns?: 2-3;</td></tr>
+            <tr><td><strong>ExpandableSection</strong></td><td>Collapsible accordion for advanced fields</td><td>title: string; children: ReactNode; defaultOpen?: boolean;</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Sticky action buttons (primary + secondary)</td><td>primaryText: string; secondaryText?: string; onPrimary: () =&gt; void; onSecondary?: () =&gt; void; primaryDisabled?: boolean;</td></tr>
+            <tr><td><strong>InfoBanner</strong></td><td>Info/warning callout box</td><td>type: 'info' | 'warning'; message: string;</td></tr>
+            <tr><td><strong>ConfirmationCheckbox</strong></td><td>Single checkbox with label</td><td>label: string; checked: boolean; onChange: (checked) =&gt; void;</td></tr>
           </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Workflow-Specific Components (Submit Spot Offer Only)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Screens Used</th><th>Responsibility</th></tr>
+            <tr><td><strong>FarmerSelectionCardList</strong></td><td>1</td><td>Renders list of farmers with search integration</td></tr>
+            <tr><td><strong>FarmerSelectionCard</strong></td><td>1</td><td>Single farmer card: name, location, ponds count, status badge</td></tr>
+            <tr><td><strong>SourceSelectionCardList</strong></td><td>2</td><td>Tabbed view (Ponds | Warehouses) with multi-column grid</td></tr>
+            <tr><td><strong>SourceSelectionCard</strong></td><td>2</td><td>Pond/warehouse card: name, capacity, coordinates, landmark</td></tr>
+            <tr><td><strong>SpotDetailsCard</strong></td><td>3</td><td>Grouped input section: volume, moisture, grade selector</td></tr>
+            <tr><td><strong>GradeSegmentedControl</strong></td><td>3</td><td>Buttons: A, B, C, Unsure with visual selection state</td></tr>
+            <tr><td><strong>PhotoCaptureCard</strong></td><td>4</td><td>Camera trigger button + upload input wrapper</td></tr>
+            <tr><td><strong>InspectionSlotSelector</strong></td><td>5</td><td>Horizontal date scroll + time slot chips</td></tr>
+            <tr><td><strong>InspectionSlotChip</strong></td><td>5</td><td>Time slot badge with availability status (available/booked)</td></tr>
+            <tr><td><strong>ScheduleSummaryCard</strong></td><td>5</td><td>Read-only display: date, time, inspector name, location</td></tr>
+            <tr><td><strong>SpotSummaryCard</strong></td><td>6</td><td>Complete recap: farmer, source, grade, volume, inspection date, photos</td></tr>
+            <tr><td><strong>SpotSuccessTerminalCard</strong></td><td>6 (post-submit)</td><td>Success confirmation with listing_id, farmer notification status</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Cross-Workflow Component Reuse Pattern</h4>
+          <div class="backend-info-box">
+            <strong>⚠️ CRITICAL: Zero Duplication Rule</strong><br><br>
+            <strong>Already Shared Across Multiple Workflows:</strong><br>
+            • <code>FarmerSelectionCard</code> pattern — IDENTICAL to Submit Bid workflow. Reuse directly.<br>
+            • <code>SearchInput</code> — Reused from Mark Lot Ready &amp; Submit Bid. DO NOT recreate.<br>
+            • <code>PhotoGrid</code> — Shared across 16+ workflows (Lot Verification, Storage Recheck, Re-inspection, Rejection Handling, Mark Lot Ready, Submit Bid). DO NOT duplicate.<br>
+            • <code>NumberInput</code>, <code>DateInput</code>, <code>CTAFooter</code>, <code>ExpandableSection</code> — All shared. DO NOT recreate.<br><br>
+            <strong>This Workflow's New Components:</strong><br>
+            Only 4 components are UNIQUE to Submit Spot Offer:<br>
+            1. <code>SourceSelectionCard</code> — Distinct from FarmerSelectionCard (shows capacity, coordinates)<br>
+            2. <code>GradeSegmentedControl</code> — Novel segmented control for A/B/C/Unsure<br>
+            3. <code>InspectionSlotChip</code> — Distinct time slot UI (not date input)<br>
+            4. <code>SpotSummaryCard</code> — Distinct from other summary cards (spot-specific data)<br><br>
+            <strong>DO's:</strong><br>
+            ✓ Check COMPONENT_ARCHITECTURE_GUIDE.md BEFORE creating any component<br>
+            ✓ Reuse SearchInput, PhotoGrid, NumberInput, DateInput, CTAFooter directly<br>
+            ✓ Create only workflow-specific cards when they represent NEW data domains<br>
+            ✓ Use shared components for all form inputs, buttons, images<br><br>
+            <strong>DON'Ts:</strong><br>
+            ✗ DO NOT create a second "SelectionCard" component — reuse FarmerSelectionCard pattern with configurable fields<br>
+            ✗ DO NOT create a new PhotoUpload component — use PhotoGrid + PhotoCaptureCard wrapper<br>
+            ✗ DO NOT create new input components — use NumberInput/DateInput/TextInput with variant props<br>
+            ✗ DO NOT duplicate SearchInput logic — import from shared library<br>
+            ✗ DO NOT create new footer buttons — use CTAFooter component
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Consistency & Mobile Responsive Guidelines</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ Spacing:</strong> 16px gap between sections, 24px padding inside cards, 80px footer height</li>
+            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary: #06b6d4, --text-main: #f3f4f6)</li>
+            <li><strong>✓ Typography:</strong> Outfit 800 for titles, Inter 400/600 for body, 12-14px labels</li>
+            <li><strong>✓ Mobile Breakpoints:</strong> 360px (mobile), 600px (tablet), 1024px (desktop)</li>
+            <li><strong>✓ Form Validation:</strong> Frontend mirrors backend Zod, real-time error display</li>
+            <li><strong>✓ Accessibility:</strong> aria-label on all buttons, labels paired with inputs, focus states</li>
+            <li><strong>✓ Photo Management:</strong> Reuse PhotoGrid component with delete overlay, cache URIs in Hive</li>
+            <li><strong>✓ State Management:</strong> Store wizard state in WizardContext (shared across all workflows)</li>
+            <li><strong>✓ Error Handling:</strong> Consistent red border + message for all validation errors</li>
+            <li><strong>✓ Loading States:</strong> Disabled buttons, spinner overlay during API calls</li>
           </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
-          </div>
         </div>
 
         <!-- TAB: Database Schema -->
