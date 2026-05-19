@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pond Inspection - Scout Operations</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pond Inspection - Scout Operations</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg-base: #121212;
       --bg-surface: #18181b;
@@ -277,334 +278,215 @@
 </style>
 </head>
 <body>
-
-  <div class="address-bar">
-    <div class="address-bar-icon">📁</div>
-    <div class="address-bar-path" id="address-path">html/scout/operational/pond_inspection.html</div>
-  </div>
-
-  <div class="content-wrapper">
-    <div class="header-banner">
-      <span class="tag">Scout Operations</span>
-      <h1 class="title">Pond Inspection Workflow</h1>
-      <p class="desc">Complete 6-step biological and physical field evaluation guide. Standardizes data collection for assigned ponds including arrival GPS validation, water assessments, bund matrices, and offline synchronization loops.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">The primary field diagnostic wizard deployed to evaluate raw makhana biological yield indicators, water quality levels, and visual bund defect details. Combines robust coordinate checking for anti-fraud validation with local storage caching for absolute remote stability.</p>
-    </div>
-
-    <div class="stepper-panel-container">
-      <div class="stepper-nodes">
-        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Arrival Check</div></a>
-        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Conditions</div></a>
-        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Bund Readings</div></a>
-        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Media & Notes</div></a>
-        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Review</div></a>
-        <a href="#step-06" class="stepper-node"><div class="node-num">6</div><div class="node-label">Confirmation</div></a>
-      </div>
-    </div>
-
-    <!-- COMMON COMPONENTS SECTION -->
-    <div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
-        <span style="font-size: 24px;">🔗</span>
-        <div>
-          <div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
-          <p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
-          <div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
-            <strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, TextInput, NumberInput, SelectInput, PhotoGrid, PhotoCaptureCard, CTAFooter, ExpandableSection, StatusBadge, InfoBanner
+<div class="address-bar">
+<div class="address-bar-icon">📁</div>
+<div class="address-bar-path" id="address-path">html/scout/operational/pond_inspection.html</div>
+</div>
+<div class="content-wrapper">
+<div class="header-banner">
+<span class="tag">Scout Operations</span>
+<h1 class="title">Pond Inspection Workflow</h1>
+<p class="desc">Complete 6-step biological and physical field evaluation guide. Standardizes data collection for assigned ponds including arrival GPS validation, water assessments, bund matrices, and offline synchronization loops.</p>
+<p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">The primary field diagnostic wizard deployed to evaluate raw makhana biological yield indicators, water quality levels, and visual bund defect details. Combines robust coordinate checking for anti-fraud validation with local storage caching for absolute remote stability.</p>
+</div>
+<div class="stepper-panel-container">
+<div class="stepper-nodes">
+<a class="stepper-node active" href="#step-01"><div class="node-num">1</div><div class="node-label">Arrival Check</div></a>
+<a class="stepper-node" href="#step-02"><div class="node-num">2</div><div class="node-label">Conditions</div></a>
+<a class="stepper-node" href="#step-03"><div class="node-num">3</div><div class="node-label">Bund Readings</div></a>
+<a class="stepper-node" href="#step-04"><div class="node-num">4</div><div class="node-label">Media &amp; Notes</div></a>
+<a class="stepper-node" href="#step-05"><div class="node-num">5</div><div class="node-label">Review</div></a>
+<a class="stepper-node" href="#step-06"><div class="node-num">6</div><div class="node-label">Confirmation</div></a>
+</div>
+</div>
+<!-- COMMON COMPONENTS SECTION -->
+<div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
+<div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
+<span style="font-size: 24px;">🔗</span>
+<div>
+<div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
+<p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
+<div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
+<strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, TextInput, NumberInput, SelectInput, PhotoGrid, PhotoCaptureCard, CTAFooter, ExpandableSection, StatusBadge, InfoBanner
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Backend Architecture Documentation -->
-    <div class="backend-tabs-container">
-      <div class="backend-tabs-header">
-        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
-        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
-      </div>
-
-      <div class="tabs-nav">
-        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
-      </div>
-
-      <div class="tabs-content">
-        <!-- TAB: API Architecture -->
-        <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedures (6 Screens)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Pond Inspection workflow is fueled by a session-context state router that processes sequential forms before committing to the relational backend.</p>
-
-          <div class="backend-info-box">
-            <strong>Procedure Flow Strategy:</strong><br>
-            • Screen 1 (confirmPondArrival): Anti-fraud GPS check comparing current scout mobile telemetry to registered pond boundaries.<br>
-            • Screens 2-4 (submitPondConditions, submitBundReadings, submitInspectionPhotos): Progressive form cache validations.<br>
+</div>
+</div>
+</div>
+<!-- Backend Architecture Documentation -->
+<div class="backend-tabs-container">
+<div class="backend-tabs-header">
+<h2 class="backend-tabs-title">Backend Architecture &amp; Implementation Guide</h2>
+<p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+</div>
+<div class="tabs-nav">
+<button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+<button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
+<button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+<button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation &amp; Error</button>
+<button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline &amp; Async</button>
+<button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
+</div>
+<div class="tabs-content">
+<!-- TAB: API Architecture -->
+<div class="tab-panel active" id="backend-api">
+<h3 class="backend-section-title">tRPC Procedures (6 Screens)</h3>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Pond Inspection workflow is fueled by a session-context state router that processes sequential forms before committing to the relational backend.</p>
+<div class="backend-info-box">
+<strong>Procedure Flow Strategy:</strong><br/>
+            • Screen 1 (confirmPondArrival): Anti-fraud GPS check comparing current scout mobile telemetry to registered pond boundaries.<br/>
+            • Screens 2-4 (submitPondConditions, submitBundReadings, submitInspectionPhotos): Progressive form cache validations.<br/>
             • Screen 5 (submitPondInspection): Atomic transaction writing the entire multi-table record.
           </div>
+<h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+<ul class="backend-list">
+<li><strong>confirmPondArrival</strong> — Protected. Validates scout coordinates within a strict 50m geo-fence of the target pond profile. Saves verification event to audit logs.</li>
+<li><strong>submitPondInspection</strong> — Protected. Atomic procedure that registers:
+              <br/>1. Main <code>pond_inspections</code> row.
+              <br/>2. Granular <code>pond_bund_readings</code> details array (Lines 1 to 4).
+              <br/>3. S3 URL media logs in <code>pond_inspection_photos</code>.
+              <br/>On transaction success, updates cached task statuses and invokes downstream state updates.</li>
+</ul>
+</div>
+<!-- TAB: React Component Design -->
+<div class="tab-panel" id="backend-react">
+<h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3><div class="backend-info-box">
+<strong>Step 1: Confirm Pond Arrival (GPS Check)</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ SummaryCard (pond identity info)<br/>
+             ├─ InfoBanner (last inspection log strip)<br/>
+             ├─ LocationPicker (GPS capture area)<br/>
+             └─ CTAFooter (Confirm Arrival)<br/>
+</div><div class="backend-info-box">
+<strong>Step 2: Assess Pond Conditions</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ SelectInput (water level, algae presence)<br/>
+             ├─ RadioGroup (pest/disease flags)<br/>
+             ├─ NumberInput (harvest readiness score)<br/>
+             ├─ QuickAnalysisOverlay (Bento style assessment)<br/>
+             └─ CTAFooter (Next / Back)<br/>
+</div><div class="backend-info-box">
+<strong>Step 3: Bund &amp; Edge Readings</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ AveragesChip (live averages readout)<br/>
+             ├─ NumberInput (pH, dissolved oxygen, temperature)<br/>
+             ├─ Button (Add Reading)<br/>
+             ├─ VisualizationBentoCard (trend visualization charts)<br/>
+             └─ CTAFooter (Next / Back)<br/>
+</div><div class="backend-info-box">
+<strong>Step 4: Pond Photos &amp; Notes</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ PhotoCaptureCard (photo slot camera triggers)<br/>
+             ├─ PhotoGrid (captured photo previews)<br/>
+             ├─ TextInput (inspection notes multiline)<br/>
+             ├─ TechnicalMetadata (EXIF validation status)<br/>
+             └─ CTAFooter (Next / Back)<br/>
+</div><div class="backend-info-box">
+<strong>Step 5: Review &amp; Submit</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ SummaryCard (pond details summary)<br/>
+             ├─ CheckboxInput (declaration consent)<br/>
+             └─ CTAFooter (Submit / Back)<br/>
+</div><div class="backend-info-box">
+<strong>Step 6: Inspection Confirmation</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ SuccessIllustration (success message animation)<br/>
+             ├─ SummaryCard (inspection summary details)<br/>
+             └─ Button (Return to Ponds)<br/>
+</div>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This 6-screen pond inspection workflow breaks into reusable React components following atomic design principles. Focus on GPS verification, environmental metrics, biological sampling, and photo evidence.</p>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
-          <ul class="backend-list">
-            <li><strong>confirmPondArrival</strong> — Protected. Validates scout coordinates within a strict 50m geo-fence of the target pond profile. Saves verification event to audit logs.</li>
-            <li><strong>submitPondInspection</strong> — Protected. Atomic procedure that registers:
-              <br>1. Main <code>pond_inspections</code> row.
-              <br>2. Granular <code>pond_bund_readings</code> details array (Lines 1 to 4).
-              <br>3. S3 URL media logs in <code>pond_inspection_photos</code>.
-              <br>On transaction success, updates cached task statuses and invokes downstream state updates.</li>
-          </ul>
-        </div>
 
-        <!-- TAB: React Component Design -->
-        <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This 6-screen pond inspection workflow breaks into reusable React components following atomic design principles. Focus on GPS verification, environmental metrics, biological sampling, and photo evidence.</p>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
+<table class="backend-table">
+<tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
+<tr><td colspan="3"><strong>Screen 1: Confirm Pond Arrival (GPS Check)</strong></td></tr>
+<tr><td rowspan="4">Arrival Verification</td><td><span class="spec-badge-inline">GPSRadarCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">DistanceIndicator</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td><span class="spec-badge-inline">GeofenceWarningBanner</span></td><td><span class="spec-badge-inline">InfoBanner</span></td></tr>
+<tr><td><span class="spec-badge-inline">CoordinatesDisplay</span></td><td></td></tr>
+<tr><td colspan="3"><strong>Screen 2: Assess Pond Conditions</strong></td></tr>
+<tr><td rowspan="3">Conditions Entry</td><td><span class="spec-badge-inline">WaterLevelInput</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">AlgaeDensitySlider</span></td><td><span class="spec-badge-inline">NumberInput</span></td></tr>
+<tr><td><span class="spec-badge-inline">PestAlertToggle</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 3: Bund &amp; Edge Readings</strong></td></tr>
+<tr><td rowspan="3">Bund Matrix</td><td><span class="spec-badge-inline">BundReadingsGrid</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">BundLineRow</span></td><td><span class="spec-badge-inline">NumberInput</span></td></tr>
+<tr><td><span class="spec-badge-inline">AverageCalculationRow</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 4: Pond Photos &amp; Notes</strong></td></tr>
+<tr><td rowspan="4">Evidence Capture</td><td><span class="spec-badge-inline">PhotoCaptureCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">PhotoTypeSelector</span></td><td><span class="spec-badge-inline">PhotoGrid</span></td></tr>
+<tr><td><span class="spec-badge-inline">NotesTextArea</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td><span class="spec-badge-inline">UploadProgress</span></td><td></td></tr>
+<tr><td colspan="3"><strong>Screen 5: Review &amp; Submit</strong></td></tr>
+<tr><td rowspan="5">Review Summary</td><td><span class="spec-badge-inline">InspectionSummaryCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">GPS ValidationCard</span></td><td><span class="spec-badge-inline">ExpandableSection</span></td></tr>
+<tr><td><span class="spec-badge-inline">BundGridReadOnly</span></td><td><span class="spec-badge-inline">PhotoGrid</span></td></tr>
+<tr><td><span class="spec-badge-inline">EditLink</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 6: Inspection Confirmation</strong></td></tr>
+<tr><td rowspan="4">Success Terminal</td><td><span class="spec-badge-inline">SuccessBanner</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">TransactionReferenceCard</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
+<tr><td><span class="spec-badge-inline">CheckmarkRing</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Pond Inspection Only)</h4>
 
-          <div class="backend-info-box">
-            <strong>✅ Design Philosophy — Geo-Verified Inspection:</strong><br>
-            • Single Responsibility: Each component verifies ONE aspect of pond state<br>
-            • Prop-based composition: Components accept pond data, readings, GPS coordinates as props<br>
-            • Geo-fencing awareness: Screen 1 enforces physical location verification before data entry<br>
-            • Sequential data accumulation: Screens 2–5 build up local state, Screen 6 performs atomic submit<br>
-            • Reuse across workflows: 85% shared components (TopAppBar, TextInput, NumberInput, PhotoGrid, CTAFooter)<br>
-            • Variant management: Props define parameter types, photo categories, algae ratings
-          </div>
 
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
-          <table class="backend-table">
-            <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
-            <tr><td colspan="3"><strong>Screen 1: Confirm Pond Arrival (GPS Check)</strong></td></tr>
-            <tr><td rowspan="4">Arrival Verification</td><td><span class="spec-badge-inline">GPSRadarCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">DistanceIndicator</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td><span class="spec-badge-inline">GeofenceWarningBanner</span></td><td><span class="spec-badge-inline">InfoBanner</span></td></tr>
-            <tr><td><span class="spec-badge-inline">CoordinatesDisplay</span></td><td></td></tr>
-            <tr><td colspan="3"><strong>Screen 2: Assess Pond Conditions</strong></td></tr>
-            <tr><td rowspan="3">Conditions Entry</td><td><span class="spec-badge-inline">WaterLevelInput</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">AlgaeDensitySlider</span></td><td><span class="spec-badge-inline">NumberInput</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PestAlertToggle</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 3: Bund & Edge Readings</strong></td></tr>
-            <tr><td rowspan="3">Bund Matrix</td><td><span class="spec-badge-inline">BundReadingsGrid</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">BundLineRow</span></td><td><span class="spec-badge-inline">NumberInput</span></td></tr>
-            <tr><td><span class="spec-badge-inline">AverageCalculationRow</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 4: Pond Photos & Notes</strong></td></tr>
-            <tr><td rowspan="4">Evidence Capture</td><td><span class="spec-badge-inline">PhotoCaptureCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PhotoTypeSelector</span></td><td><span class="spec-badge-inline">PhotoGrid</span></td></tr>
-            <tr><td><span class="spec-badge-inline">NotesTextArea</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td><span class="spec-badge-inline">UploadProgress</span></td><td></td></tr>
-            <tr><td colspan="3"><strong>Screen 5: Review & Submit</strong></td></tr>
-            <tr><td rowspan="5">Review Summary</td><td><span class="spec-badge-inline">InspectionSummaryCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">GPS ValidationCard</span></td><td><span class="spec-badge-inline">ExpandableSection</span></td></tr>
-            <tr><td><span class="spec-badge-inline">BundGridReadOnly</span></td><td><span class="spec-badge-inline">PhotoGrid</span></td></tr>
-            <tr><td><span class="spec-badge-inline">EditLink</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 6: Inspection Confirmation</strong></td></tr>
-            <tr><td rowspan="4">Success Terminal</td><td><span class="spec-badge-inline">SuccessBanner</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">TransactionReferenceCard</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td><span class="spec-badge-inline">CheckmarkRing</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Pond Inspection Only)</h4>
-          <div class="backend-info-box">
-            <strong>GPSRadarCard</strong> — GPS distance + accuracy radar visualization<br>
-            <code style="font-size: 11px;">Props: { targetLat, targetLng, currentLat, currentLng, accuracy, geoFenceDistance }</code><br>
-            Animated radar display showing scout position relative to pond. Color changes green when within 50m radius.
-          </div>
-          <div class="backend-info-box">
-            <strong>DistanceIndicator</strong> — Current distance to pond in meters<br>
-            <code style="font-size: 11px;">Props: { distanceMeters, maxDistance, isWithinFence }</code><br>
-            Large numeric display with unit. Color-coded: red if > 50m, green if ≤ 50m.
-          </div>
-          <div class="backend-info-box">
-            <strong>GeofenceWarningBanner</strong> — GPS verification warning/success<br>
-            <code style="font-size: 11px;">Props: { isWithinFence, accuracy, maxDistance }</code><br>
-            Banner showing geofence status and accuracy level. Red if outside fence, green if inside.
-          </div>
-          <div class="backend-info-box">
-            <strong>CoordinatesDisplay</strong> — Shows locked GPS coordinates<br>
-            <code style="font-size: 11px;">Props: { latitude, longitude, accuracy, locked }</code><br>
-            Read-only display of GPS coordinates with 6 decimal precision. Used Screen 1.
-          </div>
-          <div class="backend-info-box">
-            <strong>WaterLevelInput</strong> — Numeric water depth entry<br>
-            <code style="font-size: 11px;">Props: { value, onChange, unit, min, max }</code><br>
-            NumberInput wrapper with meters unit and 0.01m precision. Range: 0.05m–5.00m.
-          </div>
-          <div class="backend-info-box">
-            <strong>AlgaeDensitySlider</strong> — 1–5 rating slider with color feedback<br>
-            <code style="font-size: 11px;">Props: { value, onChange, labels }</code><br>
-            Interactive slider (1=Clear/green, 3=Moderate/yellow, 5=Eutrophic/red). Shows label during drag.
-          </div>
-          <div class="backend-info-box">
-            <strong>PestAlertToggle</strong> — Checkbox group for weed/pest flags<br>
-            <code style="font-size: 11px;">Props: { weedPresent, pestPresent, onToggleWeed, onTogglePest }</code><br>
-            Two checkboxes for "Weed Alert" and "Pest Alert". Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>BundReadingsGrid</strong> — Matrix table for 4 bund lines (density + maturity)<br>
-            <code style="font-size: 11px;">Props: { readings, onChange, onComplete }</code><br>
-            4-row table: [Line, Density (Count/m²), Maturity (%)]. Bottom row shows computed averages.
-          </div>
-          <div class="backend-info-box">
-            <strong>BundLineRow</strong> — Single bund line input row<br>
-            <code style="font-size: 11px;">Props: { lineNumber, density, maturity, onChange, onCheckComplete }</code><br>
-            Two numeric inputs + checkbox. Reused 4 times. Props define line number.
-          </div>
-          <div class="backend-info-box">
-            <strong>AverageCalculationRow</strong> — Summary row with computed averages<br>
-            <code style="font-size: 11px;">Props: { averageDensity, averageMaturity }</code><br>
-            Read-only row showing calculated averages in cyan highlight (--accent-primary).
-          </div>
-          <div class="backend-info-box">
-            <strong>PhotoTypeSelector</strong> — Dropdown or radio for photo category<br>
-            <code style="font-size: 11px;">Props: { value, onChange, options }</code><br>
-            Options: "Wide view", "Sample view", "Anomaly". Used to categorize each photo.
-          </div>
-          <div class="backend-info-box">
-            <strong>NotesTextArea</strong> — Multiline text for observation notes<br>
-            <code style="font-size: 11px;">Props: { value, onChange, maxLength }</code><br>
-            TextInput with multiline={true}, character count. Max 500 chars.
-          </div>
-          <div class="backend-info-box">
-            <strong>UploadProgress</strong> — Loading indicator during photo upload<br>
-            <code style="font-size: 11px;">Props: { isLoading, progress, status }</code><br>
-            Shows loading ring and status text during S3 upload. Used Screen 4.
-          </div>
-          <div class="backend-info-box">
-            <strong>InspectionSummaryCard</strong> — Overview of all collected data<br>
-            <code style="font-size: 11px;">Props: { pond, gpsData, waterLevel, algaeDensity, photos }</code><br>
-            Card showing pond ID, GPS coordinates, water level, algae rating, photo count. Read-only.
-          </div>
-          <div class="backend-info-box">
-            <strong>GPS ValidationCard</strong> — Shows GPS lock details<br>
-            <code style="font-size: 11px;">Props: { latitude, longitude, accuracy, timestamp }</code><br>
-            Displays coordinates with 6 decimal precision, accuracy in meters, lock time.
-          </div>
-          <div class="backend-info-box">
-            <strong>BundGridReadOnly</strong> — Bund matrix in read-only mode<br>
-            <code style="font-size: 11px;">Props: { readings }</code><br>
-            Same BundReadingsGrid structure but no input fields, just display values + averages.
-          </div>
-          <div class="backend-info-box">
-            <strong>SuccessBanner</strong> — Green success confirmation banner<br>
-            <code style="font-size: 11px;">Props: { inspectionCode, timestamp, syncStatus }</code><br>
-            "✓ Inspection Submitted" with glowing checkmark, code, and sync status.
-          </div>
-          <div class="backend-info-box">
-            <strong>TransactionReferenceCard</strong> — Unique inspection ID display<br>
-            <code style="font-size: 11px;">Props: { code, timestamp, isSynced }</code><br>
-            Large cyan-highlighted code (e.g. #INS-9942), submission time, online/offline badge.
-          </div>
-          <div class="backend-info-box">
-            <strong>EditLink</strong> — Inline edit navigation link<br>
-            <code style="font-size: 11px;">Props: { screenNumber, onPress }</code><br>
-            Text link appearing next to summary sections to navigate back and correct entries. Used Screen 5.
-          </div>
-          <div class="backend-info-box">
-            <strong>CheckmarkRing</strong> — Animated success checkmark ring<br>
-            <code style="font-size: 11px;">Props: { isAnimating, size, color }</code><br>
-            Glowing, pulsing vector green checkmark animation. Displayed in SuccessBanner as primary visual confirmation. Used Screen 6.
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (85% of Pond Inspection)</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Pond Inspection Usage</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, progress</td><td>All 6 screens</td></tr>
-            <tr><td><strong>NumberInput</strong></td><td>Numeric field with validation</td><td>Screens 2–3 (water level, density, maturity)</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field (multiline for notes)</td><td>Screen 4 (observation notes)</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with preview</td><td>Screens 4–5 (evidence capture)</td></tr>
-            <tr><td><strong>ExpandableSection</strong></td><td>Collapsible section for details</td><td>Screen 5 (review expandable sections)</td></tr>
-            <tr><td><strong>InfoBanner</strong></td><td>Info message with icon</td><td>Screen 1 (arrival tips)</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All 6 screens (Next, Submit, Return)</td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Consistency Checklist</h4>
-          <ul class="backend-list">
-            <li><strong>✓ GPS Verification First:</strong> Screen 1 blocks all data entry until geo-fence verified (unique to Pond Inspection, Warehouse Fitness Check)</li>
-            <li><strong>✓ Matrix Grid Pattern:</strong> BundReadingsGrid mirrors Warehouse Fitness Check's matrix input (3–4 row grids with averages)</li>
-            <li><strong>✓ Slider for Ratings:</strong> AlgaeDensitySlider 1–5 rating (reused for all 1–5 biological/quality ratings across workflows)</li>
-            <li><strong>✓ Photo Categorization:</strong> PhotoTypeSelector categorizes evidence (same pattern as Lot Verification photo capture)</li>
-            <li><strong>✓ Read-Only Review:</strong> Screen 5 shows all data read-only (mirrors Lot Verification Certificate Preview)</li>
-            <li><strong>✓ Success Terminal:</strong> Screen 6 confirms submission with transaction code (consistent across all 20 workflows)</li>
-            <li><strong>✓ Spacing:</strong> 16px gaps between cards, 24px padding inside, 80px CTAFooter (consistent across 20 workflows)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary=#06b6d4, red for danger, green for success)</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive: 360px, 600px, 1024px breakpoints (consistent across 20 workflows)</li>
-            <li><strong>✓ No Duplication:</strong> Never create "PondWaterLevelInput" separate from WaterLevelInput; use one component with props</li>
-          </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
-          <div class="backend-info-box" style="background: #3a1a1a; border: 1px solid #5d0d0d;">
-            <strong style="color: #ff6b6b;">⚠️ DO NOT CREATE DUPLICATE COMPONENTS:</strong><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "PondAlgaeSlider" + "WaterQualitySlider" (both are 1–5 scales)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use AlgaeDensitySlider for algae (Pond), reuse for water quality/biology ratings across other workflows with label prop variant.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "BundRow" + "GridRow" (both are matrix rows)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use single BundLineRow component reused 4 times with props: lineNumber={1}, lineNumber={2}, etc.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Copy TopAppBar for "PondAppBar" (pond-specific header)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Reuse TopAppBar across all 20 workflows—same component, different title/progress props.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "PondSuccessCard" + "InspectionSuccessCard" (both terminal screens)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use SuccessBanner + TransactionReferenceCard (shared pattern across all workflows).<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "PondPhotoGrid" separate from PhotoGrid<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use PhotoGrid with photoType prop; add PhotoTypeSelector separately for categorization.
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
-          <div class="backend-info-box">
-            <strong>Screen 1: Confirm Pond Arrival</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → GPSRadarCard → DistanceIndicator → GeofenceWarningBanner → CTAFooter [Primary: "Confirm Arrival" (disabled until in fence)]</code><br><br>
-            <strong>Screen 2: Assess Pond Conditions</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → WaterLevelInput → AlgaeDensitySlider (with label) → PestAlertToggle → CTAFooter [Primary: "Continue to Bund Readings"]</code><br><br>
-            <strong>Screen 3: Bund & Edge Readings</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → BundReadingsGrid → [BundLineRow (×4)] → AverageCalculationRow → CTAFooter [Primary: "Continue to Photos"]</code><br><br>
-            <strong>Screen 4: Pond Photos & Notes</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → PhotoCaptureCard → PhotoGrid → PhotoTypeSelector (per photo) → NotesTextArea → CTAFooter [Primary: "Review Inspection"]</code><br><br>
-            <strong>Screen 5: Review & Submit</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → InspectionSummaryCard → ExpandableSection [GPS ValidationCard] → ExpandableSection [BundGridReadOnly] → PhotoGrid (read-only) → CTAFooter [Primary: "Submit Inspection"]</code><br><br>
-            <strong>Screen 6: Inspection Confirmation</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → SuccessBanner → TransactionReferenceCard → CTAFooter [Primary: "View Today's Tasks"]</code>
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Pond Inspection Specific UX Pattern: Geo-Verified Sequential Entry</h4>
-          <div class="backend-info-box">
-            <strong>Unique Patterns:</strong><br>
-            • <strong>GPS Lock First (Screen 1):</strong> No data entry allowed until geofence verified (anti-fraud)<br>
-            • <strong>Matrix Grid Inputs (Screen 3):</strong> Dense 4-row table with live average calculation (similar to Warehouse Fitness Check)<br>
-            • <strong>Slider for Ratings:</strong> 1–5 interactive slider for algae density (smoother UX than dropdown)<br>
-            • <strong>Photo Categorization:</strong> Each photo must be tagged (wide/sample/anomaly) before submission<br>
-            • <strong>Read-Only Review:</strong> Screen 5 shows everything locked (no edits—use Screen 1–4 back buttons to correct)<br>
-            • <strong>Transaction Code:</strong> Screen 6 displays unique #INS-XXXX code for audit trail
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times (BundLineRow instantiated 4 times)<br>
-            ✓ Testable in isolation (GPSRadarCard, BundReadingsGrid)<br>
-            ✓ Clear, single responsibility (AlgaeDensitySlider handles rating only)<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Always Reuse (Never Create Variants):</strong><br>
-            • <strong>TopAppBar</strong> — all 20 workflows, same component<br>
-            • <strong>NumberInput</strong> — water level, density, maturity (use type/label prop)<br>
-            • <strong>TextInput</strong> — notes field (use multiline prop)<br>
-            • <strong>PhotoGrid</strong> — evidence photos (same across Lot Verification, Warehouse Fitness, Pond Inspection)<br>
-            • <strong>CTAFooter</strong> — all screens (use variant prop for button labels)<br>
-            • <strong>ExpandableSection</strong> — collapsible review sections (shared with Warehouse Detail, Lot Detail)
-          </div>
-        </div>
 
-        <!-- TAB: Database Schema -->
-        <div id="backend-db" class="tab-panel">
-          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">pond_inspections (Header Table)</h4>
-          <div class="backend-code-block">CREATE TABLE pond_inspections (
+
+
+
+
+
+
+
+<h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (85% of Pond Inspection)</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Purpose</th><th>Pond Inspection Usage</th></tr>
+<tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, progress</td><td>All 6 screens</td></tr>
+<tr><td><strong>NumberInput</strong></td><td>Numeric field with validation</td><td>Screens 2–3 (water level, density, maturity)</td></tr>
+<tr><td><strong>TextInput</strong></td><td>Text field (multiline for notes)</td><td>Screen 4 (observation notes)</td></tr>
+<tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with preview</td><td>Screens 4–5 (evidence capture)</td></tr>
+<tr><td><strong>ExpandableSection</strong></td><td>Collapsible section for details</td><td>Screen 5 (review expandable sections)</td></tr>
+<tr><td><strong>InfoBanner</strong></td><td>Info message with icon</td><td>Screen 1 (arrival tips)</td></tr>
+<tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All 6 screens (Next, Submit, Return)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Consistency Checklist</h4>
+<ul class="backend-list">
+<li><strong>✓ GPS Verification First:</strong> Screen 1 blocks all data entry until geo-fence verified (unique to Pond Inspection, Warehouse Fitness Check)</li>
+<li><strong>✓ Matrix Grid Pattern:</strong> BundReadingsGrid mirrors Warehouse Fitness Check's matrix input (3–4 row grids with averages)</li>
+<li><strong>✓ Slider for Ratings:</strong> AlgaeDensitySlider 1–5 rating (reused for all 1–5 biological/quality ratings across workflows)</li>
+<li><strong>✓ Photo Categorization:</strong> PhotoTypeSelector categorizes evidence (same pattern as Lot Verification photo capture)</li>
+<li><strong>✓ Read-Only Review:</strong> Screen 5 shows all data read-only (mirrors Lot Verification Certificate Preview)</li>
+<li><strong>✓ Success Terminal:</strong> Screen 6 confirms submission with transaction code (consistent across all 20 workflows)</li>
+<li><strong>✓ Spacing:</strong> 16px gaps between cards, 24px padding inside, 80px CTAFooter (consistent across 20 workflows)</li>
+<li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary=#06b6d4, red for danger, green for success)</li>
+<li><strong>✓ Mobile-First:</strong> Responsive: 360px, 600px, 1024px breakpoints (consistent across 20 workflows)</li>
+<li><strong>✓ No Duplication:</strong> Never create "PondWaterLevelInput" separate from WaterLevelInput; use one component with props</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
+
+<h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
+
+<h4 class="backend-section-title" style="font-size: 14px;">Pond Inspection Specific UX Pattern: Geo-Verified Sequential Entry</h4>
+
+<h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+
+
+</div>
+<!-- TAB: Database Schema -->
+<div class="tab-panel" id="backend-db">
+<h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">pond_inspections (Header Table)</h4>
+<div class="backend-code-block">CREATE TABLE pond_inspections (
   id                    UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   scout_id              UUID NOT NULL REFERENCES scouts(id),
   pond_id               UUID NOT NULL REFERENCES ponds(id),
@@ -622,9 +504,8 @@
 
 CREATE INDEX idx_poin_pond ON pond_inspections (pond_id);
 CREATE INDEX idx_poin_scout ON pond_inspections (scout_id);</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">pond_bund_readings (Line Items)</h4>
-          <div class="backend-code-block">CREATE TABLE pond_bund_readings (
+<h4 class="backend-section-title" style="font-size: 14px;">pond_bund_readings (Line Items)</h4>
+<div class="backend-code-block">CREATE TABLE pond_bund_readings (
   id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   pond_inspection_id  UUID NOT NULL REFERENCES pond_inspections(id) ON DELETE CASCADE,
   bund_line_number    INT NOT NULL CHECK (bund_line_number BETWEEN 1 AND 4),
@@ -634,9 +515,8 @@ CREATE INDEX idx_poin_scout ON pond_inspections (scout_id);</div>
 );
 
 CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">pond_inspection_photos (Evidence Media)</h4>
-          <div class="backend-code-block">CREATE TABLE pond_inspection_photos (
+<h4 class="backend-section-title" style="font-size: 14px;">pond_inspection_photos (Evidence Media)</h4>
+<div class="backend-code-block">CREATE TABLE pond_inspection_photos (
   id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   pond_inspection_id  UUID NOT NULL REFERENCES pond_inspections(id) ON DELETE CASCADE,
   photo_url           TEXT NOT NULL,
@@ -644,353 +524,335 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
   caption             TEXT,
   created_at          TIMESTAMPTZ NOT NULL DEFAULT now()
 );</div>
-        </div>
-
-        <!-- TAB: Validation & Error Handling -->
-        <div id="backend-validation" class="tab-panel">
-          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Zod Validation Schemas</h4>
-          <div class="backend-info-box">
-            <strong>Server-Side Core Rules:</strong><br>
-            • GPS coordinates: latitude <code>[-90, 90]</code>, longitude <code>[-180, 180]</code>. Accuracy must be &lt; 15 meters.<br>
-            • Water Level: positive numeric float representing depth in meters (e.g. 0.05m to 5.00m).<br>
-            • Algae density rating: strictly bounded integer from 1 to 5.<br>
-            • Bund Matrix: density count &ge; 0 per m², and biological maturity float bounded between <code>[0.00, 100.00]</code>.
+</div>
+<!-- TAB: Validation & Error Handling -->
+<div class="tab-panel" id="backend-validation">
+<h3 class="backend-section-title">Strict Input Validations &amp; Error Enforcements</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Zod Validation Schemas</h4>
+<div class="backend-info-box">
+<strong>Server-Side Core Rules:</strong><br/>
+            • GPS coordinates: latitude <code>[-90, 90]</code>, longitude <code>[-180, 180]</code>. Accuracy must be &lt; 15 meters.<br/>
+            • Water Level: positive numeric float representing depth in meters (e.g. 0.05m to 5.00m).<br/>
+            • Algae density rating: strictly bounded integer from 1 to 5.<br/>
+            • Bund Matrix: density count ≥ 0 per m², and biological maturity float bounded between <code>[0.00, 100.00]</code>.
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">HTTP Status Code Mapping</h4>
-          <table class="backend-table">
-            <tr><th>Status</th><th>Error Code</th><th>Triggering Event / Condition</th></tr>
-            <tr><td>403</td><td>POND_GEO_FENCE_VIOLATION</td><td>Distance between current scout coordinates and registered pond coordinates &gt; 50 meters</td></tr>
-            <tr><td>400</td><td>WEAK_GPS_SIGNAL</td><td>Scout coordinate lock accuracy &gt; 15 meters</td></tr>
-            <tr><td>422</td><td>INVALID_BUND_LINE_DATA</td><td>Maturity percentage outside [0, 100] range</td></tr>
-            <tr><td>404</td><td>ASSIGNED_POND_NOT_FOUND</td><td>Pond ID does not match active scout assignments</td></tr>
-          </table>
-        </div>
-
-        <!-- TAB: Offline & Async -->
-        <div id="backend-sync" class="tab-panel">
-          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Offline-First Strategy (SQLite Sync Queue)</h4>
-          <div class="backend-info-box">
+<h4 class="backend-section-title" style="font-size: 14px;">HTTP Status Code Mapping</h4>
+<table class="backend-table">
+<tr><th>Status</th><th>Error Code</th><th>Triggering Event / Condition</th></tr>
+<tr><td>403</td><td>POND_GEO_FENCE_VIOLATION</td><td>Distance between current scout coordinates and registered pond coordinates &gt; 50 meters</td></tr>
+<tr><td>400</td><td>WEAK_GPS_SIGNAL</td><td>Scout coordinate lock accuracy &gt; 15 meters</td></tr>
+<tr><td>422</td><td>INVALID_BUND_LINE_DATA</td><td>Maturity percentage outside [0, 100] range</td></tr>
+<tr><td>404</td><td>ASSIGNED_POND_NOT_FOUND</td><td>Pond ID does not match active scout assignments</td></tr>
+</table>
+</div>
+<!-- TAB: Offline & Async -->
+<div class="tab-panel" id="backend-sync">
+<h3 class="backend-section-title">Offline Caching &amp; Queue Synchronization</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Offline-First Strategy (SQLite Sync Queue)</h4>
+<div class="backend-info-box">
             If the scout is operating in remote rural areas without reliable internet:
-            <br><br>
-            1. Save the entire validated payload locally to the device SQL database inside the <code>sync_queue</code> table as a serialized JSON object.<br>
-            2. Mark the local task record status as <code>syncing_offline</code>.<br>
+            <br/><br/>
+            1. Save the entire validated payload locally to the device SQL database inside the <code>sync_queue</code> table as a serialized JSON object.<br/>
+            2. Mark the local task record status as <code>syncing_offline</code>.<br/>
             3. On network recovery, trigger a background service upload.
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Optimistic UI & Conflict Prevention</h4>
-          <ul class="backend-list">
-            <li><strong>Optimistic State Updates:</strong> Reflect the task as "Completed" on the scout's local list view immediately.</li>
-            <li><strong>Concurrency Token:</strong> Include a unique generated timestamp UUID on each client payload to prevent redundant transactional inserts.</li>
-          </ul>
-        </div>
-
-        <!-- TAB: Security -->
-        <div id="backend-security" class="tab-panel">
-          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">GPS Telemetry Integrity</h4>
-          <div class="backend-info-box">
-            <strong>Verification Audit logs:</strong> Scout's exact coordinates locked during Screen 1 are stored to prevent mock/spoofed GPS injection attacks. System audits verified distances to trace spoofing activities.
+<h4 class="backend-section-title" style="font-size: 14px;">Optimistic UI &amp; Conflict Prevention</h4>
+<ul class="backend-list">
+<li><strong>Optimistic State Updates:</strong> Reflect the task as "Completed" on the scout's local list view immediately.</li>
+<li><strong>Concurrency Token:</strong> Include a unique generated timestamp UUID on each client payload to prevent redundant transactional inserts.</li>
+</ul>
+</div>
+<!-- TAB: Security -->
+<div class="tab-panel" id="backend-security">
+<h3 class="backend-section-title">Security &amp; Media Protection Protocols</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">GPS Telemetry Integrity</h4>
+<div class="backend-info-box">
+<strong>Verification Audit logs:</strong> Scout's exact coordinates locked during Screen 1 are stored to prevent mock/spoofed GPS injection attacks. System audits verified distances to trace spoofing activities.
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Supabase S3 Signed Media Uploads</h4>
-          <ul class="backend-list">
-            <li>Photos are captured natively and processed into compressed JPEG objects (max 2MB).</li>
-            <li>Uploaded to secure Supabase S3 buckets using short-lived pre-signed POST URLs generated per session.</li>
-            <li>Public bucket access is disabled; all preview displays resolve expiring URLs (24-hour lifetime).</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Workflow Steps Block -->
-    <div class="workflow-group-block">
-      <div class="workflow-group-header">
-        <div class="workflow-group-title">Pond Inspection Steps Directory</div>
-        <div class="step-count-pill">6 Steps</div>
-      </div>
-      <div class="workflow-group-body">
-
-        <!-- SCREEN 4.1: Confirm Pond Arrival -->
-        <div class="flow-step-card" id="step-01">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">1</span>
-              <span class="step-title">Confirm Pond Arrival (GPS Check)</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/pond_inspection/confirm_pond_arrival/screen.png" alt="Confirm Pond Arrival" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: GPS Verification & Arrival Lock Screen</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Ensures the scout is physically present on-site at the target pond coordinates before allowing any quality or biological data entry (anti-fraud protection).</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Validates live mobile coordinates against the pond's registered location.</p><p>Geofence radius must be within 50 meters, with GPS accuracy locked below 15 meters.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Top navigation maps standard return buttons and the pond ID identifier.</p><p>Displays an active distance-to-target radar card displaying distance in meters and signal accuracy.</p><p>An interactive map visualizes the scout's path, with a locked solid cyan CTA: "Confirm Arrival" that unlocks only when the scout is within range.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Actions</div>
-                  <div class="spec-value"><ul class="spec-list"><li>Enable location permissions on the device if requested.<br></li><li>Walk toward the pond until the radar card signals a green connection status.<br></li><li>Tap the "Confirm Arrival" button to lock coordinate values and advance.</li></ul></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Queries the browser GPS API to retrieve latitude, longitude, and accuracy.</p><p>Computes geodetic distance.</p><p>On locking, the procedure caches current GPS parameters in local draft state.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with back button and pond ID)<br>• GPSRadarCard (distance-to-target radar visualization)<br>• DistanceIndicator (numeric meters display)<br>• GeofenceWarningBanner (status and accuracy feedback)<br>• CoordinatesDisplay (locked GPS coordinates)<br>• CTAFooter (action bar with primary button)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SCREEN 4.2: Assess Pond Conditions -->
-        <div class="flow-step-card" id="step-02">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">2</span>
-              <span class="step-title">Assess Pond Conditions</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/pond_inspection/assess_pond_conditions/screen.png" alt="Assess Pond Conditions" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Water Level and Algae Density Evaluation Form</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Logs core physical and biological parameters representing ecological stability and quality indexes.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Mandatory logging of current water level depth (meters) and algae density ratings (1 to 5 index, representing bio-load levels).</p><p>Check boxes for active weed/pest alerts must be saved.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Includes numeric input elements for water depth.</p><p>Biological ratings are captured via an interactive sliding selector scale (1-5) mapping to dynamic colored label indicators (<code>e.g</code>.</p><p>1 = Clear, 3 = Moderate, 5 = Eutrophic).</p><p>Toggles configure active weed/pest flags.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Actions</div>
-                  <div class="spec-value"><ul class="spec-list"><li>Input water level using plus/minus steppers or direct keyboard entry.<br></li><li>Drag the algae scale indicator to set the biological load rating.<br></li><li>Toggle pest or weed alerts if contamination is present. Tap "Next".</li></ul></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Validates parameters using standard Zod constraints.</p><p>Water level must be positive.</p><p>Algae score must be an integer between 1 and 5.</p><p>Caches values locally.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with step 2 of 6 indicator)<br>• WaterLevelInput (numeric depth field with meters unit)<br>• AlgaeDensitySlider (interactive 1-5 rating slider with color feedback)<br>• PestAlertToggle (weed and pest alert checkboxes)<br>• NumberInput (for water level entry)<br>• CTAFooter (primary Next button to proceed)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SCREEN 4.3: Bund & Edge Readings -->
-        <div class="flow-step-card" id="step-03">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">3</span>
-              <span class="step-title">Bund & Edge Readings</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/pond_inspection/bund_edge_readings/screen.png" alt="Bund & Edge Readings" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Bund Readings Matrix Grid with Computed Averages</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Logs biological makhana maturity and plant densities across multiple physical bund coordinates to evaluate harvest readiness.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Must record granular details (Count/m² and Maturity %) for four separate bund lines (Lines 1 to 4).</p><p>Dynamically calculates overall averages for compliance logs.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Renders a compact, high-density matrix grid table.</p><p>Columns track Bund Line, Density (Count per m²), and Maturity %.</p><p>A highlighted summary row at the bottom dynamically calculates and displays overall averages using a bold, bright cyan accent color.</p><p>Row checkmarks lock completed coordinates.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Actions</div>
-                  <div class="spec-value"><ul class="spec-list"><li>Input numeric density counts and maturity values for each bund line row.<br></li><li>Confirm checked status switches per line to lock entries.<br></li><li>Verify live computed averages on the bottom row. Tap "Proceed".</li></ul></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Local JavaScript binds inputs and triggers direct mathematical average updates.</p><p>Validates that density is positive and maturity is between [<code>0.00</code>%, <code>100.00</code>%].</p><p>Compiles into a child array mapped to <code>pond_bund_readings</code> schema.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with step 3 of 6 progress)<br>• BundReadingsGrid (4-row matrix table for bund lines)<br>• BundLineRow (individual line input row with density and maturity)<br>• NumberInput (density count/m² and maturity % inputs)<br>• AverageCalculationRow (computed summary row with cyan highlight)<br>• CheckboxInput (per-line confirmation checkmarks)<br>• CTAFooter (primary Proceed button)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SCREEN 4.4: Pond Photos & Notes -->
-        <div class="flow-step-card" id="step-04">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">4</span>
-              <span class="step-title">Pond Photos & Notes</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/pond_inspection/pond_photos_notes/screen.png" alt="Pond Photos & Notes" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Evidence Capture Grid and Observation Notes</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Captures visual verification evidence and logs descriptive comments regarding active biological anomalies or structural highlights.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Requires at least 3 photos (Wide view, close-up sample, biological highlight).</p><p>Allows adding optional note descriptions for administrative reviews.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Renders an interactive photo upload deck displaying camera icons and placeholders.</p><p>Once uploaded, cards display progressive upload loading rings.</p><p>A large, clean notes field includes character-count limits.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Actions</div>
-                  <div class="spec-value"><ul class="spec-list"><li>Tap empty photo slots to launch device camera or file selector.<br></li><li>Classify each captured photo (Wide view, Sample view, anomaly).<br></li><li>Type optional inspection notes inside the text input area. Tap "Review".</li></ul></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Compresses image uploads to max 2MB JPEGs.</p><p>Uploads assets to secure Supabase S3 buckets using short-lived pre-signed URLs.</p><p>Binds S3 links inside <code>pond_inspection_photos</code>.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with step 4 of 6 indicator)<br>• PhotoCaptureCard (camera launch and file selector)<br>• PhotoGrid (structured photo preview slots)<br>• PhotoTypeSelector (wide view / sample / anomaly dropdown)<br>• TextInput / TextArea (observation notes field with character count)<br>• UploadProgress (loading rings and status indicators)<br>• CTAFooter (primary Review button)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SCREEN 4.5: Review & Submit -->
-        <div class="flow-step-card" id="step-05">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">5</span>
-              <span class="step-title">Review & Submit</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/pond_inspection/review_submit_inspection/screen.png" alt="Review & Submit" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Detailed Verification Summary Sheet</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Final verification check for all compiled physical, chemical, and biological measurements prior to committing the record to the platform databases.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Must present complete summary cards tracking GPS validation, physical scores, the bund average matrix, and uploaded thumbnails.</p><p>Safe validation required before commit.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>A vertical scrollable review sheet.</p><p>Categorized panels group Profile coordinates, water level and algae indicators, and a read-only bund grid.</p><p>High-visibility bottom action bar houses the solid cyan "Submit Inspection" button.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Actions</div>
-                  <div class="spec-value"><ul class="spec-list"><li>Review each diagnostic section carefully.<br></li><li>Tap inline "Edit" links next to any section to correct entries if needed.<br></li><li>Tap the "Submit Inspection" button to write records permanently.</li></ul></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Invokes the <code>submitPondInspection</code> tRPC procedure.</p><p>Executes a database transaction to insert into <code>pond_inspections</code>, <code>pond_bund_readings</code>, and <code>pond_inspection_photos</code> simultaneously.</p><p>Automatically rolls back all updates if a single block fails.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with step 5 of 6 progress)<br>• InspectionSummaryCard (overview of all collected data)<br>• ExpandableSection (collapsible review sections for GPS, bund readings)<br>• GPS ValidationCard (coordinates and accuracy display)<br>• BundGridReadOnly (bund matrix in read-only mode)<br>• PhotoGrid (read-only evidence photo thumbnails)<br>• EditLink (inline edit buttons to go back and correct)<br>• CTAFooter (primary Submit Inspection button)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SCREEN 4.6: Inspection Confirmation -->
-        <div class="flow-step-card" id="step-06">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">6</span>
-              <span class="step-title">Inspection Confirmation</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/pond_inspection/inspection_confirmation/screen.png" alt="Inspection Confirmation" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 6: Submission Success and Offline Sync Terminal</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Provides immediate confirmation that the record was registered successfully, highlighting offline/online synchronization states.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Must generate and display a unique transaction reference code (<code>e.g</code>.</p><p><code>#INS-9942</code>) and update local task queues dynamically.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Premium glassmorphism card layout.</p><p>Features a large, glowing, pulsing vector green checkmark ring at the center.</p><p>Displays the unique inspection code and sync status details ("Synced with ledger" or "Stored in local queue").</p><p>Solid cyan primary CTA "View Today's Tasks" stands alongside outline button option.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Actions</div>
-                  <div class="spec-value"><ul class="spec-list"><li>Note or copy the generated inspection code reference.<br></li><li>Verify active network sync state badge indicates no errors.<br></li><li>Tap the primary button to return to the active task list.</li></ul></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Resets all local state variables.</p><p>Updates local cached task list models, switching the target task's state flag to <code>completed</code>.</p><p>Clears draft storage files.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with completion state)<br>• SuccessBanner (green confirmation with "✓ Inspection Submitted")<br>• CheckmarkRing (glowing pulsing animation)<br>• TransactionReferenceCard (unique inspection code #INS-XXXX display)<br>• StatusBadge (sync state - online or offline)<br>• CTAFooter (action bar with primary and secondary buttons)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
+<h4 class="backend-section-title" style="font-size: 14px;">Supabase S3 Signed Media Uploads</h4>
+<ul class="backend-list">
+<li>Photos are captured natively and processed into compressed JPEG objects (max 2MB).</li>
+<li>Uploaded to secure Supabase S3 buckets using short-lived pre-signed POST URLs generated per session.</li>
+<li>Public bucket access is disabled; all preview displays resolve expiring URLs (24-hour lifetime).</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Workflow Steps Block -->
+<div class="workflow-group-block">
+<div class="workflow-group-header">
+<div class="workflow-group-title">Pond Inspection Steps Directory</div>
+<div class="step-count-pill">6 Steps</div>
+</div>
+<div class="workflow-group-body">
+<!-- SCREEN 4.1: Confirm Pond Arrival -->
+<div class="flow-step-card" id="step-01">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">1</span>
+<span class="step-title">Confirm Pond Arrival (GPS Check)</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Confirm Pond Arrival" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 1: GPS Verification &amp; Arrival Lock Screen&lt;/div&gt;'" src="../../../app/screens_v2/scout/pond_inspection/confirm_pond_arrival/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Ensures the scout is physically present on-site at the target pond coordinates before allowing any quality or biological data entry (anti-fraud protection).</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Validates live mobile coordinates against the pond's registered location.</p><p>Geofence radius must be within 50 meters, with GPS accuracy locked below 15 meters.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Top navigation maps standard return buttons and the pond ID identifier.</p><p>Displays an active distance-to-target radar card displaying distance in meters and signal accuracy.</p><p>An interactive map visualizes the scout's path, with a locked solid cyan CTA: "Confirm Arrival" that unlocks only when the scout is within range.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Actions</div>
+<div class="spec-value"><ul class="spec-list"><li>Enable location permissions on the device if requested.<br/></li><li>Walk toward the pond until the radar card signals a green connection status.<br/></li><li>Tap the "Confirm Arrival" button to lock coordinate values and advance.</li></ul></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Queries the browser GPS API to retrieve latitude, longitude, and accuracy.</p><p>Computes geodetic distance.</p><p>On locking, the procedure caches current GPS parameters in local draft state.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SummaryCard (pond identity info)<br/>• InfoBanner (last inspection log strip)<br/>• LocationPicker (GPS capture area)<br/>• CTAFooter (Confirm Arrival)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SCREEN 4.2: Assess Pond Conditions -->
+<div class="flow-step-card" id="step-02">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">2</span>
+<span class="step-title">Assess Pond Conditions</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Assess Pond Conditions" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 2: Water Level and Algae Density Evaluation Form&lt;/div&gt;'" src="../../../app/screens_v2/scout/pond_inspection/assess_pond_conditions/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Logs core physical and biological parameters representing ecological stability and quality indexes.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Mandatory logging of current water level depth (meters) and algae density ratings (1 to 5 index, representing bio-load levels).</p><p>Check boxes for active weed/pest alerts must be saved.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Includes numeric input elements for water depth.</p><p>Biological ratings are captured via an interactive sliding selector scale (1-5) mapping to dynamic colored label indicators (<code>e.g</code>.</p><p>1 = Clear, 3 = Moderate, 5 = Eutrophic).</p><p>Toggles configure active weed/pest flags.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Actions</div>
+<div class="spec-value"><ul class="spec-list"><li>Input water level using plus/minus steppers or direct keyboard entry.<br/></li><li>Drag the algae scale indicator to set the biological load rating.<br/></li><li>Toggle pest or weed alerts if contamination is present. Tap "Next".</li></ul></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Validates parameters using standard Zod constraints.</p><p>Water level must be positive.</p><p>Algae score must be an integer between 1 and 5.</p><p>Caches values locally.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SelectInput (water level, algae presence)<br/>• RadioGroup (pest/disease flags)<br/>• NumberInput (harvest readiness score)<br/>• QuickAnalysisOverlay (Bento style assessment)<br/>• CTAFooter (Next / Back)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SCREEN 4.3: Bund & Edge Readings -->
+<div class="flow-step-card" id="step-03">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">3</span>
+<span class="step-title">Bund &amp; Edge Readings</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Bund &amp; Edge Readings" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 3: Bund Readings Matrix Grid with Computed Averages&lt;/div&gt;'" src="../../../app/screens_v2/scout/pond_inspection/bund_edge_readings/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Logs biological makhana maturity and plant densities across multiple physical bund coordinates to evaluate harvest readiness.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Must record granular details (Count/m² and Maturity %) for four separate bund lines (Lines 1 to 4).</p><p>Dynamically calculates overall averages for compliance logs.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Renders a compact, high-density matrix grid table.</p><p>Columns track Bund Line, Density (Count per m²), and Maturity %.</p><p>A highlighted summary row at the bottom dynamically calculates and displays overall averages using a bold, bright cyan accent color.</p><p>Row checkmarks lock completed coordinates.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Actions</div>
+<div class="spec-value"><ul class="spec-list"><li>Input numeric density counts and maturity values for each bund line row.<br/></li><li>Confirm checked status switches per line to lock entries.<br/></li><li>Verify live computed averages on the bottom row. Tap "Proceed".</li></ul></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Local JavaScript binds inputs and triggers direct mathematical average updates.</p><p>Validates that density is positive and maturity is between [<code>0.00</code>%, <code>100.00</code>%].</p><p>Compiles into a child array mapped to <code>pond_bund_readings</code> schema.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• AveragesChip (live averages readout)<br/>• NumberInput (pH, dissolved oxygen, temperature)<br/>• Button (Add Reading)<br/>• VisualizationBentoCard (trend visualization charts)<br/>• CTAFooter (Next / Back)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SCREEN 4.4: Pond Photos & Notes -->
+<div class="flow-step-card" id="step-04">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">4</span>
+<span class="step-title">Pond Photos &amp; Notes</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Pond Photos &amp; Notes" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 4: Evidence Capture Grid and Observation Notes&lt;/div&gt;'" src="../../../app/screens_v2/scout/pond_inspection/pond_photos_notes/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Captures visual verification evidence and logs descriptive comments regarding active biological anomalies or structural highlights.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Requires at least 3 photos (Wide view, close-up sample, biological highlight).</p><p>Allows adding optional note descriptions for administrative reviews.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Renders an interactive photo upload deck displaying camera icons and placeholders.</p><p>Once uploaded, cards display progressive upload loading rings.</p><p>A large, clean notes field includes character-count limits.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Actions</div>
+<div class="spec-value"><ul class="spec-list"><li>Tap empty photo slots to launch device camera or file selector.<br/></li><li>Classify each captured photo (Wide view, Sample view, anomaly).<br/></li><li>Type optional inspection notes inside the text input area. Tap "Review".</li></ul></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Compresses image uploads to max 2MB JPEGs.</p><p>Uploads assets to secure Supabase S3 buckets using short-lived pre-signed URLs.</p><p>Binds S3 links inside <code>pond_inspection_photos</code>.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• PhotoCaptureCard (photo slot camera triggers)<br/>• PhotoGrid (captured photo previews)<br/>• TextInput (inspection notes multiline)<br/>• TechnicalMetadata (EXIF validation status)<br/>• CTAFooter (Next / Back)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SCREEN 4.5: Review & Submit -->
+<div class="flow-step-card" id="step-05">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">5</span>
+<span class="step-title">Review &amp; Submit</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Review &amp; Submit" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 5: Detailed Verification Summary Sheet&lt;/div&gt;'" src="../../../app/screens_v2/scout/pond_inspection/review_submit_inspection/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Final verification check for all compiled physical, chemical, and biological measurements prior to committing the record to the platform databases.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Must present complete summary cards tracking GPS validation, physical scores, the bund average matrix, and uploaded thumbnails.</p><p>Safe validation required before commit.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>A vertical scrollable review sheet.</p><p>Categorized panels group Profile coordinates, water level and algae indicators, and a read-only bund grid.</p><p>High-visibility bottom action bar houses the solid cyan "Submit Inspection" button.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Actions</div>
+<div class="spec-value"><ul class="spec-list"><li>Review each diagnostic section carefully.<br/></li><li>Tap inline "Edit" links next to any section to correct entries if needed.<br/></li><li>Tap the "Submit Inspection" button to write records permanently.</li></ul></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Invokes the <code>submitPondInspection</code> tRPC procedure.</p><p>Executes a database transaction to insert into <code>pond_inspections</code>, <code>pond_bund_readings</code>, and <code>pond_inspection_photos</code> simultaneously.</p><p>Automatically rolls back all updates if a single block fails.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SummaryCard (pond details summary)<br/>• CheckboxInput (declaration consent)<br/>• CTAFooter (Submit / Back)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SCREEN 4.6: Inspection Confirmation -->
+<div class="flow-step-card" id="step-06">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">6</span>
+<span class="step-title">Inspection Confirmation</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Inspection Confirmation" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 6: Submission Success and Offline Sync Terminal&lt;/div&gt;'" src="../../../app/screens_v2/scout/pond_inspection/inspection_confirmation/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Provides immediate confirmation that the record was registered successfully, highlighting offline/online synchronization states.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Must generate and display a unique transaction reference code (<code>e.g</code>.</p><p><code>#INS-9942</code>) and update local task queues dynamically.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Premium glassmorphism card layout.</p><p>Features a large, glowing, pulsing vector green checkmark ring at the center.</p><p>Displays the unique inspection code and sync status details ("Synced with ledger" or "Stored in local queue").</p><p>Solid cyan primary CTA "View Today's Tasks" stands alongside outline button option.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Actions</div>
+<div class="spec-value"><ul class="spec-list"><li>Note or copy the generated inspection code reference.<br/></li><li>Verify active network sync state badge indicates no errors.<br/></li><li>Tap the primary button to return to the active task list.</li></ul></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Resets all local state variables.</p><p>Updates local cached task list models, switching the target task's state flag to <code>completed</code>.</p><p>Clears draft storage files.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SuccessIllustration (success message animation)<br/>• SummaryCard (inspection summary details)<br/>• Button (Return to Ponds)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       const stepCards = document.querySelectorAll(".flow-step-card");
       const stepperNodes = document.querySelectorAll(".stepper-node");

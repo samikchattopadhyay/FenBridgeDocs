@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sync Queue - Scout Operations</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sync Queue - Scout Operations</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg-base: #121212;
       --bg-surface: #18181b;
@@ -277,285 +278,176 @@
 </style>
 </head>
 <body>
-
-  <div class="address-bar">
-    <div class="address-bar-icon">📁</div>
-    <div class="address-bar-path" id="address-path">html/scout/operational/sync_queue.html</div>
-  </div>
-
-  <div class="content-wrapper">
-    <div class="header-banner">
-      <span class="tag">Scout Operations</span>
-      <h1 class="title">Offline Sync Queue Management</h1>
-      <p class="desc">Offline queue synchronization dashboard. Monitors local cached changes, displays detailed payloads, resolves server-side data conflicts, and registers completed sync entries.</p>
-    </div>
-
-    <!-- Common Components Section -->
-    <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-        <span style="font-size: 20px;">🧩</span>
-        <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
-      </div>
-      <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
-        <strong style="color: #fff;">This workflow reuses 9 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+<div class="address-bar">
+<div class="address-bar-icon">📁</div>
+<div class="address-bar-path" id="address-path">html/scout/operational/sync_queue.html</div>
+</div>
+<div class="content-wrapper">
+<div class="header-banner">
+<span class="tag">Scout Operations</span>
+<h1 class="title">Offline Sync Queue Management</h1>
+<p class="desc">Offline queue synchronization dashboard. Monitors local cached changes, displays detailed payloads, resolves server-side data conflicts, and registers completed sync entries.</p>
+</div>
+<!-- Common Components Section -->
+<div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+<div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+<span style="font-size: 20px;">🧩</span>
+<h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+</div>
+<p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+<strong style="color: #fff;">This workflow reuses 9 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
       </p>
-      <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SelectInput</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">DataTable</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ExpandableSection</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
-        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">WarningBanner</span>
-      </div>
-    </div>
-
-    <div class="stepper-panel-container">
-      <div class="stepper-nodes">
-        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Queue List</div></a>
-        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Item Details</div></a>
-        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Conflicts</div></a>
-      </div>
-    </div>
-
-    <!-- Backend Architecture Documentation -->
-    <div class="backend-tabs-container">
-      <div class="backend-tabs-header">
-        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
-        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
-      </div>
-
-      <div class="tabs-nav">
-        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
-      </div>
-
-      <div class="tabs-content">
-        <!-- TAB: API Architecture -->
-        <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This dashboard manages offline SQLite mutations queues, processing payloads sequentially.</p>
-
-          <div class="backend-info-box">
-            <strong>State Operations:</strong><br>
+<p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SelectInput</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">DataTable</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ExpandableSection</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">WarningBanner</span>
+</div>
+</div>
+<div class="stepper-panel-container">
+<div class="stepper-nodes">
+<a class="stepper-node active" href="#step-01"><div class="node-num">1</div><div class="node-label">Queue List</div></a>
+<a class="stepper-node" href="#step-02"><div class="node-num">2</div><div class="node-label">Item Details</div></a>
+<a class="stepper-node" href="#step-03"><div class="node-num">3</div><div class="node-label">Conflicts</div></a>
+</div>
+</div>
+<!-- Backend Architecture Documentation -->
+<div class="backend-tabs-container">
+<div class="backend-tabs-header">
+<h2 class="backend-tabs-title">Backend Architecture &amp; Implementation Guide</h2>
+<p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+</div>
+<div class="tabs-nav">
+<button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+<button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
+<button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+<button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation &amp; Error</button>
+<button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline &amp; Async</button>
+<button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
+</div>
+<div class="tabs-content">
+<!-- TAB: API Architecture -->
+<div class="tab-panel active" id="backend-api">
+<h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This dashboard manages offline SQLite mutations queues, processing payloads sequentially.</p>
+<div class="backend-info-box">
+<strong>State Operations:</strong><br/>
             • Changes register inside local tables. Synced items move to historical archives upon resolution.
           </div>
+<h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+<ul class="backend-list">
+<li><strong>getSyncQueue</strong> — Protected. Fetches pending offline changes from SQLite buffers.</li>
+<li><strong>processSyncQueue</strong> — Protected. Atomic mutator. Sequentially runs transactions against PostgreSQL tables.</li>
+<li><strong>resolveSyncConflict</strong> — Protected. Applies merge strategies (e.g. Server-Wins, Client-Wins).</li>
+</ul>
+</div>
+<!-- TAB: React Component Design -->
+<div class="tab-panel" id="backend-react">
+<h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3><div class="backend-info-box">
+<strong>Step 1: Sync Queue List</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ SummaryCard (sync status hero metrics)<br/>
+             ├─ ListItem (conflicts, failed, pending list items)<br/>
+             └─ BottomNavBar (global navigation bar)<br/>
+</div><div class="backend-info-box">
+<strong>Step 2: Sync Item Detail Overview</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ SummaryCard (inspection item detail)<br/>
+             ├─ AttemptsTimeline (chronological attempts history)<br/>
+             └─ CTAFooter (Retry Sync / Delete)<br/>
+</div><div class="backend-info-box">
+<strong>Step 3: Conflict Resolution Detail</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ DangerBanner (conflict warning alert)<br/>
+             ├─ DiffViewer (side-by-side bento card comparison)<br/>
+             ├─ AttemptsTimeline (attempts history mini spine)<br/>
+             └─ CTAFooter (Resolve / Keep Server)<br/>
+</div>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Sync Queue workflow decomposes into reusable React components following atomic design principles. This is a specialized offline-sync dashboard (not a form), so component patterns differ from registration/inspection workflows.</p>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
-          <ul class="backend-list">
-            <li><strong>getSyncQueue</strong> — Protected. Fetches pending offline changes from SQLite buffers.</li>
-            <li><strong>processSyncQueue</strong> — Protected. Atomic mutator. Sequentially runs transactions against PostgreSQL tables.</li>
-            <li><strong>resolveSyncConflict</strong> — Protected. Applies merge strategies (e.g. Server-Wins, Client-Wins).</li>
-          </ul>
-        </div>
 
-        <!-- TAB: React Component Design -->
-        <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Sync Queue workflow decomposes into reusable React components following atomic design principles. This is a specialized offline-sync dashboard (not a form), so component patterns differ from registration/inspection workflows.</p>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
+<table class="backend-table">
+<tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
+<tr><td colspan="3"><strong>Screen 1: Sync Queue List</strong></td></tr>
+<tr><td rowspan="4">Sync Queue List</td><td><span class="spec-badge-inline">QueueMetricsHeader</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">ConnectionStatusIndicator</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
+<tr><td><span class="spec-badge-inline">QueueItemCard</span></td><td><span class="spec-badge-inline">TextInput</span> (search)</td></tr>
+<tr><td><span class="spec-badge-inline">SyncStatusBadge</span></td><td><span class="spec-badge-inline">InfoBanner</span></td></tr>
+<tr><td colspan="3"><strong>Screen 2: Sync Item Detail</strong></td></tr>
+<tr><td rowspan="4">Item Detail Overview</td><td><span class="spec-badge-inline">PayloadViewerCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">PayloadMetadataCard</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
+<tr><td><span class="spec-badge-inline">RetryButton</span></td><td><span class="spec-badge-inline">InfoBanner</span></td></tr>
+<tr><td><span class="spec-badge-inline">CodeViewport</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 3: Conflict Resolution</strong></td></tr>
+<tr><td rowspan="5">Conflict Detail</td><td><span class="spec-badge-inline">ConflictDetailCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">ClientServerComparisonPane</span></td><td><span class="spec-badge-inline">RadioButton</span></td></tr>
+<tr><td><span class="spec-badge-inline">ResolutionStrategySelector</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
+<tr><td><span class="spec-badge-inline">ConflictResolutionCard</span></td><td><span class="spec-badge-inline">WarningBanner</span></td></tr>
+<tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Sync Queue Only)</h4>
 
-          <div class="backend-info-box">
-            <strong>✅ Design Philosophy — Offline-First Sync Dashboard:</strong><br>
-            • Single Responsibility: Each component inspects/controls ONE aspect of sync state<br>
-            • Prop-based composition: Components accept queue items, payloads, conflicts as data<br>
-            • Read-only payload inspection: Displays JSON/metadata without mutations<br>
-            • Conflict resolution UI: Dual-pane comparison with resolution strategy selector<br>
-            • Reuse across workflows: 90% shared components (TopAppBar, StatusBadge, RadioButton, CTAFooter)<br>
-            • Variant management: Props define UI variants (pending/synced/failed/conflict states)
-          </div>
 
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
-          <table class="backend-table">
-            <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
-            <tr><td colspan="3"><strong>Screen 1: Sync Queue List</strong></td></tr>
-            <tr><td rowspan="4">Sync Queue List</td><td><span class="spec-badge-inline">QueueMetricsHeader</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ConnectionStatusIndicator</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td><span class="spec-badge-inline">QueueItemCard</span></td><td><span class="spec-badge-inline">TextInput</span> (search)</td></tr>
-            <tr><td><span class="spec-badge-inline">SyncStatusBadge</span></td><td><span class="spec-badge-inline">InfoBanner</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 2: Sync Item Detail</strong></td></tr>
-            <tr><td rowspan="4">Item Detail Overview</td><td><span class="spec-badge-inline">PayloadViewerCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PayloadMetadataCard</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td><span class="spec-badge-inline">RetryButton</span></td><td><span class="spec-badge-inline">InfoBanner</span></td></tr>
-            <tr><td><span class="spec-badge-inline">CodeViewport</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 3: Conflict Resolution</strong></td></tr>
-            <tr><td rowspan="5">Conflict Detail</td><td><span class="spec-badge-inline">ConflictDetailCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ClientServerComparisonPane</span></td><td><span class="spec-badge-inline">RadioButton</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ResolutionStrategySelector</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ConflictResolutionCard</span></td><td><span class="spec-badge-inline">WarningBanner</span></td></tr>
-            <tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Sync Queue Only)</h4>
-          <div class="backend-info-box">
-            <strong>QueueMetricsHeader</strong> — Displays queue overview counters<br>
-            <code style="font-size: 11px;">Props: { pendingCount, syncedCount, failedCount, conflictCount, isOnline }</code><br>
-            Shows 4 metric cards (pending/synced/failed/conflict) with color coding. Used only Screen 1.
-          </div>
-          <div class="backend-info-box">
-            <strong>ConnectionStatusIndicator</strong> — Network connectivity status badge<br>
-            <code style="font-size: 11px;">Props: { isOnline, lastSyncTime?, pendingItemsCount }</code><br>
-            "🟢 Online" vs "🔴 Offline (N pending)" banner. Used Screen 1.
-          </div>
-          <div class="backend-info-box">
-            <strong>QueueItemCard</strong> — Displays single queued mutation<br>
-            <code style="font-size: 11px;">Props: { id, endpoint, status, createdAt, itemCount, onViewDetails }</code><br>
-            Card showing endpoint, status badge, timestamp, item count. Tap → Screen 2 detail. Reused for all queue items.
-          </div>
-          <div class="backend-info-box">
-            <strong>SyncStatusBadge</strong> — Specialized status variant for sync states<br>
-            <code style="font-size: 11px;">Props: { status: 'pending'|'synced'|'failed'|'conflict', showIcon?: boolean }</code><br>
-            States: pending=amber, synced=green, failed=red, conflict=orange. Different from StatusBadge (generic states).
-          </div>
-          <div class="backend-info-box">
-            <strong>PayloadViewerCard</strong> — Read-only JSON payload inspector<br>
-            <code style="font-size: 11px;">Props: { payload: object, type: string }</code><br>
-            Formatted code viewport showing parsed JSON. No edit capability. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>PayloadMetadataCard</strong> — Metadata about queued item<br>
-            <code style="font-size: 11px;">Props: { id, type, estimatedSize, createdAt, endpoint, status }</code><br>
-            Shows metadata: ID, type, size in bytes, timestamp, endpoint path, current status. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>RetryButton</strong> — Trigger single item retry<br>
-            <code style="font-size: 11px;">Props: { itemId, isLoading, onRetry, disabled?: boolean }</code><br>
-            Button: "Retry Sync" with loading state. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>CodeViewport</strong> — Formatted code display (JSON/payloads)<br>
-            <code style="font-size: 11px;">Props: { code: string, language?: 'json'|'javascript', copyable?: boolean }</code><br>
-            Syntax-highlighted code block. Optional copy-to-clipboard. Used Screens 2 & 3.
-          </div>
-          <div class="backend-info-box">
-            <strong>ConflictDetailCard</strong> — Container for conflict resolution UI<br>
-            <code style="font-size: 11px;">Props: { itemId, clientData, serverData, onResolve }</code><br>
-            Displays which fields conflict, summary of differences. Wraps comparison panes. Used Screen 3.
-          </div>
-          <div class="backend-info-box">
-            <strong>ClientServerComparisonPane</strong> — Dual-pane side-by-side diff<br>
-            <code style="font-size: 11px;">Props: { clientValue, serverValue, fieldName }</code><br>
-            Split layout: left=client (yellow), right=server (blue). Shows before/after. Used Screen 3.
-          </div>
-          <div class="backend-info-box">
-            <strong>ResolutionStrategySelector</strong> — Radio group for conflict strategy<br>
-            <code style="font-size: 11px;">Props: { selectedStrategy: 'client-wins'|'server-wins'|'manual', onChange }</code><br>
-            3 radio options + explanation text. Used Screen 3.
-          </div>
-          <div class="backend-info-box">
-            <strong>ConflictResolutionCard</strong> — Full conflict resolution container<br>
-            <code style="font-size: 11px;">Props: { conflict, onResolve, isSubmitting }</code><br>
-            Combines ConflictDetailCard + ClientServerComparisonPane + ResolutionStrategySelector. Used Screen 3.
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (90% of Sync Queue)</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Sync Queue Usage</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 3 screens</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>Search filter (Screen 1)</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Generic status with color coding</td><td>Generic "pending"/"synced" labels</td></tr>
-            <tr><td><strong>RadioButton</strong></td><td>Radio button (single select)</td><td>Conflict resolution strategy (Screen 3)</td></tr>
-            <tr><td><strong>InfoBanner</strong></td><td>Info alert with icon</td><td>Tips/hints on queues (Screens 1–2)</td></tr>
-            <tr><td><strong>WarningBanner</strong></td><td>Warning alert (red)</td><td>Conflict warning (Screen 3)</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>Retry/Back (Screens 2–3)</td></tr>
-            <tr><td><strong>ConfirmationCheckbox</strong></td><td>Checkbox for confirmations</td><td>Confirm resolution (Screen 3)</td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Consistency Checklist</h4>
-          <ul class="backend-list">
-            <li><strong>✓ Read-Only Payload Inspection:</strong> Screen 2 displays payloads without mutation capability (displays only)</li>
-            <li><strong>✓ Dual-Pane Conflict UI:</strong> Screen 3 shows client vs server in side-by-side layout (not modal)</li>
-            <li><strong>✓ Status Color Coding:</strong> pending=amber, synced=green, failed=red, conflict=orange (consistent across 20 workflows)</li>
-            <li><strong>✓ Network Status Badge:</strong> Always visible on Screen 1 (online/offline state + pending count)</li>
-            <li><strong>✓ RadioButton for Selections:</strong> Use RadioButton (not SegmentedControl) for conflict strategy (3 mutually exclusive options)</li>
-            <li><strong>✓ Code Viewport Formatting:</strong> JSON payload display with syntax highlighting, optional copy button</li>
-            <li><strong>✓ Spacing:</strong> 16px gaps between cards, 24px padding inside cards, 80px CTAFooter (consistent across 20 workflows)</li>
-            <li><strong>✓ Typography:</strong> 18px titles (Outfit), 13px body (Inter), monospace code (Monaco/Courier)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary=#06b6d4, --text-main=#f3f4f6, --text-muted=#9ca3af)</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px (consistent across 20 workflows)</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes, semantic HTML</li>
-            <li><strong>✓ No Duplication:</strong> SyncStatusBadge is workflow-specific (different from generic StatusBadge); never create duplicate status components</li>
-          </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
-          <div class="backend-info-box" style="background: #3a1a1a; border: 1px solid #5d0d0d;">
-            <strong style="color: #ff6b6b;">⚠️ DO NOT CREATE DUPLICATE COMPONENTS:</strong><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "QueueStatusBadge" (similar to StatusBadge)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use existing StatusBadge + SyncStatusBadge variant for pending/synced/failed/conflict states. SyncStatusBadge is workflow-specific because it requires special sync logic. StatusBadge handles generic approval/rejection/review states across other 19 workflows.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "SyncItemListCard" + "QueueItemCard" (both show queued items)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use single QueueItemCard with flexible props for all queue items in Screen 1.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "ClientValueDisplay" + "ServerValueDisplay" for conflict pane<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use ClientServerComparisonPane (single component with props for left/right values).<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "SyncRetryButton" separate from CTAFooter<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use CTAFooter with primary="Retry Sync" action prop. RetryButton is micro-component used within footer, not standalone.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create specialized "CodeBlock" just for sync payloads<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use CodeViewport (shared across all workflows that display code: payload inspection, batch results, API responses).
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
-          <div class="backend-info-box">
-            <strong>Screen 1: Sync Queue List</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → QueueMetricsHeader → ConnectionStatusIndicator → [QueueItemCard + SyncStatusBadge (repeated)] → TextInput (search filter) → InfoBanner</code><br><br>
-            <strong>Screen 2: Sync Item Detail</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → PayloadMetadataCard → CodeViewport (formatted JSON) → PayloadViewerCard → InfoBanner → CTAFooter [Primary: "Retry", Secondary: "Back"]</code><br><br>
-            <strong>Screen 3: Conflict Resolution</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → ConflictDetailCard → ClientServerComparisonPane (dual-pane) → ResolutionStrategySelector (RadioButton group) → WarningBanner → ConfirmationCheckbox → CTAFooter [Primary: "Resolve Conflict", Secondary: "Back"]</code>
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Sync Queue Specific UX Pattern: Read-Only Inspection + Conflict Resolution</h4>
-          <div class="backend-info-box">
-            <strong>Unlike registration/inspection workflows:</strong><br>
-            • <strong>No form inputs:</strong> Screens 2–3 display data, never collect user input (except conflict strategy selection)<br>
-            • <strong>Payload transparency:</strong> JSONviewport shows exact payloads queued for sync (debugging, diagnostics)<br>
-            • <strong>Conflict handling:</strong> Screen 3 is not a form—it's a resolution UI where scout picks strategy (client-wins, server-wins, manual)<br>
-            • <strong>Limited actions:</strong> Only "Retry Sync" (Screen 2) and "Resolve Conflict" (Screen 3)—no edit/create/delete on payloads<br>
-            • <strong>Network awareness:</strong> Connection status always visible (Screen 1), informs retry logic
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Sync Queue: Always Inline (Not Components):</strong><br>
-            • Queue list header layout (use Flexbox + CSS)<br>
-            • Conflict field comparison labels (use styled spans)<br>
-            • Metric card grid (use CSS Grid)
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Always Reuse (Never Create Variants):</strong><br>
-            • <strong>TopAppBar</strong> — all workflows<br>
-            • <strong>StatusBadge</strong> — approval/rejection/generic states (use variant prop)<br>
-            • <strong>SyncStatusBadge</strong> — pending/synced/failed/conflict (workflow-specific, but reused within Screen 1 multiple times)<br>
-            • <strong>RadioButton</strong> — conflict strategy, language selection, other radio groups (use variant prop)<br>
-            • <strong>CTAFooter</strong> — all screens with actions (use variant prop for button labels)
-          </div>
-        </div>
+<h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (90% of Sync Queue)</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Purpose</th><th>Sync Queue Usage</th></tr>
+<tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 3 screens</td></tr>
+<tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>Search filter (Screen 1)</td></tr>
+<tr><td><strong>StatusBadge</strong></td><td>Generic status with color coding</td><td>Generic "pending"/"synced" labels</td></tr>
+<tr><td><strong>RadioButton</strong></td><td>Radio button (single select)</td><td>Conflict resolution strategy (Screen 3)</td></tr>
+<tr><td><strong>InfoBanner</strong></td><td>Info alert with icon</td><td>Tips/hints on queues (Screens 1–2)</td></tr>
+<tr><td><strong>WarningBanner</strong></td><td>Warning alert (red)</td><td>Conflict warning (Screen 3)</td></tr>
+<tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>Retry/Back (Screens 2–3)</td></tr>
+<tr><td><strong>ConfirmationCheckbox</strong></td><td>Checkbox for confirmations</td><td>Confirm resolution (Screen 3)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Consistency Checklist</h4>
+<ul class="backend-list">
+<li><strong>✓ Read-Only Payload Inspection:</strong> Screen 2 displays payloads without mutation capability (displays only)</li>
+<li><strong>✓ Dual-Pane Conflict UI:</strong> Screen 3 shows client vs server in side-by-side layout (not modal)</li>
+<li><strong>✓ Status Color Coding:</strong> pending=amber, synced=green, failed=red, conflict=orange (consistent across 20 workflows)</li>
+<li><strong>✓ Network Status Badge:</strong> Always visible on Screen 1 (online/offline state + pending count)</li>
+<li><strong>✓ RadioButton for Selections:</strong> Use RadioButton (not SegmentedControl) for conflict strategy (3 mutually exclusive options)</li>
+<li><strong>✓ Code Viewport Formatting:</strong> JSON payload display with syntax highlighting, optional copy button</li>
+<li><strong>✓ Spacing:</strong> 16px gaps between cards, 24px padding inside cards, 80px CTAFooter (consistent across 20 workflows)</li>
+<li><strong>✓ Typography:</strong> 18px titles (Outfit), 13px body (Inter), monospace code (Monaco/Courier)</li>
+<li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary=#06b6d4, --text-main=#f3f4f6, --text-muted=#9ca3af)</li>
+<li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px (consistent across 20 workflows)</li>
+<li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes, semantic HTML</li>
+<li><strong>✓ No Duplication:</strong> SyncStatusBadge is workflow-specific (different from generic StatusBadge); never create duplicate status components</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
 
-        <!-- TAB: Database Schema -->
-        <div id="backend-db" class="tab-panel">
-          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">sync_queue (SQLite / Offline Cache Ledger)</h4>
-          <div class="backend-code-block">CREATE TABLE sync_queue (
+<h4 class="backend-section-title" style="font-size: 14px;">Sync Queue Specific UX Pattern: Read-Only Inspection + Conflict Resolution</h4>
+
+<h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+
+
+
+</div>
+<!-- TAB: Database Schema -->
+<div class="tab-panel" id="backend-db">
+<h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">sync_queue (SQLite / Offline Cache Ledger)</h4>
+<div class="backend-code-block">CREATE TABLE sync_queue (
   id           TEXT PRIMARY KEY,
   scout_id     TEXT NOT NULL,
   endpoint     TEXT NOT NULL,
@@ -566,198 +458,161 @@
   created_at   TEXT NOT NULL,
   synced_at    TEXT
 );</div>
-        </div>
-
-        <!-- TAB: Validation & Error Handling -->
-        <div id="backend-validation" class="tab-panel">
-          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
-          <ul class="backend-list">
-            <li><strong>Idempotency Keys:</strong> Required on every queue entry to prevent duplicate PostgreSQL writes during retries.</li>
-          </ul>
-        </div>
-
-        <!-- TAB: Offline & Async -->
-        <div id="backend-sync" class="tab-panel">
-          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
-          <ul class="backend-list">
-            <li><strong>Background Syncs:</strong> Scheduled jobs trigger uploads in background modes when internet connectivity returns.</li>
-          </ul>
-        </div>
-
-        <!-- TAB: Security -->
-        <div id="backend-security" class="tab-panel">
-          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
-          <ul class="backend-list">
-            <li><strong>Payload Encryption:</strong> Payloads are stored securely in device memory.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Workflow Steps Block -->
-    <div class="workflow-group-block">
-      <div class="workflow-group-header">
-        <div class="workflow-group-title">Sync Queue Steps Directory</div>
-        <div class="step-count-pill">3 Steps</div>
-      </div>
-      <div class="workflow-group-body">
-
-        <!-- STEP 1: Queue list overview -->
-        <div class="flow-step-card" id="step-01">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">1</span>
-              <span class="step-title">Sync Queue List</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/sync_queue/sync_queue_list/screen.png" alt="Queue List" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Offline Mutations Dashboard</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Displays overall offline states, pending queue counts, and connection diagnostic details.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Tracks local mutations pending server synchronization.</p><p>Highlights warnings if conflict alerts arise.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Top bars display network status.</p><p>Scrollable lists show queued items, color-coded by mutation type.</p><p>Tapping items reveals payload specifications.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Queries local <code>sync_queue</code> SQLite databases.</p><p>Maps total records.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • QueueMetricsHeader (pending/synced/failed/conflict counters)
-                    • ConnectionStatusIndicator (online/offline status badge)
-                    • QueueItemCard (individual queue item display)
-                    • SyncStatusBadge (pending/synced/failed/conflict status)
-                    • StatusBadge (generic status indicators)
-                    • TextInput (search/filter queue items)
-                    • InfoBanner (tips and helpful context)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 2: Sync Item Detail -->
-        <div class="flow-step-card" id="step-02">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">2</span>
-              <span class="step-title">Sync Item Detail Overview</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/sync_queue/sync_item_detail/screen.png" alt="Item Detail" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Payload Inspections Dashboard</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Allows inspects of specific payloads, metadata structures, and estimated sizes.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Ensures transparency.</p><p>Helpful for diagnostics if payload failures occur.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Recaps item types and parameters.</p><p>Renders clean code viewports showing parameters details.</p><p>CTAs trigger immediate single-item retries.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Parses payload JSON strings and formats values.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • PayloadViewerCard (read-only JSON payload display)
-                    • PayloadMetadataCard (metadata about queued item)
-                    • RetryButton (single item retry trigger)
-                    • CodeViewport (formatted JSON code display)
-                    • InfoBanner (helpful context about payload)
-                    • CTAFooter (retry and back actions)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 3: Conflict item details -->
-        <div class="flow-step-card" id="step-03">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">3</span>
-              <span class="step-title">Conflict Resolution Detail</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/sync_queue/conflict_item_detail/screen.png" alt="Conflict Detail" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Dual-Pane Merge Dialog</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Handles merge and resolution choices when local parameters conflict with server states.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Resolves conflicts explicitly.</p><p>Prevents overwriting valid server-side updates.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Renders comparative split-panes displaying Client details vs.</p><p>Server states.</p><p>Selection radios pick resolving routes.</p><p>Teal primary button applies resolutions.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Invokes <code>resolveSyncConflict</code> routines to commit the resolved values.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • ConflictDetailCard (container for conflict resolution UI)
-                    • ClientServerComparisonPane (dual-pane diff display)
-                    • ResolutionStrategySelector (radio group for conflict strategy)
-                    • ConflictResolutionCard (full conflict resolution container)
-                    • RadioButton (strategy selection - client/server/manual wins)
-                    • StatusBadge (conflict status indicator)
-                    • WarningBanner (conflict warning alert)
-                    • ConfirmationCheckbox (confirm resolution checkbox)
-                    • CTAFooter (resolve conflict and back actions)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
+</div>
+<!-- TAB: Validation & Error Handling -->
+<div class="tab-panel" id="backend-validation">
+<h3 class="backend-section-title">Strict Input Validations &amp; Error Enforcements</h3>
+<ul class="backend-list">
+<li><strong>Idempotency Keys:</strong> Required on every queue entry to prevent duplicate PostgreSQL writes during retries.</li>
+</ul>
+</div>
+<!-- TAB: Offline & Async -->
+<div class="tab-panel" id="backend-sync">
+<h3 class="backend-section-title">Offline Caching &amp; Queue Synchronization</h3>
+<ul class="backend-list">
+<li><strong>Background Syncs:</strong> Scheduled jobs trigger uploads in background modes when internet connectivity returns.</li>
+</ul>
+</div>
+<!-- TAB: Security -->
+<div class="tab-panel" id="backend-security">
+<h3 class="backend-section-title">Security &amp; Media Protection Protocols</h3>
+<ul class="backend-list">
+<li><strong>Payload Encryption:</strong> Payloads are stored securely in device memory.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Workflow Steps Block -->
+<div class="workflow-group-block">
+<div class="workflow-group-header">
+<div class="workflow-group-title">Sync Queue Steps Directory</div>
+<div class="step-count-pill">3 Steps</div>
+</div>
+<div class="workflow-group-body">
+<!-- STEP 1: Queue list overview -->
+<div class="flow-step-card" id="step-01">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">1</span>
+<span class="step-title">Sync Queue List</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Queue List" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 1: Offline Mutations Dashboard&lt;/div&gt;'" src="../../../app/screens_v2/scout/sync_queue/sync_queue_list/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Displays overall offline states, pending queue counts, and connection diagnostic details.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Tracks local mutations pending server synchronization.</p><p>Highlights warnings if conflict alerts arise.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Top bars display network status.</p><p>Scrollable lists show queued items, color-coded by mutation type.</p><p>Tapping items reveals payload specifications.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Queries local <code>sync_queue</code> SQLite databases.</p><p>Maps total records.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SummaryCard (sync status hero metrics)<br/>• ListItem (conflicts, failed, pending list items)<br/>• BottomNavBar (global navigation bar)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 2: Sync Item Detail -->
+<div class="flow-step-card" id="step-02">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">2</span>
+<span class="step-title">Sync Item Detail Overview</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Item Detail" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 2: Payload Inspections Dashboard&lt;/div&gt;'" src="../../../app/screens_v2/scout/sync_queue/sync_item_detail/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Allows inspects of specific payloads, metadata structures, and estimated sizes.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Ensures transparency.</p><p>Helpful for diagnostics if payload failures occur.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Recaps item types and parameters.</p><p>Renders clean code viewports showing parameters details.</p><p>CTAs trigger immediate single-item retries.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value">Parses payload JSON strings and formats values.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SummaryCard (inspection item detail)<br/>• AttemptsTimeline (chronological attempts history)<br/>• CTAFooter (Retry Sync / Delete)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 3: Conflict item details -->
+<div class="flow-step-card" id="step-03">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">3</span>
+<span class="step-title">Conflict Resolution Detail</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Conflict Detail" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 3: Dual-Pane Merge Dialog&lt;/div&gt;'" src="../../../app/screens_v2/scout/sync_queue/conflict_item_detail/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Handles merge and resolution choices when local parameters conflict with server states.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Resolves conflicts explicitly.</p><p>Prevents overwriting valid server-side updates.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Renders comparative split-panes displaying Client details vs.</p><p>Server states.</p><p>Selection radios pick resolving routes.</p><p>Teal primary button applies resolutions.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value">Invokes <code>resolveSyncConflict</code> routines to commit the resolved values.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• DangerBanner (conflict warning alert)<br/>• DiffViewer (side-by-side bento card comparison)<br/>• AttemptsTimeline (attempts history mini spine)<br/>• CTAFooter (Resolve / Keep Server)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       const stepCards = document.querySelectorAll(".flow-step-card");
       const stepperNodes = document.querySelectorAll(".stepper-node");

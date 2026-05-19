@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Manage Farmer - Scout Operations</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Farmer - Scout Operations</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg-base: #121212;
       --bg-surface: #18181b;
@@ -277,289 +278,208 @@
 </style>
 </head>
 <body>
-
-  <div class="address-bar">
-    <div class="address-bar-icon">📁</div>
-    <div class="address-bar-path" id="address-path">html/scout/operational/manage_farmer.html</div>
-  </div>
-
-  <div class="content-wrapper">
-    <div class="header-banner">
-      <span class="tag">Scout Operations</span>
-      <h1 class="title">Manage Farmer Accounts & Assets</h1>
-      <p class="desc">Farmer portfolio proxy administration directory. Allows scouts to modify basic profiles, replace bank accounts, edit pond parameters, add new pond assets, or deactivate assets.</p>
-    </div>
-
-    <div class="stepper-panel-container">
-      <div class="stepper-nodes">
-        <a href="#step-01" class="stepper-node active"><div class="node-num">1</div><div class="node-label">Edit Profile</div></a>
-        <a href="#step-02" class="stepper-node"><div class="node-num">2</div><div class="node-label">Bank Account</div></a>
-        <a href="#step-03" class="stepper-node"><div class="node-num">3</div><div class="node-label">Edit Pond</div></a>
-        <a href="#step-04" class="stepper-node"><div class="node-num">4</div><div class="node-label">Add Pond</div></a>
-        <a href="#step-05" class="stepper-node"><div class="node-num">5</div><div class="node-label">Deactivate</div></a>
-      </div>
-    </div>
-
-    <!-- COMMON COMPONENTS SECTION -->
-    <div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
-        <span style="font-size: 24px;">🔗</span>
-        <div>
-          <div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
-          <p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
-          <div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
-            <strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, TextInput, PhoneInput, SelectInput, AddressForm, LocationPicker, StatusBadge, CTAFooter
+<div class="address-bar">
+<div class="address-bar-icon">📁</div>
+<div class="address-bar-path" id="address-path">html/scout/operational/manage_farmer.html</div>
+</div>
+<div class="content-wrapper">
+<div class="header-banner">
+<span class="tag">Scout Operations</span>
+<h1 class="title">Manage Farmer Accounts &amp; Assets</h1>
+<p class="desc">Farmer portfolio proxy administration directory. Allows scouts to modify basic profiles, replace bank accounts, edit pond parameters, add new pond assets, or deactivate assets.</p>
+</div>
+<div class="stepper-panel-container">
+<div class="stepper-nodes">
+<a class="stepper-node active" href="#step-01"><div class="node-num">1</div><div class="node-label">Edit Profile</div></a>
+<a class="stepper-node" href="#step-02"><div class="node-num">2</div><div class="node-label">Bank Account</div></a>
+<a class="stepper-node" href="#step-03"><div class="node-num">3</div><div class="node-label">Edit Pond</div></a>
+<a class="stepper-node" href="#step-04"><div class="node-num">4</div><div class="node-label">Add Pond</div></a>
+<a class="stepper-node" href="#step-05"><div class="node-num">5</div><div class="node-label">Deactivate</div></a>
+</div>
+</div>
+<!-- COMMON COMPONENTS SECTION -->
+<div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
+<div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
+<span style="font-size: 24px;">🔗</span>
+<div>
+<div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
+<p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
+<div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
+<strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, TextInput, PhoneInput, SelectInput, AddressForm, LocationPicker, StatusBadge, CTAFooter
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Backend Architecture Documentation -->
-    <div class="backend-tabs-container">
-      <div class="backend-tabs-header">
-        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
-        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
-      </div>
-
-      <div class="tabs-nav">
-        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline & Async</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
-      </div>
-
-      <div class="tabs-content">
-        <!-- TAB: API Architecture -->
-        <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This dashboard manages offline farmer properties and physical pond allocations.</p>
-
-          <div class="backend-info-box">
-            <strong>State Operations:</strong><br>
+</div>
+</div>
+</div>
+<!-- Backend Architecture Documentation -->
+<div class="backend-tabs-container">
+<div class="backend-tabs-header">
+<h2 class="backend-tabs-title">Backend Architecture &amp; Implementation Guide</h2>
+<p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+</div>
+<div class="tabs-nav">
+<button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+<button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
+<button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+<button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation &amp; Error</button>
+<button class="tab-button" onclick="showTab(event, 'backend-sync')">Offline &amp; Async</button>
+<button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
+</div>
+<div class="tabs-content">
+<!-- TAB: API Architecture -->
+<div class="tab-panel active" id="backend-api">
+<h3 class="backend-section-title">tRPC Procedures (5 Screens)</h3>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This dashboard manages offline farmer properties and physical pond allocations.</p>
+<div class="backend-info-box">
+<strong>State Operations:</strong><br/>
             • Profile edits save directly. Bank changes and pond deactivations log historical audits before committing mutations.
           </div>
+<h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
+<ul class="backend-list">
+<li><strong>updateFarmerProfile</strong> — Protected. Mutates identity details.</li>
+<li><strong>updateFarmerBankDetails</strong> — Protected. Updates bank rows, sets approval to <code>pending</code>, and schedules checks.</li>
+<li><strong>upsertPondAsset</strong> — Protected. Saves pond edits or appends new coordinates.</li>
+<li><strong>togglePondStatus</strong> — Protected. Sets pond state.</li>
+</ul>
+</div>
+<!-- TAB: React Component Design -->
+<div class="tab-panel" id="backend-react">
+<h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3><div class="backend-info-box">
+<strong>Step 1: Edit Identity Profile</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ HeroCard (visual helper banner)<br/>
+             ├─ TextInput (farmer name field)<br/>
+             ├─ DatePickerInput (date of birth)<br/>
+             ├─ PhoneInput (mobile number)<br/>
+             ├─ TextInput (alternate phone field)<br/>
+             ├─ CTAFooter (Save Changes / Cancel)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 2: Replace Bank Account Details</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ HeroCard (visual onboarding helper)<br/>
+             ├─ SummaryCard (existing bank details)<br/>
+             ├─ TextInput (account holder name)<br/>
+             ├─ TextInput (bank account number)<br/>
+             ├─ TextInput (confirm account number)<br/>
+             ├─ TextInput (IFSC code)<br/>
+             ├─ StatusBadge (penny drop status)<br/>
+             ├─ CTAFooter (Verify &amp; Save)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 3: Edit Pond Parameters</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ TextInput (pond name)<br/>
+             ├─ NumberInput (pond area)<br/>
+             ├─ SelectInput (area unit)<br/>
+             ├─ NumberInput (annual capacity)<br/>
+             ├─ AddressForm (composite fields)<br/>
+             ├─ SelectInput (district selection)<br/>
+             ├─ TextInput (village / panchayat)<br/>
+             ├─ LocationPicker (Google Maps overlay)<br/>
+             ├─ CoordinatesDisplay (real-time coordinates)<br/>
+             └─ CTAFooter (Save / Cancel)<br/>
+</div><div class="backend-info-box">
+<strong>Step 4: Add New Pond Asset</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ ReviewBentoGrid (composite bento sections)<br/>
+             ├─ SummaryCard (pond identity, metrics, location, documents summary)<br/>
+             ├─ CheckboxInput (final consent toggle)<br/>
+             ├─ CTAFooter (Submit Pond / Cancel)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 5: Deactivate Pond Asset</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ WarningSection (warning message banner)<br/>
+             ├─ SummaryCard (pond identity details)<br/>
+             ├─ SelectInput (deactivation reason dropdown)<br/>
+             ├─ TextInput (audit notes multiline)<br/>
+             └─ CTAFooter (Deactivate Pond / Cancel)<br/>
+</div>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This 5-screen farmer portfolio management workflow breaks into reusable React components following atomic design principles. Focus on profile edits, bank verification, and pond asset management.</p>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Key Procedures</h4>
-          <ul class="backend-list">
-            <li><strong>updateFarmerProfile</strong> — Protected. Mutates identity details.</li>
-            <li><strong>updateFarmerBankDetails</strong> — Protected. Updates bank rows, sets approval to <code>pending</code>, and schedules checks.</li>
-            <li><strong>upsertPondAsset</strong> — Protected. Saves pond edits or appends new coordinates.</li>
-            <li><strong>togglePondStatus</strong> — Protected. Sets pond state.</li>
-          </ul>
-        </div>
 
-        <!-- TAB: React Component Design -->
-        <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This 5-screen farmer portfolio management workflow breaks into reusable React components following atomic design principles. Focus on profile edits, bank verification, and pond asset management.</p>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
+<table class="backend-table">
+<tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
+<tr><td colspan="3"><strong>Screen 1: Edit Identity Profile</strong></td></tr>
+<tr><td rowspan="4">Profile Edit</td><td><span class="spec-badge-inline">FarmerHeaderCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">VerificationBadges</span></td><td><span class="spec-badge-inline">TextInput</span></td></tr>
+<tr><td><span class="spec-badge-inline">ProfileEditButton</span></td><td><span class="spec-badge-inline">PhoneInput</span> / <span class="spec-badge-inline">StatusBadge</span></td></tr>
+<tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 2: Replace Bank Account Details</strong></td></tr>
+<tr><td rowspan="3">Bank Details</td><td><span class="spec-badge-inline">BankAccountCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">BankEditForm</span> / <span class="spec-badge-inline">VerificationStatusCard</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">SelectInput</span></td></tr>
+<tr><td><span class="spec-badge-inline">DocumentUpload</span></td><td><span class="spec-badge-inline">StatusBadge</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 3: Edit Pond Parameters</strong></td></tr>
+<tr><td rowspan="4">Ponds Management</td><td><span class="spec-badge-inline">PondsListCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">PondCard</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">NumberInput</span></td></tr>
+<tr><td><span class="spec-badge-inline">PondEditModal</span></td><td><span class="spec-badge-inline">SelectInput</span> / <span class="spec-badge-inline">LocationPicker</span></td></tr>
+<tr><td></td><td><span class="spec-badge-inline">StatusBadge</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 4: Add New Pond Asset</strong></td></tr>
+<tr><td rowspan="3">New Pond Form</td><td><span class="spec-badge-inline">ExpandableSection</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">NumberInput</span> / <span class="spec-badge-inline">SelectInput</span></td></tr>
+<tr><td></td><td><span class="spec-badge-inline">LocationPicker</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+<tr><td colspan="3"><strong>Screen 5: Deactivate Pond Asset</strong></td></tr>
+<tr><td rowspan="3">Deactivation</td><td><span class="spec-badge-inline">WarningBanner</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+<tr><td><span class="spec-badge-inline">ConfirmationCheckbox</span></td><td><span class="spec-badge-inline">SelectInput</span> / <span class="spec-badge-inline">StatusBadge</span></td></tr>
+<tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Manage Farmer Only)</h4>
 
-          <div class="backend-info-box">
-            <strong>✅ Design Philosophy — Farmer Portfolio Proxy:</strong><br>
-            • Single Responsibility: Each component manages ONE farmer asset (profile, bank, pond)<br>
-            • Prop-based composition: Components accept farmer data, ponds list, bank details as props<br>
-            • Tabbed navigation: TabbedNavigation component switches between Profile/Bank/Ponds without page reload<br>
-            • Conditional rendering: Different screens for edit vs. read-only modes<br>
-            • Reuse across workflows: 80% shared components (TopAppBar, TextInput, PhoneInput, SelectInput, CTAFooter)<br>
-            • Variant management: Props define edit mode, approval status, asset state
-          </div>
 
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
-          <table class="backend-table">
-            <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
-            <tr><td colspan="3"><strong>Screen 1: Edit Identity Profile</strong></td></tr>
-            <tr><td rowspan="4">Profile Edit</td><td><span class="spec-badge-inline">FarmerHeaderCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">VerificationBadges</span></td><td><span class="spec-badge-inline">TextInput</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ProfileEditButton</span></td><td><span class="spec-badge-inline">PhoneInput</span> / <span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 2: Replace Bank Account Details</strong></td></tr>
-            <tr><td rowspan="3">Bank Details</td><td><span class="spec-badge-inline">BankAccountCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">BankEditForm</span> / <span class="spec-badge-inline">VerificationStatusCard</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">SelectInput</span></td></tr>
-            <tr><td><span class="spec-badge-inline">DocumentUpload</span></td><td><span class="spec-badge-inline">StatusBadge</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 3: Edit Pond Parameters</strong></td></tr>
-            <tr><td rowspan="4">Ponds Management</td><td><span class="spec-badge-inline">PondsListCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PondCard</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">NumberInput</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PondEditModal</span></td><td><span class="spec-badge-inline">SelectInput</span> / <span class="spec-badge-inline">LocationPicker</span></td></tr>
-            <tr><td></td><td><span class="spec-badge-inline">StatusBadge</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 4: Add New Pond Asset</strong></td></tr>
-            <tr><td rowspan="3">New Pond Form</td><td><span class="spec-badge-inline">ExpandableSection</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">NumberInput</span> / <span class="spec-badge-inline">SelectInput</span></td></tr>
-            <tr><td></td><td><span class="spec-badge-inline">LocationPicker</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 5: Deactivate Pond Asset</strong></td></tr>
-            <tr><td rowspan="3">Deactivation</td><td><span class="spec-badge-inline">WarningBanner</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ConfirmationCheckbox</span></td><td><span class="spec-badge-inline">SelectInput</span> / <span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Manage Farmer Only)</h4>
-          <div class="backend-info-box">
-            <strong>FarmerHeaderCard</strong> — Displays farmer name, ID, verification status<br>
-            <code style="font-size: 11px;">Props: { farmerId, name, verified, kyc_status, lastModified }</code><br>
-            Header card showing farmer identity. Used Screen 1.
-          </div>
-          <div class="backend-info-box">
-            <strong>VerificationBadges</strong> — Shows KYC, bank, pond verification states<br>
-            <code style="font-size: 11px;">Props: { kyc: boolean, bank: boolean, ponds: boolean }</code><br>
-            Row of 3 badges: KYC status (green/red), Bank status (pending/verified), Pond status. Used Screen 1.
-          </div>
-          <div class="backend-info-box">
-            <strong>ProfileEditButton</strong> — Triggers edit mode for profile<br>
-            <code style="font-size: 11px;">Props: { isEditing, onEdit, onCancel }</code><br>
-            Button: "Edit Profile" or "Save Changes". Used Screen 1.
-          </div>
-          <div class="backend-info-box">
-            <strong>BankAccountCard</strong> — Read-only bank details display<br>
-            <code style="font-size: 11px;">Props: { accountNumber, ifsc, bankName, accountHolder, status }</code><br>
-            Displays bank info + verification status. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>BankEditForm</strong> — Form for bank details entry/edit<br>
-            <code style="font-size: 11px;">Props: { bankName, accountNumber, ifsc, holderName, onChange }</code><br>
-            TextInput fields for bank account details. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>VerificationStatusCard</strong> — Shows penny-drop or NEFT verification state<br>
-            <code style="font-size: 11px;">Props: { status: 'pending'|'verified'|'failed', message }</code><br>
-            Status badge + explanation. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>DocumentUpload</strong> — Upload cheque or bank document<br>
-            <code style="font-size: 11px;">Props: { documentType, onUpload, isVerifying }</code><br>
-            File upload for bank verification. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>PondsListCard</strong> — Container for all farmer ponds<br>
-            <code style="font-size: 11px;">Props: { ponds, onEdit, onAdd }</code><br>
-            List view of ponds with edit/delete actions. Used Screen 3.
-          </div>
-          <div class="backend-info-box">
-            <strong>PondCard</strong> — Individual pond item in list<br>
-            <code style="font-size: 11px;">Props: { pondId, name, area, status, onEdit, onDelete }</code><br>
-            Card showing pond name, area, status badge. Used Screens 3, 5.
-          </div>
-          <div class="backend-info-box">
-            <strong>PondEditModal</strong> — Modal for adding/editing pond<br>
-            <code style="font-size: 11px;">Props: { pond, isOpen, onSave, onCancel }</code><br>
-            Form for pond name, area, GPS coordinates. Used Screen 3.
-          </div>
-          <div class="backend-info-box">
-            <strong>ExpandableSection</strong> — Collapsible details section<br>
-            <code style="font-size: 11px;">Props: { title, expanded, children }</code><br>
-            Container for additional pond details. Used Screen 4.
-          </div>
-          <div class="backend-info-box">
-            <strong>WarningBanner</strong> — Warning/alert notification banner<br>
-            <code style="font-size: 11px;">Props: { message, severity, icon }</code><br>
-            Displays deactivation warning and consequences. Used Screen 5.
-          </div>
-          <div class="backend-info-box">
-            <strong>ConfirmationCheckbox</strong> — Checkbox to confirm action<br>
-            <code style="font-size: 11px;">Props: { label, checked, onChange }</code><br>
-            Required checkbox to confirm pond deactivation. Used Screen 5.
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (75% of Manage Farmer)</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Manage Farmer Usage</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 5 screens</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, validation</td><td>Screens 1–4 (identity, bank, pond details)</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix</td><td>Screen 1 (phone edit)</td></tr>
-            <tr><td><strong>NumberInput</strong></td><td>Number field with spinner</td><td>Screens 3–4 (pond area)</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown for selections</td><td>Screens 2–5 (bank, pond units, deactivation reason)</td></tr>
-            <tr><td><strong>LocationPicker</strong></td><td>GPS coordinate selection</td><td>Screens 3–4 (pond location)</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>Screens 1–3, 5 (KYC, bank, pond status)</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All 5 screens</td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Consistency Checklist</h4>
-          <ul class="backend-list">
-            <li><strong>✓ Tabbed Navigation:</strong> Profile/Bank/Ponds tabs (similar to Manage Popper pattern)</li>
-            <li><strong>✓ Edit Mode Toggle:</strong> Read-only view → Edit mode → Save (same pattern as Manage Popper)</li>
-            <li><strong>✓ Status Badges:</strong> KYC/Bank/Pond verification states in cyan + status colors (consistent across 20 workflows)</li>
-            <li><strong>✓ Phone Input:</strong> +91 prefix (PhoneInput component, consistent across all registration/profile workflows)</li>
-            <li><strong>✓ Address Grouping:</strong> Village/District/State in AddressForm (consistent across all workflows)</li>
-            <li><strong>✓ Approval Workflow:</strong> Pending → Verified → Approved (same pattern across Farmer Registration, Popper Registration)</li>
-            <li><strong>✓ Summary Screen:</strong> Read-only review before final submission (consistent across all 20 workflows)</li>
-            <li><strong>✓ Spacing:</strong> 16px gaps, 24px padding, 80px CTAFooter (consistent across 20 workflows)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main, red for rejected)</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive: 360px, 600px, 1024px (consistent across 20 workflows)</li>
-            <li><strong>✓ No Duplication:</strong> Never create separate "KYCBadge", "BankBadge" components—use StatusBadge with variant prop</li>
-          </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
-          <div class="backend-info-box" style="background: #3a1a1a; border: 1px solid #5d0d0d;">
-            <strong style="color: #ff6b6b;">⚠️ DO NOT CREATE DUPLICATE COMPONENTS:</strong><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "FarmerPhoneField" + "FarmerAddressField" (both are form inputs)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Reuse PhoneInput and AddressForm (shared across Farmer Registration, Popper Registration, Manage Farmer).<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "KYCStatusBadge", "BankStatusBadge", "PondStatusBadge" (all are status variants)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use single StatusBadge component with label prop (e.g., label="KYC", label="Bank", label="Pond").<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Copy TopAppBar for "FarmerManagementHeader"<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Reuse TopAppBar across all 20 workflows—same component, different title/progress props.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "PondEditCard" + "PondViewCard" (both show pond data)<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use single PondCard with isEditing prop that toggles between view/edit modes.<br><br>
-            <strong style="color: #ff8888;">❌ WRONG:</strong> Create "ApprovalPendingBadge" separate from StatusBadge<br>
-            <strong style="color: #4edea3;">✅ RIGHT:</strong> Use StatusBadge with status prop (e.g., status="pending", status="approved") + use ApprovalBadge only for extended details (reviewer name, date).
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
-          <div class="backend-info-box">
-            <strong>Screen 1: Profile Overview</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → FarmerHeaderCard → VerificationBadges → CTAFooter [Primary: "Edit Profile", Secondary: "View Bank/Ponds"]</code><br><br>
-            <strong>Screen 2: Edit Profile</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → NameInputCard → PhoneEditField → AddressEditCard → CTAFooter [Primary: "Save Profile", Secondary: "Cancel"]</code><br><br>
-            <strong>Screen 3: Bank Details</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → BankAccountCard (read-only) → BankEditForm (conditional) → VerificationStatusCard → CTAFooter [Primary: "Save Bank", Secondary: "Back"]</code><br><br>
-            <strong>Screen 4: Manage Ponds</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → PondsListCard → [PondCard (×N)] → PondEditModal (modal) → CTAFooter [Primary: "Add Pond", Secondary: "Back"]</code><br><br>
-            <strong>Screen 5: Summary & Submit</strong><br>
-            <code style="font-size: 11px; color: #38bdf8;">TopAppBar → FarmerSummaryCard → StatusBadges (read-only) → ApprovalBadge → CTAFooter [Primary: "Submit for Approval", Secondary: "Back"]</code>
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Manage Farmer Specific UX Pattern: Tabbed Portfolio Management</h4>
-          <div class="backend-info-box">
-            <strong>Portfolio Proxy Pattern:</strong><br>
-            • <strong>Tabbed Navigation:</strong> Profile/Bank/Ponds tabs (no page reloads)<br>
-            • <strong>Edit-in-Place:</strong> Each tab has read-only view + edit mode toggle<br>
-            • <strong>Approval Workflow:</strong> Changes trigger "pending approval" status<br>
-            • <strong>Conditional Rendering:</strong> Verification badges change based on KYC/bank/pond states<br>
-            • <strong>Asset Management:</strong> Screen 4 allows add/edit/delete ponds (CRUD on child collection)<br>
-            • <strong>Summary Before Submit:</strong> Screen 5 shows all changes in read-only before final submission
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times (PondCard displayed multiple times)<br>
-            ✓ Testable in isolation (BankEditForm, PondEditModal)<br>
-            ✓ Clear, single responsibility (VerificationBadges handles only badges)<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Always Reuse (Never Create Variants):</strong><br>
-            • <strong>TopAppBar</strong> — all 20 workflows<br>
-            • <strong>TextInput</strong> — name, bank fields (same component, different labels)<br>
-            • <strong>PhoneInput</strong> — farmer/popper/scout phone inputs<br>
-            • <strong>AddressForm</strong> — farmer/popper address (shared component)<br>
-            • <strong>StatusBadge</strong> — KYC/bank/pond status (use label prop for variants)<br>
-            • <strong>LocationPicker</strong> — pond GPS, warehouse location, farmer address<br>
-            • <strong>CTAFooter</strong> — all screens (use variant prop for button labels)
-          </div>
-        </div>
 
-        <!-- TAB: Database Schema -->
-        <div id="backend-db" class="tab-panel">
-          <h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">ponds (Source Asset Modifications)</h4>
-          <div class="backend-code-block">CREATE TABLE ponds (
+<h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (75% of Manage Farmer)</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Purpose</th><th>Manage Farmer Usage</th></tr>
+<tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 5 screens</td></tr>
+<tr><td><strong>TextInput</strong></td><td>Text field with label, validation</td><td>Screens 1–4 (identity, bank, pond details)</td></tr>
+<tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix</td><td>Screen 1 (phone edit)</td></tr>
+<tr><td><strong>NumberInput</strong></td><td>Number field with spinner</td><td>Screens 3–4 (pond area)</td></tr>
+<tr><td><strong>SelectInput</strong></td><td>Dropdown for selections</td><td>Screens 2–5 (bank, pond units, deactivation reason)</td></tr>
+<tr><td><strong>LocationPicker</strong></td><td>GPS coordinate selection</td><td>Screens 3–4 (pond location)</td></tr>
+<tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>Screens 1–3, 5 (KYC, bank, pond status)</td></tr>
+<tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All 5 screens</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Consistency Checklist</h4>
+<ul class="backend-list">
+<li><strong>✓ Tabbed Navigation:</strong> Profile/Bank/Ponds tabs (similar to Manage Popper pattern)</li>
+<li><strong>✓ Edit Mode Toggle:</strong> Read-only view → Edit mode → Save (same pattern as Manage Popper)</li>
+<li><strong>✓ Status Badges:</strong> KYC/Bank/Pond verification states in cyan + status colors (consistent across 20 workflows)</li>
+<li><strong>✓ Phone Input:</strong> +91 prefix (PhoneInput component, consistent across all registration/profile workflows)</li>
+<li><strong>✓ Address Grouping:</strong> Village/District/State in AddressForm (consistent across all workflows)</li>
+<li><strong>✓ Approval Workflow:</strong> Pending → Verified → Approved (same pattern across Farmer Registration, Popper Registration)</li>
+<li><strong>✓ Summary Screen:</strong> Read-only review before final submission (consistent across all 20 workflows)</li>
+<li><strong>✓ Spacing:</strong> 16px gaps, 24px padding, 80px CTAFooter (consistent across 20 workflows)</li>
+<li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main, red for rejected)</li>
+<li><strong>✓ Mobile-First:</strong> Responsive: 360px, 600px, 1024px (consistent across 20 workflows)</li>
+<li><strong>✓ No Duplication:</strong> Never create separate "KYCBadge", "BankBadge" components—use StatusBadge with variant prop</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
+
+<h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
+
+<h4 class="backend-section-title" style="font-size: 14px;">Manage Farmer Specific UX Pattern: Tabbed Portfolio Management</h4>
+
+<h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+
+
+</div>
+<!-- TAB: Database Schema -->
+<div class="tab-panel" id="backend-db">
+<h3 class="backend-section-title">Database Schemas (Drizzle ORM DDL)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">ponds (Source Asset Modifications)</h4>
+<div class="backend-code-block">CREATE TABLE ponds (
   id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   farmer_user_id      UUID NOT NULL REFERENCES users(id),
   pond_code           TEXT NOT NULL UNIQUE,
@@ -572,300 +492,242 @@
   status              TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active','pending_approval','inactive')),
   created_at          TIMESTAMPTZ NOT NULL DEFAULT now()
 );</div>
-        </div>
-
-        <!-- TAB: Validation & Error Handling -->
-        <div id="backend-validation" class="tab-panel">
-          <h3 class="backend-section-title">Strict Input Validations & Error Enforcements</h3>
-          <ul class="backend-list">
-            <li><strong>IFSC Code Format:</strong> Checked against expressions.</li>
-            <li><strong>GPS Coordinates:</strong> Asserts that location parameters exist within regional borders.</li>
-          </ul>
-        </div>
-
-        <!-- TAB: Offline & Async -->
-        <div id="backend-sync" class="tab-panel">
-          <h3 class="backend-section-title">Offline Caching & Queue Synchronization</h3>
-          <ul class="backend-list">
-            <li><strong>Offline Storage:</strong> Edits cache locally in SQLite tables, writing updates sequentially once network resolves.</li>
-          </ul>
-        </div>
-
-        <!-- TAB: Security -->
-        <div id="backend-security" class="tab-panel">
-          <h3 class="backend-section-title">Security & Media Protection Protocols</h3>
-          <ul class="backend-list">
-            <li><strong>Scope Access:</strong> Restricts operations exclusively to scouts assigned to the target district.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Workflow Steps Block -->
-    <div class="workflow-group-block">
-      <div class="workflow-group-header">
-        <div class="workflow-group-title">Manage Farmer Steps Directory</div>
-        <div class="step-count-pill">5 Steps</div>
-      </div>
-      <div class="workflow-group-body">
-
-        <!-- STEP 1: Edit Profile Identity -->
-        <div class="flow-step-card" id="step-01">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">1</span>
-              <span class="step-title">Edit Identity Profile</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/manage_farmer/edit_identity/screen.png" alt="Edit Identity" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 1: Personal Details Dashboard</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Edits simple profile fields like spelling, phone numbers, and addresses.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Restricts editing verified mobile numbers directly without OTP challenges.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Text inputs are pre-filled with active profile data.</p><p>Verification badges flag status indicators.</p><p>Bottom CTA updates profiles.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Invokes <code>updateFarmerProfile</code> mutations.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • FarmerHeaderCard (farmer identity display)
-                    • VerificationBadges (KYC/bank/pond status badges)
-                    • ProfileEditButton (edit mode trigger)
-                    • TextInput (name, address fields)
-                    • PhoneInput (phone number field)
-                    • StatusBadge (verification indicators)
-                    • CTAFooter (actions)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 2: Replace Bank Account -->
-        <div class="flow-step-card" id="step-02">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">2</span>
-              <span class="step-title">Replace Bank Account Details</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/manage_farmer/replace_bank_account/screen.png" alt="Bank Account" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 2: Financial Account Replacements</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value"><div class="db-schema-box">Updates bank routing information for offline payouts.</div></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Requires uploading pictures of cancelled cheques to verify validity before payouts run.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Displays current active banking fields.</p><p>Entry panels handle Account and IFSC parameters.</p><p>Document cameras log media verification check images.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Invokes <code>updateFarmerBankDetails</code> routines.</p><p>Sets status flags back to pending approvals.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • BankAccountCard (current bank display)
-                    • BankEditForm (bank input form)
-                    • VerificationStatusCard (status display)
-                    • TextInput (account number, holder name)
-                    • SelectInput (bank selection)
-                    • StatusBadge (verification status)
-                    • DocumentUpload (cheque upload)
-                    • CTAFooter (actions)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 3: Edit Pond Parameters -->
-        <div class="flow-step-card" id="step-03">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">3</span>
-              <span class="step-title">Edit Pond Parameters</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/manage_farmer/edit_pond/screen.png" alt="Edit Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 3: Pond Parameter Modifiers</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Modifies existing pond variables (Area, landmarks, locations).</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Locks changes to pond sizes if bids have already run against their allocations.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><div class="db-schema-box">Selects target ponds. Dynamic panels handle size and capacity variables. GPS buttons capture active positioning points.</div></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Invokes <code>upsertPondAsset</code> mutations.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • PondsListCard (list container)
-                    • PondCard (individual pond item with edit/delete)
-                    • PondEditModal (edit form modal)
-                    • TextInput (pond name, village)
-                    • NumberInput (area value)
-                    • SelectInput (unit, district)
-                    • LocationPicker (GPS coordinates)
-                    • StatusBadge (pond status)
-                    • CTAFooter (actions)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 4: Add New Pond -->
-        <div class="flow-step-card" id="step-04">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">4</span>
-              <span class="step-title">Add New Pond Asset</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/manage_farmer/add_pond_review_submit/screen.png" alt="Add Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 4: Asset Registration Portal</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Appends new ponds to the farmer's active directory profile.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value">Requires exact GPS verification matching pond coordinates.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Wizard flows input names, sizes, villages.</p><p>GPS trackers lock active coordinate tags.</p><p>Reviews and submits new pond registrations.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value"><p>Generates unique <code>pond_code</code> values.</p><p>Invokes <code>upsertPondAsset</code>.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • TextInput (pond name, village)
-                    • NumberInput (area value)
-                    • SelectInput (unit, district)
-                    • LocationPicker (GPS coordinate capture)
-                    • PondCard (preview/review)
-                    • ExpandableSection (additional details)
-                    • CTAFooter (actions)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 5: Deactivate Pond -->
-        <div class="flow-step-card" id="step-05">
-          <div class="step-header">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <span class="step-badge">5</span>
-              <span class="step-title">Deactivate Pond Asset</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <div class="step-left-pane">
-              <div class="card-image-viewport">
-                <img src="../../../app/screens_v2/scout/manage_farmer/deactivate_pond/screen.png" alt="Deactivate Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='<div class=screen-placeholder>Screen 5: Asset Suspensions Dialog</div>'" />
-              </div>
-            </div>
-            <div class="step-right-pane">
-              <div class="specs-grid">
-                <div class="spec-block full-width">
-                  <div class="spec-label">Purpose</div>
-                  <div class="spec-value">Temporarily or permanently disables active ponds from market lists.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Business Requirement</div>
-                  <div class="spec-value"><p>Identifies deactivation reasons (<code>e.g</code>.</p><p>seasonal changes, water contamination).</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">User Experience (UX)</div>
-                  <div class="spec-value"><p>Renders warning sheets listing active listing links.</p><p>Selection options choose deactivation codes.</p><p>Dark amber buttons suspend allocations.</p></div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Technical Details</div>
-                  <div class="spec-value">Invokes <code>togglePondStatus</code> transactions to deactivate allocations.</div>
-                </div>
-                <div class="spec-block full-width">
-                  <div class="spec-label">Components Used</div>
-                  <div class="spec-value">
-                    • TopAppBar (header)
-                    • WarningBanner (deactivation notice)
-                    • PondCard (pond list display)
-                    • SelectInput (deactivation reason selector)
-                    • StatusBadge (current pond status)
-                    • ConfirmationCheckbox (acknowledge warning)
-                    • CTAFooter (actions)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
+</div>
+<!-- TAB: Validation & Error Handling -->
+<div class="tab-panel" id="backend-validation">
+<h3 class="backend-section-title">Strict Input Validations &amp; Error Enforcements</h3>
+<ul class="backend-list">
+<li><strong>IFSC Code Format:</strong> Checked against expressions.</li>
+<li><strong>GPS Coordinates:</strong> Asserts that location parameters exist within regional borders.</li>
+</ul>
+</div>
+<!-- TAB: Offline & Async -->
+<div class="tab-panel" id="backend-sync">
+<h3 class="backend-section-title">Offline Caching &amp; Queue Synchronization</h3>
+<ul class="backend-list">
+<li><strong>Offline Storage:</strong> Edits cache locally in SQLite tables, writing updates sequentially once network resolves.</li>
+</ul>
+</div>
+<!-- TAB: Security -->
+<div class="tab-panel" id="backend-security">
+<h3 class="backend-section-title">Security &amp; Media Protection Protocols</h3>
+<ul class="backend-list">
+<li><strong>Scope Access:</strong> Restricts operations exclusively to scouts assigned to the target district.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Workflow Steps Block -->
+<div class="workflow-group-block">
+<div class="workflow-group-header">
+<div class="workflow-group-title">Manage Farmer Steps Directory</div>
+<div class="step-count-pill">5 Steps</div>
+</div>
+<div class="workflow-group-body">
+<!-- STEP 1: Edit Profile Identity -->
+<div class="flow-step-card" id="step-01">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">1</span>
+<span class="step-title">Edit Identity Profile</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Edit Identity" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 1: Personal Details Dashboard&lt;/div&gt;'" src="../../../app/screens_v2/scout/manage_farmer/edit_identity/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Edits simple profile fields like spelling, phone numbers, and addresses.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value">Restricts editing verified mobile numbers directly without OTP challenges.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Text inputs are pre-filled with active profile data.</p><p>Verification badges flag status indicators.</p><p>Bottom CTA updates profiles.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value">Invokes <code>updateFarmerProfile</code> mutations.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• HeroCard (visual helper banner)<br/>• TextInput (farmer name field)<br/>• DatePickerInput (date of birth)<br/>• PhoneInput (mobile number)<br/>• TextInput (alternate phone field)<br/>• CTAFooter (Save Changes / Cancel)<br/>• BackgroundTexture (radial grid decoration)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 2: Replace Bank Account -->
+<div class="flow-step-card" id="step-02">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">2</span>
+<span class="step-title">Replace Bank Account Details</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Bank Account" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 2: Financial Account Replacements&lt;/div&gt;'" src="../../../app/screens_v2/scout/manage_farmer/replace_bank_account/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value"><div class="db-schema-box">Updates bank routing information for offline payouts.</div></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value">Requires uploading pictures of cancelled cheques to verify validity before payouts run.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Displays current active banking fields.</p><p>Entry panels handle Account and IFSC parameters.</p><p>Document cameras log media verification check images.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Invokes <code>updateFarmerBankDetails</code> routines.</p><p>Sets status flags back to pending approvals.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• HeroCard (visual onboarding helper)<br/>• SummaryCard (existing bank details)<br/>• TextInput (account holder name)<br/>• TextInput (bank account number)<br/>• TextInput (confirm account number)<br/>• TextInput (IFSC code)<br/>• StatusBadge (penny drop status)<br/>• CTAFooter (Verify &amp; Save)<br/>• BackgroundTexture (radial grid decoration)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 3: Edit Pond Parameters -->
+<div class="flow-step-card" id="step-03">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">3</span>
+<span class="step-title">Edit Pond Parameters</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Edit Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 3: Pond Parameter Modifiers&lt;/div&gt;'" src="../../../app/screens_v2/scout/manage_farmer/edit_pond/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Modifies existing pond variables (Area, landmarks, locations).</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value">Locks changes to pond sizes if bids have already run against their allocations.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><div class="db-schema-box">Selects target ponds. Dynamic panels handle size and capacity variables. GPS buttons capture active positioning points.</div></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value">Invokes <code>upsertPondAsset</code> mutations.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• TextInput (pond name)<br/>• NumberInput (pond area)<br/>• SelectInput (area unit)<br/>• NumberInput (annual capacity)<br/>• AddressForm (composite fields)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat)<br/>• LocationPicker (Google Maps overlay)<br/>• CoordinatesDisplay (real-time coordinates)<br/>• CTAFooter (Save / Cancel)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 4: Add New Pond -->
+<div class="flow-step-card" id="step-04">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">4</span>
+<span class="step-title">Add New Pond Asset</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Add Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 4: Asset Registration Portal&lt;/div&gt;'" src="../../../app/screens_v2/scout/manage_farmer/add_pond_review_submit/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Appends new ponds to the farmer's active directory profile.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value">Requires exact GPS verification matching pond coordinates.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Wizard flows input names, sizes, villages.</p><p>GPS trackers lock active coordinate tags.</p><p>Reviews and submits new pond registrations.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value"><p>Generates unique <code>pond_code</code> values.</p><p>Invokes <code>upsertPondAsset</code>.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• ReviewBentoGrid (composite bento sections)<br/>• SummaryCard (pond identity, metrics, location, documents summary)<br/>• CheckboxInput (final consent toggle)<br/>• CTAFooter (Submit Pond / Cancel)<br/>• BackgroundTexture (radial grid decoration)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 5: Deactivate Pond -->
+<div class="flow-step-card" id="step-05">
+<div class="step-header">
+<div style="display: flex; gap: 12px; align-items: center;">
+<span class="step-badge">5</span>
+<span class="step-title">Deactivate Pond Asset</span>
+</div>
+</div>
+<div class="step-body">
+<div class="step-left-pane">
+<div class="card-image-viewport">
+<img alt="Deactivate Pond" class="preview-screen-img" onerror="this.closest('.card-image-viewport').innerHTML='&lt;div class=screen-placeholder&gt;Screen 5: Asset Suspensions Dialog&lt;/div&gt;'" src="../../../app/screens_v2/scout/manage_farmer/deactivate_pond/screen.png"/>
+</div>
+</div>
+<div class="step-right-pane">
+<div class="specs-grid">
+<div class="spec-block full-width">
+<div class="spec-label">Purpose</div>
+<div class="spec-value">Temporarily or permanently disables active ponds from market lists.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Business Requirement</div>
+<div class="spec-value"><p>Identifies deactivation reasons (<code>e.g</code>.</p><p>seasonal changes, water contamination).</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">User Experience (UX)</div>
+<div class="spec-value"><p>Renders warning sheets listing active listing links.</p><p>Selection options choose deactivation codes.</p><p>Dark amber buttons suspend allocations.</p></div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Technical Details</div>
+<div class="spec-value">Invokes <code>togglePondStatus</code> transactions to deactivate allocations.</div>
+</div>
+<div class="spec-block full-width">
+<div class="spec-label">Components Used</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• WarningSection (warning message banner)<br/>• SummaryCard (pond identity details)<br/>• SelectInput (deactivation reason dropdown)<br/>• TextInput (audit notes multiline)<br/>• CTAFooter (Deactivate Pond / Cancel)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       const stepCards = document.querySelectorAll(".flow-step-card");
       const stepperNodes = document.querySelectorAll(".stepper-node");

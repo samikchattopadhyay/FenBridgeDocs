@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scout Operations - Register Farmer (Scout-Assisted)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scout Operations - Register Farmer (Scout-Assisted)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg-base: #121212;
       --bg-surface: #18181b;
@@ -199,66 +200,59 @@
   </style>
 </head>
 <body>
-  <div class="address-bar">
-    <div class="address-bar-icon">📁</div>
-    <div class="address-bar-path" id="address-path">html/scout/operational/farmer_registration.html</div>
-  </div>
-
-  <div class="content-wrapper">
-    <div class="header-banner">
-      <span class="tag">Scout Operations</span>
-      <h1 class="title">Register Farmer (Scout-Assisted)</h1>
-      <p class="desc">Complete 12-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 12-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
-    </div>
-
-    <!-- COMMON COMPONENTS SECTION -->
-    <div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
-        <span style="font-size: 24px;">🔗</span>
-        <div>
-          <div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
-          <p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
-          <div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
-            <strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, StepperPanel, TextInput, PhoneInput, SelectInput, DatePickerInput, CheckboxInput, RadioGroup, FileUpload, AddressForm, PhotoGrid, DocumentUpload, LocationPicker, StatusBadge, CTAFooter, HeroCard, ScreenLayout
+<div class="address-bar">
+<div class="address-bar-icon">📁</div>
+<div class="address-bar-path" id="address-path">html/scout/operational/farmer_registration.html</div>
+</div>
+<div class="content-wrapper">
+<div class="header-banner">
+<span class="tag">Scout Operations</span>
+<h1 class="title">Register Farmer (Scout-Assisted)</h1>
+<p class="desc">Complete 12-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
+<p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 12-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
+</div>
+<!-- COMMON COMPONENTS SECTION -->
+<div style="max-width: 1280px; margin: 0 auto 48px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-left: 4px solid #10b981; border-radius: 16px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1);">
+<div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px;">
+<span style="font-size: 24px;">🔗</span>
+<div>
+<div style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Common Components Reference</div>
+<p style="font-size: 13px; color: #bbcabf; line-height: 1.6; margin: 0;">This workflow uses reusable UI components documented in the Scout Common Components guide. <strong>CRITICAL:</strong> Before creating any new component, consult <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">the Common Components Reference</a> to prevent duplication across the 20 Scout workflows.</p>
+<div style="margin-top: 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.1); border-left: 2px solid #10b981; border-radius: 4px; font-size: 12px; color: #e5e2e1;">
+<strong style="color: #10b981;">✓ Reusable in this workflow:</strong> TopAppBar, StepperPanel, TextInput, PhoneInput, SelectInput, DatePickerInput, CheckboxInput, RadioGroup, FileUpload, AddressForm, PhotoGrid, DocumentUpload, LocationPicker, StatusBadge, CTAFooter, HeroCard, ScreenLayout
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Backend Architecture Documentation -->
-    <div class="backend-tabs-container">
-      <div class="backend-tabs-header">
-        <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
-        <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
-      </div>
-
-      <div class="tabs-nav">
-        <button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-middleware')">Middleware & Auth</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation & Error</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-async')">Async Jobs</button>
-        <button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
-      </div>
-
-      <div class="tabs-content">
-        <!-- TAB: API Architecture -->
-        <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedure Architecture (13 Procedures)</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 13 tRPC procedures organized by authentication level.</p>
-
-          <div class="backend-info-box">
-            <strong>Procedure Breakdown:</strong><br>
-            • 3 Public procedures: Identity, OTP Send, OTP Verify<br>
-            • 10 Protected procedures: Language, Address, Pond Details (3), Bank (2), Verify Bank<br>
+</div>
+</div>
+</div>
+<!-- Backend Architecture Documentation -->
+<div class="backend-tabs-container">
+<div class="backend-tabs-header">
+<h2 class="backend-tabs-title">Backend Architecture &amp; Implementation Guide</h2>
+<p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+</div>
+<div class="tabs-nav">
+<button class="tab-button active" onclick="showTab(event, 'backend-api')">API Architecture</button>
+<button class="tab-button" onclick="showTab(event, 'backend-react')">React Component Design</button>
+<button class="tab-button" onclick="showTab(event, 'backend-db')">Database Schema</button>
+<button class="tab-button" onclick="showTab(event, 'backend-middleware')">Middleware &amp; Auth</button>
+<button class="tab-button" onclick="showTab(event, 'backend-validation')">Validation &amp; Error</button>
+<button class="tab-button" onclick="showTab(event, 'backend-async')">Async Jobs</button>
+<button class="tab-button" onclick="showTab(event, 'backend-security')">Security</button>
+</div>
+<div class="tabs-content">
+<!-- TAB: API Architecture -->
+<div class="tab-panel active" id="backend-api">
+<h3 class="backend-section-title">tRPC Procedure Architecture (13 Procedures)</h3>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 13 tRPC procedures organized by authentication level.</p>
+<div class="backend-info-box">
+<strong>Procedure Breakdown:</strong><br/>
+            • 3 Public procedures: Identity, OTP Send, OTP Verify<br/>
+            • 10 Protected procedures: Language, Address, Pond Details (3), Bank (2), Verify Bank<br/>
             • 1 Atomic transaction: Farmer Registration Submit (7 simultaneous inserts)
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/farmer.ts</h4>
-          <div class="backend-code-block">export const farmerRouter = t.router({
-  // Screen 1-2: Consent & Mobile Verification
+<h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/farmer.ts</h4>
+<div class="backend-code-block">export const farmerRouter = t.router({
+  // Screen 1-2: Consent &amp; Mobile Verification
   initFarmerRegistration: publicProcedure,
   sendFarmerMobileOtp: publicProcedure,
   verifyFarmerMobileOtp: publicProcedure,
@@ -276,215 +270,199 @@
   submitBankAccount: protectedProcedure,
   verifyBankAccount: protectedProcedure,
 
-  // Screen 11: Review & Submit
+  // Screen 11: Review &amp; Submit
   submitFarmerRegistration: protectedProcedure,
 });</div>
+<h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 2 - Mobile Verification)</h4>
+<ul class="backend-list">
+<li><strong>If OTP matches EXISTING farmer:</strong> Load farmer detail screen (Update mode)</li>
+<li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 11 - Review &amp; Submit)</h4>
+<ul class="backend-list">
+<li>1. Insert user record (role=farmer, status=pending_approval)</li>
+<li>2. Insert farmer_profiles</li>
+<li>3. Insert ponds (first pond)</li>
+<li>4. Insert user_documents (ownership photos)</li>
+<li>5. Insert user_bank_accounts (encrypted)</li>
+<li>6. Insert farmer_approval_queue</li>
+<li>7. Insert farmer_registration_events (audit trail)</li>
+<li>→ On success: Trigger async Inngest jobs</li>
+<li>→ On failure: Rollback all 7 inserts (no partial state)</li>
+</ul>
+</div>
+<!-- TAB: React Component Design -->
+<div class="tab-panel" id="backend-react">
+<h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3><div class="backend-info-box">
+<strong>Step 1: Intro &amp; Consent</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step 1 of 11)<br/>
+             ├─ HeroImage (visual onboarding anchor)<br/>
+             ├─ ProcessCard (consent checklist)<br/>
+             ├─ CheckboxInput (consent checkbox)<br/>
+             ├─ CTAFooter (Continue button)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 2: Mobile Verification (OTP Send &amp; Verify)</strong><br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step 2 of 11)<br/>
+             ├─ HeroCard (visual onboarding helper)<br/>
+             ├─ PhoneInput (mobile number entry field)<br/>
+             ├─ OTPEntrySheet (bottom-sheet modal overlay)<br/>
+             ├─ OTPInputGroup (6-digit OTP code input)<br/>
+             ├─ Timer (verification cooldown timer)<br/>
+             ├─ CTAFooter (Send OTP / Verify)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 3: Farmer Identity Details</strong><br/>
+             ├─ TopAppBar (header with progress step 3 of 11)<br/>
+             ├─ StepperPanel (Step 3 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ TextInput (farmer name field)<br/>
+             ├─ DatePickerInput (date of birth)<br/>
+             ├─ PhoneInput (mobile number display)<br/>
+             ├─ TextInput (alternate phone field)<br/>
+             ├─ CTAFooter (Continue / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 4: Language Selection</strong><br/>
+             ├─ TopAppBar (header with progress step 4 of 11)<br/>
+             ├─ StepperPanel (Step 4 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ LanguageTiles (native script language cards)<br/>
+             ├─ CTAFooter (Continue / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 5: Address Details</strong><br/>
+             ├─ TopAppBar (header with progress step 5 of 11)<br/>
+             ├─ StepperPanel (Step 5 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ AddressForm (composite fields)<br/>
+             ├─ SelectInput (district selection)<br/>
+             ├─ TextInput (village / panchayat search)<br/>
+             ├─ TextInput (street address)<br/>
+             ├─ TextInput (landmark optional)<br/>
+             ├─ CTAFooter (Continue / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 6: First Pond Details</strong><br/>
+             ├─ TopAppBar (header with progress step 6 of 11)<br/>
+             ├─ StepperPanel (Step 6 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ TextInput (pond name)<br/>
+             ├─ NumberInput (pond area)<br/>
+             ├─ SelectInput (area unit)<br/>
+             ├─ NumberInput (annual capacity)<br/>
+             ├─ CTAFooter (Continue / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 7: First Pond Legal Documents</strong><br/>
+             ├─ TopAppBar (header with progress step 7 of 11)<br/>
+             ├─ StepperPanel (Step 7 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ SelectInput (document type)<br/>
+             ├─ TextInput (document reference ID)<br/>
+             ├─ FileUpload (image uploader)<br/>
+             ├─ PhotoGrid (uploaded documents review)<br/>
+             ├─ CTAFooter (Continue / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 8: First Pond Address</strong><br/>
+             ├─ TopAppBar (header with progress step 8 of 11)<br/>
+             ├─ StepperPanel (Step 8 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ CheckboxInput (same as residential toggle)<br/>
+             ├─ AddressForm (composite fields)<br/>
+             ├─ SelectInput (district selection)<br/>
+             ├─ TextInput (village / panchayat)<br/>
+             ├─ TextInput (street address)<br/>
+             ├─ CTAFooter (Continue / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 9: First Pond Geo-Fencing</strong><br/>
+             ├─ TopAppBar (header with progress step 9 of 11)<br/>
+             ├─ StepperPanel (Step 9 of 11)<br/>
+             ├─ LocationPicker (Google Maps overlay)<br/>
+             ├─ CoordinatesDisplay (real-time coordinates)<br/>
+             └─ CTAFooter (Use My Location / Continue / Back)<br/>
+</div><div class="backend-info-box">
+<strong>Step 10: Bank Account Details</strong><br/>
+             ├─ TopAppBar (header with progress step 10 of 11)<br/>
+             ├─ StepperPanel (Step 10 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ PremiumInfoCard (penny drop info)<br/>
+             ├─ TextInput (account holder name)<br/>
+             ├─ TextInput (bank account number)<br/>
+             ├─ TextInput (confirm account number)<br/>
+             ├─ TextInput (IFSC code)<br/>
+             ├─ TextInput (resolved bank / branch details)<br/>
+             ├─ StatusBadge (verification badge)<br/>
+             ├─ CTAFooter (Continue / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 11: Review &amp; Submit</strong><br/>
+             ├─ TopAppBar (header with progress step 11 of 11)<br/>
+             ├─ StepperPanel (Step 11 of 11)<br/>
+             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ ExpandableSection (farmer profile review)<br/>
+             ├─ CheckboxInput (final declaration checkbox)<br/>
+             ├─ CTAFooter (Submit / Back)<br/>
+             └─ BackgroundTexture (radial grid decoration)<br/>
+</div><div class="backend-info-box">
+<strong>Step 12: Submission Confirmation</strong><br/>
+             ├─ TopAppBar (confirmation header)<br/>
+             ├─ SuccessIllustration (success message animation)<br/>
+             ├─ StatusBadge (sync status)<br/>
+             ├─ FarmerSummaryCard (farmer identity overview)<br/>
+             └─ CTAFooter (Back to Dashboard button)<br/>
+</div>
+<p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Farmer Registration breaks into reusable React components across the Scout module's 20 workflows. Follow atomic design principles: atoms (inputs) → molecules (form groups) → organisms (form sections) → templates (screens).</p>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 2 - Mobile Verification)</h4>
-          <ul class="backend-list">
-            <li><strong>If OTP matches EXISTING farmer:</strong> Load farmer detail screen (Update mode)</li>
-            <li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
-          </ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 1: Layout)</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
+<tr><td><strong>TopAppBar</strong></td><td>Fixed header with back button, title, menu</td><td>title, onBack, onMenu</td><td>All 20 workflows</td></tr>
+<tr><td><strong>StepperPanel</strong></td><td>Progress indicator with step counter</td><td>currentStep, totalSteps, steps[]</td><td>13 registration workflows</td></tr>
+<tr><td><strong>ScreenLayout</strong></td><td>Wraps content with padding + spacing</td><td>children, withStepper</td><td>All screens</td></tr>
+<tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions at bottom</td><td>primaryLabel, primaryAction, secondaryLabel, secondaryAction</td><td>All form screens</td></tr>
+<tr><td><strong>HeroCard</strong></td><td>Icon + title + subtitle instruction block</td><td>icon, title, subtitle</td><td>All registration steps</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 2: Form Inputs)</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Purpose</th><th>Props</th><th>Reuse Count</th></tr>
+<tr><td><strong>TextInput</strong></td><td>Text field with label, helper, error</td><td>label, value, onChange, error, hint, maxLength</td><td>Farmer (8x) + Popper (10x) + Others</td></tr>
+<tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>value, onChange, error, disabled</td><td>Farmer, Popper, Farmer Mgmt</td></tr>
+<tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select option</td><td>label, options[], value, onChange, error, multi</td><td>Farmer (language) + All workflows</td></tr>
+<tr><td><strong>DatePickerInput</strong></td><td>Date picker with label, validation</td><td>label, value, onChange, error, min, max</td><td>Farmer (DOB) + Popper (establishment)</td></tr>
+<tr><td><strong>CheckboxInput</strong></td><td>Single checkbox with label</td><td>label, checked, onChange, disabled</td><td>All screens (consent, acknowledgments)</td></tr>
+<tr><td><strong>RadioGroup</strong></td><td>Radio buttons with options</td><td>label, options[], value, onChange</td><td>Registration (verification mode), Lot Inspection</td></tr>
+<tr><td><strong>FileUpload</strong></td><td>File picker for documents/photos</td><td>label, accept, multiple, onSelect, error</td><td>Farmer (docs) + Popper (docs) + Lot (photos)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 3: Domain Components)</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
+<tr><td><strong>AddressForm</strong></td><td>Composed: street + city + district + zip</td><td>address, onChange, error</td><td>Farmer (5x), Popper (2x), Pond Inspection</td></tr>
+<tr><td><strong>PhotoGrid</strong></td><td>Display uploaded photos with delete action</td><td>photos[], onDelete, maxPhotos</td><td>Farmer, Popper, Lot Inspection, Pond Inspection</td></tr>
+<tr><td><strong>DocumentUpload</strong></td><td>Manages photo/doc upload with preview</td><td>label, onSelect, maxSize, documentType</td><td>Farmer Docs, Popper Docs, Lot Reference Samples</td></tr>
+<tr><td><strong>LocationPicker</strong></td><td>Google Maps integration for GPS + radius</td><td>onLocationSelect, onRadiusChange, initialLocation</td><td>Farmer (pond geofencing), Popper (warehouse), Lot (pickup)</td></tr>
+<tr><td><strong>StatusBadge</strong></td><td>Display status with color coding</td><td>status, size</td><td>All list screens, detail screens</td></tr>
+<tr><td><strong>GradeDisplay</strong></td><td>Show producible grades with icons</td><td>grades[], interactive</td><td>Popper (popping capability), Lot (grades)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Farmer Registration Screen Decomposition</h4>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 11 - Review & Submit)</h4>
-          <ul class="backend-list">
-            <li>1. Insert user record (role=farmer, status=pending_approval)</li>
-            <li>2. Insert farmer_profiles</li>
-            <li>3. Insert ponds (first pond)</li>
-            <li>4. Insert user_documents (ownership photos)</li>
-            <li>5. Insert user_bank_accounts (encrypted)</li>
-            <li>6. Insert farmer_approval_queue</li>
-            <li>7. Insert farmer_registration_events (audit trail)</li>
-            <li>→ On success: Trigger async Inngest jobs</li>
-            <li>→ On failure: Rollback all 7 inserts (no partial state)</li>
-          </ul>
-        </div>
 
-        <!-- TAB: React Component Design -->
-        <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Farmer Registration breaks into reusable React components across the Scout module's 20 workflows. Follow atomic design principles: atoms (inputs) → molecules (form groups) → organisms (form sections) → templates (screens).</p>
 
-          <div class="backend-info-box">
-            <strong>✅ Design Philosophy:</strong><br>
-            • Single Responsibility: Each component does ONE thing<br>
-            • Prop-based composition: Components accept data + actions as props<br>
-            • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
-            • Variant management: Props define UI variants, not separate components
-          </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 1: Layout)</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back button, title, menu</td><td>title, onBack, onMenu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>StepperPanel</strong></td><td>Progress indicator with step counter</td><td>currentStep, totalSteps, steps[]</td><td>13 registration workflows</td></tr>
-            <tr><td><strong>ScreenLayout</strong></td><td>Wraps content with padding + spacing</td><td>children, withStepper</td><td>All screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions at bottom</td><td>primaryLabel, primaryAction, secondaryLabel, secondaryAction</td><td>All form screens</td></tr>
-            <tr><td><strong>HeroCard</strong></td><td>Icon + title + subtitle instruction block</td><td>icon, title, subtitle</td><td>All registration steps</td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 2: Form Inputs)</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Reuse Count</th></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, helper, error</td><td>label, value, onChange, error, hint, maxLength</td><td>Farmer (8x) + Popper (10x) + Others</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>value, onChange, error, disabled</td><td>Farmer, Popper, Farmer Mgmt</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select option</td><td>label, options[], value, onChange, error, multi</td><td>Farmer (language) + All workflows</td></tr>
-            <tr><td><strong>DatePickerInput</strong></td><td>Date picker with label, validation</td><td>label, value, onChange, error, min, max</td><td>Farmer (DOB) + Popper (establishment)</td></tr>
-            <tr><td><strong>CheckboxInput</strong></td><td>Single checkbox with label</td><td>label, checked, onChange, disabled</td><td>All screens (consent, acknowledgments)</td></tr>
-            <tr><td><strong>RadioGroup</strong></td><td>Radio buttons with options</td><td>label, options[], value, onChange</td><td>Registration (verification mode), Lot Inspection</td></tr>
-            <tr><td><strong>FileUpload</strong></td><td>File picker for documents/photos</td><td>label, accept, multiple, onSelect, error</td><td>Farmer (docs) + Popper (docs) + Lot (photos)</td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 3: Domain Components)</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed: street + city + district + zip</td><td>address, onChange, error</td><td>Farmer (5x), Popper (2x), Pond Inspection</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display uploaded photos with delete action</td><td>photos[], onDelete, maxPhotos</td><td>Farmer, Popper, Lot Inspection, Pond Inspection</td></tr>
-            <tr><td><strong>DocumentUpload</strong></td><td>Manages photo/doc upload with preview</td><td>label, onSelect, maxSize, documentType</td><td>Farmer Docs, Popper Docs, Lot Reference Samples</td></tr>
-            <tr><td><strong>LocationPicker</strong></td><td>Google Maps integration for GPS + radius</td><td>onLocationSelect, onRadiusChange, initialLocation</td><td>Farmer (pond geofencing), Popper (warehouse), Lot (pickup)</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Display status with color coding</td><td>status, size</td><td>All list screens, detail screens</td></tr>
-            <tr><td><strong>GradeDisplay</strong></td><td>Show producible grades with icons</td><td>grades[], interactive</td><td>Popper (popping capability), Lot (grades)</td></tr>
-          </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Farmer Registration Screen Decomposition</h4>
-          <div class="backend-info-box">
-            <strong>Step 1: Intro & Consent</strong><br>
-            &nbsp;├─ TopAppBar (title="Register a Farmer")<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ CheckboxInput (consent checkbox)<br>
-            &nbsp;└─ CTAFooter (Continue, Save Draft)
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Step 2: Mobile Verification</strong><br>
-            &nbsp;├─ TopAppBar (header with back button)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ PhoneInput (mobile number)<br>
-            &nbsp;├─ OTPEntrySheet (modal overlay)<br>
-            &nbsp;│&nbsp;├─ TextInput (6-digit OTP)<br>
-            &nbsp;│&nbsp;└─ Timer (60 sec cooldown)<br>
-            &nbsp;└─ CTAFooter
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Step 3: Farmer Identity Details</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 3/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ TextInput (farmer name field)<br>
-            &nbsp;├─ DatePickerInput (date of birth picker)<br>
-            &nbsp;├─ PhoneInput (mobile number with +91)<br>
-            &nbsp;├─ TextInput (alternate phone optional)<br>
-            &nbsp;└─ CTAFooter
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Step 4: Language Selection</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 4/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ SelectableCard (language tiles)<br>
-            &nbsp;└─ CTAFooter
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Step 5: Address Details</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 5/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ SelectInput (district dropdown)<br>
-            &nbsp;├─ TextInput (panchayat/village searchable)<br>
-            &nbsp;├─ TextInput (full address textarea)<br>
-            &nbsp;├─ TextInput (landmark optional)<br>
-            &nbsp;└─ CTAFooter
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Step 6: First Pond Details</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 6/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ TextInput (pond name)<br>
-            &nbsp;├─ NumberInput (area value)<br>
-            &nbsp;├─ SelectInput (area unit - Acre/Bigha/Hectare)<br>
-            &nbsp;├─ NumberInput (annual capacity in kg)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 7: First Pond Legal Documents</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 7/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ SelectInput (document type)<br>
-            &nbsp;├─ PhotoCaptureCard (camera trigger)<br>
-            &nbsp;├─ PhotoGrid (preview uploaded docs)<br>
-            &nbsp;├─ ExpandableSection (add additional documents)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 8: First Pond Address</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 8/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ CheckboxInput (same as farmer's address toggle)<br>
-            &nbsp;├─ SelectInput (district dropdown)<br>
-            &nbsp;├─ TextInput (panchayat/village)<br>
-            &nbsp;├─ TextInput (full address textarea)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 9: First Pond Geo-Fencing</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 9/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ LocationPicker (Google Maps)<br>
-            &nbsp;├─ CoordinatesDisplay (latitude/longitude)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 10: Bank Account Details</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 10/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ TextInput (account holder name)<br>
-            &nbsp;├─ TextInput (account number)<br>
-            &nbsp;├─ TextInput (confirm account number)<br>
-            &nbsp;├─ TextInput (IFSC code)<br>
-            &nbsp;├─ TextInput (bank/branch name read-only)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 11: Review & Submit</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 11/13)<br>
-            &nbsp;├─ StepperBar (step progress indicator)<br>
-            &nbsp;├─ HeroCard (onboarding visual anchor)<br>
-            &nbsp;├─ ExpandableSection (recap sections - Identity, Address, Pond, Bank, Documents)<br>
-            &nbsp;├─ EditLink (inline edit links on each section)<br>
-            &nbsp;├─ StatusBadge (verification status indicators)<br>
-            &nbsp;├─ CheckboxInput (final consent checkbox)<br>
-            &nbsp;└─ CTAFooter
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Step 12: Submission Confirmation</strong><br>
-            &nbsp;├─ TopAppBar (header with progress 12/13)<br>
-            &nbsp;├─ SuccessIllustration<br>
-            &nbsp;├─ StatusBadge (sync state - "Pending Sync" or "Synced")<br>
-            &nbsp;├─ InfoBanner (offline status information)<br>
-            &nbsp;├─ FarmerSummaryCard (farmer details read-only)<br>
-            &nbsp;└─ CTAFooter (Back to Dashboard button)
-          </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">State Management Pattern</h4>
-          <div class="backend-code-block">// Context Hook (src/contexts/FarmerRegistrationContext.ts)
+<h4 class="backend-section-title" style="font-size: 14px;">State Management Pattern</h4>
+<div class="backend-code-block">// Context Hook (src/contexts/FarmerRegistrationContext.ts)
 type FarmerRegistrationState = {
   step: number;
   consent: boolean;
@@ -495,7 +473,7 @@ type FarmerRegistrationState = {
   pondAddress: { street, city, district, pincode };
   geofence: { lat, lng, radius };
   bank: { holder, account, ifsc };
-  errors: Record<string, string>;
+  errors: Record<string, string="">;
 };
 
 // Provider wraps entire wizard
@@ -506,23 +484,21 @@ type FarmerRegistrationState = {
 &lt;/FarmerRegistrationProvider&gt;
 
 // Components access via hook
-const { state, updateField, setError } = useFarmerRegistration();</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Component Reuse Matrix</h4>
-          <table class="backend-table">
-            <tr><th>Component</th><th>Farmer Reg</th><th>Popper Reg</th><th>Lot Verify</th><th>Pond Insp</th><th>Others</th></tr>
-            <tr><td>TopAppBar</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓ (18/20)</td></tr>
-            <tr><td>StepperPanel</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>✓ (6/20)</td></tr>
-            <tr><td>TextInput</td><td>✓ (8)</td><td>✓ (10)</td><td>✓ (2)</td><td>✓ (1)</td><td>✓ (12/20)</td></tr>
-            <tr><td>PhoneInput</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>✓ (8/20)</td></tr>
-            <tr><td>AddressForm</td><td>✓ (2)</td><td>✓ (1)</td><td>✗</td><td>✓ (1)</td><td>✓ (9/20)</td></tr>
-            <tr><td>PhotoGrid</td><td>✓</td><td>✓</td><td>✓ (5)</td><td>✓ (4)</td><td>✓ (16/20)</td></tr>
-            <tr><td>LocationPicker</td><td>✓ (1)</td><td>✓ (1)</td><td>✓ (1)</td><td>✗</td><td>✓ (8/20)</td></tr>
-            <tr><td>DocumentUpload</td><td>✓ (1)</td><td>✓ (2)</td><td>✓ (1)</td><td>✗</td><td>✓ (9/20)</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Code Organization</h4>
-          <div class="backend-code-block">src/
+const { state, updateField, setError } = useFarmerRegistration();</string,></div>
+<h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Component Reuse Matrix</h4>
+<table class="backend-table">
+<tr><th>Component</th><th>Farmer Reg</th><th>Popper Reg</th><th>Lot Verify</th><th>Pond Insp</th><th>Others</th></tr>
+<tr><td>TopAppBar</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓ (18/20)</td></tr>
+<tr><td>StepperPanel</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>✓ (6/20)</td></tr>
+<tr><td>TextInput</td><td>✓ (8)</td><td>✓ (10)</td><td>✓ (2)</td><td>✓ (1)</td><td>✓ (12/20)</td></tr>
+<tr><td>PhoneInput</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td><td>✓ (8/20)</td></tr>
+<tr><td>AddressForm</td><td>✓ (2)</td><td>✓ (1)</td><td>✗</td><td>✓ (1)</td><td>✓ (9/20)</td></tr>
+<tr><td>PhotoGrid</td><td>✓</td><td>✓</td><td>✓ (5)</td><td>✓ (4)</td><td>✓ (16/20)</td></tr>
+<tr><td>LocationPicker</td><td>✓ (1)</td><td>✓ (1)</td><td>✓ (1)</td><td>✗</td><td>✓ (8/20)</td></tr>
+<tr><td>DocumentUpload</td><td>✓ (1)</td><td>✓ (2)</td><td>✓ (1)</td><td>✗</td><td>✓ (9/20)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">Code Organization</h4>
+<div class="backend-code-block">src/
 ├── components/
 │   ├── atoms/                    // Reusable input primitives
 │   │   ├── TextInput.tsx         // Used in all 20 workflows
@@ -559,55 +535,29 @@ const { state, updateField, setError } = useFarmerRegistration();</div>
     ├── useFormValidation.ts
     ├── usePhotoUpload.ts
     └── ...</div>
+<h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+<ul class="backend-list">
+<li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces for props</li>
+<li><strong>✓ Error Handling:</strong> All inputs display errors consistently (red border + error message below)</li>
+<li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md) not hardcoded px</li>
+<li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main) from root design system</li>
+<li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas (shared-types)</li>
+<li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes for complex components</li>
+<li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
+<li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components immediately</li>
+<li><strong>✓ Variant Props:</strong> Use variant/size/state props, not separate components (e.g., Button variant="primary" | "secondary")</li>
+<li><strong>✓ No Local State:</strong> Business logic state lives in Context, component state only for transient UI (hover, focus, sheet open/closed)</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
-          <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces for props</li>
-            <li><strong>✓ Error Handling:</strong> All inputs display errors consistently (red border + error message below)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md) not hardcoded px</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main) from root design system</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas (shared-types)</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes for complex components</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components immediately</li>
-            <li><strong>✓ Variant Props:</strong> Use variant/size/state props, not separate components (e.g., Button variant="primary" | "secondary")</li>
-            <li><strong>✓ No Local State:</strong> Business logic state lives in Context, component state only for transient UI (hover, focus, sheet open/closed)</li>
-          </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times across workflows<br>
-            ✓ Component is testable in isolation<br>
-            ✓ Component has clear, single responsibility<br>
-            ✗ Component is used in only 1 workflow (inline it)<br>
-            ✗ Component is just a styling wrapper (use CSS utility classes instead)
-          </div>
 
-          <div class="backend-info-box">
-            <strong>Common Components Shared Across Farmer + Popper + Others:</strong><br>
-            • TopAppBar (header in all 20 workflows)<br>
-            • TextInput (8x farmer, 10x popper, 2x lot, 1x pond = 21 uses)<br>
-            • AddressForm (2x farmer, 1x popper, 1x pond = 4+ uses)<br>
-            • PhotoGrid (farmer docs, popper docs, lot photos, pond photos)<br>
-            • LocationPicker (farmer pond GPS, popper warehouse, lot pickup point)<br>
-            • DocumentUpload (farmer ownership, popper ownership, lot reference samples)<br>
-            • SelectInput (farmer language, popper equipment, lot grade selection, others)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Reference Implementation:</strong><br>
-            See COMPONENT_ARCHITECTURE_GUIDE.md for detailed specs of all 40+ shared components<br>
-            across 20 Scout workflows, with variants, props, and cross-workflow usage matrix.
-          </div>
-        </div>
-
-        <!-- TAB: Database Schema -->
-        <div id="backend-db" class="tab-panel">
-          <h3 class="backend-section-title">Core Database Tables (Drizzle ORM)</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">users (Universal User Record)</h4>
-          <div class="backend-code-block">CREATE TABLE users (
+</div>
+<!-- TAB: Database Schema -->
+<div class="tab-panel" id="backend-db">
+<h3 class="backend-section-title">Core Database Tables (Drizzle ORM)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">users (Universal User Record)</h4>
+<div class="backend-code-block">CREATE TABLE users (
   id UUID PRIMARY KEY,
   mobile VARCHAR(15) UNIQUE NOT NULL,
   role ENUM('scout','farmer','popper','admin'),
@@ -617,9 +567,8 @@ const { state, updateField, setError } = useFarmerRegistration();</div>
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">farmer_profiles (Farmer-Specific)</h4>
-          <div class="backend-code-block">CREATE TABLE farmer_profiles (
+<h4 class="backend-section-title" style="font-size: 14px;">farmer_profiles (Farmer-Specific)</h4>
+<div class="backend-code-block">CREATE TABLE farmer_profiles (
   id UUID PRIMARY KEY,
   user_id UUID NOT NULL UNIQUE REFERENCES users(id),
   full_name VARCHAR(100) NOT NULL,
@@ -628,9 +577,8 @@ const { state, updateField, setError } = useFarmerRegistration();</div>
   residential_address TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">user_bank_accounts (Encrypted)</h4>
-          <div class="backend-code-block">CREATE TABLE user_bank_accounts (
+<h4 class="backend-section-title" style="font-size: 14px;">user_bank_accounts (Encrypted)</h4>
+<div class="backend-code-block">CREATE TABLE user_bank_accounts (
   id UUID PRIMARY KEY,
   user_id UUID NOT NULL REFERENCES users(id),
   account_holder_name_encrypted BYTEA NOT NULL,
@@ -641,17 +589,15 @@ const { state, updateField, setError } = useFarmerRegistration();</div>
   penny_drop_job_id VARCHAR(255),
   created_at TIMESTAMP DEFAULT NOW()
 );</div>
-
-          <div class="backend-info-box">
-            <strong>⚠️ Encryption:</strong><br>
-            • Bank account numbers: AES-256-GCM encrypted at-rest<br>
-            • Account holder names: AES-256-GCM encrypted<br>
-            • OTP: Hashed with bcrypt (never stored plaintext)<br>
+<div class="backend-info-box">
+<strong>⚠️ Encryption:</strong><br/>
+            • Bank account numbers: AES-256-GCM encrypted at-rest<br/>
+            • Account holder names: AES-256-GCM encrypted<br/>
+            • OTP: Hashed with bcrypt (never stored plaintext)<br/>
             • IFSC code: NOT encrypted (public information)
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">farmer_approval_queue (Workflow)</h4>
-          <div class="backend-code-block">CREATE TABLE farmer_approval_queue (
+<h4 class="backend-section-title" style="font-size: 14px;">farmer_approval_queue (Workflow)</h4>
+<div class="backend-code-block">CREATE TABLE farmer_approval_queue (
   id UUID PRIMARY KEY,
   farmer_id UUID NOT NULL REFERENCES users(id),
   status ENUM('pending','approved','rejected'),
@@ -659,42 +605,37 @@ const { state, updateField, setError } = useFarmerRegistration();</div>
   created_at TIMESTAMP DEFAULT NOW(),
   approved_at TIMESTAMP
 );</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Additional Tables</h4>
-          <ul class="backend-list">
-            <li><strong>ponds:</strong> Farmer's pond details (area, GPS, geofence)</li>
-            <li><strong>user_documents:</strong> Pond ownership/lease photos</li>
-            <li><strong>user_otp_verifications:</strong> OTP storage with expiration (10 min)</li>
-            <li><strong>farmer_registration_events:</strong> Complete audit trail</li>
-          </ul>
-        </div>
-
-        <!-- TAB: Middleware & Auth -->
-        <div id="backend-middleware" class="tab-panel">
-          <h3 class="backend-section-title">Middleware Stack & Authentication</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Execution Order (Critical)</h4>
-          <table class="backend-table">
-            <tr><th>Order</th><th>Middleware</th><th>Purpose</th></tr>
-            <tr><td>1</td><td>loggingMiddleware</td><td>Correlation ID, request timing</td></tr>
-            <tr><td>2</td><td>authMiddleware</td><td>JWT validation, token refresh</td></tr>
-            <tr><td>3</td><td>scoutValidationMiddleware</td><td>Verify role=scout, assignment scope</td></tr>
-            <tr><td>4</td><td>validationMiddleware</td><td>Zod schema validation</td></tr>
-            <tr><td>5</td><td>contextMiddleware</td><td>Compose final context object</td></tr>
-            <tr><td>6</td><td>rateLimitMiddleware</td><td>Per-user, per-endpoint limits</td></tr>
-            <tr><td>7</td><td>errorHandlingMiddleware</td><td>RFC 9457 error formatting</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">JWT Strategy</h4>
-          <div class="backend-info-box">
-            <strong>Access Token:</strong> 15–30 minutes (short-lived)<br>
-            <strong>Refresh Token:</strong> 7–14 days (single-use, rotated)<br>
-            <strong>Storage:</strong> HttpOnly cookies (no XSS vulnerability)<br>
-            <strong>Flags:</strong> Secure (HTTPS), SameSite=Strict (CSRF prevention)
+<h4 class="backend-section-title" style="font-size: 14px;">Additional Tables</h4>
+<ul class="backend-list">
+<li><strong>ponds:</strong> Farmer's pond details (area, GPS, geofence)</li>
+<li><strong>user_documents:</strong> Pond ownership/lease photos</li>
+<li><strong>user_otp_verifications:</strong> OTP storage with expiration (10 min)</li>
+<li><strong>farmer_registration_events:</strong> Complete audit trail</li>
+</ul>
+</div>
+<!-- TAB: Middleware & Auth -->
+<div class="tab-panel" id="backend-middleware">
+<h3 class="backend-section-title">Middleware Stack &amp; Authentication</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Execution Order (Critical)</h4>
+<table class="backend-table">
+<tr><th>Order</th><th>Middleware</th><th>Purpose</th></tr>
+<tr><td>1</td><td>loggingMiddleware</td><td>Correlation ID, request timing</td></tr>
+<tr><td>2</td><td>authMiddleware</td><td>JWT validation, token refresh</td></tr>
+<tr><td>3</td><td>scoutValidationMiddleware</td><td>Verify role=scout, assignment scope</td></tr>
+<tr><td>4</td><td>validationMiddleware</td><td>Zod schema validation</td></tr>
+<tr><td>5</td><td>contextMiddleware</td><td>Compose final context object</td></tr>
+<tr><td>6</td><td>rateLimitMiddleware</td><td>Per-user, per-endpoint limits</td></tr>
+<tr><td>7</td><td>errorHandlingMiddleware</td><td>RFC 9457 error formatting</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">JWT Strategy</h4>
+<div class="backend-info-box">
+<strong>Access Token:</strong> 15–30 minutes (short-lived)<br/>
+<strong>Refresh Token:</strong> 7–14 days (single-use, rotated)<br/>
+<strong>Storage:</strong> HttpOnly cookies (no XSS vulnerability)<br/>
+<strong>Flags:</strong> Secure (HTTPS), SameSite=Strict (CSRF prevention)
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Context Object Type</h4>
-          <div class="backend-code-block">type Context = {
+<h4 class="backend-section-title" style="font-size: 14px;">Context Object Type</h4>
+<div class="backend-code-block">type Context = {
   userId: string;
   userRole: "scout" | "farmer" | "popper" | "admin";
   scoutId: string;
@@ -702,45 +643,40 @@ const { state, updateField, setError } = useFarmerRegistration();</div>
   traceId: string;             // Correlation ID
   logger: pino.Logger;
 };</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Rate Limiting Limits</h4>
-          <table class="backend-table">
-            <tr><th>Endpoint</th><th>Limit</th><th>Window</th></tr>
-            <tr><td>sendFarmerMobileOtp</td><td>1 request</td><td>30 seconds</td></tr>
-            <tr><td>verifyFarmerMobileOtp</td><td>5 requests</td><td>1 minute</td></tr>
-            <tr><td>submitFarmerRegistration</td><td>1 request</td><td>1 minute</td></tr>
-            <tr><td>verifyBankAccount</td><td>1 request</td><td>5 minutes</td></tr>
-          </table>
-        </div>
-
-        <!-- TAB: Validation & Error Handling -->
-        <div id="backend-validation" class="tab-panel">
-          <h3 class="backend-section-title">Input Validation & Error Handling</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Validation Strategy</h4>
-          <div class="backend-info-box">
-            <strong>All inputs validated with Zod schemas:</strong><br>
-            • Backend always validates (never trust frontend)<br>
-            • Frontend uses same schemas for UX feedback<br>
-            • Custom refinements for business logic (mobile uniqueness, etc.)<br>
+<h4 class="backend-section-title" style="font-size: 14px;">Rate Limiting Limits</h4>
+<table class="backend-table">
+<tr><th>Endpoint</th><th>Limit</th><th>Window</th></tr>
+<tr><td>sendFarmerMobileOtp</td><td>1 request</td><td>30 seconds</td></tr>
+<tr><td>verifyFarmerMobileOtp</td><td>5 requests</td><td>1 minute</td></tr>
+<tr><td>submitFarmerRegistration</td><td>1 request</td><td>1 minute</td></tr>
+<tr><td>verifyBankAccount</td><td>1 request</td><td>5 minutes</td></tr>
+</table>
+</div>
+<!-- TAB: Validation & Error Handling -->
+<div class="tab-panel" id="backend-validation">
+<h3 class="backend-section-title">Input Validation &amp; Error Handling</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Validation Strategy</h4>
+<div class="backend-info-box">
+<strong>All inputs validated with Zod schemas:</strong><br/>
+            • Backend always validates (never trust frontend)<br/>
+            • Frontend uses same schemas for UX feedback<br/>
+            • Custom refinements for business logic (mobile uniqueness, etc.)<br/>
             • Return 400 BAD_REQUEST with field-level errors
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">HTTP Error Codes by Category</h4>
-          <table class="backend-table">
-            <tr><th>Status</th><th>Error Code</th><th>Example</th></tr>
-            <tr><td>400</td><td>INVALID_MOBILE_FORMAT</td><td>User entered invalid mobile</td></tr>
-            <tr><td>401</td><td>TOKEN_EXPIRED</td><td>JWT beyond refresh window</td></tr>
-            <tr><td>403</td><td>SCOUT_NOT_ASSIGNED_TO_FARMER</td><td>Scout trying to edit other scout's farmer</td></tr>
-            <tr><td>409</td><td>MOBILE_ALREADY_EXISTS</td><td>Mobile registered twice</td></tr>
-            <tr><td>409</td><td>OTP_MAX_ATTEMPTS_EXCEEDED</td><td>5+ incorrect OTP attempts</td></tr>
-            <tr><td>422</td><td>OTP_EXPIRED</td><td>OTP older than 10 minutes</td></tr>
-            <tr><td>422</td><td>WIZARD_SESSION_EXPIRED</td><td>Registration session stale</td></tr>
-            <tr><td>500</td><td>DATABASE_ERROR</td><td>SQL query failed</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">RFC 9457 Error Response Format</h4>
-          <div class="backend-code-block">{
+<h4 class="backend-section-title" style="font-size: 14px;">HTTP Error Codes by Category</h4>
+<table class="backend-table">
+<tr><th>Status</th><th>Error Code</th><th>Example</th></tr>
+<tr><td>400</td><td>INVALID_MOBILE_FORMAT</td><td>User entered invalid mobile</td></tr>
+<tr><td>401</td><td>TOKEN_EXPIRED</td><td>JWT beyond refresh window</td></tr>
+<tr><td>403</td><td>SCOUT_NOT_ASSIGNED_TO_FARMER</td><td>Scout trying to edit other scout's farmer</td></tr>
+<tr><td>409</td><td>MOBILE_ALREADY_EXISTS</td><td>Mobile registered twice</td></tr>
+<tr><td>409</td><td>OTP_MAX_ATTEMPTS_EXCEEDED</td><td>5+ incorrect OTP attempts</td></tr>
+<tr><td>422</td><td>OTP_EXPIRED</td><td>OTP older than 10 minutes</td></tr>
+<tr><td>422</td><td>WIZARD_SESSION_EXPIRED</td><td>Registration session stale</td></tr>
+<tr><td>500</td><td>DATABASE_ERROR</td><td>SQL query failed</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">RFC 9457 Error Response Format</h4>
+<div class="backend-code-block">{
   "type": "https://api.makhana.local/errors/otp-expired",
   "title": "OTP Expired",
   "status": 422,
@@ -752,44 +688,38 @@ const { state, updateField, setError } = useFarmerRegistration();</div>
     "retryAfter": 30
   }
 }</div>
-
-          <div class="backend-info-box">
-            <strong>Error Logging:</strong><br>
-            ✓ Log error code, message, stacktrace<br>
-            ✓ Include request context (userId, scoutId, endpoint)<br>
-            ✓ Include correlation ID (traceId)<br>
+<div class="backend-info-box">
+<strong>Error Logging:</strong><br/>
+            ✓ Log error code, message, stacktrace<br/>
+            ✓ Include request context (userId, scoutId, endpoint)<br/>
+            ✓ Include correlation ID (traceId)<br/>
             ✗ Never log sensitive data (full mobile, account numbers, tokens)
           </div>
-        </div>
-
-        <!-- TAB: Async Jobs -->
-        <div id="backend-async" class="tab-panel">
-          <h3 class="backend-section-title">Async Jobs with Inngest (Serverless Queue)</h3>
-
-           <h4 class="backend-section-title" style="font-size: 14px;">1. farmer.send-otp-sms (Fire-and-Forget)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 2 "Mobile Verification"<br>
-            <strong>Steps:</strong> Generate → Hash → Store → Send via Twilio → Log<br>
-            <strong>Retry:</strong> 4 attempts with exponential backoff (1s, 5s, 30s)<br>
-            <strong>DLQ:</strong> Move to dead-letter queue after 4 failures
+</div>
+<!-- TAB: Async Jobs -->
+<div class="tab-panel" id="backend-async">
+<h3 class="backend-section-title">Async Jobs with Inngest (Serverless Queue)</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">1. farmer.send-otp-sms (Fire-and-Forget)</h4>
+<div class="backend-info-box">
+<strong>Trigger:</strong> Screen 2 "Mobile Verification"<br/>
+<strong>Steps:</strong> Generate → Hash → Store → Send via Twilio → Log<br/>
+<strong>Retry:</strong> 4 attempts with exponential backoff (1s, 5s, 30s)<br/>
+<strong>DLQ:</strong> Move to dead-letter queue after 4 failures
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">2. farmer.penny-drop-verification (Wait-for-External)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 10 "Bank Account Details"<br>
-            <strong>Steps:</strong> Initiate → Wait for webhook (max 5 min) → Verify match → Update status<br>
-            <strong>Webhook:</strong> POST /api/webhooks/razorpay/verification-complete
+<h4 class="backend-section-title" style="font-size: 14px;">2. farmer.penny-drop-verification (Wait-for-External)</h4>
+<div class="backend-info-box">
+<strong>Trigger:</strong> Screen 10 "Bank Account Details"<br/>
+<strong>Steps:</strong> Initiate → Wait for webhook (max 5 min) → Verify match → Update status<br/>
+<strong>Webhook:</strong> POST /api/webhooks/razorpay/verification-complete
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">3. farmer.registration-submitted (Chained)</h4>
-          <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 11 "Review & Submit"<br>
-            <strong>Steps:</strong> Verify farmer exists → Send confirmation SMS → Notify admin<br>
-            <strong>Dependencies:</strong> Ensure farmer record created before SMS
+<h4 class="backend-section-title" style="font-size: 14px;">3. farmer.registration-submitted (Chained)</h4>
+<div class="backend-info-box">
+<strong>Trigger:</strong> Screen 11 "Review &amp; Submit"<br/>
+<strong>Steps:</strong> Verify farmer exists → Send confirmation SMS → Notify admin<br/>
+<strong>Dependencies:</strong> Ensure farmer record created before SMS
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Inngest Configuration</h4>
-          <div class="backend-code-block">import { Inngest } from "inngest";
+<h4 class="backend-section-title" style="font-size: 14px;">Inngest Configuration</h4>
+<div class="backend-code-block">import { Inngest } from "inngest";
 
 export const inngest = new Inngest({
   id: "makhana-scout",
@@ -799,123 +729,113 @@ export const inngest = new Inngest({
     multiplier: 5,        // 5x backoff
   },
 });</div>
-        </div>
-
-        <!-- TAB: Security -->
-        <div id="backend-security" class="tab-panel">
-          <h3 class="backend-section-title">Security Best Practices</h3>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Sensitive Data Handling</h4>
-          <div class="backend-info-box">
-            <strong>Never Log:</strong><br>
-            ✗ Full mobile numbers (log only last 4: ***6789)<br>
-            ✗ Full account numbers (log hash or last 4)<br>
-            ✗ Tokens or OTP<br>
-            ✗ Encryption keys or secrets<br>
-            <br>
-            <strong>Safe to Log:</strong><br>
-            ✓ Last 4 digits of mobile (padded: ***6789)<br>
-            ✓ District/state (non-identifying)<br>
-            ✓ Farmer status (pending, approved)<br>
+</div>
+<!-- TAB: Security -->
+<div class="tab-panel" id="backend-security">
+<h3 class="backend-section-title">Security Best Practices</h3>
+<h4 class="backend-section-title" style="font-size: 14px;">Sensitive Data Handling</h4>
+<div class="backend-info-box">
+<strong>Never Log:</strong><br/>
+            ✗ Full mobile numbers (log only last 4: ***6789)<br/>
+            ✗ Full account numbers (log hash or last 4)<br/>
+            ✗ Tokens or OTP<br/>
+            ✗ Encryption keys or secrets<br/>
+<br/>
+<strong>Safe to Log:</strong><br/>
+            ✓ Last 4 digits of mobile (padded: ***6789)<br/>
+            ✓ District/state (non-identifying)<br/>
+            ✓ Farmer status (pending, approved)<br/>
             ✓ Event types and timestamps
           </div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Data Encryption</h4>
-          <table class="backend-table">
-            <tr><th>Field</th><th>Method</th><th>Rotation</th></tr>
-            <tr><td>Bank Account Number</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
-            <tr><td>Account Holder Name</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
-            <tr><td>OTP</td><td>bcrypt 10 rounds</td><td>N/A (hashed)</td></tr>
-          </table>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">OTP Security</h4>
-          <ul class="backend-list">
-            <li>Generate 6-digit OTP locally (don't ask user for it)</li>
-            <li>Hash with bcrypt (10 rounds) before storage</li>
-            <li>Set expiration: 10 minutes</li>
-            <li>Max 5 attempts before blocking</li>
-            <li>Compare using bcrypt.compare() (constant-time)</li>
-          </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">CORS & Security Headers</h4>
-          <div class="backend-code-block">Access-Control-Allow-Origin: https://app.makhana.local
+<h4 class="backend-section-title" style="font-size: 14px;">Data Encryption</h4>
+<table class="backend-table">
+<tr><th>Field</th><th>Method</th><th>Rotation</th></tr>
+<tr><td>Bank Account Number</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+<tr><td>Account Holder Name</td><td>AES-256-GCM</td><td>Never (stable)</td></tr>
+<tr><td>OTP</td><td>bcrypt 10 rounds</td><td>N/A (hashed)</td></tr>
+</table>
+<h4 class="backend-section-title" style="font-size: 14px;">OTP Security</h4>
+<ul class="backend-list">
+<li>Generate 6-digit OTP locally (don't ask user for it)</li>
+<li>Hash with bcrypt (10 rounds) before storage</li>
+<li>Set expiration: 10 minutes</li>
+<li>Max 5 attempts before blocking</li>
+<li>Compare using bcrypt.compare() (constant-time)</li>
+</ul>
+<h4 class="backend-section-title" style="font-size: 14px;">CORS &amp; Security Headers</h4>
+<div class="backend-code-block">Access-Control-Allow-Origin: https://app.makhana.local
 Access-Control-Allow-Credentials: true
 SameSite=Strict on all cookies
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 Strict-Transport-Security: max-age=31536000</div>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">✅ Security Checklist</h4>
-          <ul class="backend-list">
-            <li>✓ All inputs validated with Zod</li>
-            <li>✓ Secrets in Cloudflare Secrets (not .env)</li>
-            <li>✓ Bank account numbers encrypted AES-256-GCM</li>
-            <li>✓ OTP hashed with bcrypt</li>
-            <li>✓ JWT tokens HttpOnly, Secure, SameSite=Strict</li>
-            <li>✓ Rate limiting on auth endpoints</li>
-            <li>✓ No SQL injection (ORM protects)</li>
-            <li>✓ Error messages don't leak sensitive data</li>
-            <li>✓ Audit logging for all sensitive operations</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="stepper-panel-container">
-      <div class="stepper-nodes">
-        <a href="#step-01" class="stepper-node active"><span class="node-num">1</span><span class="node-label">Consent</span></a>
-        <a href="#step-02" class="stepper-node"><span class="node-num">2</span><span class="node-label">Mobile</span></a>
-        <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">Identity</span></a>
-        <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Language</span></a>
-        <a href="#step-05" class="stepper-node"><span class="node-num">5</span><span class="node-label">Address</span></a>
-        <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Pond</span></a>
-        <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Docs</span></a>
-        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">Pond Addr</span></a>
-        <a href="#step-09" class="stepper-node"><span class="node-num">9</span><span class="node-label">GPS</span></a>
-        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">Bank</span></a>
-        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">Review</span></a>
-        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Confirm</span></a>
-      </div>
-    </div>
-
-    <div class="workflow-group-block">
-      <div class="workflow-group-header">
-        <div class="workflow-group-title">Farmer Registration Workflow</div>
-        <div class="step-count-pill">12 Steps</div>
-      </div>
-      <div class="workflow-group-body">
-
-        <!-- Step 1: Intro & Consent -->
-        <div class="flow-step-card" id="step-01">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">1</span><span class="step-title">Intro & Consent</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/intro_consent/screen.png" alt="Consent Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Establishes that the scout is acting on the farmer's behalf and the farmer consents.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Consent must be explicitly recorded — scout-assisted registration creates a binding profile for the user, so a consent timestamp + scout's identity + farmer's mobile is the audit minimum. The farmer's verbal consent is the source; the scout attests via a checkbox.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Single screen with plain-language explanation, consent checkbox, primary CTA.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Read consent line aloud to farmer → tick "Farmer has given verbal consent" → Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Wizard context initialised: { role: 'farmer', consent_at: now, scout_id }. No DB write yet.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Headline "Register a Farmer" + plain-language explanation of what will be collected. Consent checkbox: "The farmer has given verbal consent to register on FenBridge". Disabled CTA until ticked.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None at this step.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (title="Register a Farmer")<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• CheckboxInput (consent checkbox)<br>• CTAFooter (Continue, Save Draft)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 2: Mobile Verification -->
-        <div class="flow-step-card" id="step-02">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification (OTP Send & Verify)</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/verify_mobile_send/screen.png" alt="OTP Send Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Enter farmer's mobile number and trigger SMS verification. OTP entry is handled inside this screen via a bottom sheet overlay.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">OTP confirms the mobile entered is real and belongs to the farmer (the farmer's phone must physically receive it). Without verified mobile, the farmer can't later log in themselves.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Mobile input field with helper text, country code prefix (+91), "Send OTP" CTA. Brings up OTP entry bottom sheet.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Type farmer's mobile number → Tap "Send OTP" to open interactive bottom sheet overlay. Enter OTP to auto-verify.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Calls sendFarmerMobileOtp and verifyFarmerMobileOtp. Triggers background SMS async job. Opens inline sheet overlay for OTP Entry to avoid page navigation. Note that verify_mobile_entry exists in the codebase as a standalone fallback screen (Step 3 of 13 if using a 13-screen standalone progression) but the production app integrates it as an interactive sheet inside Step 2, resulting in a streamlined 11-step wizard + 1 confirmation page workflow.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Mobile chip + "Change" link · Send OTP primary · cooldown timer.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="spec-code">CREATE TABLE user_otp_verifications (
+<h4 class="backend-section-title" style="font-size: 14px;">✅ Security Checklist</h4>
+<ul class="backend-list">
+<li>✓ All inputs validated with Zod</li>
+<li>✓ Secrets in Cloudflare Secrets (not .env)</li>
+<li>✓ Bank account numbers encrypted AES-256-GCM</li>
+<li>✓ OTP hashed with bcrypt</li>
+<li>✓ JWT tokens HttpOnly, Secure, SameSite=Strict</li>
+<li>✓ Rate limiting on auth endpoints</li>
+<li>✓ No SQL injection (ORM protects)</li>
+<li>✓ Error messages don't leak sensitive data</li>
+<li>✓ Audit logging for all sensitive operations</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="stepper-panel-container">
+<div class="stepper-nodes">
+<a class="stepper-node active" href="#step-01"><span class="node-num">1</span><span class="node-label">Consent</span></a>
+<a class="stepper-node" href="#step-02"><span class="node-num">2</span><span class="node-label">Mobile</span></a>
+<a class="stepper-node" href="#step-03"><span class="node-num">3</span><span class="node-label">Identity</span></a>
+<a class="stepper-node" href="#step-04"><span class="node-num">4</span><span class="node-label">Language</span></a>
+<a class="stepper-node" href="#step-05"><span class="node-num">5</span><span class="node-label">Address</span></a>
+<a class="stepper-node" href="#step-06"><span class="node-num">6</span><span class="node-label">Pond</span></a>
+<a class="stepper-node" href="#step-07"><span class="node-num">7</span><span class="node-label">Docs</span></a>
+<a class="stepper-node" href="#step-08"><span class="node-num">8</span><span class="node-label">Pond Addr</span></a>
+<a class="stepper-node" href="#step-09"><span class="node-num">9</span><span class="node-label">GPS</span></a>
+<a class="stepper-node" href="#step-10"><span class="node-num">10</span><span class="node-label">Bank</span></a>
+<a class="stepper-node" href="#step-11"><span class="node-num">11</span><span class="node-label">Review</span></a>
+<a class="stepper-node" href="#step-12"><span class="node-num">12</span><span class="node-label">Confirm</span></a>
+</div>
+</div>
+<div class="workflow-group-block">
+<div class="workflow-group-header">
+<div class="workflow-group-title">Farmer Registration Workflow</div>
+<div class="step-count-pill">12 Steps</div>
+</div>
+<div class="workflow-group-body">
+<!-- Step 1: Intro & Consent -->
+<div class="flow-step-card" id="step-01">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">1</span><span class="step-title">Intro &amp; Consent</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Consent Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/intro_consent/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Establishes that the scout is acting on the farmer's behalf and the farmer consents.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Consent must be explicitly recorded — scout-assisted registration creates a binding profile for the user, so a consent timestamp + scout's identity + farmer's mobile is the audit minimum. The farmer's verbal consent is the source; the scout attests via a checkbox.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Single screen with plain-language explanation, consent checkbox, primary CTA.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Read consent line aloud to farmer → tick "Farmer has given verbal consent" → Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Wizard context initialised: { role: 'farmer', consent_at: now, scout_id }. No DB write yet.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Headline "Register a Farmer" + plain-language explanation of what will be collected. Consent checkbox: "The farmer has given verbal consent to register on FenBridge". Disabled CTA until ticked.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None at this step.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step 1 of 11)<br/>• HeroImage (visual onboarding anchor)<br/>• ProcessCard (consent checklist)<br/>• CheckboxInput (consent checkbox)<br/>• CTAFooter (Continue button)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 2: Mobile Verification -->
+<div class="flow-step-card" id="step-02">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification (OTP Send &amp; Verify)</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="OTP Send Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/verify_mobile_send/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Enter farmer's mobile number and trigger SMS verification. OTP entry is handled inside this screen via a bottom sheet overlay.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">OTP confirms the mobile entered is real and belongs to the farmer (the farmer's phone must physically receive it). Without verified mobile, the farmer can't later log in themselves.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Mobile input field with helper text, country code prefix (+91), "Send OTP" CTA. Brings up OTP entry bottom sheet.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Type farmer's mobile number → Tap "Send OTP" to open interactive bottom sheet overlay. Enter OTP to auto-verify.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Calls sendFarmerMobileOtp and verifyFarmerMobileOtp. Triggers background SMS async job. Opens inline sheet overlay for OTP Entry to avoid page navigation. Note that verify_mobile_entry exists in the codebase as a standalone fallback screen (Step 3 of 13 if using a 13-screen standalone progression) but the production app integrates it as an interactive sheet inside Step 2, resulting in a streamlined 11-step wizard + 1 confirmation page workflow.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Mobile chip + "Change" link · Send OTP primary · cooldown timer.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="spec-code">CREATE TABLE user_otp_verifications (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   intended_user_id UUID,
   mobile TEXT NOT NULL,
@@ -928,195 +848,184 @@ Strict-Transport-Security: max-age=31536000</div>
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);</div></div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• PhoneInput (mobile number)<br>• OTPEntrySheet (modal overlay)<br>• TextInput (6-digit OTP)<br>• Timer (60 sec cooldown)<br>• CTAFooter (Send OTP / Verify buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 3: Farmer Identity Details -->
-        <div class="flow-step-card" id="step-03">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Farmer Identity Details</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/farmer_identity/screen.png" alt="Identity Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's personal details first to perform dynamic uniqueness verification.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Name (mandatory), date of birth (optional but recommended for age compliance), mobile (mandatory; must be the farmer's own — used for OTP and SMS), alternate phone (optional).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Form fields with helper text emphasising mobile must be the farmer's own.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Enter name → DoB → mobile → optional alt phone → Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Mobile validated as 10-digit Indian. Uniqueness check against users.mobile runs on Continue — if already registered, screen blocks with "This mobile is already registered" and a link to that user's record (Admin-controlled escalation if it's truly the same farmer with a duplicate registration attempt).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Mobile field with country chip. Helper line below mobile: "This is the farmer's mobile — they'll receive OTP and SMS here."</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Writes to users (mobile) and farmer_profiles (full_name, dob) at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 3/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• TextInput (farmer name field)<br>• DatePickerInput (date of birth picker)<br>• PhoneInput (mobile number with +91)<br>• TextInput (alternate phone optional)<br>• CTAFooter (Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 4: Language Selection -->
-        <div class="flow-step-card" id="step-04">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Language Selection</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/language_selection/screen.png" alt="Language Selection"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets the farmer's preferred app language.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Determines language used in SMS notifications, dashboards, and the farmer's own future logged-in sessions. Three options: English / Hindi / Bengali.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Three large tiles with native scripts.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap one → Continue auto-enabled.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: preferred_language.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Same pattern as scout's own Language Selection (workflow 11). Helper: "We'll send notifications in this language."</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles.preferred_language at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 4/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• SelectableCard (language tiles)<br>• CTAFooter (Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 5: Address Details -->
-        <div class="flow-step-card" id="step-05">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Address Details</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/residential_address/screen.png" alt="Address Details"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's residential address.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">District is mandatory and must come from a controlled list. Village/panchayat is searchable but free text fallback supported.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">District dropdown · Panchayat/village text or searchable · Full address textarea · optional landmark.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Pick district → enter village → enter address → Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: { district, panchayat_village, full_address }. Districts loaded from a static reference list.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form pattern. Live validation on district required.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 5/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• SelectInput (district dropdown)<br>• TextInput (panchayat/village searchable)<br>• TextInput (full address textarea)<br>• TextInput (landmark optional)<br>• CTAFooter (Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 6: First Pond Details -->
-        <div class="flow-step-card" id="step-06">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">First Pond Details</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_details/screen.png" alt="Pond Details Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the farmer's first pond's basic details.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Farmer must have at least one pond at registration. Additional ponds added later via Manage Farmer. Pond name, area + unit, estimated annual capacity.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Compact form.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Pond name → area + unit (Acre / Bigha / Hectare) → estimated capacity (kg) → Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{name, area_value, area_unit, est_annual_capacity_kg}. Pond code auto-generated server-side (POND-{seq}).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Three fields stacked. Unit segmented (Acre/Bigha/Hectare).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 6/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• TextInput (pond name)<br>• NumberInput (area value)<br>• SelectInput (area unit - Acre/Bigha/Hectare)<br>• NumberInput (annual capacity in kg)<br>• CTAFooter (Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 7: First Pond Legal Documents -->
-        <div class="flow-step-card" id="step-07">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">First Pond Legal Documents</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_documents/screen.png" alt="Documents Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures legal proof of pond ownership / lease.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Pond lease or land record is required for legitimacy. Mandatory at least one document; up to 3 photos per document. Scout uses camera to photograph the physical document the farmer presents.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Document type picker → photo capture slots → "Add another document" optional.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Pick doc type (Land Record / Pond Lease / Other) → capture up to 3 photos per doc → optionally add more docs → Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Photos compressed, stored locally, uploaded to Supabase Storage on sync. Wizard context: documents: [{ doc_type, photo_paths: [] }].</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Document cards stack; each card has type label + photo grid + delete.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_documents at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 7/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• SelectInput (document type)<br>• PhotoCaptureCard (camera trigger)<br>• PhotoGrid (preview uploaded docs)<br>• ExpandableSection (add additional documents)<br>• CTAFooter (Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 8: First Pond Address -->
-        <div class="flow-step-card" id="step-08">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Address</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_address/screen.png" alt="Pond Address Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures pond's address (often differs from farmer's residential).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">District + village + free-text address. Pre-fill with farmer's address as a starting point; scout edits if pond is elsewhere.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Same pattern as Address Details with "Same as farmer's address" toggle.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Toggle same-as · or edit fields · Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{district, panchayat_village, full_address}.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Toggle at top; form below.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 8/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• CheckboxInput (same as farmer's address toggle)<br>• SelectInput (district dropdown)<br>• TextInput (panchayat/village)<br>• TextInput (full address textarea)<br>• CTAFooter (Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 9: First Pond Geo-Fencing -->
-        <div class="flow-step-card" id="step-09">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Geo-Fencing</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_geo_fencing/screen.png" alt="Geo-Fencing Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the pond's GPS centre point.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Year-1: single GPS point (optional). Year-2 polygon optional. Future feature for scout-task routing.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Map view with a draggable pin. "Use my location" auto-places pin at scout's current GPS.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap map to place / drag pin · or "Use my location" · Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Map: Google Maps Flutter. Captures lat/lng + accuracy. Wizard context: pond.{gps_lat, gps_lng}.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Map (300dp height), pin centre overlay, coordinates strip below, "Use my location" secondary button, primary Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds.gps_lat/lng at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 9/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• LocationPicker (Google Maps)<br>• CoordinatesDisplay (latitude/longitude)<br>• CTAFooter (Use My Location / Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 10: Bank Account Details -->
-        <div class="flow-step-card" id="step-10">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">Bank Account Details</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/bank_account_details/screen.png" alt="Bank Account Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's bank account for payments.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Account holder name (must match identity), account number (entered twice for confirmation), IFSC. Penny-drop verification triggered at submit (₹1 test transfer, name-match check). Bank account is one per farmer in Year 1.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Form with account number confirmation field. IFSC auto-resolves bank + branch name on entry.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Enter holder name → account number → confirm account number → IFSC → see resolved bank/branch → Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">IFSC validated regex ^[A-Z]{4}0[A-Z0-9]{6}$; bank/branch resolved via Razorpay IFSC API or local lookup. Account number encrypted at-rest. Penny-drop is an async server-side job triggered at submit; the wizard doesn't block on it — bank shows pennydrop_status='pending' initially.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Bank/branch displayed read-only after IFSC entry. Helper: "We'll send ₹1 to confirm this account — penny-drop verification."</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_bank_accounts at submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 10/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• TextInput (account holder name)<br>• TextInput (account number)<br>• TextInput (confirm account number)<br>• TextInput (IFSC code)<br>• TextInput (bank/branch name read-only)<br>• CTAFooter (Continue / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 11: Review & Submit -->
-        <div class="flow-step-card" id="step-11">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Review & Submit</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/review_submit/screen.png" alt="Review Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Final recap before commit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Scout reviews every captured field; farmer can be shown the screen for transparency. Explicit final consent checkbox + submit.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Sectioned recap (Identity, Address, Pond, Bank, Documents). Each section editable via inline "Edit" link → returns to the relevant step.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Review · tick final consent · Submit · or Edit any section.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">On submit (atomic, offline-capable): writes users, farmer_profiles, ponds, user_bank_accounts (+ pennydrop async), user_documents, user_preferences. Status: users.status='pending_approval', ponds.status='pending_approval'. created_via_scout_id = self. All queued to sync_queue as a single atomic batch. Notifications to Admin: farmer_registration_submitted.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Sectioned recap, edit links, danger-tinted confirm checkbox, primary "Submit" disabled until ticked.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">All tables defined above.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 11/13)<br>• StepperBar (step progress indicator)<br>• HeroCard (onboarding visual anchor)<br>• ExpandableSection (recap sections - Identity, Address, Pond, Bank, Documents)<br>• EditLink (inline edit links on each section)<br>• StatusBadge (verification status indicators)<br>• CheckboxInput (final consent checkbox)<br>• CTAFooter (Submit / Back buttons)</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 12: Submission Confirmation -->
-        <div class="flow-step-card" id="step-12">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Submission Confirmation</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/submission_confirmation/screen.png" alt="Confirmation Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Confirms successful registration submission.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Verify transaction was captured and queued for sync if offline. Shows local/remote sync state feedback.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Success visual confirmation, offline status chip ("Pending Sync"), and "Back to Today's Dashboard" button.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap "Back to Today's Dashboard" to return to scout operations.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Displays success illustration and logs offline queue receipt. Closes registration wizard session.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Clean success screen, state badge, high contrast primary button.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None (read/confirm view).</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 12/13)<br>• SuccessIllustration<br>• StatusBadge (sync state - "Pending Sync" or "Synced")<br>• InfoBanner (offline status information)<br>• FarmerSummaryCard (farmer details read-only)<br>• CTAFooter (Back to Dashboard button)</div></div>
-            </div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step 2 of 11)<br/>• HeroCard (visual onboarding helper)<br/>• PhoneInput (mobile number entry field)<br/>• OTPEntrySheet (bottom-sheet modal overlay)<br/>• OTPInputGroup (6-digit OTP code input)<br/>• Timer (verification cooldown timer)<br/>• CTAFooter (Send OTP / Verify)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 3: Farmer Identity Details -->
+<div class="flow-step-card" id="step-03">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Farmer Identity Details</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Identity Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/farmer_identity/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's personal details first to perform dynamic uniqueness verification.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Name (mandatory), date of birth (optional but recommended for age compliance), mobile (mandatory; must be the farmer's own — used for OTP and SMS), alternate phone (optional).</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Form fields with helper text emphasising mobile must be the farmer's own.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Enter name → DoB → mobile → optional alt phone → Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Mobile validated as 10-digit Indian. Uniqueness check against users.mobile runs on Continue — if already registered, screen blocks with "This mobile is already registered" and a link to that user's record (Admin-controlled escalation if it's truly the same farmer with a duplicate registration attempt).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Mobile field with country chip. Helper line below mobile: "This is the farmer's mobile — they'll receive OTP and SMS here."</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Writes to users (mobile) and farmer_profiles (full_name, dob) at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 3 of 11)<br/>• StepperPanel (Step 3 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• TextInput (farmer name field)<br/>• DatePickerInput (date of birth)<br/>• PhoneInput (mobile number display)<br/>• TextInput (alternate phone field)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 4: Language Selection -->
+<div class="flow-step-card" id="step-04">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Language Selection</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Language Selection" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/language_selection/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sets the farmer's preferred app language.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Determines language used in SMS notifications, dashboards, and the farmer's own future logged-in sessions. Three options: English / Hindi / Bengali.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Three large tiles with native scripts.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap one → Continue auto-enabled.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: preferred_language.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Same pattern as scout's own Language Selection (workflow 11). Helper: "We'll send notifications in this language."</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles.preferred_language at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 4 of 11)<br/>• StepperPanel (Step 4 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• LanguageTiles (native script language cards)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 5: Address Details -->
+<div class="flow-step-card" id="step-05">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Address Details</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Address Details" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/residential_address/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's residential address.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">District is mandatory and must come from a controlled list. Village/panchayat is searchable but free text fallback supported.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">District dropdown · Panchayat/village text or searchable · Full address textarea · optional landmark.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Pick district → enter village → enter address → Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: { district, panchayat_village, full_address }. Districts loaded from a static reference list.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form pattern. Live validation on district required.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 5 of 11)<br/>• StepperPanel (Step 5 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• AddressForm (composite fields)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat search)<br/>• TextInput (street address)<br/>• TextInput (landmark optional)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 6: First Pond Details -->
+<div class="flow-step-card" id="step-06">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">First Pond Details</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Pond Details Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_details/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the farmer's first pond's basic details.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Farmer must have at least one pond at registration. Additional ponds added later via Manage Farmer. Pond name, area + unit, estimated annual capacity.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Compact form.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Pond name → area + unit (Acre / Bigha / Hectare) → estimated capacity (kg) → Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{name, area_value, area_unit, est_annual_capacity_kg}. Pond code auto-generated server-side (POND-{seq}).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Three fields stacked. Unit segmented (Acre/Bigha/Hectare).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 6 of 11)<br/>• StepperPanel (Step 6 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• TextInput (pond name)<br/>• NumberInput (pond area)<br/>• SelectInput (area unit)<br/>• NumberInput (annual capacity)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 7: First Pond Legal Documents -->
+<div class="flow-step-card" id="step-07">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">First Pond Legal Documents</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Documents Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_documents/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures legal proof of pond ownership / lease.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Pond lease or land record is required for legitimacy. Mandatory at least one document; up to 3 photos per document. Scout uses camera to photograph the physical document the farmer presents.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Document type picker → photo capture slots → "Add another document" optional.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Pick doc type (Land Record / Pond Lease / Other) → capture up to 3 photos per doc → optionally add more docs → Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Photos compressed, stored locally, uploaded to Supabase Storage on sync. Wizard context: documents: [{ doc_type, photo_paths: [] }].</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Document cards stack; each card has type label + photo grid + delete.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_documents at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 7 of 11)<br/>• StepperPanel (Step 7 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• SelectInput (document type)<br/>• TextInput (document reference ID)<br/>• FileUpload (image uploader)<br/>• PhotoGrid (uploaded documents review)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 8: First Pond Address -->
+<div class="flow-step-card" id="step-08">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Address</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Pond Address Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_address/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures pond's address (often differs from farmer's residential).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">District + village + free-text address. Pre-fill with farmer's address as a starting point; scout edits if pond is elsewhere.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Same pattern as Address Details with "Same as farmer's address" toggle.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Toggle same-as · or edit fields · Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{district, panchayat_village, full_address}.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Toggle at top; form below.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 8 of 11)<br/>• StepperPanel (Step 8 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• CheckboxInput (same as residential toggle)<br/>• AddressForm (composite fields)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat)<br/>• TextInput (street address)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 9: First Pond Geo-Fencing -->
+<div class="flow-step-card" id="step-09">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Geo-Fencing</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Geo-Fencing Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_geo_fencing/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the pond's GPS centre point.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Year-1: single GPS point (optional). Year-2 polygon optional. Future feature for scout-task routing.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Map view with a draggable pin. "Use my location" auto-places pin at scout's current GPS.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap map to place / drag pin · or "Use my location" · Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Map: Google Maps Flutter. Captures lat/lng + accuracy. Wizard context: pond.{gps_lat, gps_lng}.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Map (300dp height), pin centre overlay, coordinates strip below, "Use my location" secondary button, primary Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds.gps_lat/lng at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 9 of 11)<br/>• StepperPanel (Step 9 of 11)<br/>• LocationPicker (Google Maps overlay)<br/>• CoordinatesDisplay (real-time coordinates)<br/>• CTAFooter (Use My Location / Continue / Back)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 10: Bank Account Details -->
+<div class="flow-step-card" id="step-10">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">Bank Account Details</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Bank Account Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/bank_account_details/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's bank account for payments.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Account holder name (must match identity), account number (entered twice for confirmation), IFSC. Penny-drop verification triggered at submit (₹1 test transfer, name-match check). Bank account is one per farmer in Year 1.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Form with account number confirmation field. IFSC auto-resolves bank + branch name on entry.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Enter holder name → account number → confirm account number → IFSC → see resolved bank/branch → Continue.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">IFSC validated regex ^[A-Z]{4}0[A-Z0-9]{6}$; bank/branch resolved via Razorpay IFSC API or local lookup. Account number encrypted at-rest. Penny-drop is an async server-side job triggered at submit; the wizard doesn't block on it — bank shows pennydrop_status='pending' initially.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Bank/branch displayed read-only after IFSC entry. Helper: "We'll send ₹1 to confirm this account — penny-drop verification."</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_bank_accounts at submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 10 of 11)<br/>• StepperPanel (Step 10 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• PremiumInfoCard (penny drop info)<br/>• TextInput (account holder name)<br/>• TextInput (bank account number)<br/>• TextInput (confirm account number)<br/>• TextInput (IFSC code)<br/>• TextInput (resolved bank / branch details)<br/>• StatusBadge (verification badge)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 11: Review & Submit -->
+<div class="flow-step-card" id="step-11">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Review &amp; Submit</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Review Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/review_submit/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Final recap before commit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Scout reviews every captured field; farmer can be shown the screen for transparency. Explicit final consent checkbox + submit.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Sectioned recap (Identity, Address, Pond, Bank, Documents). Each section editable via inline "Edit" link → returns to the relevant step.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Review · tick final consent · Submit · or Edit any section.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">On submit (atomic, offline-capable): writes users, farmer_profiles, ponds, user_bank_accounts (+ pennydrop async), user_documents, user_preferences. Status: users.status='pending_approval', ponds.status='pending_approval'. created_via_scout_id = self. All queued to sync_queue as a single atomic batch. Notifications to Admin: farmer_registration_submitted.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Sectioned recap, edit links, danger-tinted confirm checkbox, primary "Submit" disabled until ticked.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">All tables defined above.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 11 of 11)<br/>• StepperPanel (Step 11 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• ExpandableSection (farmer profile review)<br/>• CheckboxInput (final declaration checkbox)<br/>• CTAFooter (Submit / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+</div></div>
+</div>
+</div>
+<!-- Step 12: Submission Confirmation -->
+<div class="flow-step-card" id="step-12">
+<div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Submission Confirmation</span></div></div>
+<div class="step-body">
+<div class="step-left-pane"><div class="card-image-viewport"><img alt="Confirmation Screen" class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/submission_confirmation/screen.png"/></div></div>
+<div class="step-right-pane"><div class="specs-grid">
+<div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Confirms successful registration submission.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Verify transaction was captured and queued for sync if offline. Shows local/remote sync state feedback.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Success visual confirmation, offline status chip ("Pending Sync"), and "Back to Today's Dashboard" button.</div></div>
+<div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap "Back to Today's Dashboard" to return to scout operations.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Displays success illustration and logs offline queue receipt. Closes registration wizard session.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Clean success screen, state badge, high contrast primary button.</div></div>
+<div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None (read/confirm view).</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (confirmation header)<br/>• SuccessIllustration (success message animation)<br/>• StatusBadge (sync status)<br/>• FarmerSummaryCard (farmer identity overview)<br/>• CTAFooter (Back to Dashboard button)</div></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       const stepCards = document.querySelectorAll(".flow-step-card");
       const stepperNodes = document.querySelectorAll(".stepper-node");
@@ -1135,8 +1044,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
       stepCards.forEach(card => observer.observe(card));
     });
   </script>
-
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       const pathElement = document.getElementById('address-path');
       if (pathElement) {
@@ -1145,8 +1053,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
       }
     });
   </script>
-
-  <script>
+<script>
     function showTab(event, tabId) {
       event.preventDefault();
 
