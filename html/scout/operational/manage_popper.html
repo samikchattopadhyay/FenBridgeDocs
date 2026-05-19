@@ -474,8 +474,10 @@
             <tr><td><strong>SelectInput</strong></td><td>Dropdown with options</td><td>value: string; onChange: (val) =&gt; void; options: {label, value}[]; error?: string;</td></tr>
             <tr><td><strong>AddressForm</strong></td><td>Grouped address fields</td><td>street: string; district: string; village: string; onChange: (field, val) =&gt; void;</td></tr>
             <tr><td><strong>LocationPicker</strong></td><td>GPS coordinate capture</td><td>coordinates: {lat, lng}; onChange: (coords) =&gt; void; locked?: boolean;</td></tr>
+            <tr><td><strong>FileUpload</strong></td><td>File/document upload trigger</td><td>accept?: string; onUpload: (file) =&gt; void; uploading?: boolean;</td></tr>
             <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>status: 'active'|'pending'|'inactive'; label: string;</td></tr>
             <tr><td><strong>WarningBanner</strong></td><td>Warning callout box</td><td>message: string; severity?: 'warning'|'critical';</td></tr>
+            <tr><td><strong>InfoBanner</strong></td><td>Information callout box</td><td>message: string; icon?: string;</td></tr>
             <tr><td><strong>ConfirmationCheckbox</strong></td><td>Single checkbox with label</td><td>label: string; checked: boolean; onChange: (checked) =&gt; void;</td></tr>
             <tr><td><strong>CTAFooter</strong></td><td>Sticky action buttons</td><td>primaryText: string; secondaryText?: string; onPrimary: () =&gt; void; primaryDisabled?: boolean;</td></tr>
           </table>

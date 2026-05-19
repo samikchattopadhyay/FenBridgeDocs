@@ -398,12 +398,14 @@
             <tr><td><span class="spec-badge-inline">NotesTextArea</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
             <tr><td><span class="spec-badge-inline">UploadProgress</span></td><td></td></tr>
             <tr><td colspan="3"><strong>Screen 5: Review & Submit</strong></td></tr>
-            <tr><td rowspan="3">Review Summary</td><td><span class="spec-badge-inline">InspectionSummaryCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td rowspan="5">Review Summary</td><td><span class="spec-badge-inline">InspectionSummaryCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
             <tr><td><span class="spec-badge-inline">GPS ValidationCard</span></td><td><span class="spec-badge-inline">ExpandableSection</span></td></tr>
-            <tr><td><span class="spec-badge-inline">BundGridReadOnly</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+            <tr><td><span class="spec-badge-inline">BundGridReadOnly</span></td><td><span class="spec-badge-inline">PhotoGrid</span></td></tr>
+            <tr><td><span class="spec-badge-inline">EditLink</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
             <tr><td colspan="3"><strong>Screen 6: Inspection Confirmation</strong></td></tr>
-            <tr><td rowspan="2">Success Terminal</td><td><span class="spec-badge-inline">SuccessBanner</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">TransactionReferenceCard</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
+            <tr><td rowspan="4">Success Terminal</td><td><span class="spec-badge-inline">SuccessBanner</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td><span class="spec-badge-inline">TransactionReferenceCard</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
+            <tr><td><span class="spec-badge-inline">CheckmarkRing</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
           </table>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Pond Inspection Only)</h4>
@@ -496,6 +498,16 @@
             <strong>TransactionReferenceCard</strong> — Unique inspection ID display<br>
             <code style="font-size: 11px;">Props: { code, timestamp, isSynced }</code><br>
             Large cyan-highlighted code (e.g. #INS-9942), submission time, online/offline badge.
+          </div>
+          <div class="backend-info-box">
+            <strong>EditLink</strong> — Inline edit navigation link<br>
+            <code style="font-size: 11px;">Props: { screenNumber, onPress }</code><br>
+            Text link appearing next to summary sections to navigate back and correct entries. Used Screen 5.
+          </div>
+          <div class="backend-info-box">
+            <strong>CheckmarkRing</strong> — Animated success checkmark ring<br>
+            <code style="font-size: 11px;">Props: { isAnimating, size, color }</code><br>
+            Glowing, pulsing vector green checkmark animation. Displayed in SuccessBanner as primary visual confirmation. Used Screen 6.
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (85% of Pond Inspection)</h4>
@@ -967,7 +979,7 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with completion state)<br>• SuccessBanner (green confirmation with "✓ Inspection Submitted")<br>• SuccessIcon / CheckmarkRing (glowing pulsing animation)<br>• TransactionReferenceCard (unique inspection code #INS-XXXX display)<br>• StatusBadge (sync state - online or offline)<br>• TextLink / Display (sync status details and timestamp)<br>• Button (View Today's Tasks primary action)<br>• CTAFooter (action bar with primary and secondary buttons)</div>
+                  <div class="spec-value">• TopAppBar (header with completion state)<br>• SuccessBanner (green confirmation with "✓ Inspection Submitted")<br>• CheckmarkRing (glowing pulsing animation)<br>• TransactionReferenceCard (unique inspection code #INS-XXXX display)<br>• StatusBadge (sync state - online or offline)<br>• CTAFooter (action bar with primary and secondary buttons)</div>
                 </div>
               </div>
             </div>

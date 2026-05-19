@@ -373,27 +373,28 @@
           <h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
           <table class="backend-table">
             <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
-            <tr><td colspan="3"><strong>Screen 1: Farmer Profile Overview</strong></td></tr>
-            <tr><td rowspan="3">Profile View</td><td><span class="spec-badge-inline">FarmerHeaderCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">VerificationBadges</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ProfileEditButton</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 2: Edit Profile Details</strong></td></tr>
-            <tr><td rowspan="4">Profile Edit</td><td><span class="spec-badge-inline">NameInputCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PhoneEditField</span></td><td><span class="spec-badge-inline">PhoneInput</span></td></tr>
-            <tr><td><span class="spec-badge-inline">AddressEditCard</span></td><td><span class="spec-badge-inline">AddressForm</span> / <span class="spec-badge-inline">TextInput</span></td></tr>
+            <tr><td colspan="3"><strong>Screen 1: Edit Identity Profile</strong></td></tr>
+            <tr><td rowspan="4">Profile Edit</td><td><span class="spec-badge-inline">FarmerHeaderCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td><span class="spec-badge-inline">VerificationBadges</span></td><td><span class="spec-badge-inline">TextInput</span></td></tr>
+            <tr><td><span class="spec-badge-inline">ProfileEditButton</span></td><td><span class="spec-badge-inline">PhoneInput</span> / <span class="spec-badge-inline">StatusBadge</span></td></tr>
             <tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 3: Bank Details & Verification</strong></td></tr>
+            <tr><td colspan="3"><strong>Screen 2: Replace Bank Account Details</strong></td></tr>
             <tr><td rowspan="3">Bank Details</td><td><span class="spec-badge-inline">BankAccountCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">BankEditForm</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">SelectInput</span></td></tr>
-            <tr><td><span class="spec-badge-inline">VerificationStatusCard</span></td><td><span class="spec-badge-inline">StatusBadge</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 4: Manage Ponds</strong></td></tr>
-            <tr><td rowspan="4">Ponds Directory</td><td><span class="spec-badge-inline">PondsListCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PondCard</span></td><td><span class="spec-badge-inline">StatusBadge</span></td></tr>
-            <tr><td><span class="spec-badge-inline">PondEditModal</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">LocationPicker</span></td></tr>
+            <tr><td><span class="spec-badge-inline">BankEditForm</span> / <span class="spec-badge-inline">VerificationStatusCard</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">SelectInput</span></td></tr>
+            <tr><td><span class="spec-badge-inline">DocumentUpload</span></td><td><span class="spec-badge-inline">StatusBadge</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+            <tr><td colspan="3"><strong>Screen 3: Edit Pond Parameters</strong></td></tr>
+            <tr><td rowspan="4">Ponds Management</td><td><span class="spec-badge-inline">PondsListCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td><span class="spec-badge-inline">PondCard</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">NumberInput</span></td></tr>
+            <tr><td><span class="spec-badge-inline">PondEditModal</span></td><td><span class="spec-badge-inline">SelectInput</span> / <span class="spec-badge-inline">LocationPicker</span></td></tr>
+            <tr><td></td><td><span class="spec-badge-inline">StatusBadge</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+            <tr><td colspan="3"><strong>Screen 4: Add New Pond Asset</strong></td></tr>
+            <tr><td rowspan="3">New Pond Form</td><td><span class="spec-badge-inline">ExpandableSection</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">NumberInput</span> / <span class="spec-badge-inline">SelectInput</span></td></tr>
+            <tr><td></td><td><span class="spec-badge-inline">LocationPicker</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+            <tr><td colspan="3"><strong>Screen 5: Deactivate Pond Asset</strong></td></tr>
+            <tr><td rowspan="3">Deactivation</td><td><span class="spec-badge-inline">WarningBanner</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td><span class="spec-badge-inline">ConfirmationCheckbox</span></td><td><span class="spec-badge-inline">SelectInput</span> / <span class="spec-badge-inline">StatusBadge</span></td></tr>
             <tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
-            <tr><td colspan="3"><strong>Screen 5: Summary & Submit</strong></td></tr>
-            <tr><td rowspan="2">Review Summary</td><td><span class="spec-badge-inline">FarmerSummaryCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
-            <tr><td><span class="spec-badge-inline">ApprovalBadge</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
           </table>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Manage Farmer Only)</h4>
@@ -410,74 +411,69 @@
           <div class="backend-info-box">
             <strong>ProfileEditButton</strong> — Triggers edit mode for profile<br>
             <code style="font-size: 11px;">Props: { isEditing, onEdit, onCancel }</code><br>
-            Button: "Edit Profile" or "Save Changes". Used Screens 1–2.
-          </div>
-          <div class="backend-info-box">
-            <strong>NameInputCard</strong> — Full name input with label<br>
-            <code style="font-size: 11px;">Props: { firstName, lastName, onChange }</code><br>
-            Two TextInput fields (first + last name). Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>PhoneEditField</strong> — Phone number edit wrapper<br>
-            <code style="font-size: 11px;">Props: { phone, onChange }</code><br>
-            PhoneInput with +91 prefix. Used Screen 2.
-          </div>
-          <div class="backend-info-box">
-            <strong>AddressEditCard</strong> — Grouped address fields (village, district, state)<br>
-            <code style="font-size: 11px;">Props: { village, district, state, onChange }</code><br>
-            AddressForm component wrapper with edit mode. Used Screen 2.
+            Button: "Edit Profile" or "Save Changes". Used Screen 1.
           </div>
           <div class="backend-info-box">
             <strong>BankAccountCard</strong> — Read-only bank details display<br>
             <code style="font-size: 11px;">Props: { accountNumber, ifsc, bankName, accountHolder, status }</code><br>
-            Displays bank info + verification status. Used Screen 3.
+            Displays bank info + verification status. Used Screen 2.
           </div>
           <div class="backend-info-box">
             <strong>BankEditForm</strong> — Form for bank details entry/edit<br>
             <code style="font-size: 11px;">Props: { bankName, accountNumber, ifsc, holderName, onChange }</code><br>
-            TextInput fields for bank account details. Used Screen 3.
+            TextInput fields for bank account details. Used Screen 2.
           </div>
           <div class="backend-info-box">
             <strong>VerificationStatusCard</strong> — Shows penny-drop or NEFT verification state<br>
             <code style="font-size: 11px;">Props: { status: 'pending'|'verified'|'failed', message }</code><br>
-            Status badge + explanation. Used Screen 3.
+            Status badge + explanation. Used Screen 2.
+          </div>
+          <div class="backend-info-box">
+            <strong>DocumentUpload</strong> — Upload cheque or bank document<br>
+            <code style="font-size: 11px;">Props: { documentType, onUpload, isVerifying }</code><br>
+            File upload for bank verification. Used Screen 2.
           </div>
           <div class="backend-info-box">
             <strong>PondsListCard</strong> — Container for all farmer ponds<br>
             <code style="font-size: 11px;">Props: { ponds, onEdit, onAdd }</code><br>
-            List view of ponds with edit/delete actions. Used Screen 4.
+            List view of ponds with edit/delete actions. Used Screen 3.
           </div>
           <div class="backend-info-box">
             <strong>PondCard</strong> — Individual pond item in list<br>
             <code style="font-size: 11px;">Props: { pondId, name, area, status, onEdit, onDelete }</code><br>
-            Card showing pond name, area, status badge. Used Screen 4.
+            Card showing pond name, area, status badge. Used Screens 3, 5.
           </div>
           <div class="backend-info-box">
             <strong>PondEditModal</strong> — Modal for adding/editing pond<br>
             <code style="font-size: 11px;">Props: { pond, isOpen, onSave, onCancel }</code><br>
-            Form for pond name, area, GPS coordinates. Used Screen 4.
+            Form for pond name, area, GPS coordinates. Used Screen 3.
           </div>
           <div class="backend-info-box">
-            <strong>FarmerSummaryCard</strong> — Final summary before submission<br>
-            <code style="font-size: 11px;">Props: { farmer, banks, ponds, approvalStatus }</code><br>
-            Summary showing profile, bank count, pond count, approval status. Used Screen 5.
+            <strong>ExpandableSection</strong> — Collapsible details section<br>
+            <code style="font-size: 11px;">Props: { title, expanded, children }</code><br>
+            Container for additional pond details. Used Screen 4.
           </div>
           <div class="backend-info-box">
-            <strong>ApprovalBadge</strong> — Approval workflow status indicator<br>
-            <code style="font-size: 11px;">Props: { status: 'pending'|'approved'|'rejected', reviewer }</code><br>
-            Shows approval state + reviewer info if available. Used Screen 5.
+            <strong>WarningBanner</strong> — Warning/alert notification banner<br>
+            <code style="font-size: 11px;">Props: { message, severity, icon }</code><br>
+            Displays deactivation warning and consequences. Used Screen 5.
+          </div>
+          <div class="backend-info-box">
+            <strong>ConfirmationCheckbox</strong> — Checkbox to confirm action<br>
+            <code style="font-size: 11px;">Props: { label, checked, onChange }</code><br>
+            Required checkbox to confirm pond deactivation. Used Screen 5.
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (80% of Manage Farmer)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (75% of Manage Farmer)</h4>
           <table class="backend-table">
             <tr><th>Component</th><th>Purpose</th><th>Manage Farmer Usage</th></tr>
             <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 5 screens</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, validation</td><td>Screens 2–3 (name, bank details)</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix</td><td>Screen 2 (phone edit)</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown for selections</td><td>Screen 3 (bank selection)</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Grouped address fields</td><td>Screen 2 (address edit)</td></tr>
-            <tr><td><strong>LocationPicker</strong></td><td>GPS coordinate selection</td><td>Screen 4 (pond location)</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>Screens 1, 3–5 (KYC, bank, pond status)</td></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text field with label, validation</td><td>Screens 1–4 (identity, bank, pond details)</td></tr>
+            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix</td><td>Screen 1 (phone edit)</td></tr>
+            <tr><td><strong>NumberInput</strong></td><td>Number field with spinner</td><td>Screens 3–4 (pond area)</td></tr>
+            <tr><td><strong>SelectInput</strong></td><td>Dropdown for selections</td><td>Screens 2–5 (bank, pond units, deactivation reason)</td></tr>
+            <tr><td><strong>LocationPicker</strong></td><td>GPS coordinate selection</td><td>Screens 3–4 (pond location)</td></tr>
+            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>Screens 1–3, 5 (KYC, bank, pond status)</td></tr>
             <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All 5 screens</td></tr>
           </table>
 

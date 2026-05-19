@@ -511,6 +511,30 @@
             <td>Screen 3</td>
             <td>label, required, onChange</td>
           </tr>
+          <tr>
+            <td><strong>QRScanner</strong> [WORKFLOW]</td>
+            <td>Seal QR code scanning interface</td>
+            <td>Screen 1</td>
+            <td>onScan, disabled</td>
+          </tr>
+          <tr>
+            <td><strong>ValidationCard</strong> [WORKFLOW]</td>
+            <td>Truck match status validation indicator</td>
+            <td>Screen 1</td>
+            <td>status, truckPlate, driverName</td>
+          </tr>
+          <tr>
+            <td><strong>PhotoCaptureCard</strong> [COMMON]</td>
+            <td>Mandatory photo evidence capture (3 slots)</td>
+            <td>Screen 2</td>
+            <td>slots, onCapture, required</td>
+          </tr>
+          <tr>
+            <td><strong>SummaryCard</strong> [WORKFLOW]</td>
+            <td>Departure summary with truck, destination, ETA</td>
+            <td>Screen 3</td>
+            <td>truckPlate, destination, estimatedArrival</td>
+          </tr>
         </table>
 
         <h3 class="backend-section-title">Screen Decomposition & Component Usage</h3>

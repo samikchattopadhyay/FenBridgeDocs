@@ -581,6 +581,7 @@
           <table class="backend-table">
             <tr><th>Component</th><th>Purpose</th><th>Seal App Usage</th><th>Shared With</th></tr>
             <tr><td><strong>TopAppBar</strong></td><td>Header with back, title, menu</td><td>All 6 screens</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>Button</strong></td><td>Primary/secondary action buttons</td><td>All screens (Next, Submit Seal, etc.)</td><td>All 20 workflows</td></tr>
             <tr><td><strong>StepperBar</strong></td><td>Progress indicator (6 steps)</td><td>Screens 1-5</td><td>Multi-step workflows (14 workflows)</td></tr>
             <tr><td><strong>TextInput</strong></td><td>Text field with validation</td><td>Seal ID input</td><td>12+ workflows</td></tr>
             <tr><td><strong>SelectInput</strong></td><td>Dropdown selector</td><td>Failure reasons</td><td>12+ workflows</td></tr>
@@ -594,14 +595,37 @@
           <div class="backend-info-box">
             <strong>Components unique to Seal Application:</strong><br>
             • <code>LotHeaderCard</code> — Displays lot metadata + eligibility status<br>
+            • <code>StatusBadge</code> — Green validation alerts for eligible lots (Screen 1)<br>
+            • <code>ValidationBanner</code> — Displays eligibility status for blocked candidates (Screen 1)<br>
             • <code>SealNumberInput</code> — Barcode input with validation + duplicate check<br>
+            • <code>ScanButton</code> — Camera trigger for barcode capture (Screen 2)<br>
+            • <code>SealValidationBanner</code> — Status display: valid, duplicate, or formatting error (Screen 2)<br>
+            • <code>GPSAccuracyIndicator</code> — Latitude, longitude, accuracy display with warning threshold (Screen 2)<br>
             • <code>NetSelectionCard</code> — Binary toggle for net application<br>
+            • <code>PhotoChecklistGrid</code> — 3-slot photo checklist with dashed camera buttons (Screen 3)<br>
             • <code>SealPhotoCaptureCard</code> — Photo grid with slot-based checklist<br>
+            • <code>PhotoPreviewCard</code> — Image previews replacing buttons after capture (Screen 3)<br>
+            • <code>InfoBanner</code> — Alert banners for helpful information (Screens 3, 4, 6)<br>
+            • <code>ChecklistCard</code> — Large pass/fail toggle cards with checkboxes (Screen 4)<br>
+            • <code>ToggleSwitch</code> — Pass/fail toggles for storage checks (Screen 4)<br>
+            • <code>AlertBanner</code> — Yellow warning alerts on storage check failures (Screen 4)<br>
+            • <code>WarningBanner</code> — Warning messages for coordinate correction alerts (Screen 4)<br>
+            • <code>CheckboxInput</code> — Checkbox input component (Screens 4, 5)<br>
             • <code>StorageChecklistCard</code> — Three-item checkbox grid with reason dropdowns<br>
+            • <code>SegmentedControl</code> — 30/45-day shelf-life selector (Screen 5)<br>
+            • <code>DateDisplay</code> — Auto-calculated expiry date bounds display (Screen 5)<br>
+            • <code>SummaryCard</code> — Read-only lot details or accumulated metadata (Screens 1, 5)<br>
+            • <code>ReviewPanel</code> — All accumulated sealing metadata summary (Screen 5)<br>
             • <code>ShelfLifeDatePicker</code> — Segmented control (30/45 days) with auto-expiry calculation<br>
             • <code>SealConfirmationBanner</code> — Final seal reference + expiry display<br>
             • <code>SealConfirmationCheckbox</code> — Four-item signature verification checklist<br>
-            • <code>SuccessTerminalCard</code> — Success modal with lock animation
+            • <code>SuccessTerminalCard</code> — Success modal with lock animation<br>
+            • <code>SuccessBanner</code> — Success confirmation display (Screen 6)<br>
+            • <code>LockIcon</code> — Pulsing animated lock icon (Screen 6)<br>
+            • <code>SealReferenceDisplay</code> — Generated seal code and expiry schedule display (Screen 6)<br>
+            • <code>SyncStatusBadge</code> — Sync queue state flags - synced or offline (Screen 6)<br>
+            • <code>SummaryPanel</code> — Seal details and admin pricing pipeline info (Screen 6)<br>
+            • <code>ConfirmationDetailsList</code> — List of confirmation details (seal ID, lot batch, expiry, storage flag)
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
