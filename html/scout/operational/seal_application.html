@@ -340,69 +340,283 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <h3 class="backend-section-title">React Component Decomposition (6 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Seal Application breaks into reusable components following atomic design. Shared components are centralized in COMPONENT_ARCHITECTURE_GUIDE.md — avoid duplicates across the 20 Scout workflows.</p>
 
           <div class="backend-info-box">
             <strong>✅ Design Philosophy:</strong><br>
             • Single Responsibility: Each component does ONE thing<br>
-            • Prop-based composition: Components accept data + actions as props<br>
-            • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
-            • Variant management: Props define UI variants, not separate components
+            • Reuse first: Check COMPONENT_ARCHITECTURE_GUIDE.md before creating new components<br>
+            • Props-driven variants: Use props for UI variants, not separate components<br>
+            • No local state for business logic: Use Context + hooks for workflow state<br>
+            • Component hierarchy: Atoms (foundation) → Molecules (composite) → Organisms (feature-complete)
           </div>
 
           <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+            <strong style="color: #4edea3;">📖 Master Component Reference</strong><br>
+            <span style="font-size: 12px; color: var(--text-muted);">See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for all 20 workflows. This workflow reuses: TopAppBar, StepperBar, TextInput, SelectInput, NumberInput, PhotoGrid, DateInput, ExpandableSection, CTAFooter. Seal-specific components: LotHeaderCard, SealNumberInput, NetSelectionCard, SealPhotoCaptureCard, StorageChecklistCard, ShelfLifeDatePicker, SealConfirmationBanner.</span>
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen-by-Screen Component Breakdown</h4>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 1: Confirm Verified Lot</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Confirm Verified Lot" onBack={...} /&gt;
+&lt;StepperBar activeStep={1} totalSteps={6} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;LotHeaderCard
+    lotId={lot.id}
+    batchNumber={lot.batch_number}
+    grade={lot.assessment_grade}
+    weight={lot.net_weight}
+    warehouseName={warehouse.name}
+    validationStatus="eligible" | "blocked"
+    blockerReason={reason} /&gt;
+  &lt;QualityChecklistCard
+    items={[
+      { label: 'Warehouse Fitness', status: 'fit' },
+      { label: 'Inspection Passed', status: 'accepted' },
+      { label: 'Downgrade Consented', status: lot.downgrade_consent_status }
+    ]} /&gt;
+  &lt;InfoBanner
+    variant="success" | "warning"
+    message="All preconditions met. Ready to seal." /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Begin Sealing"
+  primaryOnClick={handleNext}
+  disabled={!isEligible} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 2: Apply Seal & Net</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Apply Seal & Net" onBack={...} /&gt;
+&lt;StepperBar activeStep={2} totalSteps={6} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;SealNumberInput
+    label="Scan Physical Seal"
+    placeholder="Scan barcode..."
+    value={sealId}
+    onChange={handleSealScan}
+    onScantrigger={triggerCamera}
+    error={sealError}
+    helperText="Format: SEL-XXXXX-XXXXX" /&gt;
+  &lt;SealValidationBanner
+    status="duplicate" | "valid" | "formatting_error"
+    message={...} /&gt;
+  &lt;NetSelectionCard
+    label="Reusable Net Applied?"
+    selected={netApplied}
+    onChange={handleNetToggle}
+    required /&gt;
+  &lt;GPSAccuracyIndicator
+    latitude={sealedLat}
+    longitude={sealedLng}
+    accuracy={sealedAccuracy}
+    warningThreshold={200} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Continue"
+  primaryOnClick={handleNext}
+  disabled={!sealId || !netApplied} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 3: Seal Evidence Photos</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Seal Evidence Photos" onBack={...} /&gt;
+&lt;StepperBar activeStep={3} totalSteps={6} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;PhotoChecklistGrid
+    slots={[
+      {
+        slot_type: 'seal_closeup',
+        label: 'Close-up of Seal',
+        helperText: 'Seal ID numbers must be legible',
+        required: true,
+        photo: null | photo_url
+      },
+      {
+        slot_type: 'bags_net',
+        label: 'Bags with Net Applied',
+        helperText: 'Show net coverage',
+        required: true,
+        photo: null | photo_url
+      },
+      {
+        slot_type: 'warehouse_wide',
+        label: 'Wide Warehouse Shot',
+        helperText: 'Context of placement',
+        required: true,
+        photo: null | photo_url
+      }
+    ]}
+    onCapture={(slot_type) => triggerCamera(slot_type)}
+    onDelete={(slot_type) => removePhoto(slot_type)} /&gt;
+  &lt;PhotoUploadProgress
+    uploaded={photoCount}
+    total={3}
+    isUploading={uploading} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Continue"
+  primaryOnClick={handleNext}
+  disabled={photoCount < 3} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 4: Storage Check at Seal Time</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Storage Check" onBack={...} /&gt;
+&lt;StepperBar activeStep={4} totalSteps={6} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;StorageChecklistCard
+    items={[
+      {
+        id: 'off_floor',
+        label: 'Off Floor Platform',
+        status: null | 'pass' | 'fail',
+        reasons: [{ id: 'broken_platform', label: 'Broken platform' }, ...],
+        selectedReason: null | reason_id
+      },
+      {
+        id: 'moisture_barrier',
+        label: 'Moisture Barrier Lining',
+        status: null | 'pass' | 'fail',
+        reasons: [{ id: 'no_lining', label: 'No lining' }, ...],
+        selectedReason: null | reason_id
+      },
+      {
+        id: 'segregation',
+        label: 'Segregated from Loose Stock',
+        status: null | 'pass' | 'fail',
+        reasons: [{ id: 'mixed_placement', label: 'Mixed placement' }, ...],
+        selectedReason: null | reason_id
+      }
+    ]}
+    onStatusChange={(itemId, status) => handleCheckChange(itemId, status)}
+    onReasonChange={(itemId, reasonId) => handleReasonChange(itemId, reasonId)} /&gt;
+  &lt;StorageWarningBanner
+    hasFailures={storageHasFailures}
+    failureCount={failureCount}
+    message="Coordinate quick corrections with warehouse manager." /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Continue"
+  primaryOnClick={handleNext}
+  secondaryText={storageHasFailures ? "Flag & Continue" : null}
+  disabled={anyCheckUnchecked} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 5: Shelf-life & Confirm</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Shelf-life & Confirm" onBack={...} /&gt;
+&lt;StepperBar activeStep={5} totalSteps={6} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;SummaryCard
+    sealId={sealId}
+    lotBatch={lot.batch_number}
+    warehouse={warehouse.name}
+    popper={popper.name} /&gt;
+  &lt;ShelfLifeDatePicker
+    defaultDays={30}
+    options={[30, 45]}
+    selectedDays={shelfLifeDays}
+    expiresAt={expiryDate}
+    onChange={(days) => handleShelfLifeChange(days)} /&gt;
+  &lt;SegmentedControl
+    label="Select Shelf-Life Duration"
+    options={[
+      { value: 30, label: '30 Days' },
+      { value: 45, label: '45 Days' }
+    ]}
+    selected={shelfLifeDays}
+    onChange={handleShelfLifeChange} /&gt;
+  &lt;SealConfirmationCheckbox
+    items={[
+      { id: 'verify_seal', label: 'Seal number verified and applied correctly' },
+      { id: 'verify_net', label: 'Reusable net applied to all bags' },
+      { id: 'verify_photos', label: 'All evidence photos captured' },
+      { id: 'verify_storage', label: 'Storage conditions checked and documented' }
+    ]}
+    allChecked={allConfirmed}
+    onChange={(itemId, checked) => handleConfirmChange(itemId, checked)} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Submit Seal"
+  primaryOnClick={handleSubmit}
+  disabled={!allConfirmed} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 6: Submission Confirmation</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Success" onBack={null} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;SuccessTerminalCard
+    iconVariant="lock_seal"
+    title="Seal Applied Successfully"
+    message="Lot is now sealed and tracked in the ledger" /&gt;
+  &lt;SealConfirmationBanner
+    sealId={sealId}
+    expiresAt={expiryDate}
+    syncStatus="synced" | "queued"
+    syncMessage={...} /&gt;
+  &lt;ConfirmationDetailsList
+    items={[
+      { label: 'Seal ID', value: sealId },
+      { label: 'Lot Batch', value: lot.batch_number },
+      { label: 'Expires', value: expiryDate },
+      { label: 'Storage Flag', value: storageHasFailures ? 'Flagged' : 'Clear' }
+    ]} /&gt;
+  &lt;InfoBanner
+    variant="info"
+    message="Admin pricing pipeline has been triggered. Logs forwarded to compliance dashboard." /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Back to Dashboard"
+  primaryOnClick={navigateHome} /&gt;</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Library (Reused Across Workflows)</h4>
           <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><th>Component</th><th>Purpose</th><th>Seal App Usage</th><th>Shared With</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Header with back, title, menu</td><td>All 6 screens</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>StepperBar</strong></td><td>Progress indicator (6 steps)</td><td>Screens 1-5</td><td>Multi-step workflows (14 workflows)</td></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text field with validation</td><td>Seal ID input</td><td>12+ workflows</td></tr>
+            <tr><td><strong>SelectInput</strong></td><td>Dropdown selector</td><td>Failure reasons</td><td>12+ workflows</td></tr>
+            <tr><td><strong>PhotoGrid</strong></td><td>Photo checklist display</td><td>Screen 3 (3 photo slots)</td><td>16+ workflows</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Primary/secondary actions</td><td>All screens</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>DateInput</strong></td><td>Date picker with validation</td><td>Shelf-life expiry</td><td>8+ workflows</td></tr>
+            <tr><td><strong>ExpandableSection</strong></td><td>Collapsible content</td><td>Failure reason lists</td><td>10+ workflows</td></tr>
           </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Seal-Application-Specific Components (Workflow-Unique)</h4>
+          <div class="backend-info-box">
+            <strong>Components unique to Seal Application:</strong><br>
+            • <code>LotHeaderCard</code> — Displays lot metadata + eligibility status<br>
+            • <code>SealNumberInput</code> — Barcode input with validation + duplicate check<br>
+            • <code>NetSelectionCard</code> — Binary toggle for net application<br>
+            • <code>SealPhotoCaptureCard</code> — Photo grid with slot-based checklist<br>
+            • <code>StorageChecklistCard</code> — Three-item checkbox grid with reason dropdowns<br>
+            • <code>ShelfLifeDatePicker</code> — Segmented control (30/45 days) with auto-expiry calculation<br>
+            • <code>SealConfirmationBanner</code> — Final seal reference + expiry display<br>
+            • <code>SealConfirmationCheckbox</code> — Four-item signature verification checklist<br>
+            • <code>SuccessTerminalCard</code> — Success modal with lock animation
+          </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ No Component Duplication:</strong> Before creating new component, check COMPONENT_ARCHITECTURE_GUIDE.md</li>
+            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces for type safety</li>
+            <li><strong>✓ Error States:</strong> Consistent error display (red border + message below field)</li>
+            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas (seal ID format, shelf-life bounds, GPS accuracy)</li>
+            <li><strong>✓ CSS Variables:</strong> Use theme variables (--accent-primary, --text-main, --border-color)</li>
+            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes for form regions</li>
+            <li><strong>✓ Mobile-First:</strong> Responsive: 360px (mobile), 600px (tablet), 1024px (desktop)</li>
+            <li><strong>✓ State Management:</strong> Business logic in Context (seal scope), UI state in component hooks</li>
+            <li><strong>✓ Variants via Props:</strong> Use props for UI variants, not separate components (variant="success" | "warning")</li>
+            <li><strong>✓ Photo Upload Queue:</strong> Async upload queue with local preview + retry on sync</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Reuse Strategy</h4>
           <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
+            <strong>DO:</strong><br>
+            ✓ Reuse TopAppBar, StepperBar, PhotoGrid, CTAFooter across all workflows<br>
+            ✓ Check COMPONENT_ARCHITECTURE_GUIDE.md before creating new component<br>
+            ✓ Extract common input patterns (TextInput, SelectInput, NumberInput)<br>
+            ✓ Use composition: combine atoms (input) + molecules (cards) → organisms (screens)<br>
+            <br>
+            <strong>DON'T:</strong><br>
+            ✗ Create duplicate inputs (don't make SealTextInput + LotTextInput, use TextInput + props)<br>
+            ✗ Keep workflow-specific logic in shared components (use Context for business state)<br>
+            ✗ Inline styles in components (use CSS variables + shared class names)<br>
+            ✗ Create new component without checking 20 workflows for similar patterns
           </div>
         </div>
 
