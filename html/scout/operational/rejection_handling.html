@@ -337,71 +337,329 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <h3 class="backend-section-title">React Component Decomposition & Reusability (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Rejection Handling is a triage workflow that manages both salvageable (reconditioning) and terminal (closure) rejection paths. Components are decomposed following atomic design principles with emphasis on shared state management and outcome-dependent branching.</p>
 
-          <div class="backend-info-box">
-            <strong>✅ Design Philosophy:</strong><br>
-            • Single Responsibility: Each component does ONE thing<br>
-            • Prop-based composition: Components accept data + actions as props<br>
-            • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
-            • Variant management: Props define UI variants, not separate components
-          </div>
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 2: Reconditioning Notice (Popper View)</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Guide popper through reconditioning requirements for salvageable lots. Display guidelines, deadline, and acknowledgment confirmation.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Reconditioning Instructions" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={2} totalSteps={5} /&gt;
 
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
-          </div>
+&lt;ReconditioningNoticeCard
+  lotId={lot.id}
+  produceName={lot.produce.name}
+  deadline={rejection.reconditioning_deadline}
+  failedParameters={failedParameters}
+  severity="warning"
+/&gt;
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+&lt;GuidelinesCard
+  title="Reconditioning Requirements"
+  guidelines={[
+    { id: 1, title: 'Storage Environment', desc: 'Maintain temp 18-22°C, humidity 60-70%' },
+    { id: 2, title: 'Ventilation', desc: 'Ensure adequate air circulation to prevent mold' },
+    { id: 3, title: 'Time Limit', desc: `Reconditioning must complete by ${deadline}` },
+  ]}
+/&gt;
+
+&lt;ParameterImprovementCard
+  parameters={failedParameters}
+  layout="vertical"  // Show what to fix
+/&gt;
+
+&lt;AcknowledgmentCheckbox
+  label="I understand and accept reconditioning requirements"
+  required={true}
+/&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Acknowledge & Continue', onClick: () =&gt; {} }}
+  secondary={{ label: 'Decline Reconditioning', onClick: () =&gt; {} }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 3: Terminal Notice (Popper View)</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Inform popper of permanent lot closure due to critical defects. Display reason, safety hazards, and immutable closure status.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Lot Closure Notice" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={3} totalSteps={5} /&gt;
+
+&lt;TerminalNoticeCard
+  lotId={lot.id}
+  closureType="terminal_rejection"
+  closedAt={lot.closed_at}
+  closedBy={lot.closed_by_scout?.name}
+  status="closed"
+/&gt;
+
+&lt;DangerWarningBanner
+  title="Lot Permanently Closed"
+  message="This lot has been permanently rejected and closed due to critical safety hazards. No reconditioning is possible."
+  severity="critical"
+/&gt;
+
+&lt;SafetyHazardsList
+  hazards={criticalDefects}  // Defects that triggered terminal closure
+  layout="cards"
+/&gt;
+
+&lt;ClosureReasonCard
+  primaryReason={rejection.primary_reason}
+  secondaryReasons={rejection.secondary_reasons}
+  notes={rejection.closure_notes}
+/&gt;
+
+&lt;ExpandableSection title="What This Means"&gt;
+  &lt;p&gt;The entire lot must be destroyed or disposed of per regulatory guidelines. No part may be resold or used in any form.&lt;/p&gt;
+&lt;/ExpandableSection&gt;
+
+&lt;AcknowledgmentCheckbox
+  label="I acknowledge and accept the lot closure"
+  required={true}
+/&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Acknowledge Closure', onClick: () =&gt; {} }}
+  secondary={{ label: 'Need More Information', onClick: () =&gt; {} }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 4: Chronological Quality History (Supporting View)</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Display complete lot inspection history across all quality checkpoints. Show timeline of decisions, failed attempts, and reconditioning cycles (if applicable).</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Lot Quality History" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={4} totalSteps={5} /&gt;
+
+&lt;LotHeaderCard
+  lotId={lot.id}
+  farmerName={lot.farmer.name}
+  produceName={lot.produce.name}
+  status={lot.status}
+  createdAt={lot.created_at}
+/&gt;
+
+&lt;TimelineCard
+  events={lot.quality_timeline}  // Chronological array of all events
+  layout="vertical"
+/&gt;
+
+&lt;ChronologicalFlow
+  inspections={lot.inspections}
+  storageRechecks={lot.storage_rechecks}
+  rejectionRecords={lot.rejections}
+  reconditioning_cycles={lot.reconditioning_cycles}
+/&gt;
+
+&lt;InspectionEventCards
+  events={[
+    {
+      type: 'inspection',
+      timestamp: lot.inspections[0].created_at,
+      status: lot.inspections[0].status,
+      scoutName: lot.inspections[0].scout.name,
+      outcome: lot.inspections[0].outcome,
+      failedParams: lot.inspections[0].failed_parameters,
+    },
+    // ... more events
+  ]}
+  onEventClick={(event) =&gt; expandEventDetails(event)}
+/&gt;
+
+&lt;StatusBadges
+  currentStatus={lot.status}
+  previousStatuses={lot.status_history}
+/&gt;
+
+&lt;ExpandableSection title="Statistical Summary"&gt;
+  &lt;div&gt;Total inspections: {lot.inspections.length}&lt;/div&gt;
+  &lt;div&gt;Rejection events: {lot.rejections.length}&lt;/div&gt;
+  &lt;div&gt;Reconditioning attempts: {lot.reconditioning_cycles.length}&lt;/div&gt;
+&lt;/ExpandableSection&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Download Report', onClick: () =&gt; {} }}
+  secondary={{ label: 'Back', onClick: () =&gt; goBack() }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 5: Terminal Closure Log (Admin View)</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Auditable record of all terminal lot closures. Read-only view for compliance and regulatory tracking. Shows closure reason, scout responsible, timestamp.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Closure Registry" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={5} totalSteps={5} /&gt;
+
+&lt;ClosureLogTable
+  closures={lot_closure_logs}
+  columns={['Lot ID', 'Produce', 'Closure Type', 'Reason Code', 'Closed By', 'Closed At']}
+  sortBy="closed_at"
+  sortOrder="DESC"
+  onRowClick={(row) =&gt; expandClosureDetails(row)}
+/&gt;
+
+&lt;SearchFields
+  fields={[
+    { name: 'lotId', label: 'Lot ID', type: 'text' },
+    { name: 'closureType', label: 'Closure Type', type: 'select', options: ['terminal_rejection', 'storage_recheck_terminal'] },
+    { name: 'closedDateRange', label: 'Closed Date', type: 'dateRange' },
+    { name: 'scoutId', label: 'Scout', type: 'select', options: scouts },
+  ]}
+  onSearch={(filters) =&gt; applyFilters(filters)}
+/&gt;
+
+&lt;ClosureDetailsCard
+  closure={selectedClosure}
+  readOnly={true}
+  expandable={true}
+  fields={[
+    { label: 'Lot ID', value: closure.lot_id },
+    { label: 'Closure Type', value: closure.closure_type, badge: true },
+    { label: 'Reason Code', value: closure.reason_code },
+    { label: 'Source Record', value: `${closure.source_record_type}:${closure.source_record_id}` },
+    { label: 'Closed By', value: closure.closed_by_scout?.name },
+    { label: 'Closed At', value: formatDate(closure.closed_at), type: 'timestamp' },
+    { label: 'Created At', value: formatDate(closure.created_at), type: 'timestamp' },
+  ]}
+/&gt;
+
+&lt;ReadOnlyView
+  message="Terminal closure records are immutable for regulatory compliance."
+  showAuditTrail={true}
+/&gt;
+
+&lt;ExpandableSection title="Filter Options"&gt;
+  &lt;SelectInput
+    label="Closure Type"
+    options={[
+      { value: 'terminal_rejection', label: 'Terminal Rejection' },
+      { value: 'storage_recheck_terminal', label: 'Storage Recheck Terminal' },
+    ]}
+    onChange={(value) =&gt; filterByType(value)}
+  /&gt;
+&lt;/ExpandableSection&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Export CSV', onClick: () =&gt; exportToCsv() }}
+  secondary={{ label: 'Back', onClick: () =&gt; goBack() }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">Rejection-Handling Specific Components</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Components unique to this workflow that are NOT used elsewhere:</p>
           <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><th>Component</th><th>Purpose</th><th>Props Interface</th></tr>
+            <tr><td><strong>RejectionTriageCard</strong></td><td>Display triage classification (salvageable vs terminal) + deadline</td><td>outcome, notes, deadline, criticalDefects</td></tr>
+            <tr><td><strong>FailedParametersGrid</strong></td><td>Grid display of failed QC parameters with values</td><td>parameters[], layout</td></tr>
+            <tr><td><strong>DefectPhotosGrid</strong></td><td>Gallery of defect evidence photos</td><td>photos[], onPhotoClick</td></tr>
+            <tr><td><strong>ReconditioningNoticeCard</strong></td><td>Notice header for reconditioning path</td><td>lotId, deadline, failedParameters[], severity</td></tr>
+            <tr><td><strong>GuidelinesCard</strong></td><td>List of reconditioning guidelines and requirements</td><td>title, guidelines[]</td></tr>
+            <tr><td><strong>ParameterImprovementCard</strong></td><td>Show which parameters need improvement</td><td>parameters[], layout</td></tr>
+            <tr><td><strong>TerminalNoticeCard</strong></td><td>Notice header for terminal closure path</td><td>lotId, closureType, closedAt, closedBy</td></tr>
+            <tr><td><strong>DangerWarningBanner</strong></td><td>Critical danger warning for terminal closure</td><td>title, message, severity</td></tr>
+            <tr><td><strong>SafetyHazardsList</strong></td><td>List of critical defects causing closure</td><td>hazards[], layout</td></tr>
+            <tr><td><strong>ClosureReasonCard</strong></td><td>Primary and secondary closure reasons</td><td>primaryReason, secondaryReasons[], notes</td></tr>
+            <tr><td><strong>TimelineCard</strong></td><td>Vertical timeline of quality events</td><td>events[], layout</td></tr>
+            <tr><td><strong>ChronologicalFlow</strong></td><td>Complete flow visualization of lot lifecycle</td><td>inspections[], storageRechecks[], rejections[], cycles[]</td></tr>
+            <tr><td><strong>InspectionEventCards</strong></td><td>Cards for each inspection event with details</td><td>events[], onEventClick</td></tr>
+            <tr><td><strong>ClosureLogTable</strong></td><td>Table of closure log records</td><td>closures[], columns[], sortBy, onRowClick</td></tr>
+            <tr><td><strong>SearchFields</strong></td><td>Filter inputs for closure search</td><td>fields[], onSearch</td></tr>
+            <tr><td><strong>ClosureDetailsCard</strong></td><td>Detailed card for single closure record</td><td>closure, readOnly, fields[]</td></tr>
+            <tr><td><strong>ReadOnlyView</strong></td><td>Message display for immutable records</td><td>message, showAuditTrail</td></tr>
           </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">Shared Components Used (Across Multiple Workflows)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Purpose</th><th>Workflows Using</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>StepperBar</strong></td><td>Step indicator for multi-step forms</td><td>14+ workflows</td></tr>
+            <tr><td><strong>LotHeaderCard</strong></td><td>Lot summary (farmer, produce, qty, status)</td><td>Lot Verification, Storage Recheck, Re-inspection, Rejection Handling</td></tr>
+            <tr><td><strong>InfoBanner</strong></td><td>Alert/info banner with icon and message</td><td>15+ workflows</td></tr>
+            <tr><td><strong>ExpandableSection</strong></td><td>Collapsible content block</td><td>16+ workflows</td></tr>
+            <tr><td><strong>StatusBadge</strong></td><td>Color-coded status badge</td><td>All list/detail screens</td></tr>
+            <tr><td><strong>SelectInput</strong></td><td>Dropdown select with label/error</td><td>12+ workflows</td></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text input with label/error/helper</td><td>12+ workflows</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary action buttons</td><td>All form screens</td></tr>
+            <tr><td><strong>PhotoGrid</strong></td><td>Photo display/management grid</td><td>Lot Verification, Storage Recheck, Re-inspection, Rejection Handling</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">Cross-Workflow Consistency Checklist</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ Shared Components:</strong> TopAppBar, StepperBar, LotHeaderCard, InfoBanner, ExpandableSection, CTAFooter all follow same design system</li>
+            <li><strong>✓ Color Coding:</strong> Status badges use consistent colors (pending=yellow, approved=green, rejected=red, closed=gray)</li>
+            <li><strong>✓ Spacing & Layout:</strong> Grid gaps (16px), card padding (24px), footer height (80px) match across all workflows</li>
+            <li><strong>✓ Error States:</strong> Red border + helper text pattern consistent across all input components</li>
+            <li><strong>✓ Photo Grid:</strong> Same deletion UX, lightbox behavior, upload spinner in Lot Verification, Storage Recheck, Re-inspection</li>
+            <li><strong>✓ Typography:</strong> Headers use Outfit 700/800, body uses Inter 400, monospace for codes</li>
+            <li><strong>✓ Mobile Responsiveness:</strong> All components tested at 360px, 600px, 1024px breakpoints</li>
+            <li><strong>✓ Accessibility:</strong> All labels paired with inputs, ARIA attributes for status badges, color + text for status</li>
+            <li><strong>✓ No Inline Styles:</strong> All styling via CSS variables (--accent-primary, --text-main, etc.)</li>
+            <li><strong>✓ Outcome-Dependent Branching:</strong> Rejection triage outcome determines Screen 2 vs Screen 3 path; critical defects block reconditioning</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">DO's and DON'Ts</h4>
           <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
+            <strong style="color: #4edea3;">✅ DO:</strong><br>
+            • Reuse TopAppBar, StepperBar, CTAFooter, InfoBanner, ExpandableSection in new screens<br>
+            • Check COMPONENT_ARCHITECTURE_GUIDE.md BEFORE creating any new component<br>
+            • Use rejection.triage_outcome to conditionally render Screen 2 vs Screen 3<br>
+            • Make closure_log records read-only (no updates allowed)<br>
+            • Store critical defects in a separate array field for UI branching logic
           </div>
 
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
+          <div class="backend-info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+            <strong style="color: #fca5a5;">❌ DON'T:</strong><br>
+            • Create duplicate components for similar layouts (use variant props)<br>
+            • Inline styles — always use CSS variables<br>
+            • Local state for API-driven data (use Context/hooks)<br>
+            • Render closure log editing UI (immutable by design)<br>
+            • Create separate Timeline or PhotoGallery components; use existing PhotoGrid + ExpandableSection
           </div>
         </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen-by-Screen Component Decomposition</h4>
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 1: Rejection Report (Scout Detail View)</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Display rejected lot details, failed parameters, defect photos, and triage classification (salvageable vs terminal).</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Rejection Report" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={1} totalSteps={5} /&gt;
+
+&lt;LotHeaderCard
+  lotId={lot.id}
+  farmerName={lot.farmer.name}
+  produceName={lot.produce.name}
+  quantity={lot.quantity}
+  status="rejected"
+  rejectedAt={lot.rejected_at}
+/&gt;
+
+&lt;InfoBanner
+  type="critical"
+  title="Lot Rejection"
+  message={`Failed ${failedParameters.length} QC parameters on ${rejectionDate}`}
+/&gt;
+
+&lt;FailedParametersGrid
+  parameters={failedParameters}
+  layout="grid"  // Parameter card list
+/&gt;
+
+&lt;DefectPhotosGrid
+  photos={defectPhotos}
+  onPhotoClick={(id) =&gt; viewPhotoLightbox(id)}
+/&gt;
+
+&lt;RejectionTriageCard
+  outcome={rejection.triage_outcome}  // 'salvageable' | 'terminal'
+  notes={rejection.triage_notes}
+  reconditioning_deadline={rejection.reconditioning_deadline}
+  critical_defects={rejection.critical_defects}
+/&gt;
+
+&lt;ExpandableSection title="Historical Context"&gt;
+  &lt;LotHistoryTimeline events={lot.quality_events} /&gt;
+&lt;/ExpandableSection&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Proceed to Triage', onClick: () =&gt; {} }}
+  secondary={{ label: 'Cancel', onClick: () =&gt; goBack() }}
+/&gt;
 
         <!-- TAB: Database Schema -->
         <div id="backend-db" class="tab-panel">
