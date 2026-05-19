@@ -290,8 +290,8 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <h3 class="backend-section-title">React Component Decomposition & Reusability (3 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This directory workflow breaks into 14 workflow-specific components and 9 shared components. List screen optimized for search/filter/role-selection, detail screens use 5-tab navigation for comprehensive user profile management.</p>
 
           <div class="backend-info-box">
             <strong>✅ Design Philosophy:</strong><br>
@@ -307,54 +307,124 @@
             <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (14 Components)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Purpose & Props</th><th>Screens</th></tr>
+            <tr><td><strong>UserListSearchBar</strong></td><td>Search field + role filter chips + status filter chips. Props: <code>searchValue: string, onSearchChange: (v) => void, roleFilter: 'all'|'farmer'|'popper'|'buyer', onRoleChange: (r) => void, statusFilter: 'all'|'pending'|'active'|'suspended', onStatusChange: (s) => void</code></td><td>1</td></tr>
+            <tr><td><strong>UserCard</strong></td><td>Selectable user row with avatar, name, role, mobile, district, last activity, status. Props: <code>user: {name, role, mobile, district, lastActivity, status}, avatarColor: string, onTap: () => void</code></td><td>1</td></tr>
+            <tr><td><strong>RolePicker</strong></td><td>Dialog modal to select Farmer/Popper/Buyer for registration. Props: <code>onSelect: (role) => void, onCancel: () => void</code></td><td>1</td></tr>
+            <tr><td><strong>FABButton</strong></td><td>Floating action button (Register New User). Props: <code>onPress: () => void</code></td><td>1</td></tr>
+            <tr><td><strong>FarmerHeaderCard</strong></td><td>Farmer identity banner (avatar, name, status badge, mobile, district). Props: <code>farmer: {name, mobile, district, altPhone, status}, status: 'pending'|'active'|'suspended'</code></td><td>2</td></tr>
+            <tr><td><strong>FarmerProfileTab</strong></td><td>Editable farmer identity (full name, DoB, district, village, address). Props: <code>farmer: {...}, onEdit: (data) => void, isEditing: boolean</code></td><td>2</td></tr>
+            <tr><td><strong>PondListTab</strong></td><td>List of farmer's ponds with edit/deactivate actions. Props: <code>ponds: [{code, name, area, lastInspectionDate}, ...], onAddPond: () => void, onEditPond: (id) => void, onTapPond: (id) => void</code></td><td>2</td></tr>
+            <tr><td><strong>BankAccountCard</strong></td><td>Display bank account details (masked number, IFSC, penny-drop status). Props: <code>account: {holderName, maskedAccountNumber, ifsc, bankName, pennyDropStatus}, onEdit: () => void, onRetry: () => void</code></td><td>2</td></tr>
+            <tr><td><strong>DocumentUploadGrid</strong></td><td>Tiles for document types (Aadhaar, PAN, etc.) with upload/view actions. Props: <code>documents: [{type, uploadDate, isVerified, url}, ...], documentTypes: string[], onUpload: (type) => void, onView: (doc) => void</code></td><td>2</td></tr>
+            <tr><td><strong>ActivityFeed</strong></td><td>Chronological transaction list (bids, spot offers, POs, payments). Props: <code>activities: [{type, timestamp, summary, userId}, ...], onTapActivity: (activity) => void</code></td><td>2</td></tr>
+            <tr><td><strong>PopperHeaderCard</strong></td><td>Popper business identity banner (business name, contact person, status badge). Props: <code>popper: {businessName, contactName, mobile, district, status}</code></td><td>3</td></tr>
+            <tr><td><strong>PopperProfileTab</strong></td><td>Editable popper business info (business name, contact, PAN, GSTIN, FSSAI). Props: <code>popper: {...}, onEdit: (data) => void, isEditing: boolean</code></td><td>3</td></tr>
+            <tr><td><strong>WarehouseListTab</strong></td><td>List of popper's warehouses with edit/deactivate actions. Props: <code>warehouses: [{code, name, capacity, district, village, status}, ...], onAddWarehouse: () => void, onEditWarehouse: (id) => void, onTapWarehouse: (id) => void</code></td><td>3</td></tr>
+            <tr><td><strong>ApprovalWarningBanner</strong></td><td>Full-width amber banner warning that user is pending approval. Props: <code>show: boolean</code></td><td>2, 3</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (9 Components)</h4>
           <table class="backend-table">
             <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
             <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
             <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
             <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
+            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding (Pending/Active/Suspended)</td><td>All list screens</td></tr>
+            <tr><td><strong>TabNavigation</strong></td><td>Multi-tab switcher (5-tab version for this workflow)</td><td>8+ workflows</td></tr>
+            <tr><td><strong>DocumentUpload</strong></td><td>File picker + upload component</td><td>9+ workflows</td></tr>
+            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
             <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><td><strong>EmptyState</strong></td><td>Placeholder for no users / no activities</td><td>All list screens</td></tr>
           </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Consistency Checklist</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
+            <li><strong>✓ List Pattern:</strong> Search bar + filter chips (role + status) + card rows with tap → detail (consistent with ponds_directory, warehouses_directory)</li>
+            <li><strong>✓ Tabbed Detail:</strong> Header card + 5-tab switcher (Profile/Assets/Bank/Documents/Activity) — consistent with manage_farmer, manage_popper</li>
+            <li><strong>✓ FAB Pattern:</strong> Floating action button for "Register New User" (consistent with all list screens)</li>
+            <li><strong>✓ Role-Specific UI:</strong> Farmer vs Popper detail screens use same layout but different tab labels (Ponds vs Warehouses, different document types)</li>
+            <li><strong>✓ Approval Warning:</strong> Amber banner for Pending Approval status (consistent with manage_farmer, manage_popper)</li>
+            <li><strong>✓ Status Pills:</strong> Pending Approval (amber), Active (accent), Suspended (danger) — consistent across all workflows</li>
             <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ No Duplication:</strong> TabNavigation, StatusBadge, DocumentUpload, and EmptyState reused from shared library</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">⚠️ Zero Duplication Warnings (Validate Before Coding)</h4>
           <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
+            <strong>❌ AVOID Creating:</strong><br>
+            • UserListItem — use UserCard (reusable list item)<br>
+            • FarmerUserCard + PopperUserCard — use UserCard with role prop (no separate)<br>
+            • FarmerHeader + PopperHeader — both use HeaderCard component with role-specific rendering<br>
+            • FarmerDocuments + PopperDocuments — use DocumentUploadGrid (shared, with documentTypes prop)<br>
+            • BankAccountFarmer + BankAccountPopper — use BankAccountCard (same for both roles)<br>
+            • ActivityFarmer + ActivityPopper — use ActivityFeed (same component, different data)<br>
+            <br>
+            <strong>✅ DO Reuse:</strong><br>
+            • TopAppBar — all screens have header<br>
+            • StatusBadge — user status indicators<br>
+            • TabNavigation — 5-tab pattern (Profile/Assets/Bank/Documents/Activity)<br>
+            • DocumentUpload — document management (both farmer and popper)<br>
+            • EmptyState — no users, no activities fallback<br>
+            • CTAFooter — action buttons in edit flows
           </div>
 
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
-          </div>
-        </div>
+          <h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern (Per Screen)</h4>
+          <div class="backend-code-block">Screen 1: Combined Users List
+├─ TopAppBar (back, title, menu)
+├─ UserListSearchBar (search + role filter + status filter)
+├─ UserCard[] (repetition)
+│  ├─ StatusBadge (user status)
+│  └─ (tap → navigate to Farmer Detail or Popper Detail)
+├─ EmptyState (fallback if no users)
+└─ FABButton ("Register New User")
+   └─ RolePicker (modal: Farmer/Popper/Buyer)
+      └─ (select → launch farmer_registration or popper_registration workflow)
+
+Screen 2: Farmer Detail (5 Tabs)
+├─ TopAppBar (back, title, menu)
+├─ ApprovalWarningBanner (if status = pending)
+├─ FarmerHeaderCard
+│  └─ StatusBadge (farmer status)
+├─ TabNavigation (Profile / Ponds / Bank / Documents / Activity)
+├─ [Profile Tab]
+│  ├─ FarmerProfileTab
+│  └─ CTAFooter (Edit button)
+├─ [Ponds Tab]
+│  ├─ PondListTab
+│  │  └─ StatusBadge (pond inspection status)
+│  └─ FABButton ("Add Pond")
+├─ [Bank Tab]
+│  ├─ BankAccountCard
+│  └─ CTAFooter (Edit / Retry buttons)
+├─ [Documents Tab]
+│  ├─ DocumentUploadGrid
+│  └─ CTAFooter (Upload buttons per doc type)
+└─ [Activity Tab]
+   └─ ActivityFeed (chronological list)
+
+Screen 3: Popper Detail (5 Tabs)
+├─ TopAppBar (back, title, menu)
+├─ ApprovalWarningBanner (if status = pending)
+├─ PopperHeaderCard
+│  └─ StatusBadge (popper status)
+├─ TabNavigation (Profile / Warehouses / Bank / Documents / Activity)
+├─ [Profile Tab]
+│  ├─ PopperProfileTab
+│  └─ CTAFooter (Edit button)
+├─ [Warehouses Tab]
+│  ├─ WarehouseListTab
+│  └─ FABButton ("Add Warehouse")
+├─ [Bank Tab]
+│  ├─ BankAccountCard (same as Farmer Detail)
+│  └─ CTAFooter (Edit / Retry buttons)
+├─ [Documents Tab]
+│  ├─ DocumentUploadGrid (business-specific types: PAN, GSTIN, FSSAI, warehouse lease)
+│  └─ CTAFooter (Upload buttons)
+└─ [Activity Tab]
+   └─ ActivityFeed (popper-specific: spot offers, POs, lot seals, payments)
 
         <!-- TAB: Database Schema -->
         <div id="backend-db" class="tab-panel">
