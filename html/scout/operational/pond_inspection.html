@@ -393,9 +393,10 @@
             <tr><td><span class="spec-badge-inline">BundLineRow</span></td><td><span class="spec-badge-inline">NumberInput</span></td></tr>
             <tr><td><span class="spec-badge-inline">AverageCalculationRow</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
             <tr><td colspan="3"><strong>Screen 4: Pond Photos & Notes</strong></td></tr>
-            <tr><td rowspan="3">Evidence Capture</td><td><span class="spec-badge-inline">PhotoCaptureCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td rowspan="4">Evidence Capture</td><td><span class="spec-badge-inline">PhotoCaptureCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
             <tr><td><span class="spec-badge-inline">PhotoTypeSelector</span></td><td><span class="spec-badge-inline">PhotoGrid</span></td></tr>
             <tr><td><span class="spec-badge-inline">NotesTextArea</span></td><td><span class="spec-badge-inline">TextInput</span> / <span class="spec-badge-inline">CTAFooter</span></td></tr>
+            <tr><td><span class="spec-badge-inline">UploadProgress</span></td><td></td></tr>
             <tr><td colspan="3"><strong>Screen 5: Review & Submit</strong></td></tr>
             <tr><td rowspan="3">Review Summary</td><td><span class="spec-badge-inline">InspectionSummaryCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
             <tr><td><span class="spec-badge-inline">GPS ValidationCard</span></td><td><span class="spec-badge-inline">ExpandableSection</span></td></tr>
@@ -465,6 +466,11 @@
             <strong>NotesTextArea</strong> — Multiline text for observation notes<br>
             <code style="font-size: 11px;">Props: { value, onChange, maxLength }</code><br>
             TextInput with multiline={true}, character count. Max 500 chars.
+          </div>
+          <div class="backend-info-box">
+            <strong>UploadProgress</strong> — Loading indicator during photo upload<br>
+            <code style="font-size: 11px;">Props: { isLoading, progress, status }</code><br>
+            Shows loading ring and status text during S3 upload. Used Screen 4.
           </div>
           <div class="backend-info-box">
             <strong>InspectionSummaryCard</strong> — Overview of all collected data<br>
