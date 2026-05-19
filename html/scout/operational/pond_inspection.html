@@ -380,9 +380,10 @@
           <table class="backend-table">
             <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
             <tr><td colspan="3"><strong>Screen 1: Confirm Pond Arrival (GPS Check)</strong></td></tr>
-            <tr><td rowspan="3">Arrival Verification</td><td><span class="spec-badge-inline">GPSRadarCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
+            <tr><td rowspan="4">Arrival Verification</td><td><span class="spec-badge-inline">GPSRadarCard</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
             <tr><td><span class="spec-badge-inline">DistanceIndicator</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
             <tr><td><span class="spec-badge-inline">GeofenceWarningBanner</span></td><td><span class="spec-badge-inline">InfoBanner</span></td></tr>
+            <tr><td><span class="spec-badge-inline">CoordinatesDisplay</span></td><td></td></tr>
             <tr><td colspan="3"><strong>Screen 2: Assess Pond Conditions</strong></td></tr>
             <tr><td rowspan="3">Conditions Entry</td><td><span class="spec-badge-inline">WaterLevelInput</span></td><td><span class="spec-badge-inline">TopAppBar</span></td></tr>
             <tr><td><span class="spec-badge-inline">AlgaeDensitySlider</span></td><td><span class="spec-badge-inline">NumberInput</span></td></tr>
@@ -419,6 +420,11 @@
             <strong>GeofenceWarningBanner</strong> — GPS verification warning/success<br>
             <code style="font-size: 11px;">Props: { isWithinFence, accuracy, maxDistance }</code><br>
             Banner showing geofence status and accuracy level. Red if outside fence, green if inside.
+          </div>
+          <div class="backend-info-box">
+            <strong>CoordinatesDisplay</strong> — Shows locked GPS coordinates<br>
+            <code style="font-size: 11px;">Props: { latitude, longitude, accuracy, locked }</code><br>
+            Read-only display of GPS coordinates with 6 decimal precision. Used Screen 1.
           </div>
           <div class="backend-info-box">
             <strong>WaterLevelInput</strong> — Numeric water depth entry<br>
@@ -730,7 +736,7 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                 </div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Components Used</div>
-                  <div class="spec-value">• TopAppBar (header with back button and pond ID)<br>• GPSRadarCard (distance-to-target radar visualization)<br>• DistanceIndicator (numeric meters display)<br>• GeofenceWarningBanner (status and accuracy feedback)<br>• CoordinatesDisplay (locked GPS coordinates)<br>• Button (Confirm Arrival - enabled when in geofence)<br>• CTAFooter (action bar with primary button)</div>
+                  <div class="spec-value">• TopAppBar (header with back button and pond ID)<br>• GPSRadarCard (distance-to-target radar visualization)<br>• DistanceIndicator (numeric meters display)<br>• GeofenceWarningBanner (status and accuracy feedback)<br>• CoordinatesDisplay (locked GPS coordinates)<br>• CTAFooter (action bar with primary button)</div>
                 </div>
               </div>
             </div>
