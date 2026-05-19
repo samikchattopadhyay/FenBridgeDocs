@@ -337,70 +337,189 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <h3 class="backend-section-title">React Component Decomposition (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Scout Profile workflow breaks into 10 reusable components: 6 shared across Scout module workflows, 4 workflow-specific for scout profile settings. Components follow atomic design principles with strict TypeScript interfaces.</p>
 
           <div class="backend-info-box">
             <strong>✅ Design Philosophy:</strong><br>
             • Single Responsibility: Each component does ONE thing<br>
             • Prop-based composition: Components accept data + actions as props<br>
             • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
+            • Reuse across workflows: 80% components shared across 20 workflows<br>
             • Variant management: Props define UI variants, not separate components
           </div>
 
-          <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen-by-Screen Component Breakdown</h4>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 1: Edit Personal Details</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Modify scout personal information (name, phone, avatar)<br>
+            <strong>Layout:</strong> TopAppBar → ScoutAvatarCard → TextInput/PhoneInput → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Edit Personal Details", menu<br>
+            • <code style="color: #f472b6;">ScoutAvatarCard</code> (workflow-specific) — Avatar image + scout name + badge number display<br>
+            • <code style="color: #38bdf8;">TextInput</code> (shared) — "Full Name" with validation<br>
+            • <code style="color: #38bdf8;">PhoneInput</code> (shared) — "+91 Mobile" with read-only flag if verified<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Update Profile" (enabled on change), "Cancel"<br>
+            <strong>State Management:</strong> Profile edits in local component state, submitted via updateScoutProfile()<br>
+            <strong>Validation:</strong> Name length 3-100, valid phone format, phone must match verification if changing
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 2: Assigned Geographical Territory</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> View assigned district boundaries and operational villages<br>
+            <strong>Layout:</strong> TopAppBar → TerritoryMapCard → TerritoryVillagesCard → SupportContactCard → ReadOnly<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Assigned Territory", menu<br>
+            • <code style="color: #f472b6;">TerritoryMapCard</code> (workflow-specific) — Interactive map showing:<br>
+            &nbsp;&nbsp;├ District boundary polygon (orange/cyan outline)<br>
+            &nbsp;&nbsp;├ Village markers with names<br>
+            &nbsp;&nbsp;└ Scout location marker<br>
+            • <code style="color: #f472b6;">TerritoryVillagesCard</code> (workflow-specific) — List of assigned villages:<br>
+            &nbsp;&nbsp;├ Village name + panchayat<br>
+            &nbsp;&nbsp;├ Household count<br>
+            &nbsp;&nbsp;└ Distance from scout location<br>
+            • <code style="color: #f472b6;">SupportContactCard</code> (workflow-specific) — Emergency/regional support contact details<br>
+            <strong>State Management:</strong> Territory data fetched via getTerritoryDetails(), cached locally<br>
+            <strong>Interaction:</strong> Read-only view (no edits, back button only)<br>
+            <strong>Offline Support:</strong> Territory boundaries cached in SQLite, works fully offline
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 3: Toggle Language Settings</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Select application UI language (English, Hindi, Maithili)<br>
+            <strong>Layout:</strong> TopAppBar → LanguageSelectionCard → InfoBanner → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Language Settings", menu<br>
+            • <code style="color: #f472b6;">LanguageSelectionCard</code> (workflow-specific) — Radio button group:<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">RadioButton</code> (shared) — "English" with flag icon<br>
+            &nbsp;&nbsp;├ <code style="color: #38bdf8;">RadioButton</code> (shared) — "हिंदी (Hindi)" with flag icon<br>
+            &nbsp;&nbsp;└ <code style="color: #38bdf8;">RadioButton</code> (shared) — "मैथिली (Maithili)" with flag icon<br>
+            • <code style="color: #38bdf8;">InfoBanner</code> (shared) — "App interface will update immediately"<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Save Language" (instant application), "Cancel"<br>
+            <strong>State Management:</strong> Selected language_code in local state, persisted to device settings<br>
+            <strong>Side Effect:</strong> Upon selection, app interface reloads with new language dictionaries<br>
+            <strong>Validation:</strong> Only valid language codes (en, hi, mai)
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 4: Database Sync Status</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Display local database capacity and sync health metrics<br>
+            <strong>Layout:</strong> TopAppBar → SyncMetricsCard + StorageUtilizationCard → QueueMetricsCard → ClearCacheCard → CTAFooter<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Sync Status", menu<br>
+            • <code style="color: #f472b6;">SyncMetricsCard</code> (workflow-specific) — Key metrics display:<br>
+            &nbsp;&nbsp;├ Last sync timestamp<br>
+            &nbsp;&nbsp;├ Sync status (synced/pending/failed)<br>
+            &nbsp;&nbsp;├ Network connection status (online/offline)<br>
+            &nbsp;&nbsp;└ Pending items count<br>
+            • <code style="color: #f472b6;">StorageUtilizationCard</code> (workflow-specific) — Circular progress chart:<br>
+            &nbsp;&nbsp;├ Used vs. total capacity in MB<br>
+            &nbsp;&nbsp;├ Color gradient (green &lt;70%, yellow 70-90%, red &gt;90%)<br>
+            &nbsp;&nbsp;└ Cache size breakdown (photos, documents, inspections)<br>
+            • <code style="color: #f472b6;">QueueMetricsCard</code> (workflow-specific) — Queue status:<br>
+            &nbsp;&nbsp;├ Pending submissions (forms waiting sync)<br>
+            &nbsp;&nbsp;├ Queued photos (offline uploads)<br>
+            &nbsp;&nbsp;└ Last successful sync date<br>
+            • <code style="color: #f472b6;">ClearCacheButton</code> (workflow-specific) — CTA to clear non-essential cache<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Back" (read-only view)<br>
+            <strong>State Management:</strong> Metrics queried from SQLite, auto-refresh every 30s<br>
+            <strong>Interaction:</strong> Read-only view + cache clear action
+          </div>
+
+          <h5 style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-top: 20px; margin-bottom: 12px;">Screen 5: Logout Confirmation Details</h5>
+          <div class="backend-info-box">
+            <strong>Purpose:</strong> Safely logout with warning about unsynced data<br>
+            <strong>Layout:</strong> TopAppBar → LogoutWarningBanner → UnsyncedItemsCard → ConfirmationCheckbox → LogoutCTA<br>
+            <strong>Components (by hierarchy):</strong><br>
+            • <code style="color: #38bdf8;">TopAppBar</code> (shared) — Header with back, "Logout", menu<br>
+            • <code style="color: #38bdf8;">WarningBanner</code> (shared) — Red critical: "You have unsynced items. They will be lost on logout."<br>
+            • <code style="color: #f472b6;">UnsyncedItemsCard</code> (workflow-specific) — Shows pending items if any:<br>
+            &nbsp;&nbsp;├ Count of pending forms (farm registrations, inspections)<br>
+            &nbsp;&nbsp;├ Count of queued photos<br>
+            &nbsp;&nbsp;├ Timestamp of last sync<br>
+            &nbsp;&nbsp;└ "Sync now" action link<br>
+            • <code style="color: #38bdf8;">ConfirmationCheckbox</code> (shared) — "I understand my unsync data will be lost"<br>
+            • <code style="color: #f472b6;">LogoutCTA</code> (workflow-specific) — Dark crimson button "Logout" (disabled until checkbox)<br>
+            • <code style="color: #38bdf8;">CTAFooter</code> (shared) — "Cancel" secondary action<br>
+            <strong>State Management:</strong> Unsync status queried from sync queue table<br>
+            <strong>Logout Flow:</strong> On confirm, wipes auth tokens + local session data, redirects to login<br>
+            <strong>Validation:</strong> Checkbox must be checked before logout enabled
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Shared Components (Across 20 Workflows)</h4>
           <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><th>Component</th><th>Purpose</th><th>Props Interface</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Fixed header, back button, title, menu</td><td>title: string; onBack: () =&gt; void;</td></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text field with validation + error</td><td>value: string; onChange: (val) =&gt; void; error?: string; placeholder?: string;</td></tr>
+            <tr><td><strong>PhoneInput</strong></td><td>Mobile field with +91 prefix</td><td>value: string; onChange: (val) =&gt; void; disabled?: boolean; error?: string;</td></tr>
+            <tr><td><strong>RadioButton</strong></td><td>Single radio option</td><td>label: string; value: string; selected: boolean; onChange: (val) =&gt; void; icon?: ReactNode;</td></tr>
+            <tr><td><strong>InfoBanner</strong></td><td>Info callout box</td><td>type: 'info' | 'warning'; message: string;</td></tr>
+            <tr><td><strong>WarningBanner</strong></td><td>Critical warning callout</td><td>message: string; severity?: 'warning'|'critical';</td></tr>
+            <tr><td><strong>ConfirmationCheckbox</strong></td><td>Single checkbox with label</td><td>label: string; checked: boolean; onChange: (checked) =&gt; void;</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Sticky action buttons</td><td>primaryText: string; secondaryText?: string; onPrimary: () =&gt; void; primaryDisabled?: boolean;</td></tr>
           </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Workflow-Specific Components (Scout Profile Only)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Screens Used</th><th>Responsibility</th></tr>
+            <tr><td><strong>ScoutAvatarCard</strong></td><td>1</td><td>Displays scout avatar image, full name, badge number</td></tr>
+            <tr><td><strong>TerritoryMapCard</strong></td><td>2</td><td>Interactive map showing district boundary, villages, scout location</td></tr>
+            <tr><td><strong>TerritoryVillagesCard</strong></td><td>2</td><td>Scrollable list of assigned villages with panchayat names, household counts, distances</td></tr>
+            <tr><td><strong>SupportContactCard</strong></td><td>2</td><td>Displays regional support contact (manager name, phone, email)</td></tr>
+            <tr><td><strong>LanguageSelectionCard</strong></td><td>3</td><td>Radio button group for selecting UI language (English, Hindi, Maithili)</td></tr>
+            <tr><td><strong>SyncMetricsCard</strong></td><td>4</td><td>Displays last sync time, status, connection state, pending items count</td></tr>
+            <tr><td><strong>StorageUtilizationCard</strong></td><td>4</td><td>Circular progress chart showing SQLite database capacity usage with color coding</td></tr>
+            <tr><td><strong>QueueMetricsCard</strong></td><td>4</td><td>Shows pending submissions count, queued photos, last sync date</td></tr>
+            <tr><td><strong>ClearCacheButton</strong></td><td>4</td><td>Action button to clear non-essential local cache</td></tr>
+            <tr><td><strong>UnsyncedItemsCard</strong></td><td>5</td><td>Warning card listing pending forms, queued photos, with "Sync now" action</td></tr>
+            <tr><td><strong>LogoutCTA</strong></td><td>5</td><td>Dark crimson logout button (disabled until confirmation checkbox)</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Cross-Workflow Component Reuse Pattern</h4>
+          <div class="backend-info-box">
+            <strong>⚠️ CRITICAL: Zero Duplication Rule</strong><br><br>
+            <strong>Already Shared Across Multiple Workflows:</strong><br>
+            • <code>TextInput</code>, <code>PhoneInput</code> — All shared. DO NOT recreate.<br>
+            • <code>RadioButton</code> — New shared component (language, settings, selection lists). Create ONCE for reuse across 20 workflows.<br>
+            • <code>InfoBanner</code>, <code>WarningBanner</code> — Shared. DO NOT create new banner variants.<br>
+            • <code>ConfirmationCheckbox</code>, <code>CTAFooter</code>, <code>TopAppBar</code> — All shared. DO NOT recreate.<br><br>
+            <strong>This Workflow's New Components:</strong><br>
+            Only 4 components are UNIQUE to Scout Profile:<br>
+            1. <code>ScoutAvatarCard</code> — Displays scout avatar + badge (profile-specific)<br>
+            2. <code>TerritoryMapCard</code> — Interactive map with boundaries + village markers<br>
+            3. <code>SyncMetricsCard</code> + <code>StorageUtilizationCard</code> + <code>QueueMetricsCard</code> — Diagnostics cards<br>
+            4. <code>UnsyncedItemsCard</code> — Warning card listing pending items<br><br>
+            <strong>DO's:</strong><br>
+            ✓ Check COMPONENT_ARCHITECTURE_GUIDE.md BEFORE creating any component<br>
+            ✓ Create RadioButton as shared component (used in language selection, settings, status filters)<br>
+            ✓ Reuse TextInput, PhoneInput, InfoBanner, WarningBanner, ConfirmationCheckbox directly<br>
+            ✓ Create only truly unique components (ScoutAvatarCard, TerritoryMapCard)<br>
+            ✓ Use props for variant display (info vs. warning banner, success vs. error colors)<br><br>
+            <strong>DON'Ts:</strong><br>
+            ✗ DO NOT create LanguageButton or LanguageOption components — use RadioButton with variant props<br>
+            ✗ DO NOT create separate SyncStatusBanner — use WarningBanner component<br>
+            ✗ DO NOT duplicate banner components — reuse InfoBanner/WarningBanner with severity prop<br>
+            ✗ DO NOT create ProfileHeaderCard twice — reuse ScoutAvatarCard pattern<br>
+            ✗ DO NOT create custom logout button — use CTAFooter with dark crimson variant<br>
+            ✗ DO NOT create new input components — reuse TextInput/PhoneInput with props
+          </div>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 24px;">Consistency & Mobile Responsive Guidelines</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ Spacing:</strong> 16px gap between sections, 24px padding inside cards, 80px footer height</li>
+            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary: #06b6d4, --text-main: #f3f4f6)</li>
+            <li><strong>✓ Typography:</strong> Outfit 800 for titles, Inter 400/600 for body, 12-14px labels</li>
+            <li><strong>✓ Mobile Breakpoints:</strong> 360px (mobile), 600px (tablet), 1024px (desktop)</li>
+            <li><strong>✓ Form Validation:</strong> Frontend mirrors backend Zod, real-time error display</li>
+            <li><strong>✓ Accessibility:</strong> aria-label on all buttons, labels paired with inputs, focus states</li>
+            <li><strong>✓ Map Display:</strong> TerritoryMapCard uses standard map library (Mapbox/Google Maps) with offline tile caching</li>
+            <li><strong>✓ Chart Display:</strong> StorageUtilizationCard uses circular progress (canvas or SVG), color gradient for capacity warnings</li>
+            <li><strong>✓ Logout Flow:</strong> Critical warning banner + checkbox requirement + crimson CTA for confirmation</li>
+            <li><strong>✓ Read-Only Screens:</strong> Territory and Sync screens are read-only with back button only</li>
+            <li><strong>✓ State Management:</strong> Store profile edits locally, language preference in device settings, sync metrics from SQLite</li>
+            <li><strong>✓ Error Handling:</strong> Consistent red border + message for validation errors</li>
           </ul>
-
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-          <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
-          </div>
         </div>
 
         <!-- TAB: Database Schema -->
