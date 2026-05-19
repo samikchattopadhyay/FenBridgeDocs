@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scout - Common Components Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Hanken+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #131313;
+      --bg-surface: #1c1b1b;
+      --bg-card: #201f1f;
+      --bg-active: #2a2a2a;
+      --accent-primary: #10b981;
+      --accent-primary-hover: #059669;
+      --accent-primary-light: rgba(16, 185, 129, 0.15);
+      --text-main: #e5e2e1;
+      --text-muted: #bbcabf;
+      --text-dim: #86948a;
+      --border-color: #353534;
+      --border-light: #3c4a42;
+      --error: #ffb4ab;
+      --warning: #ffc107;
+      --success: #4edea3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    .content-wrapper { padding: 40px 48px 96px; max-width: 1400px; margin: 0 auto; }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+    .header-banner {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, #0d3a2d 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: 16px;
+      padding: 32px 40px;
+      margin-bottom: 48px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 900px;
+    }
+
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px 32px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent-primary);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+    }
+
+    .toc-item a {
+      display: block;
+      padding: 10px 12px;
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .toc-item a:hover {
+      background: var(--bg-active);
+      border-left-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .section {
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--accent-primary);
+      margin-bottom: 12px;
+      scroll-margin-top: 100px;
+      padding-top: 20px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .component-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .component-name {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .component-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .usage-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .usage-item {
+      background: var(--bg-active);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-primary);
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .usage-item strong {
+      color: var(--accent-primary);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .variants-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .variants-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .variant-tag {
+      display: inline-block;
+      background: var(--accent-primary-light);
+      color: var(--accent-primary);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .warning-box {
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-left: 3px solid var(--warning);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .warning-box strong {
+      color: var(--warning);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .workflow-reference {
+      background: var(--accent-primary-light);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .workflow-reference strong {
+      color: var(--accent-primary);
+    }
+
+    .footer-note {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 64px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-verified {
+      background: rgba(78, 222, 163, 0.15);
+      color: var(--success);
+    }
+
+    .status-common {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="header-banner">
+      <span class="tag">📚 Reference Documentation</span>
+      <h1 class="title">Scout Common Components</h1>
+      <p class="desc">Single source of truth for all reusable UI components used across Scout workflows. Use this guide to prevent component duplication and maintain consistency across all 20 workflows and 122 screens.</p>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">Quick Navigation</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#buttons">Buttons & CTAs</a></li>
+        <li class="toc-item"><a href="#input-fields">Input Fields & Forms</a></li>
+        <li class="toc-item"><a href="#cards">Cards & Containers</a></li>
+        <li class="toc-item"><a href="#status-badges">Status & Badges</a></li>
+        <li class="toc-item"><a href="#data-tables">Data Tables & Lists</a></li>
+        <li class="toc-item"><a href="#media-components">Media Components</a></li>
+        <li class="toc-item"><a href="#navigation">Navigation & Steppers</a></li>
+        <li class="toc-item"><a href="#dialogs">Dialogs & Modals</a></li>
+        <li class="toc-item"><a href="#state-ui">State Indicators</a></li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ COMPONENT REUSE MANDATE:</strong> Before creating any new component element, check this reference and existing workflow HTML files for identical or similar patterns. Duplicate components across workflows represent technical debt and increase maintenance cost. When in doubt, refactor and reuse.
+    </div>
+
+    <!-- BUTTONS & CTAs -->
+    <div class="section" id="buttons">
+      <h2 class="section-title">🔘 Buttons & CTAs</h2>
+      <p class="section-desc">Primary interactive elements for user actions across all workflows.</p>
+
+      <div class="component-card">
+        <div class="component-name">Primary Button</div>
+        <div class="component-desc">Solid background, emerald green, white text. Used for main actions (Submit, Save, Confirm).</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Classes:</strong> .btn-primary
+          </div>
+          <div class="usage-item">
+            <strong>Background:</strong> var(--accent-primary) #10B981
+          </div>
+          <div class="usage-item">
+            <strong>Padding:</strong> 12px 20px (small), 16px 28px (large)
+          </div>
+          <div class="usage-item">
+            <strong>Border-Radius:</strong> 8px
+          </div>
+        </div>
+        <div class="variants-section">
+          <div class="variants-title">Used in Workflows:</div>
+          <span class="variant-tag">Lot Verification</span>
+          <span class="variant-tag">Farmer Registration</span>
+          <span class="variant-tag">Popper Registration</span>
+          <span class="variant-tag">Pond Inspection</span>
+        </div>
+        <div class="workflow-reference">
+          <strong>First Use:</strong> Farmer Registration submission step
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Secondary Button</div>
+        <div class="component-desc">Ghost style with emerald green border and text. Used for secondary actions (Cancel, Back, Skip).</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Classes:</strong> .btn-secondary
+          </div>
+          <div class="usage-item">
+            <strong>Border:</strong> 1px solid var(--accent-primary)
+          </div>
+          <div class="usage-item">
+            <strong>Background:</strong> transparent
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Danger/Destructive Button</div>
+        <div class="component-desc">Used for irreversible actions like rejection or deactivation. Red/error color.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Classes:</strong> .btn-danger
+          </div>
+          <div class="usage-item">
+            <strong>Background:</strong> var(--error) #ffb4ab
+          </div>
+          <div class="usage-item">
+            <strong>Requires Confirmation:</strong> Always use with confirmation dialog
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Used in:</strong> Rejection Handling, Deactivate Pond/Warehouse
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Icon Button</div>
+        <div class="component-desc">Circular 44x44px minimum for tap targets. No text, icon only.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Min Size:</strong> 44x44px (iOS/Android accessibility)
+          </div>
+          <div class="usage-item">
+            <strong>Icon Size:</strong> 24px stroke, 2px weight
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INPUT FIELDS & FORMS -->
+    <div class="section" id="input-fields">
+      <h2 class="section-title">📝 Input Fields & Forms</h2>
+      <p class="section-desc">Text, select, date, and file input components used across registration and data-capture workflows.</p>
+
+      <div class="component-card">
+        <div class="component-name">Text Input</div>
+        <div class="component-desc">Standard text field with label, optional error state, and helper text.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Background:</strong> #181818
+          </div>
+          <div class="usage-item">
+            <strong>Border:</strong> 1px solid #2D2D2D (default), transitions to var(--accent-primary) on focus
+          </div>
+          <div class="usage-item">
+            <strong>Label Position:</strong> Always above field
+          </div>
+          <div class="usage-item">
+            <strong>Padding:</strong> 12px 14px (minimum)
+          </div>
+        </div>
+        <div class="variants-section">
+          <div class="variants-title">States:</div>
+          <span class="variant-tag">default</span>
+          <span class="variant-tag">focus</span>
+          <span class="variant-tag">error</span>
+          <span class="variant-tag">disabled</span>
+          <span class="variant-tag">filled</span>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Select Dropdown</div>
+        <div class="component-desc">Native or custom select for categorical choices. Always shows selected value clearly.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Used For:</strong> Status, Type, Category, Grade, Quality selection
+          </div>
+          <div class="usage-item">
+            <strong>Styling:</strong> Match text input styling
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Examples:</strong> Grade selection (Lot Verification), Status (Farmer Management), Category (Rejection Handling)
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Checkbox & Radio</div>
+        <div class="component-desc">For binary choices (checkbox) or single selection from options (radio).</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Size:</strong> 18x18px minimum (touch target)
+          </div>
+          <div class="usage-item">
+            <strong>Label Alignment:</strong> Right of control
+          </div>
+          <div class="usage-item">
+            <strong>Spacing:</strong> 12px minimum between adjacent controls
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Date/Time Picker</div>
+        <div class="component-desc">Native date input or custom picker. Always shows selected date in readable format.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Format:</strong> DD-MMM-YYYY (e.g., "15-May-2026")
+          </div>
+          <div class="usage-item">
+            <strong>Required Workflows:</strong> Farmer Registration, Popper Registration, Pond Inspection dates
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Number Input</div>
+        <div class="component-desc">For numeric data: quantities, measurements, GPS coordinates, weights.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Decimals:</strong> 2 decimal places for measurements (weight, area)
+          </div>
+          <div class="usage-item">
+            <strong>Units:</strong> Always show unit label (kg, hectares, m², etc.)
+          </div>
+          <div class="usage-item">
+            <strong>Min/Max:</strong> Validate range based on context
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Form Section Header</div>
+        <div class="component-desc">Groups related form fields. Provides visual and semantic grouping.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Style:</strong> Uppercase label, 12px font, text-dim color
+          </div>
+          <div class="usage-item">
+            <strong>Spacing:</strong> 20px margin-top between sections
+          </div>
+          <div class="usage-item">
+            <strong>Example Headers:</strong> "Personal Details", "Address Information", "Bank Account", "Pond Details"
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Error Message</div>
+        <div class="component-desc">Field-level error text shown below input on validation failure.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Color:</strong> var(--error) #ffb4ab
+          </div>
+          <div class="usage-item">
+            <strong>Font Size:</strong> 12px
+          </div>
+          <div class="usage-item">
+            <strong>Position:</strong> Directly below input field
+          </div>
+          <div class="usage-item">
+            <strong>Example:</strong> "This field is required", "Invalid phone number", "Distance exceeds 50km"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARDS & CONTAINERS -->
+    <div class="section" id="cards">
+      <h2 class="section-title">📋 Cards & Containers</h2>
+      <p class="section-desc">Primary vessels for content grouping and visual hierarchy.</p>
+
+      <div class="component-card">
+        <div class="component-name">Content Card</div>
+        <div class="component-desc">Standard container for form sections, data displays, workflow steps.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Background:</strong> var(--bg-card) #201f1f
+          </div>
+          <div class="usage-item">
+            <strong>Border:</strong> 1px solid var(--border-color)
+          </div>
+          <div class="usage-item">
+            <strong>Padding:</strong> 20px 24px (standard)
+          </div>
+          <div class="usage-item">
+            <strong>Border-Radius:</strong> 12px
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Data Card (Lot/Farmer/Warehouse)</div>
+        <div class="component-desc">Displays key information for a single entity with optional actions. Clickable/expandable.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Layout:</strong> Header (ID/Name), body (key details), footer (status/actions)
+          </div>
+          <div class="usage-item">
+            <strong>Interaction:</strong> Tap to view details, swipe for actions
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Used in:</strong> Lot Directory, Warehouse List, User Directory, Sync Queue
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Summary Card</div>
+        <div class="component-desc">Displays aggregated or summary information. Read-only.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Use Case:</strong> Grade certificate, lot summary before submission, farmer summary
+          </div>
+          <div class="usage-item">
+            <strong>Background:</strong> Slightly darker (var(--bg-active)) to indicate read-only state
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Highlighted/Alert Card</div>
+        <div class="component-desc">Draws attention to important information, warnings, or status changes.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Types:</strong> Success (green), Warning (yellow), Error (red), Info (blue)
+          </div>
+          <div class="usage-item">
+            <strong>Left Border:</strong> 3px colored border
+          </div>
+          <div class="usage-item">
+            <strong>Background:</strong> Subtle color overlay (10% opacity)
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Examples:</strong> Rejection notice, lot approved status, sync conflict indicator
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Side-by-Side Comparison Card</div>
+        <div class="component-desc">Shows before/after or current/target values for inspection comparisons.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Layout:</strong> Two columns with centered divider
+          </div>
+          <div class="usage-item">
+            <strong>Example:</strong> Prior seal condition vs. current condition in Storage Re-Check
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATUS BADGES -->
+    <div class="section" id="status-badges">
+      <h2 class="section-title">🏷️ Status & Badges</h2>
+      <p class="section-desc">Visual indicators for state, approval status, and workflow progress.</p>
+
+      <div class="component-card">
+        <div class="component-name">Status Badge</div>
+        <div class="component-desc">Inline label showing current status. Small, non-interactive.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Format:</strong> Rounded background with text
+          </div>
+          <div class="usage-item">
+            <strong>Padding:</strong> 4px 8px
+          </div>
+          <div class="usage-item">
+            <strong>Font Size:</strong> 11px, weight 600
+          </div>
+        </div>
+        <div class="variants-section">
+          <div class="variants-title">Status Types (Color Coded):</div>
+          <span class="variant-tag">Draft (Gray)</span>
+          <span class="variant-tag">Pending (Yellow)</span>
+          <span class="variant-tag">Approved (Green)</span>
+          <span class="variant-tag">Rejected (Red)</span>
+          <span class="variant-tag">Verified (Green)</span>
+          <span class="variant-tag">Sealed (Blue)</span>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Progress Badge</div>
+        <div class="component-desc">Shows completion percentage or step progress within a workflow.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Format:</strong> "3 of 7 steps" or "45% complete"
+          </div>
+          <div class="usage-item">
+            <strong>Use Case:</strong> Multi-step registration (farmer, popper)
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Verification Badge</div>
+        <div class="component-desc">Indicates data has been verified or is pending verification.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>States:</strong> Verified ✓, Pending ⏳, Failed ✗
+          </div>
+          <div class="usage-item">
+            <strong>Color:</strong> Green (verified), Yellow (pending), Red (failed)
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Used in:</strong> Farmer Registration (OTP, Penny-drop), Photo verification steps
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Category Chip</div>
+        <div class="component-desc">Labels or tags for categorization (defect types, lot categories, etc.)</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Format:</strong> Small pill with text
+          </div>
+          <div class="usage-item">
+            <strong>Padding:</strong> 4px 10px
+          </div>
+          <div class="usage-item">
+            <strong>Use Case:</strong> Defect types (Discoloration, Damage, Size Variation), Quality grades
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATA TABLES & LISTS -->
+    <div class="section" id="data-tables">
+      <h2 class="section-title">📊 Data Tables & Lists</h2>
+      <p class="section-desc">For displaying structured data across multiple rows with consistent formatting.</p>
+
+      <div class="component-card">
+        <div class="component-name">List Item (Minimal)</div>
+        <div class="component-desc">Single row with title and optional subtitle/metadata. Clickable for navigation.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Layout:</strong> Title (bold), subtitle (muted), with optional right indicator (status badge or arrow)
+          </div>
+          <div class="usage-item">
+            <strong>Height:</strong> Minimum 48px touch target
+          </div>
+          <div class="usage-item">
+            <strong>Divider:</strong> 1px solid #2D2D2D between items
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Used in:</strong> User Directory, Warehouse List, Pond List
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Data Row (With Details)</div>
+        <div class="component-desc">Multi-column row displaying structured entity data.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Columns:</strong> Max 4-5 columns on mobile, more on desktop
+          </div>
+          <div class="usage-item">
+            <strong>Alignment:</strong> Left-align text, right-align numbers
+          </div>
+          <div class="usage-item">
+            <strong>Spacing:</strong> 12px horizontal padding per column
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Table Header</div>
+        <div class="component-desc">Column labels for data tables. Sticky on scroll.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Background:</strong> var(--bg-active) with 1px bottom border
+          </div>
+          <div class="usage-item">
+            <strong>Font:</strong> 12px, weight 600, uppercase
+          </div>
+          <div class="usage-item">
+            <strong>Sticky:</strong> Position sticky when list scrolls
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Empty State</div>
+        <div class="component-desc">Message shown when no data available. May include action button.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Content:</strong> Icon (48px), title, description, optional CTA
+          </div>
+          <div class="usage-item">
+            <strong>Example:</strong> "No lots to verify yet" with "Create Lot" button
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDIA COMPONENTS -->
+    <div class="section" id="media-components">
+      <h2 class="section-title">📷 Media Components</h2>
+      <p class="section-desc">Photo capture, upload, and display components critical to Scout verification workflow.</p>
+
+      <div class="component-card">
+        <div class="component-name">Photo Capture Card</div>
+        <div class="component-desc">Interaction point for capturing photos via device camera or uploading from gallery.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Layout:</strong> Dashed border box with camera icon and "Tap to capture" text
+          </div>
+          <div class="usage-item">
+            <strong>Size:</strong> 120x120px minimum (touch target)
+          </div>
+          <div class="usage-item">
+            <strong>State After Capture:</strong> Shows thumbnail of captured image
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Workflows:</strong> Lot Verification (evidence photos), Seal Application, Storage Re-Check, Pond Inspection, Rejection Handling
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Photo Gallery/Grid</div>
+        <div class="component-desc">Displays multiple captured or uploaded photos in a grid layout.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Layout:</strong> 2-3 columns on mobile
+          </div>
+          <div class="usage-item">
+            <strong>Interaction:</strong> Tap to view full-screen, swipe to delete
+          </div>
+          <div class="usage-item">
+            <strong>Count Badge:</strong> Shows number of photos captured (e.g., "3/5 required")
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Photo Viewer (Full-Screen)</div>
+        <div class="component-desc">Modal or full-screen view of a single photo with metadata.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Controls:</strong> Close button, prev/next arrows, zoom controls
+          </div>
+          <div class="usage-item">
+            <strong>Metadata:</strong> Timestamp, GPS location (if available), file size
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Document Preview</div>
+        <div class="component-desc">Displays document images (ID, business cert, etc.) with ability to rotate/zoom.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Use Case:</strong> Farmer Registration (Aadhar, bank statements), Popper Registration (business docs)
+          </div>
+          <div class="usage-item">
+            <strong>Features:</strong> Rotation, zoom, download
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Photo Upload Queue</div>
+        <div class="component-desc">Shows pending photos waiting to sync in offline workflow context.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Indicator:</strong> "3 photos pending sync" with spinner icon
+          </div>
+          <div class="usage-item">
+            <strong>Location:</strong> Typically in Sync Queue or bottom of screen
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION & STEPPERS -->
+    <div class="section" id="navigation">
+      <h2 class="section-title">🗺️ Navigation & Steppers</h2>
+      <p class="section-desc">Components for guiding users through multi-step workflows and screens.</p>
+
+      <div class="component-card">
+        <div class="component-name">Stepper/Progress Indicator</div>
+        <div class="component-desc">Horizontal step indicator showing current position in multi-step workflow.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Layout:</strong> Numbered circles (1, 2, 3...) connected by lines
+          </div>
+          <div class="usage-item">
+            <strong>Active State:</strong> Highlighted circle with glow effect
+          </div>
+          <div class="usage-item">
+            <strong>Completed State:</strong> Checkmark in circle
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Used in:</strong> Farmer Registration (13 steps), Popper Registration (16 steps), Lot Verification (7 steps)
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Tab Navigation</div>
+        <div class="component-desc">Multiple content sections in single screen. Switch between tabs to view different data.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Layout:</strong> Horizontal tabs with underline indicator
+          </div>
+          <div class="usage-item">
+            <strong>Active Indicator:</strong> Emerald green underline
+          </div>
+          <div class="usage-item">
+            <strong>Use Case:</strong> Lot details (inspection, seal, re-check history)
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Breadcrumb Navigation</div>
+        <div class="component-desc">Shows current page location in hierarchy. Allows quick navigation up the tree.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Format:</strong> "Scout > Lots > Lot #123"
+          </div>
+          <div class="usage-item">
+            <strong>Separator:</strong> ">" or "/" icon
+          </div>
+          <div class="usage-item">
+            <strong>Last Item:</strong> Non-clickable (current page)
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Bottom Navigation (Mobile)</div>
+        <div class="component-desc">Fixed navigation bar at bottom of screen for primary workflows.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Items:</strong> 3-5 main sections (Dashboard, Workflows, Users, Sync, Profile)
+          </div>
+          <div class="usage-item">
+            <strong>Active State:</strong> Icon highlighted in emerald green
+          </div>
+          <div class="usage-item">
+            <strong>Badge:</strong> Notification count badge (e.g., "3" for pending approvals)
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Contextual Back Button</div>
+        <div class="component-desc">Navigates back to previous screen. Always visible, typically top-left or top-right.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Style:</strong> Icon button (chevron left or back arrow)
+          </div>
+          <div class="usage-item">
+            <strong>Size:</strong> 44x44px minimum
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIALOGS & MODALS -->
+    <div class="section" id="dialogs">
+      <h2 class="section-title">💬 Dialogs & Modals</h2>
+      <p class="section-desc">Modal interactions for confirmation, alerts, and focused task completion.</p>
+
+      <div class="component-card">
+        <div class="component-name">Confirmation Dialog</div>
+        <div class="component-desc">Asks for user confirmation before destructive action (reject lot, deactivate user, etc.)</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Content:</strong> Icon, title, description, action buttons
+          </div>
+          <div class="usage-item">
+            <strong>Buttons:</strong> Primary action (destructive red) + Cancel
+          </div>
+          <div class="usage-item">
+            <strong>Accessibility:</strong> Focus starts on Cancel button (safer default)
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Triggers:</strong> Reject Lot, Deactivate Pond/Warehouse, Delete User, Mark Ready
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Success/Status Modal</div>
+        <div class="component-desc">Shows result of completed action (submission successful, data saved, etc.)</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Content:</strong> Success icon (checkmark), title, optional reference ID, CTA
+          </div>
+          <div class="usage-item">
+            <strong>Auto-dismiss:</strong> 2-3 seconds OR requires explicit close
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Used After:</strong> Lot submission, Farmer registration complete, Seal application submitted
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Error Modal</div>
+        <div class="component-desc">Displays error message to user with option to retry or dismiss.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Content:</strong> Error icon, error message, suggestion for fix
+          </div>
+          <div class="usage-item">
+            <strong>Buttons:</strong> "Retry", "Dismiss", or "Go Back"
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Bottom Sheet / Drawer</div>
+        <div class="component-desc">Modal that slides up from bottom. Used for options menus or secondary forms.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Content:</strong> Title, list of actions/options, close button (X or outside tap)
+          </div>
+          <div class="usage-item">
+            <strong>Backdrop:</strong> Semi-transparent dark overlay dismisses sheet on tap
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Toast/Snackbar</div>
+        <div class="component-desc">Transient notification at bottom of screen. Auto-dismisses after 3-4 seconds.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Use Case:</strong> Quick feedback (copied to clipboard, data saved, connection restored)
+          </div>
+          <div class="usage-item">
+            <strong>Types:</strong> Success (green), Info (blue), Warning (yellow), Error (red)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE INDICATORS -->
+    <div class="section" id="state-ui">
+      <h2 class="section-title">⚙️ State Indicators & Feedback</h2>
+      <p class="section-desc">Components for showing loading states, network status, offline mode, and validation feedback.</p>
+
+      <div class="component-card">
+        <div class="component-name">Loading Spinner</div>
+        <div class="component-desc">Circular animated spinner indicating data is loading.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Size:</strong> 24px (inline), 48px (full-screen)
+          </div>
+          <div class="usage-item">
+            <strong>Color:</strong> var(--accent-primary) emerald green
+          </div>
+          <div class="usage-item">
+            <strong>When to Show:</strong> API calls > 300ms, file uploads, image processing
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Skeleton Loader</div>
+        <div class="component-desc">Placeholder shapes showing where content will appear. Better UX than spinner.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Pattern:</strong> Gray animated boxes matching content layout
+          </div>
+          <div class="usage-item">
+            <strong>Use Case:</strong> Lot list loading, user details, warehouse info
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Network Status Bar</div>
+        <div class="component-desc">Always-visible indicator showing online/offline status.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Position:</strong> Top of screen (below app bar)
+          </div>
+          <div class="usage-item">
+            <strong>States:</strong> "Online" (green), "Offline" (red), "Syncing" (yellow)
+          </div>
+          <div class="usage-item">
+            <strong>Required In:</strong> All Scout screens (essential for offline-first app)
+          </div>
+        </div>
+        <div class="workflow-reference">
+          <strong>Critical for:</strong> Sync Queue, Mobile App
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Validation Feedback</div>
+        <div class="component-desc">Real-time feedback on form field validity.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Valid State:</strong> Green checkmark next to input
+          </div>
+          <div class="usage-item">
+            <strong>Error State:</strong> Red error icon + error message below input
+          </div>
+          <div class="usage-item">
+            <strong>Timing:</strong> On blur or real-time (do not validate until first submit)
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Sync Progress Indicator</div>
+        <div class="component-desc">Shows progress of background sync operation (photos, forms, data).</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Format:</strong> Progress bar with "3 of 10 items syncing"
+          </div>
+          <div class="usage-item">
+            <strong>Location:</strong> Sync Queue screen or as bottom bar
+          </div>
+          <div class="usage-item">
+            <strong>Actions:</strong> Pause, Resume, View Details
+          </div>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <div class="component-name">Conflict Indicator</div>
+        <div class="component-desc">Alerts user to data conflicts during offline-to-online sync.</div>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <strong>Visual:</strong> Red badge or warning box
+          </div>
+          <div class="usage-item">
+            <strong>Action:</strong> Opens conflict resolution UI
+          </div>
+          <div class="usage-item">
+            <strong>Required for:</strong> Offline-first architecture
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-note">
+      <p>
+        <strong>Last Updated:</strong> 2026-05-19 | <strong>Version:</strong> 1.0<br>
+        This reference document is the source of truth for all Scout UI components. When building screens or workflows, consult this guide first before creating new components. Questions or updates? File an issue in project documentation.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

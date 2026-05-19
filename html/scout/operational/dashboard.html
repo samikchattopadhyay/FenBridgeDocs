@@ -317,70 +317,162 @@
           └─ NotificationSettings (gear icon)
         </div>
 
-        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">Shared Components Used in Dashboard</h4>
+        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">Workflow-Specific Components (9 Components)</h4>
         <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
           <tr style="background: rgba(6, 182, 212, 0.12);">
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Component</th>
-            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Usage</th>
-            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Reuse Count</th>
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Purpose &amp; Props</th>
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Screens</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>TaskCard</strong></td>
+            <td style="padding: 12px;">Selectable task row (lot/warehouse name, task type, distance, priority). Props: <code>task: {name, type, distanceKm, priority}, onTap: () => void</code></td>
+            <td style="padding: 12px;">1</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
+            <td style="padding: 12px;"><strong>TaskSearchBar</strong></td>
+            <td style="padding: 12px;">Search + filter by task status (New/In-Progress/Completed). Props: <code>searchValue: string, onSearchChange: (v) => void, statusFilter: string, onStatusChange: (s) => void</code></td>
+            <td style="padding: 12px;">1</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>TaskListContainer</strong></td>
+            <td style="padding: 12px;">Scrollable list of task cards with pull-to-refresh. Props: <code>tasks: [], isLoading: boolean, onRefresh: () => void</code></td>
+            <td style="padding: 12px;">1</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
+            <td style="padding: 12px;"><strong>MapToggleButton</strong></td>
+            <td style="padding: 12px;">Toggle between list and geofenced map view. Props: <code>isMapMode: boolean, onToggle: () => void</code></td>
+            <td style="padding: 12px;">1</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>AlertBanner</strong></td>
+            <td style="padding: 12px;">Red warning banner showing overdue task count. Props: <code>overdueCount: number, totalOverdueHours: number</code></td>
+            <td style="padding: 12px;">2</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
+            <td style="padding: 12px;"><strong>OverdueTaskCard</strong></td>
+            <td style="padding: 12px;">Overdue task row with red status indicator and acknowledge action. Props: <code>task: {...}, overdueHours: number, onAcknowledge: () => void</code></td>
+            <td style="padding: 12px;">2</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>AcknowledgeSheet</strong></td>
+            <td style="padding: 12px;">Modal for recording acknowledgment notes. Props: <code>onSubmit: (notes) => void, onCancel: () => void</code></td>
+            <td style="padding: 12px;">2</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
+            <td style="padding: 12px;"><strong>NotificationCard</strong></td>
+            <td style="padding: 12px;">Single notification item (icon, title, message, timestamp). Props: <code>notification: {type, title, message, timestamp}, onDismiss: () => void</code></td>
+            <td style="padding: 12px;">3</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>NotificationTabs</strong></td>
+            <td style="padding: 12px;">Three-tab switcher (All / Unread / Completed). Props: <code>activeTab: string, onTabChange: (tab) => void</code></td>
+            <td style="padding: 12px;">3</td>
+          </tr>
+        </table>
+
+        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">Shared Component Hierarchy (7 Components)</h4>
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px;">
+          <tr style="background: rgba(6, 182, 212, 0.12);">
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Component</th>
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Purpose</th>
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #27272a; color: #06b6d4; font-weight: 700;">Used In</th>
           </tr>
           <tr style="border-bottom: 1px solid #27272a;">
             <td style="padding: 12px;"><strong>TopAppBar</strong></td>
-            <td style="padding: 12px;">Header on all 3 screens</td>
+            <td style="padding: 12px;">Fixed header with back, title, menu</td>
             <td style="padding: 12px;">All 20 workflows</td>
           </tr>
           <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
             <td style="padding: 12px;"><strong>TextInput</strong></td>
-            <td style="padding: 12px;">Search filter + acknowledge notes</td>
+            <td style="padding: 12px;">Text field with label, error, helper</td>
             <td style="padding: 12px;">12+ workflows</td>
           </tr>
           <tr style="border-bottom: 1px solid #27272a;">
             <td style="padding: 12px;"><strong>StatusBadge</strong></td>
-            <td style="padding: 12px;">Task type indicators, priority</td>
+            <td style="padding: 12px;">Status with color coding (task type/priority)</td>
             <td style="padding: 12px;">All list screens</td>
           </tr>
           <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
             <td style="padding: 12px;"><strong>CTAFooter</strong></td>
-            <td style="padding: 12px;">Action buttons (acknowledge, submit)</td>
+            <td style="padding: 12px;">Primary + secondary actions</td>
             <td style="padding: 12px;">All form screens</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>SkeletalLoader</strong></td>
+            <td style="padding: 12px;">Loading placeholder for data transitions</td>
+            <td style="padding: 12px;">All list screens</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
+            <td style="padding: 12px;"><strong>EmptyState</strong></td>
+            <td style="padding: 12px;">Placeholder for no tasks/no notifications</td>
+            <td style="padding: 12px;">All list screens</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>LocationPicker</strong></td>
+            <td style="padding: 12px;">Maps integration for geofenced view</td>
+            <td style="padding: 12px;">8+ workflows</td>
           </tr>
         </table>
 
-        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">Consistency Checklist</h4>
+        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">Cross-Workflow Consistency Checklist</h4>
         <ul style="margin: 16px 0; padding-left: 20px;">
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
+          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ List Pattern:</strong> Search bar + filter chips + task rows (consistent with ponds_directory, warehouses_directory)</li>
+          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Task Priority:</strong> Color-coded badges — same system as lot_verification priority marking</li>
+          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Overdue Alerts:</strong> Red banner + warning states (consistent with warehouse_fitness_check escalation)</li>
+          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Notification Tabs:</strong> All/Unread/Completed pattern (standard across sync_queue and other workflows)</li>
+          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Geofencing:</strong> Map toggle uses LocationPicker (same as pond_inspection, warehouse_fitness_check)</li>
           <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+          <li style="margin-bottom: 8px; font-size: 13px; color: #f3f4f6;"><strong>✓ No Duplication:</strong> StatusBadge, EmptyState, SkeletalLoader reused from shared library</li>
         </ul>
 
-        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">Component Usage Guidelines</h4>
+        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">⚠️ Zero Duplication Warnings (Validate Before Coding)</h4>
         <div style="background: rgba(6, 182, 212, 0.1); border-left: 3px solid #06b6d4; padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: #f3f4f6; line-height: 1.6;">
-          <strong>When to Create a New Component:</strong><br>
-          ✓ Logic/JSX repeats 2+ times<br>
-          ✓ Testable in isolation<br>
-          ✓ Clear, single responsibility<br>
-          ✗ Used in only 1 workflow (inline)<br>
-          ✗ Just a styling wrapper (use CSS)
+          <strong>❌ AVOID Creating:</strong><br>
+          • TaskListItem — use TaskCard (reusable list item)<br>
+          • LotTaskCard + WarehouseTaskCard — use TaskCard with task type prop<br>
+          • OverdueTask + NormalTask — use OverdueTaskCard with isOverdue prop variant<br>
+          • NotificationItem + NotificationRow — use NotificationCard (one component)<br>
+          • DashboardMap — use shared LocationPicker (do not duplicate)<br>
+          <br>
+          <strong>✅ DO Reuse:</strong><br>
+          • TopAppBar — all 3 screens have header<br>
+          • StatusBadge — task type and priority indicators<br>
+          • EmptyState — no tasks, no notifications fallback<br>
+          • SkeletalLoader — data loading states<br>
+          • LocationPicker — geofenced map view<br>
+          • CTAFooter — action buttons in acknowledge sheet
         </div>
 
-        <div style="background: #1a3a3a; border: 1px solid #0d5d5d; padding: 16px; border-radius: 8px; margin: 16px 0;">
-          <strong style="color: #4edea3;">Common Shared Components (Across 20 Workflows):</strong><br>
-          <span style="font-size: 12px; color: #9ca3af;">• TopAppBar (header in all 20)<br>
-          • TextInput (21+ uses)<br>
-          • StatusBadge (all list screens)<br>
-          • CTAFooter (all form screens)<br>
-          • SkeletalLoader (loading states)<br>
-          • EmptyState (no data states)<br>
-          • AlertBanner (warnings/alerts)
-          </span>
-        </div>
+        <h4 style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 24px 0 16px 0;">Component Composition Pattern (Per Screen)</h4>
+        <div style="background: #0a0a0b; border: 1px solid #3f3f46; padding: 16px; white-space: pre-wrap; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 12px; color: #a6e3a1; overflow-x: auto; margin: 16px 0; line-height: 1.5;">Screen 1: Today's Tasks
+├─ TopAppBar (title="Scout Dashboard")
+├─ TaskSearchBar (search + status filter)
+├─ TaskListContainer (pull-to-refresh enabled)
+│  ├─ TaskCard[] (repeating, 10-20 items)
+│  │  └─ StatusBadge (task type badge)
+│  └─ SkeletalLoader (loading state)
+└─ MapToggleButton (geofenced view toggle)
+
+Screen 2: Overdue Tasks
+├─ TopAppBar (title="Overdue Tasks")
+├─ AlertBanner (red, showing overdue count + hours)
+├─ TaskListContainer
+│  ├─ OverdueTaskCard[] (repeating)
+│  │  └─ (tap Acknowledge → AcknowledgeSheet)
+│  └─ EmptyState (if no overdue)
+└─ AcknowledgeSheet (modal for notes)
+   ├─ TextInput (acknowledge notes)
+   └─ CTAFooter (Submit button)
+
+Screen 3: Notifications
+├─ TopAppBar (title="Notifications")
+├─ NotificationTabs (All / Unread / Completed)
+├─ TaskListContainer
+│  ├─ NotificationCard[] (repeating)
+│  │  └─ (swipe to delete via mobile gesture)
+│  └─ EmptyState (if no notifications)
+└─ (settings gear icon for notification preferences)
       </div>
     </div>
   </div>
