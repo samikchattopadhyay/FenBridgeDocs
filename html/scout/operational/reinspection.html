@@ -339,69 +339,253 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
+          <h3 class="backend-section-title">React Component Decomposition (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Re-Inspection breaks into reusable components following atomic design. Shared components are centralized in COMPONENT_ARCHITECTURE_GUIDE.md — avoid duplicates across the 20 Scout workflows.</p>
 
           <div class="backend-info-box">
             <strong>✅ Design Philosophy:</strong><br>
             • Single Responsibility: Each component does ONE thing<br>
-            • Prop-based composition: Components accept data + actions as props<br>
-            • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
-            • Variant management: Props define UI variants, not separate components
+            • Reuse first: Check COMPONENT_ARCHITECTURE_GUIDE.md before creating new components<br>
+            • Props-driven variants: Use props for UI variants, not separate components<br>
+            • No local state for business logic: Use Context + hooks for workflow state<br>
+            • Component hierarchy: Atoms (foundation) → Molecules (composite) → Organisms (feature-complete)
           </div>
 
           <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+            <strong style="color: #4edea3;">📖 Master Component Reference</strong><br>
+            <span style="font-size: 12px; color: var(--text-muted);">See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for all 20 workflows. This workflow reuses: TopAppBar, StepperBar, TextInput, NumberInput, SelectInput, CTAFooter, InfoBanner, ExpandableSection. Re-inspection-specific components: PriorRejectionContextCard, RejectionParametersList, QuantityComparisonCard, VarianceBanner, ParameterReadingsGrid, DefectClearanceCard, ReinspectionSummaryCard, ReinspectionConfirmationBanner.</span>
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen-by-Screen Component Breakdown</h4>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 1: Prior Rejection Context</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Prior Rejection Context" onBack={...} /&gt;
+&lt;StepperBar activeStep={1} totalSteps={5} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;PriorRejectionContextCard
+    lotId={lot.id}
+    batchNumber={lot.batch_number}
+    warehouse={warehouse.name}
+    priorInspectionId={priorInspection.id}
+    rejectionDate={priorInspection.created_at}
+    rejectionReason={priorInspection.rejection_reason} /&gt;
+  &lt;RejectionHistoryBanner
+    variant="warning"
+    title="Failure Analysis"
+    message={`Lot was rejected on ${rejectionDate} due to: ${rejectionReason}`} /&gt;
+  &lt;RejectionParametersList
+    items={[
+      { parameter: 'Moisture', value: priorValue, threshold: threshold, status: 'failed' },
+      { parameter: 'Defect Count', value: priorValue, threshold: threshold, status: 'failed' },
+      { parameter: 'Grade', value: priorValue, status: 'passed' }
+    ]}
+    highlightFailures={true} /&gt;
+  &lt;NotesDisplayCard
+    notes={priorInspection.inspector_notes}
+    inspectorName={priorInspector.name} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Start Re-Inspection"
+  primaryOnClick={handleNext} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 2: Confirm Lot Quantity</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Confirm Lot Quantity" onBack={...} /&gt;
+&lt;StepperBar activeStep={2} totalSteps={5} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;QuantityComparisonCard
+    label="Lot Quantity Assessment"
+    previousBagCount={lot.bag_count}
+    previousNetWeight={lot.net_weight}
+    currentBagCount={currentBagCount}
+    currentNetWeight={currentNetWeight}
+    onBagCountChange={(count) => setBagCount(count)}
+    onNetWeightChange={(weight) => setNetWeight(weight)} /&gt;
+  &lt;VarianceBanner
+    bagVariance={bagVariancePercent}
+    weightVariance={weightVariancePercent}
+    status={varianceStatus} /&gt;
+  &lt;VarianceDisplayGrid
+    items={[
+      { label: 'Previous Bags', value: previousBagCount },
+      { label: 'Current Bags', value: currentBagCount },
+      { label: 'Variance', value: bagVariancePercent, color: varianceColor },
+      { label: 'Previous Weight', value: previousNetWeight },
+      { label: 'Current Weight', value: currentNetWeight },
+      { label: 'Weight Variance', value: weightVariancePercent, color: varianceColor }
+    ]} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Continue"
+  primaryOnClick={handleNext} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 3: Parameter Readings</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Parameter Readings" onBack={...} /&gt;
+&lt;StepperBar activeStep={3} totalSteps={5} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;ParameterReadingsGrid&gt;
+    {parametersMetadata.map(param =&gt; (
+      &lt;ParameterCard
+        key={param.id}
+        parameter={param.code}
+        label={param.label}
+        unit={param.unit}
+        min={param.min_value}
+        max={param.max_value}
+        priorValue={param.prior_value}
+        priorStatus={param.prior_status}
+        currentValue={currentValues[param.id]}
+        currentStatus={calculateStatus(currentValues[param.id], param)}
+        highlighted={param.prior_status === 'failed'}
+        onValueChange={(value) =&gt; handleParameterChange(param.id, value)} /&gt;
+    ))}
+  &lt;/ParameterReadingsGrid&gt;
+  &lt;GradeSummaryCard
+    provisionalGrade={calculateGrade(currentValues)}
+    previousGrade={priorInspection.grade}
+    gradeChanged={gradeChanged} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Continue"
+  primaryOnClick={handleNext}
+  disabled={anyRequiredParameterMissing} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 4: Defect Capture</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Defect Capture" onBack={...} /&gt;
+&lt;StepperBar activeStep={4} totalSteps={5} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;DefectClearanceCard
+    title="Defect Clearance Verification"
+    defects={[
+      {
+        id: 'critical_defect_1',
+        severity: 'critical',
+        label: 'Surface Cracks',
+        priorStatus: 'present',
+        currentStatus: null | 'cleared' | 'residual',
+        residualValue: null | number,
+        notes: null | text
+      },
+      {
+        id: 'major_defect_1',
+        severity: 'major',
+        label: 'Discoloration',
+        priorStatus: 'present',
+        currentStatus: null | 'cleared' | 'residual',
+        residualValue: null | number,
+        notes: null | text
+      }
+    ]}
+    onDefectStatusChange={(defectId, status) =&gt; handleDefectChange(defectId, status)}
+    onResidualValueChange={(defectId, value) =&gt; handleResidualChange(defectId, value)}
+    onNotesChange={(defectId, notes) =&gt; handleNotesChange(defectId, notes)} /&gt;
+  &lt;DefectWarningBanner
+    hasCriticalDefects={hasCriticalDefects}
+    message={hasCriticalDefects ? 'Critical defects present. Acceptance blocked.' : 'All defects cleared.'} /&gt;
+  &lt;OutcomeSummaryCard
+    criticalDefects={criticalDefects}
+    majorDefects={majorDefects}
+    proposedOutcome={calculateOutcome(defectStatus)} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Submit Re-Inspection"
+  primaryOnClick={handleSubmit}
+  disabled={hasCriticalDefects} /&gt;</div>
+
+          <h5 style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; margin-bottom: 12px;">Screen 5: Submission Confirmation</h5>
+          <div class="backend-code-block">&lt;TopAppBar title="Success" onBack={null} /&gt;
+&lt;ScrollableContent&gt;
+  &lt;SuccessTerminalCard
+    iconVariant="reinspection_success"
+    title="Re-Inspection Complete"
+    message="Lot assessment recorded and queued for processing" /&gt;
+  &lt;ReinspectionConfirmationBanner
+    reinspectionSeq={submittedReinspectionSeq}
+    verdict={submittedVerdict}
+    verdictColor={verdictColor}
+    syncStatus="synced" | "queued"
+    syncMessage={syncMessage} /&gt;
+  &lt;ReinspectionSequenceBadge
+    sequence={submittedReinspectionSeq}
+    priorSequence={priorInspection.reinspection_seq} /&gt;
+  &lt;ConfirmationDetailsList
+    items={[
+      { label: 'Re-Inspection #', value: submittedReinspectionSeq, badge: true },
+      { label: 'Verdict', value: submittedVerdict, badge: true },
+      { label: 'Lot Batch', value: lot.batch_number },
+      { label: 'New Grade', value: submittedGrade },
+      { label: 'Defects Cleared', value: allDefectsCleared ? 'Yes' : 'Partial' }
+    ]} /&gt;
+  &lt;InfoBanner
+    variant={submittedVerdict === 'accepted' ? 'success' : 'warning'}
+    message={verdictMessage[submittedVerdict]} /&gt;
+&lt;/ScrollableContent&gt;
+&lt;CTAFooter
+  primaryText="Back to Dashboard"
+  primaryOnClick={navigateHome} /&gt;</div>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Library (Reused Across Workflows)</h4>
           <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><th>Component</th><th>Purpose</th><th>Re-Inspection Usage</th><th>Shared With</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Header with back, title, menu</td><td>All 5 screens</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>StepperBar</strong></td><td>Progress indicator (5 steps)</td><td>Screens 1-4</td><td>Multi-step workflows (14 workflows)</td></tr>
+            <tr><td><strong>TextInput</strong></td><td>Text field with validation</td><td>Quantity entry, notes</td><td>12+ workflows</td></tr>
+            <tr><td><strong>NumberInput</strong></td><td>Numeric field with min/max</td><td>Parameter readings, defect counts</td><td>10+ workflows</td></tr>
+            <tr><td><strong>SelectInput</strong></td><td>Dropdown selector</td><td>Defect status selection</td><td>12+ workflows</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Primary/secondary actions</td><td>All screens</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>InfoBanner</strong></td><td>Info/warning/success messages</td><td>Multiple screens</td><td>18+ workflows</td></tr>
+            <tr><td><strong>ExpandableSection</strong></td><td>Collapsible content</td><td>Rejection history details</td><td>10+ workflows</td></tr>
           </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px;">Re-Inspection-Specific Components (Workflow-Unique)</h4>
+          <div class="backend-info-box">
+            <strong>Components unique to Re-Inspection:</strong><br>
+            • <code>PriorRejectionContextCard</code> — Displays prior inspection metadata + rejection reason<br>
+            • <code>RejectionHistoryBanner</code> — Warning banner showing prior failure context<br>
+            • <code>RejectionParametersList</code> — Comparison list of failed vs passed parameters<br>
+            • <code>NotesDisplayCard</code> — Read-only display of prior inspector notes<br>
+            • <code>QuantityComparisonCard</code> — Two-column input form (previous vs current)<br>
+            • <code>VarianceBanner</code> — Percentage variance display with color coding<br>
+            • <code>VarianceDisplayGrid</code> — Side-by-side comparison grid (previous/current/variance)<br>
+            • <code>ParameterReadingsGrid</code> — Grid of parameter input cards<br>
+            • <code>ParameterCard</code> — Individual parameter with prior/current values (similar to Lot Verification)<br>
+            • <code>HighlightedParameterCard</code> — Emphasized parameter card for previously failed metrics<br>
+            • <code>GradeSummaryCard</code> — Provisional grade calculation display<br>
+            • <code>DefectClearanceCard</code> — Multi-item defect checklist with residual/cleared states<br>
+            • <code>DefectWarningBanner</code> — Critical defect blocking logic<br>
+            • <code>OutcomeSummaryCard</code> — Outcome calculation display<br>
+            • <code>ReinspectionConfirmationBanner</code> — Final sequence + verdict display<br>
+            • <code>ReinspectionSequenceBadge</code> — Reinspection sequence number display
+          </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ No Component Duplication:</strong> Before creating new component, check COMPONENT_ARCHITECTURE_GUIDE.md</li>
+            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces for type safety</li>
+            <li><strong>✓ Error States:</strong> Consistent error display (red border + message below field)</li>
+            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas (parameter ranges, required failed metrics)</li>
+            <li><strong>✓ CSS Variables:</strong> Use theme variables (--accent-primary, --text-main, --border-color)</li>
+            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes for form regions</li>
+            <li><strong>✓ Mobile-First:</strong> Responsive: 360px (mobile), 600px (tablet), 1024px (desktop)</li>
+            <li><strong>✓ State Management:</strong> Business logic in Context (reinspection scope), UI state in component hooks</li>
+            <li><strong>✓ Variants via Props:</strong> Use props for UI variants, not separate components (status="failed" | "cleared")</li>
+            <li><strong>✓ Prior Data Lineage:</strong> Display prior values for comparison, highlight previously failed metrics</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Cross-Workflow Reuse Strategy</h4>
           <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
-          </div>
-
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
+            <strong>DO:</strong><br>
+            ✓ Reuse TopAppBar, StepperBar, CTAFooter, InfoBanner across all workflows<br>
+            ✓ Reuse NumberInput for parameter entry (also in Lot Verification, Pond Inspection)<br>
+            ✓ Reuse ParameterCard pattern (Lot Verification + Re-Inspection both use for metric entry)<br>
+            ✓ Extract checklist pattern (Defect clearance similar to storage condition checks)<br>
+            ✓ Check COMPONENT_ARCHITECTURE_GUIDE.md before creating new component<br>
+            <br>
+            <strong>DON'T:</strong><br>
+            ✗ Create LotVerificationParameterCard + ReinspectionParameterCard (use ParameterCard + props)<br>
+            ✗ Create separate DefectCard for re-inspection vs initial inspection<br>
+            ✗ Duplicate comparison logic (QuantityComparisonCard + ParameterComparisonCard)<br>
+            ✗ Keep workflow-specific logic in shared components (use Context for business state)<br>
+            ✗ Create new component without checking 20 workflows for similar patterns
           </div>
         </div>
 
