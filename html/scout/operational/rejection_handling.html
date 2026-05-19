@@ -789,6 +789,10 @@ CREATE POLICY closure_log_no_update ON lot_closure_log
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Pulls data from active <code>inspections</code> records, mapping child defects directly.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• LotHeaderCard (lot summary: farmer, produce, quantity, status)<br>• InfoBanner (critical failure alert banner)<br>• FailedParametersGrid (grid of failed QC parameters with values)<br>• DefectPhotosGrid (gallery of defect evidence photos)<br>• RejectionTriageCard (triage classification and notes)<br>• ExpandableSection (collapsible historical context)<br>• CTAFooter (primary action footer)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -825,6 +829,10 @@ CREATE POLICY closure_log_no_update ON lot_closure_log
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Logs acknowledgment timestamps into parent <code>lots</code>.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 2/5)<br>• ReconditioningNoticeCard (notice header and lot details)<br>• GuidelinesCard (reconditioning requirements list)<br>• ParameterImprovementCard (parameters to fix)<br>• CheckboxInput (acknowledgment checkbox)<br>• CTAFooter (primary Acknowledge & Continue action)</div>
                 </div>
               </div>
             </div>
@@ -863,6 +871,10 @@ CREATE POLICY closure_log_no_update ON lot_closure_log
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Coordinates and logs acknowledgment details, archiving records.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 3/5)<br>• TerminalNoticeCard (notice header and closure status)<br>• DangerWarningBanner (critical danger alert banner)<br>• SafetyHazardsList (list of critical defects causing closure)<br>• ClosureReasonCard (primary and secondary closure reasons)<br>• ExpandableSection (additional context information)<br>• CheckboxInput (acknowledgment checkbox)<br>• CTAFooter (primary Acknowledge Closure action)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -900,6 +912,10 @@ CREATE POLICY closure_log_no_update ON lot_closure_log
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Queries <code>inspections</code> joined on <code>lot_id</code>, ordering entries chronologically.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 4/5)<br>• LotHeaderCard (lot summary with status)<br>• TimelineCard (vertical chronological event timeline)<br>• ChronologicalFlow (complete lifecycle flow visualization)<br>• InspectionEventCards (individual event cards for each inspection)<br>• StatusBadges (color-coded status indicators)<br>• ExpandableSection (statistical summary)<br>• CTAFooter (Download Report and Back actions)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -936,6 +952,10 @@ CREATE POLICY closure_log_no_update ON lot_closure_log
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Read-only view loading from <code>lot_closure_log</code> tables.</p><p>Marks <code>lots</code> closed permanently.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 5/5)<br>• ClosureLogTable (immutable table of closure records)<br>• SearchFields (filter inputs for lot/closure search)<br>• ClosureDetailsCard (expandable detail card for single closure)<br>• ReadOnlyView (immutability notice for terminal records)<br>• SelectInput (closure type and filter dropdowns)<br>• CTAFooter (Export CSV and Back actions)</div>
                 </div>
               </div>
             </div>

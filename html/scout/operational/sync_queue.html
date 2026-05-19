@@ -634,6 +634,19 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Queries local <code>sync_queue</code> SQLite databases.</p><p>Maps total records.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • QueueMetricsHeader (pending/synced/failed/conflict counters)
+                    • ConnectionStatusIndicator (online/offline status badge)
+                    • QueueItemCard (individual queue item display)
+                    • SyncStatusBadge (pending/synced/failed/conflict status)
+                    • StatusBadge (generic status indicators)
+                    • TextInput (search/filter queue items)
+                    • InfoBanner (tips and helpful context)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -671,6 +684,18 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Parses payload JSON strings and formats values.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • PayloadViewerCard (read-only JSON payload display)
+                    • PayloadMetadataCard (metadata about queued item)
+                    • RetryButton (single item retry trigger)
+                    • CodeViewport (formatted JSON code display)
+                    • InfoBanner (helpful context about payload)
+                    • CTAFooter (retry and back actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -707,6 +732,21 @@
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>resolveSyncConflict</code> routines to commit the resolved values.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • ConflictDetailCard (container for conflict resolution UI)
+                    • ClientServerComparisonPane (dual-pane diff display)
+                    • ResolutionStrategySelector (radio group for conflict strategy)
+                    • ConflictResolutionCard (full conflict resolution container)
+                    • RadioButton (strategy selection - client/server/manual wins)
+                    • StatusBadge (conflict status indicator)
+                    • WarningBanner (conflict warning alert)
+                    • ConfirmationCheckbox (confirm resolution checkbox)
+                    • CTAFooter (resolve conflict and back actions)
+                  </div>
                 </div>
               </div>
             </div>

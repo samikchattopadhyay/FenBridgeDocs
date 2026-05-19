@@ -167,6 +167,54 @@
     .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
     .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+
+    /* Backend Tabs */
+    .backend-tabs-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color);
+      border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px;
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 8px 0;
+    }
+    .backend-tabs-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .tabs-nav {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 32px;
+      display: flex;
+      gap: 16px;
+    }
+    .tab-button {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 16px 0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .tab-button.active {
+      color: var(--accent-primary);
+      border-bottom-color: var(--accent-primary);
+    }
+    .tab-button:hover { color: var(--accent-primary-hover); }
+    .tabs-content { display: block; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
   </style>
 </head>
 <body>
@@ -184,6 +232,32 @@
     <p class="desc">Chain-of-custody binding using tamper-evident hardware seals and digital interlock for verified inventory.</p>
   </div>
 
+  <!-- Common Components Section -->
+  <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+      <span style="font-size: 20px;">🧩</span>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+    </div>
+    <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+      <strong style="color: #fff;">This workflow reuses 12 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+    </p>
+    <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SelectInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">DatePickerInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">NumberInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">PhotoGrid</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">PhotoCaptureCard</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ExpandableSection</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ConfirmationCheckbox</span>
+    </div>
+  </div>
+
   <div class="stepper-panel-container">
     <div class="stepper-nodes">
       <a href="#step-01" class="stepper-node"><span class="node-num">01</span><span class="node-label">Confirm Lot</span></a>
@@ -192,11 +266,7 @@
       <a href="#step-04" class="stepper-node"><span class="node-num">04</span><span class="node-label">Done</span></a>
     </div>
   </div>
-  <div class="address-bar">
-    <div class="address-bar-icon">📁</div>
-    <div class="address-bar-path" id="address-path">html/scout/operational/seal.html</div>
-  </div>
-  <div class="
+
   <div class="workflow-group-block">
     <div class="workflow-group-header">
       <div class="workflow-group-title">Screens Inventory</div>
@@ -254,6 +324,17 @@
               <div class="spec-block full-width">
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">SELECT * FROM lots WHERE id = $1 AND status = 'verified';</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and screen title)
+                  • StepperPanel (Visual progress indicator 1-4)
+                  • TextInput (Display lot ID popper name weight grade read-only)
+                  • StatusBadge (Display verification status and seal state)
+                  • ExpandableSection (Lot Details expandable summary)
+                  • CTAFooter (Start Sealing action button)
+                </div>
               </div>
             </div>
             <div class="step-actions">
@@ -315,6 +396,17 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">UPDATE lots SET seal_id = $1, netting_applied = true, status = 'sealed' WHERE id = $2;</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and screen title)
+                  • StepperPanel (Visual progress indicator 1-4)
+                  • QRCodeScanner (Scan hardware seal QR code for ID capture)
+                  • StatusBadge (Display seal ID status locked green)
+                  • CheckboxInput (Toggle netting application status)
+                  • CTAFooter (Proceed to Evidence action button)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/seal_application/apply_seal_net/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -371,6 +463,17 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">INSERT INTO seal_evidence (lot_id, photo_type, storage_url) VALUES (...);</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and screen title)
+                  • StepperPanel (Visual progress indicator 1-4)
+                  • PhotoCaptureCard (Capture 4 mandatory evidence photos)
+                  • PhotoGrid (Display and verify captured evidence photos)
+                  • ConfirmationCheckbox (Scout attestation for seal application accuracy)
+                  • CTAFooter (Finalize Seal Submit action button disabled if incomplete)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/seal_application/seal_evidence_photos/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -419,6 +522,16 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">// State: LOT_SEALED. Ready for Logistics.</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and screen title)
+                  • StepperPanel (Visual progress indicator 1-4)
+                  • StatusBadge (Display LOT_SEALED status large green)
+                  • ExpandableSection (Display seal ID and timestamp)
+                  • CTAFooter (Back to Dashboard action button)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/seal_application/seal_submission_confirmation/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -428,6 +541,259 @@
       </div>
 
     </div>
+  </div>
+
+  <!-- Backend Tabs Container -->
+  <div class="backend-tabs-container" style="max-width: 1280px; margin: 48px auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;">
+    <div class="backend-tabs-header">
+      <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+      <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+    </div>
+    <div class="tabs-nav">
+      <button class="tab-button active" onclick="showTab(event, 'backend-react')">React Component Design</button>
+    </div>
+    <div class="tabs-content">
+      <div id="backend-react" class="tab-panel active" style="padding: 32px;">
+
+      <!-- Design Philosophy Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Design Philosophy</h3>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 12px;">
+          The Seal Application workflow follows a <strong style="color: #fff;">sequential capture and verification pattern</strong> that interlinks digital lot records with physical tamper-evident hardware. The 4-screen flow combines identity verification, hardware binding, evidence documentation, and confirmation of the chain-of-custody seal. This workflow is critical for marketplace integrity—once sealed, lots are frozen pending logistics.
+        </p>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8;">
+          Key patterns: Hardware biometrics (QR scan for seal ID), multi-angle evidence capture, state progression gates, and irreversible state transitions.
+        </p>
+      </div>
+
+      <!-- Core Components Table -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Core Components</h3>
+        <div style="overflow-x: auto; background: #000; border: 1px solid var(--border-color); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <thead>
+              <tr style="background: #1a1a1e; border-bottom: 1px solid var(--border-color);">
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Component</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Usage Pattern</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700;">Screens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TopAppBar</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Static header with back button and screen title</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 4</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StepperPanel</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Visual progress indicator (1-4)</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 4</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TextInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display lot ID, popper name, weight, grade (read-only)</td>
+                <td style="padding: 14px; color: var(--text-muted);">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StatusBadge</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display verification status and seal state</td>
+                <td style="padding: 14px; color: var(--text-muted);">1, 4</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">QRCodeScanner</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Scan hardware seal QR code for ID capture</td>
+                <td style="padding: 14px; color: var(--text-muted);">2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CheckboxInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Toggle netting application status</td>
+                <td style="padding: 14px; color: var(--text-muted);">2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">PhotoCaptureCard</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Capture 4 mandatory evidence photos</td>
+                <td style="padding: 14px; color: var(--text-muted);">3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">PhotoGrid</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display and verify captured evidence photos</td>
+                <td style="padding: 14px; color: var(--text-muted);">3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">ConfirmationCheckbox</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Scout attestation for seal application accuracy</td>
+                <td style="padding: 14px; color: var(--text-muted);">3</td>
+              </tr>
+              <tr>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CTAFooter</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Next/Submit action buttons (fixed bottom)</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Screen Decomposition Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Screen Decomposition</h3>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 1: Confirm Lot & ID</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Identity verification ensuring the physical stack matches the digital Certificate. Gate check to ensure only verified lots proceed.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Sealing", backBtn } |
+            StepperPanel { active: 1 } |
+            StatusBadge { status: "READY_TO_SEAL", color: green } |
+            TextInput[] { lotId, popperName, weight, grade [all read-only] } |
+            ExpandableSection { "Lot Details" } |
+            CTAFooter { "Start Sealing" → screen 2 }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 2: Seal Application</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Hardware seal ID capture via QR scan. Uniqueness check. Netting application confirmation.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Apply Seal", backBtn } |
+            StepperPanel { active: 2 } |
+            QRCodeScanner {
+              scan_action,
+              extract_seal_id,
+              validate_uniqueness
+            } |
+            StatusBadge { seal_id, status: "LOCKED", color: green } |
+            CheckboxInput { "Protective netting applied?" } |
+            CTAFooter { "Proceed to Evidence" → screen 3 }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 3: Photo Evidence</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            4-way mandatory photo documentation: Seal ID closeup, stack with netting, scout with stack, warehouse context.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Evidence Photos", backBtn } |
+            StepperPanel { active: 3 } |
+            PhotoCaptureCard[] {
+              slot_1: "Seal ID (macro)",
+              slot_2: "Stack with Netting",
+              slot_3: "Scout & Stack",
+              slot_4: "Warehouse Context"
+            } [mandatory] |
+            PhotoGrid { display_captured, edit_actions } |
+            ConfirmationCheckbox { "I verify accuracy" } [mandatory] |
+            CTAFooter { "Finalize Seal" [disabled if incomplete] → screen 4 }
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 4: Submission Confirmation</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Final success screen. Lot is now sealed and frozen from further modification. Display seal registry and next steps.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Seal Confirmed", backBtn } |
+            StepperPanel { active: 4 } |
+            StatusBadge { status: "LOT_SEALED", color: green, size: large } |
+            ExpandableSection { display_seal_id, timestamp } |
+            CTAFooter { "Back to Dashboard" → home }
+          </div>
+        </div>
+      </div>
+
+      <!-- State Management Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">State Management &amp; Backend Logic</h3>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Local Wizard State</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+const [wizardState, setWizardState] = useState({
+  lot_id: string;
+  seal_id: string;
+  netting_applied: boolean;
+  evidence_photos: {
+    seal_id_macro: File;
+    stack_with_netting: File;
+    scout_with_stack: File;
+    warehouse_context: File;
+  };
+  attestation_checked: boolean;
+  sealed_at?: timestamp;
+});
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Seal ID Validation Logic</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+const validateSealId = async (scannedId) => {
+  // Check global uniqueness
+  const existing = await db.seals.findOne({ id: scannedId });
+  if (existing) {
+    return { valid: false, error: "Seal already registered" };
+  }
+
+  // Check format (alphanumeric, length 8-16)
+  if (!/^[A-Z0-9]{8,16}$/.test(scannedId)) {
+    return { valid: false, error: "Invalid seal ID format" };
+  }
+
+  return { valid: true };
+};
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Backend Transaction</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+BEGIN TRANSACTION;
+1. INSERT INTO lot_seals (
+  lot_id, seal_id, netting_applied, scout_id, sealed_at
+) VALUES ($1, $2, $3, $4, now());
+
+2. INSERT INTO seal_evidence (
+  seal_id, photo_type, storage_url, geotag, timestamp
+) VALUES ($2, 'seal_id_macro', ...) x4; -- 4 photos
+
+3. UPDATE lots SET
+  status = 'sealed',
+  seal_id = $2,
+  sealed_at = now()
+WHERE id = $1;
+
+4. INSERT INTO audit_log (
+  action, lot_id, seal_id, scout_id, timestamp
+) VALUES ('SEAL_APPLIED', $1, $2, $4, now());
+
+COMMIT;
+
+-- Post-transaction: Send notification to Seller
+triggerNotification('lot_sealed', $1, seller_id);
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Patterns Section -->
+      <div>
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Common Patterns &amp; Reusability</h3>
+        <ul style="color: var(--text-muted); font-size: 13px; line-height: 1.8; margin: 0; padding-left: 24px;">
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">QR Verification Component:</strong> Seal ID scanning (Screen 2) reused from Storage Re-check. Extract as &lt;HardwareQRVerify onCapture={handleSealId} validateFn={validateSealId} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Multi-Photo Capture Pattern:</strong> 4-photo evidence pattern (Screen 3) reused from Lot Verification and Dispatch. Centralize &lt;EvidencePhotoCapture slots={4} labels={[...]} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">State Lock Pattern:</strong> Once sealed, lot is frozen. Use read-only context flag to prevent back-navigation or edits. Mirror Lot Verification's "irreversible decision" pattern.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Success Confirmation:</strong> Final screen follows standard success pattern (green badge, navigation CTAs). Consistent with other workflow completions.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Offline Capability:</strong> Entire workflow except photo upload works offline. Sync queue captures seal data + photo metadata; unsealing requires admin override (always online).</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
   </div>
 
   <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
@@ -443,6 +809,19 @@
   </div>
 
   <script>
+    function showTab(e, tabName) {
+      if (e) e.preventDefault();
+      const container = e.target.closest('.backend-tabs-container');
+      const panels = container.querySelectorAll('.backend-tab-panel');
+      const buttons = container.querySelectorAll('.backend-tab-btn');
+      panels.forEach(p => p.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+      const targetPanel = container.querySelector('#' + tabName);
+      if (targetPanel) targetPanel.classList.add('active');
+      const targetBtn = container.querySelector('[data-tab="' + tabName + '"]');
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+
     function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
     function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
 
@@ -471,6 +850,14 @@
       if (pathElement) {
         const pathname = window.location.pathname;
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+
+      // Show first backend tab by default
+      const firstPanel = document.querySelector('.backend-tabs-container .backend-tab-panel');
+      if (firstPanel) {
+        firstPanel.classList.add('active');
+        const firstBtn = document.querySelector('.backend-tabs-container .backend-tab-btn');
+        if (firstBtn) firstBtn.classList.add('active');
       }
     });
   </script>

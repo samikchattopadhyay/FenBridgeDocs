@@ -728,6 +728,10 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Queries the browser GPS API to retrieve latitude, longitude, and accuracy.</p><p>Computes geodetic distance.</p><p>On locking, the procedure caches current GPS parameters in local draft state.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button and pond ID)<br>• GPSRadarCard (distance-to-target radar visualization)<br>• DistanceIndicator (numeric meters display)<br>• GeofenceWarningBanner (status and accuracy feedback)<br>• CoordinatesDisplay (locked GPS coordinates)<br>• Button (Confirm Arrival - enabled when in geofence)<br>• CTAFooter (action bar with primary button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -768,6 +772,10 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Validates parameters using standard Zod constraints.</p><p>Water level must be positive.</p><p>Algae score must be an integer between 1 and 5.</p><p>Caches values locally.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 2 of 6 indicator)<br>• WaterLevelInput (numeric depth field with meters unit)<br>• AlgaeDensitySlider (interactive 1-5 rating slider with color feedback)<br>• PestAlertToggle (weed and pest alert checkboxes)<br>• NumberInput (for water level entry)<br>• StatusBadge (color-coded condition ratings)<br>• CTAFooter (primary Next button to proceed)</div>
                 </div>
               </div>
             </div>
@@ -810,6 +818,10 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Local JavaScript binds inputs and triggers direct mathematical average updates.</p><p>Validates that density is positive and maturity is between [<code>0.00</code>%, <code>100.00</code>%].</p><p>Compiles into a child array mapped to <code>pond_bund_readings</code> schema.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 3 of 6 progress)<br>• BundReadingsGrid (4-row matrix table for bund lines)<br>• BundLineRow (individual line input row with density and maturity)<br>• NumberInput (density count/m² and maturity % inputs)<br>• AverageCalculationRow (computed summary row with cyan highlight)<br>• CheckboxInput (per-line confirmation checkmarks)<br>• CTAFooter (primary Proceed button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -850,6 +862,10 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Compresses image uploads to max 2MB JPEGs.</p><p>Uploads assets to secure Supabase S3 buckets using short-lived pre-signed URLs.</p><p>Binds S3 links inside <code>pond_inspection_photos</code>.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 4 of 6 indicator)<br>• PhotoCaptureCard (camera launch and file selector)<br>• PhotoGrid (structured photo preview slots)<br>• PhotoTypeSelector (wide view / sample / anomaly dropdown)<br>• TextInput / TextArea (observation notes field with character count)<br>• UploadProgress (loading rings and status indicators)<br>• CTAFooter (primary Review button)</div>
                 </div>
               </div>
             </div>
@@ -892,6 +908,10 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes the <code>submitPondInspection</code> tRPC procedure.</p><p>Executes a database transaction to insert into <code>pond_inspections</code>, <code>pond_bund_readings</code>, and <code>pond_inspection_photos</code> simultaneously.</p><p>Automatically rolls back all updates if a single block fails.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 5 of 6 progress)<br>• InspectionSummaryCard (overview of all collected data)<br>• ExpandableSection (collapsible review sections for GPS, bund readings)<br>• GPS ValidationCard (coordinates and accuracy display)<br>• BundGridReadOnly (bund matrix in read-only mode)<br>• PhotoGrid (read-only evidence photo thumbnails)<br>• EditLink (inline edit buttons to go back and correct)<br>• CTAFooter (primary Submit Inspection button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -932,6 +952,10 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Resets all local state variables.</p><p>Updates local cached task list models, switching the target task's state flag to <code>completed</code>.</p><p>Clears draft storage files.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with completion state)<br>• SuccessBanner (green confirmation with "✓ Inspection Submitted")<br>• SuccessIcon / CheckmarkRing (glowing pulsing animation)<br>• TransactionReferenceCard (unique inspection code #INS-XXXX display)<br>• StatusBadge (sync state - online or offline)<br>• TextLink / Display (sync status details and timestamp)<br>• Button (View Today's Tasks primary action)<br>• CTAFooter (action bar with primary and secondary buttons)</div>
                 </div>
               </div>
             </div>

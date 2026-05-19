@@ -158,6 +158,28 @@
       <p class="desc">Universal authentication flow supporting all user roles (scouts, farmers, poppers, buyers) via mobile number and SMS-based OTP verification with role-based dashboard routing.</p>
     </div>
 
+    <!-- Common Components Section -->
+    <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <span style="font-size: 20px;">🧩</span>
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+      </div>
+      <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+        <strong style="color: #fff;">This workflow reuses 8 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+      </p>
+      <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">PhoneInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">OTPInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CheckboxInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ErrorMessage</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SkeletalLoader</span>
+      </div>
+    </div>
+
     <div class="workflow-overview">
       <h2>Workflow Overview</h2>
       <p>Mobile + OTP is the sole authentication path for FenBridge. Country defaults to India (+91); 10-digit Indian mobile validated. The same entry screen serves all roles — after successful authentication, users are routed to their role-specific dashboard. For newly registered users (farmers/poppers), scouts register them on their behalf, and they receive their profile pre-populated when they first log in. Consent is captured explicitly, and OTP verification is real-time SMS delivery.</p>
@@ -189,6 +211,9 @@
             <div class="spec-block"><div class="spec-label">Technical Details</div><div class="spec-value">On launch: check local secure storage for a valid Supabase auth token. If valid and the user's role resolves to scout → Scout Dashboard. If valid but role differs → respective dashboard. If no token / expired → Mobile Entry screen.</div></div>
             <div class="spec-block"><div class="spec-label">Design Details</div><div class="spec-value">Bg surface, centred FenBridge wordmark + tagline. Three-dot loader.</div></div>
             <div class="spec-block"><div class="spec-label">Database Schema</div><div class="spec-value">Reads local secure-storage token only. No DB writes.</div></div>
+            <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">
+              • Loader (three-dot animation)
+            </div></div>
           </div></div>
         </div>
 
@@ -203,6 +228,11 @@
             <div class="spec-block"><div class="spec-label">Technical Details</div><div class="spec-value">Validation: Indian mobile regex ^[6-9][0-9]{9}$. Calls Supabase auth.signInWithOtp({ phone }) with phone in E.164 (+91XXXXXXXXXX). Supabase forwards OTP via configured SMS provider (MSG91 / Twilio). Rate limit: 3 OTPs per number per hour (server enforced); client shows a friendly 60s cooldown after each send. No user record needs to pre-exist — Supabase creates an auth row on first send; the FenBridge profile (users table) is created/linked on first successful verify. Fully offline-incompatible (requires network); offline message: "You need to be online to log in."</div></div>
             <div class="spec-block"><div class="spec-label">Design Details</div><div class="spec-value">Top bar: none (this is the entry screen). Brand mark (small, top-centre). Headline: "Log in to FenBridge" (Title 2). Sub-line: "Enter your mobile number — we'll send you an OTP" (text-md). Input: country chip (+91) + 10-digit number field. Primary CTA: "Send OTP" — full-width, disabled until valid. Footer line: "New users? Speak to a Bharat Makhana scout to get started." (text-md).</div></div>
             <div class="spec-block"><div class="spec-label">Database Schema</div><div class="spec-value">No new tables. Uses Supabase auth.users (managed) and the existing users table that links auth ID to FenBridge profile. The users table must expose: id, auth_user_id, role, mobile, mobile_verified_at, status (pending_approval / active / suspended), created_via_scout_id (nullable, set for scout-assisted onboarding).</div></div>
+            <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">
+              • PhoneInput (mobile number with +91 country code)
+              • HelperText (validation errors and guidance)
+              • Button (Send OTP action)
+            </div></div>
           </div></div>
         </div>
 
@@ -217,10 +247,126 @@
             <div class="spec-block"><div class="spec-label">Technical Details</div><div class="spec-value">Calls Supabase auth.verifyOtp({ phone, token, type: 'sms' }). On success: receives Supabase JWT; lookup/create users row keyed on auth_user_id. Role resolution: read users.role; if missing (brand-new auth user, no profile), default to a "pre-role" state that surfaces a "Contact a scout to set up your account" message — because, per the new model, regular users (farmers/poppers/buyers) are registered by scouts, not self-served. Successful scout login: route to Scout Dashboard. Token persisted in local secure storage; refresh handled by Supabase SDK. Auto-read OTP from SMS where Android Autofill API supports it.</div></div>
             <div class="spec-block"><div class="spec-label">Design Details</div><div class="spec-value">Top bar: back arrow, no title. Headline: "Enter the OTP" (Title 2). Sub-line: "Sent to +91 98765 43210" + "Change" text button. Six-box OTP input (large, monospace). Inline error (danger): "Incorrect OTP — try again". Resend row: "Resend OTP in 0:24" (disabled) → "Resend OTP" (enabled after 30s). Primary CTA: "Verify" — auto-fires on 6 digits filled. Footer line: "Make sure your network can receive SMS." (text-md).</div></div>
             <div class="spec-block"><div class="spec-label">Database Schema</div><div class="spec-value">Reads/writes users (links auth_user_id, sets mobile_verified_at). No new tables.</div></div>
+            <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">
+              • TopAppBar (header with back button)
+              • OTPInput (six-digit OTP entry with auto-advance)
+              • HelperText (OTP guidance and error messages)
+              • Button (Verify action)
+              • TextLink (Resend and Change number actions)
+            </div></div>
           </div></div>
         </div>
 
       </div>
+
+      <!-- Backend Architecture & Implementation Guide -->
+      <div class="backend-tabs-container">
+        <div class="backend-tabs-header">
+          <div class="backend-tabs-title">Backend Architecture & Implementation Guide</div>
+          <div class="backend-tabs-subtitle">Entry & Authentication Flow</div>
+        </div>
+        <div class="tabs-nav">
+          <button class="tab-button active" onclick="showTab(event, 'backend-react')">React Component Design</button>
+        </div>
+        <div class="tabs-content">
+          <!-- TAB: React Component Design -->
+          <div id="backend-react" class="tab-panel active">
+            <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Entry & Authentication uses a minimal, single-purpose component set focused on auth flow. Follow atomic design: atoms (inputs) → molecules (form groups) → templates (screens).</p>
+
+            <div class="backend-info-box">
+              <strong>✅ Design Philosophy:</strong><br>
+              • Single Responsibility: Each component does ONE thing<br>
+              • Prop-based composition: Components accept data + actions as props<br>
+              • No local state for business logic: All auth state managed by Supabase SDK<br>
+              • Reuse across all user roles: Same auth flow for scouts, farmers, poppers, buyers<br>
+              • Minimal footprint: Auth screens are lightweight, no heavy dependencies
+            </div>
+
+            <h4 class="backend-section-title" style="font-size: 14px;">Core Auth Components</h4>
+            <table class="backend-table">
+              <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
+              <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back button (OTP screen only)</td><td>title, onBack</td><td>Step 3 (OTP Verification)</td></tr>
+              <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, 10-digit validation</td><td>value, onChange, error, disabled</td><td>Step 2 (Mobile Entry)</td></tr>
+              <tr><td><strong>OTPInput</strong></td><td>Six-box OTP entry with auto-advance</td><td>value, onChange, onComplete, error</td><td>Step 3 (OTP Verification)</td></tr>
+              <tr><td><strong>Button</strong></td><td>Primary action CTA (Send OTP, Verify)</td><td>label, onClick, disabled, loading</td><td>All steps</td></tr>
+              <tr><td><strong>TextLink</strong></td><td>Secondary actions (Change number, Resend)</td><td>label, onClick</td><td>Steps 2-3</td></tr>
+              <tr><td><strong>HelperText</strong></td><td>Inline guidance and error messages</td><td>text, type (info/error)</td><td>All steps</td></tr>
+              <tr><td><strong>Loader</strong></td><td>Three-dot loading animation</td><td>size</td><td>Step 1 (Splash)</td></tr>
+              <tr><td><strong>AuthLayout</strong></td><td>Full-screen auth wrapper with brand mark</td><td>children</td><td>All screens</td></tr>
+            </table>
+
+            <h4 class="backend-section-title" style="font-size: 14px;">Entry & Auth Screen Decomposition</h4>
+
+            <div class="backend-info-box">
+              <strong>Step 1: Splash Screen</strong><br>
+              &nbsp;├─ AuthLayout wrapper<br>
+              &nbsp;├─ BrandMark (centred, static)<br>
+              &nbsp;├─ Loader (three-dot animation)<br>
+              &nbsp;└─ Background (surface color)
+            </div>
+
+            <div class="backend-info-box">
+              <strong>Step 2: Mobile Entry</strong><br>
+              &nbsp;├─ AuthLayout wrapper<br>
+              &nbsp;├─ BrandMark (small, top)<br>
+              &nbsp;├─ Headline (title-2, "Log in to FenBridge")<br>
+              &nbsp;├─ SubHeadline (text-md, "Enter your mobile...")<br>
+              &nbsp;├─ PhoneInput (country chip + 10-digit field)<br>
+              &nbsp;├─ HelperText (info)<br>
+              &nbsp;├─ Button (Send OTP, disabled until valid)<br>
+              &nbsp;└─ FooterText (signup prompt)
+            </div>
+
+            <div class="backend-info-box">
+              <strong>Step 3: OTP Verification</strong><br>
+              &nbsp;├─ TopAppBar (back, no title)<br>
+              &nbsp;├─ BrandMark or minimal<br>
+              &nbsp;├─ Headline (title-2, "Enter the OTP")<br>
+              &nbsp;├─ MobileEcho ("+91 98765 43210" + Change link)<br>
+              &nbsp;├─ OTPInput (six boxes, monospace, auto-advance)<br>
+              &nbsp;├─ HelperText (error state on fail)<br>
+              &nbsp;├─ ResendRow (timer + Resend button)<br>
+              &nbsp;├─ Button (Verify, auto-fires on complete)<br>
+              &nbsp;└─ FooterText (SMS reminder)
+            </div>
+
+            <h4 class="backend-section-title" style="font-size: 14px;">State Management</h4>
+            <div class="backend-code-block">// Supabase Auth (external state)
+const { user, session } = useAuth();
+
+// Component state (transient UI only)
+const [phone, setPhone] = useState('');
+const [otp, setOtp] = useState('');
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState('');
+const [otpTimer, setOtpTimer] = useState(0);
+
+// Flow: Splash → check session → Mobile Entry → OTP Verification → Dashboard
+// On success: Supabase SDK manages token storage + refresh
+            </div>
+
+            <h4 class="backend-section-title" style="font-size: 14px;">Auth Flow Sequence</h4>
+            <div class="backend-info-box">
+              <strong>1. Splash:</strong> Check secure storage for valid JWT → if found & valid, resolve role & redirect to dashboard. Otherwise, proceed to Mobile Entry.<br><br>
+              <strong>2. Mobile Entry:</strong> User enters 10-digit number → "Send OTP" → Supabase auth.signInWithOtp({ phone: "+91..." }) → SMS sent via MSG91/Twilio → proceed to OTP Verification.<br><br>
+              <strong>3. OTP Verification:</strong> User enters 6-digit OTP → auto-verify or tap Verify → Supabase auth.verifyOtp({ phone, token, type: 'sms' }) → on success: lookup/create users row → resolve role → store JWT in secure storage → redirect to role-specific dashboard.<br><br>
+              <strong>Error Handling:</strong> Invalid OTP → clear field, show "Incorrect OTP — try again" → allow 3 retries before brief lockout → "Resend OTP" becomes available after 30s.
+            </div>
+
+            <h4 class="backend-section-title" style="font-size: 14px;">Common Patterns & Constraints</h4>
+            <ul class="backend-list">
+              <li><strong>Offline:</strong> Auth flows require network (SMS delivery). Offline message: "You need to be online to log in."</li>
+              <li><strong>Rate Limiting:</strong> 3 OTPs per phone per hour (server-enforced); UI shows 60s cooldown per send.</li>
+              <li><strong>Role Resolution:</strong> After successful verify, fetch users.role. If no role (brand-new auth user), show "Contact a scout" message.</li>
+              <li><strong>Token Storage:</strong> JWT stored in secure storage (iOS Keychain / Android Keystore); Supabase SDK handles refresh on expiry.</li>
+              <li><strong>Cross-Role:</strong> Same auth screens serve all user types (scouts, farmers, poppers, buyers). Dashboard routing happens post-auth.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

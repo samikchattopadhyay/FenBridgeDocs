@@ -757,6 +757,10 @@ CREATE UNIQUE INDEX idx_lotseals_active_lot ON lot_seals (lot_id)
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Caches parent <code>inspection_id</code> and <code>cert_id</code> into the sealing context state.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button and step 1 indicator)<br>• SummaryCard / InfoCard (read-only lot details, grade, weight)<br>• StatusBadge (green validation alerts for eligible lots)<br>• ValidationBanner (secure explanations for blocked candidates)<br>• Button (Begin Sealing primary action)<br>• CTAFooter (action bar with primary button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -793,6 +797,10 @@ CREATE UNIQUE INDEX idx_lotseals_active_lot ON lot_seals (lot_id)
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Validates barcode formatting schemas.</p><p>Triggers warnings if GPS coordinate mismatches register.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 2 of 6 progress)<br>• SealNumberInput (barcode scan input with camera trigger)<br>• ScanButton (camera-based barcode capture)<br>• SealValidationBanner (status: valid, duplicate, or formatting error)<br>• NetSelectionCard / CheckboxInput (reusable net applied toggle)<br>• GPSAccuracyIndicator (latitude, longitude, accuracy display with warning threshold)<br>• CTAFooter (Continue button, disabled until seal ID and net confirmed)</div>
                 </div>
               </div>
             </div>
@@ -831,6 +839,10 @@ CREATE UNIQUE INDEX idx_lotseals_active_lot ON lot_seals (lot_id)
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Compiles photographs into <code>lot_seal_photos</code> mappings in temporary memory.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 3 of 6 indicator)<br>• PhotoChecklistGrid (3-slot photo checklist with dashed camera buttons)<br>• PhotoCaptureCard (wide view, close-up of seal, bags with net)<br>• PhotoPreviewCard (image previews replacing buttons after capture)<br>• InfoBanner (alert: seal characters must be legible)<br>• Button (Next to proceed)<br>• CTAFooter (action bar with Next button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -867,6 +879,10 @@ CREATE UNIQUE INDEX idx_lotseals_active_lot ON lot_seals (lot_id)
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Maintains checks in <code>lot_seal_storage_items</code> formats.</p><p>Raises <code>storage_flag = true</code> on any failed item.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 4 of 6 progress)<br>• ChecklistCard (3 large pass/fail toggle cards)<br>• ToggleSwitch / CheckboxInput (pass/fail toggles for floor support, moisture barrier, segregation)<br>• SelectInput / ReasonPicker (dropdown for failure reasons)<br>• AlertBanner / WarningBanner (yellow warnings on failures with correction alerts)<br>• Button (Next to proceed)<br>• CTAFooter (action bar with Next button)</div>
                 </div>
               </div>
             </div>
@@ -905,6 +921,10 @@ CREATE UNIQUE INDEX idx_lotseals_active_lot ON lot_seals (lot_id)
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes <code>submitSealRecord</code> database transactions.</p><p>Mutates parent status to <code>sealed</code>, linking seal identifiers.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 5 of 6 progress)<br>• SegmentedControl / SelectInput (30-day or 45-day shelf-life selector)<br>• DateDisplay (auto-calculated expiry date bounds)<br>• SummaryCard / ReviewPanel (all accumulated sealing metadata)<br>• CheckboxInput (mandatory checklist signature confirmation)<br>• Button (Submit Seal primary action)<br>• CTAFooter (action bar with Submit Seal button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -941,6 +961,10 @@ CREATE UNIQUE INDEX idx_lotseals_active_lot ON lot_seals (lot_id)
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Resets temporary memory buffers.</p><p>Switches local SQLite queue loaders to completed.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with completion state)<br>• SuccessCard / SuccessBanner (success confirmation with "Seal Applied")<br>• LockIcon (pulsing animated lock icon)<br>• SealReferenceDisplay (generated seal code and expiry schedule)<br>• SyncStatusBadge (sync queue state flags - synced or offline)<br>• SummaryPanel (seal details and admin pricing pipeline info)<br>• Button (Return to Dashboard primary action)<br>• CTAFooter (action bar with primary button)</div>
                 </div>
               </div>
             </div>

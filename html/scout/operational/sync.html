@@ -167,6 +167,54 @@
     .address-bar { background: #121212; border-bottom: 1px solid var(--border-color); padding: 12px 16px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
     .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+
+    /* Backend Tabs */
+    .backend-tabs-header {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color);
+      border-left: 5px solid var(--accent-primary);
+      padding: 20px 32px;
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 8px 0;
+    }
+    .backend-tabs-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .tabs-nav {
+      background: linear-gradient(90deg, #1f1f23 0%, #161618 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 32px;
+      display: flex;
+      gap: 16px;
+    }
+    .tab-button {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 16px 0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .tab-button.active {
+      color: var(--accent-primary);
+      border-bottom-color: var(--accent-primary);
+    }
+    .tab-button:hover { color: var(--accent-primary-hover); }
+    .tabs-content { display: block; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
   </style>
 </head>
 <body>
@@ -181,6 +229,29 @@
       <div class="tag">Workflow Module 10</div>
       <h1 class="title">Sync Queue</h1>
       <p class="desc">Offline-first atomic reconciliation engine ensuring field-captured data correctly propagates to the central repository.</p>
+    </div>
+
+    <!-- Common Components Section -->
+    <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <span style="font-size: 20px;">🧩</span>
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+      </div>
+      <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+        <strong style="color: #fff;">This workflow reuses 9 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+      </p>
+      <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SelectInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">DataTable</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ExpandableSection</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">WarningBanner</span>
+      </div>
     </div>
 
     <div class="stepper-panel-container">
@@ -248,6 +319,17 @@
   status TEXT -- 'pending', 'syncing', 'error'
 );</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and current view title)
+                  • StepperPanel (Visual progress indicator showing position 1-3)
+                  • DataTable (Display list of pending sync items with status, type, size columns)
+                  • StatusBadge (Display item status: Pending, Syncing, Success, Failed, or Conflict)
+                  • ExpandableSection (Collapsible queue statistics and item details)
+                  • CTAFooter (Sync All Now action button in fixed bottom bar)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/sync_queue/sync_queue_list/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -290,6 +372,18 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">// RPC: sync_batch(payload_json)</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and Syncing title)
+                  • StepperPanel (Visual progress indicator showing position 1-3)
+                  • WarningBanner (Alert warning not to close app or disconnect during sync)
+                  • ProgressBar (Batch sync progress with percentage and ETA)
+                  • DataTable (Display per-item sync status: synced, syncing, or pending)
+                  • ExpandableSection (Collapsible item details and error logs)
+                  • CTAFooter (Syncing button disabled during active transmission)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/sync_queue/sync_item_detail/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -328,12 +422,267 @@
                 <div class="spec-label">Technical Details</div>
                 <div class="spec-value">State-machine lock on the record until resolved. Logs conflict for Admin review.</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and Conflict Resolution title)
+                  • StepperPanel (Visual progress indicator showing position 1-3)
+                  • WarningBanner (Alert for conflicts requiring manual review)
+                  • DataTable (Display conflicted items with type, lot ID, error, and action columns)
+                  • ExpandableSection (Detailed error messages and server vs client timestamps)
+                  • CTAFooter (Discard or Retry action buttons based on permission)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/sync_queue/conflict_item_detail/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
             </div>
           </div>
         </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <!-- Backend Tabs Container -->
+  <div class="backend-tabs-container" style="max-width: 1280px; margin: 48px auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;">
+    <div class="backend-tabs-header">
+      <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+      <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+    </div>
+    <div class="tabs-nav">
+      <button class="tab-button active" onclick="showTab(event, 'backend-react')">React Component Design</button>
+    </div>
+    <div class="tabs-content">
+      <div id="backend-react" class="tab-panel active" style="padding: 32px;">
+
+      <!-- Design Philosophy Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Design Philosophy</h3>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 12px;">
+          The Sync Queue workflow implements an <strong style="color: #fff;">offline-first reconciliation engine</strong> for atomic data propagation from field devices to the central repository. The 3-screen flow provides visibility into pending items, active transmission with retry logic, and manual conflict resolution for edge-case state conflicts. This workflow is critical infrastructure enabling Scout to operate with patchy connectivity while ensuring zero data loss.
+        </p>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8;">
+          Key patterns: Batch processing with atomic transactions, exponential backoff retry, conflict detection and quarantine, progress indication for long operations.
+        </p>
+      </div>
+
+      <!-- Core Components Table -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Core Components</h3>
+        <div style="overflow-x: auto; background: #000; border: 1px solid var(--border-color); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <thead>
+              <tr style="background: #1a1a1e; border-bottom: 1px solid var(--border-color);">
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Component</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Usage Pattern</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700;">Screens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TopAppBar</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Static header with back button and current view title</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StepperPanel</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Visual progress indicator (1-3)</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">DataTable</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display list of pending sync items with status, type, size</td>
+                <td style="padding: 14px; color: var(--text-muted);">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StatusBadge</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display item status (Pending, Syncing, Success, Failed, Conflict)</td>
+                <td style="padding: 14px; color: var(--text-muted);">1, 2, 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">ProgressBar</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Batch sync progress indicator (percentage & ETAbased on speed)</td>
+                <td style="padding: 14px; color: var(--text-muted);">2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">ExpandableSection</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Collapsible item details and error logs</td>
+                <td style="padding: 14px; color: var(--text-muted);">2, 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">WarningBanner</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Alert for conflicts and errors requiring action</td>
+                <td style="padding: 14px; color: var(--text-muted);">2, 3</td>
+              </tr>
+              <tr>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CTAFooter</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Sync All, Retry, Discard, Done action buttons</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Screen Decomposition Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Screen Decomposition</h3>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 1: Pending Items</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Queue view of all offline-captured data awaiting transmission. Categorized by type (inspections, seals, fitness checks, photos). Shows payload size and retry count.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Sync Queue", backBtn } |
+            StepperPanel { active: 1 } |
+            DataTable {
+              headers: ["Type", "Lot ID", "Status", "Size", "Created"],
+              rows: syncQueueItems,
+              statusIcons: { pending: ⏱, syncing: ↻, success: ✓, failed: ✗ }
+            } |
+            ExpandableSection { queue_stats: "5 items pending, 127MB total" } |
+            CTAFooter { "Sync All Now" → screen 2 }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 2: Sync Now</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Active transmission with progress tracking. Batch processing with atomic transactions. Handles retries on network failure with exponential backoff.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Syncing...", backBtn [disabled] } |
+            StepperPanel { active: 2 } |
+            WarningBanner { "Do not close app or disconnect. Syncing 5 items..." } |
+            ProgressBar { progress: 60%, eta: "2 min remaining" } |
+            DataTable {
+              rows: [
+                { type: "inspection", status: "✓ Synced", elapsed: "45s" },
+                { type: "seal", status: "↻ Syncing", elapsed: "12s" },
+                { type: "photo", status: "⏱ Pending", elapsed: "-" }
+              ]
+            } |
+            CTAFooter { "Syncing..." [disabled] }
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 3: Conflicts & Reconciliation</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Manual conflict resolution for items rejected by server due to state conflicts. Shows error message and action options.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Conflict Resolution", backBtn } |
+            StepperPanel { active: 3 } |
+            WarningBanner { "1 item requires manual review. Lot was voided by Admin." } |
+            DataTable {
+              headers: ["Type", "Lot ID", "Error", "Action"],
+              rows: conflictItems,
+              expandable: true
+            } |
+            ExpandableSection {
+              error_detail: "Server state conflict: Lot status changed to 'voided' before seal was recorded",
+              server_timestamp: "2024-05-18 14:32:10",
+              client_timestamp: "2024-05-18 12:45:22"
+            } |
+            CTAFooter { "Discard" | "Retry" [depends on permission] }
+          </div>
+        </div>
+      </div>
+
+      <!-- State Management Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">State Management &amp; Backend Logic</h3>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Sync Queue Data Structure</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+interface SyncQueueItem {
+  id: UUID;
+  workflow_type: "inspection" | "seal" | "fitness" | "photo";
+  lot_id: string;
+  payload: JSONB;
+  blob_paths?: string[];  // File references in app storage
+  status: "pending" | "syncing" | "success" | "error" | "conflict";
+  error_message?: string;
+  retry_count: number;
+  created_at: timestamp;
+  last_retry_at?: timestamp;
+  conflict_resolution?: "discard" | "retry" | null;
+}
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Batch Sync with Exponential Backoff</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+const syncBatch = async (items: SyncQueueItem[]) => {
+  for (const item of items) {
+    try {
+      // Atomic RPC call with retry logic
+      const result = await rpc.submitSyncItem({
+        workflow: item.workflow_type,
+        payload: item.payload,
+        attachments: await loadBlobsFromStorage(item.blob_paths)
+      });
+
+      // Update local state
+      await db.syncQueue.update(item.id, { status: 'success' });
+      emitProgress(items.length, successCount + 1);
+
+    } catch (error) {
+      if (isRetryable(error)) {
+        const nextRetry = Date.now() + exponentialBackoff(item.retry_count);
+        await db.syncQueue.update(item.id, {
+          status: 'error',
+          error_message: error.message,
+          last_retry_at: nextRetry,
+          retry_count: item.retry_count + 1
+        });
+      } else if (isConflict(error)) {
+        // State conflict: quarantine for manual review
+        await db.syncQueue.update(item.id, {
+          status: 'conflict',
+          error_message: error.serverMessage
+        });
+      }
+    }
+  }
+};
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Conflict Detection & Quarantine</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+const isConflict = (error: Error) => {
+  // Server error codes indicating state mismatch
+  const conflictCodes = [409, 422, 'ENTITY_NOT_FOUND', 'STATUS_MISMATCH'];
+  return conflictCodes.some(code =>
+    error.message.includes(code) || error.code === code
+  );
+};
+
+// Conflict stays in sync_queue with status='conflict'
+// Admin must manually review and authorize discard or manual reconciliation
+// Prevents automatic replay of stale commands
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Patterns Section -->
+      <div>
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Common Patterns &amp; Reusability</h3>
+        <ul style="color: var(--text-muted); font-size: 13px; line-height: 1.8; margin: 0; padding-left: 24px;">
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Batch Processing:</strong> Generic batch sync engine used across all workflows. Extract as &lt;BatchSyncEngine items={queueItems} onProgress={callback} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Progress Indication:</strong> Progress bar + per-item status (Screens 2-3) reused pattern for any long-running async operation. Consistent with photo upload progress.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Conflict Resolution UI:</strong> Screen 3 pattern (quarantine + manual review) applies to any offline collision scenario. Centralize conflict handler &lt;ConflictResolverUI conflictItems={[...]} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Exponential Backoff:</strong> Retry logic with exponential backoff applied to all network-dependent RPC calls. Shared utility across module.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Atomic Transactions:</strong> Each sync item wrapped in atomic transaction to prevent partial state. Coordinated with backend RPC contract to ensure "at-least-once" semantics.</li>
+        </ul>
       </div>
 
     </div>
@@ -351,6 +700,19 @@
   </div>
 
   <script>
+    function showTab(e, tabName) {
+      if (e) e.preventDefault();
+      const container = e.target.closest('.backend-tabs-container');
+      const panels = container.querySelectorAll('.backend-tab-panel');
+      const buttons = container.querySelectorAll('.backend-tab-btn');
+      panels.forEach(p => p.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+      const targetPanel = container.querySelector('#' + tabName);
+      if (targetPanel) targetPanel.classList.add('active');
+      const targetBtn = container.querySelector('[data-tab="' + tabName + '"]');
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+
     function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
     function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
 
@@ -379,6 +741,14 @@
       if (pathElement) {
         const pathname = window.location.pathname;
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+
+      // Show first backend tab by default
+      const firstPanel = document.querySelector('.backend-tabs-container .backend-tab-panel');
+      if (firstPanel) {
+        firstPanel.classList.add('active');
+        const firstBtn = document.querySelector('.backend-tabs-container .backend-tab-btn');
+        if (firstBtn) firstBtn.classList.add('active');
       }
     });
   </script>

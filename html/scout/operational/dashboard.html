@@ -206,6 +206,31 @@
     <p class="desc">Mobile-first assignment hub for field agents, surfacing real-time lot inspections and warehouse audits with geofencing and priority logic.</p>
   </div>
 
+  <!-- Common Components Section -->
+  <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+      <span style="font-size: 20px;">🧩</span>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+    </div>
+    <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+      <strong style="color: #fff;">This workflow reuses 11 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+    </p>
+    <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TaskCard</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">EmptyState</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SkeletalLoader</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">LocationPicker</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TabNavigation</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">AlertBanner</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ConfirmationDialog</span>
+    </div>
+  </div>
+
   <!-- Backend Architecture & Implementation Guide -->
   <div class="backend-tabs-container" style="max-width: 1280px; margin: 0 auto 48px; background: #18181b; border: 1px solid #27272a; border-radius: 16px; border-left: 4px solid #06b6d4; overflow: hidden;">
     <div class="backend-tabs-header" style="padding: 24px 32px; border-bottom: 1px solid #27272a; background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);">
@@ -345,6 +370,11 @@
             <td style="padding: 12px;">1</td>
           </tr>
           <tr style="border-bottom: 1px solid #27272a;">
+            <td style="padding: 12px;"><strong>PullToRefresh</strong></td>
+            <td style="padding: 12px;">Mobile pull-to-refresh gesture for sync trigger. Props: <code>isLoading: boolean, onRefresh: () => void</code></td>
+            <td style="padding: 12px;">1</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #27272a; background: rgba(6, 182, 212, 0.05);">
             <td style="padding: 12px;"><strong>AlertBanner</strong></td>
             <td style="padding: 12px;">Red warning banner showing overdue task count. Props: <code>overdueCount: number, totalOverdueHours: number</code></td>
             <td style="padding: 12px;">2</td>
@@ -553,10 +583,25 @@ Screen 3: Notifications
               </div>
               <div class="spec-block full-width">
                 <div class="spec-label">Database Schema</div>
-                <div class="db-schema-box">SELECT * FROM scout_tasks 
-WHERE scout_id = auth.uid() 
-AND status != 'completed' 
+                <div class="db-schema-box">SELECT * FROM scout_tasks
+WHERE scout_id = auth.uid()
+AND status != 'completed'
 ORDER BY priority DESC, scheduled_date ASC;</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (header)
+                  • TaskSearchBar (search & filter)
+                  • TaskListContainer (scrollable list)
+                  • TaskCard (task item with priority)
+                  • SkeletalLoader (data loading state)
+                  • MapToggleButton (map view switcher)
+                  • StatusBadge (task status indicator)
+                  • PullToRefresh (sync trigger)
+                  • EmptyState (no tasks message)
+                  • LocationPicker (GPS-based filtering)
+                </div>
               </div>
             </div>
             <div class="step-actions">
@@ -617,6 +662,19 @@ ORDER BY priority DESC, scheduled_date ASC;</div>
               <div class="spec-block full-width">
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">CREATE INDEX idx_overdue_tasks ON scout_tasks (scheduled_date, status) WHERE status = 'pending';</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (header)
+                  • AlertBanner (red overdue warning)
+                  • OverdueTaskCard (task item with elapsed time)
+                  • AcknowledgeSheet (bottom sheet for notes)
+                  • TextInput (acknowledge reason input)
+                  • CTAFooter (acknowledge & dismiss buttons)
+                  • EmptyState (no overdue tasks message)
+                  • StatusBadge (overdue status indicator)
+                </div>
               </div>
             </div>
             <div class="step-actions">
@@ -685,6 +743,16 @@ ORDER BY priority DESC, scheduled_date ASC;</div>
   read_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ DEFAULT now()
 );</div>
+              </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (header with unread badge)
+                  • NotificationTabs (Today/Yesterday/Older grouping)
+                  • NotificationCard (notification item with icon)
+                  • EmptyState (no notifications message)
+                  • StatusBadge (unread indicator)
+                </div>
               </div>
             </div>
             <div class="step-actions">

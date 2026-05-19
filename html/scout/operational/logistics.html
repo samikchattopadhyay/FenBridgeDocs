@@ -184,6 +184,30 @@
     <p class="desc">Logistics interlock ensuring correct truck loading, weight-bridge verification, and secure departure for matched POs.</p>
   </div>
 
+  <!-- Common Components Section -->
+  <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+      <span style="font-size: 20px;">🧩</span>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+    </div>
+    <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+      <strong style="color: #fff;">This workflow reuses 10 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+    </p>
+    <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">NumberInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SelectInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">PhotoGrid</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CheckboxInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ConfirmationCheckbox</span>
+    </div>
+  </div>
+
   <div class="stepper-panel-container">
     <div class="stepper-nodes">
       <a href="#step-01" class="stepper-node"><span class="node-num">01</span><span class="node-label">Load Confirm</span></a>
@@ -251,6 +275,17 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">UPDATE logistics_orders SET status = 'loading', loaded_at = NOW() WHERE lot_id = $1;</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (header with back navigation)
+                  • QRScanner (seal ID scanning interface)
+                  • ValidationCard (truck match status - Green/Red)
+                  • TextInput (driver phone number entry)
+                  • StatusBadge (truck match validation indicator)
+                  • CTAFooter (Confirm Match button)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/dispatch_logistics/load_confirmation/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -308,6 +343,18 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">INSERT INTO logistics_evidence (order_id, weight_slip_url, truck_photo_url) VALUES (...);</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (header with back navigation)
+                  • PhotoGrid (evidence photos: weight slip, truck, plate)
+                  • PhotoCaptureCard (camera capture for each evidence type)
+                  • NumberInput (net weight entry and validation)
+                  • CheckboxInput (weight match confirmation)
+                  • StatusBadge (weight validation result indicator)
+                  • CTAFooter (Continue button)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/dispatch_logistics/dispatch_evidence/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -356,6 +403,18 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">// State: IN_TRANSIT. GPS tracking active for truck.</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (header with back navigation)
+                  • SummaryCard (truck plate, destination, estimated arrival)
+                  • TextInput (truck plate confirmation)
+                  • SelectInput (destination dropdown)
+                  • StatusBadge (transit status indicator)
+                  • ConfirmationCheckbox (departure attestation)
+                  • CTAFooter (Mark Dispatched terminal button)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/dispatch_logistics/departure_confirmation/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -366,6 +425,228 @@
 
     </div>
   </div>
+
+  <!-- Backend Architecture Documentation -->
+  <div class="backend-tabs-container">
+    <div class="backend-tabs-header">
+      <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+      <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-button active" onclick="showTab(event, 'backend-react')">React Component Design</button>
+    </div>
+
+    <div class="tabs-content">
+      <!-- TAB: React Component Design -->
+      <div id="backend-react" class="tab-panel active">
+        <h3 class="backend-section-title">Design Philosophy</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Dispatch Logistics is a 3-screen workflow that interlock seal verification, evidence collection, and departure confirmation. Each screen ensures correct truck loading, weight validation via OCR, and terminal state transition to 'In-Transit' status.</p>
+
+        <h3 class="backend-section-title">Core Components for Dispatch Logistics</h3>
+        <table class="backend-table">
+          <tr>
+            <th>Component</th>
+            <th>Usage Pattern</th>
+            <th>Screens Used In</th>
+            <th>Key Props</th>
+          </tr>
+          <tr>
+            <td><strong>TopAppBar</strong> [COMMON]</td>
+            <td>Header with back navigation</td>
+            <td>All 3 screens</td>
+            <td>title, onBack</td>
+          </tr>
+          <tr>
+            <td><strong>StepperPanel</strong> [COMMON]</td>
+            <td>3-step progress indicator</td>
+            <td>All 3 screens</td>
+            <td>currentStep, steps</td>
+          </tr>
+          <tr>
+            <td><strong>TextInput</strong> [COMMON]</td>
+            <td>Driver phone number, truck plate</td>
+            <td>Screens 1, 3</td>
+            <td>label, value, onChange</td>
+          </tr>
+          <tr>
+            <td><strong>NumberInput</strong> [COMMON]</td>
+            <td>Weight entry, numeric fields</td>
+            <td>Screen 2</td>
+            <td>label, value, onChange, unit</td>
+          </tr>
+          <tr>
+            <td><strong>SelectInput</strong> [COMMON]</td>
+            <td>Destination dropdown, status selection</td>
+            <td>Screen 3</td>
+            <td>label, options, value</td>
+          </tr>
+          <tr>
+            <td><strong>PhotoGrid</strong> [COMMON]</td>
+            <td>Evidence photos gallery (weight slip, truck, plate)</td>
+            <td>Screen 2</td>
+            <td>photos, onRemove, readonly</td>
+          </tr>
+          <tr>
+            <td><strong>StatusBadge</strong> [COMMON]</td>
+            <td>Truck match status, weight validation result</td>
+            <td>Screens 1, 2, 3</td>
+            <td>status, label, size</td>
+          </tr>
+          <tr>
+            <td><strong>CTAFooter</strong> [COMMON]</td>
+            <td>Primary action buttons</td>
+            <td>All 3 screens</td>
+            <td>primaryText, primaryDisabled, onPrimary</td>
+          </tr>
+          <tr>
+            <td><strong>CheckboxInput</strong> [COMMON]</td>
+            <td>Weight match confirmation</td>
+            <td>Screen 2</td>
+            <td>label, checked, onChange</td>
+          </tr>
+          <tr>
+            <td><strong>ConfirmationCheckbox</strong> [COMMON]</td>
+            <td>Departure attestation</td>
+            <td>Screen 3</td>
+            <td>label, required, onChange</td>
+          </tr>
+        </table>
+
+        <h3 class="backend-section-title">Screen Decomposition & Component Usage</h3>
+
+        <div style="margin-top: 24px;">
+          <h4 style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 12px;">Screen 1: QR Scan / Load Confirmation</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Seal ID verification against truck match.</p>
+          <div class="backend-info-box">
+            <strong>Component Stack:</strong><br>
+            TopAppBar → StepperPanel → [QRCodeScanner] → [StatusBadge (Match/Error)] → [ValidationCard (Truck Plate, Driver)] → TextInput (Driver Phone) → CTAFooter (Confirm)
+          </div>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <h4 style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 12px;">Screen 2: Weight Bridge Slip / Truck Photos</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Evidence capture with OCR-powered weight recognition.</p>
+          <div class="backend-info-box">
+            <strong>Component Stack:</strong><br>
+            TopAppBar → StepperPanel → [PhotoCaptureCard (mandatory x 3: slip, truck rear, plate)] → [OCRExtractedWeight (auto-fill)] → NumberInput (verified_weight) → CheckboxInput (Weight confirmed) → StatusBadge (Within tolerance?) → CTAFooter (Next)
+          </div>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <h4 style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 12px;">Screen 3: Departure Confirmation</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Terminal state transition with attestation.</p>
+          <div class="backend-info-box">
+            <strong>Component Stack:</strong><br>
+            TopAppBar → StepperPanel → [SummaryCard (Truck, Destination, ETA)] → SelectInput (Destination) → ConfirmationCheckbox (Attestation) → [StatusBadge (Ready to dispatch)] → CTAFooter (Mark Dispatched - disabled until checked)
+          </div>
+        </div>
+
+        <h3 class="backend-section-title">State Management & Data Flow</h3>
+        <div class="backend-info-box">
+          <strong>Local Wizard State (Client-side):</strong><br>
+          • seal_id: string (scanned from QR)<br>
+          • truck_plate: string (matched from PO)<br>
+          • driver_phone: string<br>
+          • evidence_photos: { slip_url, truck_url, plate_url }<br>
+          • extracted_weight: number (from OCR)<br>
+          • verified_weight_confirmed: boolean<br>
+          • destination: string<br>
+          • attestation_checked: boolean<br>
+          <br>
+          <strong>Backend Atomic Transaction (on Screen 3 Submit):</strong><br>
+          1. UPDATE lots SET status = 'in_transit'<br>
+          2. INSERT logistics_evidence (photos)<br>
+          3. Trigger webhook to Buyer (escrow hold)<br>
+          4. INSERT audit_trail (departure_confirmed_at)<br>
+        </div>
+
+        <h3 class="backend-section-title">Weight Validation & OCR Logic</h3>
+        <div class="backend-code-block">
+// Screen 2 Weight Validation
+const validateWeight = (extractedWeight, certificateWeight) => {
+  const tolerance = 0.02; // 2% tolerance
+  const diff = Math.abs(extractedWeight - certificateWeight) / certificateWeight;
+  return diff <= tolerance;
+};
+
+// OCR Integration (pseudo-code)
+const extractWeightFromSlip = async (photoUrl) => {
+  const ocrResult = await googleCloudVision(photoUrl);
+  const weightMatch = ocrResult.text.match(/Net Wt.*?(\d+\.?\d*)\s*kg/i);
+  return weightMatch ? parseFloat(weightMatch[1]) : null;
+};
+        </div>
+
+        <h3 class="backend-section-title">Common Patterns & Reuse</h3>
+        <ul class="backend-list">
+          <li><strong>QR Scanning:</strong> Screen 1 uses QRCodeScanner. Extract to QRScannerComponent for reuse in other inventory flows.</li>
+          <li><strong>Photo Evidence:</strong> Screens 1 & 2 capture mandatory photos. Centralize photo compression and upload logic in PhotoService.</li>
+          <li><strong>Weight Validation:</strong> Screen 2 OCR + tolerance check. Create a reusable validateWeight utility for any lot/weight verification.</li>
+          <li><strong>Status Progression:</strong> All 3 screens use StatusBadge for real-time validation feedback. Use Context to persist wizard state.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSS for backend tabs -->
+  <style>
+    .backend-tabs-container {
+      max-width: 1280px; margin: 0 auto 48px; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: 16px; border-left: 4px solid var(--accent-primary);
+      overflow: hidden;
+    }
+    .backend-tabs-header {
+      padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+    }
+    .backend-tabs-title {
+      font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .backend-tabs-subtitle {
+      font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .tabs-nav {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border-color);
+      background: #0a0a0b; gap: 0;
+    }
+    .tab-button {
+      flex: 0 0 auto; padding: 16px 20px; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.3s ease; white-space: nowrap; text-transform: uppercase;
+      letter-spacing: 0.5px; font-family: 'Outfit', sans-serif;
+    }
+    .tab-button:hover { color: var(--accent-primary); }
+    .tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+    .tabs-content { display: flex; flex-direction: column; }
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+    .backend-section-title { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; margin-top: 24px; }
+    .backend-section-title:first-child { margin-top: 0; }
+    .backend-info-box { background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent-primary);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px; color: var(--text-main); line-height: 1.6; }
+    .backend-code-block { background: #0a0a0b; border: 1px solid var(--border-light); padding: 16px; white-space: pre;
+      border-radius: 8px; font-family: 'Monaco', monospace; font-size: 12px; color: #a6e3a1;
+      overflow-x: auto; margin: 16px 0; line-height: 1.5; }
+    .backend-list { margin: 16px 0; padding-left: 20px; }
+    .backend-list li { margin-bottom: 8px; font-size: 13px; color: var(--text-main); }
+    .backend-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .backend-table th, .backend-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .backend-table th { background: rgba(6, 182, 212, 0.12); color: var(--accent-primary); font-weight: 700; }
+    .backend-table tr:hover { background: rgba(6, 182, 212, 0.05); }
+  </style>
+
+  <script>
+    function showTab(event, tabName) {
+      event.preventDefault();
+      const panels = document.querySelectorAll('.tab-panel');
+      const buttons = document.querySelectorAll('.tab-button');
+      panels.forEach(p => p.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 
   <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
     <div class="modal-win" onclick="event.stopPropagation()">

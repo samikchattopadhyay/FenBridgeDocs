@@ -645,6 +645,19 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>updateFarmerProfile</code> mutations.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • FarmerHeaderCard (farmer identity display)
+                    • VerificationBadges (KYC/bank/pond status badges)
+                    • ProfileEditButton (edit mode trigger)
+                    • TextInput (name, address fields)
+                    • PhoneInput (phone number field)
+                    • StatusBadge (verification indicators)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -681,6 +694,20 @@
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes <code>updateFarmerBankDetails</code> routines.</p><p>Sets status flags back to pending approvals.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • BankAccountCard (current bank display)
+                    • BankEditForm (bank input form)
+                    • VerificationStatusCard (status display)
+                    • TextInput (account number, holder name)
+                    • SelectInput (bank selection)
+                    • StatusBadge (verification status)
+                    • DocumentUpload (cheque upload)
+                    • CTAFooter (actions)
+                  </div>
                 </div>
               </div>
             </div>
@@ -719,6 +746,21 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>upsertPondAsset</code> mutations.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • PondsListCard (list container)
+                    • PondCard (individual pond item with edit/delete)
+                    • PondEditModal (edit form modal)
+                    • TextInput (pond name, village)
+                    • NumberInput (area value)
+                    • SelectInput (unit, district)
+                    • LocationPicker (GPS coordinates)
+                    • StatusBadge (pond status)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -756,6 +798,19 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Generates unique <code>pond_code</code> values.</p><p>Invokes <code>upsertPondAsset</code>.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • TextInput (pond name, village)
+                    • NumberInput (area value)
+                    • SelectInput (unit, district)
+                    • LocationPicker (GPS coordinate capture)
+                    • PondCard (preview/review)
+                    • ExpandableSection (additional details)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -792,6 +847,18 @@
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>togglePondStatus</code> transactions to deactivate allocations.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • WarningBanner (deactivation notice)
+                    • PondCard (pond list display)
+                    • SelectInput (deactivation reason selector)
+                    • StatusBadge (current pond status)
+                    • ConfirmationCheckbox (acknowledge warning)
+                    • CTAFooter (actions)
+                  </div>
                 </div>
               </div>
             </div>

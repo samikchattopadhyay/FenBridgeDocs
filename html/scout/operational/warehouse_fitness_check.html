@@ -671,6 +671,10 @@ CREATE POLICY scout_fitness_check_write ON warehouse_fitness_checks
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Retrieves geodetic position using navigator API.</p><p>Caches GPS coordinate metrics inside local wizard state context.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with warehouse ID and name)<br>• WarehouseHeader / InfoDisplay (warehouse identification)<br>• InteractiveMap / MapComponent (distance calculation to warehouse)<br>• GPSSignalCard / DistanceIndicator (distance display with signal strength)<br>• GPSAccuracyDisplay (accuracy threshold indicators - ideal/warning/error)<br>• StatusBadge (GPS lock status indicator)<br>• Button (Lock Location & Start - enabled when in bounds)<br>• CTAFooter (action bar with primary button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -707,6 +711,10 @@ CREATE POLICY scout_fitness_check_write ON warehouse_fitness_checks
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Zod validation ensures all checklist rows are resolved before allowing page advancement.</p><p>Stores selections in session cache.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 2 of 5 indicator)<br>• ChecklistCard (4 core criteria cards - Dry Space, Elevated Floor, Off-Ground Pallets, Dampness Check)<br>• RadioButton / SelectInput (Pass/Fail option selectors for each criterion)<br>• WarningBanner / AlertBanner (warnings for failing critical items)<br>• StatusDisplay (unfit verdict indicator when any criterion fails)<br>• Button (Next to proceed)<br>• CTAFooter (action bar with Next button)</div>
                 </div>
               </div>
             </div>
@@ -745,6 +753,10 @@ CREATE POLICY scout_fitness_check_write ON warehouse_fitness_checks
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Uploads compressed JPEGs (max 2MB) to secure Supabase buckets, caching signed URLs locally inside wizard draft state.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 3 of 5 progress)<br>• PhotoGrid (grid list with camera trigger slots)<br>• PhotoCaptureCard (camera launch buttons for interior and details)<br>• ProgressLoader / UploadProgress (upload state indicators and loading rings)<br>• TextInput / TextArea (optional caption notes per image)<br>• PhotoPreviewCard (image preview replacing camera button after capture)<br>• Button (Next to proceed)<br>• CTAFooter (action bar with Next button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -782,6 +794,10 @@ CREATE POLICY scout_fitness_check_write ON warehouse_fitness_checks
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes <code>submitWarehouseFitnessVerdict</code> procedure.</p><p>Automatically updates the parent <code>warehouses.fitness_status</code> column.</p><p>On database failure, rolls back all updates.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 4 of 5 progress)<br>• ReviewPanel / SummaryCard (detailed criteria assessment review)<br>• VerdictCard (calculated final verdict display)<br>• StatusBadge (Fit = green checkmark, Unfit = amber warning)<br>• TextInput / TextArea (mandatory notes field for unfit verdicts)<br>• CriteriaDisplay (read-only checklist results review)<br>• Button (Submit Verification primary action)<br>• CTAFooter (action bar with Submit button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -818,6 +834,10 @@ CREATE POLICY scout_fitness_check_write ON warehouse_fitness_checks
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Clears all temporary draft context variables.</p><p>Switches local task queue state to completed.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with completion state)<br>• SuccessCard (full-screen glassmorphism layout)<br>• CheckmarkIcon (large, pulsing green checkmark animation)<br>• AuditCodeDisplay (unique verification code e.g., #WFC-1882)<br>• SyncStatusBadge (Synced or Offline Queued status)<br>• CompletionMessage (confirmation text and sync state details)<br>• Button (View Today's Tasks primary action)<br>• CTAFooter (action bar with return button)</div>
                 </div>
               </div>
             </div>

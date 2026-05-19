@@ -624,6 +624,10 @@ CREATE INDEX idx_sapo_scout ON scout_assignments_ponds (scout_id, active);</div>
                   <div class="spec-label">Database Schema & Scope</div>
                   <div class="spec-value"><p>Reads from: <code>ponds</code>, <code>scout_assignments_ponds</code>, <code>users</code> (farmer profiles).</p><p>Enforces scope using <code><code>scout_assignments_ponds.active</code> = true</code>.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back, title, menu)<br>• PondListSearchBar (search field + recency filter chips)<br>• PondCard (pond list row with farmer, village, area)<br>• StatusBadge (inspection status: Never Inspected / Inspected [Date])<br>• EmptyState (placeholder when no ponds found)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -665,6 +669,10 @@ CREATE INDEX idx_sapo_scout ON scout_assignments_ponds (scout_id, active);</div>
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Combines multiple SQL queries to hydrate all tabs: profile metadata from <code>ponds</code>, logs from <code>pond_inspections ORDER BY checked_at DESC</code>, and bids from <code>spot_offers WHERE source_type = 'pond' AND source_id = pond_id</code>.</p><p>Offline-first profile caching is activated for active assignments.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back, title, menu)<br>• PondHeaderCard (pond identity banner with farmer, status, area)<br>• TabNavigation (3-tab switcher: Profile / Inspections / Spot Offers)<br>• PondProfileTab (pond code, capacity, GPS coordinates, address)<br>• InspectionLogListItem (inspection log row with date, water level, algae, photos)<br>• SpotOfferListItem (spot offer row with ID, lot status, pricing)<br>• StatusBadge (pond status indicator)<br>• LocationPicker (GPS coordinates map embed)<br>• EmptyState (fallback for no inspections or offers)<br>• ActionBanner (sticky bottom with "Start Inspection" CTA)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -701,6 +709,10 @@ CREATE INDEX idx_sapo_scout ON scout_assignments_ponds (scout_id, active);</div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details & Schema</div>
                   <div class="spec-value"><p>Hydrates from three tables: <code>pond_inspections</code> (header logs), <code>pond_bund_readings</code> (granular measurements), and <code>pond_inspection_photos</code> (media storage references).</p><p>Images are automatically cached in local device storage for rapid offline viewing.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back, title, menu)<br>• InspectionHeaderCard (inspection header with date, scout, GPS accuracy, check type, physical indicators)<br>• BundReadingsTable (bund line measurements with density/maturity columns and computed average)<br>• PhotoGrid (inspection photos with lightbox viewer)</div>
                 </div>
               </div>
             </div>

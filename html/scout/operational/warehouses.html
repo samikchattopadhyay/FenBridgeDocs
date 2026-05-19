@@ -190,6 +190,12 @@
       margin-top: 8px !important;
       line-height: 1.5 !important;
     }
+
+    /* Backend Tabs */
+    .backend-tabs-container .backend-tab-btn { transition: all 0.3s ease; }
+    .backend-tabs-container .backend-tab-btn:hover { color: var(--accent-primary-hover); }
+    .backend-tabs-container .backend-tab-panel { display: none; }
+    .backend-tabs-container .backend-tab-panel.active { display: block; }
 </style>
 </head>
 <body>
@@ -204,6 +210,28 @@
       <div class="tag">Workflow Module 9</div>
       <h1 class="title">Warehouses Directory</h1>
       <p class="desc">Comprehensive historical repository of popper locations, fitness scores, and the complete audit trail of sealed lots (Section 9).</p>
+    </div>
+
+    <!-- Common Components Section -->
+    <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <span style="font-size: 20px;">🧩</span>
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+      </div>
+      <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+        <strong style="color: #fff;">This workflow reuses 8 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+      </p>
+      <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SelectInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SearchInput</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">DataTable</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+      </div>
     </div>
 
     <div class="stepper-panel-container">
@@ -265,6 +293,18 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">SELECT * FROM warehouses WHERE district = $1;</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and current view title)
+                  • StepperPanel (Visual progress indicator 1-3)
+                  • SearchInput (Full-text search for warehouse names and popper IDs)
+                  • SelectInput (Filter by fitness status Fit/Unfit distance radius)
+                  • DataTable (Display warehouse list lot records fitness check history)
+                  • StatusBadge (Display warehouse fitness status lot status Sealed In-Transit)
+                  • CTAFooter (Navigate Start Verification Download Close actions)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/warehouses/warehouse_list/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -311,6 +351,18 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">// Joins: warehouses -> lots -> inspections</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and warehouse name)
+                  • StepperPanel (Visual progress indicator 1-3)
+                  • TextInput (Display location popper name last check date read-only)
+                  • DataTable (Display sealed lots in-transit lots fitness check history)
+                  • StatusBadge (Display warehouse fitness status lot status)
+                  • TabNavigation (Overview Active Lots Fitness Logs tabbed view)
+                  • CTAFooter (Navigate Start Verification Back action buttons)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/warehouses/warehouse_profile/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -352,6 +404,18 @@
                 <div class="spec-label">Technical Details</div>
                 <div class="spec-value">Deep fetch of all child records for the lot ID.</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and lot ID)
+                  • StepperPanel (Visual progress indicator 1-3)
+                  • TextInput (Display lot ID seal ID grade cert ID read-only)
+                  • StatusBadge (Display lot current status)
+                  • Timeline (Chronological timeline of lot journey events)
+                  • DataTable (Display audit trail records chronological)
+                  • CTAFooter (Download Grade Cert PDF Back action buttons)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/warehouses/lot_audit_detail/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -362,6 +426,238 @@
 
     </div>
   </div>
+  </div>
+
+  <!-- Backend Architecture & Implementation Guide -->
+  <div class="backend-tabs-container">
+    <div class="backend-tabs-header">
+      <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+      <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-button active" onclick="showTab(event, 'backend-react')">React Component Design</button>
+    </div>
+
+    <div class="tabs-content">
+    <div id="backend-react" class="tab-panel active">
+
+      <!-- Design Philosophy Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Design Philosophy</h3>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 12px;">
+          The Warehouses Directory workflow provides a <strong style="color: #fff;">hierarchical audit trail and traceability interface</strong> for supply-chain visibility. The 3-screen flow navigates from warehouse discovery, to performance profiling, to single-lot traceability with full chronological history. This workflow is read-only—designed for Scouts and Admin users to verify compliance and troubleshoot logistics.
+        </p>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8;">
+          Key patterns: Search and filtering, hierarchical navigation, tabbed detail views, timeline visualization of lot journey.
+        </p>
+      </div>
+
+      <!-- Core Components Table -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Core Components</h3>
+        <div style="overflow-x: auto; background: #000; border: 1px solid var(--border-color); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <thead>
+              <tr style="background: #1a1a1e; border-bottom: 1px solid var(--border-color);">
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Component</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Usage Pattern</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700;">Screens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TopAppBar</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Static header with back button and current view title</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StepperPanel</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Visual progress indicator (1-3)</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">SearchInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Full-text search for warehouse names and popper IDs</td>
+                <td style="padding: 14px; color: var(--text-muted);">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">SelectInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Filter by fitness status (Fit/Unfit), distance radius</td>
+                <td style="padding: 14px; color: var(--text-muted);">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">DataTable</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display warehouse list, lot records, fitness check history</td>
+                <td style="padding: 14px; color: var(--text-muted);">1, 2, 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StatusBadge</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display warehouse fitness status, lot status (Sealed, In-Transit)</td>
+                <td style="padding: 14px; color: var(--text-muted);">1, 2, 3</td>
+              </tr>
+              <tr>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CTAFooter</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Navigate, Start Verification, Download, Close actions</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Screen Decomposition Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Screen Decomposition</h3>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 1: Warehouse Directory</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Searchable list of all warehouses in the scout's district. Filters by fitness status and distance. Shows lot counts and last check date.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Warehouses", backBtn } |
+            StepperPanel { active: 1 } |
+            SearchInput { placeholder: "Search warehouses..." } |
+            SelectInput[] { fitness: ["Fit", "Unfit"], distance: ["Within 5km", "5-10km", "10+km"] } |
+            DataTable {
+              headers: ["Warehouse", "Popper", "Status", "Lots", "Last Check"],
+              rows: warehouseList,
+              onRowClick: selectWarehouse
+            } |
+            CTAFooter { "Done" → home }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 2: Warehouse Profile</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            360-degree view of a warehouse. Tabbed view with overview (fitness history), lots (active seals), and fitness logs (audit trail).
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: warehouse.name, backBtn } |
+            StepperPanel { active: 2 } |
+            TabNavigation {
+              tab_1: "Overview",
+              tab_2: "Active Lots",
+              tab_3: "Fitness Logs"
+            } |
+            [Tab 1: Overview]
+            StatusBadge { status: warehouse.fitness_status, color: green|red } |
+            TextInput[] { location, popper_name, last_check_date [read-only] } |
+
+            [Tab 2: Lots]
+            DataTable { sealed_lots, in_transit_lots } |
+
+            [Tab 3: Logs]
+            DataTable { history: fitness_check_records, chronological } |
+
+            CTAFooter { "Navigate" | "Start Verification" | "Back" }
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 3: Lot Audit Detail</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Single Source of Truth for a lot. Chronological timeline from initial inspection through seal, re-checks, and current status.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Lot " + lot.id, backBtn } |
+            StepperPanel { active: 3 } |
+            TextInput[] { lot_id, seal_id, grade_cert_id [read-only] } |
+            StatusBadge { status: lot.current_status } |
+            Timeline {
+              events: [
+                { date, event: "Initial Inspection", grade },
+                { date, event: "Seal Applied", seal_id },
+                { date, event: "Re-check", verdict },
+                { date, event: "Current Status", status }
+              ]
+            } |
+            CTAFooter { "Download Grade Cert" [PDF] | "Back" }
+          </div>
+        </div>
+      </div>
+
+      <!-- State Management Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">State Management &amp; Data Flow</h3>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Navigation & Selection State</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+const [navigationState, setNavigationState] = useState({
+  screen: 1,  // 1=directory, 2=profile, 3=lot_detail
+  selected_warehouse_id: string | null;
+  selected_lot_id: string | null;
+  search_query: string;
+  filters: {
+    fitness_status: "Fit" | "Unfit" | null;
+    distance_radius: "5km" | "10km" | "50km" | null;
+  };
+  active_tab: 1 | 2 | 3;  // Screen 2 tabs
+});
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Data Loading & Aggregation</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+// Screen 1: Fetch warehouse list (pre-cached)
+const warehouseList = await db.warehouses
+  .where({ district_id: scoutDistrict })
+  .select(['id', 'name', 'popper_id', 'fitness_status', 'last_check_at'])
+  .orderBy('name');
+
+// Screen 2: Aggregate warehouse details
+const warehouseProfile = {
+  ...warehouse,
+  active_lots_count: (SELECT COUNT(*) FROM lots WHERE warehouse_id = $1 AND status IN ('sealed', 'in_transit')),
+  fitness_check_history: (SELECT * FROM warehouse_fitness_checks WHERE warehouse_id = $1 ORDER BY check_date DESC)
+};
+
+// Screen 3: Full lot traceability
+const lotAuditTrail = {
+  ...lot,
+  initial_inspection: (SELECT * FROM lot_inspections WHERE lot_id = $1 LIMIT 1),
+  seal_record: (SELECT * FROM lot_seals WHERE lot_id = $1),
+  recheck_logs: (SELECT * FROM recheck_logs WHERE lot_id = $1 ORDER BY created_at),
+  current_status: lot.status
+};
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Offline Cache Strategy</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+// Screen 1: Full warehouse list cached (max 1000 records)
+// Index: district_id + fitness_status + distance
+Cache: warehouseList (1 week TTL)
+
+// Screen 2: Fetch on demand with fallback to cache
+Cache: warehouseProfile (3 day TTL per warehouse)
+
+// Screen 3: Deep fetch on demand, no offline access
+// (Lot traceability requires latest server data)
+NoCache: lotAuditTrail (always fetch fresh)
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Patterns Section -->
+      <div>
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Common Patterns &amp; Reusability</h3>
+        <ul style="color: var(--text-muted); font-size: 13px; line-height: 1.8; margin: 0; padding-left: 24px;">
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Hierarchical Navigation:</strong> 3-screen drill-down (list → detail → deep detail) reused pattern across all directory workflows. Extract as &lt;HierarchicalNavigator screens={[...]} onSelect={callback} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Searchable Data Table:</strong> Search + filter + sort pattern (Screen 1) reused from Registered Users and Ponds Directory. Centralize &lt;SearchableTable data={[...]} filters={[...]} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Timeline Visualization:</strong> Chronological timeline (Screen 3) applied to any audit-trail or traceability scenario. Extract as &lt;AuditTimeline events={[...]} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Tabbed Profile View:</strong> Tabbed detail screen (Screen 2) mirrors pattern from Farmer/Popper profiles. Consistent UX across module.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Read-Only Principle:</strong> Entire workflow is audit/reporting only—no mutations. No offline sync needed. Designs show confidence in data freshness.</li>
+        </ul>
+      </div>
+
+    </div>
+    </div>
   </div>
 
   <div id="code-modal" class="modal-backdrop" onclick="closeModal()">
@@ -375,6 +671,19 @@
   </div>
 
   <script>
+    function showTab(e, tabName) {
+      if (e) e.preventDefault();
+      const container = e.target.closest('.backend-tabs-container');
+      const panels = container.querySelectorAll('.backend-tab-panel');
+      const buttons = container.querySelectorAll('.backend-tab-btn');
+      panels.forEach(p => p.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+      const targetPanel = container.querySelector('#' + tabName);
+      if (targetPanel) targetPanel.classList.add('active');
+      const targetBtn = container.querySelector('[data-tab="' + tabName + '"]');
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+
     function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
     function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
 
@@ -403,6 +712,14 @@
       if (pathElement) {
         const pathname = window.location.pathname;
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+
+      // Show first backend tab by default
+      const firstPanel = document.querySelector('.backend-tabs-container .backend-tab-panel');
+      if (firstPanel) {
+        firstPanel.classList.add('active');
+        const firstBtn = document.querySelector('.backend-tabs-container .backend-tab-btn');
+        if (firstBtn) firstBtn.classList.add('active');
       }
     });
   </script>

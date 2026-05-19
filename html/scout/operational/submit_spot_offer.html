@@ -654,6 +654,17 @@ CREATE POLICY scout_visit_schedules_scope ON visit_schedules
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Validates and saves the target <code>farmer_id</code> in the current wizard memory block.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • StepperBar (progress indicator)
+                    • SearchInput (farmer search field)
+                    • FarmerSelectionCardList (scrollable list)
+                    • FarmerSelectionCard (individual farmer item)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -690,6 +701,16 @@ CREATE POLICY scout_visit_schedules_scope ON visit_schedules
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Stores the selected <code>pond_id</code> or <code>warehouse_id</code> variables in local memory.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • StepperBar (progress indicator)
+                    • SourceSelectionCardList (tabbed pond/warehouse grid)
+                    • SourceSelectionCard (individual source item)
+                    • CTAFooter (actions)
+                  </div>
                 </div>
               </div>
             </div>
@@ -728,6 +749,18 @@ CREATE POLICY scout_visit_schedules_scope ON visit_schedules
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Validates volume limits against standard capacities.</p><p>Saves parameters in wizard states.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • StepperBar (progress indicator)
+                    • SpotDetailsCard (input section container)
+                    • NumberInput (quantity and moisture fields)
+                    • GradeSegmentedControl (A/B/C/Unsure selector)
+                    • ExpandableSection (advanced details accordion)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -764,6 +797,19 @@ CREATE POLICY scout_visit_schedules_scope ON visit_schedules
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Caches image binary arrays in local database tables until sync execution.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • StepperBar (progress indicator)
+                    • PhotoCaptureCard (camera trigger button)
+                    • PhotoGrid (thumbnail gallery with delete)
+                    • InfoBanner (instruction callout)
+                    • UploadProgressIndicator (upload status display)
+                    • ExpandableSection (optional details accordion)
+                    • CTAFooter (actions)
+                  </div>
                 </div>
               </div>
             </div>
@@ -802,6 +848,18 @@ CREATE POLICY scout_visit_schedules_scope ON visit_schedules
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Queries <code>getScoutAvailability</code> routines.</p><p>Caches schedule coordinates.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • StepperBar (progress indicator)
+                    • InspectionSlotSelector (date & time picker)
+                    • DateInput (horizontal calendar scroll)
+                    • InspectionSlotChip (time slot badge)
+                    • ScheduleSummaryCard (selected date/time recap)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -838,6 +896,18 @@ CREATE POLICY scout_visit_schedules_scope ON visit_schedules
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes <code>submitProxySpotOffer</code> to execute database transactions.</p><p>Resets wizard parameters.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • StepperBar (progress indicator)
+                    • SpotSummaryCard (complete recap display)
+                    • ExpandableSection (expandable detail sections)
+                    • PhotoGrid (photo gallery preview)
+                    • ConfirmationCheckbox (acceptance confirmation)
+                    • CTAFooter (actions)
+                  </div>
                 </div>
               </div>
             </div>

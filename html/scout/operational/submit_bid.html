@@ -784,6 +784,10 @@ CREATE POLICY bids_no_update ON bids
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Validates and saves the target <code>farmer_id</code> in the current wizard memory block.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 1 of 5 indicator)<br>• SearchInput / TextInput (searchable farmer index with real-time suggestions)<br>• SelectableCard / FarmerCard (farmer details with ponds, coordinates, validation flags)<br>• InfoDisplay (active ponds count, location coordinates)<br>• ValidationBadge (pending validation status indicators)<br>• Button (Next to proceed)<br>• CTAFooter (action bar with Next button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -820,6 +824,10 @@ CREATE POLICY bids_no_update ON bids
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Registers the selected <code>requirement_id</code>.</p><p>Checks date parameters to block placing bids on closed listings.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 2 of 5 progress)<br>• RequirementCard / BuyerDemandCard (active procurement orders with grade and volume)<br>• PriceRangeDisplay (target price range min/max)<br>• MinimumMetricsDisplay (minimum supply requirements)<br>• DeliveryDateDisplay (buyer delivery deadline)<br>• FilterButton / SelectInput (filter by grade A/B/C and district)<br>• Button (Select to proceed)<br>• CTAFooter (action bar with Next button)</div>
                 </div>
               </div>
             </div>
@@ -858,6 +866,10 @@ CREATE POLICY bids_no_update ON bids
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Performs validations comparing pricing inputs to buyer limits.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 3 of 5 indicator)<br>• NumberInput / PriceInput (price per kg entry field)<br>• QuantityInput / NumberInput (bid volume/quantity)<br>• SliderInput / RangeInput (price or quantity adjustment)<br>• DatePickerInput (harvest readiness date selection)<br>• CalculatedRevenue / SummaryDisplay (live projected revenue calculation)<br>• Button (Continue to next step)<br>• CTAFooter (action bar with Next button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -895,6 +907,10 @@ CREATE POLICY bids_no_update ON bids
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Saves target <code>pond_id</code> or <code>lot_id</code> parameters in wizard states.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 4 of 5 progress)<br>• AssetCard / PondCard / WarehouseCard (farmer's registered ponds and storage vaults)<br>• SizeDisplay (pond/vault size in hectares or storage units)<br>• LandmarkDisplay (geographic or warehouse location reference)<br>• AvailableQuantityDisplay (crop quantity available for this asset)<br>• SelectableCard / RadioButton (asset selection for fulfillment)<br>• Button (Select and proceed)<br>• CTAFooter (action bar with Next button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -931,6 +947,10 @@ CREATE POLICY bids_no_update ON bids
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>submitProxyBid</code>, updating bid lists and clearing wizard configurations.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 5 of 5 final step)<br>• SummaryCard / RecapCard (comprehensive bidding details overview)<br>• FarmerDisplay (farmer name and ID)<br>• RequirementDisplay (buyer requirement and grade)<br>• PriceDisplay (quoted price per kg and total amount)<br>• ReadyDateDisplay (harvest readiness commitment)<br>• AssetDisplay (selected pond/warehouse source)<br>• CheckboxInput (signature or confirmation checkbox)<br>• Button (Submit Bid primary action)<br>• CTAFooter (action bar with Submit button and success popup)</div>
                 </div>
               </div>
             </div>

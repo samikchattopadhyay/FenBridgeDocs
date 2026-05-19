@@ -772,6 +772,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Locks target <code>spec_version</code> in context, fetching the active specification tolerances before navigating downstream.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• MetadataDisplay (lot reference, linked PO)<br>• NumberInput (bag count, verified weight)<br>• VarianceDisplay (calculated variance metrics)<br>• StatusBadge (variance warning if ±5%)<br>• CTAFooter (Continue)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -808,6 +812,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Zod schemas block impossible ranges (<code>e.g</code>.</p><p>moisture &gt; 25%).</p><p>Compiles readings into local context objects.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• ParameterCard (grid for each quality factor)<br>• NumberInput (Moisture %, Foreign Matter %)<br>• NumberInput (Broken/Defective %)<br>• SelectInput (Size Grade: Suta)<br>• SelectInput (Color Luster: Bright/Acceptable/Dull)<br>• StatusBadge (A/B/C band status colors)<br>• StickyFooter (provisional grade display)<br>• CTAFooter (Continue)</div>
                 </div>
               </div>
             </div>
@@ -846,6 +854,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Failing to resolve defects while toggling off blocks navigation.</p><p>Critical/major defects dynamically append mandatory photo capture flags for Step 4.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• ToggleSwitch (default: "No defects found")<br>• BottomSheet (coded defect options)<br>• SelectInput or OptionGrid (severity categories)<br>• StatusBadge (worst defect summary)<br>• SeverityIndicator (severity color coding)<br>• CTAFooter (Continue)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -882,6 +894,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Compresses files to &le; 1.5MB.</p><p>Stamps GPS metadata.</p><p>Uploads photos directly to Cloudflare R2 via presigned POST URLs obtained from <code>scout.media.getUploadUrl</code>. EXIF GPS metadata preserved.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• PhotoGrid (structured slot layout)<br>• PhotoCaptureCard (wide lot shot, close-up seed, moisture meter)<br>• PhotoCaptureCard (dynamic defect evidence slots)<br>• ImageTile or Preview (retake icons)<br>• ProgressIndicator (capture status)<br>• CTAFooter (Continue, disabled until all slots filled)</div>
                 </div>
               </div>
             </div>
@@ -920,6 +936,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Assigns temporary <code>sample_ref</code> values, resolving final unique identifiers server-side.</p><p>Auto-calculates <code>retain_until</code> date (checked_at + 6 months).</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• ReferenceIDDisplay (distinct copyable sample ID)<br>• NumberInput (bag count sampled)<br>• PhotoCaptureCard (locked sample bag)<br>• StatusBadge or DataDisplay (quality metrics read-only)<br>• HelperText (retention policy info)<br>• CTAFooter (Continue)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -956,6 +976,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes atomic database transaction.</p><p>Mutates <code>lots</code> state column values.</p><p>Enqueues updates to the synchronization pipelines.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• OutcomeBanner (Red/Amber for Reject/Downgrade/Hold)<br>• ChecklistCard (assessment summary recap)<br>• CheckboxInput (mandatory confirmation checks)<br>• ConfirmationText (decision rationale)<br>• StatusDisplay (decision logic: Accept/Downgrade/Hold/Reject)<br>• CTAFooter (Submit Inspection)</div>
                 </div>
               </div>
             </div>
@@ -994,6 +1018,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Renders an on-device local HTML mockup representing the server-side PDF generator template to ensure full offline operations.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• PDFViewer or CertificatePreview (read-only mockup)<br>• CertificateHeader (identifiers, lot info)<br>• QualityMetricsDisplay (assessed grades, parameters)<br>• EvidencePhotos (inline photo thumbnails)<br>• Button (primary: Finish)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1030,6 +1058,10 @@ CREATE POLICY scout_inspections_own_write ON inspections
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Clears all temporary draft context storage variables.</p><p>Marks local SQLite task items resolved.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• SuccessIllustration or ConfirmationCard<br>• StatusBadge (Synced / Offline Queued)<br>• AlertBanner (downgrade notifications, reconditioning alerts)<br>• ConfirmationMessage (completion summary)<br>• Button (Apply seal now OR Back to dashboard)<br>• ShortcutLink (next task pathway)</div>
                 </div>
               </div>
             </div>

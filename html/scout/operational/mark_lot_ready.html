@@ -797,6 +797,10 @@ CREATE POLICY scout_lot_ready_write ON lot_ready_events
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Loads PO parameters into local wizard context buffers.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 1/5)<br>• InfoBanner (instruction banner)<br>• SearchInput (search field for PO filtering)<br>• POSelectionCardList (searchable list of PO cards)<br>• POSelectionCard (individual PO card with farmer, weight, produce, date)<br>• CTAFooter (primary Continue action, disabled until PO selected)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -833,6 +837,10 @@ CREATE POLICY scout_lot_ready_write ON lot_ready_events
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Restricts submissions if input exceeds PO volume specifications.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 2/5)<br>• PORecapCard (displays PO expectations)<br>• InfoBanner (warning about weight limits)<br>• QuantityInputCard (container for numeric inputs)<br>• NumberInput (total kg input with max validation)<br>• NumberInput (bag count input with range validation)<br>• WeightCalculationCard (calculated average weight display)<br>• CTAFooter (primary Continue action with validation)</div>
                 </div>
               </div>
             </div>
@@ -871,6 +879,10 @@ CREATE POLICY scout_lot_ready_write ON lot_ready_events
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Calculates standard deviations to verify packaging uniformity before advancing.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 3/5)<br>• InfoBanner (guidance for weight validation)<br>• BagWeightListCard (interactive list of individual bag weights)<br>• BagWeightItem (individual bag weight input with variance display)<br>• WeightVarianceIndicator (visual flag for uneven distribution)<br>• ExpandableSection (weight statistics summary)<br>• CTAFooter (primary Continue action, disabled until all bags valid)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -908,6 +920,10 @@ CREATE POLICY scout_lot_ready_write ON lot_ready_events
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Validates file sizes.</p><p>Saves paths to device memory context.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• StepperBar (progress indicator: step 4/5)<br>• InfoBanner (mandatory 2-photo requirement)<br>• PhotoGrid (displays uploaded photos with delete capability)<br>• PhotoCaptureCard (camera/gallery trigger with upload count)<br>• UploadProgressIndicator (shows progress toward minimum 2 photos)<br>• ExpandableSection (photo requirements checklist)<br>• CTAFooter (primary Continue action, disabled until 2+ photos)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -944,6 +960,10 @@ CREATE POLICY scout_lot_ready_write ON lot_ready_events
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes <code>markLotReady</code> transaction.</p><p>Resets local buffers.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• StepperBar (progress indicator: step 5/5)<br>• WeightSummaryCard (total kg, bag count, average weight display)<br>• ExpandableSection (summary details of all fields)<br>• PhotoGrid (read-only thumbnail display of uploaded photos)<br>• CheckboxInput (ConfirmationCheckbox for final acknowledgment)<br>• CTAFooter (primary Confirm & Submit action, disabled until checkbox)<br>• SuccessTerminalCard (success screen with transport contact details)</div>
                 </div>
               </div>
             </div>

@@ -630,6 +630,19 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>updatePopperProfile</code> mutations.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • ProfileHeaderCard (popper identity display)
+                    • TextInput (business name field)
+                    • PhoneInput (phone number field)
+                    • AddressForm (address fields)
+                    • VerificationBadges (verification status badges)
+                    • StatusBadge (status indicator)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -666,6 +679,18 @@
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Invokes <code>updatePopperDocuments</code>.</p><p>Sets document verification states back to pending.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • DocumentStatusCard (document type card with status)
+                    • StatusBadge (verified/under review/missing status)
+                    • TextInput (document number input)
+                    • FileUpload (document file upload)
+                    • InfoBanner (re-verification notice)
+                    • CTAFooter (actions)
+                  </div>
                 </div>
               </div>
             </div>
@@ -704,6 +729,21 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>upsertWarehouseAsset</code> mutations.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • WarehouseSelectionCard (warehouse list grid)
+                    • WarehouseEditForm (edit form container)
+                    • TextInput (name, landmark fields)
+                    • NumberInput (capacity field)
+                    • SelectInput (storage type selector)
+                    • LocationPicker (GPS coordinate capture)
+                    • WarningBanner (active lots warning)
+                    • StatusBadge (warehouse status)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -741,6 +781,20 @@
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Generates unique <code>warehouse_code</code> values.</p><p>Invokes <code>upsertWarehouseAsset</code>.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • WarehouseRegistrationForm (registration form container)
+                    • TextInput (warehouse name, village, landmark)
+                    • NumberInput (capacity field)
+                    • SelectInput (storage type, district)
+                    • LocationPicker (GPS coordinate capture)
+                    • WarehouseReviewCard (read-only recap)
+                    • ConfirmationCheckbox (coordinate confirmation)
+                    • CTAFooter (actions)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -777,6 +831,21 @@
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>toggleWarehouseStatus</code> transactions to deactivate allocations.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">
+                    • TopAppBar (header)
+                    • WarehouseSelectionCard (warehouse list grid)
+                    • WarningBanner (critical deactivation warning)
+                    • ActiveAllocationsCard (active lots count display)
+                    • DeactivationReasonCard (reason selector)
+                    • SelectInput (deactivation reason dropdown)
+                    • TextInput (other reason notes)
+                    • ConfirmationCheckbox (confirm deactivation)
+                    • StatusBadge (warehouse status)
+                    • CTAFooter (actions)
+                  </div>
                 </div>
               </div>
             </div>

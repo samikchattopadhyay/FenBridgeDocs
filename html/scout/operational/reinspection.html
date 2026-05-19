@@ -721,6 +721,10 @@ REVOKE UPDATE ON inspections FROM scout_role;</div>
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Locks previous inspection references and indexes <code>prior_inspection_id</code> in current context drafts.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• InfoPanel (amber warning banner for rejection context)<br>• RejectionDisplay (historical failure codes display)<br>• FailureCodesList (bulleted parameter failure list)<br>• Button (Start Re-Inspection action)<br>• CTAFooter (primary action footer)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -757,6 +761,10 @@ REVOKE UPDATE ON inspections FROM scout_role;</div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Verifies weight variances, logging variables into state parameters.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• QuantityDisplay (previous quantity read-only view)<br>• NumberInput (current bag count and weight inputs)<br>• VarianceIndicator (live difference calculation display)<br>• VarianceDisplayGrid (side-by-side comparison)<br>• CTAFooter (primary Continue action)</div>
                 </div>
               </div>
             </div>
@@ -795,6 +803,10 @@ REVOKE UPDATE ON inspections FROM scout_role;</div>
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Implements range checks client-side.</p><p>Maps values into <code>inspection_parameter_readings</code> layouts.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• ParameterCard (individual parameter input with prior/current values)<br>• NumberInput (numeric parameter reading input)<br>• FocusHighlight (emphasis styling for previously failed metrics)<br>• GradeSummaryCard (provisional grade calculation display)<br>• CTAFooter (primary Continue action with validation)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -832,6 +844,10 @@ REVOKE UPDATE ON inspections FROM scout_role;</div>
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Calculates overall outcomes.</p><p>Invokes <code>submitReinspection</code> to execute new insert-only entries.</p></div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with back button)<br>• DefectBoard (interactive defect clearance display)<br>• ChecklistCard (defect checklist with prior failure states)<br>• CheckboxInput (clearance status toggle for each defect)<br>• DefectWarningBanner (critical defect blocking logic display)<br>• Button (Submit Re-Inspection action)<br>• CTAFooter (primary action footer)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -868,6 +884,10 @@ REVOKE UPDATE ON inspections FROM scout_role;</div>
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Resets reinspection wizard memory context blocks.</p><p>Switches local database items resolved.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header)<br>• SuccessCard (terminal success state display)<br>• CheckmarkIcon (success visual indicator)<br>• SequenceDisplay (reinspection sequence number display)<br>• VerdictChips (color-coded verdict status)<br>• ConfirmationDetailsList (summary details block)<br>• CTAFooter (Back to Dashboard action)</div>
                 </div>
               </div>
             </div>

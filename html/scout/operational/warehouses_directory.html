@@ -201,6 +201,10 @@
   </div>
 
   <div class="backend-tabs-container">
+    <div class="backend-tabs-header">
+      <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+      <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+    </div>
     <div class="tabs-header">
       <button class="tab-button active" onclick="switchTab(event, 'api')">API Architecture</button>
       <button class="tab-button" onclick="switchTab(event, 'react-components')">React Component Design</button>
@@ -590,6 +594,10 @@ CREATE INDEX idx_saw_scout ON scout_assignments_warehouses (scout_id, active);</
 );
 CREATE INDEX idx_saw_scout ON scout_assignments_warehouses (scout_id, active);</div>
           </div>
+          <div class="spec-block">
+            <div class="spec-label">Components Used</div>
+            <div class="spec-value">• TopAppBar (header with back, title, menu)<br>• SearchBar (search input for popper/code/area)<br>• FilterChips (multi-select filter pills: All/Fit/Unfit/Unchecked/Has Active)<br>• SortSelector (dropdown sort menu: by Name/Recent Activity/Fitness Status)<br>• WarehouseCard (list item with popper, code, location, fitness pill, active lot count, danger marker)<br>• StatusPill (fitness status indicator)<br>• PullToRefresh (iOS-style pull gesture for sync)<br>• EmptyState (placeholder when no warehouses found)</div>
+          </div>
         </div>
       </div>
     </div>
@@ -637,6 +645,10 @@ CREATE INDEX idx_saw_scout ON scout_assignments_warehouses (scout_id, active);</
           <div class="spec-block">
             <div class="spec-label">Database Schema</div>
             <div class="spec-value">Reads: warehouses, poppers, warehouse_fitness_checks, warehouse_fitness_items, lots, lot_seals, inspections, warehouse_storage_failures, storage_rechecks. No new tables required; directory queries join existing schema.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Components Used</div>
+            <div class="spec-value">• TopAppBar (header with back, title, menu)<br>• DetailHeaderCard (warehouse identity with popper name, code, fitness pill, active lot count)<br>• TabBar (4-tab navigation: Profile / Fitness / Lots / Failures)<br>• StatusPill (fitness status: Fit/Unfit/Unchecked)<br>• LocationPreview (GPS coordinates map embed)<br>• ListCard (fitness check rows, lot rows, failure rows)<br>• ExpandableSection (collapsible groups for lots by status, past seals)<br>• ActionBanner / CTAFooter (action buttons: Start Fitness Check, Navigate, Call Popper)</div>
           </div>
         </div>
         </div>
@@ -686,6 +698,10 @@ CREATE INDEX idx_saw_scout ON scout_assignments_warehouses (scout_id, active);</
           <div class="spec-block">
             <div class="spec-label">Database Schema</div>
             <div class="spec-value">Read-only. Reads from: lots, lot_seals, inspections, storage_rechecks, grade_certificates (all existing tables). Closure state derived from lots.status — no separate closure table. No new tables required. Deep-links to inspection/seal/re-check detail surfaces via existing schema.</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-label">Components Used</div>
+            <div class="spec-value">• TopAppBar (header with back, title, menu)<br>• LotDetailHeader (lot code, popper, warehouse, declared/verified quantity)<br>• StatusBanner (colour-coded lifecycle state: Pending/Verified/Sealed/Sold/Expired/Voided/Terminal)<br>• SummaryCard (declared vs verified quantity, claimed vs assessed grade, source)<br>• InspectionTimeline (vertical timeline with connector lines, oldest first)<br>• ListCard / SealRecord (active seal record with chain-of-custody details)<br>• ExpandableSection (Past Seals expander with historical seal records)<br>• ListCard (storage re-check log items)<br>• DocumentsList / ListCard (grade certificates, latest primary)<br>• Badge / Pill (status indicators, grade pill)</div>
           </div>
         </div>
         </div>

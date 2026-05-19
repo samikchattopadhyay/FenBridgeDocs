@@ -167,6 +167,12 @@
     .address-bar { background: #121212; border-bottom: 1px solid #2a2a2f; padding: 12px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; max-width: 100%; height: 42px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5); position: sticky; top: 0; z-index: 100; }
     .address-bar-icon { font-size: 16px; color: #06b6d4; flex-shrink: 0; }
     .address-bar-path { font-family: 'Courier New', monospace; font-size: 12px; color: #a0a0a8; word-break: break-all; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+
+    /* Backend Tabs */
+    .backend-tabs-container .backend-tab-btn { transition: all 0.3s ease; }
+    .backend-tabs-container .backend-tab-btn:hover { color: var(--accent-primary-hover); }
+    .backend-tabs-container .backend-tab-panel { display: none; }
+    .backend-tabs-container .backend-tab-panel.active { display: block; }
   </style>
 </head>
 <body>
@@ -182,6 +188,32 @@
     <div class="tag">Workflow Module 8</div>
     <h1 class="title">Rejection Handling</h1>
     <p class="desc">Structured management of failed lots, determining reconditioning pathways or terminal closure based on food-safety risk (Section 3.3).</p>
+  </div>
+
+  <!-- Common Components Section -->
+  <div style="background: linear-gradient(135deg, #0d4732 0%, #083d2f 100%); border: 1px solid #10b981; border-left: 4px solid #10b981; border-radius: 16px; padding: 24px 32px; margin-bottom: 48px; max-width: 1280px; margin-left: auto; margin-right: auto;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+      <span style="font-size: 20px;">🧩</span>
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #10b981; margin: 0;">Common Components</h2>
+    </div>
+    <p style="font-size: 13px; color: #d1fae5; margin: 0 0 16px 0; line-height: 1.6;">
+      <strong style="color: #fff;">This workflow reuses 12 standardized components</strong> from the Scout module's design system. See <a href="../common_components_reference.html" style="color: #10b981; text-decoration: none; font-weight: 600;">Common Components Reference</a> for full specifications, props, variants, and cross-workflow usage patterns.
+    </p>
+    <p style="font-size: 12px; color: #a7f3d0; margin: 0 0 12px 0; font-weight: 600;">⚠️ DO NOT create duplicate components. Always check if a component already exists before designing a new one.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TopAppBar</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StepperPanel</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">SelectInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">PhotoGrid</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">StatusBadge</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CTAFooter</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">FileUpload</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">CheckboxInput</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">TextArea</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">RadioGroup</span>
+      <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">ConfirmationCheckbox</span>
+    </div>
   </div>
 
   <div class="stepper-panel-container">
@@ -243,6 +275,18 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">SELECT * FROM inspections WHERE lot_id = $1 AND disposition = 'rejected';</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and screen title)
+                  • StepperPanel (Visual indicator showing progress 1-2)
+                  • TextInput (Display lot ID and defect code read-only)
+                  • SelectInput (Choose defect reason from coded catalogue)
+                  • PhotoGrid (Gallery of defect photos that triggered rejection)
+                  • StatusBadge (Display rejection status red critical)
+                  • CTAFooter (Next/Submit action buttons fixed bottom)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/rejection_handling/rejection_detail/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -295,6 +339,18 @@
                 <div class="spec-label">Database Schema</div>
                 <div class="db-schema-box">UPDATE lots SET status = 'terminal_rejected' WHERE id = $1;</div>
               </div>
+              <div class="spec-block full-width">
+                <div class="spec-label">Components Used</div>
+                <div class="spec-value">
+                  • TopAppBar (Static header with back button and screen title)
+                  • StepperPanel (Visual progress indicator 1-2)
+                  • StatusBadge (Display decision required status amber)
+                  • RadioGroup (Binary choice Recondition vs Terminal)
+                  • TextArea (Free-text notes for terminal closure reason)
+                  • ConfirmationCheckbox (Scout attestation for final decision)
+                  • CTAFooter (Submit Decision action buttons fixed bottom)
+                </div>
+              </div>
             </div>
             <div class="step-actions">
               <a href="../../../app/screens_v2/scout/rejection_handling/rejection_outcome/code.html" onclick="openModal(event, this.href)" class="action-btn">View Executable Code</a>
@@ -303,6 +359,231 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Backend Architecture & Implementation Guide -->
+  <div class="backend-tabs-container">
+    <div class="backend-tabs-header">
+      <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+      <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-button active" onclick="showTab(event, 'backend-react')">React Component Design</button>
+    </div>
+
+    <div class="tabs-content">
+    <div id="backend-react" class="tab-panel active">
+
+      <!-- Design Philosophy Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Design Philosophy</h3>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 12px;">
+          The Rejection Handling workflow follows a <strong style="color: #fff;">binary decision flow pattern</strong> determining the fate of failed lots. The 2-screen flow maps inspection failures to one of two pathways: reconditioning (with specific treatment guidance) or terminal closure (permanent removal from marketplace). This workflow is triggered only after a lot fails inspection and encodes critical business logic for quality assurance.
+        </p>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8;">
+          Key patterns: Evidence-backed decision (show defect photos), risk classification (reconditionable vs. food-safety terminal), and pathway determination (actionable next steps).
+        </p>
+      </div>
+
+      <!-- Core Components Table -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Core Components</h3>
+        <div style="overflow-x: auto; background: #000; border: 1px solid var(--border-color); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <thead>
+              <tr style="background: #1a1a1e; border-bottom: 1px solid var(--border-color);">
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Component</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Usage Pattern</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700;">Screens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TopAppBar</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Static header with back button and screen title</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StepperPanel</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Visual indicator showing progress (1-2)</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TextInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display lot ID and defect code (read-only)</td>
+                <td style="padding: 14px; color: var(--text-muted);">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">PhotoGrid</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Gallery of defect photos that triggered rejection</td>
+                <td style="padding: 14px; color: var(--text-muted);">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StatusBadge</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display rejection status (red critical)</td>
+                <td style="padding: 14px; color: var(--text-muted);">1, 2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">SelectInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Choose defect reason from coded catalogue</td>
+                <td style="padding: 14px; color: var(--text-muted);">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">RadioGroup</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Binary choice: Recondition vs. Terminal</td>
+                <td style="padding: 14px; color: var(--text-muted);">2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TextArea</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Free-text notes for terminal closure reason</td>
+                <td style="padding: 14px; color: var(--text-muted);">2</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">ConfirmationCheckbox</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Scout attestation for final decision</td>
+                <td style="padding: 14px; color: var(--text-muted);">2</td>
+              </tr>
+              <tr>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CTAFooter</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Next/Submit action buttons (fixed bottom)</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Screen Decomposition Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Screen Decomposition</h3>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 1: Rejection Detail</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Review of the specific failure cause. Displays failure reason code and evidence photos that triggered rejection.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Rejection Detail", backBtn } |
+            StepperPanel { active: 1 } |
+            StatusBadge { status: "REJECTED", color: red, size: large } |
+            TextInput { lotId [read-only] } |
+            SelectInput { defect_reason_code } |
+            PhotoGrid { display_defect_photos, interactive_review } |
+            CTAFooter { "Proceed to Decision" → screen 2 }
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 2: Outcome - Recondition vs Terminal</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+            Binary decision determining lot's final status. Reconditionable defects show treatment pathway; food-safety risks trigger permanent closure.
+          </p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+            TopAppBar { title: "Rejection Outcome", backBtn } |
+            StepperPanel { active: 2 } |
+            StatusBadge { outcome: "DECISION REQUIRED", color: amber } |
+            RadioGroup {
+              option_1: "Recondition: [path]",
+              option_2: "Terminal Closure"
+            } |
+            TextArea { closure_notes [if Terminal] } |
+            ConfirmationCheckbox { "I attest decision accuracy" } [mandatory] |
+            CTAFooter { "Submit Decision" → backend transaction }
+          </div>
+        </div>
+      </div>
+
+      <!-- State Management Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">State Management &amp; Backend Logic</h3>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Local Wizard State</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+const [wizardState, setWizardState] = useState({
+  lot_id: string;
+  inspection_id: string;
+  defect_reason_code: string;  // from catalogue
+  defect_photos: string[];
+  decision: "recondition" | "terminal" | null;
+  reconditioning_path?: string;  // e.g. "Re-dry", "Re-sort"
+  terminal_notes?: string;
+  attestation_checked: boolean;
+});
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Defect Classification Logic</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+const DEFECT_CATALOGUE = {
+  // Reconditionable
+  "high_moisture": { path: "Re-dry on clean cloth", terminal: false },
+  "foreign_matter": { path: "Re-clean & sort", terminal: false },
+  "mixed_size": { path: "Re-sort by size", terminal: false },
+
+  // Terminal (food-safety critical)
+  "mold": { path: null, terminal: true },
+  "infestation": { path: null, terminal: true },
+  "rancidity": { path: null, terminal: true },
+  "rodent_damage": { path: null, terminal: true },
+  "adulteration": { path: null, terminal: true }
+};
+
+const getReconditioningPath = (defectCode) => {
+  return DEFECT_CATALOGUE[defectCode]?.path || null;
+};
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Backend Transaction</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+BEGIN TRANSACTION;
+1. INSERT INTO lot_rejections (
+  lot_id, inspection_id, defect_reason_code, photos_json, decision_timestamp
+) VALUES (...);
+
+2. UPDATE lots SET
+  status = CASE
+    WHEN $decision = 'terminal' THEN 'terminal_rejected'
+    WHEN $decision = 'recondition' THEN 'awaiting_reconditioning'
+    ELSE status
+  END
+WHERE id = $1;
+
+3. IF decision = 'terminal' THEN
+  INSERT INTO lot_terminal_closures (
+    lot_id, reason, scout_notes, closure_date
+  ) VALUES ($1, $defect_code, $notes, now());
+END IF;
+
+4. IF decision = 'recondition' THEN
+  INSERT INTO reconditioning_tasks (
+    lot_id, treatment_type, expected_completion
+  ) VALUES ($1, $path, now() + interval '5 days');
+END IF;
+
+COMMIT;
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Patterns Section -->
+      <div>
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Common Patterns &amp; Reusability</h3>
+        <ul style="color: var(--text-muted); font-size: 13px; line-height: 1.8; margin: 0; padding-left: 24px;">
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Defect Photo Gallery:</strong> Photo display pattern (Screen 1) reused from Lot Verification and Storage Re-check. Extract as &lt;DefectPhotoGallery defectPhotos={[...]} reviewMode /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Binary Decision Pattern:</strong> Radio selection between two outcome paths mirrors Pond Inspection pass/fail logic. Use Context to persist decision state across screens.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Status Badge Theming:</strong> Red critical status for rejection, amber warning for decision-required state. Consistent with other workflow verdict displays.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Defect Catalogue Lookup:</strong> Centralize DEFECT_CATALOGUE in shared config for cross-workflow consistency. All rejection/inspection workflows reference same set of defect codes.</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Offline Support:</strong> Both screens work offline (no real-time calls). Entire workflow cached locally; sync queues rejection decision + photos on network availability.</li>
+        </ul>
+      </div>
+
+    </div>
     </div>
   </div>
 
@@ -319,6 +600,19 @@
   </div>
 
   <script>
+    function showTab(e, tabName) {
+      if (e) e.preventDefault();
+      const container = e.target.closest('.backend-tabs-container');
+      const panels = container.querySelectorAll('.backend-tab-panel');
+      const buttons = container.querySelectorAll('.backend-tab-btn');
+      panels.forEach(p => p.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+      const targetPanel = container.querySelector('#' + tabName);
+      if (targetPanel) targetPanel.classList.add('active');
+      const targetBtn = container.querySelector('[data-tab="' + tabName + '"]');
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+
     function openModal(e, url) { e.preventDefault(); document.getElementById('modal-iframe').src = url; document.getElementById('code-modal').classList.add('active'); }
     function closeModal() { document.getElementById('code-modal').classList.remove('active'); document.getElementById('modal-iframe').src = ''; }
 
@@ -347,6 +641,14 @@
       if (pathElement) {
         const pathname = window.location.pathname;
         pathElement.textContent = pathname.replace(/^\//, '').replace(/\/$/, '') || pathname;
+      }
+
+      // Show first backend tab by default
+      const firstPanel = document.querySelector('.backend-tabs-container .backend-tab-panel');
+      if (firstPanel) {
+        firstPanel.classList.add('active');
+        const firstBtn = document.querySelector('.backend-tabs-container .backend-tab-btn');
+        if (firstBtn) firstBtn.classList.add('active');
       }
     });
   </script>

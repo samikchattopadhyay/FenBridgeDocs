@@ -780,6 +780,10 @@ CREATE POLICY scout_storage_recheck_write ON storage_rechecks
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Initializes wizard context parameters in device cache, preparing integrity indicators.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 1 of 5 indicator)<br>• LotInfoCard / SummaryCard (lot ID, stored seals, grade display)<br>• GradeDisplay (assessed product grade)<br>• ShelfLifeCountdown / RemainingDaysDisplay (days remaining in shelf-life)<br>• TriggerAlertDisplay (routine or anomaly report reason)<br>• Button (Begin Re-check primary action)<br>• CTAFooter (action bar with Next button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -816,6 +820,10 @@ CREATE POLICY scout_storage_recheck_write ON storage_rechecks
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Checks matches and writes integrity outcomes into wizard local states.</div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 2 of 5 progress)<br>• IntegrityCheckGroup (3 checks: Seal ID, Seal Integrity, Net Integrity)<br>• RadioButton / ToggleSwitch (Pass/Fail selectors for each check)<br>• SelectInput / FailureCodeSelector (nested dropdowns for failure types: cut net, broken seal)<br>• AlertBanner / WarningBanner (amber alerts that failures block clean classification)<br>• Button (Continue to Storage Conditions)<br>• CTAFooter (action bar with Next button)</div>
                 </div>
               </div>
             </div>
@@ -854,6 +862,10 @@ CREATE POLICY scout_storage_recheck_write ON storage_rechecks
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Validates parameters to ensure all checklists are fully resolved before allowing page advancement.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 3 of 5 progress)<br>• ChecklistCard (environmental audit items: dampness, humidity, ventilation, pests)<br>• CheckboxInput / RadioButton (Pass/Fail status for each criterion)<br>• TextInput / TextArea (failure notes visible on failures)<br>• WarningBanner / TriageGuidance (dynamic warnings suggesting reinspection routes)<br>• Button (Review Outcome button)<br>• CTAFooter (action bar with Next button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -891,6 +903,10 @@ CREATE POLICY scout_storage_recheck_write ON storage_rechecks
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value">Invokes <code>submitStorageRecheckOutcome</code>, updating <code>lot_seals</code> status and conditional failure mapping routes.</div>
                 </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with step 4 of 5 progress)<br>• AuditRecap / SummaryPanel (recap of integrity and storage audits)<br>• SegmentedControl / ButtonGroup (outcome selection: Clean / Void / Route Reinspection / Terminal)<br>• OutcomeDescription (explanation text for each outcome option)<br>• CheckboxInput (mandatory validation signature confirmation)<br>• Button (Submit Re-check primary action)<br>• CTAFooter (action bar with Submit button)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -927,6 +943,10 @@ CREATE POLICY scout_storage_recheck_write ON storage_rechecks
                 <div class="spec-block full-width">
                   <div class="spec-label">Technical Details</div>
                   <div class="spec-value"><p>Resets wizard parameters.</p><p>Marks SQLite re-check tasks completed.</p></div>
+                </div>
+                <div class="spec-block full-width">
+                  <div class="spec-label">Components Used</div>
+                  <div class="spec-value">• TopAppBar (header with completion state)<br>• SuccessCard / SuccessBanner (glassmorphic modal layout)<br>• SuccessIcon / CheckmarkBadge (centered success indicator)<br>• OutcomeDisplay / ColorCodedPills (selected outcome in color-coded badge)<br>• SyncStatusBadge (sync queue state - synced or offline)<br>• AdminAlertDisplay (warnings about suspended lots if applicable)<br>• Button (Return to Dashboard primary action)<br>• CTAFooter (action bar with primary button)</div>
                 </div>
               </div>
             </div>

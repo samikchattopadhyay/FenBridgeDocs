@@ -378,6 +378,14 @@
           </div>
 
           <div class="backend-info-box">
+            <strong>Step 4: Language Selection</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (4/12)<br>
+            &nbsp;├─ HeroCard (icon="language")<br>
+            &nbsp;├─ SelectableCard (English, Hindi, Bengali tiles)<br>
+            &nbsp;└─ CTAFooter
+          </div>
+
+          <div class="backend-info-box">
             <strong>Step 5–6: Address Forms</strong><br>
             &nbsp;├─ TopAppBar + StepperPanel<br>
             &nbsp;├─ HeroCard<br>
@@ -395,6 +403,15 @@
             &nbsp;├─ HeroCard (icon="document")<br>
             &nbsp;├─ DocumentUpload (multiple, max 3)<br>
             &nbsp;├─ PhotoGrid (preview uploaded docs)<br>
+            &nbsp;└─ CTAFooter
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 8: First Pond Address</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (8/12)<br>
+            &nbsp;├─ HeroCard (icon="location_on")<br>
+            &nbsp;├─ ToggleSwitch (Same as farmer address)<br>
+            &nbsp;├─ AddressForm (district, village, address)<br>
             &nbsp;└─ CTAFooter
           </div>
 
@@ -417,6 +434,27 @@
             &nbsp;├─ TextInput (account number)<br>
             &nbsp;├─ TextInput (IFSC code)<br>
             &nbsp;└─ CTAFooter (Verify → Penny-drop)
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 11: Review & Submit</strong><br>
+            &nbsp;├─ TopAppBar + StepperPanel (11/12)<br>
+            &nbsp;├─ HeroCard (icon="done_all")<br>
+            &nbsp;├─ SectionCard (Identity recap)<br>
+            &nbsp;├─ SectionCard (Address recap)<br>
+            &nbsp;├─ SectionCard (Pond recap)<br>
+            &nbsp;├─ SectionCard (Bank recap)<br>
+            &nbsp;├─ CheckboxInput (final consent)<br>
+            &nbsp;└─ CTAFooter (Submit, Edit)
+          </div>
+
+          <div class="backend-info-box">
+            <strong>Step 12: Submission Confirmation</strong><br>
+            &nbsp;├─ TopAppBar<br>
+            &nbsp;├─ SuccessIllustration<br>
+            &nbsp;├─ StatusBadge (Pending Sync / Synced)<br>
+            &nbsp;├─ TextBlock (confirmation message)<br>
+            &nbsp;└─ Button (Back to Dashboard)
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">State Management Pattern</h4>
@@ -834,6 +872,7 @@ Strict-Transport-Security: max-age=31536000</div>
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Wizard context initialised: { role: 'farmer', consent_at: now, scout_id }. No DB write yet.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Headline "Register a Farmer" + plain-language explanation of what will be collected. Consent checkbox: "The farmer has given verbal consent to register on FenBridge". Disabled CTA until ticked.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None at this step.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• HeadlineText (instruction text)<br>• CheckboxInput (consent checkbox)<br>• CTAFooter (Continue / Save Draft buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -863,6 +902,7 @@ Strict-Transport-Security: max-age=31536000</div>
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);</div></div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br>• PhoneInput (mobile number field with +91 prefix)<br>• OTPEntrySheet (modal overlay for OTP entry)<br>• TextInput (6-digit OTP field inside sheet)<br>• Timer (60-second cooldown countdown)<br>• CTAFooter (Send OTP / Verify buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -880,6 +920,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Mobile validated as 10-digit Indian. Uniqueness check against users.mobile runs on Continue — if already registered, screen blocks with "This mobile is already registered" and a link to that user's record (Admin-controlled escalation if it's truly the same farmer with a duplicate registration attempt).</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Mobile field with country chip. Helper line below mobile: "This is the farmer's mobile — they'll receive OTP and SMS here."</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Writes to users (mobile) and farmer_profiles (full_name, dob) at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 3/13)<br>• StepperBar (step progress indicator)<br>• TextInput (farmer name field)<br>• DatePickerInput (date of birth picker)<br>• PhoneInput (mobile number with +91)<br>• TextInput (alternate phone optional)<br>• CTAFooter (Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -897,6 +938,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: preferred_language.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Same pattern as scout's own Language Selection (workflow 11). Helper: "We'll send notifications in this language."</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles.preferred_language at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 4/13)<br>• StepperBar (step progress indicator)<br>• SelectableCard (language tiles - English/Hindi/Bengali)<br>• CTAFooter (Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -914,6 +956,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: { district, panchayat_village, full_address }. Districts loaded from a static reference list.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form pattern. Live validation on district required.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 5/13)<br>• StepperBar (step progress indicator)<br>• SelectInput (district dropdown)<br>• TextInput (panchayat/village searchable)<br>• TextInput (full address textarea)<br>• TextInput (landmark optional)<br>• CTAFooter (Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -931,6 +974,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{name, area_value, area_unit, est_annual_capacity_kg}. Pond code auto-generated server-side (POND-{seq}).</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Three fields stacked. Unit segmented (Acre/Bigha/Hectare).</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 6/13)<br>• StepperBar (step progress indicator)<br>• TextInput (pond name)<br>• NumberInput (area value)<br>• SelectInput (area unit - Acre/Bigha/Hectare)<br>• NumberInput (annual capacity in kg)<br>• CTAFooter (Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -948,6 +992,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Photos compressed, stored locally, uploaded to Supabase Storage on sync. Wizard context: documents: [{ doc_type, photo_paths: [] }].</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Document cards stack; each card has type label + photo grid + delete.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_documents at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 7/13)<br>• StepperBar (step progress indicator)<br>• SelectInput (document type - Land Record/Pond Lease/Other)<br>• PhotoCaptureCard (camera trigger)<br>• PhotoGrid (display/manage photos - up to 3 per doc)<br>• ExpandableSection (add additional documents)<br>• CTAFooter (Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -965,6 +1010,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{district, panchayat_village, full_address}.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Toggle at top; form below.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 8/13)<br>• StepperBar (step progress indicator)<br>• CheckboxInput (same as farmer's address toggle)<br>• SelectInput (district dropdown)<br>• TextInput (panchayat/village)<br>• TextInput (full address textarea)<br>• CTAFooter (Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -982,6 +1028,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Map: Google Maps Flutter. Captures lat/lng + accuracy. Wizard context: pond.{gps_lat, gps_lng}.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Map (300dp height), pin centre overlay, coordinates strip below, "Use my location" secondary button, primary Continue.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds.gps_lat/lng at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 9/13)<br>• StepperBar (step progress indicator)<br>• LocationPicker (Google Maps with draggable pin)<br>• CoordinatesDisplay (latitude/longitude text)<br>• CTAFooter (Use My Location / Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -999,6 +1046,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">IFSC validated regex ^[A-Z]{4}0[A-Z0-9]{6}$; bank/branch resolved via Razorpay IFSC API or local lookup. Account number encrypted at-rest. Penny-drop is an async server-side job triggered at submit; the wizard doesn't block on it — bank shows pennydrop_status='pending' initially.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Bank/branch displayed read-only after IFSC entry. Helper: "We'll send ₹1 to confirm this account — penny-drop verification."</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_bank_accounts at submit.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 10/13)<br>• StepperBar (step progress indicator)<br>• TextInput (account holder name)<br>• TextInput (account number)<br>• TextInput (confirm account number)<br>• TextInput (IFSC code)<br>• TextInput (bank/branch name read-only)<br>• CTAFooter (Continue / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -1016,6 +1064,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">On submit (atomic, offline-capable): writes users, farmer_profiles, ponds, user_bank_accounts (+ pennydrop async), user_documents, user_preferences. Status: users.status='pending_approval', ponds.status='pending_approval'. created_via_scout_id = self. All queued to sync_queue as a single atomic batch. Notifications to Admin: farmer_registration_submitted.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Sectioned recap, edit links, danger-tinted confirm checkbox, primary "Submit" disabled until ticked.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">All tables defined above.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 11/13)<br>• StepperBar (step progress indicator)<br>• ExpandableSection (recap sections - Identity, Address, Pond, Bank, Documents)<br>• EditLink (inline edit links on each section)<br>• StatusBadge (verification status indicators)<br>• CheckboxInput (final consent checkbox - danger-tinted)<br>• CTAFooter (Submit / Back buttons)</div></div>
             </div></div>
           </div>
         </div>
@@ -1033,6 +1082,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
               <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Displays success illustration and logs offline queue receipt. Closes registration wizard session.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Clean success screen, state badge, high contrast primary button.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None (read/confirm view).</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress 12/13)<br>• SuccessIllustration (success visual confirmation)<br>• StatusBadge (sync state - "Pending Sync" or "Synced")<br>• InfoBanner (offline status information)<br>• FarmerSummaryCard (farmer details read-only)<br>• CTAFooter (Back to Dashboard button)</div></div>
             </div></div>
           </div>
         </div>

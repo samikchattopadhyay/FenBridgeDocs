@@ -1104,6 +1104,16 @@ Primary Action strip updates dynamically matching current execution phase:
               <div class="db-schema-box">// Updating operation record attributes upon successful client completion:
 UPDATE tasks SET status = 'completed', completed_at = CURRENT_TIMESTAMP WHERE id = active_task_id;</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Task Detail title)
+                • TextInput (Task instructions and metadata display fields)
+                • MapInput (Embedded map showing location and driving directions)
+                • StatusBadge (Display task status: not started, in progress, completed)
+                • CTAFooter (Start Task or Complete Task action buttons)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/scout/task_detail/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -1179,6 +1189,17 @@ Features clean right-aligned directional indicators guiding users toward read-on
   accuracy_score DECIMAL(5, 2),
   created_at TIMESTAMP
 )</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Inspection History title)
+                • TextInput (Search and filter inputs for farmer names or pond names)
+                • DateInput (Calendar picker for filtering by date range)
+                • DataTable (Searchable ledger displaying inspection history with timestamps and accuracy scores)
+                • StatusBadge (Display accuracy performance pills with color coding)
+                • CTAFooter (Navigation or action buttons for history management)
+              </div>
             </div>
           </div>
           <div class="step-actions">
@@ -1257,6 +1278,16 @@ Tapping conflict entries launches clean warning sheets outputting side-by-side d
   status ENUM ['waiting', 'syncing', 'synced', 'conflict', 'failed']
 )</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Sync Queue title)
+                • StatusBadge (Display online/offline status indicator dots)
+                • DataTable (List of pending, syncing, synced, or conflicted items with status columns)
+                • ExpandableSection (Collapsible sync queue statistics and item details)
+                • CTAFooter (Sync Now or Retry action buttons)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/scout/sync_queue/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -1334,6 +1365,16 @@ Bottom area incorporates primary "Share Report" button options launching standar
   verification_accuracy DECIMAL(5, 2)
 )</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Performance Dashboard title)
+                • SelectInput (Timeframe selector: This Week, This Month, All Time)
+                • DataTable (Display performance metrics: inspections done, accuracy percentage, average time)
+                • ProgressBar (Visual indicators for completion metrics)
+                • CTAFooter (Share Report action button)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/scout/performance_dashboard/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -1405,6 +1446,15 @@ Password Panel embeds current, new, and confirmation input textboxes outputting 
               <div class="spec-label">Database Schema</div>
               <div class="db-schema-box">// Updating active employee core records securely:
 UPDATE users SET full_name = new_name, mobile_number = new_mobile WHERE id = current_user_id;</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Edit Profile title)
+                • TextInput (Editable fields for name and phone; read-only email and district)
+                • PasswordInput (Password change input fields with strength indicators)
+                • CTAFooter (Save Changes action button)
+              </div>
             </div>
           </div>
           <div class="step-actions">
@@ -1478,6 +1528,16 @@ Step 3: Exposes premium success panels displaying vector checkmark graphics alon
   verified_at TIMESTAMP
 )</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Link WhatsApp title)
+                • PhoneInput (Phone number input with validation)
+                • OTPEntrySheet (OTP code input for verification)
+                • StatusBadge (Display verification success confirmation)
+                • CTAFooter (Send OTP and Confirm buttons)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/link_whatsapp/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -1547,6 +1607,16 @@ Privacy block items clean navigation shortcuts pointing toward corporate legal d
               <div class="db-schema-box">ALTER TABLE users ADD COLUMN IF NOT EXISTS theme_preference VARCHAR(10) DEFAULT 'dark';
 ALTER TABLE users ADD COLUMN IF NOT EXISTS preferred_language VARCHAR(10) DEFAULT 'en';</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Settings title)
+                • SelectInput (Language dropdown and theme selector)
+                • CheckboxInput (Theme toggle switches for light/dark/auto modes)
+                • DataTable (Display permissions list with current authorization status)
+                • CTAFooter (Auto-save toggle for persistent state updates)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/settings/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -1614,6 +1684,15 @@ Excludes explicit manual Save button bars to ensure seamless user navigation exp
               <div class="spec-label">Database Schema</div>
               <div class="db-schema-box">// Committing localized preference updates straight into persistent user maps:
 UPDATE users SET notification_preferences = jsonb_set(notification_preferences, '{task_assigned,push}', 'true') WHERE id = current_user;</div>
+            </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Notification Preferences title)
+                • DataTable (Display event categories with notification channel toggles)
+                • CheckboxInput (Per-event notification toggle switches: In-app, Push, SMS channels)
+                • CTAFooter (Auto-saves preference changes immediately on toggle)
+              </div>
             </div>
           </div>
           <div class="step-actions">
@@ -1691,6 +1770,17 @@ Report Problem strip embeds full-width primary buttons opening clean modal overl
   status ENUM ['open', 'in_progress', 'resolved']
 )</div>
             </div>
+            <div class="spec-block full-width">
+              <div class="spec-label">Components Used</div>
+              <div class="spec-value">
+                • TopAppBar (Static header with back button and Help & Support title)
+                • TextInput (Search input for FAQ filtering)
+                • ExpandableSection (Accordion groups for FAQ categories and support topics)
+                • DataTable (Display support contact channels with action buttons)
+                • SelectInput (Issue type selector for bug reporting)
+                • CTAFooter (Report Issue button launching bug capture modal)
+              </div>
+            </div>
           </div>
           <div class="step-actions">
             <a href="../../../images/profile/help_support/code.html" onclick="openCodeModal(event, this.href, 'mobile')" class="action-btn primary">View Executable Code</a>
@@ -1699,6 +1789,243 @@ Report Problem strip embeds full-width primary buttons opening clean modal overl
       </div>
     </div>
 
+  </div>
+
+  <!-- Backend Tabs Container -->
+  <div class="backend-tabs-container" style="max-width: 1280px; margin: 48px auto; background: #141416; border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden;">
+    <div class="backend-tabs-header">
+      <h2 class="backend-tabs-title">Backend Architecture & Implementation Guide</h2>
+      <p class="backend-tabs-subtitle">For Developers — Complete Specifications for Backend Implementation</p>
+    </div>
+    <div class="tabs-nav">
+      <button class="tab-button active" onclick="showTab(event, 'backend-react')">React Component Design</button>
+    </div>
+    <div class="tabs-content">
+      <div id="backend-react" class="tab-panel active" style="padding: 32px;">
+
+      <!-- Design Philosophy Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Design Philosophy</h3>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 12px;">
+          The Scout Profile Settings workflow implements a <strong style="color: #fff;">multi-feature configuration system</strong> for managing scout identity, operational context, preferences, and support resources. The 7-screen flow provides scouts with granular control over personal settings, localization, assignment areas, theme preferences, and quick access to support channels. This workflow is essential infrastructure enabling scouts to customize their operational experience while maintaining organizational oversight.
+        </p>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8;">
+          Key patterns: Nested settings organization (profile → language → areas → preferences), theme switching with system-wide persistence, accordion-based help systems, and context-aware support routing.
+        </p>
+      </div>
+
+      <!-- Core Components Table -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Core Components</h3>
+        <div style="overflow-x: auto; background: #000; border: 1px solid var(--border-color); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <thead>
+              <tr style="background: #1a1a1e; border-bottom: 1px solid var(--border-color);">
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Component</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700; border-right: 1px solid var(--border-color);">Usage Pattern</th>
+                <th style="padding: 14px; text-align: left; color: var(--accent-primary); font-weight: 700;">Screens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TopAppBar</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Static header with back button and screen title</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 7</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">TextInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Edit profile name, email, phone, user ID (read-only)</td>
+                <td style="padding: 14px; color: var(--text-muted);">1, 3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">SelectInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Language selection, region picker, theme selector</td>
+                <td style="padding: 14px; color: var(--text-muted);">2, 4</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">MapInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Geo-fencing for assigned operational areas</td>
+                <td style="padding: 14px; color: var(--text-muted);">3</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CheckboxInput</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Theme preference toggles (light/dark/auto)</td>
+                <td style="padding: 14px; color: var(--text-muted);">4</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">ExpandableSection</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Accordion groups for FAQ items and support categories</td>
+                <td style="padding: 14px; color: var(--text-muted);">2, 7</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">DataTable</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display assigned areas and sync status info</td>
+                <td style="padding: 14px; color: var(--text-muted);">3, 6</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">StatusBadge</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Display sync status, logout confirmation state</td>
+                <td style="padding: 14px; color: var(--text-muted);">5, 6</td>
+              </tr>
+              <tr>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: #22d3ee; font-weight: 600;">CTAFooter</td>
+                <td style="padding: 14px; border-right: 1px solid var(--border-color); color: var(--text-muted);">Save, Cancel, Confirm, Logout action buttons</td>
+                <td style="padding: 14px; color: var(--text-muted);">All 7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Screen Decomposition Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Screen Decomposition</h3>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 1: Edit Profile</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Scout identity and basic information management.</p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+TopAppBar { title: "Edit Profile", backBtn } |
+TextInput { name [editable], email [editable], phone [editable] } |
+TextInput { user_id [read-only], registration_date [read-only] } |
+CTAFooter { "Save Changes" → backend sync }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 2: Language Selection</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Localization preferences and language switching.</p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+TopAppBar { title: "Language Settings", backBtn } |
+SelectInput { language: ["English", "Hindi", "Marathi", ...] [dropdown] } |
+SelectInput { region: ["India", "Global", ...] [optional] } |
+ExpandableSection { "Language Help" → FAQ items } |
+CTAFooter { "Save" → reload locale }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 3: Assigned Areas</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Geo-fencing and operational area configuration.</p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+TopAppBar { title: "Assigned Areas", backBtn } |
+MapInput { display_assigned_regions [read-only geo-bounds] } |
+DataTable { areas: ["Area 1", "Area 2", ...], status, coverage_percent } |
+CTAFooter { "Request Area Change" → support flow }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 4: Theme & Display Preferences</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">UI appearance and accessibility settings.</p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+TopAppBar { title: "Theme Settings", backBtn } |
+SelectInput { theme: ["Light", "Dark", "Auto (system)"] [radio-like] } |
+CheckboxInput { "Increase Font Size" | "High Contrast" } |
+ExpandableSection { "Accessibility Help" } |
+CTAFooter { "Apply Changes" → persistent storage }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 5: Logout Confirmation</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Session termination with confirmation prompt.</p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+TopAppBar { title: "Logout", backBtn } |
+StatusBadge { message: "Are you sure you want to logout?", color: warning } |
+TextInput { "Your email will remain registered on this device" [info-only] } |
+CTAFooter { "Cancel" → back | "Confirm Logout" → session_end }
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 6: Sync Information</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Data synchronization status and history.</p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+TopAppBar { title: "Sync Status", backBtn } |
+StatusBadge { status: "Last sync: 2 hours ago", color: green } |
+DataTable { sync_history: [timestamp, status, item_count, size] } |
+CTAFooter { "Sync Now" → trigger_sync }
+          </div>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Screen 7: Help & Support</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">FAQ and support channel access.</p>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+TopAppBar { title: "Help & Support", backBtn } |
+ExpandableSection[] {
+  "Offline Work" → [FAQ pairs],
+  "Syncing Issues" → [FAQ pairs],
+  "Tasks & Assignments" → [FAQ pairs]
+} |
+DataTable { support_channels: [email, phone, chat] [action buttons] } |
+CTAFooter { "Report Issue" → bug_report_modal }
+          </div>
+        </div>
+      </div>
+
+      <!-- State Management Section -->
+      <div style="margin-bottom: 40px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">State Management &amp; Backend Logic</h3>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Profile Settings State</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+interface ProfileSettings {
+  scout_id: UUID;
+  display_name: string;
+  email: string;
+  phone_number: string;
+  preferred_language: string;
+  theme_preference: "light" | "dark" | "auto";
+  assigned_areas: { area_id, area_name, coverage_percent }[];
+  last_sync_at: timestamp;
+  user_preferences: JSONB; // extensible for future settings
+}
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: var(--accent-primary); font-weight: 700; margin-bottom: 12px;">Backend Transaction</h4>
+          <div style="background: #000; border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; font-family: monospace; font-size: 12px; color: #22d3ee; overflow-x: auto;">
+BEGIN TRANSACTION;
+1. UPDATE users SET
+  display_name = $1,
+  email = $2,
+  phone_number = $3,
+  preferred_language = $4,
+  theme_preference = $5
+WHERE id = $scout_id;
+
+2. UPDATE user_preferences SET
+  assigned_areas = $6,
+  settings_json = $7
+WHERE user_id = $scout_id;
+
+3. INSERT INTO settings_audit_log (
+  scout_id, changed_fields, changed_at
+) VALUES ($scout_id, json_changed_fields, now());
+
+COMMIT;
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Patterns Section -->
+      <div>
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px;">Common Patterns &amp; Reusability</h3>
+        <ul style="color: var(--text-muted); font-size: 13px; line-height: 1.8; margin: 0; padding-left: 24px;">
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Settings Form Pattern:</strong> Profile editing (Screen 1) reused from farmer/popper registration. Extract as &lt;SettingsForm fields={[...]} onSave={} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Language Selector:</strong> Locale switching (Screen 2) reused across all workflows. Centralize &lt;LocaleSelector currentLang={lang} onChange={} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Accordion FAQ Pattern:</strong> Expandable help items (Screens 2, 7) consistent across support flows. Componentize &lt;FAQAccordion items={[...]} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Confirmation Modal Pattern:</strong> Logout confirmation (Screen 5) mirrors other critical actions. Reuse &lt;ConfirmationDialog message={} onConfirm={} /&gt;</li>
+          <li style="margin-bottom: 12px;"><strong style="color: #fff;">Theme Persistence:</strong> Theme preference stored in localStorage and synced to backend. Ensures consistent UI across sessions and devices.</li>
+        </ul>
+      </div>
+
+      </div>
+    </div>
   </div>
 
   <!-- EXECUTABLE CODE VIEW OVERLAY MODAL -->
