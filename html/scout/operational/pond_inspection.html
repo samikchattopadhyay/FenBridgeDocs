@@ -359,9 +359,10 @@
 </div><div class="backend-info-box">
 <strong>Step 2: Assess Pond Conditions</strong><br/>
              ├─ TopAppBar (header with back button)<br/>
-             ├─ SelectInput (water level, algae presence)<br/>
-             ├─ RadioGroup (pest/disease flags)<br/>
-             ├─ NumberInput (harvest readiness score)<br/>
+             ├─ SegmentedControl (water level selector)<br/>
+             ├─ SegmentedControl (algae presence selector)<br/>
+             ├─ ChipGroup (pest/disease flags)<br/>
+             ├─ SliderInput (harvest readiness score)<br/>
              ├─ QuickAnalysisOverlay (Bento style assessment)<br/>
              └─ CTAFooter (Next / Back)<br/>
 </div><div class="backend-info-box">
@@ -377,7 +378,7 @@
              ├─ TopAppBar (header with back button)<br/>
              ├─ PhotoCaptureCard (photo slot camera triggers)<br/>
              ├─ PhotoGrid (captured photo previews)<br/>
-             ├─ TextInput (inspection notes multiline)<br/>
+             ├─ TextAreaInput (inspection notes multiline)<br/>
              ├─ TechnicalMetadata (EXIF validation status)<br/>
              └─ CTAFooter (Next / Back)<br/>
 </div><div class="backend-info-box">
@@ -391,11 +392,9 @@
              ├─ TopAppBar (header with back button)<br/>
              ├─ SuccessIllustration (success message animation)<br/>
              ├─ SummaryCard (inspection summary details)<br/>
-             └─ Button (Return to Ponds)<br/>
+             └─ CTAFooter (Return to Ponds)<br/>
 </div>
 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This 6-screen pond inspection workflow breaks into reusable React components following atomic design principles. Focus on GPS verification, environmental metrics, biological sampling, and photo evidence.</p>
-
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
 <table class="backend-table">
 <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
@@ -428,26 +427,6 @@
 <tr><td><span class="spec-badge-inline">CheckmarkRing</span></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
 </table>
 <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Pond Inspection Only)</h4>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (85% of Pond Inspection)</h4>
 <table class="backend-table">
 <tr><th>Component</th><th>Purpose</th><th>Pond Inspection Usage</th></tr>
@@ -473,14 +452,9 @@
 <li><strong>✓ No Duplication:</strong> Never create "PondWaterLevelInput" separate from WaterLevelInput; use one component with props</li>
 </ul>
 <h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Pond Inspection Specific UX Pattern: Geo-Verified Sequential Entry</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-
-
 </div>
 <!-- TAB: Database Schema -->
 <div class="tab-panel" id="backend-db">
@@ -667,7 +641,7 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• SelectInput (water level, algae presence)<br/>• RadioGroup (pest/disease flags)<br/>• NumberInput (harvest readiness score)<br/>• QuickAnalysisOverlay (Bento style assessment)<br/>• CTAFooter (Next / Back)</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SegmentedControl (water level selector)<br/>• SegmentedControl (algae presence selector)<br/>• ChipGroup (pest/disease flags)<br/>• SliderInput (harvest readiness score)<br/>• QuickAnalysisOverlay (Bento style assessment)<br/>• CTAFooter (Next / Back)</div>
 </div>
 </div>
 </div>
@@ -755,7 +729,7 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• PhotoCaptureCard (photo slot camera triggers)<br/>• PhotoGrid (captured photo previews)<br/>• TextInput (inspection notes multiline)<br/>• TechnicalMetadata (EXIF validation status)<br/>• CTAFooter (Next / Back)</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• PhotoCaptureCard (photo slot camera triggers)<br/>• PhotoGrid (captured photo previews)<br/>• TextAreaInput (inspection notes multiline)<br/>• TechnicalMetadata (EXIF validation status)<br/>• CTAFooter (Next / Back)</div>
 </div>
 </div>
 </div>
@@ -843,7 +817,7 @@ CREATE INDEX idx_pobre_inspection ON pond_bund_readings (pond_inspection_id);</d
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• SuccessIllustration (success message animation)<br/>• SummaryCard (inspection summary details)<br/>• Button (Return to Ponds)</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• SuccessIllustration (success message animation)<br/>• SummaryCard (inspection summary details)<br/>• CTAFooter (Return to Ponds)</div>
 </div>
 </div>
 </div>

@@ -351,7 +351,7 @@
 <div class="tab-panel" id="backend-react">
 <h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3><div class="backend-info-box">
 <strong>Step 1: Sync Queue List</strong><br/>
-             ├─ TopAppBar (header with back button)<br/>
+             ├─ TopAppBar (header with sync status)<br/>
              ├─ SummaryCard (sync status hero metrics)<br/>
              ├─ ListItem (conflicts, failed, pending list items)<br/>
              └─ BottomNavBar (global navigation bar)<br/>
@@ -363,15 +363,13 @@
              └─ CTAFooter (Retry Sync / Delete)<br/>
 </div><div class="backend-info-box">
 <strong>Step 3: Conflict Resolution Detail</strong><br/>
-             ├─ TopAppBar (header with back button)<br/>
+             ├─ TopAppBar (header with close button)<br/>
              ├─ DangerBanner (conflict warning alert)<br/>
              ├─ DiffViewer (side-by-side bento card comparison)<br/>
-             ├─ AttemptsTimeline (attempts history mini spine)<br/>
-             └─ CTAFooter (Resolve / Keep Server)<br/>
+             ├─ AttemptsTimeline (conflict timeline spine)<br/>
+             └─ CTAFooter (View My Record / Contact Admin)<br/>
 </div>
 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Sync Queue workflow decomposes into reusable React components following atomic design principles. This is a specialized offline-sync dashboard (not a form), so component patterns differ from registration/inspection workflows.</p>
-
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
 <table class="backend-table">
 <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
@@ -393,18 +391,6 @@
 <tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
 </table>
 <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Sync Queue Only)</h4>
-
-
-
-
-
-
-
-
-
-
-
-
 <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (90% of Sync Queue)</h4>
 <table class="backend-table">
 <tr><th>Component</th><th>Purpose</th><th>Sync Queue Usage</th></tr>
@@ -433,15 +419,9 @@
 <li><strong>✓ No Duplication:</strong> SyncStatusBadge is workflow-specific (different from generic StatusBadge); never create duplicate status components</li>
 </ul>
 <h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Sync Queue Specific UX Pattern: Read-Only Inspection + Conflict Resolution</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-
-
-
 </div>
 <!-- TAB: Database Schema -->
 <div class="tab-panel" id="backend-db">
@@ -523,7 +503,7 @@
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• SummaryCard (sync status hero metrics)<br/>• ListItem (conflicts, failed, pending list items)<br/>• BottomNavBar (global navigation bar)</div>
+<div class="spec-value">• TopAppBar (header with sync status)<br/>• SummaryCard (sync status hero metrics)<br/>• ListItem (conflicts, failed, pending list items)<br/>• BottomNavBar (global navigation bar)</div>
 </div>
 </div>
 </div>
@@ -603,7 +583,7 @@
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• DangerBanner (conflict warning alert)<br/>• DiffViewer (side-by-side bento card comparison)<br/>• AttemptsTimeline (attempts history mini spine)<br/>• CTAFooter (Resolve / Keep Server)</div>
+<div class="spec-value">• TopAppBar (header with close button)<br/>• DangerBanner (conflict warning alert)<br/>• DiffViewer (side-by-side bento card comparison)<br/>• AttemptsTimeline (conflict timeline spine)<br/>• CTAFooter (View My Record / Contact Admin)</div>
 </div>
 </div>
 </div>

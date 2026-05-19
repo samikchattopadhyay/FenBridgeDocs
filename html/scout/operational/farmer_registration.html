@@ -296,117 +296,107 @@
 <h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3><div class="backend-info-box">
 <strong>Step 1: Intro &amp; Consent</strong><br/>
              ├─ TopAppBar (header with back button)<br/>
-             ├─ StepperPanel (Step 1 of 11)<br/>
-             ├─ HeroImage (visual onboarding anchor)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroSection (visual onboarding banner)<br/>
              ├─ ProcessCard (consent checklist)<br/>
              ├─ CheckboxInput (consent checkbox)<br/>
-             ├─ CTAFooter (Continue button)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 2: Mobile Verification (OTP Send &amp; Verify)</strong><br/>
              ├─ TopAppBar (header with back button)<br/>
-             ├─ StepperPanel (Step 2 of 11)<br/>
-             ├─ HeroCard (visual onboarding helper)<br/>
-             ├─ PhoneInput (mobile number entry field)<br/>
-             ├─ OTPEntrySheet (bottom-sheet modal overlay)<br/>
-             ├─ OTPInputGroup (6-digit OTP code input)<br/>
-             ├─ Timer (verification cooldown timer)<br/>
-             ├─ CTAFooter (Send OTP / Verify)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
+             ├─ PhoneInput (mobile number entry)<br/>
+             ├─ OTPEntrySheet (bottom-sheet overlay)<br/>
+             ├─ OTPInputGroup (OTP code fields)<br/>
+             ├─ Timer (countdown &amp; resend controls)<br/>
+             ├─ CTAFooter (Send OTP / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 3: Farmer Identity Details</strong><br/>
-             ├─ TopAppBar (header with progress step 3 of 11)<br/>
-             ├─ StepperPanel (Step 3 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
              ├─ TextInput (farmer name field)<br/>
              ├─ DatePickerInput (date of birth)<br/>
              ├─ PhoneInput (mobile number display)<br/>
              ├─ TextInput (alternate phone field)<br/>
-             ├─ CTAFooter (Continue / Back)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 4: Language Selection</strong><br/>
-             ├─ TopAppBar (header with progress step 4 of 11)<br/>
-             ├─ StepperPanel (Step 4 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
-             ├─ LanguageTiles (native script language cards)<br/>
-             ├─ CTAFooter (Continue / Back)<br/>
+             ├─ TopAppBar (contextual navigation header)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ LanguageTiles (interactive language option cards)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 5: Address Details</strong><br/>
-             ├─ TopAppBar (header with progress step 5 of 11)<br/>
-             ├─ StepperPanel (Step 5 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
-             ├─ AddressForm (composite fields)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
              ├─ SelectInput (district selection)<br/>
              ├─ TextInput (village / panchayat search)<br/>
-             ├─ TextInput (street address)<br/>
+             ├─ TextAreaInput (street address)<br/>
              ├─ TextInput (landmark optional)<br/>
-             ├─ CTAFooter (Continue / Back)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 6: First Pond Details</strong><br/>
-             ├─ TopAppBar (header with progress step 6 of 11)<br/>
-             ├─ StepperPanel (Step 6 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
              ├─ TextInput (pond name)<br/>
              ├─ NumberInput (pond area)<br/>
              ├─ SelectInput (area unit)<br/>
              ├─ NumberInput (annual capacity)<br/>
-             ├─ CTAFooter (Continue / Back)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 7: First Pond Legal Documents</strong><br/>
-             ├─ TopAppBar (header with progress step 7 of 11)<br/>
-             ├─ StepperPanel (Step 7 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
              ├─ SelectInput (document type)<br/>
              ├─ TextInput (document reference ID)<br/>
              ├─ FileUpload (image uploader)<br/>
-             ├─ PhotoGrid (uploaded documents review)<br/>
-             ├─ CTAFooter (Continue / Back)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 8: First Pond Address</strong><br/>
-             ├─ TopAppBar (header with progress step 8 of 11)<br/>
-             ├─ StepperPanel (Step 8 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
-             ├─ CheckboxInput (same as residential toggle)<br/>
-             ├─ AddressForm (composite fields)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
              ├─ SelectInput (district selection)<br/>
-             ├─ TextInput (village / panchayat)<br/>
-             ├─ TextInput (street address)<br/>
-             ├─ CTAFooter (Continue / Back)<br/>
+             ├─ TextInput (village / panchayat search)<br/>
+             ├─ TextInput (survey / plot / khesra number)<br/>
+             ├─ TextInput (landmark / water source)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 9: First Pond Geo-Fencing</strong><br/>
-             ├─ TopAppBar (header with progress step 9 of 11)<br/>
-             ├─ StepperPanel (Step 9 of 11)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
              ├─ LocationPicker (Google Maps overlay)<br/>
              ├─ CoordinatesDisplay (real-time coordinates)<br/>
-             └─ CTAFooter (Use My Location / Continue / Back)<br/>
+             └─ CTAFooter (Redo Pins / Continue / Save Draft)<br/>
 </div><div class="backend-info-box">
 <strong>Step 10: Bank Account Details</strong><br/>
-             ├─ TopAppBar (header with progress step 10 of 11)<br/>
-             ├─ StepperPanel (Step 10 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
              ├─ PremiumInfoCard (penny drop info)<br/>
-             ├─ TextInput (account holder name)<br/>
-             ├─ TextInput (bank account number)<br/>
-             ├─ TextInput (confirm account number)<br/>
-             ├─ TextInput (IFSC code)<br/>
-             ├─ TextInput (resolved bank / branch details)<br/>
-             ├─ StatusBadge (verification badge)<br/>
-             ├─ CTAFooter (Continue / Back)<br/>
+             ├─ CTAFooter (Continue / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 11: Review &amp; Submit</strong><br/>
-             ├─ TopAppBar (header with progress step 11 of 11)<br/>
-             ├─ StepperPanel (Step 11 of 11)<br/>
-             ├─ HeroCard (onboarding visual helper)<br/>
+             ├─ TopAppBar (header with back button)<br/>
+             ├─ StepperPanel (Step progress indicator)<br/>
+             ├─ HeroCard (instruction helper card)<br/>
              ├─ ExpandableSection (farmer profile review)<br/>
              ├─ CheckboxInput (final declaration checkbox)<br/>
-             ├─ CTAFooter (Submit / Back)<br/>
+             ├─ CTAFooter (Submit / Save Draft)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 12: Submission Confirmation</strong><br/>
@@ -417,7 +407,6 @@
              └─ CTAFooter (Back to Dashboard button)<br/>
 </div>
 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Farmer Registration breaks into reusable React components across the Scout module's 20 workflows. Follow atomic design principles: atoms (inputs) → molecules (form groups) → organisms (form sections) → templates (screens).</p>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Hierarchy (Layer 1: Layout)</h4>
 <table class="backend-table">
 <tr><th>Component</th><th>Purpose</th><th>Props</th><th>Used In</th></tr>
@@ -449,18 +438,6 @@
 <tr><td><strong>GradeDisplay</strong></td><td>Show producible grades with icons</td><td>grades[], interactive</td><td>Popper (popping capability), Lot (grades)</td></tr>
 </table>
 <h4 class="backend-section-title" style="font-size: 14px;">Farmer Registration Screen Decomposition</h4>
-
-
-
-
-
-
-
-
-
-
-
-
 <h4 class="backend-section-title" style="font-size: 14px;">State Management Pattern</h4>
 <div class="backend-code-block">// Context Hook (src/contexts/FarmerRegistrationContext.ts)
 type FarmerRegistrationState = {
@@ -549,9 +526,6 @@ const { state, updateField, setError } = useFarmerRegistration();</string,></div
 <li><strong>✓ No Local State:</strong> Business logic state lives in Context, component state only for transient UI (hover, focus, sheet open/closed)</li>
 </ul>
 <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-
-
-
 </div>
 <!-- TAB: Database Schema -->
 <div class="tab-panel" id="backend-db">
@@ -819,7 +793,7 @@ Strict-Transport-Security: max-age=31536000</div>
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Wizard context initialised: { role: 'farmer', consent_at: now, scout_id }. No DB write yet.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Headline "Register a Farmer" + plain-language explanation of what will be collected. Consent checkbox: "The farmer has given verbal consent to register on FenBridge". Disabled CTA until ticked.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None at this step.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step 1 of 11)<br/>• HeroImage (visual onboarding anchor)<br/>• ProcessCard (consent checklist)<br/>• CheckboxInput (consent checkbox)<br/>• CTAFooter (Continue button)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroSection (visual onboarding banner)<br/>• ProcessCard (consent checklist)<br/>• CheckboxInput (consent checkbox)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -848,7 +822,7 @@ Strict-Transport-Security: max-age=31536000</div>
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);</div></div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step 2 of 11)<br/>• HeroCard (visual onboarding helper)<br/>• PhoneInput (mobile number entry field)<br/>• OTPEntrySheet (bottom-sheet modal overlay)<br/>• OTPInputGroup (6-digit OTP code input)<br/>• Timer (verification cooldown timer)<br/>• CTAFooter (Send OTP / Verify)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• PhoneInput (mobile number entry)<br/>• OTPEntrySheet (bottom-sheet overlay)<br/>• OTPInputGroup (OTP code fields)<br/>• Timer (countdown &amp; resend controls)<br/>• CTAFooter (Send OTP / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -865,7 +839,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Mobile validated as 10-digit Indian. Uniqueness check against users.mobile runs on Continue — if already registered, screen blocks with "This mobile is already registered" and a link to that user's record (Admin-controlled escalation if it's truly the same farmer with a duplicate registration attempt).</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Mobile field with country chip. Helper line below mobile: "This is the farmer's mobile — they'll receive OTP and SMS here."</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Writes to users (mobile) and farmer_profiles (full_name, dob) at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 3 of 11)<br/>• StepperPanel (Step 3 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• TextInput (farmer name field)<br/>• DatePickerInput (date of birth)<br/>• PhoneInput (mobile number display)<br/>• TextInput (alternate phone field)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• TextInput (farmer name field)<br/>• DatePickerInput (date of birth)<br/>• PhoneInput (mobile number display)<br/>• TextInput (alternate phone field)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -882,7 +856,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: preferred_language.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Same pattern as scout's own Language Selection (workflow 11). Helper: "We'll send notifications in this language."</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles.preferred_language at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 4 of 11)<br/>• StepperPanel (Step 4 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• LanguageTiles (native script language cards)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (contextual navigation header)<br/>• StepperPanel (Step progress indicator)<br/>• LanguageTiles (interactive language option cards)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -899,7 +873,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: { district, panchayat_village, full_address }. Districts loaded from a static reference list.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form pattern. Live validation on district required.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to farmer_profiles at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 5 of 11)<br/>• StepperPanel (Step 5 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• AddressForm (composite fields)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat search)<br/>• TextInput (street address)<br/>• TextInput (landmark optional)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat search)<br/>• TextAreaInput (street address)<br/>• TextInput (landmark optional)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -916,7 +890,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{name, area_value, area_unit, est_annual_capacity_kg}. Pond code auto-generated server-side (POND-{seq}).</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Three fields stacked. Unit segmented (Acre/Bigha/Hectare).</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 6 of 11)<br/>• StepperPanel (Step 6 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• TextInput (pond name)<br/>• NumberInput (pond area)<br/>• SelectInput (area unit)<br/>• NumberInput (annual capacity)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• TextInput (pond name)<br/>• NumberInput (pond area)<br/>• SelectInput (area unit)<br/>• NumberInput (annual capacity)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -933,7 +907,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Photos compressed, stored locally, uploaded to Supabase Storage on sync. Wizard context: documents: [{ doc_type, photo_paths: [] }].</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Document cards stack; each card has type label + photo grid + delete.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_documents at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 7 of 11)<br/>• StepperPanel (Step 7 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• SelectInput (document type)<br/>• TextInput (document reference ID)<br/>• FileUpload (image uploader)<br/>• PhotoGrid (uploaded documents review)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• SelectInput (document type)<br/>• TextInput (document reference ID)<br/>• FileUpload (image uploader)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -950,7 +924,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Context: pond.{district, panchayat_village, full_address}.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Toggle at top; form below.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 8 of 11)<br/>• StepperPanel (Step 8 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• CheckboxInput (same as residential toggle)<br/>• AddressForm (composite fields)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat)<br/>• TextInput (street address)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat search)<br/>• TextInput (survey / plot / khesra number)<br/>• TextInput (landmark / water source)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -967,7 +941,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Map: Google Maps Flutter. Captures lat/lng + accuracy. Wizard context: pond.{gps_lat, gps_lng}.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Map (300dp height), pin centre overlay, coordinates strip below, "Use my location" secondary button, primary Continue.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to ponds.gps_lat/lng at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 9 of 11)<br/>• StepperPanel (Step 9 of 11)<br/>• LocationPicker (Google Maps overlay)<br/>• CoordinatesDisplay (real-time coordinates)<br/>• CTAFooter (Use My Location / Continue / Back)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• LocationPicker (Google Maps overlay)<br/>• CoordinatesDisplay (real-time coordinates)<br/>• CTAFooter (Redo Pins / Continue / Save Draft)</div></div>
 </div></div>
 </div>
 </div>
@@ -984,7 +958,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">IFSC validated regex ^[A-Z]{4}0[A-Z0-9]{6}$; bank/branch resolved via Razorpay IFSC API or local lookup. Account number encrypted at-rest. Penny-drop is an async server-side job triggered at submit; the wizard doesn't block on it — bank shows pennydrop_status='pending' initially.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Standard form. Bank/branch displayed read-only after IFSC entry. Helper: "We'll send ₹1 to confirm this account — penny-drop verification."</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Written to user_bank_accounts at submit.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 10 of 11)<br/>• StepperPanel (Step 10 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• PremiumInfoCard (penny drop info)<br/>• TextInput (account holder name)<br/>• TextInput (bank account number)<br/>• TextInput (confirm account number)<br/>• TextInput (IFSC code)<br/>• TextInput (resolved bank / branch details)<br/>• StatusBadge (verification badge)<br/>• CTAFooter (Continue / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• PremiumInfoCard (penny drop info)<br/>• CTAFooter (Continue / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>
@@ -1001,7 +975,7 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
 <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">On submit (atomic, offline-capable): writes users, farmer_profiles, ponds, user_bank_accounts (+ pennydrop async), user_documents, user_preferences. Status: users.status='pending_approval', ponds.status='pending_approval'. created_via_scout_id = self. All queued to sync_queue as a single atomic batch. Notifications to Admin: farmer_registration_submitted.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Sectioned recap, edit links, danger-tinted confirm checkbox, primary "Submit" disabled until ticked.</div></div>
 <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">All tables defined above.</div></div>
-<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with progress step 11 of 11)<br/>• StepperPanel (Step 11 of 11)<br/>• HeroCard (onboarding visual helper)<br/>• ExpandableSection (farmer profile review)<br/>• CheckboxInput (final declaration checkbox)<br/>• CTAFooter (Submit / Back)<br/>• BackgroundTexture (radial grid decoration)</div></div>
+<div class="spec-block full-width"><div class="spec-label">Components Used</div><div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• HeroCard (instruction helper card)<br/>• ExpandableSection (farmer profile review)<br/>• CheckboxInput (final declaration checkbox)<br/>• CTAFooter (Submit / Save Draft)<br/>• BackgroundTexture (radial grid decoration)</div></div>
 </div></div>
 </div>
 </div>

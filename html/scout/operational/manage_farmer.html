@@ -345,13 +345,14 @@
 <div class="tab-panel" id="backend-react">
 <h3 class="backend-section-title">React Component Decomposition &amp; Reusability</h3><div class="backend-info-box">
 <strong>Step 1: Edit Identity Profile</strong><br/>
-             ├─ TopAppBar (header with back button)<br/>
-             ├─ HeroCard (visual helper banner)<br/>
+             ├─ TopAppBar (transactional close header)<br/>
+             ├─ HeroCard (context explanation card)<br/>
              ├─ TextInput (farmer name field)<br/>
              ├─ DatePickerInput (date of birth)<br/>
-             ├─ PhoneInput (mobile number)<br/>
+             ├─ TextInput (district selection)<br/>
+             ├─ PhoneInput (mobile number field)<br/>
              ├─ TextInput (alternate phone field)<br/>
-             ├─ CTAFooter (Save Changes / Cancel)<br/>
+             ├─ CTAFooter (Save / Cancel)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 2: Replace Bank Account Details</strong><br/>
@@ -363,24 +364,24 @@
              ├─ TextInput (confirm account number)<br/>
              ├─ TextInput (IFSC code)<br/>
              ├─ StatusBadge (penny drop status)<br/>
-             ├─ CTAFooter (Verify &amp; Save)<br/>
+             ├─ CTAFooter (Verify / Save / Cancel)<br/>
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 3: Edit Pond Parameters</strong><br/>
-             ├─ TopAppBar (header with back button)<br/>
+             ├─ TopAppBar (transactional close header)<br/>
              ├─ TextInput (pond name)<br/>
              ├─ NumberInput (pond area)<br/>
-             ├─ SelectInput (area unit)<br/>
              ├─ NumberInput (annual capacity)<br/>
-             ├─ AddressForm (composite fields)<br/>
-             ├─ SelectInput (district selection)<br/>
+             ├─ TextInput (district selection)<br/>
              ├─ TextInput (village / panchayat)<br/>
+             ├─ TextInput (street address)<br/>
+             ├─ TextInput (landmark optional)<br/>
              ├─ LocationPicker (Google Maps overlay)<br/>
              ├─ CoordinatesDisplay (real-time coordinates)<br/>
              └─ CTAFooter (Save / Cancel)<br/>
 </div><div class="backend-info-box">
 <strong>Step 4: Add New Pond Asset</strong><br/>
-             ├─ TopAppBar (header with back button)<br/>
+             ├─ TopAppBar (header with progress indicator)<br/>
              ├─ StepperPanel (Step progress indicator)<br/>
              ├─ ReviewBentoGrid (composite bento sections)<br/>
              ├─ SummaryCard (pond identity, metrics, location, documents summary)<br/>
@@ -389,7 +390,7 @@
              └─ BackgroundTexture (radial grid decoration)<br/>
 </div><div class="backend-info-box">
 <strong>Step 5: Deactivate Pond Asset</strong><br/>
-             ├─ TopAppBar (header with back button)<br/>
+             ├─ TopAppBar (transactional close header)<br/>
              ├─ WarningSection (warning message banner)<br/>
              ├─ SummaryCard (pond identity details)<br/>
              ├─ SelectInput (deactivation reason dropdown)<br/>
@@ -397,8 +398,6 @@
              └─ CTAFooter (Deactivate Pond / Cancel)<br/>
 </div>
 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This 5-screen farmer portfolio management workflow breaks into reusable React components following atomic design principles. Focus on profile edits, bank verification, and pond asset management.</p>
-
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Breakdown by Screen</h4>
 <table class="backend-table">
 <tr><th>Screen</th><th>Workflow-Specific Components</th><th>Shared Components</th></tr>
@@ -426,19 +425,6 @@
 <tr><td></td><td><span class="spec-badge-inline">CTAFooter</span></td></tr>
 </table>
 <h4 class="backend-section-title" style="font-size: 14px;">Workflow-Specific Components (Manage Farmer Only)</h4>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy (75% of Manage Farmer)</h4>
 <table class="backend-table">
 <tr><th>Component</th><th>Purpose</th><th>Manage Farmer Usage</th></tr>
@@ -466,14 +452,9 @@
 <li><strong>✓ No Duplication:</strong> Never create separate "KYCBadge", "BankBadge" components—use StatusBadge with variant prop</li>
 </ul>
 <h4 class="backend-section-title" style="font-size: 14px;">Critical: Zero Duplication Warnings</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Composition Pattern</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Manage Farmer Specific UX Pattern: Tabbed Portfolio Management</h4>
-
 <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
-
-
 </div>
 <!-- TAB: Database Schema -->
 <div class="tab-panel" id="backend-db">
@@ -558,7 +539,7 @@
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• HeroCard (visual helper banner)<br/>• TextInput (farmer name field)<br/>• DatePickerInput (date of birth)<br/>• PhoneInput (mobile number)<br/>• TextInput (alternate phone field)<br/>• CTAFooter (Save Changes / Cancel)<br/>• BackgroundTexture (radial grid decoration)</div>
+<div class="spec-value">• TopAppBar (transactional close header)<br/>• HeroCard (context explanation card)<br/>• TextInput (farmer name field)<br/>• DatePickerInput (date of birth)<br/>• TextInput (district selection)<br/>• PhoneInput (mobile number field)<br/>• TextInput (alternate phone field)<br/>• CTAFooter (Save / Cancel)<br/>• BackgroundTexture (radial grid decoration)</div>
 </div>
 </div>
 </div>
@@ -598,7 +579,7 @@
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• HeroCard (visual onboarding helper)<br/>• SummaryCard (existing bank details)<br/>• TextInput (account holder name)<br/>• TextInput (bank account number)<br/>• TextInput (confirm account number)<br/>• TextInput (IFSC code)<br/>• StatusBadge (penny drop status)<br/>• CTAFooter (Verify &amp; Save)<br/>• BackgroundTexture (radial grid decoration)</div>
+<div class="spec-value">• TopAppBar (header with back button)<br/>• HeroCard (visual onboarding helper)<br/>• SummaryCard (existing bank details)<br/>• TextInput (account holder name)<br/>• TextInput (bank account number)<br/>• TextInput (confirm account number)<br/>• TextInput (IFSC code)<br/>• StatusBadge (penny drop status)<br/>• CTAFooter (Verify / Save / Cancel)<br/>• BackgroundTexture (radial grid decoration)</div>
 </div>
 </div>
 </div>
@@ -638,7 +619,7 @@
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• TextInput (pond name)<br/>• NumberInput (pond area)<br/>• SelectInput (area unit)<br/>• NumberInput (annual capacity)<br/>• AddressForm (composite fields)<br/>• SelectInput (district selection)<br/>• TextInput (village / panchayat)<br/>• LocationPicker (Google Maps overlay)<br/>• CoordinatesDisplay (real-time coordinates)<br/>• CTAFooter (Save / Cancel)</div>
+<div class="spec-value">• TopAppBar (transactional close header)<br/>• TextInput (pond name)<br/>• NumberInput (pond area)<br/>• NumberInput (annual capacity)<br/>• TextInput (district selection)<br/>• TextInput (village / panchayat)<br/>• TextInput (street address)<br/>• TextInput (landmark optional)<br/>• LocationPicker (Google Maps overlay)<br/>• CoordinatesDisplay (real-time coordinates)<br/>• CTAFooter (Save / Cancel)</div>
 </div>
 </div>
 </div>
@@ -678,7 +659,7 @@
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• StepperPanel (Step progress indicator)<br/>• ReviewBentoGrid (composite bento sections)<br/>• SummaryCard (pond identity, metrics, location, documents summary)<br/>• CheckboxInput (final consent toggle)<br/>• CTAFooter (Submit Pond / Cancel)<br/>• BackgroundTexture (radial grid decoration)</div>
+<div class="spec-value">• TopAppBar (header with progress indicator)<br/>• StepperPanel (Step progress indicator)<br/>• ReviewBentoGrid (composite bento sections)<br/>• SummaryCard (pond identity, metrics, location, documents summary)<br/>• CheckboxInput (final consent toggle)<br/>• CTAFooter (Submit Pond / Cancel)<br/>• BackgroundTexture (radial grid decoration)</div>
 </div>
 </div>
 </div>
@@ -718,7 +699,7 @@
 </div>
 <div class="spec-block full-width">
 <div class="spec-label">Components Used</div>
-<div class="spec-value">• TopAppBar (header with back button)<br/>• WarningSection (warning message banner)<br/>• SummaryCard (pond identity details)<br/>• SelectInput (deactivation reason dropdown)<br/>• TextInput (audit notes multiline)<br/>• CTAFooter (Deactivate Pond / Cancel)</div>
+<div class="spec-value">• TopAppBar (transactional close header)<br/>• WarningSection (warning message banner)<br/>• SummaryCard (pond identity details)<br/>• SelectInput (deactivation reason dropdown)<br/>• TextInput (audit notes multiline)<br/>• CTAFooter (Deactivate Pond / Cancel)</div>
 </div>
 </div>
 </div>
