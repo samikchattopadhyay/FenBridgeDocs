@@ -12,36 +12,32 @@
    - scout_notifications
 
 #### User Registration & Onboarding
-2. **register_a_farmer** — 14 screens
+2. **register_a_farmer** — 12 screens
    - intro_consent
    - verify_mobile_send
    - farmer_identity
    - language_selection
-   - confirm_role_checkpoint
    - residential_address
    - pond_details
    - pond_documents
    - pond_address
    - pond_geo_fencing
    - bank_account_details
-   - theme_preference
    - review_submit
    - submission_confirmation
 
-3. **register_a_popper** — 17 screens
+3. **register_a_popper** — 15 screens
    - popper_intro_consent
-   - popper_mobile_verification_send
-   - contact_person_identity
    - popper_language_selection
-   - confirm_popper_role
    - popper_address_details
+   - contact_person_identity
    - business_basic_details
    - business_legal_documents
    - business_address_details
-   - first_warehouse_address
    - first_warehouse_details
-   - first_warehouse_photos
+   - first_warehouse_address
    - first_warehouse_geofencing
+   - popper_mobile_verification_send
    - popper_bank_account_details
    - popper_theme_preference
    - popper_review_submit

@@ -178,22 +178,19 @@
 <!-- Mobile Number (Mandatory) -->
 <div class="space-y-2">
 <label class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest flex justify-between">
-          Mobile Number <span class="text-primary text-[10px]">* VERIFIED</span>
+          Mobile Number <span class="text-primary text-[10px]">* MANDATORY</span>
 </label>
 <div class="flex gap-2">
 <div class="flex items-center gap-2 bg-surface-container-high border border-outline-variant px-3 py-3 rounded-lg">
 <span class="text-label-md font-mono-data text-primary font-bold">+91</span>
 </div>
-<input class="flex-grow min-w-0 bg-surface-container/50 border border-outline-variant/30 text-on-surface-variant/80 py-3 px-4 rounded-lg focus:outline-none transition-colors font-mono-data tracking-[0.2em]" inputmode="numeric" pattern="[0-9]{10}" placeholder="98765 43210" value="98765 43210" disabled="" readonly="" type="tel"/>
-<div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-3 rounded-lg">
-<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
-</div>
+<input class="flex-grow min-w-0 bg-surface-container border border-outline-variant text-on-surface py-3 px-4 rounded-lg focus:outline-none focus:border-primary transition-colors font-mono-data tracking-[0.2em]" inputmode="numeric" pattern="[0-9]{10}" placeholder="98765 43210" value="98765 43210" required type="tel"/>
 </div>
 <!-- Special Accent Helper -->
 <div class="mt-3 p-3 bg-secondary-container/20 border-l-4 border-secondary-container rounded-r-lg flex gap-3">
 <span class="material-symbols-outlined text-secondary text-sm">info</span>
 <p class="text-body-md text-on-secondary-container leading-relaxed italic">
-            Mobile verified securely in Step 2.
+            Mobile will be verified via SMS OTP in Step 11.
           </p>
 </div>
 </div>
@@ -216,7 +213,7 @@
             Continue
             <span class="material-symbols-outlined">arrow_forward</span>
         </button>
-        <button onclick=\"window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'\" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
+        <button onclick="window.location.href='../../scout_dashboard/scout_today_dashboard/code.html'" class="px-6 border border-outline-variant text-on-surface-variant font-label-md py-4 rounded-full uppercase tracking-wider hover:bg-surface-container-high transition-all">
             Save Draft
         </button>
     </div>

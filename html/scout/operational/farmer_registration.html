@@ -209,7 +209,7 @@
       <span class="tag">Scout Operations</span>
       <h1 class="title">Register Farmer (Scout-Assisted)</h1>
       <p class="desc">Complete 12-step workflow for scout-assisted farmer registration with real-time mobile OTP verification, farm details capture, and admin approval queue.</p>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 13-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-top: 16px;">A 12-screen wizard. The scout sits with the farmer (often the farmer's house or pondside), explains the consent line, collects answers, captures photos of documents, and submits. The farmer's phone receives the OTP; scout reads it from the phone and enters it. On submit, the farmer enters Pending Approval state.</p>
     </div>
 
     <!-- Backend Architecture Documentation -->
@@ -231,27 +231,27 @@
       <div class="tabs-content">
         <!-- TAB: API Architecture -->
         <div id="backend-api" class="tab-panel active">
-          <h3 class="backend-section-title">tRPC Procedure Architecture (14 Procedures)</h3>
+          <h3 class="backend-section-title">tRPC Procedure Architecture (13 Procedures)</h3>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">The Register Farmer workflow consists of 13 tRPC procedures organized by authentication level.</p>
 
           <div class="backend-info-box">
             <strong>Procedure Breakdown:</strong><br>
             • 3 Public procedures: Identity, OTP Send, OTP Verify<br>
-            • 11 Protected procedures: Language, Role, Address, Pond Details (3), Bank (2), Verify Bank<br>
+            • 10 Protected procedures: Language, Address, Pond Details (3), Bank (2), Verify Bank<br>
             • 1 Atomic transaction: Farmer Registration Submit (7 simultaneous inserts)
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">File: /src/server/api/routers/farmer.ts</h4>
           <div class="backend-code-block">export const farmerRouter = t.router({
-  // Screen 1-3: Identity & OTP
+  // Screen 1-2: Consent & Mobile Verification
   initFarmerRegistration: publicProcedure,
   sendFarmerMobileOtp: publicProcedure,
   verifyFarmerMobileOtp: publicProcedure,
 
-  // Screen 4: User Identity
+  // Screen 3: User Identity
   submitFarmerIdentity: publicProcedure,
 
-  // Screens 5-12: Setup Wizard (Protected)
+  // Screens 4-10: Setup Wizard (Protected)
   selectLanguage: protectedProcedure,
   submitResidentialAddress: protectedProcedure,
   submitFirstPondDetails: protectedProcedure,
@@ -261,17 +261,17 @@
   submitBankAccount: protectedProcedure,
   verifyBankAccount: protectedProcedure,
 
-  // Screen 13: Submit
+  // Screen 11: Review & Submit
   submitFarmerRegistration: protectedProcedure,
 });</div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 3 - OTP Entry)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Branching Logic (Screen 2 - Mobile Verification)</h4>
           <ul class="backend-list">
             <li><strong>If OTP matches EXISTING farmer:</strong> Load farmer detail screen (Update mode)</li>
             <li><strong>If OTP for NEW user:</strong> Continue setup wizard (Create mode)</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 13 - Review & Submit)</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Atomic Transaction (Screen 11 - Review & Submit)</h4>
           <ul class="backend-list">
             <li>1. Insert user record (role=farmer, status=pending_approval)</li>
             <li>2. Insert farmer_profiles</li>
@@ -449,9 +449,9 @@
         <div id="backend-async" class="tab-panel">
           <h3 class="backend-section-title">Async Jobs with Inngest (Serverless Queue)</h3>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">1. farmer.send-otp-sms (Fire-and-Forget)</h4>
+           <h4 class="backend-section-title" style="font-size: 14px;">1. farmer.send-otp-sms (Fire-and-Forget)</h4>
           <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 3 "OTP Send"<br>
+            <strong>Trigger:</strong> Screen 2 "Mobile Verification"<br>
             <strong>Steps:</strong> Generate → Hash → Store → Send via Twilio → Log<br>
             <strong>Retry:</strong> 4 attempts with exponential backoff (1s, 5s, 30s)<br>
             <strong>DLQ:</strong> Move to dead-letter queue after 4 failures
@@ -459,14 +459,14 @@
 
           <h4 class="backend-section-title" style="font-size: 14px;">2. farmer.penny-drop-verification (Wait-for-External)</h4>
           <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 13 "Bank Account Verification"<br>
+            <strong>Trigger:</strong> Screen 10 "Bank Account Details"<br>
             <strong>Steps:</strong> Initiate → Wait for webhook (max 5 min) → Verify match → Update status<br>
             <strong>Webhook:</strong> POST /api/webhooks/razorpay/verification-complete
           </div>
 
           <h4 class="backend-section-title" style="font-size: 14px;">3. farmer.registration-submitted (Chained)</h4>
           <div class="backend-info-box">
-            <strong>Trigger:</strong> Screen 14 "Review & Submit"<br>
+            <strong>Trigger:</strong> Screen 11 "Review & Submit"<br>
             <strong>Steps:</strong> Verify farmer exists → Send confirmation SMS → Notify admin<br>
             <strong>Dependencies:</strong> Ensure farmer record created before SMS
           </div>
@@ -547,17 +547,17 @@ Strict-Transport-Security: max-age=31536000</div>
     <div class="stepper-panel-container">
       <div class="stepper-nodes">
         <a href="#step-01" class="stepper-node active"><span class="node-num">1</span><span class="node-label">Consent</span></a>
-        <a href="#step-02" class="stepper-node"><span class="node-num">2</span><span class="node-label">OTP Send</span></a>
-        <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">OTP Entry</span></a>
-        <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Identity</span></a>
-        <a href="#step-05" class="stepper-node"><span class="node-num">5</span><span class="node-label">Language</span></a>
-        <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Address</span></a>
-        <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Pond</span></a>
-        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">Docs</span></a>
-        <a href="#step-09" class="stepper-node"><span class="node-num">9</span><span class="node-label">Pond Addr</span></a>
-        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">GPS</span></a>
-        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">Bank</span></a>
-        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Review</span></a>
+        <a href="#step-02" class="stepper-node"><span class="node-num">2</span><span class="node-label">Mobile</span></a>
+        <a href="#step-03" class="stepper-node"><span class="node-num">3</span><span class="node-label">Identity</span></a>
+        <a href="#step-04" class="stepper-node"><span class="node-num">4</span><span class="node-label">Language</span></a>
+        <a href="#step-05" class="stepper-node"><span class="node-num">5</span><span class="node-label">Address</span></a>
+        <a href="#step-06" class="stepper-node"><span class="node-num">6</span><span class="node-label">Pond</span></a>
+        <a href="#step-07" class="stepper-node"><span class="node-num">7</span><span class="node-label">Docs</span></a>
+        <a href="#step-08" class="stepper-node"><span class="node-num">8</span><span class="node-label">Pond Addr</span></a>
+        <a href="#step-09" class="stepper-node"><span class="node-num">9</span><span class="node-label">GPS</span></a>
+        <a href="#step-10" class="stepper-node"><span class="node-num">10</span><span class="node-label">Bank</span></a>
+        <a href="#step-11" class="stepper-node"><span class="node-num">11</span><span class="node-label">Review</span></a>
+        <a href="#step-12" class="stepper-node"><span class="node-num">12</span><span class="node-label">Confirm</span></a>
       </div>
     </div>
 
@@ -585,17 +585,17 @@ Strict-Transport-Security: max-age=31536000</div>
           </div>
         </div>
 
-        <!-- Step 2: Mobile Verification — OTP Send -->
+        <!-- Step 2: Mobile Verification -->
         <div class="flow-step-card" id="step-02">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification — OTP Send</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">2</span><span class="step-title">Mobile Verification (OTP Send & Verify)</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/verify_mobile_send/screen.png" alt="OTP Send Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/farmer_onboarding/verify_mobile_step_1/screen.png" alt="OTP Send Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Sends OTP to farmer's mobile for verification.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Enter farmer's mobile number and trigger SMS verification. OTP entry is handled inside this screen via a bottom sheet overlay.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">OTP confirms the mobile entered is real and belongs to the farmer (the farmer's phone must physically receive it). Without verified mobile, the farmer can't later log in themselves.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Mobile echoed for confirmation; "Send OTP" CTA; 60s cooldown after send.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Confirm mobile → Send OTP → tells farmer to check their phone.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Calls Supabase auth.signInWithOtp with farmer's mobile — but with a flag so the OTP is delivered without creating a session on this device.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Mobile input field with helper text, country code prefix (+91), "Send OTP" CTA. Brings up OTP entry bottom sheet.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Type farmer's mobile number → Tap "Send OTP" to open interactive bottom sheet overlay. Enter OTP to auto-verify.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Calls sendFarmerMobileOtp and verifyFarmerMobileOtp. Triggers background SMS async job. Opens inline sheet overlay for OTP Entry to avoid page navigation. Note that verify_mobile_entry exists in the codebase as a standalone fallback screen (Step 3 of 13 if using a 13-screen standalone progression) but the production app integrates it as an interactive sheet inside Step 2, resulting in a streamlined 11-step wizard + 1 confirmation page workflow.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Mobile chip + "Change" link · Send OTP primary · cooldown timer.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value"><div class="spec-code">CREATE TABLE user_otp_verifications (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -614,26 +614,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 3: Mobile Verification — OTP Entry -->
+        <!-- Step 3: Farmer Identity Details -->
         <div class="flow-step-card" id="step-03">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Mobile Verification — OTP Entry</span></div></div>
-          <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/verify_mobile_entry/screen.png" alt="OTP Entry Screen"/></div></div>
-            <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Scout enters the OTP read from farmer's phone.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Six-digit OTP. 3 retries; resend after 30s.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Six-box input. Helper line "Read the OTP from the farmer's phone."</div></div>
-              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Enter OTP → auto-verify on 6th digit → Continue.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Verifies via Supabase / Edge Function. On success, user_otp_verifications.consumed_at set. Unified Auth Branching Check: If mobile exists in users table, the app cancels the rest of the wizard and routes directly to that User's Detail profile. If not, the scout proceeds to the new user Onboarding Setup Wizard starting with Screen 5.5.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Same OTP pattern as scout login OTP screen, with scout-context helper text.</div></div>
-              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">Updates user_otp_verifications.</div></div>
-            </div></div>
-          </div>
-        </div>
-
-        <!-- Step 4: User Identity Details -->
-        <div class="flow-step-card" id="step-04">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">User Identity Details</span></div></div>
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">3</span><span class="step-title">Farmer Identity Details</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/farmer_identity/screen.png" alt="Identity Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -648,9 +631,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 5: Language Selection -->
-        <div class="flow-step-card" id="step-05">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Language Selection</span></div></div>
+        <!-- Step 4: Language Selection -->
+        <div class="flow-step-card" id="step-04">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">4</span><span class="step-title">Language Selection</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/language_selection/screen.png" alt="Language Selection"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -665,9 +648,9 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 6: Address Details -->
-        <div class="flow-step-card" id="step-06">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">Address Details</span></div></div>
+        <!-- Step 5: Address Details -->
+        <div class="flow-step-card" id="step-05">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">5</span><span class="step-title">Address Details</span></div></div>
           <div class="step-body">
             <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/residential_address/screen.png" alt="Address Details"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
@@ -682,11 +665,11 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 7: First Pond Details -->
-        <div class="flow-step-card" id="step-07">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">First Pond Details</span></div></div>
+        <!-- Step 6: First Pond Details -->
+        <div class="flow-step-card" id="step-06">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">6</span><span class="step-title">First Pond Details</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_details/screen.png" alt="Pond Details Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/farm_pond_details/screen.png" alt="Pond Details Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the farmer's first pond's basic details.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Farmer must have at least one pond at registration. Additional ponds added later via Manage Farmer. Pond name, area + unit, estimated annual capacity.</div></div>
@@ -699,11 +682,11 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 8: First Pond Legal Documents -->
-        <div class="flow-step-card" id="step-08">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Legal Documents</span></div></div>
+        <!-- Step 7: First Pond Legal Documents -->
+        <div class="flow-step-card" id="step-07">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">7</span><span class="step-title">First Pond Legal Documents</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_documents/screen.png" alt="Documents Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/farm_pond_legal_details_high_visibility_uploads/screen.png" alt="Documents Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures legal proof of pond ownership / lease.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Pond lease or land record is required for legitimacy. Mandatory at least one document; up to 3 photos per document. Scout uses camera to photograph the physical document the farmer presents.</div></div>
@@ -716,11 +699,11 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 9: First Pond Address -->
-        <div class="flow-step-card" id="step-09">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Address</span></div></div>
+        <!-- Step 8: First Pond Address -->
+        <div class="flow-step-card" id="step-08">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">8</span><span class="step-title">First Pond Address</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_address/screen.png" alt="Pond Address Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/pond_address/screen.png" alt="Pond Address Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures pond's address (often differs from farmer's residential).</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">District + village + free-text address. Pre-fill with farmer's address as a starting point; scout edits if pond is elsewhere.</div></div>
@@ -733,13 +716,13 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 10: First Pond Geo-Fencing -->
-        <div class="flow-step-card" id="step-10">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">First Pond Geo-Fencing (Optional)</span></div></div>
+        <!-- Step 9: First Pond Geo-Fencing -->
+        <div class="flow-step-card" id="step-09">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">9</span><span class="step-title">First Pond Geo-Fencing</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/pond_geo_fencing/screen.png" alt="Geo-Fencing Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/buyer_onboarding/pond_geo_fencing/screen.png" alt="Geo-Fencing Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
-              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the pond's GPS centre point (optional).</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures the pond's GPS centre point.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Year-1: single GPS point (optional). Year-2 polygon optional. Future feature for scout-task routing.</div></div>
               <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Map view with a draggable pin. "Use my location" auto-places pin at scout's current GPS.</div></div>
               <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap map to place / drag pin · or "Use my location" · Continue.</div></div>
@@ -750,11 +733,11 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 11: Bank Account Details -->
-        <div class="flow-step-card" id="step-11">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Bank Account Details</span></div></div>
+        <!-- Step 10: Bank Account Details -->
+        <div class="flow-step-card" id="step-10">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">10</span><span class="step-title">Bank Account Details</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/bank_account_details/screen.png" alt="Bank Account Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/profile/bank_account_details/screen.png" alt="Bank Account Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Captures farmer's bank account for payments.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Account holder name (must match identity), account number (entered twice for confirmation), IFSC. Penny-drop verification triggered at submit (₹1 test transfer, name-match check). Bank account is one per farmer in Year 1.</div></div>
@@ -767,11 +750,11 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 12: Review & Submit -->
-        <div class="flow-step-card" id="step-12">
-          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Review & Submit</span></div></div>
+        <!-- Step 11: Review & Submit -->
+        <div class="flow-step-card" id="step-11">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">11</span><span class="step-title">Review & Submit</span></div></div>
           <div class="step-body">
-            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../app/screens_v2/scout/register_a_farmer/review_submit/screen.png" alt="Review Screen"/></div></div>
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/profile/scout/farmer_detail_scout/screen.png" alt="Review Screen"/></div></div>
             <div class="step-right-pane"><div class="specs-grid">
               <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Final recap before commit.</div></div>
               <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Scout reviews every captured field; farmer can be shown the screen for transparency. Explicit final consent checkbox + submit.</div></div>
@@ -784,7 +767,22 @@ CREATE INDEX idx_uov_mobile ON user_otp_verifications (mobile, created_at DESC);
           </div>
         </div>
 
-        <!-- Step 14: Submission Confirmation -->
+        <!-- Step 12: Submission Confirmation -->
+        <div class="flow-step-card" id="step-12">
+          <div class="step-header"><div style="display: flex; gap: 12px;"><span class="step-badge">12</span><span class="step-title">Submission Confirmation</span></div></div>
+          <div class="step-body">
+            <div class="step-left-pane"><div class="card-image-viewport"><img class="preview-screen-img" src="../../../images/farmer_onboarding/you_re_all_set/screen.png" alt="Confirmation Screen"/></div></div>
+            <div class="step-right-pane"><div class="specs-grid">
+              <div class="spec-block full-width"><div class="spec-label">Purpose</div><div class="spec-value">Confirms successful registration submission.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Business Requirement</div><div class="spec-value">Verify transaction was captured and queued for sync if offline. Shows local/remote sync state feedback.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Experience</div><div class="spec-value">Success visual confirmation, offline status chip ("Pending Sync"), and "Back to Today's Dashboard" button.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">User Actions</div><div class="spec-value">Tap "Back to Today's Dashboard" to return to scout operations.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Technical Details</div><div class="spec-value">Displays success illustration and logs offline queue receipt. Closes registration wizard session.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Design Details</div><div class="spec-value">Clean success screen, state badge, high contrast primary button.</div></div>
+              <div class="spec-block full-width"><div class="spec-label">Database Schema</div><div class="spec-value">None (read/confirm view).</div></div>
+            </div></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
