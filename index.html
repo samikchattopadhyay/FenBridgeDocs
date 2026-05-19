@@ -1640,6 +1640,17 @@
       populateWorkflowsSidebar();
       handleRouting();
 
+      // Highlight farmer and pond related items in red inside the navigation sidebar
+      document.querySelectorAll(".portal-sidebar span, .portal-sidebar a").forEach(el => {
+        const text = el.textContent.toLowerCase();
+        if (text.includes("farmer") || text.includes("pond")) {
+          el.style.setProperty("color", "#ff5252", "important");
+          el.querySelectorAll("span").forEach(s => {
+            s.style.setProperty("color", "#ff5252", "important");
+          });
+        }
+      });
+
       // Make top-level menu sections collapsible dynamically with Rich Micro-Animations
       const navGroupTitles = document.querySelectorAll(".portal-sidebar .nav-group-title");
       navGroupTitles.forEach((titleEl, index) => {
