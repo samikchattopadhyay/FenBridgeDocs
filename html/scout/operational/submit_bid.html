@@ -336,69 +336,326 @@
 
         <!-- TAB: React Component Design -->
         <div id="backend-react" class="tab-panel">
-          <h3 class="backend-section-title">React Component Decomposition & Reusability</h3>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">This workflow breaks into reusable React components following atomic design principles. Components are shared across Scout module's 20 workflows.</p>
-
-          <div class="backend-info-box">
-            <strong>✅ Design Philosophy:</strong><br>
-            • Single Responsibility: Each component does ONE thing<br>
-            • Prop-based composition: Components accept data + actions as props<br>
-            • No local state for business logic: Context + hooks for state<br>
-            • Reuse across workflows: 80% of components shared across 20 workflows<br>
-            • Variant management: Props define UI variants, not separate components
-          </div>
+          <h3 class="backend-section-title">React Component Decomposition & Reusability (5 Screens)</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Submit Bid is a proxy procurement wizard that captures on-behalf supply offers for offline farmers. Components emphasize list selection, numeric pricing, and comprehensive bid summarization with validation.</p>
 
           <div class="backend-info-box" style="background: #1a3a3a; border: 1px solid #0d5d5d; margin-bottom: 24px;">
-            <strong style="color: #4edea3;">📖 Cross-Workflow Component Library</strong><br>
-            <span style="font-size: 12px; color: var(--text-muted);">All scout workflows share a unified component library. See <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for the master reference documenting all 20 workflows and their component usage.</span>
+            <strong style="color: #4edea3;">📖 Cross-Workflow Component Reuse</strong><br>
+            <span style="font-size: 12px; color: var(--text-muted);">Before creating any new component, check <strong>COMPONENT_ARCHITECTURE_GUIDE.md</strong> for existing definitions. This workflow reuses components from Farmer Registration, Mark Lot Ready, and other workflows.</span>
           </div>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Shared Component Hierarchy</h4>
+          <h4 class="backend-section-title" style="font-size: 14px;">Screen-by-Screen Component Decomposition</h4>
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 1: Choose Farmer User</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Searchable list of registered farmers in scout's zone with details to confirm selection.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Select Farmer" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={1} totalSteps={5} /&gt;
+
+&lt;InfoBanner
+  type="info"
+  title="Choose Farmer"
+  message="Select the farmer for whom you are submitting this bid."
+/&gt;
+
+&lt;SearchInput
+  placeholder="Search by farmer name or ID..."
+  onSearch={(query) =&gt; filterFarmers(query)}
+/&gt;
+
+&lt;FarmerSelectionCardList
+  farmers={assignedFarmers}
+  selectedFarmerId={selectedFarmerId}
+  onSelect={(farmer) =&gt; selectFarmer(farmer)}
+  sortBy="name"
+/&gt;
+
+&lt;FarmerSelectionCard
+  farmer={farmer}
+  isSelected={farmer.id === selectedFarmerId}
+  onClick={() =&gt; selectFarmer(farmer)}
+  fields={[
+    { label: 'Farmer', value: farmer.name },
+    { label: 'Active Ponds', value: farmer.activePonds.length },
+    { label: 'Location', value: farmer.district },
+    { label: 'Status', value: farmer.status, badge: true },
+  ]}
+/&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Continue', onClick: () =&gt; {}, disabled: !selectedFarmerId }}
+  secondary={{ label: 'Cancel', onClick: () =&gt; goBack() }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 2: Select Active Buyer Requirement</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Browse and select from open buyer procurement orders with grades, volumes, and pricing parameters.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Buyer Requirements" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={2} totalSteps={5} /&gt;
+
+&lt;InfoBanner
+  type="info"
+  message="Select which buyer requirement you want to place a bid for."
+/&gt;
+
+&lt;BuyerRequirementCardList
+  requirements={openRequirements}
+  selectedRequirementId={selectedRequirementId}
+  onSelect={(req) =&gt; selectRequirement(req)}
+  filters={[
+    { name: 'grade', label: 'Grade', options: ['A', 'B', 'C'] },
+    { name: 'district', label: 'District', options: districtsAvailable },
+  ]}
+/&gt;
+
+&lt;BuyerRequirementCard
+  requirement={requirement}
+  isSelected={requirement.id === selectedRequirementId}
+  onClick={() =&gt; selectRequirement(requirement)}
+  fields={[
+    { label: 'Buyer', value: requirement.buyer.name },
+    { label: 'Required Grade', value: requirement.requiredGrade },
+    { label: 'Min Quantity', value: `${requirement.minQuantity}kg` },
+    { label: 'Target Price Range', value: `₹${requirement.minPrice}-${requirement.maxPrice}/kg` },
+    { label: 'Status', value: requirement.status, badge: true },
+  ]}
+/&gt;
+
+&lt;ExpandableSection title="Requirement Details"&gt;
+  &lt;div&gt;Delivery Window: {requirement.deliveryWindow} days&lt;/div&gt;
+  &lt;div&gt;Deadline: {formatDate(requirement.deadline)}&lt;/div&gt;
+  &lt;div&gt;Description: {requirement.description}&lt;/div&gt;
+&lt;/ExpandableSection&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Continue', onClick: () =&gt; {}, disabled: !selectedRequirementId }}
+  secondary={{ label: 'Back', onClick: () =&gt; goBack() }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 3: Price Offer & Ready-By Date</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Enter bid price per kg, quantity, and estimated harvest ready date with live revenue calculation.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Bid Details" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={3} totalSteps={5} /&gt;
+
+&lt;RequirementRecapCard
+  requirement={selectedRequirement}
+  fields={[
+    { label: 'Target Price', value: `₹${req.minPrice}-${req.maxPrice}/kg` },
+    { label: 'Min Quantity', value: `${req.minQuantity}kg` },
+    { label: 'Grade', value: req.requiredGrade },
+  ]}
+/&gt;
+
+&lt;NumberInput
+  label="Bid Price (per kg)"
+  value={bidDetails.pricePerKg}
+  type="number"
+  min="1"
+  max={selectedRequirement.maxPrice}
+  error={bidDetails.pricePerKg &gt; selectedRequirement.maxPrice ? 'Exceeds max price' : null}
+  onChange={(value) =&gt; handlePriceChange(value)}
+/&gt;
+
+&lt;NumberInput
+  label="Supply Quantity (kg)"
+  value={bidDetails.quantityKg}
+  type="number"
+  min={selectedRequirement.minQuantity}
+  error={bidDetails.quantityKg &lt; selectedRequirement.minQuantity ? `Min ${selectedRequirement.minQuantity}kg` : null}
+  onChange={(value) =&gt; handleQuantityChange(value)}
+/&gt;
+
+&lt;DateInput
+  label="Ready-By Date"
+  value={bidDetails.readyByDate}
+  min={today}
+  max={selectedRequirement.deadline}
+  error={bidDetails.readyByDate &gt; selectedRequirement.deadline ? 'Exceeds deadline' : null}
+  onChange={(value) =&gt; handleDateChange(value)}
+/&gt;
+
+&lt;RevenueCalculationCard
+  pricePerKg={bidDetails.pricePerKg}
+  quantityKg={bidDetails.quantityKg}
+  totalRevenue={calculateRevenue()}
+  buyerPriceRange={selectedRequirement.minPrice + '-' + selectedRequirement.maxPrice}
+  isPriceWithinRange={isPriceValid()}
+/&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Continue', onClick: () =&gt; {}, disabled: !isValidBidDetails() }}
+  secondary={{ label: 'Back', onClick: () =&gt; goBack() }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 4: Fulfillment Source Selection</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Select which ponds or warehouse lots will fulfill this bid with available inventory display.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Select Fulfillment Source" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={4} totalSteps={5} /&gt;
+
+&lt;InfoBanner
+  type="info"
+  message={`Select where you will source ${bidDetails.quantityKg}kg from.`}
+/&gt;
+
+&lt;LotSelectionCardList
+  lots={farmerAssets}
+  selectedLotIds={selectedLotIds}
+  requiredQuantity={bidDetails.quantityKg}
+  onSelect={(lot) =&gt; toggleLotSelection(lot)}
+  multiSelect={true}
+/&gt;
+
+&lt;LotSelectionCard
+  lot={lot}
+  isSelected={selectedLotIds.includes(lot.id)}
+  onClick={() =&gt; toggleLotSelection(lot)}
+  fields={[
+    { label: 'Source', value: `${lot.type} - ${lot.name}` },
+    { label: 'Available', value: `${lot.availableQuantity}kg` },
+    { label: 'Location', value: lot.location },
+    { label: 'Grade', value: lot.grade },
+  ]}
+/&gt;
+
+&lt;SelectedQuantityCard
+  selectedLots={selectedLots}
+  totalQuantity={calculateSelectedQuantity()}
+  requiredQuantity={bidDetails.quantityKg}
+  isComplete={calculateSelectedQuantity() &gt;= bidDetails.quantityKg}
+/&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Continue', onClick: () =&gt; {}, disabled: !isQuantityComplete() }}
+  secondary={{ label: 'Back', onClick: () =&gt; goBack() }}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 13px; margin-top: 20px;">Screen 5: Review & Confirm Bid Submission</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Comprehensive summary of all bid parameters with final confirmation before submission.</p>
+          <div class="backend-code-block">
+&lt;TopAppBar title="Review Bid" onBack={() =&gt; {}} /&gt;
+&lt;StepperBar currentStep={5} totalSteps={5} /&gt;
+
+&lt;BidSummaryCard
+  farmer={selectedFarmer}
+  requirement={selectedRequirement}
+  bidDetails={bidDetails}
+  selectedLots={selectedLots}
+  totalRevenue={calculateRevenue()}
+  fields={[
+    { label: 'Farmer', value: selectedFarmer.name },
+    { label: 'Buyer', value: selectedRequirement.buyer.name },
+    { label: 'Price per kg', value: `₹${bidDetails.pricePerKg}` },
+    { label: 'Quantity', value: `${bidDetails.quantityKg}kg` },
+    { label: 'Total Revenue', value: `₹${calculateRevenue()}` },
+    { label: 'Ready By', value: formatDate(bidDetails.readyByDate) },
+    { label: 'Source', value: selectedLots.map(l =&gt; l.name).join(', ') },
+  ]}
+/&gt;
+
+&lt;ExpandableSection title="Bid Details"&gt;
+  &lt;div&gt;Buyer Grade Requirement: {selectedRequirement.requiredGrade}&lt;/div&gt;
+  &lt;div&gt;Target Price Range: ₹{selectedRequirement.minPrice}-{selectedRequirement.maxPrice}/kg&lt;/div&gt;
+  &lt;div&gt;Delivery Window: {selectedRequirement.deliveryWindow} days from ready date&lt;/div&gt;
+&lt;/ExpandableSection&gt;
+
+&lt;ConfirmationCheckbox
+  label="I confirm that this bid is accurate and all information is correct."
+  required={true}
+  checked={confirmed}
+  onChange={(value) =&gt; setConfirmed(value)}
+/&gt;
+
+&lt;CTAFooter
+  primary={{ label: 'Submit Bid', onClick: () =&gt; submitBid(), disabled: !confirmed }}
+  secondary={{ label: 'Back', onClick: () =&gt; goBack() }}
+/&gt;
+
+// After successful submission:
+&lt;BidSuccessTerminalCard
+  title="Bid Submitted!"
+  message="Your bid has been successfully submitted and is now pending buyer review."
+  bidId={submittedBid.id}
+  farmer={selectedFarmer}
+  requirement={selectedRequirement}
+  bidPrice={bidDetails.pricePerKg}
+  quantity={bidDetails.quantityKg}
+  onClose={() =&gt; resetAndGoHome()}
+/&gt;
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">Submit-Bid Specific Components</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Components unique to this workflow that are NOT used elsewhere:</p>
           <table class="backend-table">
-            <tr><th>Component</th><th>Purpose</th><th>Used In</th></tr>
-            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
-            <tr><td><strong>TextInput</strong></td><td>Text field with label, error, helper</td><td>12+ workflows</td></tr>
-            <tr><td><strong>PhoneInput</strong></td><td>Mobile with +91 prefix, validation</td><td>8+ workflows</td></tr>
-            <tr><td><strong>SelectInput</strong></td><td>Dropdown with label, multi-select</td><td>12+ workflows</td></tr>
-            <tr><td><strong>AddressForm</strong></td><td>Composed address fields</td><td>9+ workflows</td></tr>
-            <tr><td><strong>PhotoGrid</strong></td><td>Display/manage photos with delete</td><td>16+ workflows</td></tr>
-            <tr><td><strong>StatusBadge</strong></td><td>Status with color coding</td><td>All list screens</td></tr>
-            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary actions</td><td>All form screens</td></tr>
+            <tr><th>Component</th><th>Purpose</th><th>Props Interface</th></tr>
+            <tr><td><strong>FarmerSelectionCardList</strong></td><td>List of farmer cards for selection with search/sort</td><td>farmers[], selectedFarmerId, onSelect, sortBy</td></tr>
+            <tr><td><strong>FarmerSelectionCard</strong></td><td>Single farmer card showing name, ponds, location, status</td><td>farmer, isSelected, onClick, fields[]</td></tr>
+            <tr><td><strong>SearchInput</strong></td><td>Search field for filtering farmers/requirements</td><td>placeholder, onSearch</td></tr>
+            <tr><td><strong>BuyerRequirementCardList</strong></td><td>List of open buyer orders with filtering</td><td>requirements[], selectedRequirementId, onSelect, filters[]</td></tr>
+            <tr><td><strong>BuyerRequirementCard</strong></td><td>Single requirement card showing buyer, grade, price, qty</td><td>requirement, isSelected, onClick, fields[]</td></tr>
+            <tr><td><strong>RequirementRecapCard</strong></td><td>Display buyer requirement expectations before bid entry</td><td>requirement, fields[]</td></tr>
+            <tr><td><strong>RevenueCalculationCard</strong></td><td>Display calculated total revenue and price validation</td><td>pricePerKg, quantityKg, totalRevenue, buyerPriceRange, isPriceWithinRange</td></tr>
+            <tr><td><strong>LotSelectionCardList</strong></td><td>Multi-select list of ponds/warehouse lots for sourcing</td><td>lots[], selectedLotIds, requiredQuantity, onSelect, multiSelect</td></tr>
+            <tr><td><strong>LotSelectionCard</strong></td><td>Single lot/pond card showing source, quantity, location, grade</td><td>lot, isSelected, onClick, fields[]</td></tr>
+            <tr><td><strong>SelectedQuantityCard</strong></td><td>Display total selected quantity vs required</td><td>selectedLots[], totalQuantity, requiredQuantity, isComplete</td></tr>
+            <tr><td><strong>BidSummaryCard</strong></td><td>Comprehensive recap of all bid parameters</td><td>farmer, requirement, bidDetails, selectedLots, totalRevenue, fields[]</td></tr>
+            <tr><td><strong>ConfirmationCheckbox</strong></td><td>Single confirmation checkbox before bid submit</td><td>label, required, checked, onChange</td></tr>
+            <tr><td><strong>BidSuccessTerminalCard</strong></td><td>Success screen with bid confirmation details</td><td>title, message, bidId, farmer, requirement, bidPrice, quantity, onClose</td></tr>
           </table>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Consistency Checklist</h4>
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">Shared Components Used (Across Multiple Workflows)</h4>
+          <table class="backend-table">
+            <tr><th>Component</th><th>Purpose</th><th>Workflows Using</th></tr>
+            <tr><td><strong>TopAppBar</strong></td><td>Fixed header with back, title, menu</td><td>All 20 workflows</td></tr>
+            <tr><td><strong>StepperBar</strong></td><td>Step indicator for multi-step forms</td><td>14+ workflows</td></tr>
+            <tr><td><strong>InfoBanner</strong></td><td>Alert/info banner with icon and message</td><td>15+ workflows</td></tr>
+            <tr><td><strong>SearchInput</strong></td><td>Search field for filtering lists</td><td>Farmer Registration, Mark Lot Ready, Submit Bid</td></tr>
+            <tr><td><strong>NumberInput</strong></td><td>Numeric input with validation and error handling</td><td>12+ workflows (Mark Lot Ready, Submit Bid)</td></tr>
+            <tr><td><strong>DateInput</strong></td><td>Date picker with validation and range</td><td>Farmer Registration, Mark Lot Ready, Submit Bid</td></tr>
+            <tr><td><strong>ExpandableSection</strong></td><td>Collapsible content block</td><td>16+ workflows</td></tr>
+            <tr><td><strong>CTAFooter</strong></td><td>Primary + secondary action buttons</td><td>All form screens</td></tr>
+          </table>
+
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">Cross-Workflow Consistency Checklist</h4>
           <ul class="backend-list">
-            <li><strong>✓ Props Interface:</strong> All components export TypeScript interfaces</li>
-            <li><strong>✓ Error Handling:</strong> Consistent error display (red border + message)</li>
-            <li><strong>✓ Spacing:</strong> Use CSS variables (--spacing-xs, --spacing-sm, --spacing-md)</li>
-            <li><strong>✓ Colors:</strong> Use CSS variables (--accent-primary, --text-main)</li>
-            <li><strong>✓ Validation:</strong> Frontend validation mirrors backend Zod schemas</li>
-            <li><strong>✓ Accessibility:</strong> Labels paired with inputs, ARIA attributes</li>
-            <li><strong>✓ Mobile-First:</strong> Responsive breakpoints: 360px, 600px, 1024px</li>
-            <li><strong>✓ No Duplication:</strong> Extract common patterns into reusable components</li>
-            <li><strong>✓ Variant Props:</strong> Use props for variants, not separate components</li>
-            <li><strong>✓ No Local State:</strong> Business logic state in Context, UI state locally</li>
+            <li><strong>✓ Selection Cards:</strong> FarmerSelectionCard, BuyerRequirementCard, LotSelectionCard follow same design as POSelectionCard</li>
+            <li><strong>✓ Shared Components:</strong> TopAppBar, StepperBar, InfoBanner, ExpandableSection, CTAFooter all follow same design system</li>
+            <li><strong>✓ Numeric Input:</strong> NumberInput component used for price/kg and quantity fields with consistent validation</li>
+            <li><strong>✓ Date Handling:</strong> DateInput component used for ready-by date with min/max validation</li>
+            <li><strong>✓ Recap Cards:</strong> RequirementRecapCard pattern matches PORecapCard from mark_lot_ready workflow</li>
+            <li><strong>✓ Calculation Cards:</strong> RevenueCalculationCard pattern matches WeightCalculationCard with live updates</li>
+            <li><strong>✓ Summary Cards:</strong> BidSummaryCard pattern matches BidSummaryCard and WeightSummaryCard</li>
+            <li><strong>✓ Confirmation:</strong> ConfirmationCheckbox same as Mark Lot Ready workflow</li>
+            <li><strong>✓ Success Terminal:</strong> BidSuccessTerminalCard pattern matches SuccessTerminalCard from Mark Lot Ready</li>
+            <li><strong>✓ Spacing & Layout:</strong> Grid gaps (16px), card padding (24px), footer height (80px) match across all workflows</li>
+            <li><strong>✓ Color Coding:</strong> Status badges and validation colors consistent across all workflows</li>
+            <li><strong>✓ Mobile Responsiveness:</strong> All components tested at 360px, 600px, 1024px breakpoints</li>
+            <li><strong>✓ Typography:</strong> Headers use Outfit 700/800, body uses Inter 400, monospace for codes</li>
           </ul>
 
-          <h4 class="backend-section-title" style="font-size: 14px;">Component Usage Guidelines</h4>
+          <h4 class="backend-section-title" style="font-size: 14px; margin-top: 32px;">DO's and DON'Ts</h4>
           <div class="backend-info-box">
-            <strong>When to Create a New Component:</strong><br>
-            ✓ Logic/JSX repeats 2+ times<br>
-            ✓ Testable in isolation<br>
-            ✓ Clear, single responsibility<br>
-            ✗ Used in only 1 workflow (inline)<br>
-            ✗ Just a styling wrapper (use CSS)
+            <strong style="color: #4edea3;">✅ DO:</strong><br>
+            • Reuse TopAppBar, StepperBar, InfoBanner, ExpandableSection, CTAFooter in new screens<br>
+            • Use NumberInput for all numeric fields (price, quantity) with min/max/step props<br>
+            • Use DateInput for all date selections with validation<br>
+            • Reuse SearchInput pattern for farmer/requirement filtering<br>
+            • Calculate and display live revenue as user enters price/quantity data<br>
+            • Check COMPONENT_ARCHITECTURE_GUIDE.md BEFORE creating any new component<br>
+            • Use multi-select for lot selection to allow sourcing from multiple ponds<br>
+            • Validate bid price against buyer's min/max range in real-time
           </div>
 
-          <div class="backend-info-box">
-            <strong>Common Shared Components (Across 20 Workflows):</strong><br>
-            • TopAppBar (header in all)<br>
-            • TextInput (21+ uses)<br>
-            • AddressForm (6+ uses)<br>
-            • PhotoGrid (16+ uses)<br>
-            • LocationPicker (8+ uses)<br>
-            • DocumentUpload (9+ uses)<br>
-            • SelectInput (12+ uses)
+          <div class="backend-info-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+            <strong style="color: #fca5a5;">❌ DON'T:</strong><br>
+            • Create duplicate NumberInput, DateInput, or SearchInput components<br>
+            • Create separate FarmerSearch vs RequirementSearch; reuse SearchInput with same pattern<br>
+            • Inline styles — always use CSS variables<br>
+            • Local state for API-driven data (use Context/hooks)<br>
+            • Create separate QuantityCard or PriceCard; use NumberInput with props variants<br>
+            • Skip live revenue calculation updates as user changes price/quantity<br>
+            • Show success before confirming the confirmation checkbox<br>
+            • Allow bid submission if price exceeds buyer's max or quantity below minimum
           </div>
         </div>
 
