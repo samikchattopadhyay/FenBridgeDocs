@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge - Review PO Draft</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdad7",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3c4a42",
+                        "on-secondary-container": "#c4abff",
+                        "surface-dim": "#131313",
+                        "surface": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#002113",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#410005",
+                        "surface-bright": "#393939",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-tint": "#4edea3",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary": "#3c0091",
+                        "on-background": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "primary": "#4edea3",
+                        "outline": "#86948a",
+                        "primary-fixed-dim": "#4edea3",
+                        "tertiary": "#ffb3af",
+                        "primary-fixed": "#6ffbbe",
+                        "on-primary": "#003824",
+                        "on-primary-container": "#00422b",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#006c49",
+                        "primary-container": "#10b981",
+                        "on-tertiary-container": "#711419",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-secondary-fixed": "#23005c",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#bbcabf",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary": "#650911",
+                        "surface-container": "#201f1f",
+                        "tertiary-container": "#fc7c78",
+                        "surface-variant": "#353534",
+                        "secondary-fixed": "#e9ddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin": "20px",
+                        "xl": "32px",
+                        "gutter": "12px",
+                        "sm": "12px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+        .tonal-card {
+            background-color: #1E1E1E;
+            border: 1px solid #2D2D2D;
+        }
+        .glass-header {
+            background: rgba(19, 19, 19, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md antialiased pb-[120px]">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 z-50 glass-header flex justify-between items-center w-full px-margin py-md bg-surface dark:bg-surface">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-primary dark:text-primary hover:opacity-80 transition-opacity">Skip</button>
+</header>
+<main class="max-w-3xl mx-auto px-margin mt-md space-y-xl">
+<!-- Expiry Alert -->
+<div class="bg-error-container/20 border border-error-container/30 rounded-xl p-md flex items-center gap-md">
+<span class="material-symbols-outlined text-error" data-icon="timer">timer</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-error-container">Expiry Timer</p>
+<p class="font-body-md text-body-md text-error">Accept within 2 days, 14 hours</p>
+</div>
+</div>
+<!-- PO Title & Core ID -->
+<div class="space-y-xs">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Review Purchase Order</h2>
+<p class="font-label-lg text-label-lg text-primary tracking-widest">PO-2026-0042</p>
+</div>
+<!-- Bento Grid for Parties -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Seller -->
+<div class="tonal-card p-md rounded-xl space-y-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary-container" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">Seller</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">Bharat Makhana</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Industrial Area, Madhubani, Bihar</p>
+</div>
+</div>
+<!-- Buyer -->
+<div class="tonal-card p-md rounded-xl space-y-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" data-icon="business">business</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">Buyer</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">Global Snacks Corp</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tech Park, Bengaluru, Karnataka</p>
+</div>
+</div>
+</div>
+<!-- Lot Specification -->
+<section class="space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+<h3 class="font-headline-md text-headline-md">Lot Specification</h3>
+</div>
+<div class="tonal-card rounded-xl overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div>
+<p class="font-body-lg text-body-lg font-bold">Makhana - Grade A</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Net Weight: 500 kg</p>
+</div>
+<span class="bg-primary-container/10 text-primary border border-primary-container/30 px-sm py-xs rounded-full font-label-sm text-label-sm">Premium Quality</span>
+</div>
+<div class="p-md">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="text-outline border-b border-outline-variant">
+<th class="py-xs font-label-sm">Parameter</th>
+<th class="py-xs font-label-sm">Standard</th>
+<th class="py-xs font-label-sm">Measured</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<tr>
+<td class="py-sm">Moisture</td>
+<td class="py-sm">&lt; 12%</td>
+<td class="py-sm font-bold text-primary">11.2%</td>
+</tr>
+<tr>
+<td class="py-sm">Size</td>
+<td class="py-sm">18mm - 20mm</td>
+<td class="py-sm font-bold text-primary">19.5mm</td>
+</tr>
+<tr>
+<td class="py-sm">Color</td>
+<td class="py-sm">Bright White</td>
+<td class="py-sm font-bold text-primary">Pass</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Pricing Summary -->
+<section class="space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+<h3 class="font-headline-md text-headline-md">Pricing</h3>
+</div>
+<div class="tonal-card p-md rounded-xl space-y-md">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Unit Price (per kg)</span>
+<span class="font-body-md font-bold">₹850.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Base Total</span>
+<span class="font-body-md font-bold">₹4,25,000.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Tax (GST 5%)</span>
+<span class="font-body-md font-bold">₹21,250.00</span>
+</div>
+<div class="pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="font-headline-md text-primary">Grand Total</span>
+<span class="font-headline-md text-primary">₹4,46,250.00</span>
+</div>
+</div>
+</section>
+<!-- Delivery & Logistics -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<section class="space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="local_shipping">local_shipping</span>
+<h3 class="font-headline-md text-headline-md">Delivery</h3>
+</div>
+<div class="tonal-card p-md rounded-xl space-y-sm h-full">
+<div class="space-y-xs">
+<p class="font-label-sm text-label-sm text-outline">SHIPPING TERMS</p>
+<p class="font-body-md font-bold">FOR-Destination</p>
+</div>
+<div class="space-y-xs">
+<p class="font-label-sm text-label-sm text-outline">ESTIMATED WINDOW</p>
+<p class="font-body-md">Oct 24 - Oct 28, 2026</p>
+</div>
+<div class="space-y-xs">
+<p class="font-label-sm text-label-sm text-outline">ADDRESS</p>
+<p class="font-body-md text-on-surface-variant">Wholesale Hub, Sector 5, Greater Noida, UP</p>
+</div>
+</div>
+</section>
+<section class="space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h3 class="font-headline-md text-headline-md">Payment</h3>
+</div>
+<div class="tonal-card p-md rounded-xl space-y-sm h-full">
+<div class="flex justify-between items-center p-xs bg-surface-container-high rounded-lg">
+<span class="font-body-md">Advance</span>
+<span class="font-label-lg text-primary">15%</span>
+</div>
+<div class="flex justify-between items-center p-xs">
+<span class="font-body-md">Before Dispatch</span>
+<span class="font-label-lg text-primary">65%</span>
+</div>
+<div class="flex justify-between items-center p-xs">
+<span class="font-body-md">Balance</span>
+<span class="font-label-lg text-primary">20%</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Documentation Preview Concept -->
+<div class="tonal-card p-md rounded-xl flex items-center justify-between group cursor-pointer hover:border-primary transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="description">description</span>
+</div>
+<div>
+<p class="font-body-md font-bold">Technical Specs.pdf</p>
+<p class="font-label-sm text-outline">Signed Quality Certificate</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+</main>
+<!-- Sticky Footer Actions -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-xl px-margin py-md space-y-md shadow-2xl border-t border-outline-variant/30">
+<div class="max-w-3xl mx-auto grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-xs font-label-lg text-label-lg py-md rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+                Reject PO
+            </button>
+<button class="flex items-center justify-center gap-xs font-label-lg text-label-lg py-md rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat">chat</span>
+                Contact BM
+            </button>
+</div>
+<button class="w-full max-w-3xl mx-auto block bg-primary text-on-primary py-md rounded-xl font-label-lg text-label-lg text-center hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+            Continue to Terms
+        </button>
+</footer>
+<!-- Bottom Navigation (Implicit in Shell but Suppressed as per Task Logic for transactional focused screen) -->
+<script src="../../../../app_logic.js"></script>
+</body></html>

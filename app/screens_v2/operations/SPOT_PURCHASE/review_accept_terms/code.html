@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge | Spot Purchase Terms</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#00422b",
+                        "on-error": "#690005",
+                        "surface-bright": "#393939",
+                        "outline-variant": "#3c4a42",
+                        "on-tertiary-container": "#711419",
+                        "background": "#131313",
+                        "surface-dim": "#131313",
+                        "primary-fixed": "#6ffbbe",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#650911",
+                        "surface-container": "#201f1f",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "outline": "#86948a",
+                        "on-primary-fixed-variant": "#005236",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "tertiary": "#ffb3af",
+                        "surface-variant": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "primary": "#4edea3",
+                        "on-tertiary-fixed": "#410005",
+                        "on-surface": "#e5e2e1",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-primary-fixed": "#002113",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#e9ddff",
+                        "on-secondary-container": "#c4abff",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-fixed-dim": "#4edea3",
+                        "inverse-primary": "#006c49",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#10b981",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-tint": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary-container": "#571bc1",
+                        "on-primary": "#003824"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "gutter": "12px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3c4a42; border-radius: 10px; }
+        .accordion-item:focus-within .accordion-content { max-height: 500px; padding-top: 12px; padding-bottom: 24px; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface flex justify-between items-center px-margin py-md">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">arrow_back</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">FenBridge</span>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">Skip</button>
+</header>
+<main class="flex-1 mt-[72px] mb-[120px] px-margin flex flex-col max-w-2xl mx-auto w-full">
+<!-- Progress Indicator -->
+<div class="mt-lg mb-xl">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-primary font-label-lg tracking-wider">STEP 3 OF 5</span>
+<span class="text-on-surface-variant text-label-sm">60% Complete</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/5 rounded-full shadow-[0_0_12px_rgba(78,222,163,0.3)]"></div>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg mb-md">Review and accept terms</h1>
+<!-- Version Banner -->
+<div class="bg-surface-container-low border border-outline-variant px-md py-sm rounded-lg flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary text-body-md" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-lg text-on-surface">Spot Terms v1.3</span>
+<span class="ml-auto text-on-surface-variant text-label-sm italic">Updated Oct 2023</span>
+</div>
+<!-- Asymmetric Content Layout: Terms Accordion -->
+<div class="flex flex-col gap-gutter">
+<!-- Section 1 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="hidden peer" type="checkbox"/>
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">01</span> Sale &amp; Delivery
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    Goods are sold on an 'as-is' basis at the point of origin. Delivery schedules are estimated and subject to logistics carrier availability within the specified window. FenBridge reserves the right to adjust timelines based on seasonal makhana harvesting variations.
+                </div>
+</div>
+<!-- Section 2 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">02</span> Payment Terms
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    Spot purchases require 100% upfront payment. Funds must be cleared before the release of cargo from the processing facility. All transactions are processed in the platform's native currency unless otherwise specified.
+                </div>
+</div>
+<!-- Section 3 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">03</span> Quality &amp; Acceptance
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    Quality grade is guaranteed at the point of seal. Any claims regarding seal integrity must be filed within 24 hours of delivery. Buyers are encouraged to inspect cargo upon arrival before signing off with the logistics provider.
+                </div>
+</div>
+<!-- Section 4 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">04</span> Cargo Insurance
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    Standard cargo insurance is included in the spot price, covering loss or theft during transit. Third-party liability or moisture-related damage due to improper storage post-delivery is not covered.
+                </div>
+</div>
+<!-- Section 5 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden border-l-4 border-l-primary">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">05</span> Cancellation Policy
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    Spot orders are non-cancellable once payment is initiated. Due to the high-velocity nature of the makhana marketplace, stock is allocated immediately upon transaction commitment.
+                </div>
+</div>
+<!-- Section 6 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">06</span> Dispute Resolution
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    Disputes arising from this transaction will be handled via the FenBridge internal arbitration board before escalating to external legal frameworks. All parties agree to a 30-day mediation period.
+                </div>
+</div>
+<!-- Section 7 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">07</span> Force Majeure
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    Neither party shall be liable for failure to perform due to acts of God, flood, natural disaster, or unexpected government agricultural regulations impacting the makhana export quotas.
+                </div>
+</div>
+<!-- Section 8 -->
+<div class="accordion-item bg-surface-container border border-outline-variant rounded-xl group overflow-hidden">
+<label class="flex items-center justify-between px-md py-md cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-on-surface flex items-center gap-sm">
+<span class="text-primary font-bold">08</span> Shelf-Life Guarantee
+                    </span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-focus-within:rotate-180">expand_more</span>
+</label>
+<div class="accordion-content px-md text-on-surface-variant text-body-md leading-relaxed">
+                    FenBridge guarantees a minimum remaining shelf-life of 9 months at the time of shipment, provided the goods are kept in cool, dry storage conditions as specified on the packaging.
+                </div>
+</div>
+</div>
+<!-- Mandatory Checkbox -->
+<div class="mt-xl p-md bg-primary/5 rounded-xl border border-primary/20 flex gap-md items-start">
+<div class="relative flex items-center h-5">
+<input class="w-5 h-5 rounded border-outline bg-surface text-primary focus:ring-primary focus:ring-offset-background cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label-lg text-on-surface leading-tight">I have read and accept all terms of the Spot Purchase agreement.</label>
+<p class="text-label-sm text-on-surface-variant mt-xs">Acceptance creates a legally binding contract between you and the supplier facility.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Sticky CTA -->
+<footer class="fixed bottom-0 left-0 right-0 bg-surface/80 backdrop-blur-lg pt-md pb-safe px-margin flex flex-col gap-md z-40 border-t border-outline-variant/10 shadow-2xl">
+<button class="w-full bg-primary text-on-primary py-md rounded-xl font-label-lg text-headline-md shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:opacity-90 active:scale-[0.98] transition-all">
+            Continue to Sign
+        </button>
+<!-- Navigation Simulation - Simplified Bottom Nav logic for linear flow -->
+<nav class="flex justify-around items-center py-sm">
+<div class="flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined">horizontal_rule</span>
+<span class="text-label-sm mt-1">Order</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">horizontal_rule</span>
+<span class="text-label-sm mt-1">Review</span>
+</div>
+</nav>
+</footer>
+<!-- Background Decorative Elements -->
+<div class="fixed top-1/4 right-0 w-64 h-64 bg-primary/5 blur-[120px] -z-10 rounded-full"></div>
+<div class="fixed bottom-1/4 left-0 w-48 h-48 bg-secondary/5 blur-[100px] -z-10 rounded-full"></div>
+<script src="../../../../app_logic.js"></script>
+</body></html>

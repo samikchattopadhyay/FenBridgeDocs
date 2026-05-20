@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Assigned Farmers | FenBridge Scout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            font-family: 'Inter', sans-serif;
+        }
+        .premium-card-gradient {
+            background: linear-gradient(135deg, #1E1E1E 0%, #161616 100%);
+        }
+        .scout-mesh-bg {
+            background-image: radial-gradient(circle at 2px 2px, #2D2D2D 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#1c1b1b",
+                "secondary-fixed": "#e9ddff",
+                "outline-variant": "#3c4a42",
+                "surface-container-highest": "#353534",
+                "inverse-primary": "#006c49",
+                "on-background": "#e5e2e1",
+                "background": "#131313",
+                "on-surface": "#e5e2e1",
+                "surface-container-high": "#2a2a2a",
+                "on-tertiary-fixed": "#410005",
+                "on-tertiary-container": "#711419",
+                "on-secondary-fixed-variant": "#5516be",
+                "inverse-on-surface": "#313030",
+                "error-container": "#93000a",
+                "primary-container": "#10b981",
+                "surface-bright": "#393939",
+                "outline": "#86948a",
+                "tertiary-fixed-dim": "#ffb3af",
+                "on-error-container": "#ffdad6",
+                "on-primary-container": "#00422b",
+                "surface-variant": "#353534",
+                "on-primary": "#003824",
+                "surface-dim": "#131313",
+                "secondary-fixed-dim": "#d0bcff",
+                "on-secondary-fixed": "#23005c",
+                "tertiary": "#ffb3af",
+                "tertiary-container": "#fc7c78",
+                "surface": "#131313",
+                "on-primary-fixed-variant": "#005236",
+                "inverse-surface": "#e5e2e1",
+                "surface-container": "#201f1f",
+                "primary": "#4edea3",
+                "on-surface-variant": "#bbcabf",
+                "on-secondary": "#3c0091",
+                "error": "#ffb4ab",
+                "surface-container-lowest": "#0e0e0e",
+                "on-tertiary": "#650911",
+                "tertiary-fixed": "#ffdad7",
+                "primary-fixed": "#6ffbbe",
+                "on-error": "#690005",
+                "on-secondary-container": "#c4abff",
+                "secondary": "#d0bcff",
+                "secondary-container": "#571bc1",
+                "on-tertiary-fixed-variant": "#842225",
+                "on-primary-fixed": "#002113",
+                "primary-fixed-dim": "#4edea3",
+                "surface-tint": "#4edea3"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "md": "16px",
+                "lg": "24px",
+                "margin": "20px",
+                "sm": "12px",
+                "xl": "32px",
+                "base": "4px",
+                "xs": "8px",
+                "gutter": "12px"
+            },
+            "fontFamily": {
+                "body-md": ["Inter"],
+                "label-lg": ["Inter"],
+                "headline-lg": ["Hanken Grotesk"],
+                "label-sm": ["Inter"],
+                "headline-md": ["Hanken Grotesk"],
+                "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32 scout-mesh-bg">
+<!-- Top Navigation Anchor -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-on-surface-variant hover:opacity-80 transition-opacity">Skip</button>
+</header>
+<main class="px-margin pt-md">
+<!-- Header Section -->
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg mb-xs">Assigned Farmers</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage and monitor makhana growers in your region.</p>
+</div>
+<!-- Search & Filter Cluster -->
+<div class="flex flex-col gap-md mb-xl">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded-xl pl-12 pr-md py-md text-on-surface placeholder:text-outline-variant focus:outline-none focus:border-primary transition-all" placeholder="Search by name, district or phone..." type="text"/>
+</div>
+<div class="flex gap-xs overflow-x-auto pb-xs no-scrollbar">
+<button class="px-lg py-xs rounded-full bg-primary-container text-on-primary-container font-label-lg flex-shrink-0 transition-all scale-95 active:scale-90">All</button>
+<button class="px-lg py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-lg flex-shrink-0 hover:bg-surface-container-high transition-all">Active</button>
+<button class="px-lg py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-lg flex-shrink-0 hover:bg-surface-container-high transition-all">Pending</button>
+<button class="px-lg py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-lg flex-shrink-0 hover:bg-surface-container-high transition-all">Inactive</button>
+</div>
+</div>
+<!-- Farmer List (Cards) -->
+<div class="flex flex-col gap-md">
+<!-- Farmer Card 1 -->
+<div class="premium-card-gradient border border-outline-variant rounded-xl p-md flex flex-col gap-md shadow-lg">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="Farmer Portrait" class="w-full h-full object-cover" data-alt="A portrait of a weathered, middle-aged Indian farmer smiling warmly against a backdrop of a lush green makhana field. The lighting is golden hour, casting long soft shadows and highlighting the deep textures of his traditional attire. The overall mood is one of quiet dignity and agricultural prosperity, consistent with a dark premium tech interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7mFTIOanpHwJ6ZbPM9rGY5OmhyRtAMJfLwg63ei2q7mfJG-zBh2GUYGbbvxbmDnHO7dHR2cd-NAAKZLd0lNBffvNE7-IwW5-S1Zv9cIeHb60uvQ39jfSH2uGc5KFTJeSjDNlmocg0lPbWZWWLAoke1FslupDIWEBeEoYWAyGCYnqhX5y3iiYwOuJgcqdiE8qXNbSQFJHvujt9ob5u1T5qcj0xw5m-n13i6jp94RNlgcY4NZtjo-LNhWXeF27n7eQN5c_CNvntuwPM"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">Rajesh Kumar Mahto</h3>
+<p class="font-label-sm text-label-sm text-outline flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="phone">phone</span> +91 98765 43210
+                            </p>
+</div>
+</div>
+<span class="px-md py-base bg-primary/10 text-primary border border-primary/20 rounded-full font-label-sm text-[10px] uppercase tracking-wider">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm border-t border-outline-variant/30">
+<div>
+<p class="font-label-sm text-outline-variant uppercase text-[10px]">District</p>
+<p class="font-body-md text-on-surface">Madhubani</p>
+</div>
+<div>
+<p class="font-label-sm text-outline-variant uppercase text-[10px]">Pond Count</p>
+<p class="font-body-md text-on-surface">08 Ponds</p>
+</div>
+</div>
+</div>
+<!-- Farmer Card 2 -->
+<div class="premium-card-gradient border border-outline-variant rounded-xl p-md flex flex-col gap-md shadow-lg">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="Farmer Portrait" class="w-full h-full object-cover" data-alt="A close-up shot of a farmer's calloused hands holding harvested makhana seeds, symbolizing hard work and high-quality produce. The image is captured in a cinematic dark-mode style with emerald green color tones reflecting the FenBridge brand. The lighting is Moody and focused, emphasizing the tactile nature of agricultural labor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv9D6iYH0JZyhEP5z_4loN8a1hRAzVb-66r9aLNzrYXQLQRLOOTgSPq26O69mZpVQULXp4IySKkoNYVKoj9Jpj5skQkGVU0MWVqqR7CU1zopQbj2uz9VHA1rpSu1m8mDi194dqYgmUOoUSPxNVy2YnJaBNw4X0M273LRKRs_nvaucbq27aIKDUaRGj_BEy3U_njE4OkPEQTcpjGP11uWBDeFUltN-Xhn_Gd6Fuay1mBg7RpprOboShvtUEbBLJ6ZdH8TPwy4AKwOlM"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">Amit Singh</h3>
+<p class="font-label-sm text-label-sm text-outline flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="phone">phone</span> +91 87654 32109
+                            </p>
+</div>
+</div>
+<span class="px-md py-base bg-tertiary-container/20 text-tertiary-container border border-tertiary-container/20 rounded-full font-label-sm text-[10px] uppercase tracking-wider">Pending</span>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm border-t border-outline-variant/30">
+<div>
+<p class="font-label-sm text-outline-variant uppercase text-[10px]">District</p>
+<p class="font-body-md text-on-surface">Darbhanga</p>
+</div>
+<div>
+<p class="font-label-sm text-outline-variant uppercase text-[10px]">Pond Count</p>
+<p class="font-body-md text-on-surface">03 Ponds</p>
+</div>
+</div>
+</div>
+<!-- Farmer Card 3 -->
+<div class="premium-card-gradient border border-outline-variant rounded-xl p-md flex flex-col gap-md shadow-lg opacity-80">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="Farmer Portrait" class="w-full h-full object-cover" data-alt="An aerial cinematic view of several circular makhana ponds reflecting the dark night sky with subtle emerald ripples on the water surface. The composition is geometric and minimalist, representing the scale of agricultural operations in a tech-noir aesthetic. The color palette is dominated by deep blacks and vibrant greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHtrLUXR8N3PlGKwbRBUZ4PeHYocSiEqiw2B3ykQq-RqcjH2JeCKNu33xV3U9S9kf3oGoNkBNCxNO0Lxi_rdCVIBgE3_8nTxH-IUwV2wQMWDJOao08U5SLzT_3R4EdaFkCt_FkMkoM5eC7yzfRXzt1J2TC7PNDmBxqsbQN3PRJ4XgK5OvawiWGw0bThXNjz18UXgXwCZB0ej-QbiC3dONWgY8wRmPdKvEaerqeuEwYHbWsdkDBJx549RulhmdKtY4bkMoUkzcoZvVG"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">Sunil Yadav</h3>
+<p class="font-label-sm text-label-sm text-outline flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="phone">phone</span> +91 76543 21098
+                            </p>
+</div>
+</div>
+<span class="px-md py-base bg-outline-variant/20 text-outline border border-outline-variant/30 rounded-full font-label-sm text-[10px] uppercase tracking-wider">Inactive</span>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm border-t border-outline-variant/30">
+<div>
+<p class="font-label-sm text-outline-variant uppercase text-[10px]">District</p>
+<p class="font-body-md text-on-surface">Saharasa</p>
+</div>
+<div>
+<p class="font-label-sm text-outline-variant uppercase text-[10px]">Pond Count</p>
+<p class="font-body-md text-on-surface">12 Ponds</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-margin bg-primary text-on-primary-container h-14 px-lg rounded-xl shadow-2xl flex items-center gap-sm font-label-lg active:scale-95 transition-transform z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+        Register New Farmer
+    </button>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-40 bg-surface flex justify-around items-center px-lg py-md mb-safe shadow-md rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-primary scale-110">
+<span class="material-symbols-outlined" data-icon="group" data-weight="fill" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm">Farmers</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-sm text-label-sm">Activity</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script src="../../../../app_logic.js"></script>
+</body></html>

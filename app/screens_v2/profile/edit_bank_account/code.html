@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#d0bcff",
+            "secondary-fixed": "#e9ddff",
+            "primary-fixed-dim": "#4edea3",
+            "on-tertiary-fixed": "#410005",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#e5e2e1",
+            "on-secondary": "#3c0091",
+            "outline": "#86948a",
+            "inverse-surface": "#e5e2e1",
+            "inverse-primary": "#006c49",
+            "secondary": "#d0bcff",
+            "primary-fixed": "#6ffbbe",
+            "on-tertiary": "#650911",
+            "on-secondary-fixed": "#23005c",
+            "on-surface-variant": "#bbcabf",
+            "surface-variant": "#353534",
+            "surface-dim": "#131313",
+            "on-tertiary-fixed-variant": "#842225",
+            "on-primary-fixed": "#002113",
+            "on-secondary-fixed-variant": "#5516be",
+            "surface-container-high": "#2a2a2a",
+            "on-primary-fixed-variant": "#005236",
+            "surface-tint": "#4edea3",
+            "on-tertiary-container": "#711419",
+            "background": "#131313",
+            "surface-container-low": "#1c1b1b",
+            "secondary-container": "#571bc1",
+            "tertiary": "#ffb3af",
+            "inverse-on-surface": "#313030",
+            "surface-container-lowest": "#0e0e0e",
+            "surface": "#131313",
+            "surface-container-highest": "#353534",
+            "error": "#ffb4ab",
+            "tertiary-container": "#fc7c78",
+            "error-container": "#93000a",
+            "surface-container": "#201f1f",
+            "on-primary-container": "#00422b",
+            "tertiary-fixed": "#ffdad7",
+            "surface-bright": "#393939",
+            "on-background": "#e5e2e1",
+            "outline-variant": "#3c4a42",
+            "on-secondary-container": "#c4abff",
+            "primary-container": "#10b981",
+            "primary": "#4edea3",
+            "on-error": "#690005",
+            "on-primary": "#003824",
+            "tertiary-fixed-dim": "#ffb3af"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xl": "32px",
+            "sm": "12px",
+            "lg": "24px",
+            "gutter": "12px",
+            "base": "4px",
+            "margin": "20px",
+            "xs": "8px",
+            "md": "16px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Hanken Grotesk"],
+            "label-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .premium-gradient {
+      background: linear-gradient(135deg, #1e1e1e 0%, #131313 100%);
+    }
+    .input-glow:focus-within {
+      box-shadow: 0 0 0 1px #10B981;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface flex justify-between items-center px-margin py-md">
+<div class="flex items-center gap-md">
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">FenBridge</h1>
+</div>
+<button onclick="window.location.href='../farmer_profile/code.html'" class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity p-base active:scale-95 transition-transform duration-150 cursor-pointer" title="Profile">person</button>
+</header>
+<main class="pt-20 pb-xl px-margin max-w-2xl mx-auto">
+<!-- Header Section -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-xs">Bank Details</h2>
+<p class="text-on-surface-variant font-body-md">Update your payout information to receive payments securely.</p>
+</div>
+<!-- Trust Indicators (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-xl">
+<div class="bg-surface-container rounded-xl p-md flex items-center gap-md border border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+</div>
+<div>
+<h4 class="font-label-lg text-on-surface">Secure Encryption</h4>
+<p class="text-label-sm text-on-surface-variant">SSL/TLS protected portal.</p>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-md flex items-center gap-md border border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+</div>
+<div>
+<h4 class="font-label-lg text-on-surface">Privacy Guaranteed</h4>
+<p class="text-label-sm text-on-surface-variant">Data shared only with bank.</p>
+</div>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 gap-lg">
+<!-- Form Card -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-lg premium-gradient shadow-md">
+<form class="flex flex-col gap-md">
+<!-- Account Holder Name -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-on-surface-variant" for="holder_name">Account Holder Name</label>
+<div class="relative group input-glow bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm transition-all">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-on-surface placeholder:text-outline" id="holder_name" placeholder="Enter full name as per bank records" type="text"/>
+</div>
+</div>
+<!-- Account Type Dropdown -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-on-surface-variant" for="account_type">Account Type</label>
+<div class="relative group bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm input-glow transition-all">
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-on-surface appearance-none" id="account_type">
+<option class="bg-surface-container text-on-surface" value="savings">Savings</option>
+<option class="bg-surface-container text-on-surface" value="current">Current</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<!-- Account Number -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-on-surface-variant" for="account_number">Account Number</label>
+<div class="relative group input-glow bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm transition-all">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-on-surface placeholder:text-outline" id="account_number" placeholder="Enter your bank account number" type="password"/>
+</div>
+</div>
+<!-- Confirm Account Number -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-on-surface-variant" for="confirm_account">Confirm Account Number</label>
+<div class="relative group input-glow bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm transition-all">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-on-surface placeholder:text-outline" id="confirm_account" placeholder="Re-enter bank account number" type="text"/>
+</div>
+</div>
+<!-- IFSC Code -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-on-surface-variant" for="ifsc">IFSC Code</label>
+<div class="flex gap-xs items-center">
+<div class="relative flex-1 group input-glow bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-sm transition-all">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-md text-on-surface placeholder:text-outline uppercase" id="ifsc" placeholder="ABCD0123456" type="text"/>
+</div>
+<button class="bg-surface-container-highest text-primary font-label-lg px-md py-sm rounded-lg hover:bg-surface-variant transition-colors border border-outline-variant" type="button">
+                Verify
+              </button>
+</div>
+<span class="text-label-sm text-outline-variant px-xs">Example: SBIN0001234</span>
+</div>
+<!-- Penny Drop Notice -->
+<div class="mt-md bg-on-primary-container/10 border border-primary/20 rounded-lg p-md flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-base" data-icon="info">info</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-primary">Penny Drop Verification</span>
+<p class="text-label-sm text-on-surface-variant">We will verify this account by transferring ₹1. This helps us ensure your payments arrive safely and without delay.</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-lg">
+<button class="w-full h-14 bg-primary text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-xs shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all" type="submit">
+              Save &amp; Verify
+              <span class="material-symbols-outlined">verified</span>
+</button>
+</div>
+</form>
+</section>
+</div>
+</main>
+<!-- Side Illustration Card for Desktop (Visual Anchor) -->
+<aside class="hidden xl:block fixed right-xl top-32 w-80 bg-surface-container-high border border-outline-variant rounded-xl overflow-hidden p-0">
+<img class="w-full h-48 object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A cinematic, high-angle close-up shot of a modern, glowing digital payment interface with abstract green light trails symbolizing financial transactions. The environment is dark and professional, reflecting a premium agricultural fintech aesthetic with deep charcoal backgrounds and vibrant emerald green accents. Soft ambient shadows create depth, and the lighting is sophisticated, emphasizing growth and technological reliability in a minimalist corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsbGw6l32uu2LacGCEGlZZV7pZ9eCnp7sS4fsUjeNdoGZuy3JItHK7gsQBJdiOOCzRTfsgLDo6RbzKUsPVj6Cumnqq0l2iAS2rH0BnfXM6DRovKrFXjpk-R021cMO42v8ZfJUTClnhSVHf6ahYMfJj2Iw0sS34ku5ila-QIO8XbC79XgF1Oa4cT0TWyXqTVj6oxlgeFuR56dvfYV_A0_QJ6tXuoDT5JgexEekNEUDhagLmusGyTBeoJK9_Sy0O3OIR9pcFzrImUUO2"/>
+<div class="p-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Fast Payouts</h3>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">FenBridge ensures that your hard-earned revenue reaches your bank account within 24 hours of successful makhana delivery verification.</p>
+</div>
+</aside>
+
+<script src="../../../app_logic.js"></script>
+</body></html>

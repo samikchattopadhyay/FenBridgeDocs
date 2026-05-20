@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "secondary": "#d0bcff",
+                    "inverse-primary": "#006c49",
+                    "tertiary": "#ffb3af",
+                    "tertiary-container": "#fc7c78",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-fixed": "#e9ddff",
+                    "tertiary-fixed": "#ffdad7",
+                    "primary-fixed": "#6ffbbe",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "surface-container": "#201f1f",
+                    "on-background": "#e5e2e1",
+                    "background": "#131313",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary": "#3c0091",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#002113",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-container-highest": "#353534",
+                    "on-tertiary": "#650911",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-low": "#1c1b1b",
+                    "outline": "#86948a",
+                    "surface-tint": "#4edea3",
+                    "primary-container": "#10b981",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#711419",
+                    "surface-variant": "#353534",
+                    "outline-variant": "#3c4a42",
+                    "on-secondary-container": "#c4abff",
+                    "on-secondary-fixed": "#23005c",
+                    "surface-bright": "#393939",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-surface-variant": "#bbcabf",
+                    "surface": "#131313",
+                    "secondary-container": "#571bc1",
+                    "primary": "#4edea3",
+                    "error-container": "#93000a",
+                    "on-surface": "#e5e2e1",
+                    "on-primary-container": "#00422b",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-dim": "#131313",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed": "#410005",
+                    "on-primary": "#003824"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "20px",
+                    "md": "16px",
+                    "gutter": "12px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "xs": "8px",
+                    "sm": "12px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid #2D2D2D;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top AppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md sticky top-0 z-50">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-label-lg text-label-lg text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer">Skip</span>
+</div>
+</header>
+<main class="px-margin pt-md space-y-xl">
+<!-- Hero Section & Context -->
+<section class="space-y-xs">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Bid Invitations</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Secure premium buyers for your Makhana harvest.</p>
+</section>
+<!-- Tabs -->
+<nav class="flex space-x-gutter overflow-x-auto no-scrollbar pb-xs">
+<button class="flex-none px-md py-xs rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg hover:opacity-80 transition-opacity">Open</button>
+<button class="flex-none px-md py-xs rounded-full bg-surface-container text-on-surface-variant font-label-lg text-label-lg hover:opacity-80 transition-opacity">Submitted</button>
+<button class="flex-none px-md py-xs rounded-full bg-surface-container text-on-surface-variant font-label-lg text-label-lg hover:opacity-80 transition-opacity">Awarded</button>
+<button class="flex-none px-md py-xs rounded-full bg-surface-container text-on-surface-variant font-label-lg text-label-lg hover:opacity-80 transition-opacity">Closed</button>
+</nav>
+<!-- Filter Chips -->
+<section class="flex items-center gap-xs overflow-x-auto no-scrollbar">
+<div class="flex items-center gap-xs px-sm py-base rounded-lg border border-outline-variant bg-surface-container-low text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Grade: All</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+</div>
+<div class="flex items-center gap-xs px-sm py-base rounded-lg border border-outline-variant bg-surface-container-low text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Qty: 100kg+</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+</div>
+<div class="flex items-center gap-xs px-sm py-base rounded-lg border border-outline-variant bg-surface-container-low text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Location: Patna</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="close">close</span>
+</div>
+</section>
+<!-- Bid Cards List -->
+<div class="space-y-md">
+<!-- Card 1 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-primary tracking-widest">REQ-MKH-0892</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Grade A, 500kg</h3>
+</div>
+<div class="bg-primary/10 px-sm py-base rounded-full">
+<span class="font-label-sm text-label-sm text-primary">Active</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="payments">payments</span>
+                            Ceiling Price
+                        </span>
+<p class="font-label-lg text-label-lg text-on-surface">Up to ₹950/kg</p>
+</div>
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_today">calendar_today</span>
+                            Ready-by
+                        </span>
+<p class="font-label-lg text-label-lg text-on-surface">Oct 24, 2023</p>
+</div>
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                            Buyer Region
+                        </span>
+<p class="font-label-lg text-label-lg text-on-surface">Patna, Bihar</p>
+</div>
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+                            Buyer Status
+                        </span>
+<p class="font-label-lg text-label-lg text-on-surface">Verified Enterprise</p>
+</div>
+</div>
+<button class="w-full bg-primary py-sm rounded-lg text-on-primary font-label-lg text-label-lg active:scale-95 transition-transform duration-150">
+                    Submit Bid
+                </button>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-xl p-md flex flex-col gap-md relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-primary tracking-widest">REQ-MKH-1104</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Grade B+, 1200kg</h3>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="payments">payments</span>
+                            Ceiling Price
+                        </span>
+<p class="font-label-lg text-label-lg text-on-surface">Up to ₹820/kg</p>
+</div>
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_today">calendar_today</span>
+                            Ready-by
+                        </span>
+<p class="font-label-lg text-label-lg text-on-surface">Nov 02, 2023</p>
+</div>
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                            Buyer Region
+                        </span>
+<p class="font-label-lg text-label-lg text-on-surface">Patna Hub</p>
+</div>
+</div>
+<button class="w-full bg-primary py-sm rounded-lg text-on-primary font-label-lg text-label-lg active:scale-95 transition-transform duration-150">
+                    Submit Bid
+                </button>
+</div>
+<!-- Image Asset for Branding Depth -->
+<div class="rounded-xl h-48 overflow-hidden relative group">
+<img class="w-full h-full object-cover" data-alt="A wide cinematic shot of a lush makhana wetland farm in Bihar during the golden hour. The water surface is covered with large vibrant green lily pads, reflecting a warm orange sunset. In the distance, a modern processing facility stands with sleek glass and steel architecture, blending traditional farming with high-end technology. The lighting is dramatic, highlighting the emerald green of the harvest and the deep charcoal of the infrastructure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFjji4yx37KgEZLWVrWqhwG0VTPrsplkHzcEqEjytoGHQKRrH77NftvIVaRI-VRV9LTTzQBnZBSn3YeJSDOhwG7MhC2-2gUKjZCkVzwfqfhVyKyLwZj394Z9UVk8gBObQWTIzLAO2jDt9xR2FRZIQcz2D6zfHv9lIilJRNAtdMFNKXvot_Z8SUWv9zpKk2_a19oQvWSu5O3riti1wFgJhS-M_e0ms6dDDRDrYMLz_Q9Q4Uj7jwHrO8Ke64FLE4hXBw70U3y5QIG9iY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="absolute bottom-md left-md">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Market Insights</p>
+<h4 class="font-headline-md text-headline-md text-on-surface">Price trends up 12% in Patna</h4>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface dark:bg-surface shadow-md rounded-t-xl border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high px-md py-xs rounded-lg transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary scale-110 px-md py-xs rounded-lg transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="gavel" data-weight="fill">gavel</span>
+<span class="font-label-sm text-label-sm mt-1">Bids</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high px-md py-xs rounded-lg transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-sm text-label-sm mt-1">Inventory</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high px-md py-xs rounded-lg transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</div>
+</nav>
+<script src="../../../app_logic.js"></script>
+</body></html>

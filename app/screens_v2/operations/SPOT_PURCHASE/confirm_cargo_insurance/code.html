@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#00422b",
+                        "on-error": "#690005",
+                        "surface-bright": "#393939",
+                        "outline-variant": "#3c4a42",
+                        "on-tertiary-container": "#711419",
+                        "background": "#131313",
+                        "surface-dim": "#131313",
+                        "primary-fixed": "#6ffbbe",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#650911",
+                        "surface-container": "#201f1f",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "outline": "#86948a",
+                        "on-primary-fixed-variant": "#005236",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "tertiary": "#ffb3af",
+                        "surface-variant": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "primary": "#4edea3",
+                        "on-tertiary-fixed": "#410005",
+                        "on-surface": "#e5e2e1",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#bbcabf",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-primary-fixed": "#002113",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#e9ddff",
+                        "on-secondary-container": "#c4abff",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-fixed-dim": "#4edea3",
+                        "inverse-primary": "#006c49",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#10b981",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-tint": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "secondary-container": "#571bc1",
+                        "on-primary": "#003824"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin": "20px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "gutter": "12px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2D2D2D;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md sticky top-0 z-50">
+<div class="flex items-center gap-sm">
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</h1>
+</div>
+<button class="font-label-lg text-label-lg text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+            Skip
+        </button>
+</header>
+<main class="max-w-md mx-auto px-margin pb-32">
+<!-- Progress Indicator -->
+<div class="mt-lg">
+<div class="flex justify-between items-center mb-xs">
+<span class="text-label-sm font-label-sm text-outline">Progress: 2 of 5</span>
+<span class="text-label-sm font-label-sm text-primary">Step 2: Insurance</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[40%]"></div>
+</div>
+</div>
+<!-- Header Section -->
+<section class="mt-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Add cargo insurance?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Protect your purchase against loss or damage in transit.</p>
+</section>
+<!-- Illustration -->
+<div class="mt-lg mb-xl rounded-xl overflow-hidden aspect-video relative">
+<img alt="Logistics background" class="w-full h-full object-cover" data-alt="A cinematic, low-angle shot of a premium makhana cargo shipment inside a high-tech, darkened warehouse. Soft emerald green light bars illuminate the metallic edges of shipping containers, creating a sophisticated and secure atmosphere. The lighting is moody and focused, highlighting the precision of logistics operations in a modern, professional agricultural financial marketplace. The overall aesthetic is clean, corporate, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt5PHiYZ2eRADiseZwEM3qHQgmzPrSUqvn58gcnJyI1Lp7jW4Lgk6ZL__LutffqVm_q-UlvKds_xu3GFe0PjcPGmUptEzDQ8N5ZiJYrKQe6t-zcIXnqB0f4E7CDSLDdhh4wl0SNihNvaJ8bwUEsW5taoymqVdr3YR-pEt20QBbhH7Rwp98_4lBJ7Z5uQTYhDYHfe7MtFsNwJC9fL6s2ytG-6qM46DFFv-hpBBWarzLpTeqEjrtW8G8XQtwR5KSth0i9s9ZHrFQu-Ih"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+</div>
+<!-- Insurance Options -->
+<div class="flex flex-col gap-md">
+<!-- Option 1: Include Insurance -->
+<label class="relative flex flex-col p-md bg-surface-container border border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all group has-[:checked]:border-primary has-[:checked]:bg-primary-container/10">
+<input checked="" class="hidden peer" name="insurance" type="radio"/>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Include cargo insurance</span>
+<div class="flex items-center gap-xs mt-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Insured by</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">ICICI Lombard</span>
+</div>
+</div>
+<span class="font-headline-md text-headline-md text-primary">₹318</span>
+</div>
+<div class="flex flex-col gap-xs mt-xs">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm text-primary">verified</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">100% loss coverage during transit</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm text-primary">verified</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Protection against moisture damage</span>
+</div>
+</div>
+<div class="mt-md flex gap-lg">
+<a class="text-label-sm font-label-sm text-primary hover:underline" href="#">Read full terms</a>
+<a class="text-label-sm font-label-sm text-primary hover:underline" href="#">Compare Coverage</a>
+</div>
+<div class="absolute top-4 right-4 w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-on-primary opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+<!-- Option 2: Skip Insurance -->
+<label class="relative flex flex-col p-md bg-surface-container border border-outline-variant rounded-xl cursor-pointer hover:border-error transition-all has-[:checked]:border-on-tertiary-container has-[:checked]:bg-on-tertiary-container/5">
+<input class="hidden peer" name="insurance" type="radio"/>
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-lg text-label-lg text-on-surface">Skip insurance</span>
+<span class="font-headline-md text-headline-md text-on-surface-variant">₹0</span>
+</div>
+<div class="mt-xs p-sm bg-surface-container-low border border-dashed border-outline-variant rounded-lg">
+<p class="text-label-sm font-label-sm text-on-surface-variant leading-relaxed italic">
+                        "I acknowledge that by skipping insurance, FenBridge is not liable for any losses occurring after the cargo leaves our verified warehouse."
+                    </p>
+</div>
+<div class="mt-md flex items-start gap-md">
+<input class="mt-1 w-5 h-5 rounded border-outline-variant bg-surface-container text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-label-sm font-label-sm text-on-surface">I have read and accept this waiver</span>
+</div>
+<div class="absolute top-4 right-4 w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-on-primary opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+</div>
+</main>
+<!-- Bottom Sticky Controls -->
+<div class="fixed bottom-0 left-0 right-0 z-50">
+<!-- Total Card -->
+<div class="max-w-md mx-auto px-margin">
+<div class="bg-surface-container-high border-t border-x border-outline-variant rounded-t-xl p-md shadow-lg">
+<div class="flex justify-between items-center">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Grand total</span>
+<div class="font-headline-md text-headline-md text-on-surface">₹2,12,318</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-label-sm font-label-sm text-primary">Taxes &amp; fees included</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="bg-surface p-md max-w-md mx-auto">
+<button class="w-full bg-primary-container text-on-primary-container py-md rounded-xl font-label-lg text-label-lg font-bold shadow-md active:scale-[0.98] transition-all hover:opacity-90">
+                Continue to Terms
+            </button>
+</div>
+</div>
+<!-- Hidden Bottom NavBar (As per context rules for transactional pages, but maintaining the anchor if necessary) -->
+<!-- Not visible for transactional focus as per Shell Visibility Rule -->
+<script src="../../../../app_logic.js"></script>
+</body></html>

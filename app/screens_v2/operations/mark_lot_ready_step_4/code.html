@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge - Mark Lot Ready</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#313030",
+                        "primary": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "on-tertiary": "#650911",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "surface-container": "#201f1f",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-bright": "#393939",
+                        "on-primary-container": "#00422b",
+                        "tertiary": "#ffb3af",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#353534",
+                        "primary-fixed-dim": "#4edea3",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "secondary": "#d0bcff",
+                        "on-tertiary-fixed": "#410005",
+                        "primary-fixed": "#6ffbbe",
+                        "tertiary-container": "#fc7c78",
+                        "outline": "#86948a",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "surface-dim": "#131313",
+                        "background": "#131313",
+                        "on-primary-fixed": "#002113",
+                        "on-error": "#690005",
+                        "surface-tint": "#4edea3",
+                        "on-tertiary-container": "#711419",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-background": "#e5e2e1",
+                        "inverse-primary": "#006c49",
+                        "on-primary": "#003824",
+                        "on-secondary-container": "#c4abff",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-secondary": "#3c0091",
+                        "primary-container": "#10b981",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-container": "#571bc1",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "gutter": "12px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "margin": "20px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface flex justify-between items-center px-margin py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface opacity-30">close</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Mark Lot Ready</h1>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 of 4</span>
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 px-margin pb-32">
+<section class="max-w-md mx-auto">
+<!-- Heading -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Confirm lot ready</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Review the lot details before notifying your assigned scout for inspection.</p>
+</div>
+<!-- Bento Summary Grid -->
+<div class="grid grid-cols-2 gap-gutter mb-xl">
+<!-- ID & Grade Card -->
+<div class="col-span-2 bg-surface-container-low border border-outline-variant p-md rounded-xl shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Lot Reference</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-base">PO-2026-0042</h3>
+</div>
+<span class="bg-primary-container text-on-primary-container px-sm py-xs rounded-lg font-label-lg text-label-lg">Grade A</span>
+</div>
+</div>
+<!-- Weight & Bags -->
+<div class="col-span-1 bg-surface-container-low border border-outline-variant p-md rounded-xl">
+<span class="material-symbols-outlined text-primary mb-sm">scale</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Bagged Weight</p>
+<p class="font-headline-md text-headline-md text-on-surface">500 kg</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">10 bags total</p>
+</div>
+<!-- Photos Count -->
+<div class="col-span-1 bg-surface-container-low border border-outline-variant p-md rounded-xl">
+<span class="material-symbols-outlined text-primary mb-sm">photo_library</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Evidence</p>
+<p class="font-headline-md text-headline-md text-on-surface">3 Photos</p>
+<p class="font-label-sm text-label-sm text-primary mt-xs">Verified upload</p>
+</div>
+<!-- Scout Details Card -->
+<div class="col-span-2 bg-surface-container-low border border-outline-variant p-md rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary">
+<img alt="Scout Avatar" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a South Asian man in his 30s wearing a clean, modern agricultural field vest. The lighting is bright and natural, suggesting a high-glare outdoor farm environment. The background is softly blurred with hints of green crops. The overall image has a sharp, high-end commercial feel with high contrast and emerald green tones consistent with the Agri-Tech Noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNh_XWzaqrdvS1wJwPGBAeWE_f5kEitfqUfY7ETkizUqK2IttpWPMRQO7Jutwixb9p5J4MjbwQEHi2rUeuBs_a95dAGae68A1Z8sLPkhjq004COFFHtzMUrrfY3uGnXOZ_-W4xE-7T3oZ_Itcpid3IW6clvluRgHcP5g2_qFVystyVts6-r7ELndrSXeKtWdmH3bJ2gncoW5k2fZuXzqX6C7d8a-S_1sKkZP3wCApcXNck6DfeFweG4TUzgQ7LBNFHYA0EViUh43iO"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Assigned Scout</p>
+<h4 class="font-label-lg text-label-lg text-on-surface">Rakesh Mandal</h4>
+<div class="flex items-center gap-xs mt-base">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available for Pickup</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Confirmation Section -->
+<div class="bg-surface-container p-md rounded-xl border border-primary/20">
+<label class="flex gap-md cursor-pointer group">
+<div class="relative flex items-center mt-1">
+<input class="peer h-6 w-6 rounded border-outline-variant bg-surface-container-low text-primary focus:ring-primary focus:ring-offset-background transition-all" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface group-hover:text-primary transition-colors">Confirm Readiness</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">
+                            I confirm this lot is bagged, weighed, and ready for pickup at <span class="text-on-surface font-semibold">Sector 4, North Wetland Block.</span>
+</p>
+</div>
+</label>
+</div>
+<!-- Map Context (Subtle) -->
+<div class="mt-lg rounded-xl overflow-hidden h-32 relative border border-outline-variant">
+<img alt="Location Map" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A sophisticated satellite-style map showing stylized agricultural plots in a dark, tech-noir aesthetic. The map features deep charcoal and black landmasses with neon emerald green highlights tracing field boundaries and water blocks. Small, precise data markers and glowing nodes indicate the pickup location. The lighting is atmospheric, emphasizing a professional, data-driven agricultural management tool." data-location="North Wetland Block, Purnia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUMCkdciZu_UUmFI_xwpjZ1IosfAX0N4mbCns9myoSDnNlcUszwZKAtRWdD_w8NInrWfYzrCrowwMia1AQVhfVqBqiSEOoQa2pIfqbBUlm07SLUBz1X-_gzJpu0mxQ8_MiVAbabAqmW1TNQRvVUmheWg9sdSnU-kCisaOamrOZPjACLZd2nX-It8rF9-voDCEqYX-CPcD9Q6Q2WKV39HAiB_7L4172HKpovlIDEufZuCH0cFUAMylq1l6eHVfnuvKx9LJsi1Yur85E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-md left-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface">Sector 4, North Wetland</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Sticky Action -->
+<footer class="fixed bottom-0 w-full z-50 bg-surface shadow-md p-md flex flex-col gap-sm">
+<button class="w-full bg-primary-container text-on-primary-container font-label-lg text-label-lg py-md rounded-xl font-bold flex justify-center items-center gap-sm active:scale-95 transition-transform duration-150 shadow-[0_4px_20px_rgba(16,185,129,0.3)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+            Notify Scout &amp; Mark Ready
+        </button>
+<div class="h-base w-32 bg-surface-container-highest rounded-full self-center mb-xs"></div>
+</footer>
+<script src="../../../app_logic.js"></script>
+</body></html>

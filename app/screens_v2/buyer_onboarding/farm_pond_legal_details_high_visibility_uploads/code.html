@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Legal Docs - FenBridge</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4edea3",
+                        "primary-container": "#10b981",
+                        "on-primary": "#003824",
+                        "on-primary-container": "#00422b",
+                        surface: "#131313",
+                        "surface-dim": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container": "#201f1f",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-highest": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "on-surface-variant": "#bbcabf",
+                        outline: "#86948a",
+                        "outline-variant": "#3c4a42",
+                        background: "#131313",
+                        secondary: "#d0bcff",
+                        "secondary-container": "#571bc1"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        xl: "32px",
+                        md: "16px",
+                        gutter: "12px",
+                        margin: "20px",
+                        base: "4px",
+                        sm: "12px",
+                        xs: "8px",
+                        lg: "24px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen antialiased">
+    <!-- Top App Bar -->
+    <header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md docked full-width top-0 z-50 sticky">
+        <div class="flex items-center gap-md">
+            <button class="text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">
+                <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+            </button>
+            <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">FenBridge</span>
+        </div>
+        <button class="font-label-lg text-label-lg text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity">
+            Skip
+        </button>
+    </header>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-grow flex flex-col px-margin pt-xl pb-32">
+        <div class="max-w-md mx-auto w-full">
+            <!-- Header Section -->
+            <section class="mb-xl">
+                <h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Legal Docs</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">Verify operational rights for this lot by uploading your official title deed or registered lease document.</p>
+            </section>
+
+            <!-- Form Section -->
+            <div class="space-y-lg">
+                <!-- Ownership / Lease Field -->
+                <div class="p-md bg-surface-container rounded-xl border border-outline-variant space-y-md">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-label-lg text-label-lg text-primary">Ownership / Lease Agreement</h3>
+                        <span class="text-outline text-label-sm font-normal">(Required Proof)</span>
+                    </div>
+                    <div class="space-y-xs">
+                        <span class="font-label-sm text-outline uppercase tracking-wider">Document Type</span>
+                        <select class="w-full h-12 bg-surface-container-low border border-outline-variant rounded-lg px-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
+                            <option>Registered Land Title Deed (Khatiyan)</option>
+                            <option>Official Lease Agreement (Patta)</option>
+                            <option>Panchayat Allocation Certificate</option>
+                        </select>
+                    </div>
+                    <div class="space-y-xs">
+                        <span class="font-label-sm text-outline uppercase tracking-wider">Document Registration / Reference ID</span>
+                        <div class="relative group">
+                            <input type="text" class="w-full h-12 bg-surface-container-low border border-outline-variant rounded-lg px-md text-on-surface placeholder:text-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="e.g. REG-2024-8849" />
+                            <span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary">description</span>
+                        </div>
+                    </div>
+                    <div class="space-y-xs">
+                        <span class="font-label-sm text-outline uppercase tracking-wider">Upload Certified Copy</span>
+                        <button class="w-full flex flex-col items-center justify-center gap-xs p-lg border-2 border-dashed border-outline-variant rounded-xl bg-surface-container-low hover:bg-surface-container-high hover:border-primary/50 transition-all group/upload">
+                            <span class="material-symbols-outlined text-primary text-[32px] group-hover/upload:scale-110 transition-transform">cloud_upload</span>
+                            <span class="font-label-lg text-on-surface">Upload Ownership / Lease Agreement</span>
+                            <span class="text-outline text-label-sm">PDF, PNG or JPG (Max 5MB)</span>
+                        </button>
+                    </div>
+                    <p class="text-label-sm text-outline-variant flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-[14px]">info</span>
+                        Mandatory compliance step to unlock lot geo-fencing and primary status tags.
+                    </p>
+                </div>
+
+
+
+                <!-- Premium Security Badge -->
+                <div class="p-md bg-primary/10 rounded-xl border border-primary/20 flex gap-sm items-center">
+                    <span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                    <div class="flex flex-col">
+                        <span class="font-label-lg text-label-lg text-primary">Secure Transmission</span>
+                        <span class="text-label-sm text-outline-variant leading-tight mt-0.5">Data is encrypted via AES-256 bank-grade security protocols.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Fixed Bottom Action Area -->
+    <div class="fixed bottom-0 left-0 right-0 p-margin bg-gradient-to-t from-background via-background via-80% to-transparent z-40">
+        <div class="max-w-md mx-auto">
+            <button onclick="if(localStorage.getItem('fenbridge_onboarding_complete') === 'true' || localStorage.getItem('fenbridge_add_pond_flow') === 'true') { localStorage.removeItem('fenbridge_add_pond_flow'); window.location.href='../../profile/manage_ponds/code.html'; } else { window.location.href='../verify_mobile_step_1/code.html'; }" class="w-full h-14 bg-primary text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-xs shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all">
+                Continue
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+<script src="../../../app_logic.js"></script>
+</body>
+</html>

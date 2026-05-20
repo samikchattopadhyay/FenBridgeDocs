@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge - Post Requirement Step 3</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#353534",
+                        "surface": "#131313",
+                        "on-tertiary-fixed": "#410005",
+                        "tertiary-container": "#fc7c78",
+                        "on-error": "#690005",
+                        "surface-dim": "#131313",
+                        "outline": "#86948a",
+                        "secondary": "#d0bcff",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "tertiary": "#ffb3af",
+                        "inverse-primary": "#006c49",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary": "#3c0091",
+                        "secondary-container": "#571bc1",
+                        "on-tertiary-container": "#711419",
+                        "background": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#393939",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary": "#650911",
+                        "primary": "#4edea3",
+                        "outline-variant": "#3c4a42",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#003824",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-primary-fixed-variant": "#005236",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-container": "#00422b",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container": "#201f1f",
+                        "on-primary-fixed": "#002113",
+                        "primary-container": "#10b981",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "surface-tint": "#4edea3",
+                        "surface-variant": "#353534",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#c4abff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "20px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "gutter": "12px",
+                        "md": "16px",
+                        "base": "4px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface text-primary font-headline-md text-headline-md font-bold docked full-width top-0 flex justify-between items-center w-full px-margin py-md z-40">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">arrow_back</span>
+<span class="font-bold">FenBridge</span>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150">Skip</button>
+</header>
+<main class="flex-grow px-margin pt-xl pb-xl max-w-2xl mx-auto w-full">
+<!-- Progress Header -->
+<div class="mb-xl">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Step 3 of 5</span>
+<span class="font-label-sm text-label-sm text-primary">60% Complete</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-3/5 rounded-full"></div>
+</div>
+</div>
+<!-- Heading Section -->
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Where should we deliver?</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Select a delivery location for your makhana requirements or add a new destination.</p>
+</div>
+<!-- Saved Addresses (Bento-style list) -->
+<div class="space-y-md mb-xl">
+<!-- Address Card 1: Primary Selection -->
+<label class="block cursor-pointer group">
+<input checked="" class="hidden peer" name="address" type="radio"/>
+<div class="bg-surface-container-low border border-outline-variant p-md rounded-xl peer-checked:border-primary peer-checked:bg-surface-container-high transition-all flex items-start gap-md group-hover:bg-surface-container-high">
+<div class="flex-grow">
+<div class="flex items-center gap-xs mb-xs">
+<span class="font-label-lg text-label-lg text-on-surface">Patna Warehouse</span>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-[10px] px-xs py-[2px] rounded-full uppercase font-bold tracking-tighter">Primary</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Industrial Area, Gate 4, Phulwari Sharif, Patna, Bihar - 801505</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline peer-checked:border-primary flex items-center justify-center peer-checked:bg-primary transition-colors shrink-0">
+<div class="w-2.5 h-2.5 bg-on-primary rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</div>
+</label>
+<!-- Address Card 2 -->
+<label class="block cursor-pointer group">
+<input class="hidden peer" name="address" type="radio"/>
+<div class="bg-surface-container-low border border-outline-variant p-md rounded-xl peer-checked:border-primary peer-checked:bg-surface-container-high transition-all flex items-start gap-md group-hover:bg-surface-container-high">
+<div class="flex-grow">
+<div class="flex items-center gap-xs mb-xs">
+<span class="font-label-lg text-label-lg text-on-surface">Darbhanga Center</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Donar Chowk, Near Railway Station, Darbhanga, Bihar - 846004</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline peer-checked:border-primary flex items-center justify-center peer-checked:bg-primary transition-colors shrink-0">
+<div class="w-2.5 h-2.5 bg-on-primary rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</div>
+</label>
+<!-- Address Card 3 -->
+<label class="block cursor-pointer group">
+<input class="hidden peer" name="address" type="radio"/>
+<div class="bg-surface-container-low border border-outline-variant p-md rounded-xl peer-checked:border-primary peer-checked:bg-surface-container-high transition-all flex items-start gap-md group-hover:bg-surface-container-high">
+<div class="flex-grow">
+<div class="flex items-center gap-xs mb-xs">
+<span class="font-label-lg text-label-lg text-on-surface">Muzaffarpur Depot</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Ramdayalu Nagar, Hajipur Road, Muzaffarpur, Bihar - 842002</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline peer-checked:border-primary flex items-center justify-center peer-checked:bg-primary transition-colors shrink-0">
+<div class="w-2.5 h-2.5 bg-on-primary rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</div>
+</label>
+</div>
+<!-- Add New Address Button -->
+<button class="flex items-center justify-center gap-xs w-full py-md px-lg border-2 border-dashed border-outline-variant rounded-xl text-primary font-label-lg text-label-lg hover:border-primary hover:bg-surface-container-high transition-all active:scale-[0.98] mb-xl">
+<span class="material-symbols-outlined">add</span>
+            Add new address
+        </button>
+<!-- Map Illustration Context -->
+<div class="relative w-full h-48 rounded-xl overflow-hidden mb-xl border border-outline-variant">
+<img alt="Delivery Map" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A sophisticated dark-mode satellite map visualization showing agricultural hub markers across a rural landscape. The map uses a deep charcoal and emerald green palette, featuring glowing nodes that represent warehouse locations. The lighting is low-key and professional, evoking a sense of high-end logistics and digital supply chain precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCToEOt-jd1Q0uD605CGm6gWwM9IjoM4yFnFem5iiGSVgHX7nNl0AkGqatr7lz4jbPePBmknYDyMkcLD44u7VVxWDzirdZEs5u2HPGL72MvrjNe-Oh8RR_g2dniX4kHn2yPeWlODm-z5oB8nNWIc_P60wAOgm5M32B0Xf0tZeTBd2XzNlfXV7QxkcoVeOT_v3G70hyABAoVPiQBItWRDHMoubYEK-rU7E-Vltcsboyf0xzmQYJC6x_LIj2dtICEOg14lyDCerOLBlw8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-md left-md flex items-center gap-xs bg-surface-container-highest px-sm py-xs rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="font-label-sm text-label-sm">Real-time distance tracking enabled</span>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary font-label-lg text-label-lg py-lg rounded-xl shadow-lg hover:brightness-110 transition-all active:scale-[0.98] font-bold">
+            Continue
+        </button>
+</main>
+<!-- Bottom Navigation Bar (Hidden on Desktop, following Platform Pivot rule) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-md mb-safe bg-surface text-outline-variant rounded-t-xl shadow-md">
+<div class="flex flex-col items-center justify-center text-primary scale-110 active:scale-98 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">horizontal_rule</span>
+<span class="font-label-sm text-label-sm">Activity</span>
+</div>
+</nav>
+<script src="../../../../app_logic.js"></script>
+</body></html>

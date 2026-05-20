@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#fc7c78",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface-container-highest": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "on-secondary-container": "#c4abff",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed": "#410005",
+                        "on-background": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "secondary": "#d0bcff",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-container": "#00422b",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary-fixed": "#002113",
+                        "inverse-primary": "#006c49",
+                        "primary-container": "#10b981",
+                        "surface-dim": "#131313",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "surface-bright": "#393939",
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "surface-tint": "#4edea3",
+                        "surface-container": "#201f1f",
+                        "primary": "#4edea3",
+                        "on-primary": "#003824",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#3c4a42",
+                        "on-secondary": "#3c0091",
+                        "secondary-container": "#571bc1",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "outline": "#86948a",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "tertiary": "#ffb3af",
+                        "on-surface-variant": "#bbcabf",
+                        "on-tertiary-container": "#711419",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-tertiary": "#650911"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "gutter": "12px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "margin": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #353534; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary/30 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-margin py-md">
+<div class="flex items-center gap-md">
+<button aria-label="Close" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface">close</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Cancel PO</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Step</span>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-bold text-label-lg">1 of 2</span>
+</div>
+</header>
+<main class="flex-grow px-margin pt-xl pb-32 max-w-2xl mx-auto w-full">
+<!-- Heading Section -->
+<section class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-error mb-xs">Why are you cancelling?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Cancellation impacts farmer commitments and BM's operations. Please tell us why.</p>
+</section>
+<!-- PO Summary Card -->
+<section class="mb-lg">
+<div class="bg-surface-container-high border border-outline-variant p-md rounded-xl">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Order ID</p>
+<p class="font-headline-md text-headline-md text-on-surface">PO-2026-0042</p>
+</div>
+<span class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full font-label-lg text-label-lg">
+                        In Production
+                    </span>
+</div>
+<div class="flex items-center gap-md pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-body-md">inventory_2</span>
+<span class="text-on-surface">Grade A</span>
+</div>
+<div class="w-1 h-1 bg-outline-variant rounded-full"></div>
+<div class="text-on-surface">500 kg</div>
+<div class="w-1 h-1 bg-outline-variant rounded-full"></div>
+<div class="text-on-surface font-bold text-lg">₹4,75,712</div>
+</div>
+</div>
+</section>
+<!-- Financial Impact Card -->
+<section class="mb-xl">
+<div class="bg-surface border-2 border-error/30 p-md rounded-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 bg-error/10 text-error rounded-bl-xl">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md flex items-center gap-xs">
+                    Financial Impact
+                </h3>
+<div class="space-y-sm">
+<div class="flex justify-between font-body-md">
+<span class="text-on-surface-variant">Advance paid</span>
+<span class="text-on-surface font-bold">₹71,257</span>
+</div>
+<div class="flex justify-between font-body-md">
+<span class="text-on-surface-variant">Standard retention (10%)</span>
+<span class="text-error font-bold">-₹7,126</span>
+</div>
+<div class="pt-sm border-t border-outline-variant flex justify-between font-body-lg">
+<span class="text-on-surface font-bold">Refund to you</span>
+<span class="text-primary font-bold">~₹64,131</span>
+</div>
+<p class="text-label-sm text-label-sm text-on-surface-variant italic mt-md">
+                        * subject to Admin review. Production materials and farmer effort may incur additional charges.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Reason Selector -->
+<section class="mb-xl">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest mb-md">Select Reason</h3>
+<div class="space-y-xs">
+<!-- Radio Option -->
+<label class="flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary bg-surface border-outline-variant focus:ring-primary focus:ring-offset-background" name="cancel_reason" type="radio"/>
+<span class="font-body-md text-on-surface">Change in requirement</span>
+</label>
+<!-- Radio Option -->
+<label class="flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary bg-surface border-outline-variant focus:ring-primary focus:ring-offset-background" name="cancel_reason" type="radio"/>
+<span class="font-body-md text-on-surface">Found a better price elsewhere</span>
+</label>
+<!-- Radio Option -->
+<label class="flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary bg-surface border-outline-variant focus:ring-primary focus:ring-offset-background" name="cancel_reason" type="radio"/>
+<span class="font-body-md text-on-surface">Internal payment issue</span>
+</label>
+<!-- Other Option -->
+<div class="space-y-sm">
+<label class="flex items-center gap-md p-md bg-surface-container-low border border-outline-variant rounded-xl cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary bg-surface border-outline-variant focus:ring-primary focus:ring-offset-background" id="other_radio" name="cancel_reason" type="radio"/>
+<span class="font-body-md text-on-surface">Other (please specify)</span>
+</label>
+<textarea class="w-full bg-surface-container-highest border border-outline-variant rounded-xl p-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary min-h-[100px] resize-none" placeholder="Tell us more about your reason..."></textarea>
+</div>
+</div>
+</section>
+<!-- Additional Notes -->
+<section class="mb-xl">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest mb-md">Additional Notes (Optional)</h3>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-xl p-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary min-h-[120px]" placeholder="Any additional information for the Admin team..."></textarea>
+</section>
+<!-- BM Contact Card -->
+<section class="mb-xl">
+<div class="bg-surface-container p-md rounded-xl flex items-center justify-between gap-md border border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex-shrink-0">
+<img alt="Relationship Manager" class="w-full h-full object-cover" data-alt="A professional headshot of a mature business manager with a friendly and trustworthy expression. He is wearing a formal white shirt against a soft, blurred corporate office background. The lighting is natural and bright, emphasizing a high-end, premium agricultural fintech aesthetic with warm skin tones and sharp clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHSwEHA96fxl1zayZ0O_pxzyEUTzFuc2WEDm1_JeexTFwcMAE_MdWc5dnbW9hkJFLAxP6IKqdb-FeNYLAccp4pTNnTSExLsG0tYrZr1O9L4gU1F0vXCbdeA6I_7fbPmPolV1NDM0ZAi9eimb-m_HWjpmXtpcyk6Omj9jg__5IixFdSfAE0-Kyfzu_D8alo1KI-tSE_BngUWnyencx1Mhz1NvtdYb7c2Iw37ITyhJQsa55p6mbfnnxFMAEO0Aob-nE0_zbFewZCDyqo"/>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Want to discuss before cancelling?</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Your Relationship Manager is available.</p>
+</div>
+</div>
+<button class="px-md py-xs rounded-full border border-primary text-primary font-label-lg text-label-lg hover:bg-primary/5 transition-colors whitespace-nowrap">
+                    Contact BM
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Sticky Bar -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-lg border-t border-outline-variant px-margin py-md flex flex-col gap-sm md:flex-row-reverse z-50">
+<button class="w-full md:w-auto md:px-xl py-md bg-error text-on-error font-label-lg text-label-lg rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-error/20">
+            Continue to Confirm
+        </button>
+<button class="w-full md:w-auto md:px-xl py-md border border-outline text-on-surface font-label-lg text-label-lg rounded-xl hover:bg-surface-variant transition-colors">
+            Back
+        </button>
+</footer>
+<script src="../../../../app_logic.js"></script>
+</body></html>

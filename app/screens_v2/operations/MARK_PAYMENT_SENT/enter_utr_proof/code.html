@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FenBridge - Submit Payment Proof</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#00422b",
+                        "background": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-container": "#711419",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-surface-variant": "#bbcabf",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-highest": "#353534",
+                        "outline": "#86948a",
+                        "on-background": "#e5e2e1",
+                        "surface": "#131313",
+                        "primary": "#4edea3",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "on-secondary": "#3c0091",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-dim": "#131313",
+                        "tertiary-container": "#fc7c78",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "tertiary": "#ffb3af",
+                        "secondary": "#d0bcff",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-container": "#571bc1",
+                        "on-surface": "#e5e2e1",
+                        "surface-tint": "#4edea3",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353534",
+                        "on-error": "#690005",
+                        "surface-bright": "#393939",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "on-tertiary": "#650911",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#6ffbbe",
+                        "on-secondary-fixed": "#23005c",
+                        "on-secondary-container": "#c4abff",
+                        "error-container": "#93000a",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#003824",
+                        "inverse-primary": "#006c49",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#002113",
+                        "primary-fixed-dim": "#4edea3",
+                        "primary-container": "#10b981",
+                        "on-tertiary-fixed": "#410005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "gutter": "12px",
+                        "margin": "20px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-inner-glow {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- Top AppBar (JSON Derived) -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center w-full px-margin py-md fixed top-0 z-50">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80 transition-opacity" data-icon="close">close</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">Submit Payment Proof</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Step 1 of 2</span>
+</div>
+</header>
+<!-- Progress Bar Section -->
+<div class="mt-[64px] w-full h-1 bg-surface-container-highest">
+<div class="h-full bg-primary-container w-1/2 transition-all duration-500"></div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin pt-xl pb-[120px] max-w-xl mx-auto w-full">
+<!-- Header Text -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Enter your transaction reference (UTR)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We need the UTR from your bank to confirm your payment.</p>
+</div>
+<!-- Section 1: Payment Context Card (Bento Pattern) -->
+<div class="bg-surface-container-high border border-outline-variant p-md rounded-xl mb-lg bento-inner-glow">
+<div class="flex justify-between items-start mb-md">
+<span class="bg-on-primary-container/20 text-primary px-sm py-xs rounded-full font-label-sm text-label-sm">Advance Payment</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">PO-2026-0042</span>
+</div>
+<div class="mb-md">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-base">Lot Details</p>
+<p class="font-headline-md text-headline-md text-on-surface">Grade A · 500 kg</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-base">Amount Paid</p>
+<p class="font-headline-lg text-headline-lg text-primary">₹71,257</p>
+</div>
+<div class="text-right max-w-[140px]">
+<p class="font-label-sm text-label-sm text-on-surface-variant">15% advance · Will be held in escrow until BM dispatches.</p>
+</div>
+</div>
+</div>
+<!-- Section 2: Bank Details Card (Collapsible) -->
+<div class="bg-surface-container border border-outline-variant rounded-xl mb-lg overflow-hidden">
+<button class="w-full flex justify-between items-center p-md hover:bg-surface-container-high transition-colors">
+<span class="font-label-lg text-label-lg text-on-surface">View BM bank details</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Content hidden as per 'currently collapsed' requirement -->
+<div class="hidden border-t border-outline-variant p-md space-y-md">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Account Name</p>
+<p class="font-body-md text-body-md text-on-surface">Bharat Makhana</p>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="content_copy">content_copy</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Account No</p>
+<p class="font-body-md text-body-md text-on-surface">12345 67890 12345</p>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+</div>
+<!-- Section 3: UTR Input -->
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant">UTR (Unique Transaction Reference)</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface placeholder:text-outline-variant font-body-lg" placeholder="e.g., SBIN20260518123456" type="text"/>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">12–22 alphanumeric characters. Found in your bank's confirmation.</p>
+</div>
+<!-- Helper Card -->
+<button class="w-full flex items-center gap-sm p-md bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-container transition-colors text-left group">
+<span class="material-symbols-outlined text-primary" data-icon="help">help</span>
+<span class="font-label-lg text-label-lg text-on-surface flex-1">Where do I find my UTR?</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- Bottom Sticky Buttons -->
+<footer class="fixed bottom-0 left-0 right-0 p-margin bg-background/80 backdrop-blur-md flex flex-col gap-md max-w-xl mx-auto">
+<button class="w-full h-[52px] bg-primary text-on-primary font-label-lg text-label-lg rounded-full flex items-center justify-center hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20">
+            Continue
+        </button>
+<button class="w-full h-[52px] bg-transparent border border-outline-variant text-on-surface font-label-lg text-label-lg rounded-full flex items-center justify-center hover:bg-surface-container-high active:scale-95 transition-all">
+            Back
+        </button>
+</footer>
+<script src="../../../../app_logic.js"></script>
+</body></html>
