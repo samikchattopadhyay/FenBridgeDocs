@@ -20,7 +20,7 @@ This is the authoritative, single source of truth configuration file for all AI 
 
 To maintain a clean and standardized workspace, agents must strictly adhere to the following directory structure:
 
-- **`.agent/`**: The standard location for agent configurations, rules, and skills.
+- **`.agents/`**: The standard location for agent configurations, rules, and skills.
   - **`rules/`**: Architectural and design directives (e.g., `ui-ux.md` for UI standards).
   - **`skills/`**: Active skill sets (e.g., `antigravity-design-expert`, `antigravity-skill-orchestrator`, `antigravity-workflows`).
 - **`scripts/`**: All automation, generation, maintenance, and utility scripts (Node.js, Bash, PowerShell).
