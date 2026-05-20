@@ -54,7 +54,7 @@ All build, sync, and validation operations must be executed using the designated
 
 | Script | Purpose | Run Command |
 |--------|---------|-------------|
-| `build_app.js` | Inject routing logic into all HTML templates | `node scripts/build_app.js` |
+| `build_app.js` | Inject routing logic into all HTML templates | `node app/build_app.js` |
 | `update_html_files.js` | Sync headers, address bars, and stylesheets across all HTML files | `node scripts/update_html_files.js` |
 | `update_address_bars.ps1` | PowerShell version of address bar sync | `powershell -ExecutionPolicy Bypass -File scripts/update_address_bars.ps1` |
 | `generate_workflow_pages.ps1` | Auto-generate missing workflow HTML from templates | `powershell -ExecutionPolicy Bypass -File scripts/generate_workflow_pages.ps1` |
