@@ -25,13 +25,10 @@ files.forEach(filename => {
   let content = fs.readFileSync(filePath, 'utf-8');
 
   // 1. Add CSS before </style> if not already present
-  if (content.includes('.address-bar')) {
-    // Already has address bar CSS, remove and re-add to ensure consistency
-    content = content.replace(/\s*\.address-bar[\s\S]*?\.address-bar-path[\s\S]*?\}\s*/g, '');
+  if (!content.includes('.address-bar-path { font-family: \'Inter\'')) {
+    // Add CSS before </style>
+    content = content.replace(/(\s*)<\/style>/g, `\n${cssStyles}\n  </style>`);
   }
-
-  // Add CSS before </style>
-  content = content.replace(/(\s*)<\/style>/g, `\n${cssStyles}\n  </style>`);
 
   // 2. Add address bar HTML after </header-banner> or after stepper panel
   // Check if address bar already exists
