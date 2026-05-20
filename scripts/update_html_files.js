@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const htmlDir = path.join(__dirname, 'html', 'scout', 'operational');
+const htmlDir = path.join(__dirname, '..', 'html', 'scout', 'operational');
 const files = fs.readdirSync(htmlDir).filter(f => f.endsWith('.html'));
 
 const cssStyles = `    .address-bar { background: #141416; border: 1px solid #27272a; border-radius: 8px; padding: 10px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 12px; max-width: 1280px; margin-left: auto; margin-right: auto; }

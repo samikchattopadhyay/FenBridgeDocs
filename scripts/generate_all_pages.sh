@@ -3,7 +3,9 @@
 # Scout Module Workflow Pages Generator
 # Generates all 15 remaining pages from verification.html template
 
-cd "c:/Development/Makhana/html/scout/operational"
+# Navigate to the HTML operational directory relative to the script location
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR/../html/scout/operational"
 
 template="verification.html"
 

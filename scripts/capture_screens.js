@@ -24,8 +24,8 @@ const steps = [
   const browser = await puppeteer.launch();
 
   for (const { folder, step } of steps) {
-    const htmlPath = path.join(__dirname, 'app', 'screens_v2', 'scout', 'register_a_farmer', folder, 'code.html');
-    const outputPath = path.join(__dirname, 'app', 'screens_v2', 'scout', 'register_a_farmer', folder, 'screen.png');
+    const htmlPath = path.join(__dirname, '..', 'app', 'screens_v2', 'scout', 'register_a_farmer', folder, 'code.html');
+    const outputPath = path.join(__dirname, '..', 'app', 'screens_v2', 'scout', 'register_a_farmer', folder, 'screen.png');
 
     // Skip if screen.png already exists
     if (fs.existsSync(outputPath)) {

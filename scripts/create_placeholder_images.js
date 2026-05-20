@@ -34,7 +34,7 @@ const steps = [
   { folder: 'submission_confirmation', name: 'Confirmation' }
 ];
 
-const basePath = 'c:\\Development\\Makhana\\app\\screens_v2\\scout\\register_a_farmer';
+const basePath = path.join(__dirname, '..', 'app', 'screens_v2', 'scout', 'register_a_farmer');
 
 try {
   steps.forEach(({ folder, name }) => {

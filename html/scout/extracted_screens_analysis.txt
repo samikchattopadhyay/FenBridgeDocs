@@ -1,0 +1,489 @@
+
+========================================================
+WORKFLOW: register_a_farmer
+========================================================
+
+  SCREEN: bank_account_details
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Bank Details', 'Secure Payouts']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 10 of 11')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Continue arrow_forward')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: farmer_identity
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Identity Details', 'Registration Profile']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 3 of 11')
+    Form Elements:
+      - Input(type=text, id=, label='Full Name * MANDATORY', placeholder='As per Aadhaar Card')
+      - Input(type=date, id=, label='Date of Birth (OPTIONAL)', placeholder='')
+      - Input(type=tel, id=, label='+91', placeholder='98765 43210')
+      - Input(type=tel, id=, label='+91', placeholder='00000 00000')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Continue arrow_forward')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: intro_consent
+  --------------------------------------------------
+    Page Title: FenBridge | Register Farmer - Intro
+    Headings: ['Intro & Consent', 'Register a Farmer']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 1 of 11')
+    Form Elements:
+      - Input(type=checkbox, id=consent, label='check', placeholder='')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=continue_btn, text='Continue arrow_forward')
+      - Button(id=save_draft_btn, text='Save Draft')
+    Images:
+      - Image(src=hero.png, alt='Farmer in rice field')
+    Location/GPS clues: Yes
+
+  SCREEN: language_selection
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Language Selection', 'Preferred Language']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 4 of 11')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='English Default System Language')
+      - Button(id=, text='हिंदी (Hindi) Regional Adaptation')
+      - Button(id=, text='বাংলা (Bengali) Regional Adaptation')
+      - Button(id=, text='Continue arrow_forward')
+    Location/GPS clues: Yes
+
+  SCREEN: pond_address
+  --------------------------------------------------
+    Page Title: FenBridge | Register Farmer - Pond Address
+    Headings: ['Pond Address', 'Pond Location Details']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 8 of 11')
+    Form Elements:
+      - Input(type=text, id=, label='dns', placeholder='Enter panchayat or village name...')
+      - Input(type=text, id=, label='tag', placeholder='e.g. Survey #2042 / Plot #109B')
+      - Input(type=text, id=, label='water', placeholder='e.g. Near Kamla River Canal')
+      - Select(id=, options=['Select District', 'Madhubani', 'Darbhanga'])
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Continue arrow_forward')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: pond_details
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['First Pond Details', 'Pond Specifications']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 6 of 11')
+    Form Elements:
+      - Input(type=text, id=, label='Pond Name * MANDATORY', placeholder='e.g. North Wetland Alpha')
+      - Input(type=number, id=, label='expand_more', placeholder='0.00')
+      - Input(type=number, id=, label='kg', placeholder='e.g. 5000')
+      - Select(id=, options=['acres', 'bigha', 'hectares'])
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Continue arrow_forward')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: pond_documents
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Pond Documents', 'Legal Verification']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 7 of 11')
+    Form Elements:
+      - Input(type=text, id=, label='Reference ID * MANDATORY', placeholder='e.g. REG-2024-8849')
+      - Select(id=, options=['Registered Land Title Deed (Khatiyan)', 'Official Lease Agreement (Patta)', 'Panchayat Allocation Certificate'])
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='cloud_upload Upload Document PDF, PNG or JPG (Max 5MB)')
+      - Button(id=, text='Continue arrow_forward')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: pond_geo_fencing
+  --------------------------------------------------
+    Page Title: FenBridge - Mark Pond Boundary
+    Headings: ['Pond Geo-Fencing', 'Boundary Mapping']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 9 of 11')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=btn-zoomin, text='add')
+      - Button(id=btn-zoomout, text='remove')
+      - Button(id=btn-center, text='my_location')
+      - Button(id=btn-edit-overlay, text='restart_alt Redo Pins')
+      - Button(id=btn-continue, text='Continue arrow_forward')
+      - Button(id=, text='Save Draft')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuAaXOnitg61dLh_XJvAoFyfTtXKstAo314UWYYIw95eisRI9KATY8Hi1IB4Dp9VkSeu1QAtewLVGwYiFhUbuJARNPunLNh7w6NwvQVyPj2RBlO6y50rjWCsGmLV7UJZBPiADW1qJZRcSc5lnTpTEDv2Gcm4AKg40ntf5rgoEfVP5vdkEdEwyC-oyi9C6TtjA1Y62X70yvTeBWWIQyFYZdwC7Va5YJBvNlZfjOwmT1E5Zjb6qzAacE76wCKntfHhQBqiF6cK_3b_xp3-, alt='Satellite view of agricultural pond')
+    Location/GPS clues: Yes
+
+  SCREEN: residential_address
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Residential Address', 'Location Details']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 5 of 11')
+    Form Elements:
+      - Input(type=text, id=, label='search', placeholder='Enter village or search name...')
+      - Input(type=text, id=, label='flag', placeholder='e.g. Near Water Tank')
+      - Select(id=, options=['Select District', 'Madhubani', 'Darbhanga'])
+      - Textarea(id=)
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Continue arrow_forward')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: review_submit
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Review & Submit', 'Registration Summary', 'Farmer Identity', 'Residential Address', 'Pond Portfolio', 'Financials']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 11 of 11')
+    Form Elements:
+      - Input(type=checkbox, id=confirm-check, label='I confirm that all data points are verif', placeholder='')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Edit')
+      - Button(id=, text='Edit')
+      - Button(id=, text='Edit')
+      - Button(id=, text='Edit')
+      - Button(id=, text='Submit send')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: submission_confirmation
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Farmer Registration Submitted']
+    TopAppBar: Present (Title: 'FenBridge', BackButton: Yes)
+    StepperPanel: Not found
+    Buttons:
+      - Button(id=, text='account_circle')
+      - Button(id=, text='Back to Today's Dashboard')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuCYi9FEnSyyHZp6TmyZAQwXomJZtBHPNA6_laqEHnQpefSXS9X3-9gSKPqx5OLdcEbmdNHPSd1mDpqymOCKcBAa1BlILFrliof9LpFY7Aso2KkNbGMPsiM9qzgilBuIUED90h1jd0zCkfLRZHs78RkCpntm_FaMrxZmut5O6Xr6YIPf84ZbuEjneTGCk50WhdhznBYeLm6pj69EI6g1msMEPy57LaOqe0-khezaeSjDxyD_HWpGh8SLhBTtXi-41t2S-dPCGwD8E3L0, alt='Success Illustration')
+    Location/GPS clues: Yes
+
+  SCREEN: verify_mobile_entry
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Enter OTP', 'Code Entry']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 3 of 13')
+    Form Elements:
+      - Input(type=text, id=, label='dialpad', placeholder='')
+      - Input(type=text, id=, label='dialpad', placeholder='·')
+      - Input(type=text, id=, label='dialpad', placeholder='·')
+      - Input(type=text, id=, label='dialpad', placeholder='·')
+      - Input(type=text, id=, label='dialpad', placeholder='·')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=resend-btn, text='Resend Code in 30s')
+      - Button(id=, text='Verify & Continue verified')
+      - Button(id=, text='Save Draft')
+    Location/GPS clues: Yes
+
+  SCREEN: verify_mobile_send
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Mobile Verification', 'Secure Access', 'Enter Verification Token']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 2 of 11')
+    Form Elements:
+      - Input(type=tel, id=mobile_input, label='+91', placeholder='98765 43210')
+      - Input(type=text, id=, label='Resend token in 30s', placeholder='')
+      - Input(type=text, id=, label='Resend token in 30s', placeholder='')
+      - Input(type=text, id=, label='Resend token in 30s', placeholder='')
+      - Input(type=text, id=, label='Resend token in 30s', placeholder='')
+      - Input(type=text, id=, label='Resend token in 30s', placeholder='')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Send OTP arrow_forward')
+      - Button(id=, text='Save Draft')
+      - Button(id=, text='close')
+      - Button(id=resend_cta, text='Resend SMS')
+      - Button(id=verify_otp_btn, text='Verify & Continue verified')
+      - Button(id=, text='⚡ Auto-fill Demo Verification Token (48215)')
+    Location/GPS clues: Yes
+
+========================================================
+WORKFLOW: manage_farmer
+========================================================
+
+  SCREEN: add_pond_review_submit
+  --------------------------------------------------
+    Page Title: AgriScout Pro - Add Pond Review
+    Headings: ['Add Pond', 'Review Pond Details']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 5 of 5')
+    Form Elements:
+      - Input(type=checkbox, id=, label='I confirm the above information is corre', placeholder='')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='Edit edit')
+      - Button(id=, text='Edit edit')
+      - Button(id=, text='Edit edit')
+      - Button(id=, text='Edit edit')
+      - Button(id=, text='Submit Pond send')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuBcoRk8ysy0WCQQLmcrnAd62PNX8Mmr4TlJtpozlkLniL6cxiZrejiYaEJWHIxHnWlxuBzi_x3AG5m37hIzExDDZn87QBKKdMHZHbeyDnB9BoVU-Hsl8dXwKPyA4m8YEuFRJRIe_N5pB0tDwwudpbiUP4F2HtrUYMDzmxBZblEEfOHARtHMMczx0TQLeJF3HoiQm2HdyMoQCwXyxiWjTLTVRQ-aoYGFm_HAjy8hJl03WQi6HGqNGPsaNIYH3cnthqEKj0HFpr3x5sEa, alt='')
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuBqlhBURDkUAAQgkFshChx78C0t4-ZfI5chwIX9OLPLk11YttYzhsdLTgUTd9Ga6xX7sFkoNCl6DlZVT2ge-lSwSgc1sPLiVfDdf1fcurrty1IBrhMHlVqclajlMyvjuxrYcof01OqbN09d0VVsG91TBrK7pbOIZHdHxXhctcKAEkXEHvYfeTk-2lLZZB-tfpkh4YyWgh65xhqk01Xtag773dnH3pBt2bx22N_MBt0OqzajBYHx5CxTaMzb7KuNemP1wfwiKcccxAJi, alt='')
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuD_A1LRw6ISVXkzRQSVarZs6FuadqTyZ9Nh3v4WfD4bLrss89YPW91WEX5oJ5V7auzViWe3YI6IDq6sPZ3Bg8Y6ruB7XH16i9RpM3yf5WukfDBaWVH8Ch4C10Ub4zgK1zvq6BbfY-G88XSK6Zm5X7k_J0IwAQvOvW3fTpw0QdNKg7FKWGPD24VWTkrm-Xlnnocq9FO-eALogjItOqZiGx01VPPJBH_2p4okJeobzBBDN6oBsY1qx42spRlzNlXFR--Hk25pQEFKWTBV, alt='')
+    Location/GPS clues: Yes
+
+  SCREEN: deactivate_pond
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Deactivate Pond', 'North Pond']
+    TopAppBar: Present (Title: 'close', BackButton: Yes)
+    StepperPanel: Not found
+    Form Elements:
+      - Select(id=, options=['Select a parameter...', 'Closed', 'Leased Out'])
+      - Textarea(id=)
+    Buttons:
+      - Button(id=, text='close')
+      - Button(id=, text='CANCEL')
+      - Button(id=, text='power_settings_new DEACTIVATE POND')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuDLuhdjXibTVkGXhtCGQtZbdqWTn-1V-5-M0ZR7ayjNrO_1HXOlo-TOD3fHiqfiBbTNBngmCcNlhoTOkKYDCYSu6AblL_5TWWENVmZ-5XYfmP1S7Uy9b_R5PweQcr36KYQmYKuGTJPnxEYoLD-OkKuNqZ3mQIrtBqXWYqVx1aFAcLkfGqIXjzIhALbicQnHFAxdHjRAjcQg7iiWmuQCDHHFRyJKDo5l4pFoec_vQ6q1d0eVtelj4Vx-q5SewwBHrYCgPwtotGfv8-Lx, alt='')
+    Location/GPS clues: Yes
+
+  SCREEN: edit_identity
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Edit Identity', 'Identity Parameters', 'SC Scout Node Sync']
+    TopAppBar: Present (Title: 'Edit Identity', BackButton: Yes)
+    StepperPanel: Not found
+    Form Elements:
+      - Input(type=text, id=, label='FULL NAME REQUIRED', placeholder='')
+      - Input(type=text, id=, label='calendar_today', placeholder='')
+      - Input(type=text, id=, label='location_on', placeholder='')
+      - Input(type=text, id=, label='MOBILE NUMBER security', placeholder='')
+      - Input(type=text, id=, label='ALTERNATE PHONE', placeholder='')
+    Buttons:
+      - Button(id=, text='close')
+      - Button(id=, text='save Save')
+      - Button(id=, text='Cancel')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuD4mw54iLKAypDP4rKoQLgv4Plgh6ZLCde8dLxaYSao4t1tzmEpoEROQGN--X4XYdywYavolQCmy4hyw7B_Xe3ouS2OMwyjPo1wk1kbxRWI_1lMoRrlE4NAradwaQ9XWtNTT8K5UOEGebl4aDYyH9yF9kgY_2-ij5es9FGNsP9cnGnUKxHaBggposg7Kdib3SY87kUqurFPvtIEPipCzCvvpQ8kqRzNoIYju1LINemCErx1kMtBKRtEM6X41manbHKEmYmBu3roSEci, alt='')
+    Location/GPS clues: Yes
+
+  SCREEN: edit_pond
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Edit Pond', 'Pond Identity & Capacity', 'Location Details', 'GPS Location']
+    TopAppBar: Present (Title: 'close', BackButton: Yes)
+    StepperPanel: Not found
+    Form Elements:
+      - Input(type=text, id=, label='Pond Name', placeholder='')
+      - Input(type=text, id=, label='Area (Acres)', placeholder='')
+      - Input(type=text, id=, label='Annual Capacity (kg)', placeholder='')
+      - Input(type=text, id=, label='District', placeholder='')
+      - Input(type=text, id=, label='Panchayat / Village', placeholder='')
+      - Input(type=text, id=, label='Landmark', placeholder='')
+      - Textarea(id=)
+    Buttons:
+      - Button(id=, text='close')
+      - Button(id=, text='cloud_sync')
+      - Button(id=, text='my_location')
+      - Button(id=, text='layers')
+      - Button(id=, text='Cancel')
+      - Button(id=, text='save Save')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuDNCnWt4oIexMMsrdh66SBC7qBDvNvEHfrAXhD45cZRdv08YLlQuvyn9bsjAiOCEITFltmJiG4kQrQkM34vFLsXsbS4lR9S4qM7kqZNmWp-jqaH1CZdBgW2sWXYhR8t90n9vVS5ptGtudhhToUhTZhHWyCa3UbLDHmiVa7IcXAx76fQ92NeAj-ELRoWc0CPTS64Kj_sovuL6t3MlI7v8n7RMo23UwYAgm_FcmNmKcHVfayyoFVpSr094NZ8rSnaJOEjBp4WViimzTxl, alt='')
+    Location/GPS clues: Yes
+
+  SCREEN: replace_bank_account
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['AgriScout Pro', 'Replace Bank Account', 'Technical Scout']
+    TopAppBar: Present (Title: 'menu', BackButton: Yes)
+    StepperPanel: Not found
+    Form Elements:
+      - Input(type=text, id=, label='lock', placeholder='')
+      - Input(type=password, id=, label='Account Number', placeholder='Enter Account Number')
+      - Input(type=text, id=, label='Confirm Account Number', placeholder='Re-enter Account Number')
+      - Input(type=text, id=, label='IFSC Code', placeholder='HDFC0000123')
+    Buttons:
+      - Button(id=, text='menu')
+      - Button(id=, text='cloud_sync')
+      - Button(id=, text='VERIFY')
+      - Button(id=, text='save SAVE ACCOUNT DETAILS')
+      - Button(id=, text='CANCEL')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuB-BtXTeGqS_wpXJL4GbT_r-jIKvU99GoBk3_pZjX4aRm6Fof8efxEV0yo0lqlTes3L8bHpVue8ycasX8d2-jnShLcXUbGWEJTqpKpxFqaLAn7eNaX2Ms_rUOVfK6rwNwFVF61Qa-Wc9eLn7losXxuYVBy-nrRmwbw-VtNzzY7gGixkWvmDXSvK6wRdozJRAgLtnlu1eGFxlL92Qn-PUGt6kkQ01_L7ExeJs-PdWKEu9HMke-AqW4X2FGUplK_DMWb61Z8qilsLDI5W, alt='Scout Profile')
+    Location/GPS clues: Yes
+
+========================================================
+WORKFLOW: pond_inspection
+========================================================
+
+  SCREEN: assess_pond_conditions
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Assess Pond Conditions']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 2 of 5')
+    Form Elements:
+      - Input(type=range, id=, label='04. Harvest Readiness Score', placeholder='')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='more_vert')
+      - Button(id=, text='Low')
+      - Button(id=, text='Normal')
+      - Button(id=, text='High')
+      - Button(id=, text='None')
+      - Button(id=, text='Light')
+      - Button(id=, text='Heavy')
+      - Button(id=, text='Leaf Spot close')
+      - Button(id=, text='Stem Rot close')
+      - Button(id=, text='+ Add Flag')
+      - Button(id=, text='Continue chevron_right')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuADrP-pfJQD8v4i26ne34Jj5MNqZ62vC9_N_WN_k7n5ANKzmdwz6XtmNZsjP-r1fvpvyWEx2si5HARG3EnSQmU0-I8iBzrzo2HiSw3QN8FzspFE66rPh18ZwBEzlf-yg5ZhnN-Gdz0uIKJ1at5YINuxRwjcha-fRI_E3FXAZwM784ahhA-ZhwiEt1W9eyvqV2gqCMpdA4m1E3QLxF0eGkqDKY5IakbPdOKQcpzD9-kHx4HxQjq_ba-a7C6Z7f9PxFWUu1aK8Iy-YT5r, alt='High-tech hydroponic pond system')
+    Location/GPS clues: Yes
+
+  SCREEN: bund_edge_readings
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Bund-Edge Readings', 'Current Distribution']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 3 of 5')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='more_vert')
+      - Button(id=, text='delete')
+      - Button(id=, text='delete')
+      - Button(id=, text='delete')
+      - Button(id=, text='add_circle Add reading')
+      - Button(id=, text='Continue')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuBnMfcVpmKY5gle6FMSSpoFWcf--Tzd1AeYH-xSt5RlDZOoEkYHp_Z4FuWsWgKJI5ZRnJuzVKtbsya86RBxz8l3y_Mf_X-tZ4rTMeJE2Hpq6ZQMYyLHsdMMKSGVw0ZiGwYpgScgRx50kXR_aoXndjDJW4QrjOzQv1hGnfnROzSTZI7yl-0yNyUwQmrWxQK0Tof7XByx5NoQLteqd0gl5ywDQDaFsSmIw1CjGk0uvInTA6skRCHjhpuM6syt-CG_EdFr2sXWelSbLPf2, alt='Agricultural monitoring')
+    Location/GPS clues: Yes
+
+  SCREEN: confirm_pond_arrival
+  --------------------------------------------------
+    Page Title: Pond Inspection - Step 1
+    Headings: ['Confirm Pond & Arrival']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 1 of 5')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='more_vert')
+      - Button(id=, text='directions Navigate')
+      - Button(id=, text='call Call Farmer')
+      - Button(id=, text='sync RE-CAPTURE')
+      - Button(id=, text='Begin Inspection')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuBm-SXvFaWR-IVnvL8CB__IvbFzx2hCHv6sdI5HtPojJP-v6TYCJxfaMk4qjRdors6SoeDzlL5lys7CW12pP7yUnW8-HYDovUkpAVa0QioSvkk21OCg10GDpSoNkScLGOshZtBlPfXXT0qfEO-N__V3IWcRmdzxA78w0YENtuvgbFOI_qdZQN16tslp2e4GHf3a82WiX7lL6oFXOvtfJJ0yuTry4qSkVPrKkZ3NYnM8UTyAT7Ns7OBJtF9WAv-tDi29YPRQB3LkkpNo, alt='')
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuCXH5VjXxVUvfIHAWLlwGY2EnCP2tdy0tL0zqxWSfwZrrLkrUrds1ZnpPXHg68mzpArwiNk3laNjKAaOs9NsKuy4QSnq8BvVP8Xv39HwSd567_oLDS_tHC6tgMF9Dl_tseBrQTX-ZiIpeqAN3lQzNJYXFsGwtoHnCveS_B1T6jpdMTU08n3oWe7OUhOY56yKHoeiEGyYiOIrgpiPDoatPF6UUoK2islruxbQcglYK32r-hAmNTUIYq7WvaGi_kTGhBuYoi1rJL4BQuC, alt='')
+    Location/GPS clues: Yes
+
+  SCREEN: inspection_confirmation
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Step 5 of 5', 'Inspection Submitted!']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 5 of 5')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='more_vert')
+      - Button(id=, text='dashboard Back to Today')
+      - Button(id=, text='visibility View Pond Detail')
+    Location/GPS clues: Yes
+
+  SCREEN: pond_photos_notes
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Pond Photos & Notes', 'Capture Field Data']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 4 of 5')
+    Form Elements:
+      - Textarea(id=)
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='more_vert')
+      - Button(id=, text='Continue arrow_forward')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuADYK3a4TF3A9SKZCHaXJKtGE7gmXIijnllabfK0cKn87GsLiRvNJ9Jxrm4G_lgDLBg-gagsXcpgaQjV-OKLDoAy0dcgZ-BUG62l9R3rJkOSCmyaG5Sp7-nlnCACg4pdq0kvOjCw8oGrI0MG-HZGxMRIDKa5H5-aGeFXig6_3Vs1G5ybe5Z9snxvd5PRccVVUdI7_gZUo7rTrQc60_9VCou3PuCjDC5h1G4YJxNNelnxgUMwofCsLWm-lp2UeL7eYJjPvfWYYNh0wMJ, alt='')
+    Location/GPS clues: Yes
+
+  SCREEN: review_submit_inspection
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Review & Confirm', 'Pond Identity', 'Field Conditions', 'Bund Telemetry', 'Documentation']
+    TopAppBar: Present (Title: 'arrow_back', BackButton: Yes)
+    StepperPanel: Present ('Step 5 of 5')
+    Form Elements:
+      - Input(type=checkbox, id=, label='check', placeholder='')
+    Buttons:
+      - Button(id=, text='arrow_back')
+      - Button(id=, text='more_vert')
+      - Button(id=, text='EDIT')
+      - Button(id=, text='EDIT')
+      - Button(id=, text='EDIT')
+      - Button(id=, text='EDIT')
+      - Button(id=, text='send Submit Inspection')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuCQVfH67pkEDMGgxvmMQi52cHOeVUlI8D1OBW_7lAcuuh2ktubbZiP5MUdzDyrD34fCSsWglgYMk8BZZguypQJSVpsoZEQKMitVhs1CQjkgqp9GZd5bkTLSYUpgJwYgtMmK_i2FzjeHdVwpw8jZp7BVgFUH9_KFfrI60cdcQfKVFjivO9eSnxGqxNTCGmeQdq1AMCg57kDLCNgXRweuBzOvW3aIBM4Pf6wHr2Vhrs84UWRA4sUBTrQ7Vy9KUCP3d-ist1wUxpwKRFiM, alt='')
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuDJkP-xIVv9qnONg9LRnaXLwbwlS5ycYUIz09coaTUdrOuTcXnrjkdd3cQI28RI9wPxmYQaD_9Cj-gqS1aFu4xMbgzfQhDjLmUF_tp32z8sKKQZleLnkMkhdotDayyWs7X_kazD1C7rdsvtJh96cBYDkho37Sjoy38zhZ_DyLOxvFXVYLTl5RjpkCz-6FALZ--ZIBks6xvUsHcSV4J1U0hBe-FRqdwsmbqvow-f7TNBBb27CPER_zfyvaOBefjNSn7O_J3JheGtt8SJ, alt='')
+    Location/GPS clues: Yes
+
+========================================================
+WORKFLOW: sync_queue
+========================================================
+
+  SCREEN: conflict_item_detail
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Conflict', 'Synchronization Logic Failure', 'Conflict Timeline']
+    TopAppBar: Present (Title: 'close', BackButton: Yes)
+    StepperPanel: Not found
+    Buttons:
+      - Button(id=, text='close')
+      - Button(id=, text='sync')
+      - Button(id=, text='visibility View my record')
+      - Button(id=, text='support_agent Contact Admin')
+    Images:
+      - Image(src=https://lh3.googleusercontent.com/aida-public/AB6AXuA94LcnGBu9JP82P4zz1rLy1Ivo2HSTlNur02bP3n4CU3bV5uERh5_atDyv6UOllTcl9Xn91C-qbxbFJj_moLDECvUpUeMENCgZOonMtOSFdZimxOziKtZdZsOdhnqhVaWLwD5DqImn9UELn7IIgtfdn-VHAaPp-gKRho-2i2xmKjpbCyRY8m0u5voL7UWQc-pB-gx9ihHAcXkli4LSw5hNcXhFwZxarUy6OKAaeJ7DWPak_Q-rsWO3Rl5s_mPTXAZ_tUPXpKUsXLZB, alt='')
+    Location/GPS clues: Yes
+
+  SCREEN: sync_item_detail
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['Sync Engine', 'LOT-2627-0042', 'Attempts', 'Transmission Payload', 'Field Op Scout']
+    TopAppBar: Present (Title: 'close', BackButton: No)
+    StepperPanel: Not found
+    Buttons:
+      - Button(id=, text='refresh Retry now')
+      - Button(id=, text='visibility View record')
+      - Button(id=, text='logout Logout')
+    Location/GPS clues: Yes
+
+  SCREEN: sync_queue_list
+  --------------------------------------------------
+    Page Title: No Title
+    Headings: ['3 pending · 1 conflict', 'Conflicts (1)', 'Inspection — LOT-2627-0042', 'Failed (1)', 'Seal Log — UNIT-A7', 'Pending (1)']
+    TopAppBar: Present (Title: 'menu', BackButton: No)
+    StepperPanel: Not found
+    Buttons:
+      - Button(id=, text='sync_alt Sync now')
+      - Button(id=, text='visibility Scout')
+      - Button(id=, text='inventory_2 Inventory')
+      - Button(id=, text='sync_alt Sync')
+      - Button(id=, text='settings Settings')
+    Location/GPS clues: Yes

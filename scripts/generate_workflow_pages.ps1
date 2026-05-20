@@ -1,7 +1,7 @@
 # PowerShell script to generate all 16 workflow documentation pages
 # Uses verification.html as the template and adapts it for each workflow
 
-$basePath = "c:\Development\Makhana\html\scout\operational"
+$basePath = Join-Path $PSScriptRoot "..\html\scout\operational"
 $templatePath = "$basePath\verification.html"
 
 # Configuration for all pages

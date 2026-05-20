@@ -1,5 +1,5 @@
 
-$htmlDir = "c:\Development\Makhana\html\scout\operational"
+$htmlDir = Join-Path $PSScriptRoot "..\html\scout\operational"
 $files = Get-ChildItem -Path $htmlDir -Filter "*.html" -File | Where-Object { $_.Name -ne "dashboard.html" -and $_.Name -ne "rejection_handling.html" }
 
 $cssCSS = ".address-bar { background: #141416; border: 1px solid #27272a; border-radius: 8px; padding: 10px 16px; margin-bottom: 48px; display: flex; align-items: center; gap: 12px; max-width: 1280px; margin-left: auto; margin-right: auto; }`n    .address-bar-icon { font-size: 14px; color: #06b6d4; }`n    .address-bar-path { font-family: 'Inter', sans-serif; font-size: 13px; color: #9ca3af; word-break: break-all; }"
